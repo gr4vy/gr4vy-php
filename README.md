@@ -123,18 +123,12 @@ $result = $apiInstance->updateBuyer($result->getId(), $buyer_update);
 The SDK can be used to create API access tokens for use with other request
 libraries.
 
-```php TODO
-import { JWTScope } from "@gr4vy/node"
-
-const bearerToken = client.getBearerToken(
-  [JWTScope.BuyersRead, JWTScope.BuyersWrite],
-  "1h"
-)
+```php
+$bearerToken = Gr4vyConfig::getToken($privateKeyLocation, array("*.read"));
 ```
 
-The first parameter is a list of recognised scopes for the Gr4vy API. The second
-parameter is the expiration time for the token as defined by the
-[`vercel/ms`](https://github.com/vercel/ms) library.
+The first parameter is the location of your private key. The second
+parameter is an array of scopes for the token.
 
 The resulting token can be used as a bearer token in the header of the HTTP
 request made to the API.
@@ -143,54 +137,16 @@ request made to the API.
 Authorization: Bearer <bearerToken>
 ```
 
-## Response & Promises
-
-Every API call returns a `Promise` that either resolves or rejects.
-
-Every resolved API call returns an object containing a `body`
-attribute with the parsed JSON body and a `response` object representing the
-HTTP response object which includes the raw headers and status code.
-
-For a failed API call, it returns a similar object is returned with the `body`
-of the error.
-
-```js
-client.getBuyer(buyer.id)
-  .then(result => {
-    console.dir(result.body) // the parsed JSON
-    console.dir(result.response.statusCode) // the status code of the response
-  })
-  .catch(error => {
-    console.dir(error.response.body) // the parsed JSON of the error
-    console.dir(error.response.statusCode) // the status code of the error
-  })
-```
-
 ## Logging & Debugging
 
 The SDK makes it easy possible to the requests and responses to the console.
 
 ```js
-const client = new Client({
-  gr4vyId: 'demo',
-  privateKey: key,
-  debug: true
-});
+$debugging = true;
+$config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation, $debugging);
 ```
 
-This will output the request parameters and response to the console as follows.
-
-```sh
-Gr4vy - Request - .getBuyer: 41291df0-4a5d-42d9-a977-dbc8ef6463c4
-Gr4vy - Response - .getBuyer - 200): Buyer {
-  type: 'buyer',
-  id: '41291df0-4a5d-42d9-a977-dbc8ef6463c4',
-  external_identifier: null,
-  display_name: 'Test',
-  created_at: 2021-02-23T16:23:22.794Z,
-  updated_at: 2021-02-23T16:23:22.794Z
-}
-```
+This will print debug output for the request to the console.
 
 ## Development
 
