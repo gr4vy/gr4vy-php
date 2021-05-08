@@ -1,0 +1,7 @@
+README.md
+git_push.sh
+.gitignore
+composer.json
+phpunit.xml.dist
+test/
+.travis.yml

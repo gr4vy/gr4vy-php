@@ -1,0 +1,39 @@
+{
+    "name": "gr4vy/gr4vy-php",
+    "description": "Welcome to the Gr4vy API reference documentation. Our API is still very much a work in product and subject to change.",
+    "keywords": [
+        "openapitools",
+        "openapi-generator",
+        "openapi",
+        "php",
+        "sdk",
+        "rest",
+        "api"
+    ],
+    "homepage": "https://openapi-generator.tech",
+    "license": "unlicense",
+    "authors": [
+        {
+            "name": "OpenAPI-Generator contributors",
+            "homepage": "https://openapi-generator.tech"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2",
+        "lcobucci/jwt": "^3.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^2.12"
+    },
+    "autoload": {
+        "psr-4": { "Gr4vy\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Gr4vy\\Test\\" : "test/" }
+    }
+}
