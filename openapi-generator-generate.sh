@@ -9,4 +9,4 @@ docker run --rm \
   -o /local \
   -c /local/.openapi-generator-config.json
 
-sh replace.sh
+sh ./.openapi-generator/replace.sh
