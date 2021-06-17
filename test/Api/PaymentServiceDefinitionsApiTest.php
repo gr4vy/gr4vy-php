@@ -46,7 +46,7 @@ use PHPUnit\Framework\TestCase;
  */
 class PaymentServiceDefinitionsApiTest extends TestCase
 {
-    private static $privateKeyLocation = __DIR__ . "/../dev-key.pem";
+    private static $privateKeyLocation = __DIR__ . "/../../private_key.pem";
     private static $gr4vyId = "spider";
 
     /**

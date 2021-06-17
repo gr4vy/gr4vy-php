@@ -46,7 +46,7 @@ use PHPUnit\Framework\TestCase;
  */
 class PaymentMethodsApiTest extends TestCase
 {
-    private static $privateKeyLocation = __DIR__ . "/../dev-key.pem";
+    private static $privateKeyLocation = __DIR__ . "/../../private_key.pem";
     private static $gr4vyId = "spider";
 
     /**
@@ -90,8 +90,8 @@ class PaymentMethodsApiTest extends TestCase
             $apiInstance = new PaymentMethodsApi(new Client(),$config->getConfig());
 
             $payment_method_request = array(
-                "method"=>"card", 
-                "number"=>"4111111111111111", 
+                "method"=>"card",
+                "number"=>"4111111111111111",
                 "expiration_date"=>"11/25",
                 "security_code"=>"123"
             );
@@ -119,8 +119,8 @@ class PaymentMethodsApiTest extends TestCase
             $apiInstance = new PaymentMethodsApi(new Client(),$config->getConfig());
 
             $payment_method_request = array(
-                "method"=>"card", 
-                "number"=>"4111111111111111", 
+                "method"=>"card",
+                "number"=>"4111111111111111",
                 "expiration_date"=>"11/25",
                 "security_code"=>"123"
             );
@@ -189,8 +189,8 @@ class PaymentMethodsApiTest extends TestCase
             $apiInstance = new PaymentMethodsApi(new Client(),$config->getConfig());
 
             $payment_method_request = array(
-                "method"=>"card", 
-                "number"=>"4111111111111111", 
+                "method"=>"card",
+                "number"=>"4111111111111111",
                 "expiration_date"=>"11/25",
                 "security_code"=>"123"
             );

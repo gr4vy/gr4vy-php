@@ -45,7 +45,7 @@ try {
 }
 ```
 
-## Gr4vy Embed 
+## Gr4vy Embed
 
 To create a token for Gr4vy Embed, call the `config->getEmbedToken()` function
 with the amount, currency, and optional buyer information for Gr4vy Embed.
@@ -53,8 +53,8 @@ with the amount, currency, and optional buyer information for Gr4vy Embed.
 ```php
 echo $config->getEmbedToken(
   array(
-    "amount"=> 200, 
-    "currency" => "USD", 
+    "amount"=> 200,
+    "currency" => "USD",
     "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c"
   )
 );
@@ -113,7 +113,7 @@ $buyer = $apiInstance->addBuyer($buyer_request);
 
 Similarly, to update a buyer you will need to pass in the `BuyerUpdateRequest`.
 
-```php 
+```php
 $buyer_update = array("external_identifier"=>"testUpdateBuyer");
 $result = $apiInstance->updateBuyer($result->getId(), $buyer_update);
 ```
@@ -152,11 +152,12 @@ This will print debug output for the request to the console.
 
 ### Tests
 
-To run the tests, use:
+To run the tests, store a private key for the spider environment and then run
+the following commands.
 
 ```bash
 composer install
-./vendor/bin/phpunit test/ 
+./vendor/bin/phpunit test/
 ```
 
 ### Adding new APIs

@@ -46,7 +46,7 @@ use PHPUnit\Framework\TestCase;
  */
 class BuyersApiTest extends TestCase
 {
-    private static $privateKeyLocation = __DIR__ . "/../dev-key.pem";
+    private static $privateKeyLocation = __DIR__ . "/../../private_key.pem";
     private static $gr4vyId = "spider";
 
     /**
@@ -160,7 +160,7 @@ class BuyersApiTest extends TestCase
      */
     public function testListBuyers()
     {
-        
+
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $apiInstance = new BuyersApi(new Client(),$config->getConfig());

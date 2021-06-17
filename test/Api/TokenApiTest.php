@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class TokenApiTest extends TestCase
 {
-    private static $privateKeyLocation = __DIR__ . "/../dev-key.pem";
+    private static $privateKeyLocation = __DIR__ . "/../../private_key.pem";
     private static $gr4vyId = "spider";
 
     /**
@@ -63,7 +63,7 @@ class TokenApiTest extends TestCase
         }
     }
 
-    
+
     public function testAddBuyerAndEmbed()
     {
         try {

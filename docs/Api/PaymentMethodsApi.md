@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 ## `storePaymentMethod()`
 
 ```php
-storePaymentMethod($card_request): \Gr4vy\model\Card
+storePaymentMethod($card_request): \Gr4vy\model\PaymentMethod
 ```
 
 New payment method
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Gr4vy\model\Card**](../Model/Card.md)
+[**\Gr4vy\model\PaymentMethod**](../Model/PaymentMethod.md)
 
 ### Authorization
 

@@ -46,7 +46,7 @@ use PHPUnit\Framework\TestCase;
  */
 class PaymentServicesApiTest extends TestCase
 {
-    private static $privateKeyLocation = __DIR__ . "/../dev-key.pem";
+    private static $privateKeyLocation = __DIR__ . "/../../private_key.pem";
     private static $gr4vyId = "spider";
 
     /**
@@ -102,7 +102,7 @@ class PaymentServicesApiTest extends TestCase
                 "payment_service_definition_id" => "stripe-card"
             );
             $result = $apiInstance->addPaymentService($payment_service_request);
-            
+
             $this->assertArrayHasKey("id", $result);
             $this->assertEquals($result->getPaymentServiceDefinitionId(), "stripe-card");
 
@@ -138,7 +138,7 @@ class PaymentServicesApiTest extends TestCase
                 "payment_service_definition_id" => "stripe-card"
             );
             $result = $apiInstance->addPaymentService($payment_service_request);
-            
+
             $this->assertArrayHasKey("id", $result);
             $this->assertEquals($result->getPaymentServiceDefinitionId(), "stripe-card");
 
@@ -174,7 +174,7 @@ class PaymentServicesApiTest extends TestCase
                 "payment_service_definition_id" => "stripe-card"
             );
             $result = $apiInstance->addPaymentService($payment_service_request);
-            
+
             $this->assertArrayHasKey("id", $result);
             $this->assertEquals($result->getPaymentServiceDefinitionId(), "stripe-card");
 
@@ -231,7 +231,7 @@ class PaymentServicesApiTest extends TestCase
                 "payment_service_definition_id" => "stripe-card"
             );
             $result = $apiInstance->addPaymentService($payment_service_request);
-            
+
             $this->assertArrayHasKey("id", $result);
             $this->assertEquals($result->getPaymentServiceDefinitionId(), "stripe-card");
 

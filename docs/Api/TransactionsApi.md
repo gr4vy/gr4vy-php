@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**captureTransaction()**](TransactionsApi.md#captureTransaction) | **POST** /transactions/{transaction_id}/capture | Capture transaction
 [**getTransaction()**](TransactionsApi.md#getTransaction) | **GET** /transactions/{transaction_id} | Get transaction
 [**listTransactions()**](TransactionsApi.md#listTransactions) | **GET** /transactions | List transactions
-[**refundTransaction()**](TransactionsApi.md#refundTransaction) | **POST** /transactions/{transaction_id}/refund | Refund or void transaction
+[**refundTransaction()**](TransactionsApi.md#refundTransaction) | **POST** /transactions/{transaction_id}/refund | Refund or void transactions
 
 
 ## `authorizeNewTransaction()`
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 ## `listTransactions()`
 
 ```php
-listTransactions($search, $transaction_status, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor): \Gr4vy\model\Transactions
+listTransactions($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor): \Gr4vy\model\Transactions
 ```
 
 List transactions
@@ -282,7 +282,9 @@ $apiInstance = new Gr4vy\Api\TransactionsApi(
     $config
 );
 $search = be828248-56de-481e-a580-44b6e1d4df81; // string | Filters the transactions to only the items for which the `id` or `external_identifier` matches this value. This field allows for a partial match, matching any transaction for which either of the fields partially or completely matches.
-$transaction_status = captured; // string | Filters the results to only the transactions for which the `status` matches this value.
+$transaction_status = capture_succeeded; // string | Filters the results to only the transactions for which the `status` matches this value.
+$buyer_id = 8724fd24-5489-4a5d-90fd-0604df7d3b83; // string | Filters the results to only the items for which the `buyer` has an `id` that matches this value.
+$buyer_external_identifier = user-12345; // string | Filters the results to only the items for which the `buyer` has an `external_identifier` that matches this value.
 $before_created_at = 2012-12-12T10:53:43+00:00; // string | Filters the results to only transactions created before this ISO date-time string.
 $after_created_at = 2012-12-12T10:53:43+00:00; // string | Filters the results to only transactions created after this ISO date-time string.
 $before_updated_at = 2012-12-12T10:53:43+00:00; // string | Filters the results to only transactions last updated before this ISO date-time string.
@@ -291,7 +293,7 @@ $limit = 1; // int | Defines the maximum number of items to return for this requ
 $cursor = ZXhhbXBsZTE; // string | A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the `next_cursor` field. Similarly the `previous_cursor` can be used to reverse backwards in the list.
 
 try {
-    $result = $apiInstance->listTransactions($search, $transaction_status, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor);
+    $result = $apiInstance->listTransactions($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TransactionsApi->listTransactions: ', $e->getMessage(), PHP_EOL;
@@ -304,6 +306,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **search** | **string**| Filters the transactions to only the items for which the &#x60;id&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any transaction for which either of the fields partially or completely matches. | [optional]
  **transaction_status** | **string**| Filters the results to only the transactions for which the &#x60;status&#x60; matches this value. | [optional]
+ **buyer_id** | **string**| Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. | [optional]
+ **buyer_external_identifier** | **string**| Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. | [optional]
  **before_created_at** | **string**| Filters the results to only transactions created before this ISO date-time string. | [optional]
  **after_created_at** | **string**| Filters the results to only transactions created after this ISO date-time string. | [optional]
  **before_updated_at** | **string**| Filters the results to only transactions last updated before this ISO date-time string. | [optional]
@@ -331,10 +335,10 @@ Name | Type | Description  | Notes
 ## `refundTransaction()`
 
 ```php
-refundTransaction($transaction_id): \Gr4vy\model\Transaction
+refundTransaction($transaction_id, $transaction_refund_request): \Gr4vy\model\Transaction
 ```
 
-Refund or void transaction
+Refund or void transactions
 
 Refunds or voids transaction. If this transaction was already captured, it will issue a refund. If the transaction was not yet captured the authorization will instead be voided.
 
@@ -356,9 +360,10 @@ $apiInstance = new Gr4vy\Api\TransactionsApi(
     $config
 );
 $transaction_id = fe26475d-ec3e-4884-9553-f7356683f7f9; // string | The ID for the transaction to get the information for.
+$transaction_refund_request = new \Gr4vy\model\TransactionRefundRequest(); // \Gr4vy\model\TransactionRefundRequest
 
 try {
-    $result = $apiInstance->refundTransaction($transaction_id);
+    $result = $apiInstance->refundTransaction($transaction_id, $transaction_refund_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TransactionsApi->refundTransaction: ', $e->getMessage(), PHP_EOL;
@@ -370,6 +375,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **transaction_id** | **string**| The ID for the transaction to get the information for. |
+ **transaction_refund_request** | [**\Gr4vy\model\TransactionRefundRequest**](../Model/TransactionRefundRequest.md)|  | [optional]
 
 ### Return type
 
@@ -381,7 +387,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

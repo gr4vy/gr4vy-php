@@ -68,7 +68,7 @@ class PayPal implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'external_identifier' => 'string',
-        'buyer' => 'Buyer',
+        'buyer' => '\Gr4vy\model\Buyer',
         'details' => '\Gr4vy\model\PayPalDetails',
         'environment' => 'string'
     ];
@@ -304,7 +304,7 @@ class PayPal implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['buyer'] = $data['buyer'] ?? null;
         $this->container['details'] = $data['details'] ?? null;
-        $this->container['environment'] = $data['environment'] ?? ENVIRONMENT_PRODUCTION;
+        $this->container['environment'] = $data['environment'] ?? self::ENVIRONMENT_PRODUCTION;
     }
 
     /**
