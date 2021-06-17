@@ -7,17 +7,7 @@ Gr4vy provides any of your payment integrations through one unified API. For mor
 To install Gr4vy via [Composer](https://getcomposer.org/), add the following to your `composer.json`:
 
 ```sh
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/gr4vy/gr4vy-php.git"
-    }
-  ],
-  "require": {
-    "gr4vy/gr4vy-php": "*@dev"
-  }
-}
+composer require gr4vy/gr4vy-php
 ```
 
 Then run `composer install`
