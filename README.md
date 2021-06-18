@@ -1,22 +1,24 @@
 # Gr4vy SDK for PHP
 
-Gr4vy provides any of your payment integrations through one unified API. For more details, visit [gr4vy.com](https://gr4vy.com).
+Gr4vy provides any of your payment integrations through one unified API. For
+more details, visit [gr4vy.com](https://gr4vy.com).
 
 ## Installation
 
-To install Gr4vy via [Composer](https://getcomposer.org/), add the package to your Composer.
+The Gr4vy PHP SDK can be installed via [Composer](https://getcomposer.org/).
 
 ```sh
 composer require gr4vy/gr4vy-php
 ```
 
-Then run `composer install`
-
 ## Getting Started
 
-To make your first API call, you will need to [request](https://gr4vy.com) a Gr4vy instance to be set up. Please contact our sales team for a demo.
+To make your first API call, you will need to [request](https://gr4vy.com) a
+Gr4vy instance to be set up. Please contact our sales team for a demo.
 
-Once you have been set up with a Gr4vy account you will need to head over to the **Integrations** panel and generate a private key. We recommend storing this key in a secure location but in this code sample we simply read the file from disk.
+Once you have been set up with a Gr4vy account you will need to head over to the
+**Integrations** panel and generate a private key. We recommend storing this key
+in a secure location but in this code sample we simply read the file from disk.
 
 ```php
 <?php
@@ -24,7 +26,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $privateKeyLocation = __DIR__ . "/private_key.pem";
 
-$config = new Gr4vy\Gr4vyConfig("YOUR_GR4VY_ID", $privateKeyLocation);
+$config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation);
 $apiInstance = new Gr4vy\Api\BuyersApi(new GuzzleHttp\Client(),$config->getConfig());
 
 try {
@@ -58,7 +60,7 @@ token to pull in previously stored payment methods for a user. A buyer needs to
 be created before it can be used in this way.
 
 ```php
-$config = new Gr4vy\Gr4vyConfig("YOUR_GR4VY_ID", $privateKeyLocation);
+$config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation);
 $apiInstance = new Gr4vy\Api\BuyersApi(new GuzzleHttp\Client(),$config->getConfig());
 
 $buyer_request = array("external_identifier"=>"412231123","display_name"=>"Tester T.");
@@ -84,7 +86,6 @@ $config->setHost("https://api.acme.gr4vy.app");
 ```
 
 Your API key can be created in your admin panel on the **Integrations** tab.
-
 
 ## Making API calls
 
@@ -155,27 +156,16 @@ composer install
 To add new APIs, run the following command to update the models and APIs based
 on the API spec.
 
-```
+```sh
 ./openapi-generator-generate.sh
 ```
 
-Next, update `sdk/client.ts` to bind any new APIs or remove any APIs that are no
-longer available.
+### Publishing
 
-```js
-const poa = new PaymentOptionsApi(this.baseUrl);
-this.listPaymentOptions = this.wrap(poa.listPaymentOptions.bind(poa));
-this.apis.push(poa);
-```
-
-### Publishing - TODO - https://knasmueller.net/how-to-publish-your-php-code-as-a-composer-package
-
-Publishing of this project is done automatically using the `yarn release`
-command which creates a new version, publishes it to a tag, and then triggers a
-GitHub Action to release the new package to NPM.
+Publishing of this project is done through [Packagist][packagist].
 
 ## License
 
 This library is released under the [MIT License](LICENSE).
 
-[npm]: https://www.npmjs.com/package/@gr4vy/node
+[packagist]: https://packagist.org/packages/gr4vy/gr4vy-php
