@@ -162,7 +162,8 @@ on the API spec.
 
 ### Publishing
 
-Publishing of this project is done through [Packagist][packagist].
+Publishing of this project is done through [Packagist][packagist]. New versions
+are released by creating a new Git tag.
 
 ## License
 
