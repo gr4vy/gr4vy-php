@@ -1,6 +1,5 @@
 .php_cs
 docs/Api/BuyersApi.md
-docs/Api/CardRulesApi.md
 docs/Api/PaymentMethodsApi.md
 docs/Api/PaymentOptionsApi.md
 docs/Api/PaymentServiceDefinitionsApi.md
@@ -29,7 +28,6 @@ docs/Model/Error404PendingCreation.md
 docs/Model/Error409DuplicateRecord.md
 docs/Model/ErrorDetail.md
 docs/Model/ErrorGeneric.md
-docs/Model/PayPalRequest.md
 docs/Model/PaymentMethod.md
 docs/Model/PaymentMethodSnapshot.md
 docs/Model/PaymentMethodTokenized.md
@@ -47,6 +45,7 @@ docs/Model/PaymentServiceSnapshot.md
 docs/Model/PaymentServiceUpdate.md
 docs/Model/PaymentServiceUpdateFields.md
 docs/Model/PaymentServices.md
+docs/Model/RedirectRequest.md
 docs/Model/ResetPasswordRequest.md
 docs/Model/SetPasswordRequest.md
 docs/Model/Status.md
@@ -65,7 +64,6 @@ lib/Configuration.php
 lib/HeaderSelector.php
 lib/ObjectSerializer.php
 lib/api/BuyersApi.php
-lib/api/CardRulesApi.php
 lib/api/PaymentMethodsApi.php
 lib/api/PaymentOptionsApi.php
 lib/api/PaymentServiceDefinitionsApi.php
@@ -95,7 +93,6 @@ lib/model/Error409DuplicateRecord.php
 lib/model/ErrorDetail.php
 lib/model/ErrorGeneric.php
 lib/model/ModelInterface.php
-lib/model/PayPalRequest.php
 lib/model/PaymentMethod.php
 lib/model/PaymentMethodSnapshot.php
 lib/model/PaymentMethodTokenized.php
@@ -113,6 +110,7 @@ lib/model/PaymentServiceSnapshot.php
 lib/model/PaymentServiceUpdate.php
 lib/model/PaymentServiceUpdateFields.php
 lib/model/PaymentServices.php
+lib/model/RedirectRequest.php
 lib/model/ResetPasswordRequest.php
 lib/model/SetPasswordRequest.php
 lib/model/Status.php

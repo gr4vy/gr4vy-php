@@ -99,18 +99,6 @@ class TransactionsApiTest extends TestCase
     }
 
     /**
-     * Test case for authorizeTransaction
-     *
-     * Authorize approved transaction.
-     *
-     */
-    public function testAuthorizeTransaction()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test case for captureTransaction
      *
      * Capture transaction.

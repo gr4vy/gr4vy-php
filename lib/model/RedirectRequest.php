@@ -1,6 +1,6 @@
 <?php
 /**
- * CardRuleNumberCondition
+ * RedirectRequest
  *
  * PHP version 7.2
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * CardRuleNumberCondition Class Doc Comment
+ * RedirectRequest Class Doc Comment
  *
  * @category Class
- * @description Part of a rule that matches numeric fields. It defines the condition under which this rule applies.
+ * @description Request to use a redirect flow in a transaction or to register a new payment method.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSerializable
+class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardRuleNumberCondition';
+    protected static $openAPIModelName = 'RedirectRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,10 +61,11 @@ class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'match' => 'string',
-        'key' => 'string',
-        'operator' => 'string',
-        'value' => 'float'
+        'method' => 'string',
+        'redirect_url' => 'string',
+        'external_identifier' => 'string',
+        'buyer_id' => 'string',
+        'buyer_external_identifier' => 'string'
     ];
 
     /**
@@ -75,10 +76,11 @@ class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'match' => null,
-        'key' => null,
-        'operator' => null,
-        'value' => null
+        'method' => null,
+        'redirect_url' => null,
+        'external_identifier' => null,
+        'buyer_id' => 'uuid',
+        'buyer_external_identifier' => null
     ];
 
     /**
@@ -108,10 +110,11 @@ class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'match' => 'match',
-        'key' => 'key',
-        'operator' => 'operator',
-        'value' => 'value'
+        'method' => 'method',
+        'redirect_url' => 'redirect_url',
+        'external_identifier' => 'external_identifier',
+        'buyer_id' => 'buyer_id',
+        'buyer_external_identifier' => 'buyer_external_identifier'
     ];
 
     /**
@@ -120,10 +123,11 @@ class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'match' => 'setMatch',
-        'key' => 'setKey',
-        'operator' => 'setOperator',
-        'value' => 'setValue'
+        'method' => 'setMethod',
+        'redirect_url' => 'setRedirectUrl',
+        'external_identifier' => 'setExternalIdentifier',
+        'buyer_id' => 'setBuyerId',
+        'buyer_external_identifier' => 'setBuyerExternalIdentifier'
     ];
 
     /**
@@ -132,10 +136,11 @@ class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'match' => 'getMatch',
-        'key' => 'getKey',
-        'operator' => 'getOperator',
-        'value' => 'getValue'
+        'method' => 'getMethod',
+        'redirect_url' => 'getRedirectUrl',
+        'external_identifier' => 'getExternalIdentifier',
+        'buyer_id' => 'getBuyerId',
+        'buyer_external_identifier' => 'getBuyerExternalIdentifier'
     ];
 
     /**
@@ -179,53 +184,19 @@ class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    const MATCH_NUMBER = 'number';
-    const KEY_AMOUNT = 'amount';
-    const OPERATOR_ = '==';
-    const OPERATOR_NOT_EQUAL = '!=';
-    const OPERATOR_LESS_THAN_OR_EQUAL_TO = '<=';
-    const OPERATOR_GREATER_THAN_OR_EQUAL_TO = '>=';
-    const OPERATOR_GREATER_THAN = '>';
-    const OPERATOR_LESS_THAN = '<';
+    const METHOD_PAYPAL = 'paypal';
+    const METHOD_BANKED = 'banked';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getMatchAllowableValues()
+    public function getMethodAllowableValues()
     {
         return [
-            self::MATCH_NUMBER,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getKeyAllowableValues()
-    {
-        return [
-            self::KEY_AMOUNT,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOperatorAllowableValues()
-    {
-        return [
-            self::OPERATOR_,
-            self::OPERATOR_NOT_EQUAL,
-            self::OPERATOR_LESS_THAN_OR_EQUAL_TO,
-            self::OPERATOR_GREATER_THAN_OR_EQUAL_TO,
-            self::OPERATOR_GREATER_THAN,
-            self::OPERATOR_LESS_THAN,
+            self::METHOD_PAYPAL,
+            self::METHOD_BANKED,
         ];
     }
 
@@ -244,10 +215,11 @@ class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['match'] = $data['match'] ?? null;
-        $this->container['key'] = $data['key'] ?? null;
-        $this->container['operator'] = $data['operator'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
+        $this->container['method'] = $data['method'] ?? null;
+        $this->container['redirect_url'] = $data['redirect_url'] ?? null;
+        $this->container['external_identifier'] = $data['external_identifier'] ?? null;
+        $this->container['buyer_id'] = $data['buyer_id'] ?? null;
+        $this->container['buyer_external_identifier'] = $data['buyer_external_identifier'] ?? null;
     }
 
     /**
@@ -259,53 +231,21 @@ class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['match'] === null) {
-            $invalidProperties[] = "'match' can't be null";
+        if ($this->container['method'] === null) {
+            $invalidProperties[] = "'method' can't be null";
         }
-        $allowedValues = $this->getMatchAllowableValues();
-        if (!is_null($this->container['match']) && !in_array($this->container['match'], $allowedValues, true)) {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'match', must be one of '%s'",
-                $this->container['match'],
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
+        if ($this->container['redirect_url'] === null) {
+            $invalidProperties[] = "'redirect_url' can't be null";
         }
-        $allowedValues = $this->getKeyAllowableValues();
-        if (!is_null($this->container['key']) && !in_array($this->container['key'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'key', must be one of '%s'",
-                $this->container['key'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['operator'] === null) {
-            $invalidProperties[] = "'operator' can't be null";
-        }
-        $allowedValues = $this->getOperatorAllowableValues();
-        if (!is_null($this->container['operator']) && !in_array($this->container['operator'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'operator', must be one of '%s'",
-                $this->container['operator'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['value'] === null) {
-            $invalidProperties[] = "'value' can't be null";
-        }
-        if (($this->container['value'] > 99999)) {
-            $invalidProperties[] = "invalid value for 'value', must be smaller than or equal to 99999.";
-        }
-
-        if (($this->container['value'] < 0)) {
-            $invalidProperties[] = "invalid value for 'value', must be bigger than or equal to 0.";
-        }
-
         return $invalidProperties;
     }
 
@@ -322,135 +262,131 @@ class CardRuleNumberCondition implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets match
+     * Gets method
      *
      * @return string
      */
-    public function getMatch()
+    public function getMethod()
     {
-        return $this->container['match'];
+        return $this->container['method'];
     }
 
     /**
-     * Sets match
+     * Sets method
      *
-     * @param string $match `number`.
+     * @param string $method The method to use, this can be any of the methods that support redirect requests.
      *
      * @return self
      */
-    public function setMatch($match)
+    public function setMethod($method)
     {
-        $allowedValues = $this->getMatchAllowableValues();
-        if (!in_array($match, $allowedValues, true)) {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!in_array($method, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'match', must be one of '%s'",
-                    $match,
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['match'] = $match;
+        $this->container['method'] = $method;
 
         return $this;
     }
 
     /**
-     * Gets key
+     * Gets redirect_url
      *
      * @return string
      */
-    public function getKey()
+    public function getRedirectUrl()
     {
-        return $this->container['key'];
+        return $this->container['redirect_url'];
     }
 
     /**
-     * Sets key
+     * Sets redirect_url
      *
-     * @param string $key The transaction field to filter by.
+     * @param string $redirect_url The redirect URL to redirect a buyer to after they have authorized their transaction.
      *
      * @return self
      */
-    public function setKey($key)
+    public function setRedirectUrl($redirect_url)
     {
-        $allowedValues = $this->getKeyAllowableValues();
-        if (!in_array($key, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'key', must be one of '%s'",
-                    $key,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['key'] = $key;
+        $this->container['redirect_url'] = $redirect_url;
 
         return $this;
     }
 
     /**
-     * Gets operator
+     * Gets external_identifier
      *
-     * @return string
+     * @return string|null
      */
-    public function getOperator()
+    public function getExternalIdentifier()
     {
-        return $this->container['operator'];
+        return $this->container['external_identifier'];
     }
 
     /**
-     * Sets operator
+     * Sets external_identifier
      *
-     * @param string $operator The comparison to make to `value` property.
+     * @param string|null $external_identifier An external identifier that can be used to match the account against your own records.
      *
      * @return self
      */
-    public function setOperator($operator)
+    public function setExternalIdentifier($external_identifier)
     {
-        $allowedValues = $this->getOperatorAllowableValues();
-        if (!in_array($operator, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'operator', must be one of '%s'",
-                    $operator,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['operator'] = $operator;
+        $this->container['external_identifier'] = $external_identifier;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets buyer_id
      *
-     * @return float
+     * @return string|null
      */
-    public function getValue()
+    public function getBuyerId()
     {
-        return $this->container['value'];
+        return $this->container['buyer_id'];
     }
 
     /**
-     * Sets value
+     * Sets buyer_id
      *
-     * @param float $value The values to compare the `key` to.
+     * @param string|null $buyer_id The ID of the buyer to associate this payment method to. If this field is provided then the `buyer_external_identifier` field needs to be unset.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setBuyerId($buyer_id)
     {
+        $this->container['buyer_id'] = $buyer_id;
 
-        if (($value > 99999)) {
-            throw new \InvalidArgumentException('invalid value for $value when calling CardRuleNumberCondition., must be smaller than or equal to 99999.');
-        }
-        if (($value < 0)) {
-            throw new \InvalidArgumentException('invalid value for $value when calling CardRuleNumberCondition., must be bigger than or equal to 0.');
-        }
+        return $this;
+    }
 
-        $this->container['value'] = $value;
+    /**
+     * Gets buyer_external_identifier
+     *
+     * @return string|null
+     */
+    public function getBuyerExternalIdentifier()
+    {
+        return $this->container['buyer_external_identifier'];
+    }
+
+    /**
+     * Sets buyer_external_identifier
+     *
+     * @param string|null $buyer_external_identifier The `external_identifier` of the buyer to associate this payment method to. If this field is provided then the `buyer_id` field needs to be unset.
+     *
+     * @return self
+     */
+    public function setBuyerExternalIdentifier($buyer_external_identifier)
+    {
+        $this->container['buyer_external_identifier'] = $buyer_external_identifier;
 
         return $this;
     }

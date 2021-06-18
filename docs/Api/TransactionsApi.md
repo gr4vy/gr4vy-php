@@ -5,7 +5,6 @@ All URIs are relative to https://api.plantly.gr4vy.app.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**authorizeNewTransaction()**](TransactionsApi.md#authorizeNewTransaction) | **POST** /transactions | New transaction
-[**authorizeTransaction()**](TransactionsApi.md#authorizeTransaction) | **POST** /transactions/{transaction_id}/authorize | Authorize approved transaction
 [**captureTransaction()**](TransactionsApi.md#captureTransaction) | **POST** /transactions/{transaction_id}/capture | Capture transaction
 [**getTransaction()**](TransactionsApi.md#getTransaction) | **GET** /transactions/{transaction_id} | Get transaction
 [**listTransactions()**](TransactionsApi.md#listTransactions) | **GET** /transactions | List transactions
@@ -66,66 +65,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `authorizeTransaction()`
-
-```php
-authorizeTransaction($transaction_id): \Gr4vy\model\Transaction
-```
-
-Authorize approved transaction
-
-Authorize a previously approved transaction.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: BearerAuth
-$config = Gr4vy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Gr4vy\Api\TransactionsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$transaction_id = fe26475d-ec3e-4884-9553-f7356683f7f9; // string | The ID for the transaction to get the information for.
-
-try {
-    $result = $apiInstance->authorizeTransaction($transaction_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling TransactionsApi->authorizeTransaction: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transaction_id** | **string**| The ID for the transaction to get the information for. |
-
-### Return type
-
-[**\Gr4vy\model\Transaction**](../Model/Transaction.md)
-
-### Authorization
-
-[BearerAuth](../../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
