@@ -115,7 +115,7 @@ The SDK can be used to create API access tokens for use with other request
 libraries.
 
 ```php
-$bearerToken = Gr4vyConfig::getToken($privateKeyLocation, array("*.read"));
+$bearerToken = Gr4vyConfig::getToken($privateKeyLocation, array("*.read"))->toString();
 ```
 
 The first parameter is the location of your private key. The second
