@@ -138,7 +138,7 @@ listBuyerPaymentMethods($buyer_id, $buyer_external_identifier, $country, $curren
 
 List stored payment methods for a buyer
 
-Returns a list of stored (tokenized) payment methods for a buyer in a short tokenized format.
+Returns a list of stored (tokenized) payment methods for a buyer in a short tokenized format. Only payment methods that are compatible with at least one active payment service in that region are shown.
 
 ### Example
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 ## `storePaymentMethod()`
 
 ```php
-storePaymentMethod($card_request): \Gr4vy\model\PaymentMethod
+storePaymentMethod($payment_method_request): \Gr4vy\model\PaymentMethod
 ```
 
 New payment method
@@ -293,10 +293,10 @@ $apiInstance = new Gr4vy\Api\PaymentMethodsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$card_request = new \Gr4vy\model\CardRequest(); // \Gr4vy\model\CardRequest
+$payment_method_request = new \Gr4vy\model\PaymentMethodRequest(); // \Gr4vy\model\PaymentMethodRequest
 
 try {
-    $result = $apiInstance->storePaymentMethod($card_request);
+    $result = $apiInstance->storePaymentMethod($payment_method_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentMethodsApi->storePaymentMethod: ', $e->getMessage(), PHP_EOL;
@@ -307,7 +307,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **card_request** | [**\Gr4vy\model\CardRequest**](../Model/CardRequest.md)|  | [optional]
+ **payment_method_request** | [**\Gr4vy\model\PaymentMethodRequest**](../Model/PaymentMethodRequest.md)|  | [optional]
 
 ### Return type
 

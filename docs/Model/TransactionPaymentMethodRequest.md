@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **buyer_id** | **string** | The ID of the buyer to associate this payment method to. If this field is provided then the &#x60;buyer_external_identifier&#x60; field needs to be unset. | [optional]
 **buyer_external_identifier** | **string** | The &#x60;external_identifier&#x60; of the buyer to associate this payment method to. If this field is provided then the &#x60;buyer_id&#x60; field needs to be unset. | [optional]
 **redirect_url** | **string** | The redirect URL to redirect a buyer to after they have authorized their transaction or payment method. This only applies to payment methods that require buyer approval. | [optional]
-**token** | **string** | A Gr4vy token that represents a previously tokenized payment method. This token can represent any type of payment method. | [optional]
+**id** | **string** | An identifier for a previously tokenized payment method. This id can represent any type of payment method. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

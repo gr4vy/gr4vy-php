@@ -11,5 +11,7 @@ Name | Type | Description | Notes
 **fields** | [**\Gr4vy\model\PaymentServiceDefinitionFields[]**](PaymentServiceDefinitionFields.md) | A list of fields that need to be submitted when activating the payment. service. | [optional]
 **supported_currencies** | **string[]** | A list of three-letter ISO currency codes that this service supports. | [optional]
 **supported_countries** | **string[]** | A list of two-letter ISO country codes that this service supports. | [optional]
+**supported_features** | [**\Gr4vy\model\PaymentServiceDefinitionSupportedFeatures**](PaymentServiceDefinitionSupportedFeatures.md) |  | [optional]
+**icon_url** | **string** | An icon to display for the payment service. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
