@@ -150,7 +150,7 @@ class PaymentMethodsApiTest extends TestCase
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $apiInstance = new PaymentMethodsApi(new Client(),$config->getConfig());
             $result = $apiInstance->listBuyerPaymentMethods("baa7b3b3-a4f1-49e3-afb0-0f41b48f5aa2");
-            $this->assertEquals($result->getLimit(), 20);
+            $this->assertCount(1, $result->getItems());
 
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());

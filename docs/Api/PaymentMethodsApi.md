@@ -51,7 +51,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payment_method_id** | [**string**](../Model/.md)| The ID of the payment method. |
+ **payment_method_id** | **string**| The ID of the payment method. |
 
 ### Return type
 
@@ -111,7 +111,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payment_method_id** | [**string**](../Model/.md)| The ID of the payment method. |
+ **payment_method_id** | **string**| The ID of the payment method. |
 
 ### Return type
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 ## `storePaymentMethod()`
 
 ```php
-storePaymentMethod($payment_method_request): \Gr4vy\model\PaymentMethod
+storePaymentMethod($unknown_base_type): \Gr4vy\model\PaymentMethod
 ```
 
 New payment method
@@ -293,10 +293,10 @@ $apiInstance = new Gr4vy\Api\PaymentMethodsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$payment_method_request = new \Gr4vy\model\PaymentMethodRequest(); // \Gr4vy\model\PaymentMethodRequest
+$unknown_base_type = new \Gr4vy\model\UNKNOWN_BASE_TYPE(); // \Gr4vy\model\UNKNOWN_BASE_TYPE
 
 try {
-    $result = $apiInstance->storePaymentMethod($payment_method_request);
+    $result = $apiInstance->storePaymentMethod($unknown_base_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentMethodsApi->storePaymentMethod: ', $e->getMessage(), PHP_EOL;
@@ -307,7 +307,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payment_method_request** | [**\Gr4vy\model\PaymentMethodRequest**](../Model/PaymentMethodRequest.md)|  | [optional]
+ **unknown_base_type** | [**\Gr4vy\model\UNKNOWN_BASE_TYPE**](../Model/UNKNOWN_BASE_TYPE.md)|  | [optional]
 
 ### Return type
 

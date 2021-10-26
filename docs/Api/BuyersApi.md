@@ -38,7 +38,7 @@ $apiInstance = new Gr4vy\Api\BuyersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$buyer_request = {"external_identifier":"412231123","display_name":"John L."}; // \Gr4vy\model\BuyerRequest
+$buyer_request = new \Gr4vy\model\BuyerRequest(); // \Gr4vy\model\BuyerRequest
 
 try {
     $result = $apiInstance->addBuyer($buyer_request);
@@ -111,7 +111,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | [**string**](../Model/.md)| The unique ID for a buyer. |
+ **buyer_id** | **string**| The unique ID for a buyer. |
 
 ### Return type
 
@@ -171,7 +171,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | [**string**](../Model/.md)| The unique ID for a buyer. |
+ **buyer_id** | **string**| The unique ID for a buyer. |
 
 ### Return type
 
@@ -296,7 +296,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | [**string**](../Model/.md)| The unique ID for a buyer. |
+ **buyer_id** | **string**| The unique ID for a buyer. |
  **buyer_update** | [**\Gr4vy\model\BuyerUpdate**](../Model/BuyerUpdate.md)|  | [optional]
 
 ### Return type

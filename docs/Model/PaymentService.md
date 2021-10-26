@@ -22,11 +22,11 @@ Name | Type | Description | Notes
 **merchant_country_code** | **string** | ISO 3166-1 numeric three-digit country code. | [optional]
 **merchant_category_code** | **string** | Merchant category code that describes the business. | [optional]
 **merchant_url** | **string** | Fully qualified URL of 3-D Secure requestor website or customer care site. | [optional]
-**credentials_mode** | **string** | Defines if the credentials are intended for the service&#39;s live API or sandbox/test API. | [optional] [default to CREDENTIALS_MODE_LIVE]
+**credentials_mode** | **string** | Defines if the credentials are intended for the service&#39;s live API or sandbox/test API. | [optional]
 **active** | **bool** | Defines if this service is currently active or not. | [optional] [default to true]
 **environments** | **string[]** | Determines the Gr4vy environments in which this service should be available. This can be used in combination with the &#x60;environment&#x60; parameters in the payment method and transaction APIs to route transactions through this service. | [optional]
 **position** | **float** | The numeric rank of a payment service. Payment services with a lower position value are processed first. | [optional]
-**created_at** | [**\DateTime**](\DateTime.md) | The date and time when this service was created. | [optional]
-**updated_at** | [**\DateTime**](\DateTime.md) | The date and time when this service was last updated. | [optional]
+**created_at** | **\DateTime** | The date and time when this service was created. | [optional]
+**updated_at** | **\DateTime** | The date and time when this service was last updated. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
