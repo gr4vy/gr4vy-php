@@ -47,6 +47,6 @@ var1=' CREDENTIALS_MODE_LIVE;'
 rep1=' self::CREDENTIALS_MODE_LIVE;'
 sed -i '' "s/$var1/$rep1/g" lib/model/*.php
 
-var1="const METHOD_GOCARDLESS = 'gocardless';"
-rep1=''
-sed -i '' "1,/$var1/s/$var1/$rep1/g" lib/model/PaymentMethod.php
+# var1="const METHOD_GOCARDLESS = 'gocardless';"
+# rep1=''
+# sed -i '' "1,/$var1/s/$var1/$rep1/g" lib/model/PaymentMethod.php

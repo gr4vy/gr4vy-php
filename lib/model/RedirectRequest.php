@@ -200,6 +200,7 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_STRIPEDD = 'stripedd';
     const METHOD_PAYPAL = 'paypal';
     const METHOD_BANKED = 'banked';
     const ENVIRONMENT_DEVELOPMENT = 'development';
@@ -215,6 +216,7 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::METHOD_GOCARDLESS,
+            self::METHOD_STRIPEDD,
             self::METHOD_PAYPAL,
             self::METHOD_BANKED,
         ];
@@ -326,7 +328,7 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets method
      *
-     * @param string $method The method to use, this can be any of the methods that support redirect requests.  When storing a new payment method, only `gocardless` is currently supported.
+     * @param string $method The method to use, this can be any of the methods that support redirect requests.  When storing a new payment method, only `gocardless` and `stripedd` is currently supported.
      *
      * @return self
      */

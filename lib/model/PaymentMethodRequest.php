@@ -218,6 +218,7 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     const METHOD_PAYPAL = 'paypal';
     const METHOD_BANKED = 'banked';
     const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_STRIPEDD = 'stripedd';
     const METHOD_TOKEN = 'token';
     const ENVIRONMENT_DEVELOPMENT = 'development';
     const ENVIRONMENT_STAGING = 'staging';
@@ -235,6 +236,7 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             self::METHOD_PAYPAL,
             self::METHOD_BANKED,
             self::METHOD_GOCARDLESS,
+            self::METHOD_STRIPEDD,
             self::METHOD_TOKEN,
         ];
     }

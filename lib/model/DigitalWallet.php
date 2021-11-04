@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentMethodTokenized
+ * DigitalWallet
  *
  * PHP version 7.2
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * PaymentMethodTokenized Class Doc Comment
+ * DigitalWallet Class Doc Comment
  *
  * @category Class
- * @description A mini format version of a payment method.
+ * @description A digital wallet (e.g. Apple Pay) that has been registered.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerializable
+class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PaymentMethod--Tokenized';
+    protected static $openAPIModelName = 'DigitalWallet';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,12 +62,14 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'type' => 'string',
+        'provider' => 'string',
         'id' => 'string',
-        'method' => 'string',
-        'label' => 'string',
-        'scheme' => 'string',
-        'expiration_date' => 'string',
-        'approval_url' => 'string'
+        'merchant_name' => 'string',
+        'merchant_url' => 'string',
+        'domain_names' => 'string[]',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime',
+        'environments' => 'string[]'
     ];
 
     /**
@@ -79,12 +81,14 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'type' => null,
+        'provider' => null,
         'id' => 'uuid',
-        'method' => null,
-        'label' => null,
-        'scheme' => null,
-        'expiration_date' => null,
-        'approval_url' => null
+        'merchant_name' => null,
+        'merchant_url' => 'url',
+        'domain_names' => null,
+        'created_at' => 'date-time',
+        'updated_at' => 'date-time',
+        'environments' => null
     ];
 
     /**
@@ -115,12 +119,14 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'type' => 'type',
+        'provider' => 'provider',
         'id' => 'id',
-        'method' => 'method',
-        'label' => 'label',
-        'scheme' => 'scheme',
-        'expiration_date' => 'expiration_date',
-        'approval_url' => 'approval_url'
+        'merchant_name' => 'merchant_name',
+        'merchant_url' => 'merchant_url',
+        'domain_names' => 'domain_names',
+        'created_at' => 'created_at',
+        'updated_at' => 'updated_at',
+        'environments' => 'environments'
     ];
 
     /**
@@ -130,12 +136,14 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'type' => 'setType',
+        'provider' => 'setProvider',
         'id' => 'setId',
-        'method' => 'setMethod',
-        'label' => 'setLabel',
-        'scheme' => 'setScheme',
-        'expiration_date' => 'setExpirationDate',
-        'approval_url' => 'setApprovalUrl'
+        'merchant_name' => 'setMerchantName',
+        'merchant_url' => 'setMerchantUrl',
+        'domain_names' => 'setDomainNames',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt',
+        'environments' => 'setEnvironments'
     ];
 
     /**
@@ -145,12 +153,14 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'type' => 'getType',
+        'provider' => 'getProvider',
         'id' => 'getId',
-        'method' => 'getMethod',
-        'label' => 'getLabel',
-        'scheme' => 'getScheme',
-        'expiration_date' => 'getExpirationDate',
-        'approval_url' => 'getApprovalUrl'
+        'merchant_name' => 'getMerchantName',
+        'merchant_url' => 'getMerchantUrl',
+        'domain_names' => 'getDomainNames',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt',
+        'environments' => 'getEnvironments'
     ];
 
     /**
@@ -194,24 +204,11 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    const TYPE_PAYMENT_METHOD = 'payment-method';
-    const METHOD_CARD = 'card';
-    const METHOD_PAYPAL = 'paypal';
-    const METHOD_BANKED = 'banked';
-    const METHOD_GOCARDLESS = 'gocardless';
-    const METHOD_STRIPEDD = 'stripedd';
-    const SCHEME_VISA = 'visa';
-    const SCHEME_MASTERCARD = 'mastercard';
-    const SCHEME_AMERICAN_EXPRESS = 'american-express';
-    const SCHEME_DINERS_CLUB = 'diners-club';
-    const SCHEME_DISCOVER = 'discover';
-    const SCHEME_JCB = 'jcb';
-    const SCHEME_UNIONPAY = 'unionpay';
-    const SCHEME_MAESTRO = 'maestro';
-    const SCHEME_ELO = 'elo';
-    const SCHEME_MIR = 'mir';
-    const SCHEME_HIPER = 'hiper';
-    const SCHEME_HIPERCARD = 'hipercard';
+    const TYPE_DIGITAL_WALLET = 'digital-wallet';
+    const PROVIDER_APPLE = 'apple';
+    const ENVIRONMENTS_DEVELOPMENT = 'development';
+    const ENVIRONMENTS_STAGING = 'staging';
+    const ENVIRONMENTS_PRODUCTION = 'production';
 
     /**
      * Gets allowable values of the enum
@@ -221,7 +218,7 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_PAYMENT_METHOD,
+            self::TYPE_DIGITAL_WALLET,
         ];
     }
 
@@ -230,14 +227,10 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string[]
      */
-    public function getMethodAllowableValues()
+    public function getProviderAllowableValues()
     {
         return [
-            self::METHOD_CARD,
-            self::METHOD_PAYPAL,
-            self::METHOD_BANKED,
-            self::METHOD_GOCARDLESS,
-            self::METHOD_STRIPEDD,
+            self::PROVIDER_APPLE,
         ];
     }
 
@@ -246,21 +239,12 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string[]
      */
-    public function getSchemeAllowableValues()
+    public function getEnvironmentsAllowableValues()
     {
         return [
-            self::SCHEME_VISA,
-            self::SCHEME_MASTERCARD,
-            self::SCHEME_AMERICAN_EXPRESS,
-            self::SCHEME_DINERS_CLUB,
-            self::SCHEME_DISCOVER,
-            self::SCHEME_JCB,
-            self::SCHEME_UNIONPAY,
-            self::SCHEME_MAESTRO,
-            self::SCHEME_ELO,
-            self::SCHEME_MIR,
-            self::SCHEME_HIPER,
-            self::SCHEME_HIPERCARD,
+            self::ENVIRONMENTS_DEVELOPMENT,
+            self::ENVIRONMENTS_STAGING,
+            self::ENVIRONMENTS_PRODUCTION,
         ];
     }
 
@@ -280,12 +264,14 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['provider'] = $data['provider'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['method'] = $data['method'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['scheme'] = $data['scheme'] ?? null;
-        $this->container['expiration_date'] = $data['expiration_date'] ?? null;
-        $this->container['approval_url'] = $data['approval_url'] ?? null;
+        $this->container['merchant_name'] = $data['merchant_name'] ?? null;
+        $this->container['merchant_url'] = $data['merchant_url'] ?? 'null';
+        $this->container['domain_names'] = $data['domain_names'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['environments'] = $data['environments'] ?? null;
     }
 
     /**
@@ -306,34 +292,29 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
 
-        $allowedValues = $this->getMethodAllowableValues();
-        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
+        $allowedValues = $this->getProviderAllowableValues();
+        if (!is_null($this->container['provider']) && !in_array($this->container['provider'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'method', must be one of '%s'",
-                $this->container['method'],
+                "invalid value '%s' for 'provider', must be one of '%s'",
+                $this->container['provider'],
                 implode("', '", $allowedValues)
             );
         }
 
-        $allowedValues = $this->getSchemeAllowableValues();
-        if (!is_null($this->container['scheme']) && !in_array($this->container['scheme'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'scheme', must be one of '%s'",
-                $this->container['scheme'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['domain_names']) && (count($this->container['domain_names']) > 99)) {
+            $invalidProperties[] = "invalid value for 'domain_names', number of items must be less than or equal to 99.";
         }
 
-        if (!is_null($this->container['expiration_date']) && (mb_strlen($this->container['expiration_date']) > 5)) {
-            $invalidProperties[] = "invalid value for 'expiration_date', the character length must be smaller than or equal to 5.";
+        if (!is_null($this->container['domain_names']) && (count($this->container['domain_names']) < 1)) {
+            $invalidProperties[] = "invalid value for 'domain_names', number of items must be greater than or equal to 1.";
         }
 
-        if (!is_null($this->container['expiration_date']) && (mb_strlen($this->container['expiration_date']) < 5)) {
-            $invalidProperties[] = "invalid value for 'expiration_date', the character length must be bigger than or equal to 5.";
+        if (!is_null($this->container['environments']) && (count($this->container['environments']) > 3)) {
+            $invalidProperties[] = "invalid value for 'environments', number of items must be less than or equal to 3.";
         }
 
-        if (!is_null($this->container['expiration_date']) && !preg_match("/^\\d{2}\/\\d{2}$/", $this->container['expiration_date'])) {
-            $invalidProperties[] = "invalid value for 'expiration_date', must be conform to the pattern /^\\d{2}\/\\d{2}$/.";
+        if (!is_null($this->container['environments']) && (count($this->container['environments']) < 0)) {
+            $invalidProperties[] = "invalid value for 'environments', number of items must be greater than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -364,7 +345,7 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets type
      *
-     * @param string|null $type `payment-method`.
+     * @param string|null $type `digital-wallet`.
      *
      * @return self
      */
@@ -386,6 +367,40 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets provider
+     *
+     * @return string|null
+     */
+    public function getProvider()
+    {
+        return $this->container['provider'];
+    }
+
+    /**
+     * Sets provider
+     *
+     * @param string|null $provider The name of the digital wallet provider.
+     *
+     * @return self
+     */
+    public function setProvider($provider)
+    {
+        $allowedValues = $this->getProviderAllowableValues();
+        if (!is_null($provider) && !in_array($provider, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'provider', must be one of '%s'",
+                    $provider,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['provider'] = $provider;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
      * @return string|null
@@ -398,7 +413,7 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets id
      *
-     * @param string|null $id The unique ID of the payment method.
+     * @param string|null $id The ID of the registered digital wallet.
      *
      * @return self
      */
@@ -410,151 +425,168 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets method
+     * Gets merchant_name
      *
      * @return string|null
      */
-    public function getMethod()
+    public function getMerchantName()
     {
-        return $this->container['method'];
+        return $this->container['merchant_name'];
     }
 
     /**
-     * Sets method
+     * Sets merchant_name
      *
-     * @param string|null $method The type of this payment method.
+     * @param string|null $merchant_name The name of the merchant the digital wallet is registered to.
      *
      * @return self
      */
-    public function setMethod($method)
+    public function setMerchantName($merchant_name)
     {
-        $allowedValues = $this->getMethodAllowableValues();
-        if (!is_null($method) && !in_array($method, $allowedValues, true)) {
+        $this->container['merchant_name'] = $merchant_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_url
+     *
+     * @return string|null
+     */
+    public function getMerchantUrl()
+    {
+        return $this->container['merchant_url'];
+    }
+
+    /**
+     * Sets merchant_url
+     *
+     * @param string|null $merchant_url The main URL of the merchant.
+     *
+     * @return self
+     */
+    public function setMerchantUrl($merchant_url)
+    {
+        $this->container['merchant_url'] = $merchant_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets domain_names
+     *
+     * @return string[]|null
+     */
+    public function getDomainNames()
+    {
+        return $this->container['domain_names'];
+    }
+
+    /**
+     * Sets domain_names
+     *
+     * @param string[]|null $domain_names The list of fully qualified domain names that a digital wallet provider processes payments for.
+     *
+     * @return self
+     */
+    public function setDomainNames($domain_names)
+    {
+
+        if (!is_null($domain_names) && (count($domain_names) > 99)) {
+            throw new \InvalidArgumentException('invalid value for $domain_names when calling DigitalWallet., number of items must be less than or equal to 99.');
+        }
+        if (!is_null($domain_names) && (count($domain_names) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $domain_names when calling DigitalWallet., number of items must be greater than or equal to 1.');
+        }
+        $this->container['domain_names'] = $domain_names;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at The date and time when this digital wallet was registered.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at The date and time when this digital wallet was last updated.
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets environments
+     *
+     * @return string[]|null
+     */
+    public function getEnvironments()
+    {
+        return $this->container['environments'];
+    }
+
+    /**
+     * Sets environments
+     *
+     * @param string[]|null $environments The Gr4vy environments in which this digital wallet is available.
+     *
+     * @return self
+     */
+    public function setEnvironments($environments)
+    {
+        $allowedValues = $this->getEnvironmentsAllowableValues();
+        if (!is_null($environments) && array_diff($environments, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'method', must be one of '%s'",
-                    $method,
+                    "Invalid value for 'environments', must be one of '%s'",
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['method'] = $method;
 
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string|null
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string|null $label A label for the payment method. For a `card` payment method this is the last 4 digits on the card. For others it would be the email address.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets scheme
-     *
-     * @return string|null
-     */
-    public function getScheme()
-    {
-        return $this->container['scheme'];
-    }
-
-    /**
-     * Sets scheme
-     *
-     * @param string|null $scheme The type of the card, if the payment method is a card.
-     *
-     * @return self
-     */
-    public function setScheme($scheme)
-    {
-        $allowedValues = $this->getSchemeAllowableValues();
-        if (!is_null($scheme) && !in_array($scheme, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'scheme', must be one of '%s'",
-                    $scheme,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!is_null($environments) && (count($environments) > 3)) {
+            throw new \InvalidArgumentException('invalid value for $environments when calling DigitalWallet., number of items must be less than or equal to 3.');
         }
-        $this->container['scheme'] = $scheme;
-
-        return $this;
-    }
-
-    /**
-     * Gets expiration_date
-     *
-     * @return string|null
-     */
-    public function getExpirationDate()
-    {
-        return $this->container['expiration_date'];
-    }
-
-    /**
-     * Sets expiration_date
-     *
-     * @param string|null $expiration_date The expiration date for the payment method.
-     *
-     * @return self
-     */
-    public function setExpirationDate($expiration_date)
-    {
-        if (!is_null($expiration_date) && (mb_strlen($expiration_date) > 5)) {
-            throw new \InvalidArgumentException('invalid length for $expiration_date when calling PaymentMethodTokenized., must be smaller than or equal to 5.');
+        if (!is_null($environments) && (count($environments) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $environments when calling DigitalWallet., number of items must be greater than or equal to 0.');
         }
-        if (!is_null($expiration_date) && (mb_strlen($expiration_date) < 5)) {
-            throw new \InvalidArgumentException('invalid length for $expiration_date when calling PaymentMethodTokenized., must be bigger than or equal to 5.');
-        }
-        if (!is_null($expiration_date) && (!preg_match("/^\\d{2}\/\\d{2}$/", $expiration_date))) {
-            throw new \InvalidArgumentException("invalid value for $expiration_date when calling PaymentMethodTokenized., must conform to the pattern /^\\d{2}\/\\d{2}$/.");
-        }
-
-        $this->container['expiration_date'] = $expiration_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets approval_url
-     *
-     * @return string|null
-     */
-    public function getApprovalUrl()
-    {
-        return $this->container['approval_url'];
-    }
-
-    /**
-     * Sets approval_url
-     *
-     * @param string|null $approval_url The optional URL that the buyer needs to be redirected to to further authorize their payment.
-     *
-     * @return self
-     */
-    public function setApprovalUrl($approval_url)
-    {
-        $this->container['approval_url'] = $approval_url;
+        $this->container['environments'] = $environments;
 
         return $this;
     }

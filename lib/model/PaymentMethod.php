@@ -235,10 +235,10 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATUS_SUCCEEDED = 'succeeded';
     const STATUS_FAILED = 'failed';
     const METHOD_CARD = 'card';
-    
+    const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_STRIPEDD = 'stripedd';
     const METHOD_PAYPAL = 'paypal';
     const METHOD_BANKED = 'banked';
-    const METHOD_GOCARDLESS = 'gocardless';
     const MODE_CARD = 'card';
     const MODE_REDIRECT = 'redirect';
     const ENVIRONMENT_DEVELOPMENT = 'development';
@@ -282,9 +282,9 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::METHOD_CARD,
             self::METHOD_GOCARDLESS,
+            self::METHOD_STRIPEDD,
             self::METHOD_PAYPAL,
             self::METHOD_BANKED,
-            self::METHOD_GOCARDLESS,
         ];
     }
 

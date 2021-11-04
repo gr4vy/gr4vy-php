@@ -68,7 +68,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'intent' => 'string',
         'external_identifier' => 'string',
         'environment' => 'string',
-        'three_d_secure_data' => 'string'
+        'three_d_secure_data' => '\Gr4vy\model\ThreeDSecureDataV1V2'
     ];
 
     /**
@@ -515,7 +515,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets three_d_secure_data
      *
-     * @return string|null
+     * @return \Gr4vy\model\ThreeDSecureDataV1V2|null
      */
     public function getThreeDSecureData()
     {
@@ -525,7 +525,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets three_d_secure_data
      *
-     * @param string|null $three_d_secure_data three_d_secure_data
+     * @param \Gr4vy\model\ThreeDSecureDataV1V2|null $three_d_secure_data three_d_secure_data
      *
      * @return self
      */

@@ -208,6 +208,7 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
     const METHOD_PAYPAL = 'paypal';
     const METHOD_BANKED = 'banked';
     const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_STRIPEDD = 'stripedd';
 
     /**
      * Gets allowable values of the enum
@@ -221,6 +222,7 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
             self::METHOD_PAYPAL,
             self::METHOD_BANKED,
             self::METHOD_GOCARDLESS,
+            self::METHOD_STRIPEDD,
         ];
     }
 
