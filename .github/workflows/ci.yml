@@ -16,12 +16,8 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: Install dependencies and run tests
         uses: php-actions/composer@v6
-        with:
-          php_version: 7.3.24
-
-      - name: Run tests
         with:
           php_version: 7.3.24
         env: 
