@@ -91,10 +91,19 @@ class Gr4vyConfig
 
     public static function getToken($private_key, $scopes = array(), $embed = array()) {
 
+        if (isset(getenv("PRIVATE_KEY"))) {
+            $key = InMemory::plainText(getenv("PRIVATE_KEY"));
+            echo "env var key is " . $key;
+        }
+        else {
+            $key = LocalFileReference::file($private_key);
+            echo "key is: " . $key;
+        }
+        
         $config = Configuration::forAsymmetricSigner(
             // You may use RSA or ECDSA and all their variations (256, 384, and 512) and EdDSA over Curve25519
             new Signer\Ecdsa\Sha512(),
-            LocalFileReference::file($private_key),
+            $key,
             InMemory::base64Encoded('notused')
         );
 
