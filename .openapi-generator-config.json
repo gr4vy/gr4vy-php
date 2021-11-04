@@ -1,5 +1,5 @@
 {
     "invokerPackage": "Gr4vy",
-    "apiPackage": "api",
+    "apiPackage": "Api",
     "modelPackage": "model"
 }

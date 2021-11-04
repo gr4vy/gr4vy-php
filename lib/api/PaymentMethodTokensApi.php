@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Gr4vy\api;
+namespace Gr4vy\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
