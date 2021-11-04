@@ -23,7 +23,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require gr4vy/gr4vy-php
           composer install
 
       - name: Run tests
