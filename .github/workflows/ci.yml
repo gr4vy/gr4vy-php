@@ -21,13 +21,6 @@ jobs:
         with:
           php_version: 7.3.24
 
-      - name: Write private key file
-        run: |
-            ls
-        shell: bash
-        env: 
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-
       - name: Run tests
         env: 
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
