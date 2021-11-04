@@ -93,11 +93,11 @@ class Gr4vyConfig
 
         if (null !== getenv("PRIVATE_KEY")) {
             $key = InMemory::plainText(getenv("PRIVATE_KEY"));
-            echo "env var key is " . $key;
+            echo "env var key is " . getenv("PRIVATE_KEY");
         }
         else {
             $key = LocalFileReference::file($private_key);
-            echo "key is: " . $key;
+            echo "key is: " . $private_key;
         }
         
         $config = Configuration::forAsymmetricSigner(
