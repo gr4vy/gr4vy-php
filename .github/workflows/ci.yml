@@ -25,7 +25,7 @@ jobs:
         run: |
             echo $PRIVATE_KEY >> private_key.pem
             cat private_key.pem
-            echo $PRIVATE_KEY 
+            ls
         shell: bash
         env: 
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
