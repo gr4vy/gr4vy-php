@@ -25,4 +25,5 @@ jobs:
         env: 
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: |
+          php -v
           ./vendor/bin/phpunit test/
