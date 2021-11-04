@@ -16,14 +16,10 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: Use PHP Composer
+      - name: Install dependencies
         uses: php-actions/composer@v6
         with:
           php_version: 7.3.24
-
-      - name: Install dependencies
-        run: |
-          composer install
 
       - name: Run tests
         env: 
