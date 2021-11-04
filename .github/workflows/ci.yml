@@ -16,10 +16,12 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: Install dependencies and run tests
+      - name: Install dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: 7.3.24
+          php_version: 7.3
+
+      - name: Run tests
         env: 
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: |
