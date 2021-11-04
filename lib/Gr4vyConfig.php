@@ -92,11 +92,14 @@ class Gr4vyConfig
     public static function getToken($private_key, $scopes = array(), $embed = array()) {
 
         if (null !== getenv("PRIVATE_KEY")) {
-            $key = InMemory::plainText(getenv("PRIVATE_KEY"));
+            // $key = InMemory::plainText(getenv("PRIVATE_KEY"));
+            $keyVal = getenv("PRIVATE_KEY");
         }
         else {
             $key = LocalFileReference::file($private_key);
+            $keyVal = file_get_contents($private_key);
         }
+        $key = InMemory::plainText($keyVal);
         
         $config = Configuration::forAsymmetricSigner(
             // You may use RSA or ECDSA and all their variations (256, 384, and 512) and EdDSA over Curve25519
@@ -105,7 +108,8 @@ class Gr4vyConfig
             InMemory::base64Encoded('notused')
         );
 
-        $kid = self::getThumbprint($private_key);
+
+        $kid = self::getThumbprint($keyVal);
 
         $now   = new DateTimeImmutable();
         $tokenBuilder = $config->builder()
@@ -164,8 +168,8 @@ class Gr4vyConfig
         fQ==
         -----END PRIVATE KEY-----
         END;
-        
-        $privateKey = openssl_pkey_get_private(file_get_contents($private_key));
+
+        $privateKey = openssl_pkey_get_private($private_key);
         $keyInfo = openssl_pkey_get_details($privateKey);
 
         $n = $keyInfo["bits"] / 8;
