@@ -97,7 +97,6 @@ class Gr4vyConfig
             $keyVal = file_get_contents($private_key);
             echo "===got here===";
         }
-        // echo "key val is: " . $keyVal;
         $key = InMemory::plainText($keyVal);
         
         $config = Configuration::forAsymmetricSigner(
@@ -109,8 +108,6 @@ class Gr4vyConfig
 
 
         $kid = self::getThumbprint($keyVal);
-
-        echo "Got KID " . $kid;
 
         $now   = new DateTimeImmutable();
         $tokenBuilder = $config->builder()

@@ -22,6 +22,8 @@ jobs:
           php_version: 7.3.24
 
       - name: Run tests
+        with:
+          php_version: 7.3.24
         env: 
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: |
