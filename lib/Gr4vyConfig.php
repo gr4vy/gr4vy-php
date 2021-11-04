@@ -91,7 +91,7 @@ class Gr4vyConfig
 
     public static function getToken($private_key, $scopes = array(), $embed = array()) {
 
-        if (isset(getenv("PRIVATE_KEY"))) {
+        if (null !== getenv("PRIVATE_KEY")) {
             $key = InMemory::plainText(getenv("PRIVATE_KEY"));
             echo "env var key is " . $key;
         }
