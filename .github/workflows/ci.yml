@@ -18,6 +18,8 @@ jobs:
 
       - name: Use PHP Composer
         uses: php-actions/composer@v6
+        with:
+          php_version: 7.3.24
 
       - name: Install dependencies
         run: |
