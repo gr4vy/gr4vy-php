@@ -91,14 +91,12 @@ class Gr4vyConfig
 
     public static function getToken($private_key, $scopes = array(), $embed = array()) {
 
-        if (null !== getenv("PRIVATE_KEY")) {
-            // $key = InMemory::plainText(getenv("PRIVATE_KEY"));
-            $keyVal = getenv("PRIVATE_KEY");
-        }
-        else {
-            $key = LocalFileReference::file($private_key);
+        $keyVal = getenv("PRIVATE_KEY");
+        if (!isset($keyVal) || empty($keyVal)) {
+            // $key = LocalFileReference::file($private_key);
             $keyVal = file_get_contents($private_key);
         }
+        echo "key val is: " . $keyVal;
         $key = InMemory::plainText($keyVal);
         
         $config = Configuration::forAsymmetricSigner(
@@ -158,17 +156,6 @@ class Gr4vyConfig
     }
 
     private static function getThumbprint($private_key) {
-        $private_key = <<<END
-        -----BEGIN PRIVATE KEY-----
-        MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIA6FlZmr/XKW9lu3jl
-        wU4kA76XVIH7B1I5SyNuaWivW/A9FnrLVe9ZERr6vJM/uwSO/5yqCmKePTjWmXrd
-        3fE7fLuhgYkDgYYABAGjs+EspepON7RKWv3w4bxqj+ty7VUh2lKGjG4wVGPsqqng
-        BKoN5XltIXHGWpE9vIepvZ3NzE9jk/rzy8Fu3XUDNwG88c3DtBfN++b87xLRfeHn
-        XHWmp6/DTgd2FwckksUHykxlIfg7lLQ3TGsxZs/kiGnKE6mIiKAabEL3E+NNQxE+
-        fQ==
-        -----END PRIVATE KEY-----
-        END;
-
         $privateKey = openssl_pkey_get_private($private_key);
         $keyInfo = openssl_pkey_get_details($privateKey);
 
