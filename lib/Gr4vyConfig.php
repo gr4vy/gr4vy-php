@@ -154,14 +154,17 @@ class Gr4vyConfig
     }
 
     private static function getThumbprint($private_key) {
-        $private_key = """-----BEGIN PRIVATE KEY-----
+        $private_key = <<<END
+        -----BEGIN PRIVATE KEY-----
 MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIA6FlZmr/XKW9lu3jl
 wU4kA76XVIH7B1I5SyNuaWivW/A9FnrLVe9ZERr6vJM/uwSO/5yqCmKePTjWmXrd
 3fE7fLuhgYkDgYYABAGjs+EspepON7RKWv3w4bxqj+ty7VUh2lKGjG4wVGPsqqng
 BKoN5XltIXHGWpE9vIepvZ3NzE9jk/rzy8Fu3XUDNwG88c3DtBfN++b87xLRfeHn
 XHWmp6/DTgd2FwckksUHykxlIfg7lLQ3TGsxZs/kiGnKE6mIiKAabEL3E+NNQxE+
 fQ==
------END PRIVATE KEY-----""";
+-----END PRIVATE KEY-----
+        END;
+        
         $privateKey = openssl_pkey_get_private(file_get_contents($private_key));
         $keyInfo = openssl_pkey_get_details($privateKey);
 
