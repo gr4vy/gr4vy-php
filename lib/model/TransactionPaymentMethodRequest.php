@@ -208,6 +208,7 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
     const METHOD_PAYPAL = 'paypal';
     const METHOD_BANKED = 'banked';
     const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_STRIPEDD = 'stripedd';
     const METHOD_ID = 'id';
 
     /**
@@ -222,6 +223,7 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
             self::METHOD_PAYPAL,
             self::METHOD_BANKED,
             self::METHOD_GOCARDLESS,
+            self::METHOD_STRIPEDD,
             self::METHOD_ID,
         ];
     }

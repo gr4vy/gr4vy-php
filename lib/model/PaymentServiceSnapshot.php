@@ -184,6 +184,7 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
     const METHOD_PAYPAL = 'paypal';
     const METHOD_BANKED = 'banked';
     const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_STRIPEDD = 'stripedd';
 
     /**
      * Gets allowable values of the enum
@@ -209,6 +210,7 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
             self::METHOD_PAYPAL,
             self::METHOD_BANKED,
             self::METHOD_GOCARDLESS,
+            self::METHOD_STRIPEDD,
         ];
     }
 

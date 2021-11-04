@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | **string** | The method to use, this can be any of the methods that support redirect requests.  When storing a new payment method, only &#x60;gocardless&#x60; is currently supported. |
+**method** | **string** | The method to use, this can be any of the methods that support redirect requests.  When storing a new payment method, only &#x60;gocardless&#x60; and &#x60;stripedd&#x60; is currently supported. |
 **redirect_url** | **string** | The redirect URL to redirect a buyer to after they have authorized their transaction. |
 **currency** | **string** | The ISO-4217 currency code to use this payment method for. This is used to select the payment service to use. |
 **country** | **string** | The 2-letter ISO code of the country to use this payment method for. This is used to select the payment service to use. |

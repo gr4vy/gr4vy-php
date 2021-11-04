@@ -1,6 +1,6 @@
 <?php
 /**
- * BuyersApi
+ * DigitalWalletsApi
  * PHP version 7.2
  *
  * @category Class
@@ -40,14 +40,14 @@ use Gr4vy\HeaderSelector;
 use Gr4vy\ObjectSerializer;
 
 /**
- * BuyersApi Class Doc Comment
+ * DigitalWalletsApi Class Doc Comment
  *
  * @category Class
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class BuyersApi
+class DigitalWalletsApi
 {
     /**
      * @var ClientInterface
@@ -116,355 +116,35 @@ class BuyersApi
     }
 
     /**
-     * Operation addBuyer
+     * Operation deregisterDigitalWallet
      *
-     * New buyer
+     * De-register digital wallet
      *
-     * @param  \Gr4vy\model\BuyerRequest $buyer_request buyer_request (optional)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord
-     */
-    public function addBuyer($buyer_request = null)
-    {
-        list($response) = $this->addBuyerWithHttpInfo($buyer_request);
-        return $response;
-    }
-
-    /**
-     * Operation addBuyerWithHttpInfo
-     *
-     * New buyer
-     *
-     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function addBuyerWithHttpInfo($buyer_request = null)
-    {
-        $request = $this->addBuyerRequest($buyer_request);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\Gr4vy\model\Buyer' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Buyer', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 409:
-                    if ('\Gr4vy\model\Error409DuplicateRecord' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error409DuplicateRecord', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Gr4vy\model\Buyer';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Buyer',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\ErrorGeneric',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error401Unauthorized',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error409DuplicateRecord',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation addBuyerAsync
-     *
-     * New buyer
-     *
-     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function addBuyerAsync($buyer_request = null)
-    {
-        return $this->addBuyerAsyncWithHttpInfo($buyer_request)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation addBuyerAsyncWithHttpInfo
-     *
-     * New buyer
-     *
-     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function addBuyerAsyncWithHttpInfo($buyer_request = null)
-    {
-        $returnType = '\Gr4vy\model\Buyer';
-        $request = $this->addBuyerRequest($buyer_request);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'addBuyer'
-     *
-     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function addBuyerRequest($buyer_request = null)
-    {
-
-        $resourcePath = '/buyers';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($buyer_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($buyer_request));
-            } else {
-                $httpBody = $buyer_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation deleteBuyer
-     *
-     * Delete buyer
-     *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteBuyer($buyer_id)
+    public function deregisterDigitalWallet($digital_wallet_id)
     {
-        $this->deleteBuyerWithHttpInfo($buyer_id);
+        $this->deregisterDigitalWalletWithHttpInfo($digital_wallet_id);
     }
 
     /**
-     * Operation deleteBuyerWithHttpInfo
+     * Operation deregisterDigitalWalletWithHttpInfo
      *
-     * Delete buyer
+     * De-register digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteBuyerWithHttpInfo($buyer_id)
+    public function deregisterDigitalWalletWithHttpInfo($digital_wallet_id)
     {
-        $request = $this->deleteBuyerRequest($buyer_id);
+        $request = $this->deregisterDigitalWalletRequest($digital_wallet_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -520,18 +200,18 @@ class BuyersApi
     }
 
     /**
-     * Operation deleteBuyerAsync
+     * Operation deregisterDigitalWalletAsync
      *
-     * Delete buyer
+     * De-register digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteBuyerAsync($buyer_id)
+    public function deregisterDigitalWalletAsync($digital_wallet_id)
     {
-        return $this->deleteBuyerAsyncWithHttpInfo($buyer_id)
+        return $this->deregisterDigitalWalletAsyncWithHttpInfo($digital_wallet_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -540,19 +220,19 @@ class BuyersApi
     }
 
     /**
-     * Operation deleteBuyerAsyncWithHttpInfo
+     * Operation deregisterDigitalWalletAsyncWithHttpInfo
      *
-     * Delete buyer
+     * De-register digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteBuyerAsyncWithHttpInfo($buyer_id)
+    public function deregisterDigitalWalletAsyncWithHttpInfo($digital_wallet_id)
     {
         $returnType = '';
-        $request = $this->deleteBuyerRequest($buyer_id);
+        $request = $this->deregisterDigitalWalletRequest($digital_wallet_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -578,23 +258,23 @@ class BuyersApi
     }
 
     /**
-     * Create request for operation 'deleteBuyer'
+     * Create request for operation 'deregisterDigitalWallet'
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteBuyerRequest($buyer_id)
+    public function deregisterDigitalWalletRequest($digital_wallet_id)
     {
-        // verify the required parameter 'buyer_id' is set
-        if ($buyer_id === null || (is_array($buyer_id) && count($buyer_id) === 0)) {
+        // verify the required parameter 'digital_wallet_id' is set
+        if ($digital_wallet_id === null || (is_array($digital_wallet_id) && count($digital_wallet_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $buyer_id when calling deleteBuyer'
+                'Missing the required parameter $digital_wallet_id when calling deregisterDigitalWallet'
             );
         }
 
-        $resourcePath = '/buyers/{buyer_id}';
+        $resourcePath = '/digital-wallets/{digital_wallet_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -604,10 +284,10 @@ class BuyersApi
 
 
         // path params
-        if ($buyer_id !== null) {
+        if ($digital_wallet_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'buyer_id' . '}',
-                ObjectSerializer::toPathValue($buyer_id),
+                '{' . 'digital_wallet_id' . '}',
+                ObjectSerializer::toPathValue($digital_wallet_id),
                 $resourcePath
             );
         }
@@ -675,36 +355,36 @@ class BuyersApi
     }
 
     /**
-     * Operation getBuyer
+     * Operation getDigitalWallet
      *
-     * Get buyer
+     * Get digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\Buyer|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound|\Gr4vy\model\ErrorGeneric
+     * @return \Gr4vy\model\DigitalWallet|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
      */
-    public function getBuyer($buyer_id)
+    public function getDigitalWallet($digital_wallet_id)
     {
-        list($response) = $this->getBuyerWithHttpInfo($buyer_id);
+        list($response) = $this->getDigitalWalletWithHttpInfo($digital_wallet_id);
         return $response;
     }
 
     /**
-     * Operation getBuyerWithHttpInfo
+     * Operation getDigitalWalletWithHttpInfo
      *
-     * Get buyer
+     * Get digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\Buyer|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound|\Gr4vy\model\ErrorGeneric, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gr4vy\model\DigitalWallet|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBuyerWithHttpInfo($buyer_id)
+    public function getDigitalWalletWithHttpInfo($digital_wallet_id)
     {
-        $request = $this->getBuyerRequest($buyer_id);
+        $request = $this->getDigitalWalletRequest($digital_wallet_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -736,14 +416,14 @@ class BuyersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Gr4vy\model\Buyer' === '\SplFileObject') {
+                    if ('\Gr4vy\model\DigitalWallet' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Buyer', []),
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\DigitalWallet', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -771,21 +451,9 @@ class BuyersApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                default:
-                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
-            $returnType = '\Gr4vy\model\Buyer';
+            $returnType = '\Gr4vy\model\DigitalWallet';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -803,7 +471,7 @@ class BuyersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gr4vy\model\Buyer',
+                        '\Gr4vy\model\DigitalWallet',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -824,32 +492,24 @@ class BuyersApi
                     );
                     $e->setResponseObject($data);
                     break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\ErrorGeneric',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation getBuyerAsync
+     * Operation getDigitalWalletAsync
      *
-     * Get buyer
+     * Get digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBuyerAsync($buyer_id)
+    public function getDigitalWalletAsync($digital_wallet_id)
     {
-        return $this->getBuyerAsyncWithHttpInfo($buyer_id)
+        return $this->getDigitalWalletAsyncWithHttpInfo($digital_wallet_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -858,19 +518,19 @@ class BuyersApi
     }
 
     /**
-     * Operation getBuyerAsyncWithHttpInfo
+     * Operation getDigitalWalletAsyncWithHttpInfo
      *
-     * Get buyer
+     * Get digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBuyerAsyncWithHttpInfo($buyer_id)
+    public function getDigitalWalletAsyncWithHttpInfo($digital_wallet_id)
     {
-        $returnType = '\Gr4vy\model\Buyer';
-        $request = $this->getBuyerRequest($buyer_id);
+        $returnType = '\Gr4vy\model\DigitalWallet';
+        $request = $this->getDigitalWalletRequest($digital_wallet_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -906,23 +566,23 @@ class BuyersApi
     }
 
     /**
-     * Create request for operation 'getBuyer'
+     * Create request for operation 'getDigitalWallet'
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBuyerRequest($buyer_id)
+    public function getDigitalWalletRequest($digital_wallet_id)
     {
-        // verify the required parameter 'buyer_id' is set
-        if ($buyer_id === null || (is_array($buyer_id) && count($buyer_id) === 0)) {
+        // verify the required parameter 'digital_wallet_id' is set
+        if ($digital_wallet_id === null || (is_array($digital_wallet_id) && count($digital_wallet_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $buyer_id when calling getBuyer'
+                'Missing the required parameter $digital_wallet_id when calling getDigitalWallet'
             );
         }
 
-        $resourcePath = '/buyers/{buyer_id}';
+        $resourcePath = '/digital-wallets/{digital_wallet_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -932,10 +592,10 @@ class BuyersApi
 
 
         // path params
-        if ($buyer_id !== null) {
+        if ($digital_wallet_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'buyer_id' . '}',
-                ObjectSerializer::toPathValue($buyer_id),
+                '{' . 'digital_wallet_id' . '}',
+                ObjectSerializer::toPathValue($digital_wallet_id),
                 $resourcePath
             );
         }
@@ -1003,40 +663,34 @@ class BuyersApi
     }
 
     /**
-     * Operation listBuyers
+     * Operation listDigitalWallets
      *
-     * List buyers
+     * List digital wallets
      *
-     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches. (optional)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
-     * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\Buyers|\Gr4vy\model\Error401Unauthorized
+     * @return \Gr4vy\model\DigitalWallets|\Gr4vy\model\Error401Unauthorized
      */
-    public function listBuyers($search = null, $limit = 20, $cursor = null)
+    public function listDigitalWallets()
     {
-        list($response) = $this->listBuyersWithHttpInfo($search, $limit, $cursor);
+        list($response) = $this->listDigitalWalletsWithHttpInfo();
         return $response;
     }
 
     /**
-     * Operation listBuyersWithHttpInfo
+     * Operation listDigitalWalletsWithHttpInfo
      *
-     * List buyers
+     * List digital wallets
      *
-     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches. (optional)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
-     * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\Buyers|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gr4vy\model\DigitalWallets|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listBuyersWithHttpInfo($search = null, $limit = 20, $cursor = null)
+    public function listDigitalWalletsWithHttpInfo()
     {
-        $request = $this->listBuyersRequest($search, $limit, $cursor);
+        $request = $this->listDigitalWalletsRequest();
 
         try {
             $options = $this->createHttpClientOption();
@@ -1068,14 +722,14 @@ class BuyersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Gr4vy\model\Buyers' === '\SplFileObject') {
+                    if ('\Gr4vy\model\DigitalWallets' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Buyers', []),
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\DigitalWallets', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1093,7 +747,7 @@ class BuyersApi
                     ];
             }
 
-            $returnType = '\Gr4vy\model\Buyers';
+            $returnType = '\Gr4vy\model\DigitalWallets';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1111,7 +765,7 @@ class BuyersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gr4vy\model\Buyers',
+                        '\Gr4vy\model\DigitalWallets',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1130,20 +784,17 @@ class BuyersApi
     }
 
     /**
-     * Operation listBuyersAsync
+     * Operation listDigitalWalletsAsync
      *
-     * List buyers
+     * List digital wallets
      *
-     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches. (optional)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
-     * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listBuyersAsync($search = null, $limit = 20, $cursor = null)
+    public function listDigitalWalletsAsync()
     {
-        return $this->listBuyersAsyncWithHttpInfo($search, $limit, $cursor)
+        return $this->listDigitalWalletsAsyncWithHttpInfo()
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1152,21 +803,18 @@ class BuyersApi
     }
 
     /**
-     * Operation listBuyersAsyncWithHttpInfo
+     * Operation listDigitalWalletsAsyncWithHttpInfo
      *
-     * List buyers
+     * List digital wallets
      *
-     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches. (optional)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
-     * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listBuyersAsyncWithHttpInfo($search = null, $limit = 20, $cursor = null)
+    public function listDigitalWalletsAsyncWithHttpInfo()
     {
-        $returnType = '\Gr4vy\model\Buyers';
-        $request = $this->listBuyersRequest($search, $limit, $cursor);
+        $returnType = '\Gr4vy\model\DigitalWallets';
+        $request = $this->listDigitalWalletsRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1202,65 +850,22 @@ class BuyersApi
     }
 
     /**
-     * Create request for operation 'listBuyers'
+     * Create request for operation 'listDigitalWallets'
      *
-     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches. (optional)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
-     * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listBuyersRequest($search = null, $limit = 20, $cursor = null)
+    public function listDigitalWalletsRequest()
     {
-        if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling BuyersApi.listBuyers, must be smaller than or equal to 100.');
-        }
-        if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling BuyersApi.listBuyers, must be bigger than or equal to 1.');
-        }
 
-
-        $resourcePath = '/buyers';
+        $resourcePath = '/digital-wallets';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($search !== null) {
-            if('form' === 'form' && is_array($search)) {
-                foreach($search as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['search'] = $search;
-            }
-        }
-        // query params
-        if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
-                foreach($limit as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['limit'] = $limit;
-            }
-        }
-        // query params
-        if ($cursor !== null) {
-            if('form' === 'form' && is_array($cursor)) {
-                foreach($cursor as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['cursor'] = $cursor;
-            }
-        }
 
 
 
@@ -1327,38 +932,36 @@ class BuyersApi
     }
 
     /**
-     * Operation updateBuyer
+     * Operation registerDigitalWallet
      *
-     * Update buyer
+     * Register digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
-     * @param  \Gr4vy\model\BuyerUpdate $buyer_update buyer_update (optional)
+     * @param  \Gr4vy\model\DigitalWalletRequest $digital_wallet_request digital_wallet_request (optional)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
+     * @return \Gr4vy\model\DigitalWallet|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized
      */
-    public function updateBuyer($buyer_id, $buyer_update = null)
+    public function registerDigitalWallet($digital_wallet_request = null)
     {
-        list($response) = $this->updateBuyerWithHttpInfo($buyer_id, $buyer_update);
+        list($response) = $this->registerDigitalWalletWithHttpInfo($digital_wallet_request);
         return $response;
     }
 
     /**
-     * Operation updateBuyerWithHttpInfo
+     * Operation registerDigitalWalletWithHttpInfo
      *
-     * Update buyer
+     * Register digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
-     * @param  \Gr4vy\model\BuyerUpdate $buyer_update (optional)
+     * @param  \Gr4vy\model\DigitalWalletRequest $digital_wallet_request (optional)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gr4vy\model\DigitalWallet|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateBuyerWithHttpInfo($buyer_id, $buyer_update = null)
+    public function registerDigitalWalletWithHttpInfo($digital_wallet_request = null)
     {
-        $request = $this->updateBuyerRequest($buyer_id, $buyer_update);
+        $request = $this->registerDigitalWalletRequest($digital_wallet_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1389,15 +992,15 @@ class BuyersApi
             }
 
             switch($statusCode) {
-                case 200:
-                    if ('\Gr4vy\model\Buyer' === '\SplFileObject') {
+                case 201:
+                    if ('\Gr4vy\model\DigitalWallet' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Buyer', []),
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\DigitalWallet', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1425,21 +1028,9 @@ class BuyersApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 404:
-                    if ('\Gr4vy\model\Error404NotFound' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error404NotFound', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
-            $returnType = '\Gr4vy\model\Buyer';
+            $returnType = '\Gr4vy\model\DigitalWallet';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1454,10 +1045,10 @@ class BuyersApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gr4vy\model\Buyer',
+                        '\Gr4vy\model\DigitalWallet',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1478,33 +1069,24 @@ class BuyersApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error404NotFound',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation updateBuyerAsync
+     * Operation registerDigitalWalletAsync
      *
-     * Update buyer
+     * Register digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
-     * @param  \Gr4vy\model\BuyerUpdate $buyer_update (optional)
+     * @param  \Gr4vy\model\DigitalWalletRequest $digital_wallet_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateBuyerAsync($buyer_id, $buyer_update = null)
+    public function registerDigitalWalletAsync($digital_wallet_request = null)
     {
-        return $this->updateBuyerAsyncWithHttpInfo($buyer_id, $buyer_update)
+        return $this->registerDigitalWalletAsyncWithHttpInfo($digital_wallet_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1513,20 +1095,19 @@ class BuyersApi
     }
 
     /**
-     * Operation updateBuyerAsyncWithHttpInfo
+     * Operation registerDigitalWalletAsyncWithHttpInfo
      *
-     * Update buyer
+     * Register digital wallet
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
-     * @param  \Gr4vy\model\BuyerUpdate $buyer_update (optional)
+     * @param  \Gr4vy\model\DigitalWalletRequest $digital_wallet_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateBuyerAsyncWithHttpInfo($buyer_id, $buyer_update = null)
+    public function registerDigitalWalletAsyncWithHttpInfo($digital_wallet_request = null)
     {
-        $returnType = '\Gr4vy\model\Buyer';
-        $request = $this->updateBuyerRequest($buyer_id, $buyer_update);
+        $returnType = '\Gr4vy\model\DigitalWallet';
+        $request = $this->registerDigitalWalletRequest($digital_wallet_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1562,24 +1143,17 @@ class BuyersApi
     }
 
     /**
-     * Create request for operation 'updateBuyer'
+     * Create request for operation 'registerDigitalWallet'
      *
-     * @param  string $buyer_id The unique ID for a buyer. (required)
-     * @param  \Gr4vy\model\BuyerUpdate $buyer_update (optional)
+     * @param  \Gr4vy\model\DigitalWalletRequest $digital_wallet_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateBuyerRequest($buyer_id, $buyer_update = null)
+    public function registerDigitalWalletRequest($digital_wallet_request = null)
     {
-        // verify the required parameter 'buyer_id' is set
-        if ($buyer_id === null || (is_array($buyer_id) && count($buyer_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $buyer_id when calling updateBuyer'
-            );
-        }
 
-        $resourcePath = '/buyers/{buyer_id}';
+        $resourcePath = '/digital-wallets';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1588,14 +1162,6 @@ class BuyersApi
 
 
 
-        // path params
-        if ($buyer_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'buyer_id' . '}',
-                ObjectSerializer::toPathValue($buyer_id),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -1610,11 +1176,350 @@ class BuyersApi
         }
 
         // for model (json/xml)
-        if (isset($buyer_update)) {
+        if (isset($digital_wallet_request)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($buyer_update));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($digital_wallet_request));
             } else {
-                $httpBody = $buyer_update;
+                $httpBody = $digital_wallet_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateDigitalWallet
+     *
+     * Update digital wallet
+     *
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
+     * @param  \Gr4vy\model\DigitalWalletUpdate $digital_wallet_update digital_wallet_update (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\DigitalWallet|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
+     */
+    public function updateDigitalWallet($digital_wallet_id, $digital_wallet_update = null)
+    {
+        list($response) = $this->updateDigitalWalletWithHttpInfo($digital_wallet_id, $digital_wallet_update);
+        return $response;
+    }
+
+    /**
+     * Operation updateDigitalWalletWithHttpInfo
+     *
+     * Update digital wallet
+     *
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
+     * @param  \Gr4vy\model\DigitalWalletUpdate $digital_wallet_update (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\DigitalWallet|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateDigitalWalletWithHttpInfo($digital_wallet_id, $digital_wallet_update = null)
+    {
+        $request = $this->updateDigitalWalletRequest($digital_wallet_id, $digital_wallet_update);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Gr4vy\model\DigitalWallet' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\DigitalWallet', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Gr4vy\model\Error404NotFound' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error404NotFound', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\DigitalWallet';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\DigitalWallet',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ErrorGeneric',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error404NotFound',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateDigitalWalletAsync
+     *
+     * Update digital wallet
+     *
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
+     * @param  \Gr4vy\model\DigitalWalletUpdate $digital_wallet_update (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateDigitalWalletAsync($digital_wallet_id, $digital_wallet_update = null)
+    {
+        return $this->updateDigitalWalletAsyncWithHttpInfo($digital_wallet_id, $digital_wallet_update)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateDigitalWalletAsyncWithHttpInfo
+     *
+     * Update digital wallet
+     *
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
+     * @param  \Gr4vy\model\DigitalWalletUpdate $digital_wallet_update (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateDigitalWalletAsyncWithHttpInfo($digital_wallet_id, $digital_wallet_update = null)
+    {
+        $returnType = '\Gr4vy\model\DigitalWallet';
+        $request = $this->updateDigitalWalletRequest($digital_wallet_id, $digital_wallet_update);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateDigitalWallet'
+     *
+     * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
+     * @param  \Gr4vy\model\DigitalWalletUpdate $digital_wallet_update (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateDigitalWalletRequest($digital_wallet_id, $digital_wallet_update = null)
+    {
+        // verify the required parameter 'digital_wallet_id' is set
+        if ($digital_wallet_id === null || (is_array($digital_wallet_id) && count($digital_wallet_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $digital_wallet_id when calling updateDigitalWallet'
+            );
+        }
+
+        $resourcePath = '/digital-wallets/{digital_wallet_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($digital_wallet_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'digital_wallet_id' . '}',
+                ObjectSerializer::toPathValue($digital_wallet_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($digital_wallet_update)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($digital_wallet_update));
+            } else {
+                $httpBody = $digital_wallet_update;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

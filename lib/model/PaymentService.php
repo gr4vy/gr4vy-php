@@ -284,6 +284,7 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     const METHOD_PAYPAL = 'paypal';
     const METHOD_BANKED = 'banked';
     const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_STRIPEDD = 'stripedd';
     const STATUS_PENDING = 'pending';
     const STATUS_CREATED = 'created';
     const STATUS_FAILED = 'failed';
@@ -317,6 +318,7 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
             self::METHOD_PAYPAL,
             self::METHOD_BANKED,
             self::METHOD_GOCARDLESS,
+            self::METHOD_STRIPEDD,
         ];
     }
 
