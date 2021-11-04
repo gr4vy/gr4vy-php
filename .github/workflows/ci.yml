@@ -23,8 +23,6 @@ jobs:
 
       - name: Write private key file
         run: |
-            echo $PRIVATE_KEY >> private_key.pem
-            cat private_key.pem
             ls
         shell: bash
         env: 
