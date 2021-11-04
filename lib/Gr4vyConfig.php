@@ -93,9 +93,7 @@ class Gr4vyConfig
 
         $keyVal = getenv("PRIVATE_KEY");
         if (!isset($keyVal) || empty($keyVal)) {
-            // $key = LocalFileReference::file($private_key);
             $keyVal = file_get_contents($private_key);
-            echo "===got here===";
         }
         $key = InMemory::plainText($keyVal);
         
