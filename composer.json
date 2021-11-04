@@ -32,7 +32,11 @@
         "friendsofphp/php-cs-fixer": "^2.12"
     },
     "autoload": {
-        "psr-4": { "Gr4vy\\" : "lib/" }
+        "psr-4": {
+            "Gr4vy\\": "lib/",
+            "Gr4vy\\Api\\": "lib/api/",
+            "Gr4vy\\Model\\": "lib/model/"
+        },
     },
     "autoload-dev": {
         "psr-4": { "Gr4vy\\Test\\" : "test/" }
