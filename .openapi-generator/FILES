@@ -9,6 +9,8 @@ docs/Api/PaymentServicesApi.md
 docs/Api/TransactionsApi.md
 docs/Model/Address.md
 docs/Model/AddressUpdate.md
+docs/Model/ApplePayRequest.md
+docs/Model/ApplePaySessionRequest.md
 docs/Model/BillingDetails.md
 docs/Model/BillingDetailsUpdateRequest.md
 docs/Model/Buyer.md
@@ -39,6 +41,7 @@ docs/Model/PaymentMethodTokens.md
 docs/Model/PaymentMethods.md
 docs/Model/PaymentMethodsTokenized.md
 docs/Model/PaymentOption.md
+docs/Model/PaymentOptionContext.md
 docs/Model/PaymentOptions.md
 docs/Model/PaymentService.md
 docs/Model/PaymentServiceDefinition.md
@@ -54,13 +57,13 @@ docs/Model/PaymentServices.md
 docs/Model/RedirectRequest.md
 docs/Model/ResetPasswordRequest.md
 docs/Model/SetPasswordRequest.md
-docs/Model/Status.md
-docs/Model/Statuses.md
 docs/Model/TaxId.md
 docs/Model/ThreeDSecureData.md
 docs/Model/ThreeDSecureDataV1.md
+docs/Model/ThreeDSecureDataV1AllOf.md
 docs/Model/ThreeDSecureDataV1V2.md
 docs/Model/ThreeDSecureDataV2.md
+docs/Model/ThreeDSecureDataV2AllOf.md
 docs/Model/TokenizedRequest.md
 docs/Model/Transaction.md
 docs/Model/TransactionCaptureRequest.md
@@ -84,6 +87,8 @@ lib/HeaderSelector.php
 lib/ObjectSerializer.php
 lib/model/Address.php
 lib/model/AddressUpdate.php
+lib/model/ApplePayRequest.php
+lib/model/ApplePaySessionRequest.php
 lib/model/BillingDetails.php
 lib/model/BillingDetailsUpdateRequest.php
 lib/model/Buyer.php
@@ -115,6 +120,7 @@ lib/model/PaymentMethodTokens.php
 lib/model/PaymentMethods.php
 lib/model/PaymentMethodsTokenized.php
 lib/model/PaymentOption.php
+lib/model/PaymentOptionContext.php
 lib/model/PaymentOptions.php
 lib/model/PaymentService.php
 lib/model/PaymentServiceDefinition.php
@@ -130,13 +136,13 @@ lib/model/PaymentServices.php
 lib/model/RedirectRequest.php
 lib/model/ResetPasswordRequest.php
 lib/model/SetPasswordRequest.php
-lib/model/Status.php
-lib/model/Statuses.php
 lib/model/TaxId.php
 lib/model/ThreeDSecureData.php
 lib/model/ThreeDSecureDataV1.php
+lib/model/ThreeDSecureDataV1AllOf.php
 lib/model/ThreeDSecureDataV1V2.php
 lib/model/ThreeDSecureDataV2.php
+lib/model/ThreeDSecureDataV2AllOf.php
 lib/model/TokenizedRequest.php
 lib/model/Transaction.php
 lib/model/TransactionCaptureRequest.php
