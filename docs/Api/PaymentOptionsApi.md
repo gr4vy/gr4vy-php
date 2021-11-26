@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `listPaymentOptions()`
 
 ```php
-listPaymentOptions($country, $currency, $environment, $locale): \Gr4vy\model\PaymentOptions
+listPaymentOptions($country, $currency, $locale): \Gr4vy\model\PaymentOptions
 ```
 
 List payment options
@@ -36,11 +36,10 @@ $apiInstance = new Gr4vy\Api\PaymentOptionsApi(
 );
 $country = US; // string | Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code.
 $currency = USD; // string | Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code.
-$environment = staging; // string | Filters the results to only the items available in this environment.
 $locale = en-US; // string | An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option.
 
 try {
-    $result = $apiInstance->listPaymentOptions($country, $currency, $environment, $locale);
+    $result = $apiInstance->listPaymentOptions($country, $currency, $locale);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentOptionsApi->listPaymentOptions: ', $e->getMessage(), PHP_EOL;
@@ -53,7 +52,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **country** | **string**| Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. | [optional]
  **currency** | **string**| Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. | [optional]
- **environment** | **string**| Filters the results to only the items available in this environment. | [optional] [default to &#39;production&#39;]
  **locale** | **string**| An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. | [optional] [default to &#39;en-US&#39;]
 
 ### Return type

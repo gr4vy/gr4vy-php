@@ -17,6 +17,5 @@ Name | Type | Description | Notes
 **scheme** | **string** | The scheme of the card. Only applies to card payments. | [optional]
 **expiration_date** | **string** | The expiration date for the payment method. | [optional]
 **approval_url** | **string** | The optional URL that the buyer needs to be redirected to to further authorize their payment. | [optional]
-**environment** | **string** | The environment this payment method has been stored for. This will be null of the payment method was not stored. | [optional] [default to ENVIRONMENT_PRODUCTION]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

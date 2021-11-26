@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 ## `listTransactions()`
 
 ```php
-listTransactions($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $environment, $limit, $cursor): \Gr4vy\model\Transactions
+listTransactions($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor): \Gr4vy\model\Transactions
 ```
 
 List transactions
@@ -228,12 +228,11 @@ $before_created_at = 2012-12-12T10:53:43+00:00; // string | Filters the results 
 $after_created_at = 2012-12-12T10:53:43+00:00; // string | Filters the results to only transactions created after this ISO date-time string.
 $before_updated_at = 2012-12-12T10:53:43+00:00; // string | Filters the results to only transactions last updated before this ISO date-time string.
 $after_updated_at = 2012-12-12T10:53:43+00:00; // string | Filters the results to only transactions last updated after this ISO date-time string.
-$environment = staging; // string | Filters the results to only the items available in this environment.
 $limit = 1; // int | Defines the maximum number of items to return for this request.
 $cursor = ZXhhbXBsZTE; // string | A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the `next_cursor` field. Similarly the `previous_cursor` can be used to reverse backwards in the list.
 
 try {
-    $result = $apiInstance->listTransactions($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $environment, $limit, $cursor);
+    $result = $apiInstance->listTransactions($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TransactionsApi->listTransactions: ', $e->getMessage(), PHP_EOL;
@@ -252,7 +251,6 @@ Name | Type | Description  | Notes
  **after_created_at** | **string**| Filters the results to only transactions created after this ISO date-time string. | [optional]
  **before_updated_at** | **string**| Filters the results to only transactions last updated before this ISO date-time string. | [optional]
  **after_updated_at** | **string**| Filters the results to only transactions last updated after this ISO date-time string. | [optional]
- **environment** | **string**| Filters the results to only the items available in this environment. | [optional] [default to &#39;production&#39;]
  **limit** | **int**| Defines the maximum number of items to return for this request. | [optional] [default to 20]
  **cursor** | **string**| A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. | [optional]
 

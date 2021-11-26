@@ -970,15 +970,14 @@ class PaymentServicesApi
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\PaymentServices|\Gr4vy\model\Error401Unauthorized
      */
-    public function listPaymentServices($limit = 20, $cursor = null, $method = null, $environment = 'production')
+    public function listPaymentServices($limit = 20, $cursor = null, $method = null)
     {
-        list($response) = $this->listPaymentServicesWithHttpInfo($limit, $cursor, $method, $environment);
+        list($response) = $this->listPaymentServicesWithHttpInfo($limit, $cursor, $method);
         return $response;
     }
 
@@ -990,15 +989,14 @@ class PaymentServicesApi
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\PaymentServices|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPaymentServicesWithHttpInfo($limit = 20, $cursor = null, $method = null, $environment = 'production')
+    public function listPaymentServicesWithHttpInfo($limit = 20, $cursor = null, $method = null)
     {
-        $request = $this->listPaymentServicesRequest($limit, $cursor, $method, $environment);
+        $request = $this->listPaymentServicesRequest($limit, $cursor, $method);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1099,14 +1097,13 @@ class PaymentServicesApi
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentServicesAsync($limit = 20, $cursor = null, $method = null, $environment = 'production')
+    public function listPaymentServicesAsync($limit = 20, $cursor = null, $method = null)
     {
-        return $this->listPaymentServicesAsyncWithHttpInfo($limit, $cursor, $method, $environment)
+        return $this->listPaymentServicesAsyncWithHttpInfo($limit, $cursor, $method)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1122,15 +1119,14 @@ class PaymentServicesApi
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentServicesAsyncWithHttpInfo($limit = 20, $cursor = null, $method = null, $environment = 'production')
+    public function listPaymentServicesAsyncWithHttpInfo($limit = 20, $cursor = null, $method = null)
     {
         $returnType = '\Gr4vy\model\PaymentServices';
-        $request = $this->listPaymentServicesRequest($limit, $cursor, $method, $environment);
+        $request = $this->listPaymentServicesRequest($limit, $cursor, $method);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1171,12 +1167,11 @@ class PaymentServicesApi
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPaymentServicesRequest($limit = 20, $cursor = null, $method = null, $environment = 'production')
+    public function listPaymentServicesRequest($limit = 20, $cursor = null, $method = null)
     {
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling PaymentServicesApi.listPaymentServices, must be smaller than or equal to 100.');
@@ -1224,17 +1219,6 @@ class PaymentServicesApi
             }
             else {
                 $queryParams['method'] = $method;
-            }
-        }
-        // query params
-        if ($environment !== null) {
-            if('form' === 'form' && is_array($environment)) {
-                foreach($environment as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['environment'] = $environment;
             }
         }
 

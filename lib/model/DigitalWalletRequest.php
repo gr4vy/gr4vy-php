@@ -65,8 +65,7 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'merchant_name' => 'string',
         'merchant_url' => 'string',
         'domain_names' => 'string[]',
-        'accept_terms_and_conditions' => 'bool',
-        'environments' => 'string[]'
+        'accept_terms_and_conditions' => 'bool'
     ];
 
     /**
@@ -81,8 +80,7 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'merchant_name' => null,
         'merchant_url' => 'url',
         'domain_names' => null,
-        'accept_terms_and_conditions' => null,
-        'environments' => null
+        'accept_terms_and_conditions' => null
     ];
 
     /**
@@ -116,8 +114,7 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'merchant_name' => 'merchant_name',
         'merchant_url' => 'merchant_url',
         'domain_names' => 'domain_names',
-        'accept_terms_and_conditions' => 'accept_terms_and_conditions',
-        'environments' => 'environments'
+        'accept_terms_and_conditions' => 'accept_terms_and_conditions'
     ];
 
     /**
@@ -130,8 +127,7 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'merchant_name' => 'setMerchantName',
         'merchant_url' => 'setMerchantUrl',
         'domain_names' => 'setDomainNames',
-        'accept_terms_and_conditions' => 'setAcceptTermsAndConditions',
-        'environments' => 'setEnvironments'
+        'accept_terms_and_conditions' => 'setAcceptTermsAndConditions'
     ];
 
     /**
@@ -144,8 +140,7 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'merchant_name' => 'getMerchantName',
         'merchant_url' => 'getMerchantUrl',
         'domain_names' => 'getDomainNames',
-        'accept_terms_and_conditions' => 'getAcceptTermsAndConditions',
-        'environments' => 'getEnvironments'
+        'accept_terms_and_conditions' => 'getAcceptTermsAndConditions'
     ];
 
     /**
@@ -190,9 +185,7 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     const PROVIDER_APPLE = 'apple';
-    const ENVIRONMENTS_DEVELOPMENT = 'development';
-    const ENVIRONMENTS_STAGING = 'staging';
-    const ENVIRONMENTS_PRODUCTION = 'production';
+    const PROVIDER_GOOGLE = 'google';
 
     /**
      * Gets allowable values of the enum
@@ -203,20 +196,7 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         return [
             self::PROVIDER_APPLE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentsAllowableValues()
-    {
-        return [
-            self::ENVIRONMENTS_DEVELOPMENT,
-            self::ENVIRONMENTS_STAGING,
-            self::ENVIRONMENTS_PRODUCTION,
+            self::PROVIDER_GOOGLE,
         ];
     }
 
@@ -240,7 +220,6 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['merchant_url'] = $data['merchant_url'] ?? 'null';
         $this->container['domain_names'] = $data['domain_names'] ?? null;
         $this->container['accept_terms_and_conditions'] = $data['accept_terms_and_conditions'] ?? null;
-        $this->container['environments'] = $data['environments'] ?? null;
     }
 
     /**
@@ -281,14 +260,6 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['accept_terms_and_conditions'] === null) {
             $invalidProperties[] = "'accept_terms_and_conditions' can't be null";
         }
-        if (!is_null($this->container['environments']) && (count($this->container['environments']) > 3)) {
-            $invalidProperties[] = "invalid value for 'environments', number of items must be less than or equal to 3.";
-        }
-
-        if (!is_null($this->container['environments']) && (count($this->container['environments']) < 0)) {
-            $invalidProperties[] = "invalid value for 'environments', number of items must be greater than or equal to 0.";
-        }
-
         return $invalidProperties;
     }
 
@@ -399,7 +370,7 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets domain_names
      *
-     * @param string[] $domain_names The list of fully qualified domain names that a digital wallet provider should process payments for.
+     * @param string[] $domain_names The list of domain names that a digital wallet can be used on. To use a digital wallet on a website, the domain of the site is required to be in this list.
      *
      * @return self
      */
@@ -437,46 +408,6 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setAcceptTermsAndConditions($accept_terms_and_conditions)
     {
         $this->container['accept_terms_and_conditions'] = $accept_terms_and_conditions;
-
-        return $this;
-    }
-
-    /**
-     * Gets environments
-     *
-     * @return string[]|null
-     */
-    public function getEnvironments()
-    {
-        return $this->container['environments'];
-    }
-
-    /**
-     * Sets environments
-     *
-     * @param string[]|null $environments Determines the Gr4vy environments in which this digital wallet should be available.
-     *
-     * @return self
-     */
-    public function setEnvironments($environments)
-    {
-        $allowedValues = $this->getEnvironmentsAllowableValues();
-        if (!is_null($environments) && array_diff($environments, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'environments', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-        if (!is_null($environments) && (count($environments) > 3)) {
-            throw new \InvalidArgumentException('invalid value for $environments when calling DigitalWalletRequest., number of items must be less than or equal to 3.');
-        }
-        if (!is_null($environments) && (count($environments) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $environments when calling DigitalWalletRequest., number of items must be greater than or equal to 0.');
-        }
-        $this->container['environments'] = $environments;
 
         return $this;
     }

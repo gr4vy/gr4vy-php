@@ -255,7 +255,7 @@ updateDigitalWallet($digital_wallet_id, $digital_wallet_update): \Gr4vy\model\Di
 
 Update digital wallet
 
-Updates the values a digital wallet was registered with, and the Gr4vy environments in which a registered digital wallet should be available.
+Updates the values a digital wallet was registered with.
 
 ### Example
 

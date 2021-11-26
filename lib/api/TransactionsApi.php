@@ -1075,7 +1075,6 @@ class TransactionsApi
      * @param  string $after_created_at Filters the results to only transactions created after this ISO date-time string. (optional)
      * @param  string $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. (optional)
      * @param  string $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1083,9 +1082,9 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\Transactions|\Gr4vy\model\Error401Unauthorized
      */
-    public function listTransactions($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $environment = 'production', $limit = 20, $cursor = null)
+    public function listTransactions($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $limit = 20, $cursor = null)
     {
-        list($response) = $this->listTransactionsWithHttpInfo($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $environment, $limit, $cursor);
+        list($response) = $this->listTransactionsWithHttpInfo($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor);
         return $response;
     }
 
@@ -1102,7 +1101,6 @@ class TransactionsApi
      * @param  string $after_created_at Filters the results to only transactions created after this ISO date-time string. (optional)
      * @param  string $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. (optional)
      * @param  string $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1110,9 +1108,9 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\Transactions|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listTransactionsWithHttpInfo($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $environment = 'production', $limit = 20, $cursor = null)
+    public function listTransactionsWithHttpInfo($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $limit = 20, $cursor = null)
     {
-        $request = $this->listTransactionsRequest($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $environment, $limit, $cursor);
+        $request = $this->listTransactionsRequest($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1218,16 +1216,15 @@ class TransactionsApi
      * @param  string $after_created_at Filters the results to only transactions created after this ISO date-time string. (optional)
      * @param  string $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. (optional)
      * @param  string $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTransactionsAsync($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $environment = 'production', $limit = 20, $cursor = null)
+    public function listTransactionsAsync($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $limit = 20, $cursor = null)
     {
-        return $this->listTransactionsAsyncWithHttpInfo($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $environment, $limit, $cursor)
+        return $this->listTransactionsAsyncWithHttpInfo($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1248,17 +1245,16 @@ class TransactionsApi
      * @param  string $after_created_at Filters the results to only transactions created after this ISO date-time string. (optional)
      * @param  string $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. (optional)
      * @param  string $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTransactionsAsyncWithHttpInfo($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $environment = 'production', $limit = 20, $cursor = null)
+    public function listTransactionsAsyncWithHttpInfo($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $limit = 20, $cursor = null)
     {
         $returnType = '\Gr4vy\model\Transactions';
-        $request = $this->listTransactionsRequest($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $environment, $limit, $cursor);
+        $request = $this->listTransactionsRequest($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1304,14 +1300,13 @@ class TransactionsApi
      * @param  string $after_created_at Filters the results to only transactions created after this ISO date-time string. (optional)
      * @param  string $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. (optional)
      * @param  string $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listTransactionsRequest($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $environment = 'production', $limit = 20, $cursor = null)
+    public function listTransactionsRequest($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $limit = 20, $cursor = null)
     {
         if ($limit !== null && $limit > 500) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling TransactionsApi.listTransactions, must be smaller than or equal to 500.');
@@ -1414,17 +1409,6 @@ class TransactionsApi
             }
             else {
                 $queryParams['after_updated_at'] = $after_updated_at;
-            }
-        }
-        // query params
-        if ($environment !== null) {
-            if('form' === 'form' && is_array($environment)) {
-                foreach($environment as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['environment'] = $environment;
             }
         }
         // query params

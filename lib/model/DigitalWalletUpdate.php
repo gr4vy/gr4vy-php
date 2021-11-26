@@ -62,8 +62,7 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'merchant_name' => 'string',
-        'domain_names' => 'string[]',
-        'environments' => 'string[]'
+        'domain_names' => 'string[]'
     ];
 
     /**
@@ -75,8 +74,7 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'merchant_name' => null,
-        'domain_names' => null,
-        'environments' => null
+        'domain_names' => null
     ];
 
     /**
@@ -107,8 +105,7 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'merchant_name' => 'merchant_name',
-        'domain_names' => 'domain_names',
-        'environments' => 'environments'
+        'domain_names' => 'domain_names'
     ];
 
     /**
@@ -118,8 +115,7 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'merchant_name' => 'setMerchantName',
-        'domain_names' => 'setDomainNames',
-        'environments' => 'setEnvironments'
+        'domain_names' => 'setDomainNames'
     ];
 
     /**
@@ -129,8 +125,7 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'merchant_name' => 'getMerchantName',
-        'domain_names' => 'getDomainNames',
-        'environments' => 'getEnvironments'
+        'domain_names' => 'getDomainNames'
     ];
 
     /**
@@ -174,23 +169,6 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    const ENVIRONMENTS_DEVELOPMENT = 'development';
-    const ENVIRONMENTS_STAGING = 'staging';
-    const ENVIRONMENTS_PRODUCTION = 'production';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentsAllowableValues()
-    {
-        return [
-            self::ENVIRONMENTS_DEVELOPMENT,
-            self::ENVIRONMENTS_STAGING,
-            self::ENVIRONMENTS_PRODUCTION,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -209,7 +187,6 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $this->container['merchant_name'] = $data['merchant_name'] ?? null;
         $this->container['domain_names'] = $data['domain_names'] ?? null;
-        $this->container['environments'] = $data['environments'] ?? null;
     }
 
     /**
@@ -227,14 +204,6 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
 
         if (!is_null($this->container['domain_names']) && (count($this->container['domain_names']) < 1)) {
             $invalidProperties[] = "invalid value for 'domain_names', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['environments']) && (count($this->container['environments']) > 3)) {
-            $invalidProperties[] = "invalid value for 'environments', number of items must be less than or equal to 3.";
-        }
-
-        if (!is_null($this->container['environments']) && (count($this->container['environments']) < 0)) {
-            $invalidProperties[] = "invalid value for 'environments', number of items must be greater than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -289,7 +258,7 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets domain_names
      *
-     * @param string[]|null $domain_names The list of fully qualified domain names that a digital wallet provider should process payments for.
+     * @param string[]|null $domain_names The list of domain names that a digital wallet can be used on. To use a digital wallet on a website, the domain of the site is required to be in this list.
      *
      * @return self
      */
@@ -303,46 +272,6 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('invalid length for $domain_names when calling DigitalWalletUpdate., number of items must be greater than or equal to 1.');
         }
         $this->container['domain_names'] = $domain_names;
-
-        return $this;
-    }
-
-    /**
-     * Gets environments
-     *
-     * @return string[]|null
-     */
-    public function getEnvironments()
-    {
-        return $this->container['environments'];
-    }
-
-    /**
-     * Sets environments
-     *
-     * @param string[]|null $environments Determines the Gr4vy environments in which this digital wallet should be available.
-     *
-     * @return self
-     */
-    public function setEnvironments($environments)
-    {
-        $allowedValues = $this->getEnvironmentsAllowableValues();
-        if (!is_null($environments) && array_diff($environments, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'environments', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-        if (!is_null($environments) && (count($environments) > 3)) {
-            throw new \InvalidArgumentException('invalid value for $environments when calling DigitalWalletUpdate., number of items must be less than or equal to 3.');
-        }
-        if (!is_null($environments) && (count($environments) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $environments when calling DigitalWalletUpdate., number of items must be greater than or equal to 0.');
-        }
-        $this->container['environments'] = $environments;
 
         return $this;
     }

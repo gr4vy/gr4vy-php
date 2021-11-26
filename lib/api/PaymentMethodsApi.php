@@ -671,15 +671,14 @@ class PaymentMethodsApi
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
      * @param  string $country Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. (optional)
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\PaymentMethodsTokenized|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
      */
-    public function listBuyerPaymentMethods($buyer_id = null, $buyer_external_identifier = null, $country = null, $currency = null, $environment = 'production')
+    public function listBuyerPaymentMethods($buyer_id = null, $buyer_external_identifier = null, $country = null, $currency = null)
     {
-        list($response) = $this->listBuyerPaymentMethodsWithHttpInfo($buyer_id, $buyer_external_identifier, $country, $currency, $environment);
+        list($response) = $this->listBuyerPaymentMethodsWithHttpInfo($buyer_id, $buyer_external_identifier, $country, $currency);
         return $response;
     }
 
@@ -692,15 +691,14 @@ class PaymentMethodsApi
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
      * @param  string $country Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. (optional)
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\PaymentMethodsTokenized|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listBuyerPaymentMethodsWithHttpInfo($buyer_id = null, $buyer_external_identifier = null, $country = null, $currency = null, $environment = 'production')
+    public function listBuyerPaymentMethodsWithHttpInfo($buyer_id = null, $buyer_external_identifier = null, $country = null, $currency = null)
     {
-        $request = $this->listBuyerPaymentMethodsRequest($buyer_id, $buyer_external_identifier, $country, $currency, $environment);
+        $request = $this->listBuyerPaymentMethodsRequest($buyer_id, $buyer_external_identifier, $country, $currency);
 
         try {
             $options = $this->createHttpClientOption();
@@ -822,14 +820,13 @@ class PaymentMethodsApi
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
      * @param  string $country Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. (optional)
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listBuyerPaymentMethodsAsync($buyer_id = null, $buyer_external_identifier = null, $country = null, $currency = null, $environment = 'production')
+    public function listBuyerPaymentMethodsAsync($buyer_id = null, $buyer_external_identifier = null, $country = null, $currency = null)
     {
-        return $this->listBuyerPaymentMethodsAsyncWithHttpInfo($buyer_id, $buyer_external_identifier, $country, $currency, $environment)
+        return $this->listBuyerPaymentMethodsAsyncWithHttpInfo($buyer_id, $buyer_external_identifier, $country, $currency)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -846,15 +843,14 @@ class PaymentMethodsApi
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
      * @param  string $country Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. (optional)
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listBuyerPaymentMethodsAsyncWithHttpInfo($buyer_id = null, $buyer_external_identifier = null, $country = null, $currency = null, $environment = 'production')
+    public function listBuyerPaymentMethodsAsyncWithHttpInfo($buyer_id = null, $buyer_external_identifier = null, $country = null, $currency = null)
     {
         $returnType = '\Gr4vy\model\PaymentMethodsTokenized';
-        $request = $this->listBuyerPaymentMethodsRequest($buyer_id, $buyer_external_identifier, $country, $currency, $environment);
+        $request = $this->listBuyerPaymentMethodsRequest($buyer_id, $buyer_external_identifier, $country, $currency);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -896,12 +892,11 @@ class PaymentMethodsApi
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
      * @param  string $country Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. (optional)
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listBuyerPaymentMethodsRequest($buyer_id = null, $buyer_external_identifier = null, $country = null, $currency = null, $environment = 'production')
+    public function listBuyerPaymentMethodsRequest($buyer_id = null, $buyer_external_identifier = null, $country = null, $currency = null)
     {
 
         $resourcePath = '/buyers/payment-methods';
@@ -953,17 +948,6 @@ class PaymentMethodsApi
             }
             else {
                 $queryParams['currency'] = $currency;
-            }
-        }
-        // query params
-        if ($environment !== null) {
-            if('form' === 'form' && is_array($environment)) {
-                foreach($environment as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['environment'] = $environment;
             }
         }
 
@@ -1036,7 +1020,6 @@ class PaymentMethodsApi
      *
      * List payment methods
      *
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
@@ -1046,9 +1029,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\PaymentMethods|\Gr4vy\model\Error401Unauthorized
      */
-    public function listPaymentMethods($environment = 'production', $buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
+    public function listPaymentMethods($buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
     {
-        list($response) = $this->listPaymentMethodsWithHttpInfo($environment, $buyer_id, $buyer_external_identifier, $limit, $cursor);
+        list($response) = $this->listPaymentMethodsWithHttpInfo($buyer_id, $buyer_external_identifier, $limit, $cursor);
         return $response;
     }
 
@@ -1057,7 +1040,6 @@ class PaymentMethodsApi
      *
      * List payment methods
      *
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
@@ -1067,9 +1049,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\PaymentMethods|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPaymentMethodsWithHttpInfo($environment = 'production', $buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
+    public function listPaymentMethodsWithHttpInfo($buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
     {
-        $request = $this->listPaymentMethodsRequest($environment, $buyer_id, $buyer_external_identifier, $limit, $cursor);
+        $request = $this->listPaymentMethodsRequest($buyer_id, $buyer_external_identifier, $limit, $cursor);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1167,7 +1149,6 @@ class PaymentMethodsApi
      *
      * List payment methods
      *
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
@@ -1176,9 +1157,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentMethodsAsync($environment = 'production', $buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
+    public function listPaymentMethodsAsync($buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
     {
-        return $this->listPaymentMethodsAsyncWithHttpInfo($environment, $buyer_id, $buyer_external_identifier, $limit, $cursor)
+        return $this->listPaymentMethodsAsyncWithHttpInfo($buyer_id, $buyer_external_identifier, $limit, $cursor)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1191,7 +1172,6 @@ class PaymentMethodsApi
      *
      * List payment methods
      *
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
@@ -1200,10 +1180,10 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentMethodsAsyncWithHttpInfo($environment = 'production', $buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
+    public function listPaymentMethodsAsyncWithHttpInfo($buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
     {
         $returnType = '\Gr4vy\model\PaymentMethods';
-        $request = $this->listPaymentMethodsRequest($environment, $buyer_id, $buyer_external_identifier, $limit, $cursor);
+        $request = $this->listPaymentMethodsRequest($buyer_id, $buyer_external_identifier, $limit, $cursor);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1241,7 +1221,6 @@ class PaymentMethodsApi
     /**
      * Create request for operation 'listPaymentMethods'
      *
-     * @param  string $environment Filters the results to only the items available in this environment. (optional, default to 'production')
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
@@ -1250,7 +1229,7 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPaymentMethodsRequest($environment = 'production', $buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
+    public function listPaymentMethodsRequest($buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
     {
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling PaymentMethodsApi.listPaymentMethods, must be smaller than or equal to 100.');
@@ -1267,17 +1246,6 @@ class PaymentMethodsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($environment !== null) {
-            if('form' === 'form' && is_array($environment)) {
-                foreach($environment as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['environment'] = $environment;
-            }
-        }
         // query params
         if ($buyer_id !== null) {
             if('form' === 'form' && is_array($buyer_id)) {

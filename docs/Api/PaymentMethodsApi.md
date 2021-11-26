@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 ## `listBuyerPaymentMethods()`
 
 ```php
-listBuyerPaymentMethods($buyer_id, $buyer_external_identifier, $country, $currency, $environment): \Gr4vy\model\PaymentMethodsTokenized
+listBuyerPaymentMethods($buyer_id, $buyer_external_identifier, $country, $currency): \Gr4vy\model\PaymentMethodsTokenized
 ```
 
 List stored payment methods for a buyer
@@ -161,10 +161,9 @@ $buyer_id = 8724fd24-5489-4a5d-90fd-0604df7d3b83; // string | Filters the result
 $buyer_external_identifier = user-12345; // string | Filters the results to only the items for which the `buyer` has an `external_identifier` that matches this value.
 $country = US; // string | Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code.
 $currency = USD; // string | Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code.
-$environment = staging; // string | Filters the results to only the items available in this environment.
 
 try {
-    $result = $apiInstance->listBuyerPaymentMethods($buyer_id, $buyer_external_identifier, $country, $currency, $environment);
+    $result = $apiInstance->listBuyerPaymentMethods($buyer_id, $buyer_external_identifier, $country, $currency);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentMethodsApi->listBuyerPaymentMethods: ', $e->getMessage(), PHP_EOL;
@@ -179,7 +178,6 @@ Name | Type | Description  | Notes
  **buyer_external_identifier** | **string**| Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. | [optional]
  **country** | **string**| Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. | [optional]
  **currency** | **string**| Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. | [optional]
- **environment** | **string**| Filters the results to only the items available in this environment. | [optional] [default to &#39;production&#39;]
 
 ### Return type
 
@@ -201,7 +199,7 @@ Name | Type | Description  | Notes
 ## `listPaymentMethods()`
 
 ```php
-listPaymentMethods($environment, $buyer_id, $buyer_external_identifier, $limit, $cursor): \Gr4vy\model\PaymentMethods
+listPaymentMethods($buyer_id, $buyer_external_identifier, $limit, $cursor): \Gr4vy\model\PaymentMethods
 ```
 
 List payment methods
@@ -225,14 +223,13 @@ $apiInstance = new Gr4vy\Api\PaymentMethodsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$environment = staging; // string | Filters the results to only the items available in this environment.
 $buyer_id = 8724fd24-5489-4a5d-90fd-0604df7d3b83; // string | Filters the results to only the items for which the `buyer` has an `id` that matches this value.
 $buyer_external_identifier = user-12345; // string | Filters the results to only the items for which the `buyer` has an `external_identifier` that matches this value.
 $limit = 1; // int | Defines the maximum number of items to return for this request.
 $cursor = ZXhhbXBsZTE; // string | A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the `next_cursor` field. Similarly the `previous_cursor` can be used to reverse backwards in the list.
 
 try {
-    $result = $apiInstance->listPaymentMethods($environment, $buyer_id, $buyer_external_identifier, $limit, $cursor);
+    $result = $apiInstance->listPaymentMethods($buyer_id, $buyer_external_identifier, $limit, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentMethodsApi->listPaymentMethods: ', $e->getMessage(), PHP_EOL;
@@ -243,7 +240,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **string**| Filters the results to only the items available in this environment. | [optional] [default to &#39;production&#39;]
  **buyer_id** | **string**| Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. | [optional]
  **buyer_external_identifier** | **string**| Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. | [optional]
  **limit** | **int**| Defines the maximum number of items to return for this request. | [optional] [default to 20]

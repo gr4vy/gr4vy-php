@@ -67,8 +67,7 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'country' => 'string',
         'external_identifier' => 'string',
         'buyer_id' => 'string',
-        'buyer_external_identifier' => 'string',
-        'environment' => 'string'
+        'buyer_external_identifier' => 'string'
     ];
 
     /**
@@ -85,8 +84,7 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'country' => null,
         'external_identifier' => null,
         'buyer_id' => 'uuid',
-        'buyer_external_identifier' => null,
-        'environment' => null
+        'buyer_external_identifier' => null
     ];
 
     /**
@@ -122,8 +120,7 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'country' => 'country',
         'external_identifier' => 'external_identifier',
         'buyer_id' => 'buyer_id',
-        'buyer_external_identifier' => 'buyer_external_identifier',
-        'environment' => 'environment'
+        'buyer_external_identifier' => 'buyer_external_identifier'
     ];
 
     /**
@@ -138,8 +135,7 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'country' => 'setCountry',
         'external_identifier' => 'setExternalIdentifier',
         'buyer_id' => 'setBuyerId',
-        'buyer_external_identifier' => 'setBuyerExternalIdentifier',
-        'environment' => 'setEnvironment'
+        'buyer_external_identifier' => 'setBuyerExternalIdentifier'
     ];
 
     /**
@@ -154,8 +150,7 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'country' => 'getCountry',
         'external_identifier' => 'getExternalIdentifier',
         'buyer_id' => 'getBuyerId',
-        'buyer_external_identifier' => 'getBuyerExternalIdentifier',
-        'environment' => 'getEnvironment'
+        'buyer_external_identifier' => 'getBuyerExternalIdentifier'
     ];
 
     /**
@@ -199,23 +194,6 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    const ENVIRONMENT_DEVELOPMENT = 'development';
-    const ENVIRONMENT_STAGING = 'staging';
-    const ENVIRONMENT_PRODUCTION = 'production';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentAllowableValues()
-    {
-        return [
-            self::ENVIRONMENT_DEVELOPMENT,
-            self::ENVIRONMENT_STAGING,
-            self::ENVIRONMENT_PRODUCTION,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -239,7 +217,6 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['buyer_id'] = $data['buyer_id'] ?? null;
         $this->container['buyer_external_identifier'] = $data['buyer_external_identifier'] ?? null;
-        $this->container['environment'] = $data['environment'] ?? null;
     }
 
     /**
@@ -263,15 +240,6 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['country'] === null) {
             $invalidProperties[] = "'country' can't be null";
         }
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($this->container['environment']) && !in_array($this->container['environment'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'environment', must be one of '%s'",
-                $this->container['environment'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -451,40 +419,6 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerExternalIdentifier($buyer_external_identifier)
     {
         $this->container['buyer_external_identifier'] = $buyer_external_identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets environment
-     *
-     * @return string|null
-     */
-    public function getEnvironment()
-    {
-        return $this->container['environment'];
-    }
-
-    /**
-     * Sets environment
-     *
-     * @param string|null $environment Defines the environment to store this payment method in. Setting this to anything other than `production` will force Gr4vy to use a payment a service configured for that environment.
-     *
-     * @return self
-     */
-    public function setEnvironment($environment)
-    {
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($environment) && !in_array($environment, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'environment', must be one of '%s'",
-                    $environment,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['environment'] = $environment;
 
         return $this;
     }

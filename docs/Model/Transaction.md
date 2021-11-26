@@ -17,6 +17,5 @@ Name | Type | Description | Notes
 **external_identifier** | **string** | An external identifier that can be used to match the transaction against your own records. | [optional]
 **updated_at** | [**\DateTime**](\DateTime.md) | Defines when the transaction was last updated. | [optional]
 **payment_service** | [**PaymentServiceSnapshot**](PaymentServiceSnapshot.md) |  | [optional]
-**environment** | **string** | The environment this transaction has been created in. | [optional] [default to ENVIRONMENT_PRODUCTION]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

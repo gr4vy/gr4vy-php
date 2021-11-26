@@ -70,8 +70,7 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'buyer_external_identifier' => 'string',
         'redirect_url' => 'string',
         'currency' => 'string',
-        'country' => 'string',
-        'environment' => 'string'
+        'country' => 'string'
     ];
 
     /**
@@ -91,8 +90,7 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'buyer_external_identifier' => null,
         'redirect_url' => null,
         'currency' => null,
-        'country' => null,
-        'environment' => null
+        'country' => null
     ];
 
     /**
@@ -131,8 +129,7 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'buyer_external_identifier' => 'buyer_external_identifier',
         'redirect_url' => 'redirect_url',
         'currency' => 'currency',
-        'country' => 'country',
-        'environment' => 'environment'
+        'country' => 'country'
     ];
 
     /**
@@ -150,8 +147,7 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'buyer_external_identifier' => 'setBuyerExternalIdentifier',
         'redirect_url' => 'setRedirectUrl',
         'currency' => 'setCurrency',
-        'country' => 'setCountry',
-        'environment' => 'setEnvironment'
+        'country' => 'setCountry'
     ];
 
     /**
@@ -169,8 +165,7 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'buyer_external_identifier' => 'getBuyerExternalIdentifier',
         'redirect_url' => 'getRedirectUrl',
         'currency' => 'getCurrency',
-        'country' => 'getCountry',
-        'environment' => 'getEnvironment'
+        'country' => 'getCountry'
     ];
 
     /**
@@ -214,23 +209,6 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-    const ENVIRONMENT_DEVELOPMENT = 'development';
-    const ENVIRONMENT_STAGING = 'staging';
-    const ENVIRONMENT_PRODUCTION = 'production';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentAllowableValues()
-    {
-        return [
-            self::ENVIRONMENT_DEVELOPMENT,
-            self::ENVIRONMENT_STAGING,
-            self::ENVIRONMENT_PRODUCTION,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -257,7 +235,6 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['redirect_url'] = $data['redirect_url'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
-        $this->container['environment'] = $data['environment'] ?? null;
     }
 
     /**
@@ -306,15 +283,6 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
         if (!is_null($this->container['security_code']) && !preg_match("/^\\d{3,4}$/", $this->container['security_code'])) {
             $invalidProperties[] = "invalid value for 'security_code', must be conform to the pattern /^\\d{3,4}$/.";
-        }
-
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($this->container['environment']) && !in_array($this->container['environment'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'environment', must be one of '%s'",
-                $this->container['environment'],
-                implode("', '", $allowedValues)
-            );
         }
 
         return $invalidProperties;
@@ -598,40 +566,6 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCountry($country)
     {
         $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets environment
-     *
-     * @return string|null
-     */
-    public function getEnvironment()
-    {
-        return $this->container['environment'];
-    }
-
-    /**
-     * Sets environment
-     *
-     * @param string|null $environment Defines the environment to store this payment method in. Setting this to anything other than `production` will force Gr4vy to use a payment a service configured for that environment.
-     *
-     * @return self
-     */
-    public function setEnvironment($environment)
-    {
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($environment) && !in_array($environment, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'environment', must be one of '%s'",
-                    $environment,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['environment'] = $environment;
 
         return $this;
     }

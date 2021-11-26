@@ -15,16 +15,19 @@ class Gr4vyConfig
     protected $privateKeyLocation;
     protected $host;
     protected $debug = false;
+    protected $environment;
 
     /**
      * Constructor
      */
-    public function __construct($gr4vyId, $privateKeyLocation, $debug=false)
+    public function __construct($gr4vyId, $privateKeyLocation, $debug=false, $environment="sandbox")
     {
         $this->gr4vyId = $gr4vyId;
         $this->privateKeyLocation = $privateKeyLocation;
-        $this->host = "https://api." . $gr4vyId .".gr4vy.app";
         $this->debug = $debug;
+        $this->environment = $environment;
+        $apiPrefix = $environment === "sandbox" ? "sandbox." : "";
+        $this->host = "https://api." . $apiPrefix . $gr4vyId .".gr4vy.app";
     }
 
     public function setGr4vyId($gr4vyId)

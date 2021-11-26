@@ -73,8 +73,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => '\DateTime',
         'external_identifier' => 'string',
         'updated_at' => '\DateTime',
-        'payment_service' => '\Gr4vy\model\PaymentServiceSnapshot',
-        'environment' => 'string'
+        'payment_service' => 'PaymentServiceSnapshot'
     ];
 
     /**
@@ -97,8 +96,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'date-time',
         'external_identifier' => null,
         'updated_at' => 'date-time',
-        'payment_service' => null,
-        'environment' => null
+        'payment_service' => null
     ];
 
     /**
@@ -140,8 +138,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'created_at',
         'external_identifier' => 'external_identifier',
         'updated_at' => 'updated_at',
-        'payment_service' => 'payment_service',
-        'environment' => 'environment'
+        'payment_service' => 'payment_service'
     ];
 
     /**
@@ -162,8 +159,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'setCreatedAt',
         'external_identifier' => 'setExternalIdentifier',
         'updated_at' => 'setUpdatedAt',
-        'payment_service' => 'setPaymentService',
-        'environment' => 'setEnvironment'
+        'payment_service' => 'setPaymentService'
     ];
 
     /**
@@ -184,8 +180,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'getCreatedAt',
         'external_identifier' => 'getExternalIdentifier',
         'updated_at' => 'getUpdatedAt',
-        'payment_service' => 'getPaymentService',
-        'environment' => 'getEnvironment'
+        'payment_service' => 'getPaymentService'
     ];
 
     /**
@@ -251,9 +246,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATUS_BUYER_APPROVAL_DECLINED = 'buyer_approval_declined';
     const STATUS_BUYER_APPROVAL_FAILED = 'buyer_approval_failed';
     const STATUS_BUYER_APPROVAL_TIMEDOUT = 'buyer_approval_timedout';
-    const ENVIRONMENT_DEVELOPMENT = 'development';
-    const ENVIRONMENT_STAGING = 'staging';
-    const ENVIRONMENT_PRODUCTION = 'production';
 
     /**
      * Gets allowable values of the enum
@@ -300,20 +292,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentAllowableValues()
-    {
-        return [
-            self::ENVIRONMENT_DEVELOPMENT,
-            self::ENVIRONMENT_STAGING,
-            self::ENVIRONMENT_PRODUCTION,
-        ];
-    }
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -341,7 +319,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['payment_service'] = $data['payment_service'] ?? null;
-        $this->container['environment'] = $data['environment'] ?? self::ENVIRONMENT_PRODUCTION;
     }
 
     /**
@@ -393,15 +370,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['refunded_amount']) && ($this->container['refunded_amount'] < 0)) {
             $invalidProperties[] = "invalid value for 'refunded_amount', must be bigger than or equal to 0.";
-        }
-
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($this->container['environment']) && !in_array($this->container['environment'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'environment', must be one of '%s'",
-                $this->container['environment'],
-                implode("', '", $allowedValues)
-            );
         }
 
         return $invalidProperties;
@@ -771,40 +739,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentService($payment_service)
     {
         $this->container['payment_service'] = $payment_service;
-
-        return $this;
-    }
-
-    /**
-     * Gets environment
-     *
-     * @return string|null
-     */
-    public function getEnvironment()
-    {
-        return $this->container['environment'];
-    }
-
-    /**
-     * Sets environment
-     *
-     * @param string|null $environment The environment this transaction has been created in.
-     *
-     * @return self
-     */
-    public function setEnvironment($environment)
-    {
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($environment) && !in_array($environment, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'environment', must be one of '%s'",
-                    $environment,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['environment'] = $environment;
 
         return $this;
     }

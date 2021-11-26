@@ -68,7 +68,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_identifier' => 'string',
         'buyer_id' => 'string',
         'buyer_external_identifier' => 'string',
-        'environment' => 'string',
         'redirect_url' => 'string'
     ];
 
@@ -87,7 +86,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_identifier' => null,
         'buyer_id' => 'uuid',
         'buyer_external_identifier' => null,
-        'environment' => null,
         'redirect_url' => null
     ];
 
@@ -125,7 +123,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_identifier' => 'external_identifier',
         'buyer_id' => 'buyer_id',
         'buyer_external_identifier' => 'buyer_external_identifier',
-        'environment' => 'environment',
         'redirect_url' => 'redirect_url'
     ];
 
@@ -142,7 +139,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_identifier' => 'setExternalIdentifier',
         'buyer_id' => 'setBuyerId',
         'buyer_external_identifier' => 'setBuyerExternalIdentifier',
-        'environment' => 'setEnvironment',
         'redirect_url' => 'setRedirectUrl'
     ];
 
@@ -159,7 +155,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_identifier' => 'getExternalIdentifier',
         'buyer_id' => 'getBuyerId',
         'buyer_external_identifier' => 'getBuyerExternalIdentifier',
-        'environment' => 'getEnvironment',
         'redirect_url' => 'getRedirectUrl'
     ];
 
@@ -205,9 +200,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     const METHOD_CARD = 'card';
-    const ENVIRONMENT_DEVELOPMENT = 'development';
-    const ENVIRONMENT_STAGING = 'staging';
-    const ENVIRONMENT_PRODUCTION = 'production';
 
     /**
      * Gets allowable values of the enum
@@ -218,20 +210,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::METHOD_CARD,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentAllowableValues()
-    {
-        return [
-            self::ENVIRONMENT_DEVELOPMENT,
-            self::ENVIRONMENT_STAGING,
-            self::ENVIRONMENT_PRODUCTION,
         ];
     }
 
@@ -257,7 +235,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['buyer_id'] = $data['buyer_id'] ?? null;
         $this->container['buyer_external_identifier'] = $data['buyer_external_identifier'] ?? null;
-        $this->container['environment'] = $data['environment'] ?? null;
         $this->container['redirect_url'] = $data['redirect_url'] ?? null;
     }
 
@@ -325,15 +302,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!preg_match("/^\\d{3,4}$/", $this->container['security_code'])) {
             $invalidProperties[] = "invalid value for 'security_code', must be conform to the pattern /^\\d{3,4}$/.";
-        }
-
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($this->container['environment']) && !in_array($this->container['environment'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'environment', must be one of '%s'",
-                $this->container['environment'],
-                implode("', '", $allowedValues)
-            );
         }
 
         return $invalidProperties;
@@ -555,40 +523,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerExternalIdentifier($buyer_external_identifier)
     {
         $this->container['buyer_external_identifier'] = $buyer_external_identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets environment
-     *
-     * @return string|null
-     */
-    public function getEnvironment()
-    {
-        return $this->container['environment'];
-    }
-
-    /**
-     * Sets environment
-     *
-     * @param string|null $environment Defines the environment to store this card for. Setting this to anything other than `production` will force Gr4vy to use the payment services configured for that environment.
-     *
-     * @return self
-     */
-    public function setEnvironment($environment)
-    {
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($environment) && !in_array($environment, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'environment', must be one of '%s'",
-                    $environment,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['environment'] = $environment;
 
         return $this;
     }

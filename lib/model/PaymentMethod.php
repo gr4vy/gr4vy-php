@@ -73,8 +73,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'string',
         'scheme' => 'string',
         'expiration_date' => 'string',
-        'approval_url' => 'string',
-        'environment' => 'string'
+        'approval_url' => 'string'
     ];
 
     /**
@@ -97,8 +96,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => null,
         'scheme' => null,
         'expiration_date' => null,
-        'approval_url' => null,
-        'environment' => null
+        'approval_url' => null
     ];
 
     /**
@@ -140,8 +138,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'label',
         'scheme' => 'scheme',
         'expiration_date' => 'expiration_date',
-        'approval_url' => 'approval_url',
-        'environment' => 'environment'
+        'approval_url' => 'approval_url'
     ];
 
     /**
@@ -162,8 +159,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'setLabel',
         'scheme' => 'setScheme',
         'expiration_date' => 'setExpirationDate',
-        'approval_url' => 'setApprovalUrl',
-        'environment' => 'setEnvironment'
+        'approval_url' => 'setApprovalUrl'
     ];
 
     /**
@@ -184,8 +180,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'getLabel',
         'scheme' => 'getScheme',
         'expiration_date' => 'getExpirationDate',
-        'approval_url' => 'getApprovalUrl',
-        'environment' => 'getEnvironment'
+        'approval_url' => 'getApprovalUrl'
     ];
 
     /**
@@ -234,9 +229,6 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATUS_BUYER_APPROVAL_REQUIRED = 'buyer_approval_required';
     const STATUS_SUCCEEDED = 'succeeded';
     const STATUS_FAILED = 'failed';
-    const ENVIRONMENT_DEVELOPMENT = 'development';
-    const ENVIRONMENT_STAGING = 'staging';
-    const ENVIRONMENT_PRODUCTION = 'production';
 
     /**
      * Gets allowable values of the enum
@@ -262,20 +254,6 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_BUYER_APPROVAL_REQUIRED,
             self::STATUS_SUCCEEDED,
             self::STATUS_FAILED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentAllowableValues()
-    {
-        return [
-            self::ENVIRONMENT_DEVELOPMENT,
-            self::ENVIRONMENT_STAGING,
-            self::ENVIRONMENT_PRODUCTION,
         ];
     }
 
@@ -307,7 +285,6 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['scheme'] = $data['scheme'] ?? null;
         $this->container['expiration_date'] = $data['expiration_date'] ?? null;
         $this->container['approval_url'] = $data['approval_url'] ?? null;
-        $this->container['environment'] = $data['environment'] ?? self::ENVIRONMENT_PRODUCTION;
     }
 
     /**
@@ -347,15 +324,6 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['expiration_date']) && !preg_match("/^\\d{2}\/\\d{2}$/", $this->container['expiration_date'])) {
             $invalidProperties[] = "invalid value for 'expiration_date', must be conform to the pattern /^\\d{2}\/\\d{2}$/.";
-        }
-
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($this->container['environment']) && !in_array($this->container['environment'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'environment', must be one of '%s'",
-                $this->container['environment'],
-                implode("', '", $allowedValues)
-            );
         }
 
         return $invalidProperties;
@@ -711,40 +679,6 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setApprovalUrl($approval_url)
     {
         $this->container['approval_url'] = $approval_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets environment
-     *
-     * @return string|null
-     */
-    public function getEnvironment()
-    {
-        return $this->container['environment'];
-    }
-
-    /**
-     * Sets environment
-     *
-     * @param string|null $environment The environment this payment method has been stored for. This will be null of the payment method was not stored.
-     *
-     * @return self
-     */
-    public function setEnvironment($environment)
-    {
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($environment) && !in_array($environment, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'environment', must be one of '%s'",
-                    $environment,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['environment'] = $environment;
 
         return $this;
     }
