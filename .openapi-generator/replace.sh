@@ -27,8 +27,8 @@ var1="'payment_method' => 'PaymentMethodSnapshot',"
 rep1="'payment_method' => '\\\Gr4vy\\\model\\\PaymentMethodSnapshot',"
 sed -i '' "s/$var1/$rep1/g" lib/model/*.php
 
-var1="'payment_service' => 'PaymentServiceSnapshot',"
-rep1="'payment_service' => '\\\Gr4vy\\\model\\\PaymentServiceSnapshot',"
+var1="'payment_service' => 'PaymentServiceSnapshot'"
+rep1="'payment_service' => '\\\Gr4vy\\\model\\\PaymentService'"
 sed -i '' "s/$var1/$rep1/g" lib/model/*.php
 
 var1="\\\Gr4vy\\\model\\\Undefined"

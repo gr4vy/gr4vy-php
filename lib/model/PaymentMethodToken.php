@@ -64,7 +64,8 @@ class PaymentMethodToken implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'string',
         'id' => 'string',
         'token' => 'string',
-        'payment_service' => 'PaymentServiceSnapshot'
+        'status' => 'string',
+        'payment_service' => '\Gr4vy\model\PaymentService'
     ];
 
     /**
@@ -78,6 +79,7 @@ class PaymentMethodToken implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => null,
         'id' => null,
         'token' => null,
+        'status' => null,
         'payment_service' => null
     ];
 
@@ -111,6 +113,7 @@ class PaymentMethodToken implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'type',
         'id' => 'id',
         'token' => 'token',
+        'status' => 'status',
         'payment_service' => 'payment_service'
     ];
 
@@ -123,6 +126,7 @@ class PaymentMethodToken implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'setType',
         'id' => 'setId',
         'token' => 'setToken',
+        'status' => 'setStatus',
         'payment_service' => 'setPaymentService'
     ];
 
@@ -135,6 +139,7 @@ class PaymentMethodToken implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'getType',
         'id' => 'getId',
         'token' => 'getToken',
+        'status' => 'getStatus',
         'payment_service' => 'getPaymentService'
     ];
 
@@ -180,6 +185,10 @@ class PaymentMethodToken implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     const TYPE_PAYMENT_METHOD_TOKEN = 'payment-method-token';
+    const STATUS_PROCESSING = 'processing';
+    const STATUS_BUYER_APPROVAL_REQUIRED = 'buyer_approval_required';
+    const STATUS_SUCCEEDED = 'succeeded';
+    const STATUS_FAILED = 'failed';
 
     /**
      * Gets allowable values of the enum
@@ -190,6 +199,21 @@ class PaymentMethodToken implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         return [
             self::TYPE_PAYMENT_METHOD_TOKEN,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_PROCESSING,
+            self::STATUS_BUYER_APPROVAL_REQUIRED,
+            self::STATUS_SUCCEEDED,
+            self::STATUS_FAILED,
         ];
     }
 
@@ -211,6 +235,7 @@ class PaymentMethodToken implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['token'] = $data['token'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['payment_service'] = $data['payment_service'] ?? null;
     }
 
@@ -228,6 +253,15 @@ class PaymentMethodToken implements ModelInterface, ArrayAccess, \JsonSerializab
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'type', must be one of '%s'",
                 $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -325,6 +359,40 @@ class PaymentMethodToken implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setToken($token)
     {
         $this->container['token'] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status The state of the payment method.  - `processing` - The payment method is still being stored. - `buyer_approval_required` - The buyer still needs to provide   approval before the payment method can be stored. - `succeeded` - The payment method is approved and stored with all   relevant payment services. - `failed` - Storing the payment method did not succeed.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

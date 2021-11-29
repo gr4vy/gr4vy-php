@@ -73,7 +73,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => '\DateTime',
         'external_identifier' => 'string',
         'updated_at' => '\DateTime',
-        'payment_service' => 'PaymentServiceSnapshot'
+        'payment_service' => '\Gr4vy\model\PaymentService'
     ];
 
     /**
