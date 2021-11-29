@@ -67,7 +67,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'store' => 'bool',
         'intent' => 'string',
         'external_identifier' => 'string',
-        'environment' => 'string',
         'three_d_secure_data' => '\Gr4vy\model\ThreeDSecureDataV1V2'
     ];
 
@@ -85,7 +84,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'store' => null,
         'intent' => null,
         'external_identifier' => null,
-        'environment' => null,
         'three_d_secure_data' => null
     ];
 
@@ -122,7 +120,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'store' => 'store',
         'intent' => 'intent',
         'external_identifier' => 'external_identifier',
-        'environment' => 'environment',
         'three_d_secure_data' => 'three_d_secure_data'
     ];
 
@@ -138,7 +135,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'store' => 'setStore',
         'intent' => 'setIntent',
         'external_identifier' => 'setExternalIdentifier',
-        'environment' => 'setEnvironment',
         'three_d_secure_data' => 'setThreeDSecureData'
     ];
 
@@ -154,7 +150,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'store' => 'getStore',
         'intent' => 'getIntent',
         'external_identifier' => 'getExternalIdentifier',
-        'environment' => 'getEnvironment',
         'three_d_secure_data' => 'getThreeDSecureData'
     ];
 
@@ -201,9 +196,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
 
     const INTENT_AUTHORIZE = 'authorize';
     const INTENT_CAPTURE = 'capture';
-    const ENVIRONMENT_DEVELOPMENT = 'development';
-    const ENVIRONMENT_STAGING = 'staging';
-    const ENVIRONMENT_PRODUCTION = 'production';
 
     /**
      * Gets allowable values of the enum
@@ -215,20 +207,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         return [
             self::INTENT_AUTHORIZE,
             self::INTENT_CAPTURE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentAllowableValues()
-    {
-        return [
-            self::ENVIRONMENT_DEVELOPMENT,
-            self::ENVIRONMENT_STAGING,
-            self::ENVIRONMENT_PRODUCTION,
         ];
     }
 
@@ -253,7 +231,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['store'] = $data['store'] ?? false;
         $this->container['intent'] = $data['intent'] ?? INTENT_AUTHORIZE;
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
-        $this->container['environment'] = $data['environment'] ?? null;
         $this->container['three_d_secure_data'] = $data['three_d_secure_data'] ?? null;
     }
 
@@ -288,15 +265,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'intent', must be one of '%s'",
                 $this->container['intent'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($this->container['environment']) && !in_array($this->container['environment'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'environment', must be one of '%s'",
-                $this->container['environment'],
                 implode("', '", $allowedValues)
             );
         }
@@ -474,40 +442,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setExternalIdentifier($external_identifier)
     {
         $this->container['external_identifier'] = $external_identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets environment
-     *
-     * @return string|null
-     */
-    public function getEnvironment()
-    {
-        return $this->container['environment'];
-    }
-
-    /**
-     * Sets environment
-     *
-     * @param string|null $environment Defines the environment to create this transaction in. Setting this to anything other than `production` will force Gr4vy to use the payment a service configured for that environment.
-     *
-     * @return self
-     */
-    public function setEnvironment($environment)
-    {
-        $allowedValues = $this->getEnvironmentAllowableValues();
-        if (!is_null($environment) && !in_array($environment, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'environment', must be one of '%s'",
-                    $environment,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['environment'] = $environment;
 
         return $this;
     }

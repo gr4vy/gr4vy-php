@@ -79,9 +79,7 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_country_code' => 'string',
         'merchant_category_code' => 'string',
         'merchant_url' => 'string',
-        'credentials_mode' => 'string',
         'active' => 'bool',
-        'environments' => 'string[]',
         'position' => 'float',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
@@ -113,9 +111,7 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_country_code' => null,
         'merchant_category_code' => null,
         'merchant_url' => 'url',
-        'credentials_mode' => null,
         'active' => null,
-        'environments' => null,
         'position' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time'
@@ -166,9 +162,7 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_country_code' => 'merchant_country_code',
         'merchant_category_code' => 'merchant_category_code',
         'merchant_url' => 'merchant_url',
-        'credentials_mode' => 'credentials_mode',
         'active' => 'active',
-        'environments' => 'environments',
         'position' => 'position',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
@@ -198,9 +192,7 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_country_code' => 'setMerchantCountryCode',
         'merchant_category_code' => 'setMerchantCategoryCode',
         'merchant_url' => 'setMerchantUrl',
-        'credentials_mode' => 'setCredentialsMode',
         'active' => 'setActive',
-        'environments' => 'setEnvironments',
         'position' => 'setPosition',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
@@ -230,9 +222,7 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_country_code' => 'getMerchantCountryCode',
         'merchant_category_code' => 'getMerchantCategoryCode',
         'merchant_url' => 'getMerchantUrl',
-        'credentials_mode' => 'getCredentialsMode',
         'active' => 'getActive',
-        'environments' => 'getEnvironments',
         'position' => 'getPosition',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
@@ -283,11 +273,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATUS_PENDING = 'pending';
     const STATUS_CREATED = 'created';
     const STATUS_FAILED = 'failed';
-    const CREDENTIALS_MODE_SANDBOX = 'sandbox';
-    const CREDENTIALS_MODE_LIVE = 'live';
-    const ENVIRONMENTS_DEVELOPMENT = 'development';
-    const ENVIRONMENTS_STAGING = 'staging';
-    const ENVIRONMENTS_PRODUCTION = 'production';
 
     /**
      * Gets allowable values of the enum
@@ -312,33 +297,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_PENDING,
             self::STATUS_CREATED,
             self::STATUS_FAILED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCredentialsModeAllowableValues()
-    {
-        return [
-            self::CREDENTIALS_MODE_SANDBOX,
-            self::CREDENTIALS_MODE_LIVE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentsAllowableValues()
-    {
-        return [
-            self::ENVIRONMENTS_DEVELOPMENT,
-            self::ENVIRONMENTS_STAGING,
-            self::ENVIRONMENTS_PRODUCTION,
         ];
     }
 
@@ -375,9 +333,7 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['merchant_country_code'] = $data['merchant_country_code'] ?? null;
         $this->container['merchant_category_code'] = $data['merchant_category_code'] ?? null;
         $this->container['merchant_url'] = $data['merchant_url'] ?? null;
-        $this->container['credentials_mode'] = $data['credentials_mode'] ?? self::CREDENTIALS_MODE_LIVE;
         $this->container['active'] = $data['active'] ?? true;
-        $this->container['environments'] = $data['environments'] ?? null;
         $this->container['position'] = $data['position'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
@@ -480,23 +436,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['merchant_url']) && (mb_strlen($this->container['merchant_url']) > 2048)) {
             $invalidProperties[] = "invalid value for 'merchant_url', the character length must be smaller than or equal to 2048.";
-        }
-
-        $allowedValues = $this->getCredentialsModeAllowableValues();
-        if (!is_null($this->container['credentials_mode']) && !in_array($this->container['credentials_mode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'credentials_mode', must be one of '%s'",
-                $this->container['credentials_mode'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!is_null($this->container['environments']) && (count($this->container['environments']) > 3)) {
-            $invalidProperties[] = "invalid value for 'environments', number of items must be less than or equal to 3.";
-        }
-
-        if (!is_null($this->container['environments']) && (count($this->container['environments']) < 0)) {
-            $invalidProperties[] = "invalid value for 'environments', number of items must be greater than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -1038,40 +977,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets credentials_mode
-     *
-     * @return string|null
-     */
-    public function getCredentialsMode()
-    {
-        return $this->container['credentials_mode'];
-    }
-
-    /**
-     * Sets credentials_mode
-     *
-     * @param string|null $credentials_mode Defines if the credentials are intended for the service's live API or sandbox/test API.
-     *
-     * @return self
-     */
-    public function setCredentialsMode($credentials_mode)
-    {
-        $allowedValues = $this->getCredentialsModeAllowableValues();
-        if (!is_null($credentials_mode) && !in_array($credentials_mode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'credentials_mode', must be one of '%s'",
-                    $credentials_mode,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['credentials_mode'] = $credentials_mode;
-
-        return $this;
-    }
-
-    /**
      * Gets active
      *
      * @return bool|null
@@ -1091,46 +996,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setActive($active)
     {
         $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
-     * Gets environments
-     *
-     * @return string[]|null
-     */
-    public function getEnvironments()
-    {
-        return $this->container['environments'];
-    }
-
-    /**
-     * Sets environments
-     *
-     * @param string[]|null $environments Determines the Gr4vy environments in which this service should be available. This can be used in combination with the `environment` parameters in the payment method and transaction APIs to route transactions through this service.
-     *
-     * @return self
-     */
-    public function setEnvironments($environments)
-    {
-        $allowedValues = $this->getEnvironmentsAllowableValues();
-        if (!is_null($environments) && array_diff($environments, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'environments', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-        if (!is_null($environments) && (count($environments) > 3)) {
-            throw new \InvalidArgumentException('invalid value for $environments when calling PaymentService., number of items must be less than or equal to 3.');
-        }
-        if (!is_null($environments) && (count($environments) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $environments when calling PaymentService., number of items must be greater than or equal to 0.');
-        }
-        $this->container['environments'] = $environments;
 
         return $this;
     }

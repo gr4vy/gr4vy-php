@@ -68,8 +68,7 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_url' => 'string',
         'domain_names' => 'string[]',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'environments' => 'string[]'
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -87,8 +86,7 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_url' => 'url',
         'domain_names' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'environments' => null
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -125,8 +123,7 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_url' => 'merchant_url',
         'domain_names' => 'domain_names',
         'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
-        'environments' => 'environments'
+        'updated_at' => 'updated_at'
     ];
 
     /**
@@ -142,8 +139,7 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_url' => 'setMerchantUrl',
         'domain_names' => 'setDomainNames',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'environments' => 'setEnvironments'
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -159,8 +155,7 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_url' => 'getMerchantUrl',
         'domain_names' => 'getDomainNames',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'environments' => 'getEnvironments'
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -206,9 +201,7 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
 
     const TYPE_DIGITAL_WALLET = 'digital-wallet';
     const PROVIDER_APPLE = 'apple';
-    const ENVIRONMENTS_DEVELOPMENT = 'development';
-    const ENVIRONMENTS_STAGING = 'staging';
-    const ENVIRONMENTS_PRODUCTION = 'production';
+    const PROVIDER_GOOGLE = 'google';
 
     /**
      * Gets allowable values of the enum
@@ -231,20 +224,7 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::PROVIDER_APPLE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentsAllowableValues()
-    {
-        return [
-            self::ENVIRONMENTS_DEVELOPMENT,
-            self::ENVIRONMENTS_STAGING,
-            self::ENVIRONMENTS_PRODUCTION,
+            self::PROVIDER_GOOGLE,
         ];
     }
 
@@ -271,7 +251,6 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['domain_names'] = $data['domain_names'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['environments'] = $data['environments'] ?? null;
     }
 
     /**
@@ -307,14 +286,6 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['domain_names']) && (count($this->container['domain_names']) < 1)) {
             $invalidProperties[] = "invalid value for 'domain_names', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['environments']) && (count($this->container['environments']) > 3)) {
-            $invalidProperties[] = "invalid value for 'environments', number of items must be less than or equal to 3.";
-        }
-
-        if (!is_null($this->container['environments']) && (count($this->container['environments']) < 0)) {
-            $invalidProperties[] = "invalid value for 'environments', number of items must be greater than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -485,7 +456,7 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets domain_names
      *
-     * @param string[]|null $domain_names The list of fully qualified domain names that a digital wallet provider processes payments for.
+     * @param string[]|null $domain_names The list of domain names that a digital wallet can be used on. To use a digital wallet on a website, the domain of the site is required to be in this list.
      *
      * @return self
      */
@@ -547,46 +518,6 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets environments
-     *
-     * @return string[]|null
-     */
-    public function getEnvironments()
-    {
-        return $this->container['environments'];
-    }
-
-    /**
-     * Sets environments
-     *
-     * @param string[]|null $environments The Gr4vy environments in which this digital wallet is available.
-     *
-     * @return self
-     */
-    public function setEnvironments($environments)
-    {
-        $allowedValues = $this->getEnvironmentsAllowableValues();
-        if (!is_null($environments) && array_diff($environments, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'environments', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-        if (!is_null($environments) && (count($environments) > 3)) {
-            throw new \InvalidArgumentException('invalid value for $environments when calling DigitalWallet., number of items must be less than or equal to 3.');
-        }
-        if (!is_null($environments) && (count($environments) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $environments when calling DigitalWallet., number of items must be greater than or equal to 0.');
-        }
-        $this->container['environments'] = $environments;
 
         return $this;
     }

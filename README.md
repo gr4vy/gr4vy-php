@@ -37,6 +37,18 @@ try {
 }
 ```
 
+## Environment
+
+The SDK defaults the environment to "sandbox", to send transactions to production, set the environment in `Gr4vyConfig`:
+
+```php
+
+$config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation, false, "sandbox");
+
+$config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation, false, "production");
+
+```
+
 ## Gr4vy Embed
 
 To create a token for Gr4vy Embed, call the `config->getEmbedToken()` function
