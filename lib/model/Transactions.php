@@ -61,7 +61,7 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'items' => '\Gr4vy\model\Transaction[]',
+        'items' => '\Gr4vy\model\TransactionSummary[]',
         'limit' => 'int',
         'next_cursor' => 'string',
         'previous_cursor' => 'string'
@@ -252,7 +252,7 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return \Gr4vy\model\Transaction[]|null
+     * @return \Gr4vy\model\TransactionSummary[]|null
      */
     public function getItems()
     {
@@ -262,7 +262,7 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets items
      *
-     * @param \Gr4vy\model\Transaction[]|null $items A list of transactions.
+     * @param \Gr4vy\model\TransactionSummary[]|null $items A list of transactions.
      *
      * @return self
      */

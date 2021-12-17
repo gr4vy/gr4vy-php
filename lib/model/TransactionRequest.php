@@ -67,7 +67,11 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'store' => 'bool',
         'intent' => 'string',
         'external_identifier' => 'string',
-        'three_d_secure_data' => '\Gr4vy\model\ThreeDSecureDataV1V2'
+        'three_d_secure_data' => '\Gr4vy\model\ThreeDSecureDataV1V2',
+        'merchant_initiated' => 'bool',
+        'payment_source' => 'string',
+        'is_subsequent_payment' => 'bool',
+        'metadata' => 'array<string,string>'
     ];
 
     /**
@@ -84,7 +88,11 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'store' => null,
         'intent' => null,
         'external_identifier' => null,
-        'three_d_secure_data' => null
+        'three_d_secure_data' => null,
+        'merchant_initiated' => null,
+        'payment_source' => null,
+        'is_subsequent_payment' => null,
+        'metadata' => null
     ];
 
     /**
@@ -120,7 +128,11 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'store' => 'store',
         'intent' => 'intent',
         'external_identifier' => 'external_identifier',
-        'three_d_secure_data' => 'three_d_secure_data'
+        'three_d_secure_data' => 'three_d_secure_data',
+        'merchant_initiated' => 'merchant_initiated',
+        'payment_source' => 'payment_source',
+        'is_subsequent_payment' => 'is_subsequent_payment',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -135,7 +147,11 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'store' => 'setStore',
         'intent' => 'setIntent',
         'external_identifier' => 'setExternalIdentifier',
-        'three_d_secure_data' => 'setThreeDSecureData'
+        'three_d_secure_data' => 'setThreeDSecureData',
+        'merchant_initiated' => 'setMerchantInitiated',
+        'payment_source' => 'setPaymentSource',
+        'is_subsequent_payment' => 'setIsSubsequentPayment',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -150,7 +166,11 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'store' => 'getStore',
         'intent' => 'getIntent',
         'external_identifier' => 'getExternalIdentifier',
-        'three_d_secure_data' => 'getThreeDSecureData'
+        'three_d_secure_data' => 'getThreeDSecureData',
+        'merchant_initiated' => 'getMerchantInitiated',
+        'payment_source' => 'getPaymentSource',
+        'is_subsequent_payment' => 'getIsSubsequentPayment',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -196,6 +216,11 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
 
     const INTENT_AUTHORIZE = 'authorize';
     const INTENT_CAPTURE = 'capture';
+    const PAYMENT_SOURCE_ECOMMERCE = 'ecommerce';
+    const PAYMENT_SOURCE_MOTO = 'moto';
+    const PAYMENT_SOURCE_RECURRING = 'recurring';
+    const PAYMENT_SOURCE_INSTALLMENT = 'installment';
+    const PAYMENT_SOURCE_CARD_ON_FILE = 'card_on_file';
 
     /**
      * Gets allowable values of the enum
@@ -207,6 +232,22 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         return [
             self::INTENT_AUTHORIZE,
             self::INTENT_CAPTURE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPaymentSourceAllowableValues()
+    {
+        return [
+            self::PAYMENT_SOURCE_ECOMMERCE,
+            self::PAYMENT_SOURCE_MOTO,
+            self::PAYMENT_SOURCE_RECURRING,
+            self::PAYMENT_SOURCE_INSTALLMENT,
+            self::PAYMENT_SOURCE_CARD_ON_FILE,
         ];
     }
 
@@ -232,6 +273,10 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['intent'] = $data['intent'] ?? INTENT_AUTHORIZE;
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['three_d_secure_data'] = $data['three_d_secure_data'] ?? null;
+        $this->container['merchant_initiated'] = $data['merchant_initiated'] ?? false;
+        $this->container['payment_source'] = $data['payment_source'] ?? null;
+        $this->container['is_subsequent_payment'] = $data['is_subsequent_payment'] ?? false;
+        $this->container['metadata'] = $data['metadata'] ?? null;
     }
 
     /**
@@ -267,6 +312,19 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->container['intent'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        $allowedValues = $this->getPaymentSourceAllowableValues();
+        if (!is_null($this->container['payment_source']) && !in_array($this->container['payment_source'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'payment_source', must be one of '%s'",
+                $this->container['payment_source'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 20)) {
+            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 20.";
         }
 
         return $invalidProperties;
@@ -466,6 +524,116 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setThreeDSecureData($three_d_secure_data)
     {
         $this->container['three_d_secure_data'] = $three_d_secure_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_initiated
+     *
+     * @return bool|null
+     */
+    public function getMerchantInitiated()
+    {
+        return $this->container['merchant_initiated'];
+    }
+
+    /**
+     * Sets merchant_initiated
+     *
+     * @param bool|null $merchant_initiated Indicates whether the transaction was initiated by the merchant (true) or customer (false).
+     *
+     * @return self
+     */
+    public function setMerchantInitiated($merchant_initiated)
+    {
+        $this->container['merchant_initiated'] = $merchant_initiated;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_source
+     *
+     * @return string|null
+     */
+    public function getPaymentSource()
+    {
+        return $this->container['payment_source'];
+    }
+
+    /**
+     * Sets payment_source
+     *
+     * @param string|null $payment_source The source of the transaction. Defaults to 'ecommerce'.
+     *
+     * @return self
+     */
+    public function setPaymentSource($payment_source)
+    {
+        $allowedValues = $this->getPaymentSourceAllowableValues();
+        if (!is_null($payment_source) && !in_array($payment_source, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'payment_source', must be one of '%s'",
+                    $payment_source,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payment_source'] = $payment_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_subsequent_payment
+     *
+     * @return bool|null
+     */
+    public function getIsSubsequentPayment()
+    {
+        return $this->container['is_subsequent_payment'];
+    }
+
+    /**
+     * Sets is_subsequent_payment
+     *
+     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note this flag is only compatible with payment_source set to [recurring, installment, card_on_file] and will be ignored for other values or if payment_source is not present.
+     *
+     * @return self
+     */
+    public function setIsSubsequentPayment($is_subsequent_payment)
+    {
+        $this->container['is_subsequent_payment'] = $is_subsequent_payment;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string>|null $metadata Any additional information about the transaction that you would like to store as key-value pairs. This data is passed to payment service providers that support it. Please visit https://gr4vy.com/docs/ under `Connections` for more information on how specific providers support metadata.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+
+        if (!is_null($metadata) && (count($metadata) > 20)) {
+            throw new \InvalidArgumentException('invalid value for $metadata when calling TransactionRequest., number of items must be less than or equal to 20.');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
