@@ -1,12 +1,9 @@
-# # Transaction
+# # TransactionSummary
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**merchant_initiated** | **bool** | Indicates whether the transaction was initiated by the merchant (true) or customer (false). | [optional] [default to false]
-**payment_source** | **string** | The source of the transaction. Defaults to &#39;ecommerce&#39;. | [optional]
-**is_subsequent_payment** | **bool** | Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note this flag is only compatible with payment_source set to [recurring, installment, card_on_file] and will be ignored for other values or if payment_source is not present. | [optional] [default to false]
 **type** | **string** | The type of this resource. Is always &#x60;transaction&#x60;. | [optional]
 **id** | **string** | The unique identifier for this transaction. | [optional]
 **status** | **string** | The status of the transaction. The status may change over time as asynchronous  processing events occur. | [optional]

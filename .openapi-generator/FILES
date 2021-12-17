@@ -70,6 +70,7 @@ docs/Model/TransactionCaptureRequest.md
 docs/Model/TransactionPaymentMethodRequest.md
 docs/Model/TransactionRefundRequest.md
 docs/Model/TransactionRequest.md
+docs/Model/TransactionSummary.md
 docs/Model/Transactions.md
 docs/Model/TransactionsBatchCaptureRequest.md
 docs/Model/UserRequest.md
@@ -149,6 +150,7 @@ lib/model/TransactionCaptureRequest.php
 lib/model/TransactionPaymentMethodRequest.php
 lib/model/TransactionRefundRequest.php
 lib/model/TransactionRequest.php
+lib/model/TransactionSummary.php
 lib/model/Transactions.php
 lib/model/TransactionsBatchCaptureRequest.php
 lib/model/UserRequest.php
