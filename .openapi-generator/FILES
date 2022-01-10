@@ -19,6 +19,7 @@ docs/Model/BuyerSnapshot.md
 docs/Model/BuyerUpdate.md
 docs/Model/Buyers.md
 docs/Model/CardRequest.md
+docs/Model/CartItem.md
 docs/Model/DigitalWallet.md
 docs/Model/DigitalWalletRequest.md
 docs/Model/DigitalWalletUpdate.md
@@ -98,6 +99,7 @@ lib/model/BuyerSnapshot.php
 lib/model/BuyerUpdate.php
 lib/model/Buyers.php
 lib/model/CardRequest.php
+lib/model/CartItem.php
 lib/model/DigitalWallet.php
 lib/model/DigitalWalletRequest.php
 lib/model/DigitalWalletUpdate.php

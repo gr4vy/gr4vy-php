@@ -61,9 +61,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'merchant_initiated' => 'bool',
-        'payment_source' => 'string',
-        'is_subsequent_payment' => 'bool',
         'type' => 'string',
         'id' => 'string',
         'status' => 'string',
@@ -76,7 +73,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => '\DateTime',
         'external_identifier' => 'string',
         'updated_at' => '\DateTime',
-        'payment_service' => '\Gr4vy\model\PaymentService'
+        'payment_service' => '\Gr4vy\model\PaymentService',
+        'merchant_initiated' => 'bool',
+        'payment_source' => 'string',
+        'is_subsequent_payment' => 'bool',
+        'cart_items' => '\Gr4vy\model\CartItem[]'
     ];
 
     /**
@@ -87,9 +88,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'merchant_initiated' => null,
-        'payment_source' => null,
-        'is_subsequent_payment' => null,
         'type' => null,
         'id' => 'uuid',
         'status' => null,
@@ -102,7 +100,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'date-time',
         'external_identifier' => null,
         'updated_at' => 'date-time',
-        'payment_service' => null
+        'payment_service' => null,
+        'merchant_initiated' => null,
+        'payment_source' => null,
+        'is_subsequent_payment' => null,
+        'cart_items' => null
     ];
 
     /**
@@ -132,9 +134,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'merchant_initiated' => 'merchant_initiated',
-        'payment_source' => 'payment_source',
-        'is_subsequent_payment' => 'is_subsequent_payment',
         'type' => 'type',
         'id' => 'id',
         'status' => 'status',
@@ -147,7 +146,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'created_at',
         'external_identifier' => 'external_identifier',
         'updated_at' => 'updated_at',
-        'payment_service' => 'payment_service'
+        'payment_service' => 'payment_service',
+        'merchant_initiated' => 'merchant_initiated',
+        'payment_source' => 'payment_source',
+        'is_subsequent_payment' => 'is_subsequent_payment',
+        'cart_items' => 'cart_items'
     ];
 
     /**
@@ -156,9 +159,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'merchant_initiated' => 'setMerchantInitiated',
-        'payment_source' => 'setPaymentSource',
-        'is_subsequent_payment' => 'setIsSubsequentPayment',
         'type' => 'setType',
         'id' => 'setId',
         'status' => 'setStatus',
@@ -171,7 +171,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'setCreatedAt',
         'external_identifier' => 'setExternalIdentifier',
         'updated_at' => 'setUpdatedAt',
-        'payment_service' => 'setPaymentService'
+        'payment_service' => 'setPaymentService',
+        'merchant_initiated' => 'setMerchantInitiated',
+        'payment_source' => 'setPaymentSource',
+        'is_subsequent_payment' => 'setIsSubsequentPayment',
+        'cart_items' => 'setCartItems'
     ];
 
     /**
@@ -180,9 +184,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'merchant_initiated' => 'getMerchantInitiated',
-        'payment_source' => 'getPaymentSource',
-        'is_subsequent_payment' => 'getIsSubsequentPayment',
         'type' => 'getType',
         'id' => 'getId',
         'status' => 'getStatus',
@@ -195,7 +196,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'getCreatedAt',
         'external_identifier' => 'getExternalIdentifier',
         'updated_at' => 'getUpdatedAt',
-        'payment_service' => 'getPaymentService'
+        'payment_service' => 'getPaymentService',
+        'merchant_initiated' => 'getMerchantInitiated',
+        'payment_source' => 'getPaymentSource',
+        'is_subsequent_payment' => 'getIsSubsequentPayment',
+        'cart_items' => 'getCartItems'
     ];
 
     /**
@@ -239,11 +244,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    const PAYMENT_SOURCE_ECOMMERCE = 'ecommerce';
-    const PAYMENT_SOURCE_MOTO = 'moto';
-    const PAYMENT_SOURCE_RECURRING = 'recurring';
-    const PAYMENT_SOURCE_INSTALLMENT = 'installment';
-    const PAYMENT_SOURCE_CARD_ON_FILE = 'card_on_file';
     const TYPE_TRANSACTION = 'transaction';
     const STATUS_PROCESSING = 'processing';
     const STATUS_PROCESSING_FAILED = 'processing_failed';
@@ -266,22 +266,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATUS_BUYER_APPROVAL_DECLINED = 'buyer_approval_declined';
     const STATUS_BUYER_APPROVAL_FAILED = 'buyer_approval_failed';
     const STATUS_BUYER_APPROVAL_TIMEDOUT = 'buyer_approval_timedout';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPaymentSourceAllowableValues()
-    {
-        return [
-            self::PAYMENT_SOURCE_ECOMMERCE,
-            self::PAYMENT_SOURCE_MOTO,
-            self::PAYMENT_SOURCE_RECURRING,
-            self::PAYMENT_SOURCE_INSTALLMENT,
-            self::PAYMENT_SOURCE_CARD_ON_FILE,
-        ];
-    }
+    const PAYMENT_SOURCE_ECOMMERCE = 'ecommerce';
+    const PAYMENT_SOURCE_MOTO = 'moto';
+    const PAYMENT_SOURCE_RECURRING = 'recurring';
+    const PAYMENT_SOURCE_INSTALLMENT = 'installment';
+    const PAYMENT_SOURCE_CARD_ON_FILE = 'card_on_file';
 
     /**
      * Gets allowable values of the enum
@@ -328,6 +317,22 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPaymentSourceAllowableValues()
+    {
+        return [
+            self::PAYMENT_SOURCE_ECOMMERCE,
+            self::PAYMENT_SOURCE_MOTO,
+            self::PAYMENT_SOURCE_RECURRING,
+            self::PAYMENT_SOURCE_INSTALLMENT,
+            self::PAYMENT_SOURCE_CARD_ON_FILE,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -342,9 +347,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['merchant_initiated'] = $data['merchant_initiated'] ?? false;
-        $this->container['payment_source'] = $data['payment_source'] ?? null;
-        $this->container['is_subsequent_payment'] = $data['is_subsequent_payment'] ?? false;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
@@ -358,6 +360,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['payment_service'] = $data['payment_service'] ?? null;
+        $this->container['merchant_initiated'] = $data['merchant_initiated'] ?? false;
+        $this->container['payment_source'] = $data['payment_source'] ?? null;
+        $this->container['is_subsequent_payment'] = $data['is_subsequent_payment'] ?? false;
+        $this->container['cart_items'] = $data['cart_items'] ?? null;
     }
 
     /**
@@ -368,15 +374,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getPaymentSourceAllowableValues();
-        if (!is_null($this->container['payment_source']) && !in_array($this->container['payment_source'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'payment_source', must be one of '%s'",
-                $this->container['payment_source'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
@@ -420,6 +417,15 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'refunded_amount', must be bigger than or equal to 0.";
         }
 
+        $allowedValues = $this->getPaymentSourceAllowableValues();
+        if (!is_null($this->container['payment_source']) && !in_array($this->container['payment_source'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'payment_source', must be one of '%s'",
+                $this->container['payment_source'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -434,88 +440,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets merchant_initiated
-     *
-     * @return bool|null
-     */
-    public function getMerchantInitiated()
-    {
-        return $this->container['merchant_initiated'];
-    }
-
-    /**
-     * Sets merchant_initiated
-     *
-     * @param bool|null $merchant_initiated Indicates whether the transaction was initiated by the merchant (true) or customer (false).
-     *
-     * @return self
-     */
-    public function setMerchantInitiated($merchant_initiated)
-    {
-        $this->container['merchant_initiated'] = $merchant_initiated;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_source
-     *
-     * @return string|null
-     */
-    public function getPaymentSource()
-    {
-        return $this->container['payment_source'];
-    }
-
-    /**
-     * Sets payment_source
-     *
-     * @param string|null $payment_source The source of the transaction. Defaults to 'ecommerce'.
-     *
-     * @return self
-     */
-    public function setPaymentSource($payment_source)
-    {
-        $allowedValues = $this->getPaymentSourceAllowableValues();
-        if (!is_null($payment_source) && !in_array($payment_source, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'payment_source', must be one of '%s'",
-                    $payment_source,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['payment_source'] = $payment_source;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_subsequent_payment
-     *
-     * @return bool|null
-     */
-    public function getIsSubsequentPayment()
-    {
-        return $this->container['is_subsequent_payment'];
-    }
-
-    /**
-     * Sets is_subsequent_payment
-     *
-     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note this flag is only compatible with payment_source set to [recurring, installment, card_on_file] and will be ignored for other values or if payment_source is not present.
-     *
-     * @return self
-     */
-    public function setIsSubsequentPayment($is_subsequent_payment)
-    {
-        $this->container['is_subsequent_payment'] = $is_subsequent_payment;
-
-        return $this;
-    }
 
     /**
      * Gets type
@@ -869,6 +793,114 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentService($payment_service)
     {
         $this->container['payment_service'] = $payment_service;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_initiated
+     *
+     * @return bool|null
+     */
+    public function getMerchantInitiated()
+    {
+        return $this->container['merchant_initiated'];
+    }
+
+    /**
+     * Sets merchant_initiated
+     *
+     * @param bool|null $merchant_initiated Indicates whether the transaction was initiated by the merchant (true) or customer (false).
+     *
+     * @return self
+     */
+    public function setMerchantInitiated($merchant_initiated)
+    {
+        $this->container['merchant_initiated'] = $merchant_initiated;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_source
+     *
+     * @return string|null
+     */
+    public function getPaymentSource()
+    {
+        return $this->container['payment_source'];
+    }
+
+    /**
+     * Sets payment_source
+     *
+     * @param string|null $payment_source The source of the transaction. Defaults to `ecommerce`.
+     *
+     * @return self
+     */
+    public function setPaymentSource($payment_source)
+    {
+        $allowedValues = $this->getPaymentSourceAllowableValues();
+        if (!is_null($payment_source) && !in_array($payment_source, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'payment_source', must be one of '%s'",
+                    $payment_source,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['payment_source'] = $payment_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_subsequent_payment
+     *
+     * @return bool|null
+     */
+    public function getIsSubsequentPayment()
+    {
+        return $this->container['is_subsequent_payment'];
+    }
+
+    /**
+     * Sets is_subsequent_payment
+     *
+     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note this flag is only compatible with `payment_source` set to `recurring`, `installment`, or `card_on_file` and will be ignored for other values or if `payment_source` is not present.
+     *
+     * @return self
+     */
+    public function setIsSubsequentPayment($is_subsequent_payment)
+    {
+        $this->container['is_subsequent_payment'] = $is_subsequent_payment;
+
+        return $this;
+    }
+
+    /**
+     * Gets cart_items
+     *
+     * @return \Gr4vy\model\CartItem[]|null
+     */
+    public function getCartItems()
+    {
+        return $this->container['cart_items'];
+    }
+
+    /**
+     * Sets cart_items
+     *
+     * @param \Gr4vy\model\CartItem[]|null $cart_items An array of cart items that represents the line items of a transaction.
+     *
+     * @return self
+     */
+    public function setCartItems($cart_items)
+    {
+
+
+        $this->container['cart_items'] = $cart_items;
 
         return $this;
     }
