@@ -71,7 +71,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'merchant_initiated' => 'bool',
         'payment_source' => 'string',
         'is_subsequent_payment' => 'bool',
-        'metadata' => 'array<string,string>'
+        'metadata' => 'array<string,string>',
+        'cart_items' => '\Gr4vy\model\CartItem[]'
     ];
 
     /**
@@ -92,7 +93,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'merchant_initiated' => null,
         'payment_source' => null,
         'is_subsequent_payment' => null,
-        'metadata' => null
+        'metadata' => null,
+        'cart_items' => null
     ];
 
     /**
@@ -132,7 +134,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'merchant_initiated' => 'merchant_initiated',
         'payment_source' => 'payment_source',
         'is_subsequent_payment' => 'is_subsequent_payment',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'cart_items' => 'cart_items'
     ];
 
     /**
@@ -151,7 +154,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'merchant_initiated' => 'setMerchantInitiated',
         'payment_source' => 'setPaymentSource',
         'is_subsequent_payment' => 'setIsSubsequentPayment',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'cart_items' => 'setCartItems'
     ];
 
     /**
@@ -170,7 +174,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'merchant_initiated' => 'getMerchantInitiated',
         'payment_source' => 'getPaymentSource',
         'is_subsequent_payment' => 'getIsSubsequentPayment',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'cart_items' => 'getCartItems'
     ];
 
     /**
@@ -277,6 +282,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['payment_source'] = $data['payment_source'] ?? null;
         $this->container['is_subsequent_payment'] = $data['is_subsequent_payment'] ?? false;
         $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['cart_items'] = $data['cart_items'] ?? null;
     }
 
     /**
@@ -325,6 +331,10 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
 
         if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 20)) {
             $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 20.";
+        }
+
+        if (!is_null($this->container['cart_items']) && (count($this->container['cart_items']) > 249)) {
+            $invalidProperties[] = "invalid value for 'cart_items', number of items must be less than or equal to 249.";
         }
 
         return $invalidProperties;
@@ -565,7 +575,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets payment_source
      *
-     * @param string|null $payment_source The source of the transaction. Defaults to 'ecommerce'.
+     * @param string|null $payment_source The source of the transaction. Defaults to `ecommerce`.
      *
      * @return self
      */
@@ -599,7 +609,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets is_subsequent_payment
      *
-     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note this flag is only compatible with payment_source set to [recurring, installment, card_on_file] and will be ignored for other values or if payment_source is not present.
+     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note this flag is only compatible with `payment_source` set to `recurring`, `installment`, or `card_on_file` and will be ignored for other values or if `payment_source` is not present.
      *
      * @return self
      */
@@ -634,6 +644,34 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('invalid value for $metadata when calling TransactionRequest., number of items must be less than or equal to 20.');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets cart_items
+     *
+     * @return \Gr4vy\model\CartItem[]|null
+     */
+    public function getCartItems()
+    {
+        return $this->container['cart_items'];
+    }
+
+    /**
+     * Sets cart_items
+     *
+     * @param \Gr4vy\model\CartItem[]|null $cart_items An array of cart items that represents the line items of a transaction.
+     *
+     * @return self
+     */
+    public function setCartItems($cart_items)
+    {
+
+        if (!is_null($cart_items) && (count($cart_items) > 249)) {
+            throw new \InvalidArgumentException('invalid value for $cart_items when calling TransactionRequest., number of items must be less than or equal to 249.');
+        }
+        $this->container['cart_items'] = $cart_items;
 
         return $this;
     }
