@@ -58,6 +58,7 @@ docs/Model/PaymentServices.md
 docs/Model/RedirectRequest.md
 docs/Model/ResetPasswordRequest.md
 docs/Model/SetPasswordRequest.md
+docs/Model/StatementDescriptor.md
 docs/Model/TaxId.md
 docs/Model/ThreeDSecureData.md
 docs/Model/ThreeDSecureDataV1.md
@@ -139,6 +140,7 @@ lib/model/PaymentServices.php
 lib/model/RedirectRequest.php
 lib/model/ResetPasswordRequest.php
 lib/model/SetPasswordRequest.php
+lib/model/StatementDescriptor.php
 lib/model/TaxId.php
 lib/model/ThreeDSecureData.php
 lib/model/ThreeDSecureDataV1.php

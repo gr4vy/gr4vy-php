@@ -77,6 +77,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_initiated' => 'bool',
         'payment_source' => 'string',
         'is_subsequent_payment' => 'bool',
+        'statement_descriptor' => 'StatementDescriptor',
         'cart_items' => '\Gr4vy\model\CartItem[]'
     ];
 
@@ -104,6 +105,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_initiated' => null,
         'payment_source' => null,
         'is_subsequent_payment' => null,
+        'statement_descriptor' => null,
         'cart_items' => null
     ];
 
@@ -150,6 +152,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_initiated' => 'merchant_initiated',
         'payment_source' => 'payment_source',
         'is_subsequent_payment' => 'is_subsequent_payment',
+        'statement_descriptor' => 'statement_descriptor',
         'cart_items' => 'cart_items'
     ];
 
@@ -175,6 +178,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_initiated' => 'setMerchantInitiated',
         'payment_source' => 'setPaymentSource',
         'is_subsequent_payment' => 'setIsSubsequentPayment',
+        'statement_descriptor' => 'setStatementDescriptor',
         'cart_items' => 'setCartItems'
     ];
 
@@ -200,6 +204,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_initiated' => 'getMerchantInitiated',
         'payment_source' => 'getPaymentSource',
         'is_subsequent_payment' => 'getIsSubsequentPayment',
+        'statement_descriptor' => 'getStatementDescriptor',
         'cart_items' => 'getCartItems'
     ];
 
@@ -363,6 +368,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['merchant_initiated'] = $data['merchant_initiated'] ?? false;
         $this->container['payment_source'] = $data['payment_source'] ?? null;
         $this->container['is_subsequent_payment'] = $data['is_subsequent_payment'] ?? false;
+        $this->container['statement_descriptor'] = $data['statement_descriptor'] ?? null;
         $this->container['cart_items'] = $data['cart_items'] ?? null;
     }
 
@@ -875,6 +881,30 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsSubsequentPayment($is_subsequent_payment)
     {
         $this->container['is_subsequent_payment'] = $is_subsequent_payment;
+
+        return $this;
+    }
+
+    /**
+     * Gets statement_descriptor
+     *
+     * @return StatementDescriptor|null
+     */
+    public function getStatementDescriptor()
+    {
+        return $this->container['statement_descriptor'];
+    }
+
+    /**
+     * Sets statement_descriptor
+     *
+     * @param StatementDescriptor|null $statement_descriptor statement_descriptor
+     *
+     * @return self
+     */
+    public function setStatementDescriptor($statement_descriptor)
+    {
+        $this->container['statement_descriptor'] = $statement_descriptor;
 
         return $this;
     }
