@@ -72,6 +72,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'payment_source' => 'string',
         'is_subsequent_payment' => 'bool',
         'metadata' => 'array<string,string>',
+        'statement_descriptor' => 'StatementDescriptor',
         'cart_items' => '\Gr4vy\model\CartItem[]'
     ];
 
@@ -94,6 +95,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'payment_source' => null,
         'is_subsequent_payment' => null,
         'metadata' => null,
+        'statement_descriptor' => null,
         'cart_items' => null
     ];
 
@@ -135,6 +137,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'payment_source' => 'payment_source',
         'is_subsequent_payment' => 'is_subsequent_payment',
         'metadata' => 'metadata',
+        'statement_descriptor' => 'statement_descriptor',
         'cart_items' => 'cart_items'
     ];
 
@@ -155,6 +158,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'payment_source' => 'setPaymentSource',
         'is_subsequent_payment' => 'setIsSubsequentPayment',
         'metadata' => 'setMetadata',
+        'statement_descriptor' => 'setStatementDescriptor',
         'cart_items' => 'setCartItems'
     ];
 
@@ -175,6 +179,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'payment_source' => 'getPaymentSource',
         'is_subsequent_payment' => 'getIsSubsequentPayment',
         'metadata' => 'getMetadata',
+        'statement_descriptor' => 'getStatementDescriptor',
         'cart_items' => 'getCartItems'
     ];
 
@@ -282,6 +287,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['payment_source'] = $data['payment_source'] ?? null;
         $this->container['is_subsequent_payment'] = $data['is_subsequent_payment'] ?? false;
         $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['statement_descriptor'] = $data['statement_descriptor'] ?? null;
         $this->container['cart_items'] = $data['cart_items'] ?? null;
     }
 
@@ -644,6 +650,30 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('invalid value for $metadata when calling TransactionRequest., number of items must be less than or equal to 20.');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets statement_descriptor
+     *
+     * @return StatementDescriptor|null
+     */
+    public function getStatementDescriptor()
+    {
+        return $this->container['statement_descriptor'];
+    }
+
+    /**
+     * Sets statement_descriptor
+     *
+     * @param StatementDescriptor|null $statement_descriptor statement_descriptor
+     *
+     * @return self
+     */
+    public function setStatementDescriptor($statement_descriptor)
+    {
+        $this->container['statement_descriptor'] = $statement_descriptor;
 
         return $this;
     }
