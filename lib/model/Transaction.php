@@ -262,6 +262,9 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATUS_AUTHORIZATION_FAILED = 'authorization_failed';
     const STATUS_AUTHORIZATION_EXPIRED = 'authorization_expired';
     const STATUS_AUTHORIZATION_VOIDED = 'authorization_voided';
+    const STATUS_AUTHORIZATION_VOID_PENDING = 'authorization_void_pending';
+    const STATUS_AUTHORIZATION_VOID_DECLINED = 'authorization_void_declined';
+    const STATUS_AUTHORIZATION_VOID_FAILED = 'authorization_void_failed';
     const STATUS_REFUND_SUCCEEDED = 'refund_succeeded';
     const STATUS_REFUND_PENDING = 'refund_pending';
     const STATUS_REFUND_DECLINED = 'refund_declined';
@@ -309,6 +312,9 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_AUTHORIZATION_FAILED,
             self::STATUS_AUTHORIZATION_EXPIRED,
             self::STATUS_AUTHORIZATION_VOIDED,
+            self::STATUS_AUTHORIZATION_VOID_PENDING,
+            self::STATUS_AUTHORIZATION_VOID_DECLINED,
+            self::STATUS_AUTHORIZATION_VOID_FAILED,
             self::STATUS_REFUND_SUCCEEDED,
             self::STATUS_REFUND_PENDING,
             self::STATUS_REFUND_DECLINED,

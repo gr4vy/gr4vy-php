@@ -288,7 +288,7 @@ class StatementDescriptor implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string|null $name Reflects your doing business as (DBA) name.  Other validations: 1. Contains only Latin characters. 2. Contain at least one letter 3. Does not contain any of the special characters `< > \\ ' \" *` 4. Supports:   1. Lowercase: `a-z`   2. Uppercase: `A-Z`   3. Numbers: `0-9`   4. Spaces: ` `   5. Special characters: `. , _ - ? + /`
+     * @param string|null $name Reflects your doing business as (DBA) name.  Other validations:  1. Contains only Latin characters. 2. Contain at least one letter 3. Does not contain any of the special characters `< > \\ ' \" *` 4. Supports:   1. Lower case: `a-z`   2. Upper case: `A-Z`   3. Numbers: `0-9`   4. Spaces: ` `   5. Special characters: `. , _ - ? + /`.
      *
      * @return self
      */
@@ -319,7 +319,7 @@ class StatementDescriptor implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets description
      *
-     * @param string|null $description A short description about the purchase.  Other validations: 1. Contains only Latin characters. 2. Contain at least one letter 3. Does not contain any of the special characters `< > \\ ' \" *` 4. Supports:   1. Lowercase: `a-z`   2. Uppercase: `A-Z`   3. Numbers: `0-9`   4. Spaces: ` `   5. Special characters: `. , _ - ? + /`
+     * @param string|null $description A short description about the purchase.  Other validations: 1. Contains only Latin characters. 2. Contain at least one letter 3. Does not contain any of the special characters `< > \\ ' \" *` 4. Supports:   1. Lower case: `a-z`   2. Upper case: `A-Z`   3. Numbers: `0-9`   4. Spaces: ` `   5. Special characters: `. , _ - ? + /`.
      *
      * @return self
      */

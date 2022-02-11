@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * PaymentOptionContext Class Doc Comment
  *
  * @category Class
- * @description Additional context specific to the payment option. This is currently only returned for Apple Pay.
+ * @description Additional context specific to the payment option. This is currently only returned for Apple Pay and Google Pay.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -169,45 +169,6 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-    const SUPPORTED_SCHEMES_AMEX = 'amex';
-    const SUPPORTED_SCHEMES_CARTES_BANCAIRES = 'cartesBancaires';
-    const SUPPORTED_SCHEMES_DISCOVER = 'discover';
-    const SUPPORTED_SCHEMES_EFTPOS = 'eftpos';
-    const SUPPORTED_SCHEMES_ELECTRON = 'electron';
-    const SUPPORTED_SCHEMES_ELO = 'elo';
-    const SUPPORTED_SCHEMES_INTERAC = 'interac';
-    const SUPPORTED_SCHEMES_JCB = 'jcb';
-    const SUPPORTED_SCHEMES_MADA = 'mada';
-    const SUPPORTED_SCHEMES_MAESTRO = 'maestro';
-    const SUPPORTED_SCHEMES_MASTER_CARD = 'masterCard';
-    const SUPPORTED_SCHEMES_PRIVATE_LABEL = 'privateLabel';
-    const SUPPORTED_SCHEMES_VISA = 'visa';
-    const SUPPORTED_SCHEMES_V_PAY = 'vPay';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSupportedSchemesAllowableValues()
-    {
-        return [
-            self::SUPPORTED_SCHEMES_AMEX,
-            self::SUPPORTED_SCHEMES_CARTES_BANCAIRES,
-            self::SUPPORTED_SCHEMES_DISCOVER,
-            self::SUPPORTED_SCHEMES_EFTPOS,
-            self::SUPPORTED_SCHEMES_ELECTRON,
-            self::SUPPORTED_SCHEMES_ELO,
-            self::SUPPORTED_SCHEMES_INTERAC,
-            self::SUPPORTED_SCHEMES_JCB,
-            self::SUPPORTED_SCHEMES_MADA,
-            self::SUPPORTED_SCHEMES_MAESTRO,
-            self::SUPPORTED_SCHEMES_MASTER_CARD,
-            self::SUPPORTED_SCHEMES_PRIVATE_LABEL,
-            self::SUPPORTED_SCHEMES_VISA,
-            self::SUPPORTED_SCHEMES_V_PAY,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -265,7 +226,7 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets merchant_name
      *
-     * @param string|null $merchant_name Display name of the merchant for Apple Pay.
+     * @param string|null $merchant_name Display name of the merchant as registered with the digital wallet provider.
      *
      * @return self
      */
@@ -289,21 +250,12 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets supported_schemes
      *
-     * @param string[]|null $supported_schemes Supported schemes for Apple Pay.
+     * @param string[]|null $supported_schemes Card schemes supported by the digital wallet provider.
      *
      * @return self
      */
     public function setSupportedSchemes($supported_schemes)
     {
-        $allowedValues = $this->getSupportedSchemesAllowableValues();
-        if (!is_null($supported_schemes) && array_diff($supported_schemes, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'supported_schemes', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['supported_schemes'] = $supported_schemes;
 
         return $this;

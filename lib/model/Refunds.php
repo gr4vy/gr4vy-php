@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentServiceDefinitionSupportedFeatures
+ * Refunds
  *
  * PHP version 7.2
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * PaymentServiceDefinitionSupportedFeatures Class Doc Comment
+ * Refunds Class Doc Comment
  *
  * @category Class
- * @description Features supported by the payment definition.
+ * @description A list of refunds.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, ArrayAccess, \JsonSerializable
+class Refunds implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PaymentServiceDefinition_supported_features';
+    protected static $openAPIModelName = 'Refunds';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,10 +61,10 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'payment_method_tokenization' => 'bool',
-        'three_d_secure_hosted' => 'bool',
-        'three_d_secure_pass_through' => 'bool',
-        'network_tokens' => 'bool'
+        'items' => '\Gr4vy\model\Refund[]',
+        'limit' => 'int',
+        'next_cursor' => 'string',
+        'previous_cursor' => 'string'
     ];
 
     /**
@@ -75,10 +75,10 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'payment_method_tokenization' => null,
-        'three_d_secure_hosted' => null,
-        'three_d_secure_pass_through' => null,
-        'network_tokens' => null
+        'items' => null,
+        'limit' => 'int32',
+        'next_cursor' => null,
+        'previous_cursor' => null
     ];
 
     /**
@@ -108,10 +108,10 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'payment_method_tokenization' => 'payment_method_tokenization',
-        'three_d_secure_hosted' => 'three_d_secure_hosted',
-        'three_d_secure_pass_through' => 'three_d_secure_pass_through',
-        'network_tokens' => 'network_tokens'
+        'items' => 'items',
+        'limit' => 'limit',
+        'next_cursor' => 'next_cursor',
+        'previous_cursor' => 'previous_cursor'
     ];
 
     /**
@@ -120,10 +120,10 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'payment_method_tokenization' => 'setPaymentMethodTokenization',
-        'three_d_secure_hosted' => 'setThreeDSecureHosted',
-        'three_d_secure_pass_through' => 'setThreeDSecurePassThrough',
-        'network_tokens' => 'setNetworkTokens'
+        'items' => 'setItems',
+        'limit' => 'setLimit',
+        'next_cursor' => 'setNextCursor',
+        'previous_cursor' => 'setPreviousCursor'
     ];
 
     /**
@@ -132,10 +132,10 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'payment_method_tokenization' => 'getPaymentMethodTokenization',
-        'three_d_secure_hosted' => 'getThreeDSecureHosted',
-        'three_d_secure_pass_through' => 'getThreeDSecurePassThrough',
-        'network_tokens' => 'getNetworkTokens'
+        'items' => 'getItems',
+        'limit' => 'getLimit',
+        'next_cursor' => 'getNextCursor',
+        'previous_cursor' => 'getPreviousCursor'
     ];
 
     /**
@@ -195,10 +195,10 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      */
     public function __construct(array $data = null)
     {
-        $this->container['payment_method_tokenization'] = $data['payment_method_tokenization'] ?? null;
-        $this->container['three_d_secure_hosted'] = $data['three_d_secure_hosted'] ?? null;
-        $this->container['three_d_secure_pass_through'] = $data['three_d_secure_pass_through'] ?? null;
-        $this->container['network_tokens'] = $data['network_tokens'] ?? null;
+        $this->container['items'] = $data['items'] ?? null;
+        $this->container['limit'] = $data['limit'] ?? 20;
+        $this->container['next_cursor'] = $data['next_cursor'] ?? null;
+        $this->container['previous_cursor'] = $data['previous_cursor'] ?? null;
     }
 
     /**
@@ -209,6 +209,30 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['limit']) && ($this->container['limit'] > 100)) {
+            $invalidProperties[] = "invalid value for 'limit', must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['limit']) && ($this->container['limit'] < 1)) {
+            $invalidProperties[] = "invalid value for 'limit', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['next_cursor']) && (mb_strlen($this->container['next_cursor']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'next_cursor', the character length must be smaller than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['next_cursor']) && (mb_strlen($this->container['next_cursor']) < 1)) {
+            $invalidProperties[] = "invalid value for 'next_cursor', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['previous_cursor']) && (mb_strlen($this->container['previous_cursor']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'previous_cursor', the character length must be smaller than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['previous_cursor']) && (mb_strlen($this->container['previous_cursor']) < 1)) {
+            $invalidProperties[] = "invalid value for 'previous_cursor', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -226,97 +250,119 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
 
 
     /**
-     * Gets payment_method_tokenization
+     * Gets items
      *
-     * @return bool|null
+     * @return \Gr4vy\model\Refund[]|null
      */
-    public function getPaymentMethodTokenization()
+    public function getItems()
     {
-        return $this->container['payment_method_tokenization'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets payment_method_tokenization
+     * Sets items
      *
-     * @param bool|null $payment_method_tokenization Supports storing a payment method via tokenization.
+     * @param \Gr4vy\model\Refund[]|null $items A list of refunds.
      *
      * @return self
      */
-    public function setPaymentMethodTokenization($payment_method_tokenization)
+    public function setItems($items)
     {
-        $this->container['payment_method_tokenization'] = $payment_method_tokenization;
+        $this->container['items'] = $items;
 
         return $this;
     }
 
     /**
-     * Gets three_d_secure_hosted
+     * Gets limit
      *
-     * @return bool|null
+     * @return int|null
      */
-    public function getThreeDSecureHosted()
+    public function getLimit()
     {
-        return $this->container['three_d_secure_hosted'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets three_d_secure_hosted
+     * Sets limit
      *
-     * @param bool|null $three_d_secure_hosted Supports hosted 3-D Secure with a redirect.
+     * @param int|null $limit The limit applied to request. This represents the number of items that are at maximum returned by this request.
      *
      * @return self
      */
-    public function setThreeDSecureHosted($three_d_secure_hosted)
+    public function setLimit($limit)
     {
-        $this->container['three_d_secure_hosted'] = $three_d_secure_hosted;
+
+        if (!is_null($limit) && ($limit > 100)) {
+            throw new \InvalidArgumentException('invalid value for $limit when calling Refunds., must be smaller than or equal to 100.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for $limit when calling Refunds., must be bigger than or equal to 1.');
+        }
+
+        $this->container['limit'] = $limit;
 
         return $this;
     }
 
     /**
-     * Gets three_d_secure_pass_through
+     * Gets next_cursor
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getThreeDSecurePassThrough()
+    public function getNextCursor()
     {
-        return $this->container['three_d_secure_pass_through'];
+        return $this->container['next_cursor'];
     }
 
     /**
-     * Sets three_d_secure_pass_through
+     * Sets next_cursor
      *
-     * @param bool|null $three_d_secure_pass_through Supports passing 3-D Secure data to the underlying processor.
+     * @param string|null $next_cursor The cursor that represents the next page of results. Use the `cursor` query parameter to fetch this page of items.
      *
      * @return self
      */
-    public function setThreeDSecurePassThrough($three_d_secure_pass_through)
+    public function setNextCursor($next_cursor)
     {
-        $this->container['three_d_secure_pass_through'] = $three_d_secure_pass_through;
+        if (!is_null($next_cursor) && (mb_strlen($next_cursor) > 1000)) {
+            throw new \InvalidArgumentException('invalid length for $next_cursor when calling Refunds., must be smaller than or equal to 1000.');
+        }
+        if (!is_null($next_cursor) && (mb_strlen($next_cursor) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $next_cursor when calling Refunds., must be bigger than or equal to 1.');
+        }
+
+        $this->container['next_cursor'] = $next_cursor;
 
         return $this;
     }
 
     /**
-     * Gets network_tokens
+     * Gets previous_cursor
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getNetworkTokens()
+    public function getPreviousCursor()
     {
-        return $this->container['network_tokens'];
+        return $this->container['previous_cursor'];
     }
 
     /**
-     * Sets network_tokens
+     * Sets previous_cursor
      *
-     * @param bool|null $network_tokens Supports passing decrypted digital wallet (e.g. Apple Pay) tokens to the underlying processor.
+     * @param string|null $previous_cursor The cursor that represents the next page of results. Use the `cursor` query parameter to fetch this page of items.
      *
      * @return self
      */
-    public function setNetworkTokens($network_tokens)
+    public function setPreviousCursor($previous_cursor)
     {
-        $this->container['network_tokens'] = $network_tokens;
+        if (!is_null($previous_cursor) && (mb_strlen($previous_cursor) > 1000)) {
+            throw new \InvalidArgumentException('invalid length for $previous_cursor when calling Refunds., must be smaller than or equal to 1000.');
+        }
+        if (!is_null($previous_cursor) && (mb_strlen($previous_cursor) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $previous_cursor when calling Refunds., must be bigger than or equal to 1.');
+        }
+
+        $this->container['previous_cursor'] = $previous_cursor;
 
         return $this;
     }
