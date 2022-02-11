@@ -33,6 +33,8 @@ docs/Model/Error404PendingCreation.md
 docs/Model/Error409DuplicateRecord.md
 docs/Model/ErrorDetail.md
 docs/Model/ErrorGeneric.md
+docs/Model/GooglePayRequest.md
+docs/Model/GooglePaySessionRequest.md
 docs/Model/PaymentMethod.md
 docs/Model/PaymentMethodRequest.md
 docs/Model/PaymentMethodSnapshot.md
@@ -56,6 +58,8 @@ docs/Model/PaymentServiceUpdate.md
 docs/Model/PaymentServiceUpdateFields.md
 docs/Model/PaymentServices.md
 docs/Model/RedirectRequest.md
+docs/Model/Refund.md
+docs/Model/Refunds.md
 docs/Model/ResetPasswordRequest.md
 docs/Model/SetPasswordRequest.md
 docs/Model/StatementDescriptor.md
@@ -71,6 +75,7 @@ docs/Model/Transaction.md
 docs/Model/TransactionCaptureRequest.md
 docs/Model/TransactionPaymentMethodRequest.md
 docs/Model/TransactionRefundRequest.md
+docs/Model/TransactionRefundRequestDeprecated.md
 docs/Model/TransactionRequest.md
 docs/Model/TransactionSummary.md
 docs/Model/Transactions.md
@@ -114,6 +119,8 @@ lib/model/Error404PendingCreation.php
 lib/model/Error409DuplicateRecord.php
 lib/model/ErrorDetail.php
 lib/model/ErrorGeneric.php
+lib/model/GooglePayRequest.php
+lib/model/GooglePaySessionRequest.php
 lib/model/ModelInterface.php
 lib/model/PaymentMethod.php
 lib/model/PaymentMethodRequest.php
@@ -138,6 +145,8 @@ lib/model/PaymentServiceUpdate.php
 lib/model/PaymentServiceUpdateFields.php
 lib/model/PaymentServices.php
 lib/model/RedirectRequest.php
+lib/model/Refund.php
+lib/model/Refunds.php
 lib/model/ResetPasswordRequest.php
 lib/model/SetPasswordRequest.php
 lib/model/StatementDescriptor.php
@@ -153,6 +162,7 @@ lib/model/Transaction.php
 lib/model/TransactionCaptureRequest.php
 lib/model/TransactionPaymentMethodRequest.php
 lib/model/TransactionRefundRequest.php
+lib/model/TransactionRefundRequestDeprecated.php
 lib/model/TransactionRequest.php
 lib/model/TransactionSummary.php
 lib/model/Transactions.php

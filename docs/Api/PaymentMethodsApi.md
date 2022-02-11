@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 ## `listPaymentMethods()`
 
 ```php
-listPaymentMethods($buyer_id, $buyer_external_identifier, $limit, $cursor): \Gr4vy\model\PaymentMethods
+listPaymentMethods($buyer_id, $buyer_external_identifier, $status, $limit, $cursor): \Gr4vy\model\PaymentMethods
 ```
 
 List payment methods
@@ -225,11 +225,12 @@ $apiInstance = new Gr4vy\Api\PaymentMethodsApi(
 );
 $buyer_id = 8724fd24-5489-4a5d-90fd-0604df7d3b83; // string | Filters the results to only the items for which the `buyer` has an `id` that matches this value.
 $buyer_external_identifier = user-12345; // string | Filters the results to only the items for which the `buyer` has an `external_identifier` that matches this value.
+$status = succeeded; // string | Filters the results to only the payment methods for which the `status` matches this value.
 $limit = 1; // int | Defines the maximum number of items to return for this request.
 $cursor = ZXhhbXBsZTE; // string | A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the `next_cursor` field. Similarly the `previous_cursor` can be used to reverse backwards in the list.
 
 try {
-    $result = $apiInstance->listPaymentMethods($buyer_id, $buyer_external_identifier, $limit, $cursor);
+    $result = $apiInstance->listPaymentMethods($buyer_id, $buyer_external_identifier, $status, $limit, $cursor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentMethodsApi->listPaymentMethods: ', $e->getMessage(), PHP_EOL;
@@ -242,6 +243,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **string**| Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. | [optional]
  **buyer_external_identifier** | **string**| Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. | [optional]
+ **status** | **string**| Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. | [optional]
  **limit** | **int**| Defines the maximum number of items to return for this request. | [optional] [default to 20]
  **cursor** | **string**| A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. | [optional]
 

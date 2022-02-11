@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentServiceDefinitionSupportedFeatures
+ * GooglePayRequest
  *
  * PHP version 7.2
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * PaymentServiceDefinitionSupportedFeatures Class Doc Comment
+ * GooglePayRequest Class Doc Comment
  *
  * @category Class
- * @description Features supported by the payment definition.
+ * @description Details for a Google Pay payment method.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, ArrayAccess, \JsonSerializable
+class GooglePayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PaymentServiceDefinition_supported_features';
+    protected static $openAPIModelName = 'GooglePayRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,10 +61,8 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'payment_method_tokenization' => 'bool',
-        'three_d_secure_hosted' => 'bool',
-        'three_d_secure_pass_through' => 'bool',
-        'network_tokens' => 'bool'
+        'method' => 'string',
+        'token' => 'object'
     ];
 
     /**
@@ -75,10 +73,8 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'payment_method_tokenization' => null,
-        'three_d_secure_hosted' => null,
-        'three_d_secure_pass_through' => null,
-        'network_tokens' => null
+        'method' => null,
+        'token' => null
     ];
 
     /**
@@ -108,10 +104,8 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'payment_method_tokenization' => 'payment_method_tokenization',
-        'three_d_secure_hosted' => 'three_d_secure_hosted',
-        'three_d_secure_pass_through' => 'three_d_secure_pass_through',
-        'network_tokens' => 'network_tokens'
+        'method' => 'method',
+        'token' => 'token'
     ];
 
     /**
@@ -120,10 +114,8 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'payment_method_tokenization' => 'setPaymentMethodTokenization',
-        'three_d_secure_hosted' => 'setThreeDSecureHosted',
-        'three_d_secure_pass_through' => 'setThreeDSecurePassThrough',
-        'network_tokens' => 'setNetworkTokens'
+        'method' => 'setMethod',
+        'token' => 'setToken'
     ];
 
     /**
@@ -132,10 +124,8 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'payment_method_tokenization' => 'getPaymentMethodTokenization',
-        'three_d_secure_hosted' => 'getThreeDSecureHosted',
-        'three_d_secure_pass_through' => 'getThreeDSecurePassThrough',
-        'network_tokens' => 'getNetworkTokens'
+        'method' => 'getMethod',
+        'token' => 'getToken'
     ];
 
     /**
@@ -179,6 +169,19 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
+    const METHOD_GOOGLEPAY = 'googlepay';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_GOOGLEPAY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -195,10 +198,8 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      */
     public function __construct(array $data = null)
     {
-        $this->container['payment_method_tokenization'] = $data['payment_method_tokenization'] ?? null;
-        $this->container['three_d_secure_hosted'] = $data['three_d_secure_hosted'] ?? null;
-        $this->container['three_d_secure_pass_through'] = $data['three_d_secure_pass_through'] ?? null;
-        $this->container['network_tokens'] = $data['network_tokens'] ?? null;
+        $this->container['method'] = $data['method'] ?? null;
+        $this->container['token'] = $data['token'] ?? null;
     }
 
     /**
@@ -210,6 +211,21 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
     {
         $invalidProperties = [];
 
+        if ($this->container['method'] === null) {
+            $invalidProperties[] = "'method' can't be null";
+        }
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['token'] === null) {
+            $invalidProperties[] = "'token' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -226,97 +242,59 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
 
 
     /**
-     * Gets payment_method_tokenization
+     * Gets method
      *
-     * @return bool|null
+     * @return string
      */
-    public function getPaymentMethodTokenization()
+    public function getMethod()
     {
-        return $this->container['payment_method_tokenization'];
+        return $this->container['method'];
     }
 
     /**
-     * Sets payment_method_tokenization
+     * Sets method
      *
-     * @param bool|null $payment_method_tokenization Supports storing a payment method via tokenization.
+     * @param string $method `googlepay`.
      *
      * @return self
      */
-    public function setPaymentMethodTokenization($payment_method_tokenization)
+    public function setMethod($method)
     {
-        $this->container['payment_method_tokenization'] = $payment_method_tokenization;
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['method'] = $method;
 
         return $this;
     }
 
     /**
-     * Gets three_d_secure_hosted
+     * Gets token
      *
-     * @return bool|null
+     * @return object
      */
-    public function getThreeDSecureHosted()
+    public function getToken()
     {
-        return $this->container['three_d_secure_hosted'];
+        return $this->container['token'];
     }
 
     /**
-     * Sets three_d_secure_hosted
+     * Sets token
      *
-     * @param bool|null $three_d_secure_hosted Supports hosted 3-D Secure with a redirect.
+     * @param object $token The encrypted (opaque) token returned by the Google Pay API that represents a payment method.
      *
      * @return self
      */
-    public function setThreeDSecureHosted($three_d_secure_hosted)
+    public function setToken($token)
     {
-        $this->container['three_d_secure_hosted'] = $three_d_secure_hosted;
-
-        return $this;
-    }
-
-    /**
-     * Gets three_d_secure_pass_through
-     *
-     * @return bool|null
-     */
-    public function getThreeDSecurePassThrough()
-    {
-        return $this->container['three_d_secure_pass_through'];
-    }
-
-    /**
-     * Sets three_d_secure_pass_through
-     *
-     * @param bool|null $three_d_secure_pass_through Supports passing 3-D Secure data to the underlying processor.
-     *
-     * @return self
-     */
-    public function setThreeDSecurePassThrough($three_d_secure_pass_through)
-    {
-        $this->container['three_d_secure_pass_through'] = $three_d_secure_pass_through;
-
-        return $this;
-    }
-
-    /**
-     * Gets network_tokens
-     *
-     * @return bool|null
-     */
-    public function getNetworkTokens()
-    {
-        return $this->container['network_tokens'];
-    }
-
-    /**
-     * Sets network_tokens
-     *
-     * @param bool|null $network_tokens Supports passing decrypted digital wallet (e.g. Apple Pay) tokens to the underlying processor.
-     *
-     * @return self
-     */
-    public function setNetworkTokens($network_tokens)
-    {
-        $this->container['network_tokens'] = $network_tokens;
+        $this->container['token'] = $token;
 
         return $this;
     }

@@ -82,7 +82,8 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'active' => 'bool',
         'position' => 'float',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'updated_at' => '\DateTime',
+        'webhook_url' => 'string'
     ];
 
     /**
@@ -114,7 +115,8 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'active' => null,
         'position' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'updated_at' => 'date-time',
+        'webhook_url' => 'url'
     ];
 
     /**
@@ -165,7 +167,8 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'active' => 'active',
         'position' => 'position',
         'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'updated_at' => 'updated_at',
+        'webhook_url' => 'webhook_url'
     ];
 
     /**
@@ -195,7 +198,8 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'active' => 'setActive',
         'position' => 'setPosition',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at' => 'setUpdatedAt',
+        'webhook_url' => 'setWebhookUrl'
     ];
 
     /**
@@ -225,7 +229,8 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'active' => 'getActive',
         'position' => 'getPosition',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at' => 'getUpdatedAt',
+        'webhook_url' => 'getWebhookUrl'
     ];
 
     /**
@@ -337,6 +342,7 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['position'] = $data['position'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['webhook_url'] = $data['webhook_url'] ?? null;
     }
 
     /**
@@ -1068,6 +1074,30 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhook_url
+     *
+     * @return string|null
+     */
+    public function getWebhookUrl()
+    {
+        return $this->container['webhook_url'];
+    }
+
+    /**
+     * Sets webhook_url
+     *
+     * @param string|null $webhook_url The URL that needs to be configured with this payment service as the receiving endpoint for webhooks from the service to Gr4vy. Currently, Gr4vy does not yet automatically register webhooks on setup, and therefore webhooks need to be registered manually by the merchant.
+     *
+     * @return self
+     */
+    public function setWebhookUrl($webhook_url)
+    {
+        $this->container['webhook_url'] = $webhook_url;
 
         return $this;
     }

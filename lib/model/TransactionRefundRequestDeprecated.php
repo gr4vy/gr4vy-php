@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentServiceDefinitionSupportedFeatures
+ * TransactionRefundRequestDeprecated
  *
  * PHP version 7.2
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * PaymentServiceDefinitionSupportedFeatures Class Doc Comment
+ * TransactionRefundRequestDeprecated Class Doc Comment
  *
  * @category Class
- * @description Features supported by the payment definition.
+ * @description A request to refund a transaction.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, ArrayAccess, \JsonSerializable
+class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PaymentServiceDefinition_supported_features';
+    protected static $openAPIModelName = 'TransactionRefundRequestDeprecated';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,10 +61,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'payment_method_tokenization' => 'bool',
-        'three_d_secure_hosted' => 'bool',
-        'three_d_secure_pass_through' => 'bool',
-        'network_tokens' => 'bool'
+        'amount' => 'int'
     ];
 
     /**
@@ -75,10 +72,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'payment_method_tokenization' => null,
-        'three_d_secure_hosted' => null,
-        'three_d_secure_pass_through' => null,
-        'network_tokens' => null
+        'amount' => null
     ];
 
     /**
@@ -108,10 +102,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'payment_method_tokenization' => 'payment_method_tokenization',
-        'three_d_secure_hosted' => 'three_d_secure_hosted',
-        'three_d_secure_pass_through' => 'three_d_secure_pass_through',
-        'network_tokens' => 'network_tokens'
+        'amount' => 'amount'
     ];
 
     /**
@@ -120,10 +111,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'payment_method_tokenization' => 'setPaymentMethodTokenization',
-        'three_d_secure_hosted' => 'setThreeDSecureHosted',
-        'three_d_secure_pass_through' => 'setThreeDSecurePassThrough',
-        'network_tokens' => 'setNetworkTokens'
+        'amount' => 'setAmount'
     ];
 
     /**
@@ -132,10 +120,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'payment_method_tokenization' => 'getPaymentMethodTokenization',
-        'three_d_secure_hosted' => 'getThreeDSecureHosted',
-        'three_d_secure_pass_through' => 'getThreeDSecurePassThrough',
-        'network_tokens' => 'getNetworkTokens'
+        'amount' => 'getAmount'
     ];
 
     /**
@@ -195,10 +180,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      */
     public function __construct(array $data = null)
     {
-        $this->container['payment_method_tokenization'] = $data['payment_method_tokenization'] ?? null;
-        $this->container['three_d_secure_hosted'] = $data['three_d_secure_hosted'] ?? null;
-        $this->container['three_d_secure_pass_through'] = $data['three_d_secure_pass_through'] ?? null;
-        $this->container['network_tokens'] = $data['network_tokens'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
     }
 
     /**
@@ -209,6 +191,14 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['amount']) && ($this->container['amount'] > 99999999)) {
+            $invalidProperties[] = "invalid value for 'amount', must be smaller than or equal to 99999999.";
+        }
+
+        if (!is_null($this->container['amount']) && ($this->container['amount'] < 0)) {
+            $invalidProperties[] = "invalid value for 'amount', must be bigger than or equal to 0.";
+        }
 
         return $invalidProperties;
     }
@@ -226,97 +216,33 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
 
 
     /**
-     * Gets payment_method_tokenization
+     * Gets amount
      *
-     * @return bool|null
+     * @return int|null
      */
-    public function getPaymentMethodTokenization()
+    public function getAmount()
     {
-        return $this->container['payment_method_tokenization'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets payment_method_tokenization
+     * Sets amount
      *
-     * @param bool|null $payment_method_tokenization Supports storing a payment method via tokenization.
+     * @param int|null $amount The (partial) amount to refund.  When omitted blank, this will refund the entire amount.
      *
      * @return self
      */
-    public function setPaymentMethodTokenization($payment_method_tokenization)
+    public function setAmount($amount)
     {
-        $this->container['payment_method_tokenization'] = $payment_method_tokenization;
 
-        return $this;
-    }
+        if (!is_null($amount) && ($amount > 99999999)) {
+            throw new \InvalidArgumentException('invalid value for $amount when calling TransactionRefundRequestDeprecated., must be smaller than or equal to 99999999.');
+        }
+        if (!is_null($amount) && ($amount < 0)) {
+            throw new \InvalidArgumentException('invalid value for $amount when calling TransactionRefundRequestDeprecated., must be bigger than or equal to 0.');
+        }
 
-    /**
-     * Gets three_d_secure_hosted
-     *
-     * @return bool|null
-     */
-    public function getThreeDSecureHosted()
-    {
-        return $this->container['three_d_secure_hosted'];
-    }
-
-    /**
-     * Sets three_d_secure_hosted
-     *
-     * @param bool|null $three_d_secure_hosted Supports hosted 3-D Secure with a redirect.
-     *
-     * @return self
-     */
-    public function setThreeDSecureHosted($three_d_secure_hosted)
-    {
-        $this->container['three_d_secure_hosted'] = $three_d_secure_hosted;
-
-        return $this;
-    }
-
-    /**
-     * Gets three_d_secure_pass_through
-     *
-     * @return bool|null
-     */
-    public function getThreeDSecurePassThrough()
-    {
-        return $this->container['three_d_secure_pass_through'];
-    }
-
-    /**
-     * Sets three_d_secure_pass_through
-     *
-     * @param bool|null $three_d_secure_pass_through Supports passing 3-D Secure data to the underlying processor.
-     *
-     * @return self
-     */
-    public function setThreeDSecurePassThrough($three_d_secure_pass_through)
-    {
-        $this->container['three_d_secure_pass_through'] = $three_d_secure_pass_through;
-
-        return $this;
-    }
-
-    /**
-     * Gets network_tokens
-     *
-     * @return bool|null
-     */
-    public function getNetworkTokens()
-    {
-        return $this->container['network_tokens'];
-    }
-
-    /**
-     * Sets network_tokens
-     *
-     * @param bool|null $network_tokens Supports passing decrypted digital wallet (e.g. Apple Pay) tokens to the underlying processor.
-     *
-     * @return self
-     */
-    public function setNetworkTokens($network_tokens)
-    {
-        $this->container['network_tokens'] = $network_tokens;
+        $this->container['amount'] = $amount;
 
         return $this;
     }

@@ -26,5 +26,6 @@ Name | Type | Description | Notes
 **position** | **float** | The numeric rank of a payment service. Payment services with a lower position value are processed first. | [optional]
 **created_at** | [**\DateTime**](\DateTime.md) | The date and time when this service was created. | [optional]
 **updated_at** | [**\DateTime**](\DateTime.md) | The date and time when this service was last updated. | [optional]
+**webhook_url** | **string** | The URL that needs to be configured with this payment service as the receiving endpoint for webhooks from the service to Gr4vy. Currently, Gr4vy does not yet automatically register webhooks on setup, and therefore webhooks need to be registered manually by the merchant. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

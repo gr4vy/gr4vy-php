@@ -1022,6 +1022,7 @@ class PaymentMethodsApi
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
+     * @param  string $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1029,9 +1030,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\PaymentMethods|\Gr4vy\model\Error401Unauthorized
      */
-    public function listPaymentMethods($buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
+    public function listPaymentMethods($buyer_id = null, $buyer_external_identifier = null, $status = null, $limit = 20, $cursor = null)
     {
-        list($response) = $this->listPaymentMethodsWithHttpInfo($buyer_id, $buyer_external_identifier, $limit, $cursor);
+        list($response) = $this->listPaymentMethodsWithHttpInfo($buyer_id, $buyer_external_identifier, $status, $limit, $cursor);
         return $response;
     }
 
@@ -1042,6 +1043,7 @@ class PaymentMethodsApi
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
+     * @param  string $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1049,9 +1051,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\PaymentMethods|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPaymentMethodsWithHttpInfo($buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
+    public function listPaymentMethodsWithHttpInfo($buyer_id = null, $buyer_external_identifier = null, $status = null, $limit = 20, $cursor = null)
     {
-        $request = $this->listPaymentMethodsRequest($buyer_id, $buyer_external_identifier, $limit, $cursor);
+        $request = $this->listPaymentMethodsRequest($buyer_id, $buyer_external_identifier, $status, $limit, $cursor);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1151,15 +1153,16 @@ class PaymentMethodsApi
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
+     * @param  string $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentMethodsAsync($buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
+    public function listPaymentMethodsAsync($buyer_id = null, $buyer_external_identifier = null, $status = null, $limit = 20, $cursor = null)
     {
-        return $this->listPaymentMethodsAsyncWithHttpInfo($buyer_id, $buyer_external_identifier, $limit, $cursor)
+        return $this->listPaymentMethodsAsyncWithHttpInfo($buyer_id, $buyer_external_identifier, $status, $limit, $cursor)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1174,16 +1177,17 @@ class PaymentMethodsApi
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
+     * @param  string $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentMethodsAsyncWithHttpInfo($buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
+    public function listPaymentMethodsAsyncWithHttpInfo($buyer_id = null, $buyer_external_identifier = null, $status = null, $limit = 20, $cursor = null)
     {
         $returnType = '\Gr4vy\model\PaymentMethods';
-        $request = $this->listPaymentMethodsRequest($buyer_id, $buyer_external_identifier, $limit, $cursor);
+        $request = $this->listPaymentMethodsRequest($buyer_id, $buyer_external_identifier, $status, $limit, $cursor);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1223,13 +1227,14 @@ class PaymentMethodsApi
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
+     * @param  string $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPaymentMethodsRequest($buyer_id = null, $buyer_external_identifier = null, $limit = 20, $cursor = null)
+    public function listPaymentMethodsRequest($buyer_id = null, $buyer_external_identifier = null, $status = null, $limit = 20, $cursor = null)
     {
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling PaymentMethodsApi.listPaymentMethods, must be smaller than or equal to 100.');
@@ -1266,6 +1271,17 @@ class PaymentMethodsApi
             }
             else {
                 $queryParams['buyer_external_identifier'] = $buyer_external_identifier;
+            }
+        }
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
             }
         }
         // query params
