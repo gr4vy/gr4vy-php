@@ -12,12 +12,14 @@ docs/Model/AddressUpdate.md
 docs/Model/ApplePayRequest.md
 docs/Model/ApplePaySessionRequest.md
 docs/Model/BillingDetails.md
+docs/Model/BillingDetailsRequest.md
 docs/Model/BillingDetailsUpdateRequest.md
 docs/Model/Buyer.md
 docs/Model/BuyerRequest.md
 docs/Model/BuyerSnapshot.md
 docs/Model/BuyerUpdate.md
 docs/Model/Buyers.md
+docs/Model/CardDetails.md
 docs/Model/CardRequest.md
 docs/Model/CartItem.md
 docs/Model/DigitalWallet.md
@@ -26,6 +28,7 @@ docs/Model/DigitalWalletUpdate.md
 docs/Model/DigitalWallets.md
 docs/Model/Error400BadRequest.md
 docs/Model/Error400IncorrectJson.md
+docs/Model/Error400InvalidCredentials.md
 docs/Model/Error401Unauthorized.md
 docs/Model/Error403Forbidden.md
 docs/Model/Error404NotFound.md
@@ -75,7 +78,6 @@ docs/Model/Transaction.md
 docs/Model/TransactionCaptureRequest.md
 docs/Model/TransactionPaymentMethodRequest.md
 docs/Model/TransactionRefundRequest.md
-docs/Model/TransactionRefundRequestDeprecated.md
 docs/Model/TransactionRequest.md
 docs/Model/TransactionSummary.md
 docs/Model/Transactions.md
@@ -98,12 +100,14 @@ lib/model/AddressUpdate.php
 lib/model/ApplePayRequest.php
 lib/model/ApplePaySessionRequest.php
 lib/model/BillingDetails.php
+lib/model/BillingDetailsRequest.php
 lib/model/BillingDetailsUpdateRequest.php
 lib/model/Buyer.php
 lib/model/BuyerRequest.php
 lib/model/BuyerSnapshot.php
 lib/model/BuyerUpdate.php
 lib/model/Buyers.php
+lib/model/CardDetails.php
 lib/model/CardRequest.php
 lib/model/CartItem.php
 lib/model/DigitalWallet.php
@@ -112,6 +116,7 @@ lib/model/DigitalWalletUpdate.php
 lib/model/DigitalWallets.php
 lib/model/Error400BadRequest.php
 lib/model/Error400IncorrectJson.php
+lib/model/Error400InvalidCredentials.php
 lib/model/Error401Unauthorized.php
 lib/model/Error403Forbidden.php
 lib/model/Error404NotFound.php
@@ -162,7 +167,6 @@ lib/model/Transaction.php
 lib/model/TransactionCaptureRequest.php
 lib/model/TransactionPaymentMethodRequest.php
 lib/model/TransactionRefundRequest.php
-lib/model/TransactionRefundRequestDeprecated.php
 lib/model/TransactionRequest.php
 lib/model/TransactionSummary.php
 lib/model/Transactions.php

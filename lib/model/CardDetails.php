@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentServiceSnapshot
+ * CardDetails
  *
  * PHP version 7.2
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * PaymentServiceSnapshot Class Doc Comment
+ * CardDetails Class Doc Comment
  *
  * @category Class
- * @description An active, configured payment service.
+ * @description Details about a card.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
+class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PaymentService--Snapshot';
+    protected static $openAPIModelName = 'CardDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,11 +61,12 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'type' => 'string',
-        'payment_service_definition_id' => 'string',
-        'method' => 'string',
-        'display_name' => 'string'
+        'id' => 'string',
+        'card_type' => 'string',
+        'scheme' => 'string',
+        'country' => 'string',
+        'required_fields' => 'string[]'
     ];
 
     /**
@@ -76,11 +77,12 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
         'type' => null,
-        'payment_service_definition_id' => null,
-        'method' => null,
-        'display_name' => null
+        'id' => 'bin',
+        'card_type' => null,
+        'scheme' => null,
+        'country' => null,
+        'required_fields' => null
     ];
 
     /**
@@ -110,11 +112,12 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'type' => 'type',
-        'payment_service_definition_id' => 'payment_service_definition_id',
-        'method' => 'method',
-        'display_name' => 'display_name'
+        'id' => 'id',
+        'card_type' => 'card_type',
+        'scheme' => 'scheme',
+        'country' => 'country',
+        'required_fields' => 'required_fields'
     ];
 
     /**
@@ -123,11 +126,12 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'type' => 'setType',
-        'payment_service_definition_id' => 'setPaymentServiceDefinitionId',
-        'method' => 'setMethod',
-        'display_name' => 'setDisplayName'
+        'id' => 'setId',
+        'card_type' => 'setCardType',
+        'scheme' => 'setScheme',
+        'country' => 'setCountry',
+        'required_fields' => 'setRequiredFields'
     ];
 
     /**
@@ -136,11 +140,12 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'type' => 'getType',
-        'payment_service_definition_id' => 'getPaymentServiceDefinitionId',
-        'method' => 'getMethod',
-        'display_name' => 'getDisplayName'
+        'id' => 'getId',
+        'card_type' => 'getCardType',
+        'scheme' => 'getScheme',
+        'country' => 'getCountry',
+        'required_fields' => 'getRequiredFields'
     ];
 
     /**
@@ -184,7 +189,9 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    const TYPE_PAYMENT_SERVICE = 'payment-service';
+    const TYPE_CARD_DETAIL = 'card-detail';
+    const CARD_TYPE_CREDIT = 'credit';
+    const CARD_TYPE_DEBIT = 'debit';
 
     /**
      * Gets allowable values of the enum
@@ -194,7 +201,20 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_PAYMENT_SERVICE,
+            self::TYPE_CARD_DETAIL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCardTypeAllowableValues()
+    {
+        return [
+            self::CARD_TYPE_CREDIT,
+            self::CARD_TYPE_DEBIT,
         ];
     }
 
@@ -213,11 +233,12 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['payment_service_definition_id'] = $data['payment_service_definition_id'] ?? null;
-        $this->container['method'] = $data['method'] ?? null;
-        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['card_type'] = $data['card_type'] ?? null;
+        $this->container['scheme'] = $data['scheme'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
+        $this->container['required_fields'] = $data['required_fields'] ?? null;
     }
 
     /**
@@ -229,14 +250,6 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 200)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 200.";
-        }
-
-        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
-        }
-
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -246,20 +259,25 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
 
-        if (!is_null($this->container['payment_service_definition_id']) && (mb_strlen($this->container['payment_service_definition_id']) > 50)) {
-            $invalidProperties[] = "invalid value for 'payment_service_definition_id', the character length must be smaller than or equal to 50.";
+        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 8)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 8.";
         }
 
-        if (!is_null($this->container['payment_service_definition_id']) && (mb_strlen($this->container['payment_service_definition_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'payment_service_definition_id', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 6)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 6.";
         }
 
-        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'display_name', the character length must be smaller than or equal to 50.";
+        $allowedValues = $this->getCardTypeAllowableValues();
+        if (!is_null($this->container['card_type']) && !in_array($this->container['card_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'card_type', must be one of '%s'",
+                $this->container['card_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
-        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'display_name', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['required_fields']) && (count($this->container['required_fields']) < 0)) {
+            $invalidProperties[] = "invalid value for 'required_fields', number of items must be greater than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -278,37 +296,6 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id The ID of this payment service.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (!is_null($id) && (mb_strlen($id) > 200)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling PaymentServiceSnapshot., must be smaller than or equal to 200.');
-        }
-        if (!is_null($id) && (mb_strlen($id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling PaymentServiceSnapshot., must be bigger than or equal to 1.');
-        }
-
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return string|null
@@ -321,7 +308,7 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets type
      *
-     * @param string|null $type The type of this resource.
+     * @param string|null $type `card-detail`.
      *
      * @return self
      */
@@ -343,87 +330,143 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets payment_service_definition_id
+     * Gets id
      *
      * @return string|null
      */
-    public function getPaymentServiceDefinitionId()
+    public function getId()
     {
-        return $this->container['payment_service_definition_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets payment_service_definition_id
+     * Sets id
      *
-     * @param string|null $payment_service_definition_id The ID of the payment service definition used to create this service.
+     * @param string|null $id The 6-8 digit BIN of the card.
      *
      * @return self
      */
-    public function setPaymentServiceDefinitionId($payment_service_definition_id)
+    public function setId($id)
     {
-        if (!is_null($payment_service_definition_id) && (mb_strlen($payment_service_definition_id) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $payment_service_definition_id when calling PaymentServiceSnapshot., must be smaller than or equal to 50.');
+        if (!is_null($id) && (mb_strlen($id) > 8)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling CardDetails., must be smaller than or equal to 8.');
         }
-        if (!is_null($payment_service_definition_id) && (mb_strlen($payment_service_definition_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $payment_service_definition_id when calling PaymentServiceSnapshot., must be bigger than or equal to 1.');
+        if (!is_null($id) && (mb_strlen($id) < 6)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling CardDetails., must be bigger than or equal to 6.');
         }
 
-        $this->container['payment_service_definition_id'] = $payment_service_definition_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets method
+     * Gets card_type
      *
      * @return string|null
      */
-    public function getMethod()
+    public function getCardType()
     {
-        return $this->container['method'];
+        return $this->container['card_type'];
     }
 
     /**
-     * Sets method
+     * Sets card_type
      *
-     * @param string|null $method method
+     * @param string|null $card_type The type of card.
      *
      * @return self
      */
-    public function setMethod($method)
+    public function setCardType($card_type)
     {
-        $this->container['method'] = $method;
+        $allowedValues = $this->getCardTypeAllowableValues();
+        if (!is_null($card_type) && !in_array($card_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'card_type', must be one of '%s'",
+                    $card_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['card_type'] = $card_type;
 
         return $this;
     }
 
     /**
-     * Gets display_name
+     * Gets scheme
      *
      * @return string|null
      */
-    public function getDisplayName()
+    public function getScheme()
     {
-        return $this->container['display_name'];
+        return $this->container['scheme'];
     }
 
     /**
-     * Sets display_name
+     * Sets scheme
      *
-     * @param string|null $display_name The custom name set for this service.
+     * @param string|null $scheme The scheme/brand of the card.
      *
      * @return self
      */
-    public function setDisplayName($display_name)
+    public function setScheme($scheme)
     {
-        if (!is_null($display_name) && (mb_strlen($display_name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $display_name when calling PaymentServiceSnapshot., must be smaller than or equal to 50.');
-        }
-        if (!is_null($display_name) && (mb_strlen($display_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $display_name when calling PaymentServiceSnapshot., must be bigger than or equal to 1.');
-        }
+        $this->container['scheme'] = $scheme;
 
-        $this->container['display_name'] = $display_name;
+        return $this;
+    }
+
+    /**
+     * Gets country
+     *
+     * @return string|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param string|null $country The 2-letter ISO code of the issuing country of the card.
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets required_fields
+     *
+     * @return string[]|null
+     */
+    public function getRequiredFields()
+    {
+        return $this->container['required_fields'];
+    }
+
+    /**
+     * Sets required_fields
+     *
+     * @param string[]|null $required_fields A list of fields that are required to process a transaction for this card.
+     *
+     * @return self
+     */
+    public function setRequiredFields($required_fields)
+    {
+
+
+        if (!is_null($required_fields) && (count($required_fields) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $required_fields when calling CardDetails., number of items must be greater than or equal to 0.');
+        }
+        $this->container['required_fields'] = $required_fields;
 
         return $this;
     }

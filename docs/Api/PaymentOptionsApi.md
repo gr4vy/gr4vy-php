@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `listPaymentOptions()`
 
 ```php
-listPaymentOptions($country, $currency, $locale): \Gr4vy\model\PaymentOptions
+listPaymentOptions($country, $currency, $amount, $metadata, $locale): \Gr4vy\model\PaymentOptions
 ```
 
 List payment options
@@ -36,10 +36,12 @@ $apiInstance = new Gr4vy\Api\PaymentOptionsApi(
 );
 $country = US; // string | Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code.
 $currency = USD; // string | Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code.
+$amount = 500; // int | Used by the Flow engine to filter the results based on the transaction amount.
+$metadata = {"restricted_items": "True"}; // string | Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary.
 $locale = en-US; // string | An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option.
 
 try {
-    $result = $apiInstance->listPaymentOptions($country, $currency, $locale);
+    $result = $apiInstance->listPaymentOptions($country, $currency, $amount, $metadata, $locale);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentOptionsApi->listPaymentOptions: ', $e->getMessage(), PHP_EOL;
@@ -52,6 +54,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **country** | **string**| Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. | [optional]
  **currency** | **string**| Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. | [optional]
+ **amount** | **int**| Used by the Flow engine to filter the results based on the transaction amount. | [optional]
+ **metadata** | **string**| Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. | [optional]
  **locale** | **string**| An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. | [optional] [default to &#39;en-US&#39;]
 
 ### Return type

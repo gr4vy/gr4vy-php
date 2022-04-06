@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * PaymentServiceUpdateFields Class Doc Comment
  *
  * @category Class
- * @description A field containing a key-value pair for a required field defined by the service for this payment service.
+ * @description A key-value pair that represents a field defined in the definition for this payment service.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -212,8 +212,8 @@ class PaymentServiceUpdateFields implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
         }
-        if ((mb_strlen($this->container['value']) > 1500)) {
-            $invalidProperties[] = "invalid value for 'value', the character length must be smaller than or equal to 1500.";
+        if ((mb_strlen($this->container['value']) > 5000)) {
+            $invalidProperties[] = "invalid value for 'value', the character length must be smaller than or equal to 5000.";
         }
 
         if ((mb_strlen($this->container['value']) < 1)) {
@@ -285,8 +285,8 @@ class PaymentServiceUpdateFields implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function setValue($value)
     {
-        if ((mb_strlen($value) > 1500)) {
-            throw new \InvalidArgumentException('invalid length for $value when calling PaymentServiceUpdateFields., must be smaller than or equal to 1500.');
+        if ((mb_strlen($value) > 5000)) {
+            throw new \InvalidArgumentException('invalid length for $value when calling PaymentServiceUpdateFields., must be smaller than or equal to 5000.');
         }
         if ((mb_strlen($value) < 1)) {
             throw new \InvalidArgumentException('invalid length for $value when calling PaymentServiceUpdateFields., must be bigger than or equal to 1.');

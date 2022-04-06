@@ -1,6 +1,6 @@
 <?php
 /**
- * BillingDetails
+ * BillingDetailsRequest
  *
  * PHP version 7.2
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * BillingDetails Class Doc Comment
+ * BillingDetailsRequest Class Doc Comment
  *
  * @category Class
- * @description Billing details associated to a buyer.
+ * @description Billing details to use associated to a buyer.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
+class BillingDetailsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BillingDetails';
+    protected static $openAPIModelName = 'BillingDetailsRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,6 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
         'first_name' => 'string',
         'last_name' => 'string',
         'email_address' => 'string',
@@ -78,7 +77,6 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
         'first_name' => null,
         'last_name' => null,
         'email_address' => null,
@@ -114,7 +112,6 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
         'first_name' => 'first_name',
         'last_name' => 'last_name',
         'email_address' => 'email_address',
@@ -129,7 +126,6 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
         'first_name' => 'setFirstName',
         'last_name' => 'setLastName',
         'email_address' => 'setEmailAddress',
@@ -144,7 +140,6 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
         'first_name' => 'getFirstName',
         'last_name' => 'getLastName',
         'email_address' => 'getEmailAddress',
@@ -194,19 +189,6 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    const TYPE_BILLING_DETAILS = 'billing-details';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_BILLING_DETAILS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -223,7 +205,6 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['first_name'] = $data['first_name'] ?? null;
         $this->container['last_name'] = $data['last_name'] ?? null;
         $this->container['email_address'] = $data['email_address'] ?? null;
@@ -240,15 +221,6 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         if (!is_null($this->container['first_name']) && (mb_strlen($this->container['first_name']) > 255)) {
             $invalidProperties[] = "invalid value for 'first_name', the character length must be smaller than or equal to 255.";
@@ -302,40 +274,6 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type The type of this resource. Is always `billing-details`.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets first_name
      *
      * @return string|null
@@ -348,17 +286,17 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets first_name
      *
-     * @param string|null $first_name The first name(s) or given name of the buyer.
+     * @param string|null $first_name The first name(s) or given name for the buyer.
      *
      * @return self
      */
     public function setFirstName($first_name)
     {
         if (!is_null($first_name) && (mb_strlen($first_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $first_name when calling BillingDetails., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $first_name when calling BillingDetailsRequest., must be smaller than or equal to 255.');
         }
         if (!is_null($first_name) && (mb_strlen($first_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $first_name when calling BillingDetails., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $first_name when calling BillingDetailsRequest., must be bigger than or equal to 1.');
         }
 
         $this->container['first_name'] = $first_name;
@@ -386,10 +324,10 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLastName($last_name)
     {
         if (!is_null($last_name) && (mb_strlen($last_name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $last_name when calling BillingDetails., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $last_name when calling BillingDetailsRequest., must be smaller than or equal to 255.');
         }
         if (!is_null($last_name) && (mb_strlen($last_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $last_name when calling BillingDetails., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $last_name when calling BillingDetailsRequest., must be bigger than or equal to 1.');
         }
 
         $this->container['last_name'] = $last_name;
@@ -410,17 +348,17 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email_address
      *
-     * @param string|null $email_address The email address of the buyer.
+     * @param string|null $email_address The email address for the buyer.
      *
      * @return self
      */
     public function setEmailAddress($email_address)
     {
         if (!is_null($email_address) && (mb_strlen($email_address) > 320)) {
-            throw new \InvalidArgumentException('invalid length for $email_address when calling BillingDetails., must be smaller than or equal to 320.');
+            throw new \InvalidArgumentException('invalid length for $email_address when calling BillingDetailsRequest., must be smaller than or equal to 320.');
         }
         if (!is_null($email_address) && (mb_strlen($email_address) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $email_address when calling BillingDetails., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $email_address when calling BillingDetailsRequest., must be bigger than or equal to 1.');
         }
 
         $this->container['email_address'] = $email_address;
@@ -441,20 +379,20 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number The phone number of the buyer. This expect the number in the [E164 number standard](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string|null $phone_number The phone number to use for this request. This expect the number in the [E164 number standard](https://www.twilio.com/docs/glossary/what-e164).
      *
      * @return self
      */
     public function setPhoneNumber($phone_number)
     {
         if (!is_null($phone_number) && (mb_strlen($phone_number) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $phone_number when calling BillingDetails., must be smaller than or equal to 50.');
+            throw new \InvalidArgumentException('invalid length for $phone_number when calling BillingDetailsRequest., must be smaller than or equal to 50.');
         }
         if (!is_null($phone_number) && (mb_strlen($phone_number) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $phone_number when calling BillingDetails., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $phone_number when calling BillingDetailsRequest., must be bigger than or equal to 1.');
         }
         if (!is_null($phone_number) && (!preg_match("/^\\+[1-9]\\d{1,14}$/", $phone_number))) {
-            throw new \InvalidArgumentException("invalid value for $phone_number when calling BillingDetails., must conform to the pattern /^\\+[1-9]\\d{1,14}$/.");
+            throw new \InvalidArgumentException("invalid value for $phone_number when calling BillingDetailsRequest., must conform to the pattern /^\\+[1-9]\\d{1,14}$/.");
         }
 
         $this->container['phone_number'] = $phone_number;

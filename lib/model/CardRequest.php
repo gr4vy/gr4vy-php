@@ -67,8 +67,7 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'security_code' => 'string',
         'external_identifier' => 'string',
         'buyer_id' => 'string',
-        'buyer_external_identifier' => 'string',
-        'redirect_url' => 'string'
+        'buyer_external_identifier' => 'string'
     ];
 
     /**
@@ -85,8 +84,7 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'security_code' => null,
         'external_identifier' => null,
         'buyer_id' => 'uuid',
-        'buyer_external_identifier' => null,
-        'redirect_url' => null
+        'buyer_external_identifier' => null
     ];
 
     /**
@@ -122,8 +120,7 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'security_code' => 'security_code',
         'external_identifier' => 'external_identifier',
         'buyer_id' => 'buyer_id',
-        'buyer_external_identifier' => 'buyer_external_identifier',
-        'redirect_url' => 'redirect_url'
+        'buyer_external_identifier' => 'buyer_external_identifier'
     ];
 
     /**
@@ -138,8 +135,7 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'security_code' => 'setSecurityCode',
         'external_identifier' => 'setExternalIdentifier',
         'buyer_id' => 'setBuyerId',
-        'buyer_external_identifier' => 'setBuyerExternalIdentifier',
-        'redirect_url' => 'setRedirectUrl'
+        'buyer_external_identifier' => 'setBuyerExternalIdentifier'
     ];
 
     /**
@@ -154,8 +150,7 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'security_code' => 'getSecurityCode',
         'external_identifier' => 'getExternalIdentifier',
         'buyer_id' => 'getBuyerId',
-        'buyer_external_identifier' => 'getBuyerExternalIdentifier',
-        'redirect_url' => 'getRedirectUrl'
+        'buyer_external_identifier' => 'getBuyerExternalIdentifier'
     ];
 
     /**
@@ -235,7 +230,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['buyer_id'] = $data['buyer_id'] ?? null;
         $this->container['buyer_external_identifier'] = $data['buyer_external_identifier'] ?? null;
-        $this->container['redirect_url'] = $data['redirect_url'] ?? null;
     }
 
     /**
@@ -523,30 +517,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerExternalIdentifier($buyer_external_identifier)
     {
         $this->container['buyer_external_identifier'] = $buyer_external_identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets redirect_url
-     *
-     * @return string|null
-     */
-    public function getRedirectUrl()
-    {
-        return $this->container['redirect_url'];
-    }
-
-    /**
-     * Sets redirect_url
-     *
-     * @param string|null $redirect_url The redirect URL to redirect a buyer after a 3D Secure flow has been completed. This will be appended with both a transaction ID and status (e.g. `https://example.com/callback? gr4vy_transaction_id=123&gr4vy_transaction_status=capture_succeeded`). This is required if the transaction request body does not include `three_d_secure_data`.
-     *
-     * @return self
-     */
-    public function setRedirectUrl($redirect_url)
-    {
-        $this->container['redirect_url'] = $redirect_url;
 
         return $this;
     }

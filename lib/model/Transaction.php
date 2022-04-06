@@ -78,7 +78,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_source' => 'string',
         'is_subsequent_payment' => 'bool',
         'statement_descriptor' => 'StatementDescriptor',
-        'cart_items' => '\Gr4vy\model\CartItem[]'
+        'cart_items' => '\Gr4vy\model\CartItem[]',
+        'scheme_transaction_id' => 'string',
+        'raw_response_code' => 'string',
+        'raw_response_description' => 'string',
+        'avs_response_code' => 'string',
+        'cvv_response_code' => 'string'
     ];
 
     /**
@@ -106,7 +111,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_source' => null,
         'is_subsequent_payment' => null,
         'statement_descriptor' => null,
-        'cart_items' => null
+        'cart_items' => null,
+        'scheme_transaction_id' => null,
+        'raw_response_code' => null,
+        'raw_response_description' => null,
+        'avs_response_code' => null,
+        'cvv_response_code' => null
     ];
 
     /**
@@ -153,7 +163,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_source' => 'payment_source',
         'is_subsequent_payment' => 'is_subsequent_payment',
         'statement_descriptor' => 'statement_descriptor',
-        'cart_items' => 'cart_items'
+        'cart_items' => 'cart_items',
+        'scheme_transaction_id' => 'scheme_transaction_id',
+        'raw_response_code' => 'raw_response_code',
+        'raw_response_description' => 'raw_response_description',
+        'avs_response_code' => 'avs_response_code',
+        'cvv_response_code' => 'cvv_response_code'
     ];
 
     /**
@@ -179,7 +194,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_source' => 'setPaymentSource',
         'is_subsequent_payment' => 'setIsSubsequentPayment',
         'statement_descriptor' => 'setStatementDescriptor',
-        'cart_items' => 'setCartItems'
+        'cart_items' => 'setCartItems',
+        'scheme_transaction_id' => 'setSchemeTransactionId',
+        'raw_response_code' => 'setRawResponseCode',
+        'raw_response_description' => 'setRawResponseDescription',
+        'avs_response_code' => 'setAvsResponseCode',
+        'cvv_response_code' => 'setCvvResponseCode'
     ];
 
     /**
@@ -205,7 +225,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_source' => 'getPaymentSource',
         'is_subsequent_payment' => 'getIsSubsequentPayment',
         'statement_descriptor' => 'getStatementDescriptor',
-        'cart_items' => 'getCartItems'
+        'cart_items' => 'getCartItems',
+        'scheme_transaction_id' => 'getSchemeTransactionId',
+        'raw_response_code' => 'getRawResponseCode',
+        'raw_response_description' => 'getRawResponseDescription',
+        'avs_response_code' => 'getAvsResponseCode',
+        'cvv_response_code' => 'getCvvResponseCode'
     ];
 
     /**
@@ -279,6 +304,15 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     const PAYMENT_SOURCE_RECURRING = 'recurring';
     const PAYMENT_SOURCE_INSTALLMENT = 'installment';
     const PAYMENT_SOURCE_CARD_ON_FILE = 'card_on_file';
+    const AVS_RESPONSE_CODE_NO_MATCH = 'no_match';
+    const AVS_RESPONSE_CODE_MATCH = 'match';
+    const AVS_RESPONSE_CODE_PARTIAL_MATCH_ADDRESS = 'partial_match_address';
+    const AVS_RESPONSE_CODE_PARTIAL_MATCH_POSTCODE = 'partial_match_postcode';
+    const AVS_RESPONSE_CODE_UNAVAILABLE = 'unavailable';
+    const CVV_RESPONSE_CODE_NO_MATCH = 'no_match';
+    const CVV_RESPONSE_CODE_MATCH = 'match';
+    const CVV_RESPONSE_CODE_UNAVAILABLE = 'unavailable';
+    const CVV_RESPONSE_CODE_NOT_PROVIDED = 'not_provided';
 
     /**
      * Gets allowable values of the enum
@@ -344,6 +378,37 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAvsResponseCodeAllowableValues()
+    {
+        return [
+            self::AVS_RESPONSE_CODE_NO_MATCH,
+            self::AVS_RESPONSE_CODE_MATCH,
+            self::AVS_RESPONSE_CODE_PARTIAL_MATCH_ADDRESS,
+            self::AVS_RESPONSE_CODE_PARTIAL_MATCH_POSTCODE,
+            self::AVS_RESPONSE_CODE_UNAVAILABLE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCvvResponseCodeAllowableValues()
+    {
+        return [
+            self::CVV_RESPONSE_CODE_NO_MATCH,
+            self::CVV_RESPONSE_CODE_MATCH,
+            self::CVV_RESPONSE_CODE_UNAVAILABLE,
+            self::CVV_RESPONSE_CODE_NOT_PROVIDED,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -376,6 +441,11 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['is_subsequent_payment'] = $data['is_subsequent_payment'] ?? false;
         $this->container['statement_descriptor'] = $data['statement_descriptor'] ?? null;
         $this->container['cart_items'] = $data['cart_items'] ?? null;
+        $this->container['scheme_transaction_id'] = $data['scheme_transaction_id'] ?? 'null';
+        $this->container['raw_response_code'] = $data['raw_response_code'] ?? null;
+        $this->container['raw_response_description'] = $data['raw_response_description'] ?? null;
+        $this->container['avs_response_code'] = $data['avs_response_code'] ?? null;
+        $this->container['cvv_response_code'] = $data['cvv_response_code'] ?? null;
     }
 
     /**
@@ -434,6 +504,24 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'payment_source', must be one of '%s'",
                 $this->container['payment_source'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getAvsResponseCodeAllowableValues();
+        if (!is_null($this->container['avs_response_code']) && !in_array($this->container['avs_response_code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'avs_response_code', must be one of '%s'",
+                $this->container['avs_response_code'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCvvResponseCodeAllowableValues();
+        if (!is_null($this->container['cvv_response_code']) && !in_array($this->container['cvv_response_code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'cvv_response_code', must be one of '%s'",
+                $this->container['cvv_response_code'],
                 implode("', '", $allowedValues)
             );
         }
@@ -937,6 +1025,146 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
         $this->container['cart_items'] = $cart_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets scheme_transaction_id
+     *
+     * @return string|null
+     */
+    public function getSchemeTransactionId()
+    {
+        return $this->container['scheme_transaction_id'];
+    }
+
+    /**
+     * Sets scheme_transaction_id
+     *
+     * @param string|null $scheme_transaction_id An identifier for the transaction used by the scheme itself, when available.  e.g. the Visa Transaction Identifier, or Mastercard Trace ID.
+     *
+     * @return self
+     */
+    public function setSchemeTransactionId($scheme_transaction_id)
+    {
+        $this->container['scheme_transaction_id'] = $scheme_transaction_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets raw_response_code
+     *
+     * @return string|null
+     */
+    public function getRawResponseCode()
+    {
+        return $this->container['raw_response_code'];
+    }
+
+    /**
+     * Sets raw_response_code
+     *
+     * @param string|null $raw_response_code This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
+     *
+     * @return self
+     */
+    public function setRawResponseCode($raw_response_code)
+    {
+        $this->container['raw_response_code'] = $raw_response_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets raw_response_description
+     *
+     * @return string|null
+     */
+    public function getRawResponseDescription()
+    {
+        return $this->container['raw_response_description'];
+    }
+
+    /**
+     * Sets raw_response_description
+     *
+     * @param string|null $raw_response_description This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
+     *
+     * @return self
+     */
+    public function setRawResponseDescription($raw_response_description)
+    {
+        $this->container['raw_response_description'] = $raw_response_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets avs_response_code
+     *
+     * @return string|null
+     */
+    public function getAvsResponseCode()
+    {
+        return $this->container['avs_response_code'];
+    }
+
+    /**
+     * Sets avs_response_code
+     *
+     * @param string|null $avs_response_code The response code received from the payment service for the Address Verification Check (AVS). This code is mapped to a standardized Gr4vy AVS response code.  - `no_match` - neither address or postal code match - `match` - both address and postal code match - `partial_match_address` - address matches but postal code does not - `partial_match_postcode` - postal code matches but address does not - `unavailable ` - AVS is unavailable for card/country  The value of this field can be `null` if the payment service did not provide a response.
+     *
+     * @return self
+     */
+    public function setAvsResponseCode($avs_response_code)
+    {
+        $allowedValues = $this->getAvsResponseCodeAllowableValues();
+        if (!is_null($avs_response_code) && !in_array($avs_response_code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'avs_response_code', must be one of '%s'",
+                    $avs_response_code,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['avs_response_code'] = $avs_response_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets cvv_response_code
+     *
+     * @return string|null
+     */
+    public function getCvvResponseCode()
+    {
+        return $this->container['cvv_response_code'];
+    }
+
+    /**
+     * Sets cvv_response_code
+     *
+     * @param string|null $cvv_response_code The response code received from the payment service for the Card Verification Value (CVV). This code is mapped to a standardized Gr4vy CVV response code.  - `no_match` - the CVV does not match the expected value - `match` - the CVV matches the expected value - `unavailable ` - CVV check unavailable for card our country - `not_provided ` - CVV not provided  The value of this field can be `null` if the payment service did not provide a response.
+     *
+     * @return self
+     */
+    public function setCvvResponseCode($cvv_response_code)
+    {
+        $allowedValues = $this->getCvvResponseCodeAllowableValues();
+        if (!is_null($cvv_response_code) && !in_array($cvv_response_code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'cvv_response_code', must be one of '%s'",
+                    $cvv_response_code,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['cvv_response_code'] = $cvv_response_code;
 
         return $this;
     }

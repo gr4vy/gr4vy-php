@@ -63,7 +63,7 @@ class BuyerRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'external_identifier' => 'string',
         'display_name' => 'string',
-        'billing_details' => 'BillingDetails'
+        'billing_details' => 'BillingDetailsRequest'
     ];
 
     /**
@@ -300,7 +300,7 @@ class BuyerRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets billing_details
      *
-     * @return BillingDetails|null
+     * @return BillingDetailsRequest|null
      */
     public function getBillingDetails()
     {
@@ -310,7 +310,7 @@ class BuyerRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets billing_details
      *
-     * @param BillingDetails|null $billing_details billing_details
+     * @param BillingDetailsRequest|null $billing_details billing_details
      *
      * @return self
      */

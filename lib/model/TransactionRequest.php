@@ -73,7 +73,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'is_subsequent_payment' => 'bool',
         'metadata' => 'array<string,string>',
         'statement_descriptor' => 'StatementDescriptor',
-        'cart_items' => '\Gr4vy\model\CartItem[]'
+        'cart_items' => '\Gr4vy\model\CartItem[]',
+        'previous_scheme_transaction_id' => 'string'
     ];
 
     /**
@@ -96,7 +97,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'is_subsequent_payment' => null,
         'metadata' => null,
         'statement_descriptor' => null,
-        'cart_items' => null
+        'cart_items' => null,
+        'previous_scheme_transaction_id' => null
     ];
 
     /**
@@ -138,7 +140,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'is_subsequent_payment' => 'is_subsequent_payment',
         'metadata' => 'metadata',
         'statement_descriptor' => 'statement_descriptor',
-        'cart_items' => 'cart_items'
+        'cart_items' => 'cart_items',
+        'previous_scheme_transaction_id' => 'previous_scheme_transaction_id'
     ];
 
     /**
@@ -159,7 +162,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'is_subsequent_payment' => 'setIsSubsequentPayment',
         'metadata' => 'setMetadata',
         'statement_descriptor' => 'setStatementDescriptor',
-        'cart_items' => 'setCartItems'
+        'cart_items' => 'setCartItems',
+        'previous_scheme_transaction_id' => 'setPreviousSchemeTransactionId'
     ];
 
     /**
@@ -180,7 +184,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'is_subsequent_payment' => 'getIsSubsequentPayment',
         'metadata' => 'getMetadata',
         'statement_descriptor' => 'getStatementDescriptor',
-        'cart_items' => 'getCartItems'
+        'cart_items' => 'getCartItems',
+        'previous_scheme_transaction_id' => 'getPreviousSchemeTransactionId'
     ];
 
     /**
@@ -289,6 +294,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['metadata'] = $data['metadata'] ?? null;
         $this->container['statement_descriptor'] = $data['statement_descriptor'] ?? null;
         $this->container['cart_items'] = $data['cart_items'] ?? null;
+        $this->container['previous_scheme_transaction_id'] = $data['previous_scheme_transaction_id'] ?? 'null';
     }
 
     /**
@@ -702,6 +708,30 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('invalid value for $cart_items when calling TransactionRequest., number of items must be less than or equal to 249.');
         }
         $this->container['cart_items'] = $cart_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous_scheme_transaction_id
+     *
+     * @return string|null
+     */
+    public function getPreviousSchemeTransactionId()
+    {
+        return $this->container['previous_scheme_transaction_id'];
+    }
+
+    /**
+     * Sets previous_scheme_transaction_id
+     *
+     * @param string|null $previous_scheme_transaction_id A scheme's transaction identifier to use in connecting a merchant initiated transaction to a previous customer initiated transaction.  If not provided, and a qualifying customer initiated transaction has been previously made, then Gr4vy will populate this value with the identifier returned for that transaction.  e.g. the Visa Transaction Identifier, or Mastercard Trace ID.
+     *
+     * @return self
+     */
+    public function setPreviousSchemeTransactionId($previous_scheme_transaction_id)
+    {
+        $this->container['previous_scheme_transaction_id'] = $previous_scheme_transaction_id;
 
         return $this;
     }

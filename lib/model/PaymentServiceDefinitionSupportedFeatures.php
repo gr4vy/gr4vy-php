@@ -64,7 +64,11 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
         'payment_method_tokenization' => 'bool',
         'three_d_secure_hosted' => 'bool',
         'three_d_secure_pass_through' => 'bool',
-        'network_tokens' => 'bool'
+        'network_tokens' => 'bool',
+        'verify_credentials' => 'bool',
+        'void' => 'bool',
+        'refunds' => 'bool',
+        'partial_refunds' => 'bool'
     ];
 
     /**
@@ -78,7 +82,11 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
         'payment_method_tokenization' => null,
         'three_d_secure_hosted' => null,
         'three_d_secure_pass_through' => null,
-        'network_tokens' => null
+        'network_tokens' => null,
+        'verify_credentials' => null,
+        'void' => null,
+        'refunds' => null,
+        'partial_refunds' => null
     ];
 
     /**
@@ -111,7 +119,11 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
         'payment_method_tokenization' => 'payment_method_tokenization',
         'three_d_secure_hosted' => 'three_d_secure_hosted',
         'three_d_secure_pass_through' => 'three_d_secure_pass_through',
-        'network_tokens' => 'network_tokens'
+        'network_tokens' => 'network_tokens',
+        'verify_credentials' => 'verify_credentials',
+        'void' => 'void',
+        'refunds' => 'refunds',
+        'partial_refunds' => 'partial_refunds'
     ];
 
     /**
@@ -123,7 +135,11 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
         'payment_method_tokenization' => 'setPaymentMethodTokenization',
         'three_d_secure_hosted' => 'setThreeDSecureHosted',
         'three_d_secure_pass_through' => 'setThreeDSecurePassThrough',
-        'network_tokens' => 'setNetworkTokens'
+        'network_tokens' => 'setNetworkTokens',
+        'verify_credentials' => 'setVerifyCredentials',
+        'void' => 'setVoid',
+        'refunds' => 'setRefunds',
+        'partial_refunds' => 'setPartialRefunds'
     ];
 
     /**
@@ -135,7 +151,11 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
         'payment_method_tokenization' => 'getPaymentMethodTokenization',
         'three_d_secure_hosted' => 'getThreeDSecureHosted',
         'three_d_secure_pass_through' => 'getThreeDSecurePassThrough',
-        'network_tokens' => 'getNetworkTokens'
+        'network_tokens' => 'getNetworkTokens',
+        'verify_credentials' => 'getVerifyCredentials',
+        'void' => 'getVoid',
+        'refunds' => 'getRefunds',
+        'partial_refunds' => 'getPartialRefunds'
     ];
 
     /**
@@ -199,6 +219,10 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
         $this->container['three_d_secure_hosted'] = $data['three_d_secure_hosted'] ?? null;
         $this->container['three_d_secure_pass_through'] = $data['three_d_secure_pass_through'] ?? null;
         $this->container['network_tokens'] = $data['network_tokens'] ?? null;
+        $this->container['verify_credentials'] = $data['verify_credentials'] ?? null;
+        $this->container['void'] = $data['void'] ?? null;
+        $this->container['refunds'] = $data['refunds'] ?? null;
+        $this->container['partial_refunds'] = $data['partial_refunds'] ?? null;
     }
 
     /**
@@ -317,6 +341,102 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
     public function setNetworkTokens($network_tokens)
     {
         $this->container['network_tokens'] = $network_tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets verify_credentials
+     *
+     * @return bool|null
+     */
+    public function getVerifyCredentials()
+    {
+        return $this->container['verify_credentials'];
+    }
+
+    /**
+     * Sets verify_credentials
+     *
+     * @param bool|null $verify_credentials Supports verifying the credentials entered while setting up the underlying processor. This is for internal use only.
+     *
+     * @return self
+     */
+    public function setVerifyCredentials($verify_credentials)
+    {
+        $this->container['verify_credentials'] = $verify_credentials;
+
+        return $this;
+    }
+
+    /**
+     * Gets void
+     *
+     * @return bool|null
+     */
+    public function getVoid()
+    {
+        return $this->container['void'];
+    }
+
+    /**
+     * Sets void
+     *
+     * @param bool|null $void Supports [voiding](#operation/void-transaction) authorized transactions.
+     *
+     * @return self
+     */
+    public function setVoid($void)
+    {
+        $this->container['void'] = $void;
+
+        return $this;
+    }
+
+    /**
+     * Gets refunds
+     *
+     * @return bool|null
+     */
+    public function getRefunds()
+    {
+        return $this->container['refunds'];
+    }
+
+    /**
+     * Sets refunds
+     *
+     * @param bool|null $refunds Supports [refunding](#operation/refund-transaction) captured transactions.
+     *
+     * @return self
+     */
+    public function setRefunds($refunds)
+    {
+        $this->container['refunds'] = $refunds;
+
+        return $this;
+    }
+
+    /**
+     * Gets partial_refunds
+     *
+     * @return bool|null
+     */
+    public function getPartialRefunds()
+    {
+        return $this->container['partial_refunds'];
+    }
+
+    /**
+     * Sets partial_refunds
+     *
+     * @param bool|null $partial_refunds Supports [partially refunding](#operation/refund-transaction) captured transactions.
+     *
+     * @return self
+     */
+    public function setPartialRefunds($partial_refunds)
+    {
+        $this->container['partial_refunds'] = $partial_refunds;
 
         return $this;
     }
