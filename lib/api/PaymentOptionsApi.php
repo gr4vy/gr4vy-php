@@ -122,15 +122,17 @@ class PaymentOptionsApi
      *
      * @param  string $country Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. (optional)
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
+     * @param  int $amount Used by the Flow engine to filter the results based on the transaction amount. (optional)
+     * @param  string $metadata Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. (optional)
      * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en-US')
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\PaymentOptions|\Gr4vy\model\Error400BadRequest|\Gr4vy\model\Error401Unauthorized
      */
-    public function listPaymentOptions($country = null, $currency = null, $locale = 'en-US')
+    public function listPaymentOptions($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en-US')
     {
-        list($response) = $this->listPaymentOptionsWithHttpInfo($country, $currency, $locale);
+        list($response) = $this->listPaymentOptionsWithHttpInfo($country, $currency, $amount, $metadata, $locale);
         return $response;
     }
 
@@ -141,15 +143,17 @@ class PaymentOptionsApi
      *
      * @param  string $country Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. (optional)
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
+     * @param  int $amount Used by the Flow engine to filter the results based on the transaction amount. (optional)
+     * @param  string $metadata Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. (optional)
      * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en-US')
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\PaymentOptions|\Gr4vy\model\Error400BadRequest|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPaymentOptionsWithHttpInfo($country = null, $currency = null, $locale = 'en-US')
+    public function listPaymentOptionsWithHttpInfo($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en-US')
     {
-        $request = $this->listPaymentOptionsRequest($country, $currency, $locale);
+        $request = $this->listPaymentOptionsRequest($country, $currency, $amount, $metadata, $locale);
 
         try {
             $options = $this->createHttpClientOption();
@@ -269,14 +273,16 @@ class PaymentOptionsApi
      *
      * @param  string $country Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. (optional)
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
+     * @param  int $amount Used by the Flow engine to filter the results based on the transaction amount. (optional)
+     * @param  string $metadata Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. (optional)
      * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en-US')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentOptionsAsync($country = null, $currency = null, $locale = 'en-US')
+    public function listPaymentOptionsAsync($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en-US')
     {
-        return $this->listPaymentOptionsAsyncWithHttpInfo($country, $currency, $locale)
+        return $this->listPaymentOptionsAsyncWithHttpInfo($country, $currency, $amount, $metadata, $locale)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -291,15 +297,17 @@ class PaymentOptionsApi
      *
      * @param  string $country Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. (optional)
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
+     * @param  int $amount Used by the Flow engine to filter the results based on the transaction amount. (optional)
+     * @param  string $metadata Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. (optional)
      * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en-US')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentOptionsAsyncWithHttpInfo($country = null, $currency = null, $locale = 'en-US')
+    public function listPaymentOptionsAsyncWithHttpInfo($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en-US')
     {
         $returnType = '\Gr4vy\model\PaymentOptions';
-        $request = $this->listPaymentOptionsRequest($country, $currency, $locale);
+        $request = $this->listPaymentOptionsRequest($country, $currency, $amount, $metadata, $locale);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -339,12 +347,14 @@ class PaymentOptionsApi
      *
      * @param  string $country Filters the results to only the items which support this country code. A country is formatted as 2-letter ISO country code. (optional)
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
+     * @param  int $amount Used by the Flow engine to filter the results based on the transaction amount. (optional)
+     * @param  string $metadata Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. (optional)
      * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en-US')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPaymentOptionsRequest($country = null, $currency = null, $locale = 'en-US')
+    public function listPaymentOptionsRequest($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en-US')
     {
         if ($locale !== null && !preg_match("/^[a-z]{2}(?:-[A-Z]{2})?$/", $locale)) {
             throw new \InvalidArgumentException("invalid value for \"locale\" when calling PaymentOptionsApi.listPaymentOptions, must conform to the pattern /^[a-z]{2}(?:-[A-Z]{2})?$/.");
@@ -378,6 +388,28 @@ class PaymentOptionsApi
             }
             else {
                 $queryParams['currency'] = $currency;
+            }
+        }
+        // query params
+        if ($amount !== null) {
+            if('form' === 'form' && is_array($amount)) {
+                foreach($amount as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['amount'] = $amount;
+            }
+        }
+        // query params
+        if ($metadata !== null) {
+            if('form' === 'form' && is_array($metadata)) {
+                foreach($metadata as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['metadata'] = $metadata;
             }
         }
         // query params

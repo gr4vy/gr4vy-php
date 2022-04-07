@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**listTransactionRefunds()**](TransactionsApi.md#listTransactionRefunds) | **GET** /transactions/{transaction_id}/refunds | List transaction refunds
 [**listTransactions()**](TransactionsApi.md#listTransactions) | **GET** /transactions | List transactions
 [**refundTransaction()**](TransactionsApi.md#refundTransaction) | **POST** /transactions/{transaction_id}/refunds | Refund transaction
-[**refundTransactionDeprecated()**](TransactionsApi.md#refundTransactionDeprecated) | **POST** /transactions/{transaction_id}/refund | Refund or void transactions
 [**voidTransaction()**](TransactionsApi.md#voidTransaction) | **POST** /transactions/{transaction_id}/void | Void transaction
 
 
@@ -449,68 +448,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Gr4vy\model\Refund**](../Model/Refund.md)
-
-### Authorization
-
-[BearerAuth](../../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `refundTransactionDeprecated()`
-
-```php
-refundTransactionDeprecated($transaction_id, $transaction_refund_request_deprecated): \Gr4vy\model\Transaction
-```
-
-Refund or void transactions
-
-Refunds or voids transaction. If this transaction was already captured, it will issue a refund. If the transaction was not yet captured the authorization will instead be voided.  **Warning**: this endpoint will be removed eventually, use [Refund transaction](#operation/refund-transaction) or [Void transaction](#operation/void-transaction) endpoints instead.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: BearerAuth
-$config = Gr4vy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Gr4vy\Api\TransactionsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$transaction_id = fe26475d-ec3e-4884-9553-f7356683f7f9; // string | The ID for the transaction to get the information for.
-$transaction_refund_request_deprecated = new \Gr4vy\model\TransactionRefundRequestDeprecated(); // \Gr4vy\model\TransactionRefundRequestDeprecated
-
-try {
-    $result = $apiInstance->refundTransactionDeprecated($transaction_id, $transaction_refund_request_deprecated);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling TransactionsApi->refundTransactionDeprecated: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transaction_id** | **string**| The ID for the transaction to get the information for. |
- **transaction_refund_request_deprecated** | [**\Gr4vy\model\TransactionRefundRequestDeprecated**](../Model/TransactionRefundRequestDeprecated.md)|  | [optional]
-
-### Return type
-
-[**\Gr4vy\model\Transaction**](../Model/Transaction.md)
 
 ### Authorization
 

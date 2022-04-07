@@ -61,7 +61,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'value' => 'string',
         'kind' => 'string'
     ];
 
@@ -73,7 +73,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'value' => null,
         'kind' => null
     ];
 
@@ -104,7 +104,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'value' => 'value',
         'kind' => 'kind'
     ];
 
@@ -114,7 +114,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'value' => 'setValue',
         'kind' => 'setKind'
     ];
 
@@ -124,7 +124,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'value' => 'getValue',
         'kind' => 'getKind'
     ];
 
@@ -171,6 +171,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
 
     const KIND_AE_TRN = 'ae.trn';
     const KIND_AU_ABN = 'au.abn';
+    const KIND_AR_CUIT = 'ar.cuit';
     const KIND_BR_CNPJ = 'br.cnpj';
     const KIND_BR_CPF = 'br.cpf';
     const KIND_CA_BN = 'ca.bn';
@@ -185,6 +186,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
     const KIND_EU_VAT = 'eu.vat';
     const KIND_GB_VAT = 'gb.vat';
     const KIND_HK_BR = 'hk.br';
+    const KIND_ID_NIK = 'id.nik';
     const KIND_ID_NPWP = 'id.npwp';
     const KIND_IN_GST = 'in.gst';
     const KIND_JP_CN = 'jp.cn';
@@ -194,6 +196,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
     const KIND_MX_RFC = 'mx.rfc';
     const KIND_MY_FRP = 'my.frp';
     const KIND_MY_ITN = 'my.itn';
+    const KIND_MY_NRIC = 'my.nric';
     const KIND_MY_SST = 'my.sst';
     const KIND_NO_VAT = 'no.vat';
     const KIND_NZ_GST = 'nz.gst';
@@ -202,6 +205,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
     const KIND_SA_VAT = 'sa.vat';
     const KIND_SG_GST = 'sg.gst';
     const KIND_SG_UEN = 'sg.uen';
+    const KIND_TH_ID = 'th.id';
     const KIND_TH_VAT = 'th.vat';
     const KIND_TW_VAT = 'tw.vat';
     const KIND_US_EIN = 'us.ein';
@@ -217,6 +221,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::KIND_AE_TRN,
             self::KIND_AU_ABN,
+            self::KIND_AR_CUIT,
             self::KIND_BR_CNPJ,
             self::KIND_BR_CPF,
             self::KIND_CA_BN,
@@ -231,6 +236,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
             self::KIND_EU_VAT,
             self::KIND_GB_VAT,
             self::KIND_HK_BR,
+            self::KIND_ID_NIK,
             self::KIND_ID_NPWP,
             self::KIND_IN_GST,
             self::KIND_JP_CN,
@@ -240,6 +246,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
             self::KIND_MX_RFC,
             self::KIND_MY_FRP,
             self::KIND_MY_ITN,
+            self::KIND_MY_NRIC,
             self::KIND_MY_SST,
             self::KIND_NO_VAT,
             self::KIND_NZ_GST,
@@ -248,6 +255,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
             self::KIND_SA_VAT,
             self::KIND_SG_GST,
             self::KIND_SG_UEN,
+            self::KIND_TH_ID,
             self::KIND_TH_VAT,
             self::KIND_TW_VAT,
             self::KIND_US_EIN,
@@ -270,7 +278,7 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
     }
 
@@ -283,12 +291,15 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 50)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 50.";
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
+        if ((mb_strlen($this->container['value']) > 50)) {
+            $invalidProperties[] = "invalid value for 'value', the character length must be smaller than or equal to 50.";
         }
 
-        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['value']) < 1)) {
+            $invalidProperties[] = "invalid value for 'value', the character length must be bigger than or equal to 1.";
         }
 
         if ($this->container['kind'] === null) {
@@ -319,32 +330,32 @@ class TaxId implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets value
      *
-     * @return string|null
+     * @return string
      */
-    public function getId()
+    public function getValue()
     {
-        return $this->container['id'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets id
+     * Sets value
      *
-     * @param string|null $id The tax ID for the buyer.
+     * @param string $value The tax ID for the buyer.
      *
      * @return self
      */
-    public function setId($id)
+    public function setValue($value)
     {
-        if (!is_null($id) && (mb_strlen($id) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling TaxId., must be smaller than or equal to 50.');
+        if ((mb_strlen($value) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $value when calling TaxId., must be smaller than or equal to 50.');
         }
-        if (!is_null($id) && (mb_strlen($id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling TaxId., must be bigger than or equal to 1.');
+        if ((mb_strlen($value) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $value when calling TaxId., must be bigger than or equal to 1.');
         }
 
-        $this->container['id'] = $id;
+        $this->container['value'] = $value;
 
         return $this;
     }

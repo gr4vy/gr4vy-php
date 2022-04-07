@@ -1,6 +1,6 @@
 <?php
 /**
- * TransactionRefundRequestDeprecated
+ * Error400InvalidCredentials
  *
  * PHP version 7.2
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * TransactionRefundRequestDeprecated Class Doc Comment
+ * Error400InvalidCredentials Class Doc Comment
  *
  * @category Class
- * @description A request to refund a transaction.
+ * @description Invalid credentials (HTTP 400).
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess, \JsonSerializable
+class Error400InvalidCredentials implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TransactionRefundRequestDeprecated';
+    protected static $openAPIModelName = 'Error400InvalidCredentials';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,10 @@ class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'int'
+        'type' => 'string',
+        'code' => 'string',
+        'status' => 'int',
+        'message' => 'string'
     ];
 
     /**
@@ -72,7 +75,10 @@ class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null
+        'type' => null,
+        'code' => null,
+        'status' => null,
+        'message' => null
     ];
 
     /**
@@ -102,7 +108,10 @@ class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount'
+        'type' => 'type',
+        'code' => 'code',
+        'status' => 'status',
+        'message' => 'message'
     ];
 
     /**
@@ -111,7 +120,10 @@ class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount'
+        'type' => 'setType',
+        'code' => 'setCode',
+        'status' => 'setStatus',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -120,7 +132,10 @@ class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount'
+        'type' => 'getType',
+        'code' => 'getCode',
+        'status' => 'getStatus',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -164,6 +179,45 @@ class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    const TYPE_ERROR = 'error';
+    const CODE_INVALID_CREDENTIALS = 'invalid_credentials';
+    const STATUS_400 = 400;
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_ERROR,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCodeAllowableValues()
+    {
+        return [
+            self::CODE_INVALID_CREDENTIALS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_400,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -180,7 +234,10 @@ class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['code'] = $data['code'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['message'] = $data['message'] ?? null;
     }
 
     /**
@@ -192,12 +249,31 @@ class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['amount']) && ($this->container['amount'] > 99999999)) {
-            $invalidProperties[] = "invalid value for 'amount', must be smaller than or equal to 99999999.";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
         }
 
-        if (!is_null($this->container['amount']) && ($this->container['amount'] < 0)) {
-            $invalidProperties[] = "invalid value for 'amount', must be bigger than or equal to 0.";
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'code', must be one of '%s'",
+                $this->container['code'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -216,33 +292,127 @@ class TransactionRefundRequestDeprecated implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets amount
+     * Gets type
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getAmount()
+    public function getType()
     {
-        return $this->container['amount'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets amount
+     * Sets type
      *
-     * @param int|null $amount The (partial) amount to refund.  When omitted blank, this will refund the entire amount.
+     * @param string|null $type `error`.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setType($type)
     {
-
-        if (!is_null($amount) && ($amount > 99999999)) {
-            throw new \InvalidArgumentException('invalid value for $amount when calling TransactionRefundRequestDeprecated., must be smaller than or equal to 99999999.');
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        if (!is_null($amount) && ($amount < 0)) {
-            throw new \InvalidArgumentException('invalid value for $amount when calling TransactionRefundRequestDeprecated., must be bigger than or equal to 0.');
-        }
+        $this->container['type'] = $type;
 
-        $this->container['amount'] = $amount;
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return string|null
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string|null $code `invalid_credentials`.
+     *
+     * @return self
+     */
+    public function setCode($code)
+    {
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($code) && !in_array($code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'code', must be one of '%s'",
+                    $code,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return int|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param int|null $status `400`.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message The provided credentials are invalid.
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
 
         return $this;
     }

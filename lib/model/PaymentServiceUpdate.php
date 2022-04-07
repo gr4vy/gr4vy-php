@@ -397,7 +397,7 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets fields
      *
-     * @param \Gr4vy\model\PaymentServiceUpdateFields[]|null $fields A list of fields, each containing a key-value pair for each field defined by the definition for this payment service e.g. for stripe-card `secret_key` is required and so must be sent with in this field.
+     * @param \Gr4vy\model\PaymentServiceUpdateFields[]|null $fields A list of fields, each containing a key-value pair for each field defined by the definition for this payment service e.g. for stripe-card `secret_key` is required and so must be sent within this field.
      *
      * @return self
      */
