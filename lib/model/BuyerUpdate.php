@@ -61,9 +61,9 @@ class BuyerUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'billing_details' => 'BillingDetailsUpdateRequest',
         'external_identifier' => 'string',
-        'display_name' => 'string'
+        'display_name' => 'string',
+        'billing_details' => 'BillingDetailsUpdateRequest'
     ];
 
     /**
@@ -74,9 +74,9 @@ class BuyerUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'billing_details' => null,
         'external_identifier' => null,
-        'display_name' => null
+        'display_name' => null,
+        'billing_details' => null
     ];
 
     /**
@@ -106,9 +106,9 @@ class BuyerUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'billing_details' => 'billing_details',
         'external_identifier' => 'external_identifier',
-        'display_name' => 'display_name'
+        'display_name' => 'display_name',
+        'billing_details' => 'billing_details'
     ];
 
     /**
@@ -117,9 +117,9 @@ class BuyerUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'billing_details' => 'setBillingDetails',
         'external_identifier' => 'setExternalIdentifier',
-        'display_name' => 'setDisplayName'
+        'display_name' => 'setDisplayName',
+        'billing_details' => 'setBillingDetails'
     ];
 
     /**
@@ -128,9 +128,9 @@ class BuyerUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'billing_details' => 'getBillingDetails',
         'external_identifier' => 'getExternalIdentifier',
-        'display_name' => 'getDisplayName'
+        'display_name' => 'getDisplayName',
+        'billing_details' => 'getBillingDetails'
     ];
 
     /**
@@ -190,9 +190,9 @@ class BuyerUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['billing_details'] = $data['billing_details'] ?? null;
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['billing_details'] = $data['billing_details'] ?? null;
     }
 
     /**
@@ -234,30 +234,6 @@ class BuyerUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets billing_details
-     *
-     * @return BillingDetailsUpdateRequest|null
-     */
-    public function getBillingDetails()
-    {
-        return $this->container['billing_details'];
-    }
-
-    /**
-     * Sets billing_details
-     *
-     * @param BillingDetailsUpdateRequest|null $billing_details The optional billing details to update a buyer.
-     *
-     * @return self
-     */
-    public function setBillingDetails($billing_details)
-    {
-        $this->container['billing_details'] = $billing_details;
-
-        return $this;
-    }
 
     /**
      * Gets external_identifier
@@ -317,6 +293,30 @@ class BuyerUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets billing_details
+     *
+     * @return BillingDetailsUpdateRequest|null
+     */
+    public function getBillingDetails()
+    {
+        return $this->container['billing_details'];
+    }
+
+    /**
+     * Sets billing_details
+     *
+     * @param BillingDetailsUpdateRequest|null $billing_details billing_details
+     *
+     * @return self
+     */
+    public function setBillingDetails($billing_details)
+    {
+        $this->container['billing_details'] = $billing_details;
 
         return $this;
     }

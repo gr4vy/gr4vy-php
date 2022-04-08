@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * Address Class Doc Comment
  *
  * @category Class
- * @description Billing details associated to a buyer.
+ * @description The billing address of the buyer.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -240,47 +240,35 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['city'] === null) {
-            $invalidProperties[] = "'city' can't be null";
-        }
-        if ((mb_strlen($this->container['city']) > 100)) {
+        if (!is_null($this->container['city']) && (mb_strlen($this->container['city']) > 100)) {
             $invalidProperties[] = "invalid value for 'city', the character length must be smaller than or equal to 100.";
         }
 
-        if ((mb_strlen($this->container['city']) < 1)) {
+        if (!is_null($this->container['city']) && (mb_strlen($this->container['city']) < 1)) {
             $invalidProperties[] = "invalid value for 'city', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['country'] === null) {
-            $invalidProperties[] = "'country' can't be null";
-        }
-        if ((mb_strlen($this->container['country']) > 2)) {
+        if (!is_null($this->container['country']) && (mb_strlen($this->container['country']) > 2)) {
             $invalidProperties[] = "invalid value for 'country', the character length must be smaller than or equal to 2.";
         }
 
-        if ((mb_strlen($this->container['country']) < 1)) {
+        if (!is_null($this->container['country']) && (mb_strlen($this->container['country']) < 1)) {
             $invalidProperties[] = "invalid value for 'country', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['postal_code'] === null) {
-            $invalidProperties[] = "'postal_code' can't be null";
-        }
-        if ((mb_strlen($this->container['postal_code']) > 50)) {
+        if (!is_null($this->container['postal_code']) && (mb_strlen($this->container['postal_code']) > 50)) {
             $invalidProperties[] = "invalid value for 'postal_code', the character length must be smaller than or equal to 50.";
         }
 
-        if ((mb_strlen($this->container['postal_code']) < 1)) {
+        if (!is_null($this->container['postal_code']) && (mb_strlen($this->container['postal_code']) < 1)) {
             $invalidProperties[] = "invalid value for 'postal_code', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['state'] === null) {
-            $invalidProperties[] = "'state' can't be null";
-        }
-        if ((mb_strlen($this->container['state']) > 255)) {
+        if (!is_null($this->container['state']) && (mb_strlen($this->container['state']) > 255)) {
             $invalidProperties[] = "invalid value for 'state', the character length must be smaller than or equal to 255.";
         }
 
-        if ((mb_strlen($this->container['state']) < 1)) {
+        if (!is_null($this->container['state']) && (mb_strlen($this->container['state']) < 1)) {
             $invalidProperties[] = "invalid value for 'state', the character length must be bigger than or equal to 1.";
         }
 
@@ -300,14 +288,11 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'house_number_or_name', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['line1'] === null) {
-            $invalidProperties[] = "'line1' can't be null";
-        }
-        if ((mb_strlen($this->container['line1']) > 255)) {
+        if (!is_null($this->container['line1']) && (mb_strlen($this->container['line1']) > 255)) {
             $invalidProperties[] = "invalid value for 'line1', the character length must be smaller than or equal to 255.";
         }
 
-        if ((mb_strlen($this->container['line1']) < 1)) {
+        if (!is_null($this->container['line1']) && (mb_strlen($this->container['line1']) < 1)) {
             $invalidProperties[] = "invalid value for 'line1', the character length must be bigger than or equal to 1.";
         }
 
@@ -345,7 +330,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets city
      *
-     * @return string
+     * @return string|null
      */
     public function getCity()
     {
@@ -355,16 +340,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets city
      *
-     * @param string $city The city for the billing address.
+     * @param string|null $city The city for the billing address.
      *
      * @return self
      */
     public function setCity($city)
     {
-        if ((mb_strlen($city) > 100)) {
+        if (!is_null($city) && (mb_strlen($city) > 100)) {
             throw new \InvalidArgumentException('invalid length for $city when calling Address., must be smaller than or equal to 100.');
         }
-        if ((mb_strlen($city) < 1)) {
+        if (!is_null($city) && (mb_strlen($city) < 1)) {
             throw new \InvalidArgumentException('invalid length for $city when calling Address., must be bigger than or equal to 1.');
         }
 
@@ -376,7 +361,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets country
      *
-     * @return string
+     * @return string|null
      */
     public function getCountry()
     {
@@ -386,16 +371,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param string $country The country for the billing address.
+     * @param string|null $country The country for the billing address.
      *
      * @return self
      */
     public function setCountry($country)
     {
-        if ((mb_strlen($country) > 2)) {
+        if (!is_null($country) && (mb_strlen($country) > 2)) {
             throw new \InvalidArgumentException('invalid length for $country when calling Address., must be smaller than or equal to 2.');
         }
-        if ((mb_strlen($country) < 1)) {
+        if (!is_null($country) && (mb_strlen($country) < 1)) {
             throw new \InvalidArgumentException('invalid length for $country when calling Address., must be bigger than or equal to 1.');
         }
 
@@ -407,7 +392,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets postal_code
      *
-     * @return string
+     * @return string|null
      */
     public function getPostalCode()
     {
@@ -417,16 +402,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets postal_code
      *
-     * @param string $postal_code The postal code or zip code for the billing address.
+     * @param string|null $postal_code The postal code or zip code for the billing address.
      *
      * @return self
      */
     public function setPostalCode($postal_code)
     {
-        if ((mb_strlen($postal_code) > 50)) {
+        if (!is_null($postal_code) && (mb_strlen($postal_code) > 50)) {
             throw new \InvalidArgumentException('invalid length for $postal_code when calling Address., must be smaller than or equal to 50.');
         }
-        if ((mb_strlen($postal_code) < 1)) {
+        if (!is_null($postal_code) && (mb_strlen($postal_code) < 1)) {
             throw new \InvalidArgumentException('invalid length for $postal_code when calling Address., must be bigger than or equal to 1.');
         }
 
@@ -438,7 +423,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets state
      *
-     * @return string
+     * @return string|null
      */
     public function getState()
     {
@@ -448,16 +433,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets state
      *
-     * @param string $state The state, county, or province for the billing address.
+     * @param string|null $state The state, county, or province for the billing address.
      *
      * @return self
      */
     public function setState($state)
     {
-        if ((mb_strlen($state) > 255)) {
+        if (!is_null($state) && (mb_strlen($state) > 255)) {
             throw new \InvalidArgumentException('invalid length for $state when calling Address., must be smaller than or equal to 255.');
         }
-        if ((mb_strlen($state) < 1)) {
+        if (!is_null($state) && (mb_strlen($state) < 1)) {
             throw new \InvalidArgumentException('invalid length for $state when calling Address., must be bigger than or equal to 1.');
         }
 
@@ -531,7 +516,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets line1
      *
-     * @return string
+     * @return string|null
      */
     public function getLine1()
     {
@@ -541,16 +526,16 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets line1
      *
-     * @param string $line1 The first line of the billing address.
+     * @param string|null $line1 The first line of the billing address.
      *
      * @return self
      */
     public function setLine1($line1)
     {
-        if ((mb_strlen($line1) > 255)) {
+        if (!is_null($line1) && (mb_strlen($line1) > 255)) {
             throw new \InvalidArgumentException('invalid length for $line1 when calling Address., must be smaller than or equal to 255.');
         }
-        if ((mb_strlen($line1) < 1)) {
+        if (!is_null($line1) && (mb_strlen($line1) < 1)) {
             throw new \InvalidArgumentException('invalid length for $line1 when calling Address., must be bigger than or equal to 1.');
         }
 

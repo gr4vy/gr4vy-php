@@ -19,6 +19,10 @@ var1="'billing_details' => 'BillingDetails',"
 rep1="'billing_details' => '\\\Gr4vy\\\model\\\BillingDetails',"
 sed -i '' "s/$var1/$rep1/g" lib/model/*.php
 
+var1="'billing_details' => 'BillingDetails'"
+rep1="'billing_details' => '\\\Gr4vy\\\model\\\BillingDetails'"
+sed -i '' "s/$var1/$rep1/g" lib/model/*.php
+
 var1="'address' => 'Address',"
 rep1="'address' => '\\\Gr4vy\\\model\\\Address',"
 sed -i '' "s/$var1/$rep1/g" lib/model/*.php
