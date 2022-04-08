@@ -8,7 +8,6 @@ docs/Api/PaymentServiceDefinitionsApi.md
 docs/Api/PaymentServicesApi.md
 docs/Api/TransactionsApi.md
 docs/Model/Address.md
-docs/Model/AddressUpdate.md
 docs/Model/ApplePayRequest.md
 docs/Model/ApplePaySessionRequest.md
 docs/Model/BillingDetails.md
@@ -96,7 +95,6 @@ lib/Configuration.php
 lib/HeaderSelector.php
 lib/ObjectSerializer.php
 lib/model/Address.php
-lib/model/AddressUpdate.php
 lib/model/ApplePayRequest.php
 lib/model/ApplePaySessionRequest.php
 lib/model/BillingDetails.php

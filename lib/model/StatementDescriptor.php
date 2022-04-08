@@ -381,7 +381,7 @@ class StatementDescriptor implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number The value in the phone number field of a customer's statement. The phone number to use for this request. This expect the number in the [E164 number standard](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string|null $phone_number The value in the phone number field of a customer's statement which should be formatted according to the [E164 number standard](https://www.twilio.com/docs/glossary/what-e164).
      *
      * @return self
      */

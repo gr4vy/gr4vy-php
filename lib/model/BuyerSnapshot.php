@@ -65,7 +65,7 @@ class BuyerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'external_identifier' => 'string',
         'display_name' => 'string',
-        'billing_details' => 'BillingDetails'
+        'billing_details' => '\Gr4vy\model\BillingDetails'
     ];
 
     /**

@@ -60,11 +60,11 @@ class BillingDetailsUpdateRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'address' => 'AddressUpdate',
         'first_name' => 'string',
         'last_name' => 'string',
         'email_address' => 'string',
         'phone_number' => 'string',
+        'address' => '\Gr4vy\model\Address',
         'tax_id' => 'TaxId'
     ];
 
@@ -76,11 +76,11 @@ class BillingDetailsUpdateRequest implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'address' => null,
         'first_name' => null,
         'last_name' => null,
         'email_address' => null,
         'phone_number' => null,
+        'address' => null,
         'tax_id' => null
     ];
 
@@ -111,11 +111,11 @@ class BillingDetailsUpdateRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'address' => 'address',
         'first_name' => 'first_name',
         'last_name' => 'last_name',
         'email_address' => 'email_address',
         'phone_number' => 'phone_number',
+        'address' => 'address',
         'tax_id' => 'tax_id'
     ];
 
@@ -125,11 +125,11 @@ class BillingDetailsUpdateRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'address' => 'setAddress',
         'first_name' => 'setFirstName',
         'last_name' => 'setLastName',
         'email_address' => 'setEmailAddress',
         'phone_number' => 'setPhoneNumber',
+        'address' => 'setAddress',
         'tax_id' => 'setTaxId'
     ];
 
@@ -139,11 +139,11 @@ class BillingDetailsUpdateRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'address' => 'getAddress',
         'first_name' => 'getFirstName',
         'last_name' => 'getLastName',
         'email_address' => 'getEmailAddress',
         'phone_number' => 'getPhoneNumber',
+        'address' => 'getAddress',
         'tax_id' => 'getTaxId'
     ];
 
@@ -204,11 +204,11 @@ class BillingDetailsUpdateRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['address'] = $data['address'] ?? null;
         $this->container['first_name'] = $data['first_name'] ?? null;
         $this->container['last_name'] = $data['last_name'] ?? null;
         $this->container['email_address'] = $data['email_address'] ?? null;
         $this->container['phone_number'] = $data['phone_number'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
         $this->container['tax_id'] = $data['tax_id'] ?? null;
     }
 
@@ -271,30 +271,6 @@ class BillingDetailsUpdateRequest implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets address
-     *
-     * @return AddressUpdate|null
-     */
-    public function getAddress()
-    {
-        return $this->container['address'];
-    }
-
-    /**
-     * Sets address
-     *
-     * @param AddressUpdate|null $address Address associated with the billing details.
-     *
-     * @return self
-     */
-    public function setAddress($address)
-    {
-        $this->container['address'] = $address;
-
-        return $this;
-    }
 
     /**
      * Gets first_name
@@ -402,7 +378,7 @@ class BillingDetailsUpdateRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number The phone number to use for this request. This expect the number in the [E164 number standard](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string|null $phone_number The phone number for the buyer which should be formatted according to the [E164 number standard](https://www.twilio.com/docs/glossary/what-e164).
      *
      * @return self
      */
@@ -419,6 +395,30 @@ class BillingDetailsUpdateRequest implements ModelInterface, ArrayAccess, \JsonS
         }
 
         $this->container['phone_number'] = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets address
+     *
+     * @return Address|null
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param Address|null $address The billing address for the buyer.
+     *
+     * @return self
+     */
+    public function setAddress($address)
+    {
+        $this->container['address'] = $address;
 
         return $this;
     }

@@ -441,7 +441,7 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number The phone number of the buyer. This expect the number in the [E164 number standard](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string|null $phone_number The phone number of the buyer. This number is formatted according to the [E164 number standard](https://www.twilio.com/docs/glossary/what-e164).
      *
      * @return self
      */
