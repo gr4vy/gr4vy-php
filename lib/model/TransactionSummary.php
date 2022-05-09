@@ -64,16 +64,19 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'string',
         'id' => 'string',
         'status' => 'string',
+        'intent' => 'string',
         'amount' => 'int',
         'captured_amount' => 'int',
         'refunded_amount' => 'int',
         'currency' => 'string',
+        'country' => 'string',
         'payment_method' => '\Gr4vy\model\PaymentMethodSnapshot',
         'buyer' => '\Gr4vy\model\BuyerSnapshot',
         'created_at' => '\DateTime',
         'external_identifier' => 'string',
         'updated_at' => '\DateTime',
-        'payment_service' => '\Gr4vy\model\PaymentService'
+        'payment_service' => '\Gr4vy\model\PaymentService',
+        'method' => 'string'
     ];
 
     /**
@@ -87,16 +90,19 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => null,
         'id' => 'uuid',
         'status' => null,
+        'intent' => null,
         'amount' => null,
         'captured_amount' => null,
         'refunded_amount' => null,
         'currency' => null,
+        'country' => null,
         'payment_method' => null,
         'buyer' => null,
         'created_at' => 'date-time',
         'external_identifier' => null,
         'updated_at' => 'date-time',
-        'payment_service' => null
+        'payment_service' => null,
+        'method' => null
     ];
 
     /**
@@ -129,16 +135,19 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'type',
         'id' => 'id',
         'status' => 'status',
+        'intent' => 'intent',
         'amount' => 'amount',
         'captured_amount' => 'captured_amount',
         'refunded_amount' => 'refunded_amount',
         'currency' => 'currency',
+        'country' => 'country',
         'payment_method' => 'payment_method',
         'buyer' => 'buyer',
         'created_at' => 'created_at',
         'external_identifier' => 'external_identifier',
         'updated_at' => 'updated_at',
-        'payment_service' => 'payment_service'
+        'payment_service' => 'payment_service',
+        'method' => 'method'
     ];
 
     /**
@@ -150,16 +159,19 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'setType',
         'id' => 'setId',
         'status' => 'setStatus',
+        'intent' => 'setIntent',
         'amount' => 'setAmount',
         'captured_amount' => 'setCapturedAmount',
         'refunded_amount' => 'setRefundedAmount',
         'currency' => 'setCurrency',
+        'country' => 'setCountry',
         'payment_method' => 'setPaymentMethod',
         'buyer' => 'setBuyer',
         'created_at' => 'setCreatedAt',
         'external_identifier' => 'setExternalIdentifier',
         'updated_at' => 'setUpdatedAt',
-        'payment_service' => 'setPaymentService'
+        'payment_service' => 'setPaymentService',
+        'method' => 'setMethod'
     ];
 
     /**
@@ -171,16 +183,19 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'getType',
         'id' => 'getId',
         'status' => 'getStatus',
+        'intent' => 'getIntent',
         'amount' => 'getAmount',
         'captured_amount' => 'getCapturedAmount',
         'refunded_amount' => 'getRefundedAmount',
         'currency' => 'getCurrency',
+        'country' => 'getCountry',
         'payment_method' => 'getPaymentMethod',
         'buyer' => 'getBuyer',
         'created_at' => 'getCreatedAt',
         'external_identifier' => 'getExternalIdentifier',
         'updated_at' => 'getUpdatedAt',
-        'payment_service' => 'getPaymentService'
+        'payment_service' => 'getPaymentService',
+        'method' => 'getMethod'
     ];
 
     /**
@@ -240,15 +255,23 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     const STATUS_AUTHORIZATION_VOID_PENDING = 'authorization_void_pending';
     const STATUS_AUTHORIZATION_VOID_DECLINED = 'authorization_void_declined';
     const STATUS_AUTHORIZATION_VOID_FAILED = 'authorization_void_failed';
-    const STATUS_REFUND_SUCCEEDED = 'refund_succeeded';
-    const STATUS_REFUND_PENDING = 'refund_pending';
-    const STATUS_REFUND_DECLINED = 'refund_declined';
-    const STATUS_REFUND_FAILED = 'refund_failed';
     const STATUS_BUYER_APPROVAL_SUCCEEDED = 'buyer_approval_succeeded';
     const STATUS_BUYER_APPROVAL_PENDING = 'buyer_approval_pending';
     const STATUS_BUYER_APPROVAL_DECLINED = 'buyer_approval_declined';
     const STATUS_BUYER_APPROVAL_FAILED = 'buyer_approval_failed';
     const STATUS_BUYER_APPROVAL_TIMEDOUT = 'buyer_approval_timedout';
+    const INTENT_AUTHORIZE = 'authorize';
+    const INTENT_CAPTURE = 'capture';
+    const METHOD_CARD = 'card';
+    const METHOD_PAYPAL = 'paypal';
+    const METHOD_BANKED = 'banked';
+    const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_STRIPEDD = 'stripedd';
+    const METHOD_APPLEPAY = 'applepay';
+    const METHOD_GOOGLEPAY = 'googlepay';
+    const METHOD_AFTERPAY = 'afterpay';
+    const METHOD_CLEARPAY = 'clearpay';
+    const METHOD_ZIPPAY = 'zippay';
 
     /**
      * Gets allowable values of the enum
@@ -285,15 +308,45 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
             self::STATUS_AUTHORIZATION_VOID_PENDING,
             self::STATUS_AUTHORIZATION_VOID_DECLINED,
             self::STATUS_AUTHORIZATION_VOID_FAILED,
-            self::STATUS_REFUND_SUCCEEDED,
-            self::STATUS_REFUND_PENDING,
-            self::STATUS_REFUND_DECLINED,
-            self::STATUS_REFUND_FAILED,
             self::STATUS_BUYER_APPROVAL_SUCCEEDED,
             self::STATUS_BUYER_APPROVAL_PENDING,
             self::STATUS_BUYER_APPROVAL_DECLINED,
             self::STATUS_BUYER_APPROVAL_FAILED,
             self::STATUS_BUYER_APPROVAL_TIMEDOUT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIntentAllowableValues()
+    {
+        return [
+            self::INTENT_AUTHORIZE,
+            self::INTENT_CAPTURE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_CARD,
+            self::METHOD_PAYPAL,
+            self::METHOD_BANKED,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_STRIPEDD,
+            self::METHOD_APPLEPAY,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_AFTERPAY,
+            self::METHOD_CLEARPAY,
+            self::METHOD_ZIPPAY,
         ];
     }
 
@@ -315,16 +368,19 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['intent'] = $data['intent'] ?? null;
         $this->container['amount'] = $data['amount'] ?? null;
         $this->container['captured_amount'] = $data['captured_amount'] ?? null;
         $this->container['refunded_amount'] = $data['refunded_amount'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
         $this->container['payment_method'] = $data['payment_method'] ?? null;
         $this->container['buyer'] = $data['buyer'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['payment_service'] = $data['payment_service'] ?? null;
+        $this->container['method'] = $data['method'] ?? null;
     }
 
     /**
@@ -354,6 +410,15 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
+        $allowedValues = $this->getIntentAllowableValues();
+        if (!is_null($this->container['intent']) && !in_array($this->container['intent'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'intent', must be one of '%s'",
+                $this->container['intent'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if (!is_null($this->container['amount']) && ($this->container['amount'] > 99999999)) {
             $invalidProperties[] = "invalid value for 'amount', must be smaller than or equal to 99999999.";
         }
@@ -376,6 +441,15 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
 
         if (!is_null($this->container['refunded_amount']) && ($this->container['refunded_amount'] < 0)) {
             $invalidProperties[] = "invalid value for 'refunded_amount', must be bigger than or equal to 0.";
+        }
+
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -464,7 +538,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets status
      *
-     * @param string|null $status The status of the transaction. The status may change over time as asynchronous  processing events occur.
+     * @param string|null $status The status of the transaction. The status may change over time as asynchronous processing events occur.
      *
      * @return self
      */
@@ -486,6 +560,40 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets intent
+     *
+     * @return string|null
+     */
+    public function getIntent()
+    {
+        return $this->container['intent'];
+    }
+
+    /**
+     * Sets intent
+     *
+     * @param string|null $intent The original `intent` used when the transaction was [created](#operation/authorize-new-transaction).
+     *
+     * @return self
+     */
+    public function setIntent($intent)
+    {
+        $allowedValues = $this->getIntentAllowableValues();
+        if (!is_null($intent) && !in_array($intent, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'intent', must be one of '%s'",
+                    $intent,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['intent'] = $intent;
+
+        return $this;
+    }
+
+    /**
      * Gets amount
      *
      * @return int|null
@@ -498,7 +606,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets amount
      *
-     * @param int|null $amount The authorized amount for this transaction. This can be different than the actual captured amount and part of this amount may be refunded.
+     * @param int|null $amount The authorized amount for this transaction. This can be more than the actual captured amount and part of this amount may be refunded.
      *
      * @return self
      */
@@ -530,7 +638,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets captured_amount
      *
-     * @param int|null $captured_amount The captured amount for this transaction. This can be a part and in some cases even more than the authorized amount.
+     * @param int|null $captured_amount The captured amount for this transaction. This can be the total or a portion of the authorized amount.
      *
      * @return self
      */
@@ -562,7 +670,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets refunded_amount
      *
-     * @param int|null $refunded_amount The refunded amount for this transaction. This can be a part or all of the captured amount.
+     * @param int|null $refunded_amount The refunded amount for this transaction. This can be the total or a portion of the captured amount.
      *
      * @return self
      */
@@ -601,6 +709,30 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCurrency($currency)
     {
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets country
+     *
+     * @return string|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param string|null $country The 2-letter ISO code of the country of the transaction. This is used to filter the payment services that is used to process the transaction.
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        $this->container['country'] = $country;
 
         return $this;
     }
@@ -745,6 +877,40 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPaymentService($payment_service)
     {
         $this->container['payment_service'] = $payment_service;
+
+        return $this;
+    }
+
+    /**
+     * Gets method
+     *
+     * @return string|null
+     */
+    public function getMethod()
+    {
+        return $this->container['method'];
+    }
+
+    /**
+     * Sets method
+     *
+     * @param string|null $method method
+     *
+     * @return self
+     */
+    public function setMethod($method)
+    {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($method) && !in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['method'] = $method;
 
         return $this;
     }

@@ -64,10 +64,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'string',
         'id' => 'string',
         'status' => 'string',
+        'intent' => 'string',
         'amount' => 'int',
         'captured_amount' => 'int',
         'refunded_amount' => 'int',
         'currency' => 'string',
+        'country' => 'string',
         'payment_method' => '\Gr4vy\model\PaymentMethodSnapshot',
         'buyer' => '\Gr4vy\model\BuyerSnapshot',
         'created_at' => '\DateTime',
@@ -83,7 +85,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'raw_response_code' => 'string',
         'raw_response_description' => 'string',
         'avs_response_code' => 'string',
-        'cvv_response_code' => 'string'
+        'cvv_response_code' => 'string',
+        'method' => 'string',
+        'payment_service_transaction_id' => 'string',
+        'metadata' => 'array<string,string>'
     ];
 
     /**
@@ -97,10 +102,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'id' => 'uuid',
         'status' => null,
+        'intent' => null,
         'amount' => null,
         'captured_amount' => null,
         'refunded_amount' => null,
         'currency' => null,
+        'country' => null,
         'payment_method' => null,
         'buyer' => null,
         'created_at' => 'date-time',
@@ -116,7 +123,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'raw_response_code' => null,
         'raw_response_description' => null,
         'avs_response_code' => null,
-        'cvv_response_code' => null
+        'cvv_response_code' => null,
+        'method' => null,
+        'payment_service_transaction_id' => null,
+        'metadata' => null
     ];
 
     /**
@@ -149,10 +159,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'type',
         'id' => 'id',
         'status' => 'status',
+        'intent' => 'intent',
         'amount' => 'amount',
         'captured_amount' => 'captured_amount',
         'refunded_amount' => 'refunded_amount',
         'currency' => 'currency',
+        'country' => 'country',
         'payment_method' => 'payment_method',
         'buyer' => 'buyer',
         'created_at' => 'created_at',
@@ -168,7 +180,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'raw_response_code' => 'raw_response_code',
         'raw_response_description' => 'raw_response_description',
         'avs_response_code' => 'avs_response_code',
-        'cvv_response_code' => 'cvv_response_code'
+        'cvv_response_code' => 'cvv_response_code',
+        'method' => 'method',
+        'payment_service_transaction_id' => 'payment_service_transaction_id',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -180,10 +195,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'id' => 'setId',
         'status' => 'setStatus',
+        'intent' => 'setIntent',
         'amount' => 'setAmount',
         'captured_amount' => 'setCapturedAmount',
         'refunded_amount' => 'setRefundedAmount',
         'currency' => 'setCurrency',
+        'country' => 'setCountry',
         'payment_method' => 'setPaymentMethod',
         'buyer' => 'setBuyer',
         'created_at' => 'setCreatedAt',
@@ -199,7 +216,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'raw_response_code' => 'setRawResponseCode',
         'raw_response_description' => 'setRawResponseDescription',
         'avs_response_code' => 'setAvsResponseCode',
-        'cvv_response_code' => 'setCvvResponseCode'
+        'cvv_response_code' => 'setCvvResponseCode',
+        'method' => 'setMethod',
+        'payment_service_transaction_id' => 'setPaymentServiceTransactionId',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -211,10 +231,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'id' => 'getId',
         'status' => 'getStatus',
+        'intent' => 'getIntent',
         'amount' => 'getAmount',
         'captured_amount' => 'getCapturedAmount',
         'refunded_amount' => 'getRefundedAmount',
         'currency' => 'getCurrency',
+        'country' => 'getCountry',
         'payment_method' => 'getPaymentMethod',
         'buyer' => 'getBuyer',
         'created_at' => 'getCreatedAt',
@@ -230,7 +252,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'raw_response_code' => 'getRawResponseCode',
         'raw_response_description' => 'getRawResponseDescription',
         'avs_response_code' => 'getAvsResponseCode',
-        'cvv_response_code' => 'getCvvResponseCode'
+        'cvv_response_code' => 'getCvvResponseCode',
+        'method' => 'getMethod',
+        'payment_service_transaction_id' => 'getPaymentServiceTransactionId',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -290,15 +315,13 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATUS_AUTHORIZATION_VOID_PENDING = 'authorization_void_pending';
     const STATUS_AUTHORIZATION_VOID_DECLINED = 'authorization_void_declined';
     const STATUS_AUTHORIZATION_VOID_FAILED = 'authorization_void_failed';
-    const STATUS_REFUND_SUCCEEDED = 'refund_succeeded';
-    const STATUS_REFUND_PENDING = 'refund_pending';
-    const STATUS_REFUND_DECLINED = 'refund_declined';
-    const STATUS_REFUND_FAILED = 'refund_failed';
     const STATUS_BUYER_APPROVAL_SUCCEEDED = 'buyer_approval_succeeded';
     const STATUS_BUYER_APPROVAL_PENDING = 'buyer_approval_pending';
     const STATUS_BUYER_APPROVAL_DECLINED = 'buyer_approval_declined';
     const STATUS_BUYER_APPROVAL_FAILED = 'buyer_approval_failed';
     const STATUS_BUYER_APPROVAL_TIMEDOUT = 'buyer_approval_timedout';
+    const INTENT_AUTHORIZE = 'authorize';
+    const INTENT_CAPTURE = 'capture';
     const PAYMENT_SOURCE_ECOMMERCE = 'ecommerce';
     const PAYMENT_SOURCE_MOTO = 'moto';
     const PAYMENT_SOURCE_RECURRING = 'recurring';
@@ -313,6 +336,16 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     const CVV_RESPONSE_CODE_MATCH = 'match';
     const CVV_RESPONSE_CODE_UNAVAILABLE = 'unavailable';
     const CVV_RESPONSE_CODE_NOT_PROVIDED = 'not_provided';
+    const METHOD_CARD = 'card';
+    const METHOD_PAYPAL = 'paypal';
+    const METHOD_BANKED = 'banked';
+    const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_STRIPEDD = 'stripedd';
+    const METHOD_APPLEPAY = 'applepay';
+    const METHOD_GOOGLEPAY = 'googlepay';
+    const METHOD_AFTERPAY = 'afterpay';
+    const METHOD_CLEARPAY = 'clearpay';
+    const METHOD_ZIPPAY = 'zippay';
 
     /**
      * Gets allowable values of the enum
@@ -349,15 +382,24 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_AUTHORIZATION_VOID_PENDING,
             self::STATUS_AUTHORIZATION_VOID_DECLINED,
             self::STATUS_AUTHORIZATION_VOID_FAILED,
-            self::STATUS_REFUND_SUCCEEDED,
-            self::STATUS_REFUND_PENDING,
-            self::STATUS_REFUND_DECLINED,
-            self::STATUS_REFUND_FAILED,
             self::STATUS_BUYER_APPROVAL_SUCCEEDED,
             self::STATUS_BUYER_APPROVAL_PENDING,
             self::STATUS_BUYER_APPROVAL_DECLINED,
             self::STATUS_BUYER_APPROVAL_FAILED,
             self::STATUS_BUYER_APPROVAL_TIMEDOUT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIntentAllowableValues()
+    {
+        return [
+            self::INTENT_AUTHORIZE,
+            self::INTENT_CAPTURE,
         ];
     }
 
@@ -409,6 +451,27 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_CARD,
+            self::METHOD_PAYPAL,
+            self::METHOD_BANKED,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_STRIPEDD,
+            self::METHOD_APPLEPAY,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_AFTERPAY,
+            self::METHOD_CLEARPAY,
+            self::METHOD_ZIPPAY,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -426,10 +489,12 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['intent'] = $data['intent'] ?? null;
         $this->container['amount'] = $data['amount'] ?? null;
         $this->container['captured_amount'] = $data['captured_amount'] ?? null;
         $this->container['refunded_amount'] = $data['refunded_amount'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
         $this->container['payment_method'] = $data['payment_method'] ?? null;
         $this->container['buyer'] = $data['buyer'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -446,6 +511,9 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['raw_response_description'] = $data['raw_response_description'] ?? null;
         $this->container['avs_response_code'] = $data['avs_response_code'] ?? null;
         $this->container['cvv_response_code'] = $data['cvv_response_code'] ?? null;
+        $this->container['method'] = $data['method'] ?? null;
+        $this->container['payment_service_transaction_id'] = $data['payment_service_transaction_id'] ?? null;
+        $this->container['metadata'] = $data['metadata'] ?? null;
     }
 
     /**
@@ -471,6 +539,15 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'status', must be one of '%s'",
                 $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getIntentAllowableValues();
+        if (!is_null($this->container['intent']) && !in_array($this->container['intent'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'intent', must be one of '%s'",
+                $this->container['intent'],
                 implode("', '", $allowedValues)
             );
         }
@@ -522,6 +599,15 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'cvv_response_code', must be one of '%s'",
                 $this->container['cvv_response_code'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
                 implode("', '", $allowedValues)
             );
         }
@@ -612,7 +698,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status The status of the transaction. The status may change over time as asynchronous  processing events occur.
+     * @param string|null $status The status of the transaction. The status may change over time as asynchronous processing events occur.
      *
      * @return self
      */
@@ -634,6 +720,40 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets intent
+     *
+     * @return string|null
+     */
+    public function getIntent()
+    {
+        return $this->container['intent'];
+    }
+
+    /**
+     * Sets intent
+     *
+     * @param string|null $intent The original `intent` used when the transaction was [created](#operation/authorize-new-transaction).
+     *
+     * @return self
+     */
+    public function setIntent($intent)
+    {
+        $allowedValues = $this->getIntentAllowableValues();
+        if (!is_null($intent) && !in_array($intent, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'intent', must be one of '%s'",
+                    $intent,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['intent'] = $intent;
+
+        return $this;
+    }
+
+    /**
      * Gets amount
      *
      * @return int|null
@@ -646,7 +766,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param int|null $amount The authorized amount for this transaction. This can be different than the actual captured amount and part of this amount may be refunded.
+     * @param int|null $amount The authorized amount for this transaction. This can be more than the actual captured amount and part of this amount may be refunded.
      *
      * @return self
      */
@@ -678,7 +798,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets captured_amount
      *
-     * @param int|null $captured_amount The captured amount for this transaction. This can be a part and in some cases even more than the authorized amount.
+     * @param int|null $captured_amount The captured amount for this transaction. This can be the total or a portion of the authorized amount.
      *
      * @return self
      */
@@ -710,7 +830,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets refunded_amount
      *
-     * @param int|null $refunded_amount The refunded amount for this transaction. This can be a part or all of the captured amount.
+     * @param int|null $refunded_amount The refunded amount for this transaction. This can be the total or a portion of the captured amount.
      *
      * @return self
      */
@@ -749,6 +869,30 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCurrency($currency)
     {
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets country
+     *
+     * @return string|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param string|null $country The 2-letter ISO code of the country of the transaction. This is used to filter the payment services that is used to process the transaction.
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        $this->container['country'] = $country;
 
         return $this;
     }
@@ -968,7 +1112,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_subsequent_payment
      *
-     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note this flag is only compatible with `payment_source` set to `recurring`, `installment`, or `card_on_file` and will be ignored for other values or if `payment_source` is not present.
+     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note there are some restrictions on how this flag may be used.  The flag can only be `false` (or not set) when the transaction meets one of the following criteria:  * It is not `merchant_initiated`. * `payment_source` is set to `card_on_file`.  The flag can only be set to `true` when the transaction meets one of the following criteria:  * It is not `merchant_initiated`. * `payment_source` is set to `recurring` or `installment` and `merchant_initiated` is set to `true`. * `payment_source` is set to `card_on_file`.
      *
      * @return self
      */
@@ -1165,6 +1309,88 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['cvv_response_code'] = $cvv_response_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets method
+     *
+     * @return string|null
+     */
+    public function getMethod()
+    {
+        return $this->container['method'];
+    }
+
+    /**
+     * Sets method
+     *
+     * @param string|null $method method
+     *
+     * @return self
+     */
+    public function setMethod($method)
+    {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($method) && !in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_service_transaction_id
+     *
+     * @return string|null
+     */
+    public function getPaymentServiceTransactionId()
+    {
+        return $this->container['payment_service_transaction_id'];
+    }
+
+    /**
+     * Sets payment_service_transaction_id
+     *
+     * @param string|null $payment_service_transaction_id The payment service's unique ID for the transaction.
+     *
+     * @return self
+     */
+    public function setPaymentServiceTransactionId($payment_service_transaction_id)
+    {
+        $this->container['payment_service_transaction_id'] = $payment_service_transaction_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string>|null $metadata Additional information about the transaction stored as key-value pairs.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

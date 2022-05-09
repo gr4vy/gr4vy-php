@@ -13,6 +13,7 @@ docs/Model/ApplePaySessionRequest.md
 docs/Model/BillingDetails.md
 docs/Model/BillingDetailsRequest.md
 docs/Model/BillingDetailsUpdateRequest.md
+docs/Model/BrowserInfo.md
 docs/Model/Buyer.md
 docs/Model/BuyerRequest.md
 docs/Model/BuyerSnapshot.md
@@ -20,6 +21,8 @@ docs/Model/BuyerUpdate.md
 docs/Model/Buyers.md
 docs/Model/CardDetails.md
 docs/Model/CardRequest.md
+docs/Model/CardRequiredFields.md
+docs/Model/CardRequiredFieldsAddress.md
 docs/Model/CartItem.md
 docs/Model/DigitalWallet.md
 docs/Model/DigitalWalletRequest.md
@@ -53,6 +56,7 @@ docs/Model/PaymentServiceDefinition.md
 docs/Model/PaymentServiceDefinitionFields.md
 docs/Model/PaymentServiceDefinitionSupportedFeatures.md
 docs/Model/PaymentServiceDefinitions.md
+docs/Model/PaymentServiceFields.md
 docs/Model/PaymentServiceRequest.md
 docs/Model/PaymentServiceRequestAllOf.md
 docs/Model/PaymentServiceSnapshot.md
@@ -100,6 +104,7 @@ lib/model/ApplePaySessionRequest.php
 lib/model/BillingDetails.php
 lib/model/BillingDetailsRequest.php
 lib/model/BillingDetailsUpdateRequest.php
+lib/model/BrowserInfo.php
 lib/model/Buyer.php
 lib/model/BuyerRequest.php
 lib/model/BuyerSnapshot.php
@@ -107,6 +112,8 @@ lib/model/BuyerUpdate.php
 lib/model/Buyers.php
 lib/model/CardDetails.php
 lib/model/CardRequest.php
+lib/model/CardRequiredFields.php
+lib/model/CardRequiredFieldsAddress.php
 lib/model/CartItem.php
 lib/model/DigitalWallet.php
 lib/model/DigitalWalletRequest.php
@@ -141,6 +148,7 @@ lib/model/PaymentServiceDefinition.php
 lib/model/PaymentServiceDefinitionFields.php
 lib/model/PaymentServiceDefinitionSupportedFeatures.php
 lib/model/PaymentServiceDefinitions.php
+lib/model/PaymentServiceFields.php
 lib/model/PaymentServiceRequest.php
 lib/model/PaymentServiceRequestAllOf.php
 lib/model/PaymentServiceSnapshot.php

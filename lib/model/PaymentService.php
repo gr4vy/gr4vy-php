@@ -81,9 +81,11 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_url' => 'string',
         'active' => 'bool',
         'position' => 'float',
+        'payment_method_tokenization_enabled' => 'bool',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'webhook_url' => 'string'
+        'webhook_url' => 'string',
+        'fields' => '\Gr4vy\model\PaymentServiceFields[]'
     ];
 
     /**
@@ -114,9 +116,11 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_url' => 'url',
         'active' => null,
         'position' => null,
+        'payment_method_tokenization_enabled' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'webhook_url' => 'url'
+        'webhook_url' => 'url',
+        'fields' => null
     ];
 
     /**
@@ -166,9 +170,11 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_url' => 'merchant_url',
         'active' => 'active',
         'position' => 'position',
+        'payment_method_tokenization_enabled' => 'payment_method_tokenization_enabled',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at',
-        'webhook_url' => 'webhook_url'
+        'webhook_url' => 'webhook_url',
+        'fields' => 'fields'
     ];
 
     /**
@@ -197,9 +203,11 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_url' => 'setMerchantUrl',
         'active' => 'setActive',
         'position' => 'setPosition',
+        'payment_method_tokenization_enabled' => 'setPaymentMethodTokenizationEnabled',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'webhook_url' => 'setWebhookUrl'
+        'webhook_url' => 'setWebhookUrl',
+        'fields' => 'setFields'
     ];
 
     /**
@@ -228,9 +236,11 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_url' => 'getMerchantUrl',
         'active' => 'getActive',
         'position' => 'getPosition',
+        'payment_method_tokenization_enabled' => 'getPaymentMethodTokenizationEnabled',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'webhook_url' => 'getWebhookUrl'
+        'webhook_url' => 'getWebhookUrl',
+        'fields' => 'getFields'
     ];
 
     /**
@@ -340,9 +350,11 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['merchant_url'] = $data['merchant_url'] ?? null;
         $this->container['active'] = $data['active'] ?? true;
         $this->container['position'] = $data['position'] ?? null;
+        $this->container['payment_method_tokenization_enabled'] = $data['payment_method_tokenization_enabled'] ?? false;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['webhook_url'] = $data['webhook_url'] ?? null;
+        $this->container['fields'] = $data['fields'] ?? null;
     }
 
     /**
@@ -1031,6 +1043,30 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets payment_method_tokenization_enabled
+     *
+     * @return bool|null
+     */
+    public function getPaymentMethodTokenizationEnabled()
+    {
+        return $this->container['payment_method_tokenization_enabled'];
+    }
+
+    /**
+     * Sets payment_method_tokenization_enabled
+     *
+     * @param bool|null $payment_method_tokenization_enabled Defines if tokenization is enabled for the service (can only be enabled if the payment service definition supports it).
+     *
+     * @return self
+     */
+    public function setPaymentMethodTokenizationEnabled($payment_method_tokenization_enabled)
+    {
+        $this->container['payment_method_tokenization_enabled'] = $payment_method_tokenization_enabled;
+
+        return $this;
+    }
+
+    /**
      * Gets created_at
      *
      * @return \DateTime|null
@@ -1098,6 +1134,30 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWebhookUrl($webhook_url)
     {
         $this->container['webhook_url'] = $webhook_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets fields
+     *
+     * @return \Gr4vy\model\PaymentServiceFields[]|null
+     */
+    public function getFields()
+    {
+        return $this->container['fields'];
+    }
+
+    /**
+     * Sets fields
+     *
+     * @param \Gr4vy\model\PaymentServiceFields[]|null $fields A list of fields, each containing a key-value pair for each field configured for this payment service. Fields marked as `secret` (see Payment Service Definition) are not returned.
+     *
+     * @return self
+     */
+    public function setFields($fields)
+    {
+        $this->container['fields'] = $fields;
 
         return $this;
     }

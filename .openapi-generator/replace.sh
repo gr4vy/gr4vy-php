@@ -54,3 +54,7 @@ sed -i '' "s/$var1/$rep1/g" lib/model/*.php
 # var1="const METHOD_GOCARDLESS = 'gocardless';"
 # rep1=''
 # sed -i '' "1,/$var1/s/$var1/$rep1/g" lib/model/PaymentMethod.php
+
+var1="'tax_id' => 'TaxId'"
+rep1="'tax_id' => '\\\Gr4vy\\\model\\\TaxId'"
+sed -i '' "s/$var1/$rep1/g" lib/model/BillingDetails.php

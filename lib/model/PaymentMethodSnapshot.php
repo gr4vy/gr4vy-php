@@ -68,7 +68,9 @@ class PaymentMethodSnapshot implements ModelInterface, ArrayAccess, \JsonSeriali
         'label' => 'string',
         'scheme' => 'string',
         'expiration_date' => 'string',
-        'approval_url' => 'string'
+        'approval_url' => 'string',
+        'currency' => 'string',
+        'country' => 'string'
     ];
 
     /**
@@ -86,7 +88,9 @@ class PaymentMethodSnapshot implements ModelInterface, ArrayAccess, \JsonSeriali
         'label' => null,
         'scheme' => null,
         'expiration_date' => null,
-        'approval_url' => null
+        'approval_url' => null,
+        'currency' => null,
+        'country' => null
     ];
 
     /**
@@ -123,7 +127,9 @@ class PaymentMethodSnapshot implements ModelInterface, ArrayAccess, \JsonSeriali
         'label' => 'label',
         'scheme' => 'scheme',
         'expiration_date' => 'expiration_date',
-        'approval_url' => 'approval_url'
+        'approval_url' => 'approval_url',
+        'currency' => 'currency',
+        'country' => 'country'
     ];
 
     /**
@@ -139,7 +145,9 @@ class PaymentMethodSnapshot implements ModelInterface, ArrayAccess, \JsonSeriali
         'label' => 'setLabel',
         'scheme' => 'setScheme',
         'expiration_date' => 'setExpirationDate',
-        'approval_url' => 'setApprovalUrl'
+        'approval_url' => 'setApprovalUrl',
+        'currency' => 'setCurrency',
+        'country' => 'setCountry'
     ];
 
     /**
@@ -155,7 +163,9 @@ class PaymentMethodSnapshot implements ModelInterface, ArrayAccess, \JsonSeriali
         'label' => 'getLabel',
         'scheme' => 'getScheme',
         'expiration_date' => 'getExpirationDate',
-        'approval_url' => 'getApprovalUrl'
+        'approval_url' => 'getApprovalUrl',
+        'currency' => 'getCurrency',
+        'country' => 'getCountry'
     ];
 
     /**
@@ -236,6 +246,8 @@ class PaymentMethodSnapshot implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['scheme'] = $data['scheme'] ?? null;
         $this->container['expiration_date'] = $data['expiration_date'] ?? null;
         $this->container['approval_url'] = $data['approval_url'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
     }
 
     /**
@@ -491,6 +503,54 @@ class PaymentMethodSnapshot implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setApprovalUrl($approval_url)
     {
         $this->container['approval_url'] = $approval_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency The ISO-4217 currency code that this payment method can be used for. If this value is `null` the payment method may be used for multiple currencies.
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets country
+     *
+     * @return string|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param string|null $country The 2-letter ISO code of the country this payment method can be used for. If this value is `null` the payment method may be used in multiple countries.
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        $this->container['country'] = $country;
 
         return $this;
     }

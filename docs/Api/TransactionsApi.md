@@ -102,7 +102,7 @@ $apiInstance = new Gr4vy\Api\TransactionsApi(
     $config
 );
 $transaction_id = fe26475d-ec3e-4884-9553-f7356683f7f9; // string | The ID for the transaction to get the information for.
-$transaction_capture_request = {"amount":1299,"currency":"USD"}; // \Gr4vy\model\TransactionCaptureRequest
+$transaction_capture_request = {"amount":1299}; // \Gr4vy\model\TransactionCaptureRequest
 
 try {
     $result = $apiInstance->captureTransaction($transaction_id, $transaction_capture_request);
@@ -470,7 +470,7 @@ voidTransaction($transaction_id): \Gr4vy\model\Transaction
 
 Void transaction
 
-Voids a transaction.  If the transaction was not yet successfully authorized, or was already captured, the void will not be processed. Captured transactions can be [refunded](#operation/refund-transaction) instead.
+Voids a transaction.  If the transaction was not yet successfully authorized, or was already captured, the void will not be processed. Captured transactions can be [refunded](#operation/refund-transaction) instead.  Voiding zero-amount authorized transactions is not supported.
 
 ### Example
 

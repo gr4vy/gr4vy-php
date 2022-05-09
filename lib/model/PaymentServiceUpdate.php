@@ -76,7 +76,8 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         'merchant_category_code' => 'string',
         'merchant_url' => 'string',
         'active' => 'bool',
-        'position' => 'float'
+        'position' => 'float',
+        'payment_method_tokenization_enabled' => 'bool'
     ];
 
     /**
@@ -102,7 +103,8 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         'merchant_category_code' => null,
         'merchant_url' => 'url',
         'active' => null,
-        'position' => null
+        'position' => null,
+        'payment_method_tokenization_enabled' => null
     ];
 
     /**
@@ -147,7 +149,8 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         'merchant_category_code' => 'merchant_category_code',
         'merchant_url' => 'merchant_url',
         'active' => 'active',
-        'position' => 'position'
+        'position' => 'position',
+        'payment_method_tokenization_enabled' => 'payment_method_tokenization_enabled'
     ];
 
     /**
@@ -171,7 +174,8 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         'merchant_category_code' => 'setMerchantCategoryCode',
         'merchant_url' => 'setMerchantUrl',
         'active' => 'setActive',
-        'position' => 'setPosition'
+        'position' => 'setPosition',
+        'payment_method_tokenization_enabled' => 'setPaymentMethodTokenizationEnabled'
     ];
 
     /**
@@ -195,7 +199,8 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         'merchant_category_code' => 'getMerchantCategoryCode',
         'merchant_url' => 'getMerchantUrl',
         'active' => 'getActive',
-        'position' => 'getPosition'
+        'position' => 'getPosition',
+        'payment_method_tokenization_enabled' => 'getPaymentMethodTokenizationEnabled'
     ];
 
     /**
@@ -271,6 +276,7 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['merchant_url'] = $data['merchant_url'] ?? null;
         $this->container['active'] = $data['active'] ?? true;
         $this->container['position'] = $data['position'] ?? null;
+        $this->container['payment_method_tokenization_enabled'] = $data['payment_method_tokenization_enabled'] ?? false;
     }
 
     /**
@@ -790,6 +796,30 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPosition($position)
     {
         $this->container['position'] = $position;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_method_tokenization_enabled
+     *
+     * @return bool|null
+     */
+    public function getPaymentMethodTokenizationEnabled()
+    {
+        return $this->container['payment_method_tokenization_enabled'];
+    }
+
+    /**
+     * Sets payment_method_tokenization_enabled
+     *
+     * @param bool|null $payment_method_tokenization_enabled Defines if tokenization is enabled for the service (can only be enabled if the payment service definition supports it).
+     *
+     * @return self
+     */
+    public function setPaymentMethodTokenizationEnabled($payment_method_tokenization_enabled)
+    {
+        $this->container['payment_method_tokenization_enabled'] = $payment_method_tokenization_enabled;
 
         return $this;
     }

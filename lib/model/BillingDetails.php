@@ -67,7 +67,7 @@ class BillingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'email_address' => 'string',
         'phone_number' => 'string',
         'address' => '\Gr4vy\model\Address',
-        'tax_id' => 'TaxId'
+        'tax_id' => '\Gr4vy\model\TaxId'
     ];
 
     /**
