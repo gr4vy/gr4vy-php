@@ -196,8 +196,8 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
             $invalidProperties[] = "invalid value for 'amount', must be smaller than or equal to 99999999.";
         }
 
-        if (!is_null($this->container['amount']) && ($this->container['amount'] < 0)) {
-            $invalidProperties[] = "invalid value for 'amount', must be bigger than or equal to 0.";
+        if (!is_null($this->container['amount']) && ($this->container['amount'] < 1)) {
+            $invalidProperties[] = "invalid value for 'amount', must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -228,7 +228,7 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets amount
      *
-     * @param int|null $amount The amount requested to refund.  If omitted, a full refund will be requested. Otherwise, the amount must be lower than or equal to the remaining balance in the associated transaction. Negative refunds are not supported.
+     * @param int|null $amount The amount requested to refund.  If omitted, a full refund will be requested.  Otherwise, the amount must be lower than or equal to the remaining balance in the associated transaction.  Negative and zero-amount refunds are not supported.
      *
      * @return self
      */
@@ -238,8 +238,8 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if (!is_null($amount) && ($amount > 99999999)) {
             throw new \InvalidArgumentException('invalid value for $amount when calling TransactionRefundRequest., must be smaller than or equal to 99999999.');
         }
-        if (!is_null($amount) && ($amount < 0)) {
-            throw new \InvalidArgumentException('invalid value for $amount when calling TransactionRefundRequest., must be bigger than or equal to 0.');
+        if (!is_null($amount) && ($amount < 1)) {
+            throw new \InvalidArgumentException('invalid value for $amount when calling TransactionRefundRequest., must be bigger than or equal to 1.');
         }
 
         $this->container['amount'] = $amount;

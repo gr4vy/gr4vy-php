@@ -77,6 +77,7 @@ class PaymentServiceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'merchant_url' => 'string',
         'active' => 'bool',
         'position' => 'float',
+        'payment_method_tokenization_enabled' => 'bool',
         'payment_service_definition_id' => 'string'
     ];
 
@@ -104,6 +105,7 @@ class PaymentServiceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'merchant_url' => 'url',
         'active' => null,
         'position' => null,
+        'payment_method_tokenization_enabled' => null,
         'payment_service_definition_id' => null
     ];
 
@@ -150,6 +152,7 @@ class PaymentServiceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'merchant_url' => 'merchant_url',
         'active' => 'active',
         'position' => 'position',
+        'payment_method_tokenization_enabled' => 'payment_method_tokenization_enabled',
         'payment_service_definition_id' => 'payment_service_definition_id'
     ];
 
@@ -175,6 +178,7 @@ class PaymentServiceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'merchant_url' => 'setMerchantUrl',
         'active' => 'setActive',
         'position' => 'setPosition',
+        'payment_method_tokenization_enabled' => 'setPaymentMethodTokenizationEnabled',
         'payment_service_definition_id' => 'setPaymentServiceDefinitionId'
     ];
 
@@ -200,6 +204,7 @@ class PaymentServiceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'merchant_url' => 'getMerchantUrl',
         'active' => 'getActive',
         'position' => 'getPosition',
+        'payment_method_tokenization_enabled' => 'getPaymentMethodTokenizationEnabled',
         'payment_service_definition_id' => 'getPaymentServiceDefinitionId'
     ];
 
@@ -276,6 +281,7 @@ class PaymentServiceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['merchant_url'] = $data['merchant_url'] ?? null;
         $this->container['active'] = $data['active'] ?? true;
         $this->container['position'] = $data['position'] ?? null;
+        $this->container['payment_method_tokenization_enabled'] = $data['payment_method_tokenization_enabled'] ?? false;
         $this->container['payment_service_definition_id'] = $data['payment_service_definition_id'] ?? null;
     }
 
@@ -819,6 +825,30 @@ class PaymentServiceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setPosition($position)
     {
         $this->container['position'] = $position;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_method_tokenization_enabled
+     *
+     * @return bool|null
+     */
+    public function getPaymentMethodTokenizationEnabled()
+    {
+        return $this->container['payment_method_tokenization_enabled'];
+    }
+
+    /**
+     * Sets payment_method_tokenization_enabled
+     *
+     * @param bool|null $payment_method_tokenization_enabled Defines if tokenization is enabled for the service (can only be enabled if the payment service definition supports it).
+     *
+     * @return self
+     */
+    public function setPaymentMethodTokenizationEnabled($payment_method_tokenization_enabled)
+    {
+        $this->container['payment_method_tokenization_enabled'] = $payment_method_tokenization_enabled;
 
         return $this;
     }

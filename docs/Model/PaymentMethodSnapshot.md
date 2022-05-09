@@ -12,5 +12,7 @@ Name | Type | Description | Notes
 **scheme** | **string** | An additional label used to differentiate different sub-types of a payment method. Most notably this can include the type of card used in a transaction. | [optional]
 **expiration_date** | **string** | The expiration date for this payment method. This is mostly used by cards where the card might have an expiration date. | [optional]
 **approval_url** | **string** | The optional URL that the buyer needs to be redirected to to further authorize their payment. | [optional]
+**currency** | **string** | The ISO-4217 currency code that this payment method can be used for. If this value is &#x60;null&#x60; the payment method may be used for multiple currencies. | [optional]
+**country** | **string** | The 2-letter ISO code of the country this payment method can be used for. If this value is &#x60;null&#x60; the payment method may be used in multiple countries. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

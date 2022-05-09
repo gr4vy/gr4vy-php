@@ -62,6 +62,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       */
     protected static $openAPITypes = [
         'payment_method_tokenization' => 'bool',
+        'payment_method_tokenization_toggle' => 'bool',
         'three_d_secure_hosted' => 'bool',
         'three_d_secure_pass_through' => 'bool',
         'network_tokens' => 'bool',
@@ -80,6 +81,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       */
     protected static $openAPIFormats = [
         'payment_method_tokenization' => null,
+        'payment_method_tokenization_toggle' => null,
         'three_d_secure_hosted' => null,
         'three_d_secure_pass_through' => null,
         'network_tokens' => null,
@@ -117,6 +119,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      */
     protected static $attributeMap = [
         'payment_method_tokenization' => 'payment_method_tokenization',
+        'payment_method_tokenization_toggle' => 'payment_method_tokenization_toggle',
         'three_d_secure_hosted' => 'three_d_secure_hosted',
         'three_d_secure_pass_through' => 'three_d_secure_pass_through',
         'network_tokens' => 'network_tokens',
@@ -133,6 +136,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      */
     protected static $setters = [
         'payment_method_tokenization' => 'setPaymentMethodTokenization',
+        'payment_method_tokenization_toggle' => 'setPaymentMethodTokenizationToggle',
         'three_d_secure_hosted' => 'setThreeDSecureHosted',
         'three_d_secure_pass_through' => 'setThreeDSecurePassThrough',
         'network_tokens' => 'setNetworkTokens',
@@ -149,6 +153,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      */
     protected static $getters = [
         'payment_method_tokenization' => 'getPaymentMethodTokenization',
+        'payment_method_tokenization_toggle' => 'getPaymentMethodTokenizationToggle',
         'three_d_secure_hosted' => 'getThreeDSecureHosted',
         'three_d_secure_pass_through' => 'getThreeDSecurePassThrough',
         'network_tokens' => 'getNetworkTokens',
@@ -216,6 +221,7 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
     public function __construct(array $data = null)
     {
         $this->container['payment_method_tokenization'] = $data['payment_method_tokenization'] ?? null;
+        $this->container['payment_method_tokenization_toggle'] = $data['payment_method_tokenization_toggle'] ?? null;
         $this->container['three_d_secure_hosted'] = $data['three_d_secure_hosted'] ?? null;
         $this->container['three_d_secure_pass_through'] = $data['three_d_secure_pass_through'] ?? null;
         $this->container['network_tokens'] = $data['network_tokens'] ?? null;
@@ -269,6 +275,30 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
     public function setPaymentMethodTokenization($payment_method_tokenization)
     {
         $this->container['payment_method_tokenization'] = $payment_method_tokenization;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_method_tokenization_toggle
+     *
+     * @return bool|null
+     */
+    public function getPaymentMethodTokenizationToggle()
+    {
+        return $this->container['payment_method_tokenization_toggle'];
+    }
+
+    /**
+     * Sets payment_method_tokenization_toggle
+     *
+     * @param bool|null $payment_method_tokenization_toggle Supports toggling tokenization for a payment method on or off from the dashboard.
+     *
+     * @return self
+     */
+    public function setPaymentMethodTokenizationToggle($payment_method_tokenization_toggle)
+    {
+        $this->container['payment_method_tokenization_toggle'] = $payment_method_tokenization_toggle;
 
         return $this;
     }

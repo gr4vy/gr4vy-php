@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentOption
+ * CardRequiredFields
  *
  * PHP version 7.2
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * PaymentOption Class Doc Comment
+ * CardRequiredFields Class Doc Comment
  *
  * @category Class
- * @description An available payment option for a locale.
+ * @description The fields that are required to process a transaction for this card.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
+class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PaymentOption';
+    protected static $openAPIModelName = 'CardRequiredFields';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,14 +61,12 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'method' => 'string',
-        'icon_url' => 'string',
-        'mode' => 'string',
-        'label' => 'string',
-        'can_store_payment_method' => 'bool',
-        'context' => '\Gr4vy\model\PaymentOptionContext',
-        'payment_method_tokenization_enabled' => 'bool'
+        'first_name' => 'bool',
+        'last_name' => 'bool',
+        'email_address' => 'bool',
+        'phone_number' => 'bool',
+        'address' => '\Gr4vy\model\CardRequiredFieldsAddress',
+        'tax_id' => 'bool'
     ];
 
     /**
@@ -79,14 +77,12 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'method' => null,
-        'icon_url' => null,
-        'mode' => null,
-        'label' => null,
-        'can_store_payment_method' => null,
-        'context' => null,
-        'payment_method_tokenization_enabled' => null
+        'first_name' => null,
+        'last_name' => null,
+        'email_address' => null,
+        'phone_number' => null,
+        'address' => null,
+        'tax_id' => null
     ];
 
     /**
@@ -116,14 +112,12 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'method' => 'method',
-        'icon_url' => 'icon_url',
-        'mode' => 'mode',
-        'label' => 'label',
-        'can_store_payment_method' => 'can_store_payment_method',
-        'context' => 'context',
-        'payment_method_tokenization_enabled' => 'payment_method_tokenization_enabled'
+        'first_name' => 'first_name',
+        'last_name' => 'last_name',
+        'email_address' => 'email_address',
+        'phone_number' => 'phone_number',
+        'address' => 'address',
+        'tax_id' => 'tax_id'
     ];
 
     /**
@@ -132,14 +126,12 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'method' => 'setMethod',
-        'icon_url' => 'setIconUrl',
-        'mode' => 'setMode',
-        'label' => 'setLabel',
-        'can_store_payment_method' => 'setCanStorePaymentMethod',
-        'context' => 'setContext',
-        'payment_method_tokenization_enabled' => 'setPaymentMethodTokenizationEnabled'
+        'first_name' => 'setFirstName',
+        'last_name' => 'setLastName',
+        'email_address' => 'setEmailAddress',
+        'phone_number' => 'setPhoneNumber',
+        'address' => 'setAddress',
+        'tax_id' => 'setTaxId'
     ];
 
     /**
@@ -148,14 +140,12 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'method' => 'getMethod',
-        'icon_url' => 'getIconUrl',
-        'mode' => 'getMode',
-        'label' => 'getLabel',
-        'can_store_payment_method' => 'getCanStorePaymentMethod',
-        'context' => 'getContext',
-        'payment_method_tokenization_enabled' => 'getPaymentMethodTokenizationEnabled'
+        'first_name' => 'getFirstName',
+        'last_name' => 'getLastName',
+        'email_address' => 'getEmailAddress',
+        'phone_number' => 'getPhoneNumber',
+        'address' => 'getAddress',
+        'tax_id' => 'getTaxId'
     ];
 
     /**
@@ -199,19 +189,6 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    const TYPE_PAYMENT_OPTION = 'payment-option';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_PAYMENT_OPTION,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -228,14 +205,12 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['method'] = $data['method'] ?? null;
-        $this->container['icon_url'] = $data['icon_url'] ?? null;
-        $this->container['mode'] = $data['mode'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['can_store_payment_method'] = $data['can_store_payment_method'] ?? null;
-        $this->container['context'] = $data['context'] ?? null;
-        $this->container['payment_method_tokenization_enabled'] = $data['payment_method_tokenization_enabled'] ?? null;
+        $this->container['first_name'] = $data['first_name'] ?? null;
+        $this->container['last_name'] = $data['last_name'] ?? null;
+        $this->container['email_address'] = $data['email_address'] ?? null;
+        $this->container['phone_number'] = $data['phone_number'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
+        $this->container['tax_id'] = $data['tax_id'] ?? null;
     }
 
     /**
@@ -246,15 +221,6 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -272,203 +238,145 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type `payment-option`.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets method
-     *
-     * @return string|null
-     */
-    public function getMethod()
-    {
-        return $this->container['method'];
-    }
-
-    /**
-     * Sets method
-     *
-     * @param string|null $method method
-     *
-     * @return self
-     */
-    public function setMethod($method)
-    {
-        $this->container['method'] = $method;
-
-        return $this;
-    }
-
-    /**
-     * Gets icon_url
-     *
-     * @return string|null
-     */
-    public function getIconUrl()
-    {
-        return $this->container['icon_url'];
-    }
-
-    /**
-     * Sets icon_url
-     *
-     * @param string|null $icon_url An icon to display for the payment option.
-     *
-     * @return self
-     */
-    public function setIconUrl($icon_url)
-    {
-        $this->container['icon_url'] = $icon_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets mode
-     *
-     * @return string|null
-     */
-    public function getMode()
-    {
-        return $this->container['mode'];
-    }
-
-    /**
-     * Sets mode
-     *
-     * @param string|null $mode mode
-     *
-     * @return self
-     */
-    public function setMode($mode)
-    {
-        $this->container['mode'] = $mode;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string|null
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string|null $label A label that describes this payment option. This label is returned in the language defined by the `locale` query parameter. The label can be used to display a list of payment options to the buyer in their language.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets can_store_payment_method
+     * Gets first_name
      *
      * @return bool|null
      */
-    public function getCanStorePaymentMethod()
+    public function getFirstName()
     {
-        return $this->container['can_store_payment_method'];
+        return $this->container['first_name'];
     }
 
     /**
-     * Sets can_store_payment_method
+     * Sets first_name
      *
-     * @param bool|null $can_store_payment_method A flag to indicate if storing the payment method is supported.
+     * @param bool|null $first_name The first (given) name of the buyer.
      *
      * @return self
      */
-    public function setCanStorePaymentMethod($can_store_payment_method)
+    public function setFirstName($first_name)
     {
-        $this->container['can_store_payment_method'] = $can_store_payment_method;
+        $this->container['first_name'] = $first_name;
 
         return $this;
     }
 
     /**
-     * Gets context
-     *
-     * @return \Gr4vy\model\PaymentOptionContext|null
-     */
-    public function getContext()
-    {
-        return $this->container['context'];
-    }
-
-    /**
-     * Sets context
-     *
-     * @param \Gr4vy\model\PaymentOptionContext|null $context context
-     *
-     * @return self
-     */
-    public function setContext($context)
-    {
-        $this->container['context'] = $context;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_method_tokenization_enabled
+     * Gets last_name
      *
      * @return bool|null
      */
-    public function getPaymentMethodTokenizationEnabled()
+    public function getLastName()
     {
-        return $this->container['payment_method_tokenization_enabled'];
+        return $this->container['last_name'];
     }
 
     /**
-     * Sets payment_method_tokenization_enabled
+     * Sets last_name
      *
-     * @param bool|null $payment_method_tokenization_enabled A flag to indicate if storing the payment method is enabled.
+     * @param bool|null $last_name The last (family) name of the buyer.
      *
      * @return self
      */
-    public function setPaymentMethodTokenizationEnabled($payment_method_tokenization_enabled)
+    public function setLastName($last_name)
     {
-        $this->container['payment_method_tokenization_enabled'] = $payment_method_tokenization_enabled;
+        $this->container['last_name'] = $last_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_address
+     *
+     * @return bool|null
+     */
+    public function getEmailAddress()
+    {
+        return $this->container['email_address'];
+    }
+
+    /**
+     * Sets email_address
+     *
+     * @param bool|null $email_address The email address of the buyer.
+     *
+     * @return self
+     */
+    public function setEmailAddress($email_address)
+    {
+        $this->container['email_address'] = $email_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     *
+     * @return bool|null
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param bool|null $phone_number The phone number of the buyer.
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        $this->container['phone_number'] = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets address
+     *
+     * @return \Gr4vy\model\CardRequiredFieldsAddress|null
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param \Gr4vy\model\CardRequiredFieldsAddress|null $address address
+     *
+     * @return self
+     */
+    public function setAddress($address)
+    {
+        $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_id
+     *
+     * @return bool|null
+     */
+    public function getTaxId()
+    {
+        return $this->container['tax_id'];
+    }
+
+    /**
+     * Sets tax_id
+     *
+     * @param bool|null $tax_id The tax id code associated with the billing details.
+     *
+     * @return self
+     */
+    public function setTaxId($tax_id)
+    {
+        $this->container['tax_id'] = $tax_id;
 
         return $this;
     }

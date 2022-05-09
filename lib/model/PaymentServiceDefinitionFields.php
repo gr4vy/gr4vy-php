@@ -64,7 +64,8 @@ class PaymentServiceDefinitionFields implements ModelInterface, ArrayAccess, \Js
         'key' => 'string',
         'display_name' => 'string',
         'required' => 'bool',
-        'format' => 'string'
+        'format' => 'string',
+        'secret' => 'bool'
     ];
 
     /**
@@ -78,7 +79,8 @@ class PaymentServiceDefinitionFields implements ModelInterface, ArrayAccess, \Js
         'key' => null,
         'display_name' => null,
         'required' => null,
-        'format' => null
+        'format' => null,
+        'secret' => null
     ];
 
     /**
@@ -111,7 +113,8 @@ class PaymentServiceDefinitionFields implements ModelInterface, ArrayAccess, \Js
         'key' => 'key',
         'display_name' => 'display_name',
         'required' => 'required',
-        'format' => 'format'
+        'format' => 'format',
+        'secret' => 'secret'
     ];
 
     /**
@@ -123,7 +126,8 @@ class PaymentServiceDefinitionFields implements ModelInterface, ArrayAccess, \Js
         'key' => 'setKey',
         'display_name' => 'setDisplayName',
         'required' => 'setRequired',
-        'format' => 'setFormat'
+        'format' => 'setFormat',
+        'secret' => 'setSecret'
     ];
 
     /**
@@ -135,7 +139,8 @@ class PaymentServiceDefinitionFields implements ModelInterface, ArrayAccess, \Js
         'key' => 'getKey',
         'display_name' => 'getDisplayName',
         'required' => 'getRequired',
-        'format' => 'getFormat'
+        'format' => 'getFormat',
+        'secret' => 'getSecret'
     ];
 
     /**
@@ -216,6 +221,7 @@ class PaymentServiceDefinitionFields implements ModelInterface, ArrayAccess, \Js
         $this->container['display_name'] = $data['display_name'] ?? null;
         $this->container['required'] = $data['required'] ?? null;
         $this->container['format'] = $data['format'] ?? null;
+        $this->container['secret'] = $data['secret'] ?? null;
     }
 
     /**
@@ -353,6 +359,30 @@ class PaymentServiceDefinitionFields implements ModelInterface, ArrayAccess, \Js
             );
         }
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets secret
+     *
+     * @return bool|null
+     */
+    public function getSecret()
+    {
+        return $this->container['secret'];
+    }
+
+    /**
+     * Sets secret
+     *
+     * @param bool|null $secret Defines if this field is secret. When `true` the field is not returned when querying the payment service.
+     *
+     * @return self
+     */
+    public function setSecret($secret)
+    {
+        $this->container['secret'] = $secret;
 
         return $this;
     }

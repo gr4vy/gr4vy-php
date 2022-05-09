@@ -1,6 +1,6 @@
 <?php
 /**
- * TransactionCaptureRequest
+ * PaymentServiceFields
  *
  * PHP version 7.2
  *
@@ -33,10 +33,9 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * TransactionCaptureRequest Class Doc Comment
+ * PaymentServiceFields Class Doc Comment
  *
  * @category Class
- * @description A request to capture a transaction.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +43,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TransactionCaptureRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentServiceFields implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +52,7 @@ class TransactionCaptureRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TransactionCaptureRequest';
+    protected static $openAPIModelName = 'PaymentService_fields';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +60,8 @@ class TransactionCaptureRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'int'
+        'key' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -72,7 +72,8 @@ class TransactionCaptureRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null
+        'key' => null,
+        'value' => null
     ];
 
     /**
@@ -102,7 +103,8 @@ class TransactionCaptureRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount'
+        'key' => 'key',
+        'value' => 'value'
     ];
 
     /**
@@ -111,7 +113,8 @@ class TransactionCaptureRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount'
+        'key' => 'setKey',
+        'value' => 'setValue'
     ];
 
     /**
@@ -120,7 +123,8 @@ class TransactionCaptureRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount'
+        'key' => 'getKey',
+        'value' => 'getValue'
     ];
 
     /**
@@ -180,7 +184,8 @@ class TransactionCaptureRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -192,12 +197,20 @@ class TransactionCaptureRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['amount']) && ($this->container['amount'] > 99999999)) {
-            $invalidProperties[] = "invalid value for 'amount', must be smaller than or equal to 99999999.";
+        if (!is_null($this->container['key']) && (mb_strlen($this->container['key']) > 50)) {
+            $invalidProperties[] = "invalid value for 'key', the character length must be smaller than or equal to 50.";
         }
 
-        if (!is_null($this->container['amount']) && ($this->container['amount'] < 1)) {
-            $invalidProperties[] = "invalid value for 'amount', must be bigger than or equal to 1.";
+        if (!is_null($this->container['key']) && (mb_strlen($this->container['key']) < 1)) {
+            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['value']) && (mb_strlen($this->container['value']) > 5000)) {
+            $invalidProperties[] = "invalid value for 'value', the character length must be smaller than or equal to 5000.";
+        }
+
+        if (!is_null($this->container['value']) && (mb_strlen($this->container['value']) < 0)) {
+            $invalidProperties[] = "invalid value for 'value', the character length must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -216,33 +229,63 @@ class TransactionCaptureRequest implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets amount
+     * Gets key
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getAmount()
+    public function getKey()
     {
-        return $this->container['amount'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets amount
+     * Sets key
      *
-     * @param int|null $amount The monetary amount to capture an authorization for, in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`.  When omitted blank, this will capture the entire amount.  Capturing an amount that is greater than the authorized amount is not supported.
+     * @param string|null $key The key of the field.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setKey($key)
     {
-
-        if (!is_null($amount) && ($amount > 99999999)) {
-            throw new \InvalidArgumentException('invalid value for $amount when calling TransactionCaptureRequest., must be smaller than or equal to 99999999.');
+        if (!is_null($key) && (mb_strlen($key) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $key when calling PaymentServiceFields., must be smaller than or equal to 50.');
         }
-        if (!is_null($amount) && ($amount < 1)) {
-            throw new \InvalidArgumentException('invalid value for $amount when calling TransactionCaptureRequest., must be bigger than or equal to 1.');
+        if (!is_null($key) && (mb_strlen($key) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $key when calling PaymentServiceFields., must be bigger than or equal to 1.');
         }
 
-        $this->container['amount'] = $amount;
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string|null
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string|null $value The value of the field.
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        if (!is_null($value) && (mb_strlen($value) > 5000)) {
+            throw new \InvalidArgumentException('invalid length for $value when calling PaymentServiceFields., must be smaller than or equal to 5000.');
+        }
+        if (!is_null($value) && (mb_strlen($value) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $value when calling PaymentServiceFields., must be bigger than or equal to 0.');
+        }
+
+        $this->container['value'] = $value;
 
         return $this;
     }

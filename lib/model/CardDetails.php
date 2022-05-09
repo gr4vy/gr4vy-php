@@ -66,7 +66,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'card_type' => 'string',
         'scheme' => 'string',
         'country' => 'string',
-        'required_fields' => 'string[]'
+        'required_fields' => '\Gr4vy\model\CardRequiredFields'
     ];
 
     /**
@@ -263,8 +263,8 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 8.";
         }
 
-        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 6)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 6.";
+        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 8)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 8.";
         }
 
         $allowedValues = $this->getCardTypeAllowableValues();
@@ -274,10 +274,6 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['card_type'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        if (!is_null($this->container['required_fields']) && (count($this->container['required_fields']) < 0)) {
-            $invalidProperties[] = "invalid value for 'required_fields', number of items must be greater than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -342,7 +338,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The 6-8 digit BIN of the card.
+     * @param string|null $id The 8 digit BIN of the card. When looking up card details using a `payment_method_id` this value will be `null`.
      *
      * @return self
      */
@@ -351,8 +347,8 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         if (!is_null($id) && (mb_strlen($id) > 8)) {
             throw new \InvalidArgumentException('invalid length for $id when calling CardDetails., must be smaller than or equal to 8.');
         }
-        if (!is_null($id) && (mb_strlen($id) < 6)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling CardDetails., must be bigger than or equal to 6.');
+        if (!is_null($id) && (mb_strlen($id) < 8)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling CardDetails., must be bigger than or equal to 8.');
         }
 
         $this->container['id'] = $id;
@@ -445,7 +441,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets required_fields
      *
-     * @return string[]|null
+     * @return \Gr4vy\model\CardRequiredFields|null
      */
     public function getRequiredFields()
     {
@@ -455,17 +451,12 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets required_fields
      *
-     * @param string[]|null $required_fields A list of fields that are required to process a transaction for this card.
+     * @param \Gr4vy\model\CardRequiredFields|null $required_fields required_fields
      *
      * @return self
      */
     public function setRequiredFields($required_fields)
     {
-
-
-        if (!is_null($required_fields) && (count($required_fields) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $required_fields when calling CardDetails., number of items must be greater than or equal to 0.');
-        }
         $this->container['required_fields'] = $required_fields;
 
         return $this;

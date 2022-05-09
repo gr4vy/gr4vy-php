@@ -63,6 +63,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'amount' => 'int',
         'currency' => 'string',
+        'country' => 'string',
         'payment_method' => '\Gr4vy\model\TransactionPaymentMethodRequest',
         'store' => 'bool',
         'intent' => 'string',
@@ -74,7 +75,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'metadata' => 'array<string,string>',
         'statement_descriptor' => 'StatementDescriptor',
         'cart_items' => '\Gr4vy\model\CartItem[]',
-        'previous_scheme_transaction_id' => 'string'
+        'previous_scheme_transaction_id' => 'string',
+        'browser_info' => 'BrowserInfo'
     ];
 
     /**
@@ -87,6 +89,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPIFormats = [
         'amount' => null,
         'currency' => null,
+        'country' => null,
         'payment_method' => null,
         'store' => null,
         'intent' => null,
@@ -98,7 +101,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'metadata' => null,
         'statement_descriptor' => null,
         'cart_items' => null,
-        'previous_scheme_transaction_id' => null
+        'previous_scheme_transaction_id' => null,
+        'browser_info' => null
     ];
 
     /**
@@ -130,6 +134,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $attributeMap = [
         'amount' => 'amount',
         'currency' => 'currency',
+        'country' => 'country',
         'payment_method' => 'payment_method',
         'store' => 'store',
         'intent' => 'intent',
@@ -141,7 +146,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'metadata' => 'metadata',
         'statement_descriptor' => 'statement_descriptor',
         'cart_items' => 'cart_items',
-        'previous_scheme_transaction_id' => 'previous_scheme_transaction_id'
+        'previous_scheme_transaction_id' => 'previous_scheme_transaction_id',
+        'browser_info' => 'browser_info'
     ];
 
     /**
@@ -152,6 +158,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $setters = [
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
+        'country' => 'setCountry',
         'payment_method' => 'setPaymentMethod',
         'store' => 'setStore',
         'intent' => 'setIntent',
@@ -163,7 +170,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'metadata' => 'setMetadata',
         'statement_descriptor' => 'setStatementDescriptor',
         'cart_items' => 'setCartItems',
-        'previous_scheme_transaction_id' => 'setPreviousSchemeTransactionId'
+        'previous_scheme_transaction_id' => 'setPreviousSchemeTransactionId',
+        'browser_info' => 'setBrowserInfo'
     ];
 
     /**
@@ -174,6 +182,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $getters = [
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
+        'country' => 'getCountry',
         'payment_method' => 'getPaymentMethod',
         'store' => 'getStore',
         'intent' => 'getIntent',
@@ -185,7 +194,8 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'metadata' => 'getMetadata',
         'statement_descriptor' => 'getStatementDescriptor',
         'cart_items' => 'getCartItems',
-        'previous_scheme_transaction_id' => 'getPreviousSchemeTransactionId'
+        'previous_scheme_transaction_id' => 'getPreviousSchemeTransactionId',
+        'browser_info' => 'getBrowserInfo'
     ];
 
     /**
@@ -283,6 +293,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $this->container['amount'] = $data['amount'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
         $this->container['payment_method'] = $data['payment_method'] ?? null;
         $this->container['store'] = $data['store'] ?? false;
         $this->container['intent'] = $data['intent'] ?? INTENT_AUTHORIZE;
@@ -295,6 +306,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['statement_descriptor'] = $data['statement_descriptor'] ?? null;
         $this->container['cart_items'] = $data['cart_items'] ?? null;
         $this->container['previous_scheme_transaction_id'] = $data['previous_scheme_transaction_id'] ?? 'null';
+        $this->container['browser_info'] = $data['browser_info'] ?? null;
     }
 
     /**
@@ -377,7 +389,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets amount
      *
-     * @param int $amount The monetary amount to create an authorization for, in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`.
+     * @param int $amount The monetary amount to create an authorization for, in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`.  If the `intent` is set to `capture`, an amount greater than zero must be supplied.
      *
      * @return self
      */
@@ -421,6 +433,30 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets country
+     *
+     * @return string|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param string|null $country The 2-letter ISO code of the country of the transaction. This is used to filter the payment services that is used to process the transaction.
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
      * Gets payment_method
      *
      * @return \Gr4vy\model\TransactionPaymentMethodRequest
@@ -457,7 +493,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets store
      *
-     * @param bool|null $store Whether or not to also try and store the payment method with us so that it can be used again for future use. This is only supported for payment methods that support this feature.
+     * @param bool|null $store Whether or not to also try and store the payment method with us so that it can be used again for future use. This is only supported for payment methods that support this feature. There are also a few restrictions on how the flag may be set:  * The flag has to be set to `true` when the `payment_source` is set to `recurring` or `installment`, and `merchant_initiated` is set to `false`.  * The flag has to be set to `false` (or not set) when using a previously tokenized payment method.
      *
      * @return self
      */
@@ -621,7 +657,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets is_subsequent_payment
      *
-     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note this flag is only compatible with `payment_source` set to `recurring`, `installment`, or `card_on_file` and will be ignored for other values or if `payment_source` is not present.
+     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note there are some restrictions on how this flag may be used.  The flag can only be `false` (or not set) when the transaction meets one of the following criteria:  * It is not `merchant_initiated`. * `payment_source` is set to `card_on_file`.  The flag can only be set to `true` when the transaction meets one of the following criteria:  * It is not `merchant_initiated`. * `payment_source` is set to `recurring` or `installment` and `merchant_initiated` is set to `true`. * `payment_source` is set to `card_on_file`.
      *
      * @return self
      */
@@ -732,6 +768,30 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPreviousSchemeTransactionId($previous_scheme_transaction_id)
     {
         $this->container['previous_scheme_transaction_id'] = $previous_scheme_transaction_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets browser_info
+     *
+     * @return BrowserInfo|null
+     */
+    public function getBrowserInfo()
+    {
+        return $this->container['browser_info'];
+    }
+
+    /**
+     * Sets browser_info
+     *
+     * @param BrowserInfo|null $browser_info browser_info
+     *
+     * @return self
+     */
+    public function setBrowserInfo($browser_info)
+    {
+        $this->container['browser_info'] = $browser_info;
 
         return $this;
     }
