@@ -64,7 +64,7 @@ class ThreeDSecureSummary implements ModelInterface, ArrayAccess, \JsonSerializa
         'version' => 'string',
         'status' => 'string',
         'method' => 'string',
-        'response_data' => 'string'
+        'response_data' => '\Gr4vy\model\ThreeDSecureDataV1V2'
     ];
 
     /**
@@ -383,7 +383,7 @@ class ThreeDSecureSummary implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets response_data
      *
-     * @return string|null
+     * @return \Gr4vy\model\ThreeDSecureDataV1V2|null
      */
     public function getResponseData()
     {
@@ -393,7 +393,7 @@ class ThreeDSecureSummary implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets response_data
      *
-     * @param string|null $response_data response_data
+     * @param \Gr4vy\model\ThreeDSecureDataV1V2|null $response_data response_data
      *
      * @return self
      */
