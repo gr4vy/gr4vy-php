@@ -76,6 +76,7 @@ docs/Model/ThreeDSecureDataV1AllOf.md
 docs/Model/ThreeDSecureDataV1V2.md
 docs/Model/ThreeDSecureDataV2.md
 docs/Model/ThreeDSecureDataV2AllOf.md
+docs/Model/ThreeDSecureSummary.md
 docs/Model/TokenizedRequest.md
 docs/Model/Transaction.md
 docs/Model/TransactionCaptureRequest.md
@@ -168,6 +169,7 @@ lib/model/ThreeDSecureDataV1AllOf.php
 lib/model/ThreeDSecureDataV1V2.php
 lib/model/ThreeDSecureDataV2.php
 lib/model/ThreeDSecureDataV2AllOf.php
+lib/model/ThreeDSecureSummary.php
 lib/model/TokenizedRequest.php
 lib/model/Transaction.php
 lib/model/TransactionCaptureRequest.php

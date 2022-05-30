@@ -32,5 +32,6 @@ Name | Type | Description | Notes
 **method** | **string** |  | [optional]
 **payment_service_transaction_id** | **string** | The payment service&#39;s unique ID for the transaction. | [optional]
 **metadata** | **array<string,string>** | Additional information about the transaction stored as key-value pairs. | [optional]
+**three_d_secure** | [**\Gr4vy\model\ThreeDSecureSummary**](ThreeDSecureSummary.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

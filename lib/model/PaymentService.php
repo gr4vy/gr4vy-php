@@ -391,8 +391,8 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'payment_service_definition_id', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'display_name', the character length must be smaller than or equal to 50.";
+        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) > 200)) {
+            $invalidProperties[] = "invalid value for 'display_name', the character length must be smaller than or equal to 200.";
         }
 
         if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) < 1)) {
@@ -610,8 +610,8 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setDisplayName($display_name)
     {
-        if (!is_null($display_name) && (mb_strlen($display_name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $display_name when calling PaymentService., must be smaller than or equal to 50.');
+        if (!is_null($display_name) && (mb_strlen($display_name) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $display_name when calling PaymentService., must be smaller than or equal to 200.');
         }
         if (!is_null($display_name) && (mb_strlen($display_name) < 1)) {
             throw new \InvalidArgumentException('invalid length for $display_name when calling PaymentService., must be bigger than or equal to 1.');

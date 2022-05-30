@@ -88,7 +88,8 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'cvv_response_code' => 'string',
         'method' => 'string',
         'payment_service_transaction_id' => 'string',
-        'metadata' => 'array<string,string>'
+        'metadata' => 'array<string,string>',
+        'three_d_secure' => '\Gr4vy\model\ThreeDSecureSummary'
     ];
 
     /**
@@ -126,7 +127,8 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'cvv_response_code' => null,
         'method' => null,
         'payment_service_transaction_id' => null,
-        'metadata' => null
+        'metadata' => null,
+        'three_d_secure' => null
     ];
 
     /**
@@ -183,7 +185,8 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'cvv_response_code' => 'cvv_response_code',
         'method' => 'method',
         'payment_service_transaction_id' => 'payment_service_transaction_id',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'three_d_secure' => 'three_d_secure'
     ];
 
     /**
@@ -219,7 +222,8 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'cvv_response_code' => 'setCvvResponseCode',
         'method' => 'setMethod',
         'payment_service_transaction_id' => 'setPaymentServiceTransactionId',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'three_d_secure' => 'setThreeDSecure'
     ];
 
     /**
@@ -255,7 +259,8 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'cvv_response_code' => 'getCvvResponseCode',
         'method' => 'getMethod',
         'payment_service_transaction_id' => 'getPaymentServiceTransactionId',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'three_d_secure' => 'getThreeDSecure'
     ];
 
     /**
@@ -301,25 +306,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
 
     const TYPE_TRANSACTION = 'transaction';
     const STATUS_PROCESSING = 'processing';
-    const STATUS_PROCESSING_FAILED = 'processing_failed';
-    const STATUS_CAPTURE_SUCCEEDED = 'capture_succeeded';
-    const STATUS_CAPTURE_PENDING = 'capture_pending';
-    const STATUS_CAPTURE_DECLINED = 'capture_declined';
-    const STATUS_CAPTURE_FAILED = 'capture_failed';
-    const STATUS_AUTHORIZATION_SUCCEEDED = 'authorization_succeeded';
-    const STATUS_AUTHORIZATION_PENDING = 'authorization_pending';
-    const STATUS_AUTHORIZATION_DECLINED = 'authorization_declined';
-    const STATUS_AUTHORIZATION_FAILED = 'authorization_failed';
-    const STATUS_AUTHORIZATION_EXPIRED = 'authorization_expired';
-    const STATUS_AUTHORIZATION_VOIDED = 'authorization_voided';
-    const STATUS_AUTHORIZATION_VOID_PENDING = 'authorization_void_pending';
-    const STATUS_AUTHORIZATION_VOID_DECLINED = 'authorization_void_declined';
-    const STATUS_AUTHORIZATION_VOID_FAILED = 'authorization_void_failed';
-    const STATUS_BUYER_APPROVAL_SUCCEEDED = 'buyer_approval_succeeded';
     const STATUS_BUYER_APPROVAL_PENDING = 'buyer_approval_pending';
-    const STATUS_BUYER_APPROVAL_DECLINED = 'buyer_approval_declined';
-    const STATUS_BUYER_APPROVAL_FAILED = 'buyer_approval_failed';
-    const STATUS_BUYER_APPROVAL_TIMEDOUT = 'buyer_approval_timedout';
+    const STATUS_AUTHORIZATION_SUCCEEDED = 'authorization_succeeded';
+    const STATUS_AUTHORIZATION_FAILED = 'authorization_failed';
+    const STATUS_AUTHORIZATION_DECLINED = 'authorization_declined';
+    const STATUS_CAPTURE_PENDING = 'capture_pending';
+    const STATUS_CAPTURE_SUCCEEDED = 'capture_succeeded';
+    const STATUS_AUTHORIZATION_VOID_PENDING = 'authorization_void_pending';
+    const STATUS_AUTHORIZATION_VOIDED = 'authorization_voided';
     const INTENT_AUTHORIZE = 'authorize';
     const INTENT_CAPTURE = 'capture';
     const PAYMENT_SOURCE_ECOMMERCE = 'ecommerce';
@@ -336,15 +330,29 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     const CVV_RESPONSE_CODE_MATCH = 'match';
     const CVV_RESPONSE_CODE_UNAVAILABLE = 'unavailable';
     const CVV_RESPONSE_CODE_NOT_PROVIDED = 'not_provided';
-    const METHOD_CARD = 'card';
-    const METHOD_PAYPAL = 'paypal';
-    const METHOD_BANKED = 'banked';
-    const METHOD_GOCARDLESS = 'gocardless';
-    const METHOD_STRIPEDD = 'stripedd';
-    const METHOD_APPLEPAY = 'applepay';
-    const METHOD_GOOGLEPAY = 'googlepay';
     const METHOD_AFTERPAY = 'afterpay';
+    const METHOD_APPLEPAY = 'applepay';
+    const METHOD_BANKED = 'banked';
+    const METHOD_BOLETO = 'boleto';
+    const METHOD_CARD = 'card';
     const METHOD_CLEARPAY = 'clearpay';
+    const METHOD_DANA = 'dana';
+    const METHOD_FORTUMO = 'fortumo';
+    const METHOD_GCASH = 'gcash';
+    const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_GOOGLEPAY = 'googlepay';
+    const METHOD_GOOGLEPAY_PAN_ONLY = 'googlepay_pan_only';
+    const METHOD_GRABPAY = 'grabpay';
+    const METHOD_KLARNA = 'klarna';
+    const METHOD_OVO = 'ovo';
+    const METHOD_PAYMAYA = 'paymaya';
+    const METHOD_PAYPAL = 'paypal';
+    const METHOD_PIX = 'pix';
+    const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    const METHOD_SHOPEEPAY = 'shopeepay';
+    const METHOD_STRIPEDD = 'stripedd';
+    const METHOD_TRUEMONEY = 'truemoney';
+    const METHOD_TRUSTLY = 'trustly';
     const METHOD_ZIPPAY = 'zippay';
 
     /**
@@ -368,25 +376,14 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::STATUS_PROCESSING,
-            self::STATUS_PROCESSING_FAILED,
-            self::STATUS_CAPTURE_SUCCEEDED,
-            self::STATUS_CAPTURE_PENDING,
-            self::STATUS_CAPTURE_DECLINED,
-            self::STATUS_CAPTURE_FAILED,
-            self::STATUS_AUTHORIZATION_SUCCEEDED,
-            self::STATUS_AUTHORIZATION_PENDING,
-            self::STATUS_AUTHORIZATION_DECLINED,
-            self::STATUS_AUTHORIZATION_FAILED,
-            self::STATUS_AUTHORIZATION_EXPIRED,
-            self::STATUS_AUTHORIZATION_VOIDED,
-            self::STATUS_AUTHORIZATION_VOID_PENDING,
-            self::STATUS_AUTHORIZATION_VOID_DECLINED,
-            self::STATUS_AUTHORIZATION_VOID_FAILED,
-            self::STATUS_BUYER_APPROVAL_SUCCEEDED,
             self::STATUS_BUYER_APPROVAL_PENDING,
-            self::STATUS_BUYER_APPROVAL_DECLINED,
-            self::STATUS_BUYER_APPROVAL_FAILED,
-            self::STATUS_BUYER_APPROVAL_TIMEDOUT,
+            self::STATUS_AUTHORIZATION_SUCCEEDED,
+            self::STATUS_AUTHORIZATION_FAILED,
+            self::STATUS_AUTHORIZATION_DECLINED,
+            self::STATUS_CAPTURE_PENDING,
+            self::STATUS_CAPTURE_SUCCEEDED,
+            self::STATUS_AUTHORIZATION_VOID_PENDING,
+            self::STATUS_AUTHORIZATION_VOIDED,
         ];
     }
 
@@ -458,15 +455,29 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getMethodAllowableValues()
     {
         return [
-            self::METHOD_CARD,
-            self::METHOD_PAYPAL,
-            self::METHOD_BANKED,
-            self::METHOD_GOCARDLESS,
-            self::METHOD_STRIPEDD,
-            self::METHOD_APPLEPAY,
-            self::METHOD_GOOGLEPAY,
             self::METHOD_AFTERPAY,
+            self::METHOD_APPLEPAY,
+            self::METHOD_BANKED,
+            self::METHOD_BOLETO,
+            self::METHOD_CARD,
             self::METHOD_CLEARPAY,
+            self::METHOD_DANA,
+            self::METHOD_FORTUMO,
+            self::METHOD_GCASH,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_GOOGLEPAY_PAN_ONLY,
+            self::METHOD_GRABPAY,
+            self::METHOD_KLARNA,
+            self::METHOD_OVO,
+            self::METHOD_PAYMAYA,
+            self::METHOD_PAYPAL,
+            self::METHOD_PIX,
+            self::METHOD_RABBITLINEPAY,
+            self::METHOD_SHOPEEPAY,
+            self::METHOD_STRIPEDD,
+            self::METHOD_TRUEMONEY,
+            self::METHOD_TRUSTLY,
             self::METHOD_ZIPPAY,
         ];
     }
@@ -514,6 +525,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['method'] = $data['method'] ?? null;
         $this->container['payment_service_transaction_id'] = $data['payment_service_transaction_id'] ?? null;
         $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['three_d_secure'] = $data['three_d_secure'] ?? null;
     }
 
     /**
@@ -1391,6 +1403,30 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMetadata($metadata)
     {
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets three_d_secure
+     *
+     * @return \Gr4vy\model\ThreeDSecureSummary|null
+     */
+    public function getThreeDSecure()
+    {
+        return $this->container['three_d_secure'];
+    }
+
+    /**
+     * Sets three_d_secure
+     *
+     * @param \Gr4vy\model\ThreeDSecureSummary|null $three_d_secure three_d_secure
+     *
+     * @return self
+     */
+    public function setThreeDSecure($three_d_secure)
+    {
+        $this->container['three_d_secure'] = $three_d_secure;
 
         return $this;
     }
