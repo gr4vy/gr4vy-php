@@ -241,36 +241,39 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
 
     const TYPE_TRANSACTION = 'transaction';
     const STATUS_PROCESSING = 'processing';
-    const STATUS_PROCESSING_FAILED = 'processing_failed';
-    const STATUS_CAPTURE_SUCCEEDED = 'capture_succeeded';
-    const STATUS_CAPTURE_PENDING = 'capture_pending';
-    const STATUS_CAPTURE_DECLINED = 'capture_declined';
-    const STATUS_CAPTURE_FAILED = 'capture_failed';
-    const STATUS_AUTHORIZATION_SUCCEEDED = 'authorization_succeeded';
-    const STATUS_AUTHORIZATION_PENDING = 'authorization_pending';
-    const STATUS_AUTHORIZATION_DECLINED = 'authorization_declined';
-    const STATUS_AUTHORIZATION_FAILED = 'authorization_failed';
-    const STATUS_AUTHORIZATION_EXPIRED = 'authorization_expired';
-    const STATUS_AUTHORIZATION_VOIDED = 'authorization_voided';
-    const STATUS_AUTHORIZATION_VOID_PENDING = 'authorization_void_pending';
-    const STATUS_AUTHORIZATION_VOID_DECLINED = 'authorization_void_declined';
-    const STATUS_AUTHORIZATION_VOID_FAILED = 'authorization_void_failed';
-    const STATUS_BUYER_APPROVAL_SUCCEEDED = 'buyer_approval_succeeded';
     const STATUS_BUYER_APPROVAL_PENDING = 'buyer_approval_pending';
-    const STATUS_BUYER_APPROVAL_DECLINED = 'buyer_approval_declined';
-    const STATUS_BUYER_APPROVAL_FAILED = 'buyer_approval_failed';
-    const STATUS_BUYER_APPROVAL_TIMEDOUT = 'buyer_approval_timedout';
+    const STATUS_AUTHORIZATION_SUCCEEDED = 'authorization_succeeded';
+    const STATUS_AUTHORIZATION_FAILED = 'authorization_failed';
+    const STATUS_AUTHORIZATION_DECLINED = 'authorization_declined';
+    const STATUS_CAPTURE_PENDING = 'capture_pending';
+    const STATUS_CAPTURE_SUCCEEDED = 'capture_succeeded';
+    const STATUS_AUTHORIZATION_VOID_PENDING = 'authorization_void_pending';
+    const STATUS_AUTHORIZATION_VOIDED = 'authorization_voided';
     const INTENT_AUTHORIZE = 'authorize';
     const INTENT_CAPTURE = 'capture';
-    const METHOD_CARD = 'card';
-    const METHOD_PAYPAL = 'paypal';
-    const METHOD_BANKED = 'banked';
-    const METHOD_GOCARDLESS = 'gocardless';
-    const METHOD_STRIPEDD = 'stripedd';
-    const METHOD_APPLEPAY = 'applepay';
-    const METHOD_GOOGLEPAY = 'googlepay';
     const METHOD_AFTERPAY = 'afterpay';
+    const METHOD_APPLEPAY = 'applepay';
+    const METHOD_BANKED = 'banked';
+    const METHOD_BOLETO = 'boleto';
+    const METHOD_CARD = 'card';
     const METHOD_CLEARPAY = 'clearpay';
+    const METHOD_DANA = 'dana';
+    const METHOD_FORTUMO = 'fortumo';
+    const METHOD_GCASH = 'gcash';
+    const METHOD_GOCARDLESS = 'gocardless';
+    const METHOD_GOOGLEPAY = 'googlepay';
+    const METHOD_GOOGLEPAY_PAN_ONLY = 'googlepay_pan_only';
+    const METHOD_GRABPAY = 'grabpay';
+    const METHOD_KLARNA = 'klarna';
+    const METHOD_OVO = 'ovo';
+    const METHOD_PAYMAYA = 'paymaya';
+    const METHOD_PAYPAL = 'paypal';
+    const METHOD_PIX = 'pix';
+    const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    const METHOD_SHOPEEPAY = 'shopeepay';
+    const METHOD_STRIPEDD = 'stripedd';
+    const METHOD_TRUEMONEY = 'truemoney';
+    const METHOD_TRUSTLY = 'trustly';
     const METHOD_ZIPPAY = 'zippay';
 
     /**
@@ -294,25 +297,14 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         return [
             self::STATUS_PROCESSING,
-            self::STATUS_PROCESSING_FAILED,
-            self::STATUS_CAPTURE_SUCCEEDED,
-            self::STATUS_CAPTURE_PENDING,
-            self::STATUS_CAPTURE_DECLINED,
-            self::STATUS_CAPTURE_FAILED,
-            self::STATUS_AUTHORIZATION_SUCCEEDED,
-            self::STATUS_AUTHORIZATION_PENDING,
-            self::STATUS_AUTHORIZATION_DECLINED,
-            self::STATUS_AUTHORIZATION_FAILED,
-            self::STATUS_AUTHORIZATION_EXPIRED,
-            self::STATUS_AUTHORIZATION_VOIDED,
-            self::STATUS_AUTHORIZATION_VOID_PENDING,
-            self::STATUS_AUTHORIZATION_VOID_DECLINED,
-            self::STATUS_AUTHORIZATION_VOID_FAILED,
-            self::STATUS_BUYER_APPROVAL_SUCCEEDED,
             self::STATUS_BUYER_APPROVAL_PENDING,
-            self::STATUS_BUYER_APPROVAL_DECLINED,
-            self::STATUS_BUYER_APPROVAL_FAILED,
-            self::STATUS_BUYER_APPROVAL_TIMEDOUT,
+            self::STATUS_AUTHORIZATION_SUCCEEDED,
+            self::STATUS_AUTHORIZATION_FAILED,
+            self::STATUS_AUTHORIZATION_DECLINED,
+            self::STATUS_CAPTURE_PENDING,
+            self::STATUS_CAPTURE_SUCCEEDED,
+            self::STATUS_AUTHORIZATION_VOID_PENDING,
+            self::STATUS_AUTHORIZATION_VOIDED,
         ];
     }
 
@@ -337,15 +329,29 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     public function getMethodAllowableValues()
     {
         return [
-            self::METHOD_CARD,
-            self::METHOD_PAYPAL,
-            self::METHOD_BANKED,
-            self::METHOD_GOCARDLESS,
-            self::METHOD_STRIPEDD,
-            self::METHOD_APPLEPAY,
-            self::METHOD_GOOGLEPAY,
             self::METHOD_AFTERPAY,
+            self::METHOD_APPLEPAY,
+            self::METHOD_BANKED,
+            self::METHOD_BOLETO,
+            self::METHOD_CARD,
             self::METHOD_CLEARPAY,
+            self::METHOD_DANA,
+            self::METHOD_FORTUMO,
+            self::METHOD_GCASH,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_GOOGLEPAY_PAN_ONLY,
+            self::METHOD_GRABPAY,
+            self::METHOD_KLARNA,
+            self::METHOD_OVO,
+            self::METHOD_PAYMAYA,
+            self::METHOD_PAYPAL,
+            self::METHOD_PIX,
+            self::METHOD_RABBITLINEPAY,
+            self::METHOD_SHOPEEPAY,
+            self::METHOD_STRIPEDD,
+            self::METHOD_TRUEMONEY,
+            self::METHOD_TRUSTLY,
             self::METHOD_ZIPPAY,
         ];
     }
