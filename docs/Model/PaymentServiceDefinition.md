@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **mode** | **string** |  | [optional]
 **supported_features** | [**\Gr4vy\model\PaymentServiceDefinitionSupportedFeatures**](PaymentServiceDefinitionSupportedFeatures.md) |  | [optional]
 **icon_url** | **string** | An icon to display for the payment service. | [optional]
+**configuration** | [**\Gr4vy\model\PaymentServiceDefinitionConfiguration**](PaymentServiceDefinitionConfiguration.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

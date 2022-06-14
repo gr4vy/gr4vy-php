@@ -111,7 +111,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | [**string**](../Model/.md)| The unique ID for a buyer. |
+ **buyer_id** | **string**| The unique ID for a buyer. |
 
 ### Return type
 
@@ -171,7 +171,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | [**string**](../Model/.md)| The unique ID for a buyer. |
+ **buyer_id** | **string**| The unique ID for a buyer. |
 
 ### Return type
 
@@ -296,7 +296,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | [**string**](../Model/.md)| The unique ID for a buyer. |
+ **buyer_id** | **string**| The unique ID for a buyer. |
  **buyer_update** | [**\Gr4vy\model\BuyerUpdate**](../Model/BuyerUpdate.md)|  | [optional]
 
 ### Return type
