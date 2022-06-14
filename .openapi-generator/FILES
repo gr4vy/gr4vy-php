@@ -1,4 +1,5 @@
 .php_cs
+docs/Api/AuditLogsApi.md
 docs/Api/BuyersApi.md
 docs/Api/DigitalWalletsApi.md
 docs/Api/PaymentMethodTokensApi.md
@@ -10,6 +11,10 @@ docs/Api/TransactionsApi.md
 docs/Model/Address.md
 docs/Model/ApplePayRequest.md
 docs/Model/ApplePaySessionRequest.md
+docs/Model/AuditLog.md
+docs/Model/AuditLogResource.md
+docs/Model/AuditLogUser.md
+docs/Model/AuditLogs.md
 docs/Model/BillingDetails.md
 docs/Model/BillingDetailsRequest.md
 docs/Model/BillingDetailsUpdateRequest.md
@@ -49,10 +54,12 @@ docs/Model/PaymentMethodTokens.md
 docs/Model/PaymentMethods.md
 docs/Model/PaymentMethodsTokenized.md
 docs/Model/PaymentOption.md
+docs/Model/PaymentOptionApprovalUI.md
 docs/Model/PaymentOptionContext.md
 docs/Model/PaymentOptions.md
 docs/Model/PaymentService.md
 docs/Model/PaymentServiceDefinition.md
+docs/Model/PaymentServiceDefinitionConfiguration.md
 docs/Model/PaymentServiceDefinitionFields.md
 docs/Model/PaymentServiceDefinitionSupportedFeatures.md
 docs/Model/PaymentServiceDefinitions.md
@@ -87,6 +94,7 @@ docs/Model/TransactionSummary.md
 docs/Model/Transactions.md
 docs/Model/TransactionsBatchCaptureRequest.md
 docs/Model/UserRequest.md
+lib/Api/AuditLogsApi.php
 lib/Api/BuyersApi.php
 lib/Api/DigitalWalletsApi.php
 lib/Api/PaymentMethodTokensApi.php
@@ -102,6 +110,10 @@ lib/ObjectSerializer.php
 lib/model/Address.php
 lib/model/ApplePayRequest.php
 lib/model/ApplePaySessionRequest.php
+lib/model/AuditLog.php
+lib/model/AuditLogResource.php
+lib/model/AuditLogUser.php
+lib/model/AuditLogs.php
 lib/model/BillingDetails.php
 lib/model/BillingDetailsRequest.php
 lib/model/BillingDetailsUpdateRequest.php
@@ -142,10 +154,12 @@ lib/model/PaymentMethodTokens.php
 lib/model/PaymentMethods.php
 lib/model/PaymentMethodsTokenized.php
 lib/model/PaymentOption.php
+lib/model/PaymentOptionApprovalUI.php
 lib/model/PaymentOptionContext.php
 lib/model/PaymentOptions.php
 lib/model/PaymentService.php
 lib/model/PaymentServiceDefinition.php
+lib/model/PaymentServiceDefinitionConfiguration.php
 lib/model/PaymentServiceDefinitionFields.php
 lib/model/PaymentServiceDefinitionSupportedFeatures.php
 lib/model/PaymentServiceDefinitions.php

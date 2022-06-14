@@ -51,7 +51,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payment_method_id** | [**string**](../Model/.md)| The ID of the payment method. |
+ **payment_method_id** | **string**| The ID of the payment method. |
 
 ### Return type
 
@@ -111,7 +111,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payment_method_id** | [**string**](../Model/.md)| The ID of the payment method. |
+ **payment_method_id** | **string**| The ID of the payment method. |
 
 ### Return type
 
