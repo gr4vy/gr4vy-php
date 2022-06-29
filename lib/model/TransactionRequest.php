@@ -73,7 +73,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'payment_source' => 'string',
         'is_subsequent_payment' => 'bool',
         'metadata' => 'array<string,string>',
-        'statement_descriptor' => 'StatementDescriptor',
+        'statement_descriptor' => '\Gr4vy\model\StatementDescriptor',
         'cart_items' => '\Gr4vy\model\CartItem[]',
         'previous_scheme_transaction_id' => 'string',
         'browser_info' => 'BrowserInfo'

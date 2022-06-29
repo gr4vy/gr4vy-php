@@ -8,6 +8,8 @@ docs/Api/PaymentOptionsApi.md
 docs/Api/PaymentServiceDefinitionsApi.md
 docs/Api/PaymentServicesApi.md
 docs/Api/TransactionsApi.md
+docs/Model/Action.md
+docs/Model/Actions.md
 docs/Model/Address.md
 docs/Model/ApplePayRequest.md
 docs/Model/ApplePaySessionRequest.md
@@ -43,6 +45,10 @@ docs/Model/Error404PendingCreation.md
 docs/Model/Error409DuplicateRecord.md
 docs/Model/ErrorDetail.md
 docs/Model/ErrorGeneric.md
+docs/Model/FlowPaymentOptionOutcome.md
+docs/Model/FlowRuleBooleanOutcome.md
+docs/Model/FlowRuleMethodOutcome.md
+docs/Model/FlowRuleServiceOutcome.md
 docs/Model/GooglePayRequest.md
 docs/Model/GooglePaySessionRequest.md
 docs/Model/PaymentMethod.md
@@ -107,6 +113,8 @@ lib/ApiException.php
 lib/Configuration.php
 lib/HeaderSelector.php
 lib/ObjectSerializer.php
+lib/model/Action.php
+lib/model/Actions.php
 lib/model/Address.php
 lib/model/ApplePayRequest.php
 lib/model/ApplePaySessionRequest.php
@@ -142,6 +150,10 @@ lib/model/Error404PendingCreation.php
 lib/model/Error409DuplicateRecord.php
 lib/model/ErrorDetail.php
 lib/model/ErrorGeneric.php
+lib/model/FlowPaymentOptionOutcome.php
+lib/model/FlowRuleBooleanOutcome.php
+lib/model/FlowRuleMethodOutcome.php
+lib/model/FlowRuleServiceOutcome.php
 lib/model/GooglePayRequest.php
 lib/model/GooglePaySessionRequest.php
 lib/model/ModelInterface.php

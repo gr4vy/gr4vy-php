@@ -79,7 +79,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'merchant_initiated' => 'bool',
         'payment_source' => 'string',
         'is_subsequent_payment' => 'bool',
-        'statement_descriptor' => 'StatementDescriptor',
+        'statement_descriptor' => '\Gr4vy\model\StatementDescriptor',
         'cart_items' => '\Gr4vy\model\CartItem[]',
         'scheme_transaction_id' => 'string',
         'raw_response_code' => 'string',
@@ -89,7 +89,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'method' => 'string',
         'payment_service_transaction_id' => 'string',
         'metadata' => 'array<string,string>',
-        'three_d_secure' => '\Gr4vy\model\ThreeDSecureSummary'
+        'three_d_secure' => '\Gr4vy\model\ThreeDSecureSummary',
+        'authorized_at' => '\DateTime',
+        'captured_at' => '\DateTime',
+        'voided_at' => '\DateTime'
     ];
 
     /**
@@ -128,7 +131,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'method' => null,
         'payment_service_transaction_id' => null,
         'metadata' => null,
-        'three_d_secure' => null
+        'three_d_secure' => null,
+        'authorized_at' => 'date-time',
+        'captured_at' => 'date-time',
+        'voided_at' => 'date-time'
     ];
 
     /**
@@ -186,7 +192,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'method' => 'method',
         'payment_service_transaction_id' => 'payment_service_transaction_id',
         'metadata' => 'metadata',
-        'three_d_secure' => 'three_d_secure'
+        'three_d_secure' => 'three_d_secure',
+        'authorized_at' => 'authorized_at',
+        'captured_at' => 'captured_at',
+        'voided_at' => 'voided_at'
     ];
 
     /**
@@ -223,7 +232,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'method' => 'setMethod',
         'payment_service_transaction_id' => 'setPaymentServiceTransactionId',
         'metadata' => 'setMetadata',
-        'three_d_secure' => 'setThreeDSecure'
+        'three_d_secure' => 'setThreeDSecure',
+        'authorized_at' => 'setAuthorizedAt',
+        'captured_at' => 'setCapturedAt',
+        'voided_at' => 'setVoidedAt'
     ];
 
     /**
@@ -260,7 +272,10 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         'method' => 'getMethod',
         'payment_service_transaction_id' => 'getPaymentServiceTransactionId',
         'metadata' => 'getMetadata',
-        'three_d_secure' => 'getThreeDSecure'
+        'three_d_secure' => 'getThreeDSecure',
+        'authorized_at' => 'getAuthorizedAt',
+        'captured_at' => 'getCapturedAt',
+        'voided_at' => 'getVoidedAt'
     ];
 
     /**
@@ -333,6 +348,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     const METHOD_AFTERPAY = 'afterpay';
     const METHOD_APPLEPAY = 'applepay';
     const METHOD_BANKED = 'banked';
+    const METHOD_BITPAY = 'bitpay';
     const METHOD_BOLETO = 'boleto';
     const METHOD_CARD = 'card';
     const METHOD_CLEARPAY = 'clearpay';
@@ -458,6 +474,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             self::METHOD_AFTERPAY,
             self::METHOD_APPLEPAY,
             self::METHOD_BANKED,
+            self::METHOD_BITPAY,
             self::METHOD_BOLETO,
             self::METHOD_CARD,
             self::METHOD_CLEARPAY,
@@ -526,6 +543,9 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['payment_service_transaction_id'] = $data['payment_service_transaction_id'] ?? null;
         $this->container['metadata'] = $data['metadata'] ?? null;
         $this->container['three_d_secure'] = $data['three_d_secure'] ?? null;
+        $this->container['authorized_at'] = $data['authorized_at'] ?? null;
+        $this->container['captured_at'] = $data['captured_at'] ?? null;
+        $this->container['voided_at'] = $data['voided_at'] ?? null;
     }
 
     /**
@@ -1427,6 +1447,78 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setThreeDSecure($three_d_secure)
     {
         $this->container['three_d_secure'] = $three_d_secure;
+
+        return $this;
+    }
+
+    /**
+     * Gets authorized_at
+     *
+     * @return \DateTime|null
+     */
+    public function getAuthorizedAt()
+    {
+        return $this->container['authorized_at'];
+    }
+
+    /**
+     * Sets authorized_at
+     *
+     * @param \DateTime|null $authorized_at The date and time when this transaction was authorized in the payment service.  Don't use this field to determine whether the transaction was authorized. A `null` value doesn't necessarily imply that the transaction wasn't authorized, it can mean that the payment service doesn't provide this value, that it didn't provide it at the time the transaction was authorized or that the transaction was authorized before the introduction of this field.
+     *
+     * @return self
+     */
+    public function setAuthorizedAt($authorized_at)
+    {
+        $this->container['authorized_at'] = $authorized_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets captured_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCapturedAt()
+    {
+        return $this->container['captured_at'];
+    }
+
+    /**
+     * Sets captured_at
+     *
+     * @param \DateTime|null $captured_at The date and time when this transaction was captured in the payment service.  Don't use this field to determine whether the transaction was captured. A `null` value doesn't necessarily imply that the transaction wasn't captured, it can mean that the payment service doesn't provide this value, that it didn't provide it at the time the transaction was captured or that the transaction was captured before the introduction of this field.
+     *
+     * @return self
+     */
+    public function setCapturedAt($captured_at)
+    {
+        $this->container['captured_at'] = $captured_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets voided_at
+     *
+     * @return \DateTime|null
+     */
+    public function getVoidedAt()
+    {
+        return $this->container['voided_at'];
+    }
+
+    /**
+     * Sets voided_at
+     *
+     * @param \DateTime|null $voided_at The date and time when this transaction was voided in the payment service.  Don't use this field to determine whether the transaction was voided. A `null` value doesn't necessarily imply that the transaction wasn't voided, it can mean that the payment service doesn't provide this value, that it didn't provide it at the time the transaction was voided or that the transaction was voided before the introduction of this field.
+     *
+     * @return self
+     */
+    public function setVoidedAt($voided_at)
+    {
+        $this->container['voided_at'] = $voided_at;
 
         return $this;
     }

@@ -254,6 +254,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     const METHOD_AFTERPAY = 'afterpay';
     const METHOD_APPLEPAY = 'applepay';
     const METHOD_BANKED = 'banked';
+    const METHOD_BITPAY = 'bitpay';
     const METHOD_BOLETO = 'boleto';
     const METHOD_CARD = 'card';
     const METHOD_CLEARPAY = 'clearpay';
@@ -332,6 +333,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
             self::METHOD_AFTERPAY,
             self::METHOD_APPLEPAY,
             self::METHOD_BANKED,
+            self::METHOD_BITPAY,
             self::METHOD_BOLETO,
             self::METHOD_CARD,
             self::METHOD_CLEARPAY,

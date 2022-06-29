@@ -15,6 +15,10 @@ var1="'buyer' => 'BuyerSnapshot',"
 rep1="'buyer' => '\\\Gr4vy\\\model\\\BuyerSnapshot',"
 sed -i '' "s/$var1/$rep1/g" lib/model/*.php
 
+var1="'statement_descriptor' => 'StatementDescriptor',"
+rep1="'statement_descriptor' => '\\\Gr4vy\\\model\\\StatementDescriptor',"
+sed -i '' "s/$var1/$rep1/g" lib/model/*.php
+
 var1="'billing_details' => 'BillingDetails',"
 rep1="'billing_details' => '\\\Gr4vy\\\model\\\BillingDetails',"
 sed -i '' "s/$var1/$rep1/g" lib/model/*.php
