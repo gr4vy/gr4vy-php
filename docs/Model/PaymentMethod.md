@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **created_at** | **\DateTime** | The date and time when this payment method was first created in our system. | [optional]
 **updated_at** | **\DateTime** | The date and time when this payment method was last updated in our system. | [optional]
 **external_identifier** | **string** | An external identifier that can be used to match the payment method against your own records. | [optional]
-**buyer** | [**Buyer**](Buyer.md) |  | [optional]
+**buyer** | [**\Gr4vy\model\PaymentMethodBuyer**](PaymentMethodBuyer.md) |  | [optional]
 **label** | **string** | A label for the card or the account. For a &#x60;paypal&#x60; payment method this is the user&#39;s email address. For a card it is the last 4 digits of the card. | [optional]
 **scheme** | **string** | The scheme of the card. Only applies to card payments. | [optional]
 **expiration_date** | **string** | The expiration date for the payment method. | [optional]

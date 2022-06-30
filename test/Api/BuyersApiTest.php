@@ -89,7 +89,7 @@ class BuyersApiTest extends TestCase
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $apiInstance = new BuyersApi(new Client(),$config->getConfig());
 
-            $buyer_request = array("external_identifier"=>"testAddBuyer","display_name"=>"🐶");
+            $buyer_request = array("external_identifier"=>"testAddBuyer2","display_name"=>"🐶");
             $result = $apiInstance->addBuyer($buyer_request);
             $this->assertArrayHasKey("id", $result);
             $this->assertEquals($result->getDisplayName(), "🐶");
@@ -184,7 +184,7 @@ class BuyersApiTest extends TestCase
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $apiInstance = new BuyersApi(new Client(),$config->getConfig());
 
-            $buyer_request = array("external_identifier"=>"testAddBuyer","display_name"=>"abc");
+            $buyer_request = array("external_identifier"=>"testAddBuyer3","display_name"=>"abc");
             $result = $apiInstance->addBuyer($buyer_request);
 
             $buyer_update = array("external_identifier"=>"testUpdateBuyer");

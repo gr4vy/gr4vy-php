@@ -102,9 +102,9 @@ class Gr4vyConfig
         
         $config = Configuration::forAsymmetricSigner(
             // You may use RSA or ECDSA and all their variations (256, 384, and 512) and EdDSA over Curve25519
-            new Signer\Ecdsa\Sha512(),
+            Signer\Ecdsa\Sha512::create(),
             $key,
-            InMemory::base64Encoded('notused')
+            InMemory::base64Encoded('bm90dXNlZA==')
         );
 
 
@@ -113,7 +113,7 @@ class Gr4vyConfig
         $now   = new DateTimeImmutable();
         $tokenBuilder = $config->builder()
                 // Configures the issuer (iss claim)
-                ->issuedBy('Gr4vy SDK 0.0.1 - PHP 7.3')
+                ->issuedBy('Gr4vy SDK 0.13.0 - PHP 8.1')
                 // Configures the id (jti claim)
                 ->identifiedBy(self::gen_uuid())
                 // Configures the time that the token was issue (iat claim)
@@ -131,7 +131,7 @@ class Gr4vyConfig
             $tokenBuilder = $tokenBuilder->withClaim('embed', $embed);    
         }
 
-        return $tokenBuilder->getToken($config->signer(), $config->signingKey());
+        return $tokenBuilder->getToken($config->signer(), $config->signingKey())->toString();
     }
 
     private static function gen_uuid() {
