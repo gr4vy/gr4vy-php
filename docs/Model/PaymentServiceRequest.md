@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **display_name** | **string** | A custom name for the payment service. This will be shown in the Admin UI. |
-**fields** | [**\Gr4vy\model\PaymentServiceUpdateFields[]**](PaymentServiceUpdateFields.md) | A list of fields, each containing a key-value pair for each field defined by the definition for this payment service e.g. for stripe-card &#x60;secret_key&#x60; is required and so must be sent within this field. |
+**fields** | [**\Gr4vy\model\PaymentServiceUpdateFieldsInner[]**](PaymentServiceUpdateFieldsInner.md) | A list of fields, each containing a key-value pair for each field defined by the definition for this payment service e.g. for stripe-card &#x60;secret_key&#x60; is required and so must be sent within this field. |
 **accepted_countries** | **string[]** | A list of countries that this payment service needs to support in ISO two-letter code format. |
 **accepted_currencies** | **string[]** | A list of currencies that this payment service needs to support in ISO 4217 three-letter code format. |
 **three_d_secure_enabled** | **bool** | Defines if 3-D Secure is enabled for the service (can only be enabled if the payment service definition supports the &#x60;three_d_secure_hosted&#x60; feature). This does not affect pass through 3-D Secure data. | [optional] [default to false]
