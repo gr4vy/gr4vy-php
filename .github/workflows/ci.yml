@@ -19,12 +19,12 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.3
+          php-version: 8.1
 
       - name: Install dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: 7.3
+          php_version: 8.1
 
       - name: Run tests
         env: 
