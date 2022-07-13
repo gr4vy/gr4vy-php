@@ -24,7 +24,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^7.4.4",
+        "guzzlehttp/guzzle": "^7.4.2",
         "lcobucci/jwt": "^4.1.5"
     },
     "require-dev": {
