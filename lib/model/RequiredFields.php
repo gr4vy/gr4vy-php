@@ -1,6 +1,6 @@
 <?php
 /**
- * CardRequiredFieldsAddress
+ * RequiredFields
  *
  * PHP version 7.4
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * CardRequiredFieldsAddress Class Doc Comment
+ * RequiredFields Class Doc Comment
  *
  * @category Class
- * @description The billing address of the buyer.
+ * @description The fields that are required to process a transaction for this payment option.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CardRequiredFieldsAddress implements ModelInterface, ArrayAccess, \JsonSerializable
+class RequiredFields implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class CardRequiredFieldsAddress implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardRequiredFields_address';
+    protected static $openAPIModelName = 'RequiredFields';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,12 +61,12 @@ class CardRequiredFieldsAddress implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'city' => 'bool',
-        'country' => 'bool',
-        'postal_code' => 'bool',
-        'state' => 'bool',
-        'house_number_or_name' => 'bool',
-        'line1' => 'bool'
+        'first_name' => 'bool',
+        'last_name' => 'bool',
+        'email_address' => 'bool',
+        'phone_number' => 'bool',
+        'address' => '\Gr4vy\model\RequiredFieldsAddress',
+        'tax_id' => 'bool'
     ];
 
     /**
@@ -77,12 +77,12 @@ class CardRequiredFieldsAddress implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'city' => null,
-        'country' => null,
-        'postal_code' => null,
-        'state' => null,
-        'house_number_or_name' => null,
-        'line1' => null
+        'first_name' => null,
+        'last_name' => null,
+        'email_address' => null,
+        'phone_number' => null,
+        'address' => null,
+        'tax_id' => null
     ];
 
     /**
@@ -112,12 +112,12 @@ class CardRequiredFieldsAddress implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'city' => 'city',
-        'country' => 'country',
-        'postal_code' => 'postal_code',
-        'state' => 'state',
-        'house_number_or_name' => 'house_number_or_name',
-        'line1' => 'line1'
+        'first_name' => 'first_name',
+        'last_name' => 'last_name',
+        'email_address' => 'email_address',
+        'phone_number' => 'phone_number',
+        'address' => 'address',
+        'tax_id' => 'tax_id'
     ];
 
     /**
@@ -126,12 +126,12 @@ class CardRequiredFieldsAddress implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'city' => 'setCity',
-        'country' => 'setCountry',
-        'postal_code' => 'setPostalCode',
-        'state' => 'setState',
-        'house_number_or_name' => 'setHouseNumberOrName',
-        'line1' => 'setLine1'
+        'first_name' => 'setFirstName',
+        'last_name' => 'setLastName',
+        'email_address' => 'setEmailAddress',
+        'phone_number' => 'setPhoneNumber',
+        'address' => 'setAddress',
+        'tax_id' => 'setTaxId'
     ];
 
     /**
@@ -140,12 +140,12 @@ class CardRequiredFieldsAddress implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'city' => 'getCity',
-        'country' => 'getCountry',
-        'postal_code' => 'getPostalCode',
-        'state' => 'getState',
-        'house_number_or_name' => 'getHouseNumberOrName',
-        'line1' => 'getLine1'
+        'first_name' => 'getFirstName',
+        'last_name' => 'getLastName',
+        'email_address' => 'getEmailAddress',
+        'phone_number' => 'getPhoneNumber',
+        'address' => 'getAddress',
+        'tax_id' => 'getTaxId'
     ];
 
     /**
@@ -205,12 +205,12 @@ class CardRequiredFieldsAddress implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['city'] = $data['city'] ?? null;
-        $this->container['country'] = $data['country'] ?? null;
-        $this->container['postal_code'] = $data['postal_code'] ?? null;
-        $this->container['state'] = $data['state'] ?? null;
-        $this->container['house_number_or_name'] = $data['house_number_or_name'] ?? null;
-        $this->container['line1'] = $data['line1'] ?? null;
+        $this->container['first_name'] = $data['first_name'] ?? null;
+        $this->container['last_name'] = $data['last_name'] ?? null;
+        $this->container['email_address'] = $data['email_address'] ?? null;
+        $this->container['phone_number'] = $data['phone_number'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
+        $this->container['tax_id'] = $data['tax_id'] ?? null;
     }
 
     /**
@@ -238,145 +238,145 @@ class CardRequiredFieldsAddress implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets city
+     * Gets first_name
      *
      * @return bool|null
      */
-    public function getCity()
+    public function getFirstName()
     {
-        return $this->container['city'];
+        return $this->container['first_name'];
     }
 
     /**
-     * Sets city
+     * Sets first_name
      *
-     * @param bool|null $city The city for the billing address.
+     * @param bool|null $first_name The first (given) name of the buyer.
      *
      * @return self
      */
-    public function setCity($city)
+    public function setFirstName($first_name)
     {
-        $this->container['city'] = $city;
+        $this->container['first_name'] = $first_name;
 
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets last_name
      *
      * @return bool|null
      */
-    public function getCountry()
+    public function getLastName()
     {
-        return $this->container['country'];
+        return $this->container['last_name'];
     }
 
     /**
-     * Sets country
+     * Sets last_name
      *
-     * @param bool|null $country The country for the billing address.
+     * @param bool|null $last_name The last (family) name of the buyer.
      *
      * @return self
      */
-    public function setCountry($country)
+    public function setLastName($last_name)
     {
-        $this->container['country'] = $country;
+        $this->container['last_name'] = $last_name;
 
         return $this;
     }
 
     /**
-     * Gets postal_code
+     * Gets email_address
      *
      * @return bool|null
      */
-    public function getPostalCode()
+    public function getEmailAddress()
     {
-        return $this->container['postal_code'];
+        return $this->container['email_address'];
     }
 
     /**
-     * Sets postal_code
+     * Sets email_address
      *
-     * @param bool|null $postal_code The postal code or zip code for the billing address.
+     * @param bool|null $email_address The email address of the buyer.
      *
      * @return self
      */
-    public function setPostalCode($postal_code)
+    public function setEmailAddress($email_address)
     {
-        $this->container['postal_code'] = $postal_code;
+        $this->container['email_address'] = $email_address;
 
         return $this;
     }
 
     /**
-     * Gets state
+     * Gets phone_number
      *
      * @return bool|null
      */
-    public function getState()
+    public function getPhoneNumber()
     {
-        return $this->container['state'];
+        return $this->container['phone_number'];
     }
 
     /**
-     * Sets state
+     * Sets phone_number
      *
-     * @param bool|null $state The state, county, or province for the billing address.
+     * @param bool|null $phone_number The phone number of the buyer.
      *
      * @return self
      */
-    public function setState($state)
+    public function setPhoneNumber($phone_number)
     {
-        $this->container['state'] = $state;
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
 
     /**
-     * Gets house_number_or_name
+     * Gets address
      *
-     * @return bool|null
+     * @return \Gr4vy\model\RequiredFieldsAddress|null
      */
-    public function getHouseNumberOrName()
+    public function getAddress()
     {
-        return $this->container['house_number_or_name'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets house_number_or_name
+     * Sets address
      *
-     * @param bool|null $house_number_or_name The house number or name for the billing address. Not all payment services use this field but some do.
+     * @param \Gr4vy\model\RequiredFieldsAddress|null $address address
      *
      * @return self
      */
-    public function setHouseNumberOrName($house_number_or_name)
+    public function setAddress($address)
     {
-        $this->container['house_number_or_name'] = $house_number_or_name;
+        $this->container['address'] = $address;
 
         return $this;
     }
 
     /**
-     * Gets line1
+     * Gets tax_id
      *
      * @return bool|null
      */
-    public function getLine1()
+    public function getTaxId()
     {
-        return $this->container['line1'];
+        return $this->container['tax_id'];
     }
 
     /**
-     * Sets line1
+     * Sets tax_id
      *
-     * @param bool|null $line1 The first line of the billing address.
+     * @param bool|null $tax_id The tax id code associated with the billing details.
      *
      * @return self
      */
-    public function setLine1($line1)
+    public function setTaxId($tax_id)
     {
-        $this->container['line1'] = $line1;
+        $this->container['tax_id'] = $tax_id;
 
         return $this;
     }

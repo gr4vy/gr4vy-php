@@ -1022,14 +1022,15 @@ class PaymentServicesApi
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  bool $deleted Filters the results to only show items which have been deleted. By default, deleted items will not be returned. (optional, default to false)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\PaymentServices|\Gr4vy\model\Error401Unauthorized
      */
-    public function listPaymentServices($limit = 20, $cursor = null, $method = null)
+    public function listPaymentServices($limit = 20, $cursor = null, $method = null, $deleted = false)
     {
-        list($response) = $this->listPaymentServicesWithHttpInfo($limit, $cursor, $method);
+        list($response) = $this->listPaymentServicesWithHttpInfo($limit, $cursor, $method, $deleted);
         return $response;
     }
 
@@ -1041,14 +1042,15 @@ class PaymentServicesApi
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  bool $deleted Filters the results to only show items which have been deleted. By default, deleted items will not be returned. (optional, default to false)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\PaymentServices|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPaymentServicesWithHttpInfo($limit = 20, $cursor = null, $method = null)
+    public function listPaymentServicesWithHttpInfo($limit = 20, $cursor = null, $method = null, $deleted = false)
     {
-        $request = $this->listPaymentServicesRequest($limit, $cursor, $method);
+        $request = $this->listPaymentServicesRequest($limit, $cursor, $method, $deleted);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1165,13 +1167,14 @@ class PaymentServicesApi
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  bool $deleted Filters the results to only show items which have been deleted. By default, deleted items will not be returned. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentServicesAsync($limit = 20, $cursor = null, $method = null)
+    public function listPaymentServicesAsync($limit = 20, $cursor = null, $method = null, $deleted = false)
     {
-        return $this->listPaymentServicesAsyncWithHttpInfo($limit, $cursor, $method)
+        return $this->listPaymentServicesAsyncWithHttpInfo($limit, $cursor, $method, $deleted)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1187,14 +1190,15 @@ class PaymentServicesApi
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  bool $deleted Filters the results to only show items which have been deleted. By default, deleted items will not be returned. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentServicesAsyncWithHttpInfo($limit = 20, $cursor = null, $method = null)
+    public function listPaymentServicesAsyncWithHttpInfo($limit = 20, $cursor = null, $method = null, $deleted = false)
     {
         $returnType = '\Gr4vy\model\PaymentServices';
-        $request = $this->listPaymentServicesRequest($limit, $cursor, $method);
+        $request = $this->listPaymentServicesRequest($limit, $cursor, $method, $deleted);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1238,11 +1242,12 @@ class PaymentServicesApi
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  bool $deleted Filters the results to only show items which have been deleted. By default, deleted items will not be returned. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPaymentServicesRequest($limit = 20, $cursor = null, $method = null)
+    public function listPaymentServicesRequest($limit = 20, $cursor = null, $method = null, $deleted = false)
     {
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling PaymentServicesApi.listPaymentServices, must be smaller than or equal to 100.');
@@ -1282,6 +1287,15 @@ class PaymentServicesApi
             $method,
             'method', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $deleted,
+            'deleted', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

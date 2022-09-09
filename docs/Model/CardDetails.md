@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **card_type** | **string** | The type of card. | [optional]
 **scheme** | **string** | The scheme/brand of the card. | [optional]
 **country** | **string** | The 2-letter ISO code of the issuing country of the card. | [optional]
-**required_fields** | [**\Gr4vy\model\CardRequiredFields**](CardRequiredFields.md) |  | [optional]
+**required_fields** | [**\Gr4vy\model\RequiredFields**](RequiredFields.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -20,5 +20,7 @@ Name | Type | Description | Notes
 **updated_at** | **\DateTime** | Defines when the transaction was last updated. | [optional]
 **payment_service** | [**\Gr4vy\model\PaymentMethodTokenPaymentService**](PaymentMethodTokenPaymentService.md) |  | [optional]
 **method** | **string** |  | [optional]
+**raw_response_code** | **string** | This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services. | [optional]
+**raw_response_description** | **string** | This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

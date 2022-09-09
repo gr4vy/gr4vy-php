@@ -243,16 +243,16 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
         if ($this->container['method'] === null) {
             $invalidProperties[] = "'method' can't be null";
         }
-        if (!is_null($this->container['number']) && (mb_strlen($this->container['number']) > 16)) {
-            $invalidProperties[] = "invalid value for 'number', the character length must be smaller than or equal to 16.";
+        if (!is_null($this->container['number']) && (mb_strlen($this->container['number']) > 19)) {
+            $invalidProperties[] = "invalid value for 'number', the character length must be smaller than or equal to 19.";
         }
 
-        if (!is_null($this->container['number']) && (mb_strlen($this->container['number']) < 14)) {
-            $invalidProperties[] = "invalid value for 'number', the character length must be bigger than or equal to 14.";
+        if (!is_null($this->container['number']) && (mb_strlen($this->container['number']) < 13)) {
+            $invalidProperties[] = "invalid value for 'number', the character length must be bigger than or equal to 13.";
         }
 
-        if (!is_null($this->container['number']) && !preg_match("/^[0-9]{14,16}$/", $this->container['number'])) {
-            $invalidProperties[] = "invalid value for 'number', must be conform to the pattern /^[0-9]{14,16}$/.";
+        if (!is_null($this->container['number']) && !preg_match("/^[0-9]{13,19}$/", $this->container['number'])) {
+            $invalidProperties[] = "invalid value for 'number', must be conform to the pattern /^[0-9]{13,19}$/.";
         }
 
         if (!is_null($this->container['expiration_date']) && (mb_strlen($this->container['expiration_date']) > 5)) {
@@ -331,20 +331,20 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Sets number
      *
-     * @param string|null $number The 15-16 digit number for this credit card as it can be found on the front of the card.  If a card has been stored with us previously, this number will represent the unique tokenized card ID provided via our API.
+     * @param string|null $number The 13-19 digit number for this credit card as it can be found on the front of the card.  If a card has been stored with us previously, this number will represent the unique tokenized card ID provided via our API.
      *
      * @return self
      */
     public function setNumber($number)
     {
-        if (!is_null($number) && (mb_strlen($number) > 16)) {
-            throw new \InvalidArgumentException('invalid length for $number when calling TransactionPaymentMethodRequest., must be smaller than or equal to 16.');
+        if (!is_null($number) && (mb_strlen($number) > 19)) {
+            throw new \InvalidArgumentException('invalid length for $number when calling TransactionPaymentMethodRequest., must be smaller than or equal to 19.');
         }
-        if (!is_null($number) && (mb_strlen($number) < 14)) {
-            throw new \InvalidArgumentException('invalid length for $number when calling TransactionPaymentMethodRequest., must be bigger than or equal to 14.');
+        if (!is_null($number) && (mb_strlen($number) < 13)) {
+            throw new \InvalidArgumentException('invalid length for $number when calling TransactionPaymentMethodRequest., must be bigger than or equal to 13.');
         }
-        if (!is_null($number) && (!preg_match("/^[0-9]{14,16}$/", $number))) {
-            throw new \InvalidArgumentException("invalid value for $number when calling TransactionPaymentMethodRequest., must conform to the pattern /^[0-9]{14,16}$/.");
+        if (!is_null($number) && (!preg_match("/^[0-9]{13,19}$/", $number))) {
+            throw new \InvalidArgumentException("invalid value for $number when calling TransactionPaymentMethodRequest., must conform to the pattern /^[0-9]{13,19}$/.");
         }
 
         $this->container['number'] = $number;

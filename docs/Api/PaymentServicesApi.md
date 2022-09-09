@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 ## `listPaymentServices()`
 
 ```php
-listPaymentServices($limit, $cursor, $method): \Gr4vy\model\PaymentServices
+listPaymentServices($limit, $cursor, $method, $deleted): \Gr4vy\model\PaymentServices
 ```
 
 List payment services
@@ -220,9 +220,10 @@ $apiInstance = new Gr4vy\Api\PaymentServicesApi(
 $limit = 1; // int | Defines the maximum number of items to return for this request.
 $cursor = ZXhhbXBsZTE; // string | A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the `next_cursor` field. Similarly the `previous_cursor` can be used to reverse backwards in the list.
 $method = card; // string | Filters the results to only the items for which the `method` has been set to this value.
+$deleted = true; // bool | Filters the results to only show items which have been deleted. By default, deleted items will not be returned.
 
 try {
-    $result = $apiInstance->listPaymentServices($limit, $cursor, $method);
+    $result = $apiInstance->listPaymentServices($limit, $cursor, $method, $deleted);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentServicesApi->listPaymentServices: ', $e->getMessage(), PHP_EOL;
@@ -236,6 +237,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| Defines the maximum number of items to return for this request. | [optional] [default to 20]
  **cursor** | **string**| A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. | [optional]
  **method** | **string**| Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. | [optional]
+ **deleted** | **bool**| Filters the results to only show items which have been deleted. By default, deleted items will not be returned. | [optional] [default to false]
 
 ### Return type
 

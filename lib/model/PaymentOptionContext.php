@@ -63,7 +63,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'merchant_name' => 'string',
         'supported_schemes' => 'string[]',
-        'approval_ui' => '\Gr4vy\model\PaymentOptionApprovalUI'
+        'approval_ui' => '\Gr4vy\model\PaymentOptionApprovalUI',
+        'required_fields' => '\Gr4vy\model\RequiredFields'
     ];
 
     /**
@@ -76,7 +77,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPIFormats = [
         'merchant_name' => null,
         'supported_schemes' => null,
-        'approval_ui' => null
+        'approval_ui' => null,
+        'required_fields' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $attributeMap = [
         'merchant_name' => 'merchant_name',
         'supported_schemes' => 'supported_schemes',
-        'approval_ui' => 'approval_ui'
+        'approval_ui' => 'approval_ui',
+        'required_fields' => 'required_fields'
     ];
 
     /**
@@ -119,7 +122,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $setters = [
         'merchant_name' => 'setMerchantName',
         'supported_schemes' => 'setSupportedSchemes',
-        'approval_ui' => 'setApprovalUi'
+        'approval_ui' => 'setApprovalUi',
+        'required_fields' => 'setRequiredFields'
     ];
 
     /**
@@ -130,7 +134,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $getters = [
         'merchant_name' => 'getMerchantName',
         'supported_schemes' => 'getSupportedSchemes',
-        'approval_ui' => 'getApprovalUi'
+        'approval_ui' => 'getApprovalUi',
+        'required_fields' => 'getRequiredFields'
     ];
 
     /**
@@ -193,6 +198,7 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['merchant_name'] = $data['merchant_name'] ?? null;
         $this->container['supported_schemes'] = $data['supported_schemes'] ?? null;
         $this->container['approval_ui'] = $data['approval_ui'] ?? null;
+        $this->container['required_fields'] = $data['required_fields'] ?? null;
     }
 
     /**
@@ -287,6 +293,30 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setApprovalUi($approval_ui)
     {
         $this->container['approval_ui'] = $approval_ui;
+
+        return $this;
+    }
+
+    /**
+     * Gets required_fields
+     *
+     * @return \Gr4vy\model\RequiredFields|null
+     */
+    public function getRequiredFields()
+    {
+        return $this->container['required_fields'];
+    }
+
+    /**
+     * Sets required_fields
+     *
+     * @param \Gr4vy\model\RequiredFields|null $required_fields required_fields
+     *
+     * @return self
+     */
+    public function setRequiredFields($required_fields)
+    {
+        $this->container['required_fields'] = $required_fields;
 
         return $this;
     }

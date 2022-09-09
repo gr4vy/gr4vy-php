@@ -1133,336 +1133,6 @@ class TransactionsApi
     }
 
     /**
-     * Operation getTransactionActions
-     *
-     * Get transaction actions
-     *
-     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\Actions|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
-     */
-    public function getTransactionActions($transaction_id)
-    {
-        list($response) = $this->getTransactionActionsWithHttpInfo($transaction_id);
-        return $response;
-    }
-
-    /**
-     * Operation getTransactionActionsWithHttpInfo
-     *
-     * Get transaction actions
-     *
-     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\Actions|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getTransactionActionsWithHttpInfo($transaction_id)
-    {
-        $request = $this->getTransactionActionsRequest($transaction_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\Gr4vy\model\Actions' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Actions' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Actions', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 404:
-                    if ('\Gr4vy\model\Error404NotFound' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Error404NotFound' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error404NotFound', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Gr4vy\model\Actions';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Actions',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error401Unauthorized',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error404NotFound',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getTransactionActionsAsync
-     *
-     * Get transaction actions
-     *
-     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getTransactionActionsAsync($transaction_id)
-    {
-        return $this->getTransactionActionsAsyncWithHttpInfo($transaction_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getTransactionActionsAsyncWithHttpInfo
-     *
-     * Get transaction actions
-     *
-     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getTransactionActionsAsyncWithHttpInfo($transaction_id)
-    {
-        $returnType = '\Gr4vy\model\Actions';
-        $request = $this->getTransactionActionsRequest($transaction_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getTransactionActions'
-     *
-     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getTransactionActionsRequest($transaction_id)
-    {
-        // verify the required parameter 'transaction_id' is set
-        if ($transaction_id === null || (is_array($transaction_id) && count($transaction_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $transaction_id when calling getTransactionActions'
-            );
-        }
-
-        $resourcePath = '/transactions/{transaction_id}/actions';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($transaction_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'transaction_id' . '}',
-                ObjectSerializer::toPathValue($transaction_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation getTransactionRefund
      *
      * Get transaction refund
@@ -2181,24 +1851,40 @@ class TransactionsApi
      *
      * List transactions
      *
-     * @param  string $search Filters the transactions to only the items for which the &#x60;id&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any transaction for which either of the fields partially or completely matches. (optional)
-     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value. (optional)
-     * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
-     * @param  string $before_created_at Filters the results to only transactions created before this ISO date-time string. (optional)
-     * @param  string $after_created_at Filters the results to only transactions created after this ISO date-time string. (optional)
-     * @param  string $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. (optional)
-     * @param  string $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. (optional)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
+     * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
+     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
+     * @param  int $amount_eq Filters for transactions that have an &#x60;amount&#x60; that is equal to the provided &#x60;amount_eq&#x60; value. (optional)
+     * @param  int $amount_gte Filters for transactions that have an &#x60;amount&#x60; that is greater than or equal to the &#x60;amount_gte&#x60; value. (optional)
+     * @param  int $amount_lte Filters for transactions that have an &#x60;amount&#x60; that is less than or equal to the &#x60;amount_lte&#x60; value. (optional)
+     * @param  \DateTime $created_at_gte Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $created_at_lte Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  string[] $currency Filters for transactions that have matching &#x60;currency&#x60; values. The &#x60;currency&#x60; values provided must be formatted as 3-letter ISO currency code. (optional)
+     * @param  string $external_identifier Filters the results to only the items for which the &#x60;external_identifier&#x60; matches this value. (optional)
+     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one refund in any state associated with it. When set to &#x60;false&#x60;, filter for transactions that have no refunds. (optional)
+     * @param  string $id Filters for the transaction that has a matching &#x60;id&#x60; value. (optional)
+     * @param  string[] $metadata Filters for transactions where their &#x60;metadata&#x60; values contain all of the provided &#x60;metadata&#x60; keys. The value sent for &#x60;metadata&#x60; must be formatted as a JSON string, and all keys and values must be strings. This value should also be URL encoded.  Duplicate keys are not supported. If a key is duplicated, only the last appearing value will be used. (optional)
+     * @param  string[] $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string[] $payment_service_id Filters for transactions that were processed by the provided &#x60;payment_service_id&#x60; values. (optional)
+     * @param  string $payment_service_transaction_id Filters for transactions that have a matching &#x60;payment_service_transaction_id&#x60; value. The &#x60;payment_service_transaction_id&#x60; is the identifier of the transaction given by the payment service. (optional)
+     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value: * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60; (optional)
+     * @param  string[] $status Filters the results to only the transactions that have a &#x60;status&#x60; that matches with any of the provided status values. (optional)
+     * @param  \DateTime $updated_at_gte Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $updated_at_lte Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $before_created_at Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_lte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $after_created_at Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_gte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_lte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_gte&#x60; instead. (optional) (deprecated)
+     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;status&#x60; instead. (optional) (deprecated)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\Transactions|\Gr4vy\model\Error401Unauthorized
      */
-    public function listTransactions($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $limit = 20, $cursor = null)
+    public function listTransactions($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_service_id = null, $payment_service_transaction_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $transaction_status = null)
     {
-        list($response) = $this->listTransactionsWithHttpInfo($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor);
+        list($response) = $this->listTransactionsWithHttpInfo($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $created_at_gte, $created_at_lte, $currency, $external_identifier, $has_refunds, $id, $metadata, $method, $payment_service_id, $payment_service_transaction_id, $search, $status, $updated_at_gte, $updated_at_lte, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $transaction_status);
         return $response;
     }
 
@@ -2207,24 +1893,40 @@ class TransactionsApi
      *
      * List transactions
      *
-     * @param  string $search Filters the transactions to only the items for which the &#x60;id&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any transaction for which either of the fields partially or completely matches. (optional)
-     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value. (optional)
-     * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
-     * @param  string $before_created_at Filters the results to only transactions created before this ISO date-time string. (optional)
-     * @param  string $after_created_at Filters the results to only transactions created after this ISO date-time string. (optional)
-     * @param  string $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. (optional)
-     * @param  string $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. (optional)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
+     * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
+     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
+     * @param  int $amount_eq Filters for transactions that have an &#x60;amount&#x60; that is equal to the provided &#x60;amount_eq&#x60; value. (optional)
+     * @param  int $amount_gte Filters for transactions that have an &#x60;amount&#x60; that is greater than or equal to the &#x60;amount_gte&#x60; value. (optional)
+     * @param  int $amount_lte Filters for transactions that have an &#x60;amount&#x60; that is less than or equal to the &#x60;amount_lte&#x60; value. (optional)
+     * @param  \DateTime $created_at_gte Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $created_at_lte Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  string[] $currency Filters for transactions that have matching &#x60;currency&#x60; values. The &#x60;currency&#x60; values provided must be formatted as 3-letter ISO currency code. (optional)
+     * @param  string $external_identifier Filters the results to only the items for which the &#x60;external_identifier&#x60; matches this value. (optional)
+     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one refund in any state associated with it. When set to &#x60;false&#x60;, filter for transactions that have no refunds. (optional)
+     * @param  string $id Filters for the transaction that has a matching &#x60;id&#x60; value. (optional)
+     * @param  string[] $metadata Filters for transactions where their &#x60;metadata&#x60; values contain all of the provided &#x60;metadata&#x60; keys. The value sent for &#x60;metadata&#x60; must be formatted as a JSON string, and all keys and values must be strings. This value should also be URL encoded.  Duplicate keys are not supported. If a key is duplicated, only the last appearing value will be used. (optional)
+     * @param  string[] $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string[] $payment_service_id Filters for transactions that were processed by the provided &#x60;payment_service_id&#x60; values. (optional)
+     * @param  string $payment_service_transaction_id Filters for transactions that have a matching &#x60;payment_service_transaction_id&#x60; value. The &#x60;payment_service_transaction_id&#x60; is the identifier of the transaction given by the payment service. (optional)
+     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value: * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60; (optional)
+     * @param  string[] $status Filters the results to only the transactions that have a &#x60;status&#x60; that matches with any of the provided status values. (optional)
+     * @param  \DateTime $updated_at_gte Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $updated_at_lte Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $before_created_at Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_lte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $after_created_at Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_gte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_lte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_gte&#x60; instead. (optional) (deprecated)
+     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;status&#x60; instead. (optional) (deprecated)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\Transactions|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listTransactionsWithHttpInfo($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $limit = 20, $cursor = null)
+    public function listTransactionsWithHttpInfo($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_service_id = null, $payment_service_transaction_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $transaction_status = null)
     {
-        $request = $this->listTransactionsRequest($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor);
+        $request = $this->listTransactionsRequest($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $created_at_gte, $created_at_lte, $currency, $external_identifier, $has_refunds, $id, $metadata, $method, $payment_service_id, $payment_service_transaction_id, $search, $status, $updated_at_gte, $updated_at_lte, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $transaction_status);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2338,23 +2040,39 @@ class TransactionsApi
      *
      * List transactions
      *
-     * @param  string $search Filters the transactions to only the items for which the &#x60;id&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any transaction for which either of the fields partially or completely matches. (optional)
-     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value. (optional)
-     * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
-     * @param  string $before_created_at Filters the results to only transactions created before this ISO date-time string. (optional)
-     * @param  string $after_created_at Filters the results to only transactions created after this ISO date-time string. (optional)
-     * @param  string $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. (optional)
-     * @param  string $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. (optional)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
+     * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
+     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
+     * @param  int $amount_eq Filters for transactions that have an &#x60;amount&#x60; that is equal to the provided &#x60;amount_eq&#x60; value. (optional)
+     * @param  int $amount_gte Filters for transactions that have an &#x60;amount&#x60; that is greater than or equal to the &#x60;amount_gte&#x60; value. (optional)
+     * @param  int $amount_lte Filters for transactions that have an &#x60;amount&#x60; that is less than or equal to the &#x60;amount_lte&#x60; value. (optional)
+     * @param  \DateTime $created_at_gte Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $created_at_lte Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  string[] $currency Filters for transactions that have matching &#x60;currency&#x60; values. The &#x60;currency&#x60; values provided must be formatted as 3-letter ISO currency code. (optional)
+     * @param  string $external_identifier Filters the results to only the items for which the &#x60;external_identifier&#x60; matches this value. (optional)
+     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one refund in any state associated with it. When set to &#x60;false&#x60;, filter for transactions that have no refunds. (optional)
+     * @param  string $id Filters for the transaction that has a matching &#x60;id&#x60; value. (optional)
+     * @param  string[] $metadata Filters for transactions where their &#x60;metadata&#x60; values contain all of the provided &#x60;metadata&#x60; keys. The value sent for &#x60;metadata&#x60; must be formatted as a JSON string, and all keys and values must be strings. This value should also be URL encoded.  Duplicate keys are not supported. If a key is duplicated, only the last appearing value will be used. (optional)
+     * @param  string[] $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string[] $payment_service_id Filters for transactions that were processed by the provided &#x60;payment_service_id&#x60; values. (optional)
+     * @param  string $payment_service_transaction_id Filters for transactions that have a matching &#x60;payment_service_transaction_id&#x60; value. The &#x60;payment_service_transaction_id&#x60; is the identifier of the transaction given by the payment service. (optional)
+     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value: * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60; (optional)
+     * @param  string[] $status Filters the results to only the transactions that have a &#x60;status&#x60; that matches with any of the provided status values. (optional)
+     * @param  \DateTime $updated_at_gte Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $updated_at_lte Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $before_created_at Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_lte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $after_created_at Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_gte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_lte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_gte&#x60; instead. (optional) (deprecated)
+     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;status&#x60; instead. (optional) (deprecated)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTransactionsAsync($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $limit = 20, $cursor = null)
+    public function listTransactionsAsync($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_service_id = null, $payment_service_transaction_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $transaction_status = null)
     {
-        return $this->listTransactionsAsyncWithHttpInfo($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor)
+        return $this->listTransactionsAsyncWithHttpInfo($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $created_at_gte, $created_at_lte, $currency, $external_identifier, $has_refunds, $id, $metadata, $method, $payment_service_id, $payment_service_transaction_id, $search, $status, $updated_at_gte, $updated_at_lte, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $transaction_status)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2367,24 +2085,40 @@ class TransactionsApi
      *
      * List transactions
      *
-     * @param  string $search Filters the transactions to only the items for which the &#x60;id&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any transaction for which either of the fields partially or completely matches. (optional)
-     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value. (optional)
-     * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
-     * @param  string $before_created_at Filters the results to only transactions created before this ISO date-time string. (optional)
-     * @param  string $after_created_at Filters the results to only transactions created after this ISO date-time string. (optional)
-     * @param  string $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. (optional)
-     * @param  string $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. (optional)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
+     * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
+     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
+     * @param  int $amount_eq Filters for transactions that have an &#x60;amount&#x60; that is equal to the provided &#x60;amount_eq&#x60; value. (optional)
+     * @param  int $amount_gte Filters for transactions that have an &#x60;amount&#x60; that is greater than or equal to the &#x60;amount_gte&#x60; value. (optional)
+     * @param  int $amount_lte Filters for transactions that have an &#x60;amount&#x60; that is less than or equal to the &#x60;amount_lte&#x60; value. (optional)
+     * @param  \DateTime $created_at_gte Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $created_at_lte Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  string[] $currency Filters for transactions that have matching &#x60;currency&#x60; values. The &#x60;currency&#x60; values provided must be formatted as 3-letter ISO currency code. (optional)
+     * @param  string $external_identifier Filters the results to only the items for which the &#x60;external_identifier&#x60; matches this value. (optional)
+     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one refund in any state associated with it. When set to &#x60;false&#x60;, filter for transactions that have no refunds. (optional)
+     * @param  string $id Filters for the transaction that has a matching &#x60;id&#x60; value. (optional)
+     * @param  string[] $metadata Filters for transactions where their &#x60;metadata&#x60; values contain all of the provided &#x60;metadata&#x60; keys. The value sent for &#x60;metadata&#x60; must be formatted as a JSON string, and all keys and values must be strings. This value should also be URL encoded.  Duplicate keys are not supported. If a key is duplicated, only the last appearing value will be used. (optional)
+     * @param  string[] $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string[] $payment_service_id Filters for transactions that were processed by the provided &#x60;payment_service_id&#x60; values. (optional)
+     * @param  string $payment_service_transaction_id Filters for transactions that have a matching &#x60;payment_service_transaction_id&#x60; value. The &#x60;payment_service_transaction_id&#x60; is the identifier of the transaction given by the payment service. (optional)
+     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value: * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60; (optional)
+     * @param  string[] $status Filters the results to only the transactions that have a &#x60;status&#x60; that matches with any of the provided status values. (optional)
+     * @param  \DateTime $updated_at_gte Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $updated_at_lte Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $before_created_at Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_lte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $after_created_at Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_gte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_lte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_gte&#x60; instead. (optional) (deprecated)
+     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;status&#x60; instead. (optional) (deprecated)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTransactionsAsyncWithHttpInfo($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $limit = 20, $cursor = null)
+    public function listTransactionsAsyncWithHttpInfo($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_service_id = null, $payment_service_transaction_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $transaction_status = null)
     {
         $returnType = '\Gr4vy\model\Transactions';
-        $request = $this->listTransactionsRequest($search, $transaction_status, $buyer_id, $buyer_external_identifier, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $limit, $cursor);
+        $request = $this->listTransactionsRequest($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $created_at_gte, $created_at_lte, $currency, $external_identifier, $has_refunds, $id, $metadata, $method, $payment_service_id, $payment_service_transaction_id, $search, $status, $updated_at_gte, $updated_at_lte, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $transaction_status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2425,21 +2159,37 @@ class TransactionsApi
     /**
      * Create request for operation 'listTransactions'
      *
-     * @param  string $search Filters the transactions to only the items for which the &#x60;id&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any transaction for which either of the fields partially or completely matches. (optional)
-     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value. (optional)
-     * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
-     * @param  string $before_created_at Filters the results to only transactions created before this ISO date-time string. (optional)
-     * @param  string $after_created_at Filters the results to only transactions created after this ISO date-time string. (optional)
-     * @param  string $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. (optional)
-     * @param  string $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. (optional)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
+     * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
+     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
+     * @param  int $amount_eq Filters for transactions that have an &#x60;amount&#x60; that is equal to the provided &#x60;amount_eq&#x60; value. (optional)
+     * @param  int $amount_gte Filters for transactions that have an &#x60;amount&#x60; that is greater than or equal to the &#x60;amount_gte&#x60; value. (optional)
+     * @param  int $amount_lte Filters for transactions that have an &#x60;amount&#x60; that is less than or equal to the &#x60;amount_lte&#x60; value. (optional)
+     * @param  \DateTime $created_at_gte Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $created_at_lte Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  string[] $currency Filters for transactions that have matching &#x60;currency&#x60; values. The &#x60;currency&#x60; values provided must be formatted as 3-letter ISO currency code. (optional)
+     * @param  string $external_identifier Filters the results to only the items for which the &#x60;external_identifier&#x60; matches this value. (optional)
+     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one refund in any state associated with it. When set to &#x60;false&#x60;, filter for transactions that have no refunds. (optional)
+     * @param  string $id Filters for the transaction that has a matching &#x60;id&#x60; value. (optional)
+     * @param  string[] $metadata Filters for transactions where their &#x60;metadata&#x60; values contain all of the provided &#x60;metadata&#x60; keys. The value sent for &#x60;metadata&#x60; must be formatted as a JSON string, and all keys and values must be strings. This value should also be URL encoded.  Duplicate keys are not supported. If a key is duplicated, only the last appearing value will be used. (optional)
+     * @param  string[] $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string[] $payment_service_id Filters for transactions that were processed by the provided &#x60;payment_service_id&#x60; values. (optional)
+     * @param  string $payment_service_transaction_id Filters for transactions that have a matching &#x60;payment_service_transaction_id&#x60; value. The &#x60;payment_service_transaction_id&#x60; is the identifier of the transaction given by the payment service. (optional)
+     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value: * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60; (optional)
+     * @param  string[] $status Filters the results to only the transactions that have a &#x60;status&#x60; that matches with any of the provided status values. (optional)
+     * @param  \DateTime $updated_at_gte Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $updated_at_lte Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
+     * @param  \DateTime $before_created_at Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_lte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $after_created_at Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_gte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_lte&#x60; instead. (optional) (deprecated)
+     * @param  \DateTime $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_gte&#x60; instead. (optional) (deprecated)
+     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;status&#x60; instead. (optional) (deprecated)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listTransactionsRequest($search = null, $transaction_status = null, $buyer_id = null, $buyer_external_identifier = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $limit = 20, $cursor = null)
+    public function listTransactionsRequest($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_service_id = null, $payment_service_transaction_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $transaction_status = null)
     {
         if ($limit !== null && $limit > 500) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling TransactionsApi.listTransactions, must be smaller than or equal to 500.');
@@ -2458,17 +2208,8 @@ class TransactionsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $search,
-            'search', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transaction_status,
-            'transaction_status', // param base name
+            $buyer_external_identifier,
+            'buyer_external_identifier', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2485,8 +2226,170 @@ class TransactionsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $buyer_external_identifier,
-            'buyer_external_identifier', // param base name
+            $cursor,
+            'cursor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $amount_eq,
+            'amount_eq', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $amount_gte,
+            'amount_gte', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $amount_lte,
+            'amount_lte', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at_gte,
+            'created_at_gte', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at_lte,
+            'created_at_lte', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $currency,
+            'currency', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $external_identifier,
+            'external_identifier', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $has_refunds,
+            'has_refunds', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $id,
+            'id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata,
+            'metadata', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $method,
+            'method', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $payment_service_id,
+            'payment_service_id', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $payment_service_transaction_id,
+            'payment_service_transaction_id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_at_gte,
+            'updated_at_gte', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_at_lte,
+            'updated_at_lte', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2530,17 +2433,8 @@ class TransactionsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $cursor,
-            'cursor', // param base name
+            $transaction_status,
+            'transaction_status', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

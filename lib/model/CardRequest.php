@@ -256,16 +256,16 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['number'] === null) {
             $invalidProperties[] = "'number' can't be null";
         }
-        if ((mb_strlen($this->container['number']) > 16)) {
-            $invalidProperties[] = "invalid value for 'number', the character length must be smaller than or equal to 16.";
+        if ((mb_strlen($this->container['number']) > 19)) {
+            $invalidProperties[] = "invalid value for 'number', the character length must be smaller than or equal to 19.";
         }
 
-        if ((mb_strlen($this->container['number']) < 14)) {
-            $invalidProperties[] = "invalid value for 'number', the character length must be bigger than or equal to 14.";
+        if ((mb_strlen($this->container['number']) < 13)) {
+            $invalidProperties[] = "invalid value for 'number', the character length must be bigger than or equal to 13.";
         }
 
-        if (!preg_match("/^[0-9]{14,16}$/", $this->container['number'])) {
-            $invalidProperties[] = "invalid value for 'number', must be conform to the pattern /^[0-9]{14,16}$/.";
+        if (!preg_match("/^[0-9]{13,19}$/", $this->container['number'])) {
+            $invalidProperties[] = "invalid value for 'number', must be conform to the pattern /^[0-9]{13,19}$/.";
         }
 
         if ($this->container['expiration_date'] === null) {
@@ -360,20 +360,20 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets number
      *
-     * @param string $number The 15-16 digit number for this card as it can be found on the front of the card.
+     * @param string $number The 13-19 digit number for this card as it can be found on the front of the card.
      *
      * @return self
      */
     public function setNumber($number)
     {
-        if ((mb_strlen($number) > 16)) {
-            throw new \InvalidArgumentException('invalid length for $number when calling CardRequest., must be smaller than or equal to 16.');
+        if ((mb_strlen($number) > 19)) {
+            throw new \InvalidArgumentException('invalid length for $number when calling CardRequest., must be smaller than or equal to 19.');
         }
-        if ((mb_strlen($number) < 14)) {
-            throw new \InvalidArgumentException('invalid length for $number when calling CardRequest., must be bigger than or equal to 14.');
+        if ((mb_strlen($number) < 13)) {
+            throw new \InvalidArgumentException('invalid length for $number when calling CardRequest., must be bigger than or equal to 13.');
         }
-        if ((!preg_match("/^[0-9]{14,16}$/", $number))) {
-            throw new \InvalidArgumentException("invalid value for $number when calling CardRequest., must conform to the pattern /^[0-9]{14,16}$/.");
+        if ((!preg_match("/^[0-9]{13,19}$/", $number))) {
+            throw new \InvalidArgumentException("invalid value for $number when calling CardRequest., must conform to the pattern /^[0-9]{13,19}$/.");
         }
 
         $this->container['number'] = $number;

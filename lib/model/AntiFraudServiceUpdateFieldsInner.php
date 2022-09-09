@@ -1,6 +1,6 @@
 <?php
 /**
- * Actions
+ * AntiFraudServiceUpdateFieldsInner
  *
  * PHP version 7.4
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * Actions Class Doc Comment
+ * AntiFraudServiceUpdateFieldsInner Class Doc Comment
  *
  * @category Class
- * @description A list of actions.
+ * @description A key-value pair that represents a field defined in the definition for this anti-fraud service.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Actions implements ModelInterface, ArrayAccess, \JsonSerializable
+class AntiFraudServiceUpdateFieldsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class Actions implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Actions';
+    protected static $openAPIModelName = 'AntiFraudServiceUpdate_fields_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,8 @@ class Actions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'items' => '\Gr4vy\model\Action[]'
+        'key' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -72,7 +73,8 @@ class Actions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'items' => null
+        'key' => null,
+        'value' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class Actions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'items' => 'items'
+        'key' => 'key',
+        'value' => 'value'
     ];
 
     /**
@@ -111,7 +114,8 @@ class Actions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'items' => 'setItems'
+        'key' => 'setKey',
+        'value' => 'setValue'
     ];
 
     /**
@@ -120,7 +124,8 @@ class Actions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'items' => 'getItems'
+        'key' => 'getKey',
+        'value' => 'getValue'
     ];
 
     /**
@@ -180,7 +185,8 @@ class Actions implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -191,6 +197,28 @@ class Actions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
+        }
+        if ((mb_strlen($this->container['key']) > 50)) {
+            $invalidProperties[] = "invalid value for 'key', the character length must be smaller than or equal to 50.";
+        }
+
+        if ((mb_strlen($this->container['key']) < 1)) {
+            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
+        if ((mb_strlen($this->container['value']) > 5000)) {
+            $invalidProperties[] = "invalid value for 'value', the character length must be smaller than or equal to 5000.";
+        }
+
+        if ((mb_strlen($this->container['value']) < 1)) {
+            $invalidProperties[] = "invalid value for 'value', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -208,25 +236,63 @@ class Actions implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets items
+     * Gets key
      *
-     * @return \Gr4vy\model\Action[]|null
+     * @return string
      */
-    public function getItems()
+    public function getKey()
     {
-        return $this->container['items'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets items
+     * Sets key
      *
-     * @param \Gr4vy\model\Action[]|null $items A list of actions.
+     * @param string $key The key of the field to set a value for.
      *
      * @return self
      */
-    public function setItems($items)
+    public function setKey($key)
     {
-        $this->container['items'] = $items;
+        if ((mb_strlen($key) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $key when calling AntiFraudServiceUpdateFieldsInner., must be smaller than or equal to 50.');
+        }
+        if ((mb_strlen($key) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $key when calling AntiFraudServiceUpdateFieldsInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string $value The value of a field to set.
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        if ((mb_strlen($value) > 5000)) {
+            throw new \InvalidArgumentException('invalid length for $value when calling AntiFraudServiceUpdateFieldsInner., must be smaller than or equal to 5000.');
+        }
+        if ((mb_strlen($value) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $value when calling AntiFraudServiceUpdateFieldsInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['value'] = $value;
 
         return $this;
     }

@@ -63,7 +63,8 @@ class TokenizedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'method' => 'string',
         'id' => 'string',
-        'redirect_url' => 'string'
+        'redirect_url' => 'string',
+        'security_code' => 'string'
     ];
 
     /**
@@ -76,7 +77,8 @@ class TokenizedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'method' => null,
         'id' => null,
-        'redirect_url' => null
+        'redirect_url' => null,
+        'security_code' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class TokenizedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'method' => 'method',
         'id' => 'id',
-        'redirect_url' => 'redirect_url'
+        'redirect_url' => 'redirect_url',
+        'security_code' => 'security_code'
     ];
 
     /**
@@ -119,7 +122,8 @@ class TokenizedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'method' => 'setMethod',
         'id' => 'setId',
-        'redirect_url' => 'setRedirectUrl'
+        'redirect_url' => 'setRedirectUrl',
+        'security_code' => 'setSecurityCode'
     ];
 
     /**
@@ -130,7 +134,8 @@ class TokenizedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'method' => 'getMethod',
         'id' => 'getId',
-        'redirect_url' => 'getRedirectUrl'
+        'redirect_url' => 'getRedirectUrl',
+        'security_code' => 'getSecurityCode'
     ];
 
     /**
@@ -206,6 +211,7 @@ class TokenizedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['method'] = $data['method'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['redirect_url'] = $data['redirect_url'] ?? null;
+        $this->container['security_code'] = $data['security_code'] ?? null;
     }
 
     /**
@@ -232,6 +238,18 @@ class TokenizedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if (!is_null($this->container['security_code']) && (mb_strlen($this->container['security_code']) > 4)) {
+            $invalidProperties[] = "invalid value for 'security_code', the character length must be smaller than or equal to 4.";
+        }
+
+        if (!is_null($this->container['security_code']) && (mb_strlen($this->container['security_code']) < 3)) {
+            $invalidProperties[] = "invalid value for 'security_code', the character length must be bigger than or equal to 3.";
+        }
+
+        if (!is_null($this->container['security_code']) && !preg_match("/^\\d{3,4}$/", $this->container['security_code'])) {
+            $invalidProperties[] = "invalid value for 'security_code', must be conform to the pattern /^\\d{3,4}$/.";
+        }
+
         return $invalidProperties;
     }
 
@@ -325,6 +343,40 @@ class TokenizedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRedirectUrl($redirect_url)
     {
         $this->container['redirect_url'] = $redirect_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets security_code
+     *
+     * @return string|null
+     */
+    public function getSecurityCode()
+    {
+        return $this->container['security_code'];
+    }
+
+    /**
+     * Sets security_code
+     *
+     * @param string|null $security_code The 3 or 4 digit security code often found on the card. This often referred to as the CVV or CVD.  The security code can only be set if the stored payment method represents a card.
+     *
+     * @return self
+     */
+    public function setSecurityCode($security_code)
+    {
+        if (!is_null($security_code) && (mb_strlen($security_code) > 4)) {
+            throw new \InvalidArgumentException('invalid length for $security_code when calling TokenizedRequest., must be smaller than or equal to 4.');
+        }
+        if (!is_null($security_code) && (mb_strlen($security_code) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $security_code when calling TokenizedRequest., must be bigger than or equal to 3.');
+        }
+        if (!is_null($security_code) && (!preg_match("/^\\d{3,4}$/", $security_code))) {
+            throw new \InvalidArgumentException("invalid value for $security_code when calling TokenizedRequest., must conform to the pattern /^\\d{3,4}$/.");
+        }
+
+        $this->container['security_code'] = $security_code;
 
         return $this;
     }

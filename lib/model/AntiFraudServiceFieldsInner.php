@@ -1,6 +1,6 @@
 <?php
 /**
- * CardRequiredFields
+ * AntiFraudServiceFieldsInner
  *
  * PHP version 7.4
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Gr4vy\ObjectSerializer;
 
 /**
- * CardRequiredFields Class Doc Comment
+ * AntiFraudServiceFieldsInner Class Doc Comment
  *
  * @category Class
- * @description The fields that are required to process a transaction for this card.
+ * @description A key-value pair that represents a field defined in the definition for this anti-fraud service.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Gr4vy\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializable
+class AntiFraudServiceFieldsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardRequiredFields';
+    protected static $openAPIModelName = 'AntiFraudService_fields_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,12 +61,8 @@ class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'first_name' => 'bool',
-        'last_name' => 'bool',
-        'email_address' => 'bool',
-        'phone_number' => 'bool',
-        'address' => '\Gr4vy\model\CardRequiredFieldsAddress',
-        'tax_id' => 'bool'
+        'key' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -77,12 +73,8 @@ class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'first_name' => null,
-        'last_name' => null,
-        'email_address' => null,
-        'phone_number' => null,
-        'address' => null,
-        'tax_id' => null
+        'key' => null,
+        'value' => null
     ];
 
     /**
@@ -112,12 +104,8 @@ class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'first_name' => 'first_name',
-        'last_name' => 'last_name',
-        'email_address' => 'email_address',
-        'phone_number' => 'phone_number',
-        'address' => 'address',
-        'tax_id' => 'tax_id'
+        'key' => 'key',
+        'value' => 'value'
     ];
 
     /**
@@ -126,12 +114,8 @@ class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'first_name' => 'setFirstName',
-        'last_name' => 'setLastName',
-        'email_address' => 'setEmailAddress',
-        'phone_number' => 'setPhoneNumber',
-        'address' => 'setAddress',
-        'tax_id' => 'setTaxId'
+        'key' => 'setKey',
+        'value' => 'setValue'
     ];
 
     /**
@@ -140,12 +124,8 @@ class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'first_name' => 'getFirstName',
-        'last_name' => 'getLastName',
-        'email_address' => 'getEmailAddress',
-        'phone_number' => 'getPhoneNumber',
-        'address' => 'getAddress',
-        'tax_id' => 'getTaxId'
+        'key' => 'getKey',
+        'value' => 'getValue'
     ];
 
     /**
@@ -205,12 +185,8 @@ class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['first_name'] = $data['first_name'] ?? null;
-        $this->container['last_name'] = $data['last_name'] ?? null;
-        $this->container['email_address'] = $data['email_address'] ?? null;
-        $this->container['phone_number'] = $data['phone_number'] ?? null;
-        $this->container['address'] = $data['address'] ?? null;
-        $this->container['tax_id'] = $data['tax_id'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -221,6 +197,28 @@ class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializab
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
+        }
+        if ((mb_strlen($this->container['key']) > 50)) {
+            $invalidProperties[] = "invalid value for 'key', the character length must be smaller than or equal to 50.";
+        }
+
+        if ((mb_strlen($this->container['key']) < 1)) {
+            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
+        if ((mb_strlen($this->container['value']) > 5000)) {
+            $invalidProperties[] = "invalid value for 'value', the character length must be smaller than or equal to 5000.";
+        }
+
+        if ((mb_strlen($this->container['value']) < 1)) {
+            $invalidProperties[] = "invalid value for 'value', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -238,145 +236,63 @@ class CardRequiredFields implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets first_name
+     * Gets key
      *
-     * @return bool|null
+     * @return string
      */
-    public function getFirstName()
+    public function getKey()
     {
-        return $this->container['first_name'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets first_name
+     * Sets key
      *
-     * @param bool|null $first_name The first (given) name of the buyer.
+     * @param string $key The key of the field to set a value for.
      *
      * @return self
      */
-    public function setFirstName($first_name)
+    public function setKey($key)
     {
-        $this->container['first_name'] = $first_name;
+        if ((mb_strlen($key) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $key when calling AntiFraudServiceFieldsInner., must be smaller than or equal to 50.');
+        }
+        if ((mb_strlen($key) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $key when calling AntiFraudServiceFieldsInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['key'] = $key;
 
         return $this;
     }
 
     /**
-     * Gets last_name
+     * Gets value
      *
-     * @return bool|null
+     * @return string
      */
-    public function getLastName()
+    public function getValue()
     {
-        return $this->container['last_name'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets last_name
+     * Sets value
      *
-     * @param bool|null $last_name The last (family) name of the buyer.
+     * @param string $value The value of a field to set.
      *
      * @return self
      */
-    public function setLastName($last_name)
+    public function setValue($value)
     {
-        $this->container['last_name'] = $last_name;
+        if ((mb_strlen($value) > 5000)) {
+            throw new \InvalidArgumentException('invalid length for $value when calling AntiFraudServiceFieldsInner., must be smaller than or equal to 5000.');
+        }
+        if ((mb_strlen($value) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $value when calling AntiFraudServiceFieldsInner., must be bigger than or equal to 1.');
+        }
 
-        return $this;
-    }
-
-    /**
-     * Gets email_address
-     *
-     * @return bool|null
-     */
-    public function getEmailAddress()
-    {
-        return $this->container['email_address'];
-    }
-
-    /**
-     * Sets email_address
-     *
-     * @param bool|null $email_address The email address of the buyer.
-     *
-     * @return self
-     */
-    public function setEmailAddress($email_address)
-    {
-        $this->container['email_address'] = $email_address;
-
-        return $this;
-    }
-
-    /**
-     * Gets phone_number
-     *
-     * @return bool|null
-     */
-    public function getPhoneNumber()
-    {
-        return $this->container['phone_number'];
-    }
-
-    /**
-     * Sets phone_number
-     *
-     * @param bool|null $phone_number The phone number of the buyer.
-     *
-     * @return self
-     */
-    public function setPhoneNumber($phone_number)
-    {
-        $this->container['phone_number'] = $phone_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets address
-     *
-     * @return \Gr4vy\model\CardRequiredFieldsAddress|null
-     */
-    public function getAddress()
-    {
-        return $this->container['address'];
-    }
-
-    /**
-     * Sets address
-     *
-     * @param \Gr4vy\model\CardRequiredFieldsAddress|null $address address
-     *
-     * @return self
-     */
-    public function setAddress($address)
-    {
-        $this->container['address'] = $address;
-
-        return $this;
-    }
-
-    /**
-     * Gets tax_id
-     *
-     * @return bool|null
-     */
-    public function getTaxId()
-    {
-        return $this->container['tax_id'];
-    }
-
-    /**
-     * Sets tax_id
-     *
-     * @param bool|null $tax_id The tax id code associated with the billing details.
-     *
-     * @return self
-     */
-    public function setTaxId($tax_id)
-    {
-        $this->container['tax_id'] = $tax_id;
+        $this->container['value'] = $value;
 
         return $this;
     }

@@ -66,7 +66,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'card_type' => 'string',
         'scheme' => 'string',
         'country' => 'string',
-        'required_fields' => '\Gr4vy\model\CardRequiredFields'
+        'required_fields' => '\Gr4vy\model\RequiredFields'
     ];
 
     /**
@@ -441,7 +441,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets required_fields
      *
-     * @return \Gr4vy\model\CardRequiredFields|null
+     * @return \Gr4vy\model\RequiredFields|null
      */
     public function getRequiredFields()
     {
@@ -451,7 +451,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets required_fields
      *
-     * @param \Gr4vy\model\CardRequiredFields|null $required_fields required_fields
+     * @param \Gr4vy\model\RequiredFields|null $required_fields required_fields
      *
      * @return self
      */

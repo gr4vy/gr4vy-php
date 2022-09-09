@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **method** | **string** | &#x60;card&#x60;. |
-**number** | **string** | The 15-16 digit number for this card as it can be found on the front of the card. |
+**number** | **string** | The 13-19 digit number for this card as it can be found on the front of the card. |
 **expiration_date** | **string** | The expiration date of the card, formatted &#x60;MM/YY&#x60;. |
 **security_code** | **string** | The 3 or 4 digit security code often found on the card. This often referred to as the CVV or CVD. |
 **external_identifier** | **string** | An external identifier that can be used to match the card against your own records. | [optional]

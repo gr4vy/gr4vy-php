@@ -357,7 +357,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public const METHOD_GCASH = 'gcash';
     public const METHOD_GOCARDLESS = 'gocardless';
     public const METHOD_GOOGLEPAY = 'googlepay';
-    public const METHOD_GOOGLEPAY_PAN_ONLY = 'googlepay_pan_only';
     public const METHOD_GRABPAY = 'grabpay';
     public const METHOD_KLARNA = 'klarna';
     public const METHOD_OVO = 'ovo';
@@ -365,6 +364,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
     public const METHOD_PAYPAL = 'paypal';
     public const METHOD_PIX = 'pix';
     public const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    public const METHOD_SCALAPAY = 'scalapay';
     public const METHOD_SHOPEEPAY = 'shopeepay';
     public const METHOD_STRIPEDD = 'stripedd';
     public const METHOD_TRUEMONEY = 'truemoney';
@@ -483,7 +483,6 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             self::METHOD_GCASH,
             self::METHOD_GOCARDLESS,
             self::METHOD_GOOGLEPAY,
-            self::METHOD_GOOGLEPAY_PAN_ONLY,
             self::METHOD_GRABPAY,
             self::METHOD_KLARNA,
             self::METHOD_OVO,
@@ -491,6 +490,7 @@ class Transaction implements ModelInterface, ArrayAccess, \JsonSerializable
             self::METHOD_PAYPAL,
             self::METHOD_PIX,
             self::METHOD_RABBITLINEPAY,
+            self::METHOD_SCALAPAY,
             self::METHOD_SHOPEEPAY,
             self::METHOD_STRIPEDD,
             self::METHOD_TRUEMONEY,

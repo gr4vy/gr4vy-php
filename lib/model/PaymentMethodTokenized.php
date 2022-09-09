@@ -210,18 +210,19 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     public const TYPE_PAYMENT_METHOD = 'payment-method';
-    public const SCHEME_VISA = 'visa';
-    public const SCHEME_MASTERCARD = 'mastercard';
-    public const SCHEME_AMERICAN_EXPRESS = 'american-express';
+    public const SCHEME_AMEX = 'amex';
+    public const SCHEME_DANKORT = 'dankort';
     public const SCHEME_DINERS_CLUB = 'diners-club';
     public const SCHEME_DISCOVER = 'discover';
-    public const SCHEME_JCB = 'jcb';
-    public const SCHEME_UNIONPAY = 'unionpay';
-    public const SCHEME_MAESTRO = 'maestro';
+    public const SCHEME_EFTPOS_AUSTRALIA = 'eftpos-australia';
     public const SCHEME_ELO = 'elo';
-    public const SCHEME_MIR = 'mir';
-    public const SCHEME_HIPER = 'hiper';
-    public const SCHEME_HIPERCARD = 'hipercard';
+    public const SCHEME_JCB = 'jcb';
+    public const SCHEME_MAESTRO = 'maestro';
+    public const SCHEME_MASTERCARD = 'mastercard';
+    public const SCHEME_OTHER = 'other';
+    public const SCHEME_RUPAY = 'rupay';
+    public const SCHEME_UNIONPAY = 'unionpay';
+    public const SCHEME_VISA = 'visa';
     public const APPROVAL_TARGET_ANY = 'any';
     public const APPROVAL_TARGET_NEW_WINDOW = 'new_window';
 
@@ -245,18 +246,19 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     public function getSchemeAllowableValues()
     {
         return [
-            self::SCHEME_VISA,
-            self::SCHEME_MASTERCARD,
-            self::SCHEME_AMERICAN_EXPRESS,
+            self::SCHEME_AMEX,
+            self::SCHEME_DANKORT,
             self::SCHEME_DINERS_CLUB,
             self::SCHEME_DISCOVER,
-            self::SCHEME_JCB,
-            self::SCHEME_UNIONPAY,
-            self::SCHEME_MAESTRO,
+            self::SCHEME_EFTPOS_AUSTRALIA,
             self::SCHEME_ELO,
-            self::SCHEME_MIR,
-            self::SCHEME_HIPER,
-            self::SCHEME_HIPERCARD,
+            self::SCHEME_JCB,
+            self::SCHEME_MAESTRO,
+            self::SCHEME_MASTERCARD,
+            self::SCHEME_OTHER,
+            self::SCHEME_RUPAY,
+            self::SCHEME_UNIONPAY,
+            self::SCHEME_VISA,
         ];
     }
 

@@ -67,8 +67,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'mode' => 'string',
         'label' => 'string',
         'can_store_payment_method' => 'bool',
-        'context' => '\Gr4vy\model\PaymentOptionContext',
-        'payment_method_tokenization_enabled' => 'bool'
+        'context' => '\Gr4vy\model\PaymentOptionContext'
     ];
 
     /**
@@ -85,8 +84,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'mode' => null,
         'label' => null,
         'can_store_payment_method' => null,
-        'context' => null,
-        'payment_method_tokenization_enabled' => null
+        'context' => null
     ];
 
     /**
@@ -122,8 +120,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'mode' => 'mode',
         'label' => 'label',
         'can_store_payment_method' => 'can_store_payment_method',
-        'context' => 'context',
-        'payment_method_tokenization_enabled' => 'payment_method_tokenization_enabled'
+        'context' => 'context'
     ];
 
     /**
@@ -138,8 +135,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'mode' => 'setMode',
         'label' => 'setLabel',
         'can_store_payment_method' => 'setCanStorePaymentMethod',
-        'context' => 'setContext',
-        'payment_method_tokenization_enabled' => 'setPaymentMethodTokenizationEnabled'
+        'context' => 'setContext'
     ];
 
     /**
@@ -154,8 +150,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'mode' => 'getMode',
         'label' => 'getLabel',
         'can_store_payment_method' => 'getCanStorePaymentMethod',
-        'context' => 'getContext',
-        'payment_method_tokenization_enabled' => 'getPaymentMethodTokenizationEnabled'
+        'context' => 'getContext'
     ];
 
     /**
@@ -235,7 +230,6 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['label'] = $data['label'] ?? null;
         $this->container['can_store_payment_method'] = $data['can_store_payment_method'] ?? null;
         $this->container['context'] = $data['context'] ?? null;
-        $this->container['payment_method_tokenization_enabled'] = $data['payment_method_tokenization_enabled'] ?? null;
     }
 
     /**
@@ -445,30 +439,6 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContext($context)
     {
         $this->container['context'] = $context;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_method_tokenization_enabled
-     *
-     * @return bool|null
-     */
-    public function getPaymentMethodTokenizationEnabled()
-    {
-        return $this->container['payment_method_tokenization_enabled'];
-    }
-
-    /**
-     * Sets payment_method_tokenization_enabled
-     *
-     * @param bool|null $payment_method_tokenization_enabled A flag to indicate if storing the payment method is enabled.
-     *
-     * @return self
-     */
-    public function setPaymentMethodTokenizationEnabled($payment_method_tokenization_enabled)
-    {
-        $this->container['payment_method_tokenization_enabled'] = $payment_method_tokenization_enabled;
 
         return $this;
     }

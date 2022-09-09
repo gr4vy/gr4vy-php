@@ -199,6 +199,7 @@ class BillingDetailsTaxId implements ModelInterface, ArrayAccess, \JsonSerializa
     public const KIND_MY_SST = 'my.sst';
     public const KIND_NO_VAT = 'no.vat';
     public const KIND_NZ_GST = 'nz.gst';
+    public const KIND_PH_TIN = 'ph.tin';
     public const KIND_RU_INN = 'ru.inn';
     public const KIND_RU_KPP = 'ru.kpp';
     public const KIND_SA_VAT = 'sa.vat';
@@ -249,6 +250,7 @@ class BillingDetailsTaxId implements ModelInterface, ArrayAccess, \JsonSerializa
             self::KIND_MY_SST,
             self::KIND_NO_VAT,
             self::KIND_NZ_GST,
+            self::KIND_PH_TIN,
             self::KIND_RU_INN,
             self::KIND_RU_KPP,
             self::KIND_SA_VAT,

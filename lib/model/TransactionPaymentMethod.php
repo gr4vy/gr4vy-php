@@ -70,7 +70,8 @@ class TransactionPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeri
         'approval_target' => 'string',
         'approval_url' => 'string',
         'currency' => 'string',
-        'country' => 'string'
+        'country' => 'string',
+        'details' => '\Gr4vy\model\PaymentMethodDetailsCard'
     ];
 
     /**
@@ -91,7 +92,8 @@ class TransactionPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeri
         'approval_target' => null,
         'approval_url' => null,
         'currency' => null,
-        'country' => null
+        'country' => null,
+        'details' => null
     ];
 
     /**
@@ -131,7 +133,8 @@ class TransactionPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeri
         'approval_target' => 'approval_target',
         'approval_url' => 'approval_url',
         'currency' => 'currency',
-        'country' => 'country'
+        'country' => 'country',
+        'details' => 'details'
     ];
 
     /**
@@ -150,7 +153,8 @@ class TransactionPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeri
         'approval_target' => 'setApprovalTarget',
         'approval_url' => 'setApprovalUrl',
         'currency' => 'setCurrency',
-        'country' => 'setCountry'
+        'country' => 'setCountry',
+        'details' => 'setDetails'
     ];
 
     /**
@@ -169,7 +173,8 @@ class TransactionPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeri
         'approval_target' => 'getApprovalTarget',
         'approval_url' => 'getApprovalUrl',
         'currency' => 'getCurrency',
-        'country' => 'getCountry'
+        'country' => 'getCountry',
+        'details' => 'getDetails'
     ];
 
     /**
@@ -268,6 +273,7 @@ class TransactionPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeri
         $this->container['approval_url'] = $data['approval_url'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
+        $this->container['details'] = $data['details'] ?? null;
     }
 
     /**
@@ -614,6 +620,30 @@ class TransactionPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeri
     public function setCountry($country)
     {
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets details
+     *
+     * @return \Gr4vy\model\PaymentMethodDetailsCard|null
+     */
+    public function getDetails()
+    {
+        return $this->container['details'];
+    }
+
+    /**
+     * Sets details
+     *
+     * @param \Gr4vy\model\PaymentMethodDetailsCard|null $details details
+     *
+     * @return self
+     */
+    public function setDetails($details)
+    {
+        $this->container['details'] = $details;
 
         return $this;
     }

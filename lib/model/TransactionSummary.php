@@ -76,7 +76,9 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         'external_identifier' => 'string',
         'updated_at' => '\DateTime',
         'payment_service' => '\Gr4vy\model\PaymentMethodTokenPaymentService',
-        'method' => 'string'
+        'method' => 'string',
+        'raw_response_code' => 'string',
+        'raw_response_description' => 'string'
     ];
 
     /**
@@ -102,7 +104,9 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         'external_identifier' => null,
         'updated_at' => 'date-time',
         'payment_service' => null,
-        'method' => null
+        'method' => null,
+        'raw_response_code' => null,
+        'raw_response_description' => null
     ];
 
     /**
@@ -147,7 +151,9 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         'external_identifier' => 'external_identifier',
         'updated_at' => 'updated_at',
         'payment_service' => 'payment_service',
-        'method' => 'method'
+        'method' => 'method',
+        'raw_response_code' => 'raw_response_code',
+        'raw_response_description' => 'raw_response_description'
     ];
 
     /**
@@ -171,7 +177,9 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         'external_identifier' => 'setExternalIdentifier',
         'updated_at' => 'setUpdatedAt',
         'payment_service' => 'setPaymentService',
-        'method' => 'setMethod'
+        'method' => 'setMethod',
+        'raw_response_code' => 'setRawResponseCode',
+        'raw_response_description' => 'setRawResponseDescription'
     ];
 
     /**
@@ -195,7 +203,9 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         'external_identifier' => 'getExternalIdentifier',
         'updated_at' => 'getUpdatedAt',
         'payment_service' => 'getPaymentService',
-        'method' => 'getMethod'
+        'method' => 'getMethod',
+        'raw_response_code' => 'getRawResponseCode',
+        'raw_response_description' => 'getRawResponseDescription'
     ];
 
     /**
@@ -263,7 +273,6 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     public const METHOD_GCASH = 'gcash';
     public const METHOD_GOCARDLESS = 'gocardless';
     public const METHOD_GOOGLEPAY = 'googlepay';
-    public const METHOD_GOOGLEPAY_PAN_ONLY = 'googlepay_pan_only';
     public const METHOD_GRABPAY = 'grabpay';
     public const METHOD_KLARNA = 'klarna';
     public const METHOD_OVO = 'ovo';
@@ -271,6 +280,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
     public const METHOD_PAYPAL = 'paypal';
     public const METHOD_PIX = 'pix';
     public const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    public const METHOD_SCALAPAY = 'scalapay';
     public const METHOD_SHOPEEPAY = 'shopeepay';
     public const METHOD_STRIPEDD = 'stripedd';
     public const METHOD_TRUEMONEY = 'truemoney';
@@ -342,7 +352,6 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
             self::METHOD_GCASH,
             self::METHOD_GOCARDLESS,
             self::METHOD_GOOGLEPAY,
-            self::METHOD_GOOGLEPAY_PAN_ONLY,
             self::METHOD_GRABPAY,
             self::METHOD_KLARNA,
             self::METHOD_OVO,
@@ -350,6 +359,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
             self::METHOD_PAYPAL,
             self::METHOD_PIX,
             self::METHOD_RABBITLINEPAY,
+            self::METHOD_SCALAPAY,
             self::METHOD_SHOPEEPAY,
             self::METHOD_STRIPEDD,
             self::METHOD_TRUEMONEY,
@@ -389,6 +399,8 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['payment_service'] = $data['payment_service'] ?? null;
         $this->container['method'] = $data['method'] ?? null;
+        $this->container['raw_response_code'] = $data['raw_response_code'] ?? null;
+        $this->container['raw_response_description'] = $data['raw_response_description'] ?? null;
     }
 
     /**
@@ -919,6 +931,54 @@ class TransactionSummary implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets raw_response_code
+     *
+     * @return string|null
+     */
+    public function getRawResponseCode()
+    {
+        return $this->container['raw_response_code'];
+    }
+
+    /**
+     * Sets raw_response_code
+     *
+     * @param string|null $raw_response_code This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
+     *
+     * @return self
+     */
+    public function setRawResponseCode($raw_response_code)
+    {
+        $this->container['raw_response_code'] = $raw_response_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets raw_response_description
+     *
+     * @return string|null
+     */
+    public function getRawResponseDescription()
+    {
+        return $this->container['raw_response_description'];
+    }
+
+    /**
+     * Sets raw_response_description
+     *
+     * @param string|null $raw_response_description This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
+     *
+     * @return self
+     */
+    public function setRawResponseDescription($raw_response_description)
+    {
+        $this->container['raw_response_description'] = $raw_response_description;
 
         return $this;
     }

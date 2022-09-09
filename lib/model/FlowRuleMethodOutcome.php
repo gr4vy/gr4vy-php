@@ -182,7 +182,6 @@ class FlowRuleMethodOutcome implements ModelInterface, ArrayAccess, \JsonSeriali
     public const RESULT_GCASH = 'gcash';
     public const RESULT_GOCARDLESS = 'gocardless';
     public const RESULT_GOOGLEPAY = 'googlepay';
-    public const RESULT_GOOGLEPAY_PAN_ONLY = 'googlepay_pan_only';
     public const RESULT_GRABPAY = 'grabpay';
     public const RESULT_KLARNA = 'klarna';
     public const RESULT_OVO = 'ovo';
@@ -190,6 +189,7 @@ class FlowRuleMethodOutcome implements ModelInterface, ArrayAccess, \JsonSeriali
     public const RESULT_PAYPAL = 'paypal';
     public const RESULT_PIX = 'pix';
     public const RESULT_RABBITLINEPAY = 'rabbitlinepay';
+    public const RESULT_SCALAPAY = 'scalapay';
     public const RESULT_SHOPEEPAY = 'shopeepay';
     public const RESULT_STRIPEDD = 'stripedd';
     public const RESULT_TRUEMONEY = 'truemoney';
@@ -228,7 +228,6 @@ class FlowRuleMethodOutcome implements ModelInterface, ArrayAccess, \JsonSeriali
             self::RESULT_GCASH,
             self::RESULT_GOCARDLESS,
             self::RESULT_GOOGLEPAY,
-            self::RESULT_GOOGLEPAY_PAN_ONLY,
             self::RESULT_GRABPAY,
             self::RESULT_KLARNA,
             self::RESULT_OVO,
@@ -236,6 +235,7 @@ class FlowRuleMethodOutcome implements ModelInterface, ArrayAccess, \JsonSeriali
             self::RESULT_PAYPAL,
             self::RESULT_PIX,
             self::RESULT_RABBITLINEPAY,
+            self::RESULT_SCALAPAY,
             self::RESULT_SHOPEEPAY,
             self::RESULT_STRIPEDD,
             self::RESULT_TRUEMONEY,

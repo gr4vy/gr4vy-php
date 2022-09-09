@@ -421,7 +421,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets currency
      *
-     * @param string $currency A supported ISO-4217 currency code.
+     * @param string $currency A supported ISO-4217 currency code.  For redirect requests, this value must match the one specified for `currency` in `payment_method`.
      *
      * @return self
      */
@@ -445,7 +445,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets country
      *
-     * @param string|null $country The 2-letter ISO code of the country of the transaction. This is used to filter the payment services that is used to process the transaction.
+     * @param string|null $country The 2-letter ISO code of the country of the transaction. This is used to filter the payment services that is used to process the transaction.  If this value is provided for redirect requests and it's not `null`, it must match the one specified for `country` in `payment_method`. Otherwise, the value specified for `country` in `payment_method` will be assumed implicitly.
      *
      * @return self
      */
