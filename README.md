@@ -101,7 +101,7 @@ Your API key can be created in your admin panel on the **Integrations** tab.
 
 ## Multi merchant
 
-In a multi-merchant environment, the merchant account ID can be set by passing `MultiMerchantHeaderSelector` to the Api:
+In a multi-merchant environment, the merchant account ID can be set by passing `MerchantAccountHeaderSelector` to the Api:
 
 ```php
 $headerSelector = new MerchantAccountHeaderSelector("my_merchant_account_id");
