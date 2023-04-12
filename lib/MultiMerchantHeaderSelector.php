@@ -30,14 +30,14 @@ namespace Gr4vy;
 
 use Gr4vy\HeaderSelector as HeaderSelector;
 
-class MultiMerchantHeaderSelector extends HeaderSelector
+class MerchantAccountHeaderSelector extends HeaderSelector
 {
     /**
      * Debug file location (log to STDOUT by default)
      *
      * @var string
      */
-    protected $merchantId;
+    protected $merchantAccountID;
 
     /**
      * Constructor
