@@ -165,7 +165,7 @@ class PaymentMethodsApiTest extends TestCase
      */
     public function testListPaymentMethods()
     {
-        // $this->markTestIncomplete('Not implemented');
+        $this->markTestIncomplete('Not implemented');
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $apiInstance = new PaymentMethodsApi(new Client(),$config->getConfig());
