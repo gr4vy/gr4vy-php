@@ -28,18 +28,25 @@
 
 namespace Gr4vy;
 
-use \Exception;
+use Gr4vy\HeaderSelector as HeaderSelector;
 
-/**
- * ApiException Class Doc Comment
- *
- * @category Class
- * @package  Gr4vy
- * @author   OpenAPI Generator team
- * @link     https://openapi-generator.tech
- */
-class HeaderSelector
+class MultiMerchantHeaderSelector extends HeaderSelector
 {
+    /**
+     * Debug file location (log to STDOUT by default)
+     *
+     * @var string
+     */
+    protected $merchantId;
+
+    /**
+     * Constructor
+     */
+    public function __construct($merchantId)
+    {
+        $this->merchantId = $merchantId;
+    }
+
     /**
      * @param string[] $accept
      * @param string[] $contentTypes
@@ -55,7 +62,7 @@ class HeaderSelector
         }
 
         $headers['Content-Type'] = $this->selectContentTypeHeader($contentTypes);
-        $headers['X-GR4VY-MERCHANT-ACCOUNT-ID'] = "default";
+        $headers['X-GR4VY-MERCHANT-ACCOUNT-ID'] = $this->merchantId;
         return $headers;
     }
 

@@ -99,6 +99,16 @@ $config->setHost("https://api.acme.gr4vy.app");
 
 Your API key can be created in your admin panel on the **Integrations** tab.
 
+## Multi merchant
+
+In a multi-merchant environment, the merchant account ID can be set by passing `MultiMerchantHeaderSelector` to the Api:
+
+```php
+$headerSelector = new MultiMerchantHeaderSelector("my_merchant_id");
+$config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+$apiInstance = new BuyersApi(new Client(),$config->getConfig(), $headerSelector);
+```
+
 ## Making API calls
 
 This library conveniently maps every API path to a seperate function. For example, `GET /buyers?limit=100` would be:
