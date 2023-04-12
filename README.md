@@ -104,7 +104,7 @@ Your API key can be created in your admin panel on the **Integrations** tab.
 In a multi-merchant environment, the merchant account ID can be set by passing `MultiMerchantHeaderSelector` to the Api:
 
 ```php
-$headerSelector = new MultiMerchantHeaderSelector("my_merchant_id");
+$headerSelector = new MerchantAccountHeaderSelector("my_merchant_account_id");
 $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
 $apiInstance = new BuyersApi(new Client(),$config->getConfig(), $headerSelector);
 ```

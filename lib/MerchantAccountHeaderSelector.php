@@ -37,14 +37,14 @@ class MerchantAccountHeaderSelector extends HeaderSelector
      *
      * @var string
      */
-    protected $merchantAccountID;
+    protected $merchantAccountId;
 
     /**
      * Constructor
      */
-    public function __construct($merchantId)
+    public function __construct($merchantAccountId)
     {
-        $this->merchantId = $merchantId;
+        $this->merchantAccountId = $merchantAccountId;
     }
 
     /**
@@ -62,7 +62,7 @@ class MerchantAccountHeaderSelector extends HeaderSelector
         }
 
         $headers['Content-Type'] = $this->selectContentTypeHeader($contentTypes);
-        $headers['X-GR4VY-MERCHANT-ACCOUNT-ID'] = $this->merchantId;
+        $headers['X-GR4VY-MERCHANT-ACCOUNT-ID'] = $this->merchantAccountId;
         return $headers;
     }
 

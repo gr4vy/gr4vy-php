@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
 use \GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
-use \Gr4vy\MultiMerchantHeaderSelector;
+use \Gr4vy\MerchantAccountHeaderSelector;
 
 
 /**
@@ -47,7 +47,7 @@ use \Gr4vy\MultiMerchantHeaderSelector;
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class MultiMerchantTest extends TestCase
+class MerchantAccountTest extends TestCase
 {
     private static $privateKeyLocation = __DIR__ . "/../../private_key.pem";
     private static $gr4vyId = "spider";
@@ -90,7 +90,7 @@ class MultiMerchantTest extends TestCase
     {
 
         try {
-            $headerSelector = new MultiMerchantHeaderSelector("default");
+            $headerSelector = new MerchantAccountHeaderSelector("default");
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $apiInstance = new BuyersApi(new Client(),$config->getConfig(), $headerSelector);
             $result = $apiInstance->listBuyers();
