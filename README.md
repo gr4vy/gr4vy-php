@@ -27,13 +27,12 @@ require __DIR__ . '/../vendor/autoload.php';
 $privateKeyLocation = __DIR__ . "/private_key.pem";
 
 $config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation);
-$apiInstance = new Gr4vy\Api\BuyersApi(new GuzzleHttp\Client(),$config->getConfig());
 
 try {
-    $result = $apiInstance->listBuyers();
+    $result = $config->listBuyers();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BuyersApi->listBuyers: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling listBuyers: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -73,12 +72,11 @@ be created before it can be used in this way.
 
 ```php
 $config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation);
-$apiInstance = new Gr4vy\Api\BuyersApi(new GuzzleHttp\Client(),$config->getConfig());
 
 $buyer_request = array("external_identifier"=>"412231123","display_name"=>"Tester T.");
-$buyer = $apiInstance->addBuyer($buyer_request);
+$buyer = $config->addBuyer($buyer_request);
 
-$embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> $buyer->getId());
+$embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> $buyer["id"]);
 $embedToken = $config->getEmbedToken($embed);
 ```
 
@@ -101,12 +99,12 @@ Your API key can be created in your admin panel on the **Integrations** tab.
 
 ## Multi merchant
 
-In a multi-merchant environment, the merchant account ID can be set by passing `MerchantAccountHeaderSelector` to the Api:
+In a multi-merchant environment, the merchant account ID can be set by passing `merchantAccountId` to the Config:
 
 ```php
-$headerSelector = new MerchantAccountHeaderSelector("my_merchant_account_id");
-$config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-$apiInstance = new BuyersApi(new Client(),$config->getConfig(), $headerSelector);
+$config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation, false, "sandbox", "default");
+
+$config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation, false, "sandbox", "my_merchant_account_id");
 ```
 
 ## Making API calls
@@ -114,21 +112,21 @@ $apiInstance = new BuyersApi(new Client(),$config->getConfig(), $headerSelector)
 This library conveniently maps every API path to a seperate function. For example, `GET /buyers?limit=100` would be:
 
 ```php
-$result = $apiInstance->listBuyers(100);
+$result = $config->listBuyers(100);
 ```
 
 To create or update a resource an `array` should be sent with the request data.
 
 ```php
 $buyer_request = array("external_identifier"=>"412231123","display_name"=>"Tester T.");
-$buyer = $apiInstance->addBuyer($buyer_request);
+$buyer = $config->addBuyer($buyer_request);
 ```
 
 Similarly, to update a buyer you will need to pass in the `BuyerUpdateRequest`.
 
 ```php
 $buyer_update = array("external_identifier"=>"testUpdateBuyer");
-$result = $apiInstance->updateBuyer($result->getId(), $buyer_update);
+$result = $config->updateBuyer($result["id"], $buyer_update);
 ```
 
 ## Generate API bearer token
@@ -171,15 +169,6 @@ the following commands.
 ```bash
 composer install
 ./vendor/bin/phpunit test/
-```
-
-### Adding new APIs
-
-To add new APIs, run the following command to update the models and APIs based
-on the API spec.
-
-```sh
-./openapi-generator-generate.sh
 ```
 
 ### Publishing

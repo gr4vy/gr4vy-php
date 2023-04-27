@@ -29,11 +29,6 @@
 namespace Gr4vy\Test\Api;
 
 use \Gr4vy\Gr4vyConfig;
-use \Gr4vy\Api\PaymentOptionsApi;
-use \GuzzleHttp\Client;
-use \Gr4vy\Configuration;
-use \Gr4vy\ApiException;
-use \Gr4vy\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -87,9 +82,35 @@ class PaymentOptionsApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new PaymentOptionsApi(new Client(),$config->getConfig());
-            $result = $apiInstance->listPaymentOptions();
-            $this->assertGreaterThan(0, count($result->getItems()), "Expected items to be greater than 0.");
+            $result = $config->listPaymentOptions();
+            $this->assertGreaterThan(0, count($result["items"]), "Expected items to be greater than 0.");
+        } catch (Exception $e) {
+            $this->fail("Exception thrown: " . $e->getMessage());
+        }
+    }
+
+    /**
+     * Test case for postListPaymentOptions
+     *
+     * List payment options.
+     *
+     */
+    public function testPostListPaymentOptions()
+    {
+        try {
+            $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+            $payment_options_request = array(
+                "country"=>"US",
+                "currency"=>"USD",
+                "amount"=>1000,
+                "metadata"=>array(
+                    "TypeOfPayment"=>"purchase",
+                    "Carbon_FootPrint"=>"10"
+                )
+            );
+
+            $result = $config->postListPaymentOptions($payment_options_request);
+            $this->assertGreaterThan(0, count($result["items"]), "Expected items to be greater than 0.");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }

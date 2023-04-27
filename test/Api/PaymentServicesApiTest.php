@@ -29,11 +29,6 @@
 namespace Gr4vy\Test\Api;
 
 use \Gr4vy\Gr4vyConfig;
-use \Gr4vy\Api\PaymentServicesApi;
-use \GuzzleHttp\Client;
-use \Gr4vy\Configuration;
-use \Gr4vy\ApiException;
-use \Gr4vy\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -87,7 +82,6 @@ class PaymentServicesApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new PaymentServicesApi(new Client(),$config->getConfig());
 
             $payment_service_request = array(
                 "accepted_countries"=>array("GB", "US"),
@@ -101,13 +95,13 @@ class PaymentServicesApiTest extends TestCase
                 ),
                 "payment_service_definition_id" => "stripe-card"
             );
-            $result = $apiInstance->addPaymentService($payment_service_request);
+            $result = $config->addPaymentService($payment_service_request);
 
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getPaymentServiceDefinitionId(), "stripe-card");
+            $this->assertEquals($result["payment_service_definition_id"], "stripe-card");
 
-            $result = $apiInstance->deletePaymentService($result->getId());
-            $this->assertEmpty($result);
+            $result = $config->deletePaymentService($result["id"]);
+            $this->assertArrayHasKey("success", $result);
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -123,7 +117,6 @@ class PaymentServicesApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new PaymentServicesApi(new Client(),$config->getConfig());
 
             $payment_service_request = array(
                 "accepted_countries"=>array("GB", "US"),
@@ -137,13 +130,12 @@ class PaymentServicesApiTest extends TestCase
                 ),
                 "payment_service_definition_id" => "stripe-card"
             );
-            $result = $apiInstance->addPaymentService($payment_service_request);
+            $result = $config->addPaymentService($payment_service_request);
 
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getPaymentServiceDefinitionId(), "stripe-card");
 
-            $result = $apiInstance->deletePaymentService($result->getId());
-            $this->assertEmpty($result);
+            $result = $config->deletePaymentService($result["id"]);
+            $this->assertArrayHasKey("success", $result);
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -159,7 +151,6 @@ class PaymentServicesApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new PaymentServicesApi(new Client(),$config->getConfig());
 
             $payment_service_request = array(
                 "accepted_countries"=>array("GB", "US"),
@@ -173,16 +164,15 @@ class PaymentServicesApiTest extends TestCase
                 ),
                 "payment_service_definition_id" => "stripe-card"
             );
-            $result = $apiInstance->addPaymentService($payment_service_request);
+            $result = $config->addPaymentService($payment_service_request);
 
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getPaymentServiceDefinitionId(), "stripe-card");
 
-            $result = $apiInstance->getPaymentService($result["id"]);
+            $result = $config->getPaymentService($result["id"]);
             $this->assertArrayHasKey("id", $result);
 
-            $result = $apiInstance->deletePaymentService($result->getId());
-            $this->assertEmpty($result);
+            $result = $config->deletePaymentService($result["id"]);
+            $this->assertArrayHasKey("success", $result);
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -198,9 +188,8 @@ class PaymentServicesApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new PaymentServicesApi(new Client(),$config->getConfig());
-            $result = $apiInstance->listPaymentServices();
-            $this->assertGreaterThan(0, count($result->getItems()), "Expected items to be greater than 0.");
+            $result = $config->listPaymentServices();
+            $this->assertGreaterThan(0, count($result["items"]), "Expected items to be greater than 0.");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -216,7 +205,6 @@ class PaymentServicesApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new PaymentServicesApi(new Client(),$config->getConfig());
 
             $payment_service_request = array(
                 "accepted_countries"=>array("GB", "US"),
@@ -230,20 +218,19 @@ class PaymentServicesApiTest extends TestCase
                 ),
                 "payment_service_definition_id" => "stripe-card"
             );
-            $result = $apiInstance->addPaymentService($payment_service_request);
+            $result = $config->addPaymentService($payment_service_request);
 
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getPaymentServiceDefinitionId(), "stripe-card");
 
             $payment_service_update = array(
                 "display_name" => "Stripe Update",
             );
-            $result = $apiInstance->updatePaymentService($result["id"], $payment_service_update);
+            $result = $config->updatePaymentService($result["id"], $payment_service_update);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getDisplayName(), "Stripe Update");
+            $this->assertEquals($result["display_name"], "Stripe Update");
 
-            $result = $apiInstance->deletePaymentService($result->getId());
-            $this->assertEmpty($result);
+            $result = $config->deletePaymentService($result["id"]);
+            $this->assertArrayHasKey("success", $result);
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }

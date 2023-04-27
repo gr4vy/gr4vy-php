@@ -29,11 +29,6 @@
 namespace Gr4vy\Test\Api;
 
 use \Gr4vy\Gr4vyConfig;
-use \Gr4vy\Api\TransactionsApi;
-use \GuzzleHttp\Client;
-use \Gr4vy\Configuration;
-use \Gr4vy\ApiException;
-use \Gr4vy\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -87,12 +82,10 @@ class TransactionsApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new TransactionsApi(new Client(),$config->getConfig());
-            //TODO: GBP/braintree was failing
             $transaction_request = array("amount"=>1000,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/24", "security_code"=>"432"));
-            $result = $apiInstance->authorizeNewTransaction($transaction_request);
+            $result = $config->authorizeNewTransaction($transaction_request);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getType(), "transaction");
+            $this->assertEquals($result["type"], "transaction");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -106,19 +99,18 @@ class TransactionsApiTest extends TestCase
      */
     public function testCaptureTransaction()
     {
-        $this->markTestIncomplete('Not implemented');
 
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new TransactionsApi(new Client(),$config->getConfig());
             $transaction_request = array("amount"=>100,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/28", "security_code"=>"555"));
-            $result = $apiInstance->authorizeNewTransaction($transaction_request);
+            $result = $config->authorizeNewTransaction($transaction_request);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getType(), "transaction");
+            $this->assertEquals($result["type"], "transaction");
 
-            $result = $apiInstance->captureTransaction($result["id"]);
+            $capture_request = array("amount"=>100);
+            $result = $config->captureTransaction($result["id"], $capture_request);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getType(), "transaction");
+            $this->assertEquals($result["type"], "transaction");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -134,15 +126,14 @@ class TransactionsApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new TransactionsApi(new Client(),$config->getConfig());
             $transaction_request = array("amount"=>10000,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/28", "security_code"=>"555"));
-            $result = $apiInstance->authorizeNewTransaction($transaction_request);
+            $result = $config->authorizeNewTransaction($transaction_request);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getType(), "transaction");
+            $this->assertEquals($result["type"], "transaction");
 
-            $result = $apiInstance->getTransaction($result["id"]);
+            $result = $config->getTransaction($result["id"]);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getType(), "transaction");
+            $this->assertEquals($result["type"], "transaction");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -158,9 +149,8 @@ class TransactionsApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new TransactionsApi(new Client(),$config->getConfig());
-            $result = $apiInstance->listTransactions();
-            $this->assertGreaterThan(0, count($result->getItems()), "Expected items to be greater than 0.");
+            $result = $config->listTransactions();
+            $this->assertGreaterThan(0, count($result["items"]), "Expected items to be greater than 0.");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -174,20 +164,19 @@ class TransactionsApiTest extends TestCase
      */
     public function testRefundTransaction()
     {
-        $this->markTestIncomplete('Not implemented');
 
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new TransactionsApi(new Client(),$config->getConfig());
-            $transaction_request = array("amount"=>100,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/28", "security_code"=>"555"));
-            $result = $apiInstance->authorizeNewTransaction($transaction_request);
+            $transaction_request = array("amount"=>100,"currency"=>"USD", "intent"=>"capture", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/28", "security_code"=>"555"));
+            $result = $config->authorizeNewTransaction($transaction_request);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getType(), "transaction");
+            $this->assertEquals($result["type"], "transaction");
 
-            $result = $apiInstance->refundTransaction($result["id"]);
-            print_r($result);
+            $refund_request = array("amount"=>100);
+
+            $result = $config->refundTransaction($result["id"], $refund_request);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getType(), "transaction");
+            $this->assertEquals($result["type"], "refund");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
