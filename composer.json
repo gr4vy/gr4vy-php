@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Gr4vy\\": "lib/",
+            "Gr4vy\\": "lib/"
         }
     },
     "autoload-dev": {
