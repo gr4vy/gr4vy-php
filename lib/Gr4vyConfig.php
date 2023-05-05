@@ -87,19 +87,6 @@ class Gr4vyConfig
         return $this->debug;
     }
 
-    // public function getConfig()
-    // {
-    //     $scopes = array("*.read", "*.write");
-    //     $accessToken = self::getToken($this->privateKeyLocation, $scopes);
-    //     $config = Gr4vyConfiguration::getDefaultConfiguration()
-    //         ->setAccessToken($accessToken)
-    //         ->setHost($this->getHost())
-    //         ->setUserAgent("Gr4vy SDK PHP")
-    //         ->setDebug($this->debug);
-
-    //     return $config;
-    // }
-
     public function getEmbedToken($embed) {
         $scopes = array("embed");
         return self::getToken($this->privateKeyLocation, $scopes, $embed);
@@ -194,13 +181,6 @@ class Gr4vyConfig
         $xStr = pack('C*', ...$x_byte_array);
         $yStr = pack('C*', ...$y_byte_array);
 
-        // print_r("====x====\n");
-        // // print_r($x_byte_array . "\n");
-        // var_dump($x_byte_array);
-        // print_r("====y====\n");
-        // // print_r($y_byte_array . "\n");
-        // var_dump($y_byte_array);
-
         $jsonData = array(
                 'crv' => "P-521",//$keyInfo['ec']["curve_name"],
                 'kty' => 'EC',
@@ -213,8 +193,12 @@ class Gr4vyConfig
         return rtrim(str_replace(['+', '/'], ['-', '_'], base64_encode($b)), '=');
     }
 
-    private function get($endpoint) {
-        $url = $this->host . $endpoint;
+    private function get($endpoint, $params = array()) {
+        $query = "";
+        if (count($params) > 0) {
+            $query = http_build_query($params);
+        }
+        $url = $this->host . $endpoint . "?" . $query;
 
         $scopes = array("*.read", "*.write");
         $accessToken = self::getToken($this->privateKeyLocation, $scopes);
@@ -333,8 +317,8 @@ class Gr4vyConfig
         $response = $this->put("/buyers/" . $buyer_id, $buyer_request);
         return $response;
     }
-    public function listBuyers() {
-        $response = $this->get("/buyers");
+    public function listBuyers($params = array()) {
+        $response = $this->get("/buyers", $params);
         return $response;
     }
     public function deleteBuyer($buyer_id) {
@@ -350,8 +334,8 @@ class Gr4vyConfig
         $response = $this->get("/payment-methods/" . $payment_method_id);
         return $response;
     }
-    public function listPaymentMethods() {
-        $response = $this->get("/payment-methods");
+    public function listPaymentMethods($params = array()) {
+        $response = $this->get("/payment-methods", $params);
         return $response;
     }
     public function listBuyerPaymentMethods($buyer_id) {
@@ -363,8 +347,8 @@ class Gr4vyConfig
         return $response;
     }
 
-    public function listPaymentOptions() {
-        $response = $this->get("/payment-options");
+    public function listPaymentOptions($params = array()) {
+        $response = $this->get("/payment-options", $params);
         return $response;
     }
     public function postListPaymentOptions($payment_options_request) {
@@ -372,8 +356,8 @@ class Gr4vyConfig
         return $response;
     }
 
-    public function listPaymentServiceDefinitions() {
-        $response = $this->get("/payment-service-definitions");
+    public function listPaymentServiceDefinitions($params = array()) {
+        $response = $this->get("/payment-service-definitions", $params);
         return $response;
     }
     public function getPaymentServiceDefinition($psd_id) {
@@ -393,8 +377,8 @@ class Gr4vyConfig
         $response = $this->put("/payment-services/" . $payment_service_id, $payment_service_request);
         return $response;
     }
-    public function listPaymentServices() {
-        $response = $this->get("/payment-services");
+    public function listPaymentServices($params = array()) {
+        $response = $this->get("/payment-services", $params);
         return $response;
     }
     public function deletePaymentService($payment_service_id) {
@@ -414,8 +398,8 @@ class Gr4vyConfig
         $response = $this->post("/transactions/" . $transaction_id . "/capture", $transaction_request);
         return $response;
     }
-    public function listTransactions() {
-        $response = $this->get("/transactions");
+    public function listTransactions($params = array()) {
+        $response = $this->get("/transactions", $params);
         return $response;
     }
     public function refundTransaction($transaction_id, $refund_request) {

@@ -102,7 +102,7 @@ class TransactionsApiTest extends TestCase
 
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $transaction_request = array("amount"=>100,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/28", "security_code"=>"555"));
+            $transaction_request = array("intent"=>"authorize", "amount"=>100,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/28", "security_code"=>"555"));
             $result = $config->authorizeNewTransaction($transaction_request);
             $this->assertArrayHasKey("id", $result);
             $this->assertEquals($result["type"], "transaction");
@@ -151,6 +151,26 @@ class TransactionsApiTest extends TestCase
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $result = $config->listTransactions();
             $this->assertGreaterThan(0, count($result["items"]), "Expected items to be greater than 0.");
+        } catch (Exception $e) {
+            $this->fail("Exception thrown: " . $e->getMessage());
+        }
+    }
+
+    /**
+     * Test case for listTransactions
+     *
+     * List transactions.
+     *
+     */
+    public function testListTransactionsWithParams()
+    {
+        try {
+            $params = array(
+                "limit"=>2,
+            );
+            $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+            $result = $config->listTransactions($params);
+            $this->assertEquals(2, count($result["items"]), "Expected items to be equal to 2.");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
