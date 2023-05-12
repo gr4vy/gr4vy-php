@@ -29,11 +29,6 @@
 namespace Gr4vy\Test\Api;
 
 use \Gr4vy\Gr4vyConfig;
-use \Gr4vy\Api\BuyersApi;
-use \Gr4vy\Configuration;
-use \Gr4vy\ApiException;
-use \Gr4vy\ObjectSerializer;
-use \GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -87,15 +82,13 @@ class BuyersApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new BuyersApi(new Client(),$config->getConfig());
-
             $buyer_request = array("external_identifier"=>"testAddBuyer2","display_name"=>"🐶");
-            $result = $apiInstance->addBuyer($buyer_request);
+            $result = $config->addBuyer($buyer_request);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getDisplayName(), "🐶");
+            $this->assertEquals($result["display_name"], "🐶");
 
-            $result = $apiInstance->deleteBuyer($result->getId());
-            $this->assertEmpty($result);
+            $result = $config->deleteBuyer($result["id"]);
+            $this->assertArrayHasKey("success", $result);
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -111,14 +104,13 @@ class BuyersApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new BuyersApi(new Client(),$config->getConfig());
-
-            $buyer_request = array("external_identifier"=>"testDeleteBuyer","display_name"=>"Tester T.");
-            $result = $apiInstance->addBuyer($buyer_request);
+            $buyer_request = array("external_identifier"=>"testAddBuyer2","display_name"=>"Tester T.");
+            $result = $config->addBuyer($buyer_request);
             $this->assertArrayHasKey("id", $result);
+            $this->assertEquals($result["display_name"], "Tester T.");
 
-            $result = $apiInstance->deleteBuyer($result->getId());
-            $this->assertEmpty($result);
+            $result = $config->deleteBuyer($result["id"]);
+            $this->assertArrayHasKey("success", $result);
 
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
@@ -135,17 +127,16 @@ class BuyersApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new BuyersApi(new Client(),$config->getConfig());
 
-            $buyer_request = array("external_identifier"=>"testDeleteBuyer","display_name"=>"Tester T.");
-            $result = $apiInstance->addBuyer($buyer_request);
+            $buyer_request = array("external_identifier"=>"testAddBuyer2","display_name"=>"Tester T.");
+            $result = $config->addBuyer($buyer_request);
             $this->assertArrayHasKey("id", $result);
 
-            $result = $apiInstance->getBuyer($result["id"]);
+            $result = $config->getBuyer($result["id"]);
             $this->assertArrayHasKey("id", $result);
 
-            $result = $apiInstance->deleteBuyer($result->getId());
-            $this->assertEmpty($result);
+            $result = $config->deleteBuyer($result["id"]);
+            $this->assertArrayHasKey("success", $result);
 
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
@@ -163,12 +154,10 @@ class BuyersApiTest extends TestCase
 
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new BuyersApi(new Client(),$config->getConfig());
-            $result = $apiInstance->listBuyers();
-            $this->assertGreaterThan(0, count($result->getItems()), "Expected items to be greater than 0.");
+            $result = $config->listBuyers();
+            $this->assertGreaterThan(0, count($result["items"]), "Expected items to be greater than 0.");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
-            // echo 'Exception when calling BuyersApi->listBuyers: ', $e->getMessage(), PHP_EOL;
         }
     }
 
@@ -182,18 +171,17 @@ class BuyersApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new BuyersApi(new Client(),$config->getConfig());
 
             $buyer_request = array("external_identifier"=>"testAddBuyer3","display_name"=>"abc");
-            $result = $apiInstance->addBuyer($buyer_request);
+            $result = $config->addBuyer($buyer_request);
 
             $buyer_update = array("external_identifier"=>"testUpdateBuyer");
-            $result = $apiInstance->updateBuyer($result->getId(), $buyer_update);
+            $result = $config->updateBuyer($result["id"], $buyer_update);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result->getExternalIdentifier(), "testUpdateBuyer");
+            $this->assertEquals($result["external_identifier"], "testUpdateBuyer");
 
-            $result = $apiInstance->deleteBuyer($result->getId());
-            $this->assertEmpty($result);
+            $result = $config->deleteBuyer($result["id"]);
+            $this->assertArrayHasKey("success", $result);
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }

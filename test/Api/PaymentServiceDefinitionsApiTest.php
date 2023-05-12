@@ -29,11 +29,6 @@
 namespace Gr4vy\Test\Api;
 
 use \Gr4vy\Gr4vyConfig;
-use \Gr4vy\Api\PaymentServiceDefinitionsApi;
-use \GuzzleHttp\Client;
-use \Gr4vy\Configuration;
-use \Gr4vy\ApiException;
-use \Gr4vy\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -87,11 +82,10 @@ class PaymentServiceDefinitionsApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new PaymentServiceDefinitionsApi(new Client(),$config->getConfig());
-            $result = $apiInstance->listPaymentServiceDefinitions();
-            $this->assertGreaterThan(0, count($result->getItems()), "Expected items to be greater than 0.");
+            $result = $config->listPaymentServiceDefinitions();
+            $this->assertGreaterThan(0, count($result["items"]), "Expected items to be greater than 0.");
 
-            $result = $apiInstance->getPaymentServiceDefinition($result->getItems()[0]["id"]);
+            $result = $config->getPaymentServiceDefinition($result["items"][0]["id"]);
             $this->assertArrayHasKey("id", $result);
 
         } catch (Exception $e) {
@@ -110,9 +104,8 @@ class PaymentServiceDefinitionsApiTest extends TestCase
 
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new PaymentServiceDefinitionsApi(new Client(),$config->getConfig());
-            $result = $apiInstance->listPaymentServiceDefinitions();
-            $this->assertGreaterThan(0, count($result->getItems()), "Expected items to be greater than 0.");
+            $result = $config->listPaymentServiceDefinitions();
+            $this->assertGreaterThan(0, count($result["items"]), "Expected items to be greater than 0.");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }

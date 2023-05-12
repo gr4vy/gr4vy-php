@@ -16,11 +16,12 @@ class Gr4vyConfig
     protected $host;
     protected $debug = false;
     protected $environment;
+    protected $merchantAccountId = "";
 
     /**
      * Constructor
      */
-    public function __construct($gr4vyId, $privateKeyLocation, $debug=false, $environment="sandbox")
+    public function __construct($gr4vyId, $privateKeyLocation, $debug=false, $environment="sandbox", $merchantAccountId="")
     {
         $this->gr4vyId = $gr4vyId;
         $this->privateKeyLocation = $privateKeyLocation;
@@ -28,6 +29,7 @@ class Gr4vyConfig
         $this->environment = $environment;
         $apiPrefix = $environment === "sandbox" ? "sandbox." : "";
         $this->host = "https://api." . $apiPrefix . $gr4vyId .".gr4vy.app";
+        $this->merchantAccountId = $merchantAccountId;
     }
 
     public function setGr4vyId($gr4vyId)
@@ -39,6 +41,17 @@ class Gr4vyConfig
     public function getGr4vyId()
     {
         return $this->$gr4vyId;
+    }
+
+    public function setMerchantAccountId($merchantAccountId)
+    {
+        $this->merchantAccountId = $merchantAccountId;
+        return $this;
+    }
+
+    public function getMerchantAccountId()
+    {
+        return $this->$merchantAccountId;
     }
 
     public function setPrivateKeyLocation($privateKeyLocation)
@@ -72,19 +85,6 @@ class Gr4vyConfig
     public function getDebug()
     {
         return $this->debug;
-    }
-
-    public function getConfig()
-    {
-        $scopes = array("*.read", "*.write");
-        $accessToken = self::getToken($this->privateKeyLocation, $scopes);
-        $config = Gr4vyConfiguration::getDefaultConfiguration()
-            ->setAccessToken($accessToken)
-            ->setHost($this->getHost())
-            ->setUserAgent("Gr4vy SDK PHP")
-            ->setDebug($this->debug);
-
-        return $config;
     }
 
     public function getEmbedToken($embed) {
@@ -181,13 +181,6 @@ class Gr4vyConfig
         $xStr = pack('C*', ...$x_byte_array);
         $yStr = pack('C*', ...$y_byte_array);
 
-        // print_r("====x====\n");
-        // // print_r($x_byte_array . "\n");
-        // var_dump($x_byte_array);
-        // print_r("====y====\n");
-        // // print_r($y_byte_array . "\n");
-        // var_dump($y_byte_array);
-
         $jsonData = array(
                 'crv' => "P-521",//$keyInfo['ec']["curve_name"],
                 'kty' => 'EC',
@@ -199,4 +192,219 @@ class Gr4vyConfig
         $b = hash("SHA256", $data, true);
         return rtrim(str_replace(['+', '/'], ['-', '_'], base64_encode($b)), '=');
     }
+
+    private function get($endpoint, $params = array()) {
+        $query = "";
+        if (count($params) > 0) {
+            $query = http_build_query($params);
+        }
+        $url = $this->host . $endpoint . "?" . $query;
+
+        $scopes = array("*.read", "*.write");
+        $accessToken = self::getToken($this->privateKeyLocation, $scopes);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Authorization: Bearer ' . $accessToken,
+                'Content-Type:application/json',
+                "X-GR4VY-MERCHANT-ACCOUNT-ID:" . $this->merchantAccountId
+            )
+        );
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $responseData = curl_exec($ch);
+        if(curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        return json_decode($responseData, true);
+    }
+
+    private function post($endpoint, $data) {
+        $url = $this->host . $endpoint;
+
+        $scopes = array("*.read", "*.write");
+        $accessToken = self::getToken($this->privateKeyLocation, $scopes);
+
+        $payload = json_encode($data);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Authorization: Bearer ' . $accessToken,
+                'Content-Type:application/json',
+                "X-GR4VY-MERCHANT-ACCOUNT-ID:" . $this->merchantAccountId
+            )
+        );
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $responseData = curl_exec($ch);
+        if(curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        return json_decode($responseData, true);
+    }
+
+    private function put($endpoint, $data) {
+        $url = $this->host . $endpoint;
+
+        $scopes = array("*.read", "*.write");
+        $accessToken = self::getToken($this->privateKeyLocation, $scopes);
+
+        $payload = json_encode($data);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Authorization: Bearer ' . $accessToken,
+                'Content-Type:application/json',
+                "X-GR4VY-MERCHANT-ACCOUNT-ID:" . $this->merchantAccountId
+            )
+        );
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $responseData = curl_exec($ch);
+        if(curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        return json_decode($responseData, true);
+    }
+
+    private function delete($endpoint) {
+        $url = $this->host . $endpoint;
+        $scopes = array("*.read", "*.write");
+        $accessToken = self::getToken($this->privateKeyLocation, $scopes);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Authorization: Bearer ' . $accessToken,
+                'Content-Type:application/json',
+                "X-GR4VY-MERCHANT-ACCOUNT-ID:" . $this->merchantAccountId
+            )
+        );
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $responseData = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if(curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        if ($httpcode === 204) {
+            return array("success"=>true);    
+        }
+        return json_decode($responseData, true);
+    }
+    
+    public function addBuyer($buyer_request) {
+        $response = $this->post("/buyers", $buyer_request);
+        return $response;
+    }
+    public function getBuyer($buyer_id) {
+        $response = $this->get("/buyers/" . $buyer_id);
+        return $response;
+    }
+    public function updateBuyer($buyer_id, $buyer_request) {
+        $response = $this->put("/buyers/" . $buyer_id, $buyer_request);
+        return $response;
+    }
+    public function listBuyers($params = array()) {
+        $response = $this->get("/buyers", $params);
+        return $response;
+    }
+    public function deleteBuyer($buyer_id) {
+        $response = $this->delete("/buyers/" . $buyer_id);
+        return $response;
+    }
+
+    public function storePaymentMethod($payment_method_request) {
+        $response = $this->post("/payment-methods", $payment_method_request);
+        return $response;
+    }
+    public function getPaymentMethod($payment_method_id) {
+        $response = $this->get("/payment-methods/" . $payment_method_id);
+        return $response;
+    }
+    public function listPaymentMethods($params = array()) {
+        $response = $this->get("/payment-methods", $params);
+        return $response;
+    }
+    public function listBuyerPaymentMethods($buyer_id) {
+        $response = $this->get("/buyers/payment-methods?buyer_id=" . $buyer_id);
+        return $response;
+    }
+    public function deletePaymentMethod($buyer_id) {
+        $response = $this->delete("/payment-methods/" . $buyer_id);
+        return $response;
+    }
+
+    public function listPaymentOptions($params = array()) {
+        $response = $this->get("/payment-options", $params);
+        return $response;
+    }
+    public function postListPaymentOptions($payment_options_request) {
+        $response = $this->post("/payment-options", $payment_options_request);
+        return $response;
+    }
+
+    public function listPaymentServiceDefinitions($params = array()) {
+        $response = $this->get("/payment-service-definitions", $params);
+        return $response;
+    }
+    public function getPaymentServiceDefinition($psd_id) {
+        $response = $this->get("/payment-service-definitions/" . $psd_id);
+        return $response;
+    }
+
+    public function addPaymentService($payment_service_request) {
+        $response = $this->post("/payment-services", $payment_service_request);
+        return $response;
+    }
+    public function getPaymentService($payment_service_id) {
+        $response = $this->get("/payment-services/" . $payment_service_id);
+        return $response;
+    }
+    public function updatePaymentService($payment_service_id, $payment_service_request) {
+        $response = $this->put("/payment-services/" . $payment_service_id, $payment_service_request);
+        return $response;
+    }
+    public function listPaymentServices($params = array()) {
+        $response = $this->get("/payment-services", $params);
+        return $response;
+    }
+    public function deletePaymentService($payment_service_id) {
+        $response = $this->delete("/payment-services/" . $payment_service_id);
+        return $response;
+    }
+    
+    public function authorizeNewTransaction($transaction_request) {
+        $response = $this->post("/transactions", $transaction_request);
+        return $response;
+    }
+    public function getTransaction($transaction_id) {
+        $response = $this->get("/transactions/" . $transaction_id);
+        return $response;
+    }
+    public function captureTransaction($transaction_id, $transaction_request) {
+        $response = $this->post("/transactions/" . $transaction_id . "/capture", $transaction_request);
+        return $response;
+    }
+    public function listTransactions($params = array()) {
+        $response = $this->get("/transactions", $params);
+        return $response;
+    }
+    public function refundTransaction($transaction_id, $refund_request) {
+        $response = $this->post("/transactions/" . $transaction_id . "/refunds", $refund_request);
+        return $response;
+    }
+    
 }

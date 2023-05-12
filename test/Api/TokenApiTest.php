@@ -3,8 +3,6 @@
 namespace Gr4vy\Test\Api;
 
 use \Gr4vy\Gr4vyConfig;
-use \Gr4vy\Api\BuyersApi;
-use \GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
 class TokenApiTest extends TestCase
@@ -68,18 +66,17 @@ class TokenApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $apiInstance = new BuyersApi(new Client(),$config->getConfig());
 
             $buyer_request = array("external_identifier"=>"412231123","display_name"=>"Tester T.");
-            $result = $apiInstance->addBuyer($buyer_request);
+            $result = $config->addBuyer($buyer_request);
             $this->assertArrayHasKey("id", $result);
 
-            $embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> $result->getId());
+            $embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> $result["id"]);
             $embedToken = $config->getEmbedToken($embed);
             $this->assertGreaterThan(0, strlen($embedToken), "Expected length to be greater than 0.");
 
-            $result = $apiInstance->deleteBuyer($result->getId());
-            $this->assertEmpty($result);
+            $result = $config->deleteBuyer($result["id"]);
+            $this->assertArrayHasKey("success", $result);
 
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
