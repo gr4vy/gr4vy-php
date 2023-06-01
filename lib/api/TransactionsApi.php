@@ -2787,7 +2787,7 @@ class TransactionsApi
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
-        $httpBody = '';
+        $httpBody = '{}';
         $multipart = false;
 
 
