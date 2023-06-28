@@ -61,9 +61,9 @@ echo $config->getEmbedToken(
   array(
     "amount"=> 200,
     "currency" => "USD",
-    "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c", 
-    "checkoutSessionId"=> $checkoutSession["id"]
-  )
+    "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c"
+  ), 
+  $checkoutSession["id"]
 );
 ```
 Or, generate a checkout session and Embed Token with a single call:
