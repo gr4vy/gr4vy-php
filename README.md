@@ -94,6 +94,23 @@ $embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> $buyer["id"]);
 $embedToken = $config->getEmbedToken($embed);
 ```
 
+## Checkout Sessions
+
+A checkout session can be used across Embed sessions to track retries or shopping cart updates.  To achieve this the same `checkoutSessionId` can be used in multiple `getEmbedToken` calls.
+
+NOTE: a checkout session is valid for 1h from creation.
+
+```php
+$config->getEmbedToken(
+  array(
+    "amount"=> 200,
+    "currency" => "USD",
+    "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c"
+  ), 
+  $storedCheckoutSessionId
+);
+```
+
 ## Initialization
 
 The client can be initialized with the Gr4vy ID (`gr4vyId`) and the private key.
