@@ -92,6 +92,13 @@ class Gr4vyConfig
         return self::getToken($this->privateKeyLocation, $scopes, $embed);
     }
 
+    public function getEmbedTokenWithCheckoutSession($embed) {
+        $scopes = array("embed");
+        $checkoutSession = $this->newCheckoutSession();
+        $embed["checkoutSessionId"] = $checkoutSession["id"];
+        return self::getToken($this->privateKeyLocation, $scopes, $embed);
+    }
+
     public static function getToken($private_key, $scopes = array(), $embed = array()) {
 
         $keyVal = getenv("PRIVATE_KEY");
@@ -113,7 +120,7 @@ class Gr4vyConfig
         $now   = new DateTimeImmutable();
         $tokenBuilder = $config->builder()
                 // Configures the issuer (iss claim)
-                ->issuedBy('Gr4vy SDK 0.14.0')
+                ->issuedBy('Gr4vy SDK 0.20.0')
                 // Configures the id (jti claim)
                 ->identifiedBy(self::gen_uuid())
                 // Configures the time that the token was issue (iat claim)
@@ -404,6 +411,11 @@ class Gr4vyConfig
     }
     public function refundTransaction($transaction_id, $refund_request) {
         $response = $this->post("/transactions/" . $transaction_id . "/refunds", $refund_request);
+        return $response;
+    }
+
+    public function newCheckoutSession($request = array()) {
+        $response = $this->post("/checkout/sessions", $request);
         return $response;
     }
     
