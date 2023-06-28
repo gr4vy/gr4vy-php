@@ -61,6 +61,35 @@ class TokenApiTest extends TestCase
         }
     }
 
+    public function testGetEmbedTokenWithCheckoutSessionPassedIn()
+    {
+        try {
+            $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+            $checkoutSession = $config->newCheckoutSession();
+
+            $embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c");
+            $embedToken = $config->getEmbedToken($embed, $checkoutSession["id"]);
+
+            $this->assertGreaterThan(0, strlen($embedToken), "Expected length to be greater than 0.");
+        } catch (Exception $e) {
+            $this->fail("Exception thrown: " . $e->getMessage());
+        }
+    }
+
+    public function testGetEmbedTokenWithCheckoutSession()
+    {
+        try {
+            $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+
+            $embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c");
+            $embedToken = $config->getEmbedTokenWithCheckoutSession($embed);
+
+            $this->assertGreaterThan(0, strlen($embedToken), "Expected length to be greater than 0.");
+        } catch (Exception $e) {
+            $this->fail("Exception thrown: " . $e->getMessage());
+        }
+    }
+
 
     public function testAddBuyerAndEmbed()
     {

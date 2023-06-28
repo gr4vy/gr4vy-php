@@ -51,10 +51,24 @@ $config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation, false, "
 ## Gr4vy Embed
 
 To create a token for Gr4vy Embed, call the `config->getEmbedToken()` function
-with the amount, currency, and optional buyer information for Gr4vy Embed.
+with the amount, currency, optional buyer information and optional checkout session for Gr4vy Embed.
 
 ```php
+//A checkout session allows multiple transaction attempts to be tied together
+$checkoutSession = $config->newCheckoutSession();
+
 echo $config->getEmbedToken(
+  array(
+    "amount"=> 200,
+    "currency" => "USD",
+    "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c"
+  ), 
+  $checkoutSession["id"]
+);
+```
+Or, generate a checkout session and Embed Token with a single call:
+```php
+echo $config->getEmbedTokenWithCheckoutSession(
   array(
     "amount"=> 200,
     "currency" => "USD",
@@ -63,7 +77,7 @@ echo $config->getEmbedToken(
 );
 ```
 
-You can now pass this token to your frontend where it can be used to
+You can now pass this token to your front end where it can be used to
 authenticate Gr4vy Embed.
 
 The `buyerId` and `buyerExternalIdentifier` fields can be used to allow the
@@ -78,6 +92,23 @@ $buyer = $config->addBuyer($buyer_request);
 
 $embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> $buyer["id"]);
 $embedToken = $config->getEmbedToken($embed);
+```
+
+## Checkout Sessions
+
+A checkout session can be used across Embed sessions to track retries or shopping cart updates.  To achieve this the same `checkoutSessionId` can be used in multiple `getEmbedToken` calls.
+
+NOTE: a checkout session is valid for 1h from creation.
+
+```php
+$config->getEmbedToken(
+  array(
+    "amount"=> 200,
+    "currency" => "USD",
+    "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c"
+  ), 
+  $storedCheckoutSessionId
+);
 ```
 
 ## Initialization

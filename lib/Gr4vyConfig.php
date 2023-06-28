@@ -87,12 +87,18 @@ class Gr4vyConfig
         return $this->debug;
     }
 
-    public function getEmbedToken($embed) {
+    public function getEmbedToken($embed, $checkoutSessionId = null) {
         $scopes = array("embed");
-        return self::getToken($this->privateKeyLocation, $scopes, $embed);
+        return self::getToken($this->privateKeyLocation, $scopes, $embed, $checkoutSessionId);
     }
 
-    public static function getToken($private_key, $scopes = array(), $embed = array()) {
+    public function getEmbedTokenWithCheckoutSession($embed) {
+        $scopes = array("embed");
+        $checkoutSession = $this->newCheckoutSession();
+        return self::getToken($this->privateKeyLocation, $scopes, $embed, $checkoutSession["id"]);
+    }
+
+    public static function getToken($private_key, $scopes = array(), $embed = array(), $checkoutSessionId = null) {
 
         $keyVal = getenv("PRIVATE_KEY");
         if (!isset($keyVal) || empty($keyVal)) {
@@ -113,7 +119,7 @@ class Gr4vyConfig
         $now   = new DateTimeImmutable();
         $tokenBuilder = $config->builder()
                 // Configures the issuer (iss claim)
-                ->issuedBy('Gr4vy SDK 0.14.0')
+                ->issuedBy('Gr4vy SDK 0.20.0')
                 // Configures the id (jti claim)
                 ->identifiedBy(self::gen_uuid())
                 // Configures the time that the token was issue (iat claim)
@@ -129,6 +135,10 @@ class Gr4vyConfig
 
         if (isset($embed) && count($embed) > 0) {
             $tokenBuilder = $tokenBuilder->withClaim('embed', $embed);    
+        }
+
+        if (isset($checkoutSessionId)) {
+            $tokenBuilder = $tokenBuilder->withClaim('checkout_session_id', $checkoutSessionId);
         }
 
         return $tokenBuilder->getToken($config->signer(), $config->signingKey())->toString();
@@ -404,6 +414,11 @@ class Gr4vyConfig
     }
     public function refundTransaction($transaction_id, $refund_request) {
         $response = $this->post("/transactions/" . $transaction_id . "/refunds", $refund_request);
+        return $response;
+    }
+
+    public function newCheckoutSession($request = array()) {
+        $response = $this->post("/checkout/sessions", $request);
         return $response;
     }
     
