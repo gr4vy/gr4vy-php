@@ -70,8 +70,6 @@ class TokenApiTest extends TestCase
             $embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c");
             $embedToken = $config->getEmbedToken($embed, $checkoutSession["id"]);
 
-            print_r($embedToken);
-
             $this->assertGreaterThan(0, strlen($embedToken), "Expected length to be greater than 0.");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
@@ -85,8 +83,6 @@ class TokenApiTest extends TestCase
 
             $embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c");
             $embedToken = $config->getEmbedTokenWithCheckoutSession($embed);
-
-            print_r($embedToken);
 
             $this->assertGreaterThan(0, strlen($embedToken), "Expected length to be greater than 0.");
         } catch (Exception $e) {
