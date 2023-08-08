@@ -395,7 +395,6 @@ class Gr4vyConfig
         $response = $this->delete("/payment-services/" . $payment_service_id);
         return $response;
     }
-    
     public function authorizeNewTransaction($transaction_request) {
         $response = $this->post("/transactions", $transaction_request);
         return $response;
@@ -416,10 +415,20 @@ class Gr4vyConfig
         $response = $this->post("/transactions/" . $transaction_id . "/refunds", $refund_request);
         return $response;
     }
-
     public function newCheckoutSession($request = array()) {
         $response = $this->post("/checkout/sessions", $request);
         return $response;
     }
-    
+    public function updateCheckoutSession($request = array()) {
+        $response = $this->put("/checkout/sessions/" . $checkout_session_id, $request);
+        return $response;
+    }
+    public function updateCheckoutSessionFields($request = array()) {
+        $response = $this->put("/checkout/sessions/" . $checkout_session_id . "/fields", $request);
+        return $response;
+    }
+    public function deleteCheckoutSession() {
+        $response = $this->delete("/checkout/sessions/" . $checkout_session_id);
+        return $response;
+    }
 }
