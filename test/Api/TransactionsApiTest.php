@@ -201,4 +201,29 @@ class TransactionsApiTest extends TestCase
             $this->fail("Exception thrown: " . $e->getMessage());
         }
     }
+
+    /**
+     * Test case for voidTransaction
+     *
+     * Void transaction.
+     *
+     */
+    public function testVoidTransaction()
+    {
+
+        try {
+            $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+            $transaction_request = array("amount"=>100,"currency"=>"USD", "intent"=>"authorize", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/28", "security_code"=>"555"));
+            $result = $config->authorizeNewTransaction($transaction_request);
+            $this->assertArrayHasKey("id", $result);
+            $this->assertEquals($result["type"], "transaction");
+
+            $result = $config->voidTransaction($result["id"]);
+            $this->assertArrayHasKey("id", $result);
+            $this->assertEquals($result["status"], "authorization_voided");
+            // print_r($result);
+        } catch (Exception $e) {
+            $this->fail("Exception thrown: " . $e->getMessage());
+        }
+    }
 }

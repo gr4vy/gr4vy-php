@@ -415,6 +415,10 @@ class Gr4vyConfig
         $response = $this->post("/transactions/" . $transaction_id . "/refunds", $refund_request);
         return $response;
     }
+    public function voidTransaction($transaction_id, $request = array()) {
+        $response = $this->post("/transactions/" . $transaction_id . "/void", $request);
+        return $response;
+    }
     public function newCheckoutSession($request = array()) {
         $response = $this->post("/checkout/sessions", $request);
         return $response;
