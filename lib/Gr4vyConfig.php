@@ -119,7 +119,7 @@ class Gr4vyConfig
         $now   = new DateTimeImmutable();
         $tokenBuilder = $config->builder()
                 // Configures the issuer (iss claim)
-                ->issuedBy('Gr4vy SDK 0.20.0')
+                ->issuedBy('Gr4vy SDK 0.21.0')
                 // Configures the id (jti claim)
                 ->identifiedBy(self::gen_uuid())
                 // Configures the time that the token was issue (iat claim)
