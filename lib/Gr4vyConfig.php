@@ -119,7 +119,7 @@ class Gr4vyConfig
         $now   = new DateTimeImmutable();
         $tokenBuilder = $config->builder()
                 // Configures the issuer (iss claim)
-                ->issuedBy('Gr4vy SDK 0.20.0')
+                ->issuedBy('Gr4vy SDK 0.21.0')
                 // Configures the id (jti claim)
                 ->identifiedBy(self::gen_uuid())
                 // Configures the time that the token was issue (iat claim)
@@ -413,6 +413,10 @@ class Gr4vyConfig
     }
     public function refundTransaction($transaction_id, $refund_request) {
         $response = $this->post("/transactions/" . $transaction_id . "/refunds", $refund_request);
+        return $response;
+    }
+    public function voidTransaction($transaction_id, $request = array()) {
+        $response = $this->post("/transactions/" . $transaction_id . "/void", $request);
         return $response;
     }
     public function newCheckoutSession($request = array()) {
