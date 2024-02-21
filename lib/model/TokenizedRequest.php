@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * TokenizedRequest Class Doc Comment
  *
  * @category Class
- * @description Details for a previously tokenized payment method.
+ * @description Details for a previously stored payment method.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -312,7 +312,7 @@ class TokenizedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id A ID that represents a previously tokenized payment method. This token can represent any type of payment method.
+     * @param string $id A ID that represents a previously stored payment method. This ID can represent any type of payment method.
      *
      * @return self
      */
@@ -336,7 +336,7 @@ class TokenizedRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets redirect_url
      *
-     * @param string|null $redirect_url We strongly recommended providing a `redirect_url` for stored cards when 3-D Secure is enabled and `three_d_secure_data` is not provided. This will be appended with both a transaction ID and status (e.g. `https://example.com/callback? gr4vy_transaction_id=123&gr4vy_transaction_status=capture_succeeded`) after 3-D Secure has completed.
+     * @param string|null $redirect_url This value is mandatory for stored redirect payment methods. For stored cards, we strongly recommend providing a `redirect_url` either when 3-D Secure is enabled and `three_d_secure_data` is not provided, or when using connections where 3DS is enabled. This value will be appended with both a transaction ID and status (e.g. `https://example.com/callback?gr4vy_transaction_id=123 &gr4vy_transaction_status=capture_succeeded`) after 3-D Secure has completed. For those cases, if the value is not present, the transaction will be marked as failed.
      *
      * @return self
      */

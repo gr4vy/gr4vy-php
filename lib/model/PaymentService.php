@@ -61,31 +61,25 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'type' => 'string',
-        'payment_service_definition_id' => 'string',
-        'method' => 'string',
-        'display_name' => 'string',
-        'status' => 'string',
-        'accepted_currencies' => 'string[]',
+        'id' => 'string',
         'accepted_countries' => 'string[]',
-        'three_d_secure_enabled' => 'bool',
-        'acquirer_bin_visa' => 'string',
-        'acquirer_bin_mastercard' => 'string',
-        'acquirer_bin_amex' => 'string',
-        'acquirer_bin_discover' => 'string',
-        'acquirer_merchant_id' => 'string',
-        'merchant_name' => 'string',
-        'merchant_country_code' => 'string',
-        'merchant_category_code' => 'string',
-        'merchant_url' => 'string',
+        'accepted_currencies' => 'string[]',
         'active' => 'bool',
-        'position' => 'float',
-        'payment_method_tokenization_enabled' => 'bool',
         'created_at' => '\DateTime',
+        'display_name' => 'string',
+        'fields' => '\Gr4vy\model\GiftCardServiceFieldsInner[]',
+        'merchant_account_id' => 'string',
+        'merchant_profile' => '\Gr4vy\model\PaymentServiceMerchantProfile',
+        'method' => 'string',
+        'network_tokens_enabled' => 'bool',
+        'open_loop' => 'bool',
+        'payment_method_tokenization_enabled' => 'bool',
+        'payment_service_definition_id' => 'string',
+        'status' => 'string',
+        'three_d_secure_enabled' => 'bool',
         'updated_at' => '\DateTime',
-        'webhook_url' => 'string',
-        'fields' => '\Gr4vy\model\PaymentServiceFieldsInner[]'
+        'webhook_url' => 'string'
     ];
 
     /**
@@ -96,31 +90,25 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'uuid',
         'type' => null,
-        'payment_service_definition_id' => null,
-        'method' => null,
-        'display_name' => null,
-        'status' => null,
-        'accepted_currencies' => null,
+        'id' => 'uuid',
         'accepted_countries' => null,
-        'three_d_secure_enabled' => null,
-        'acquirer_bin_visa' => null,
-        'acquirer_bin_mastercard' => null,
-        'acquirer_bin_amex' => null,
-        'acquirer_bin_discover' => null,
-        'acquirer_merchant_id' => null,
-        'merchant_name' => null,
-        'merchant_country_code' => null,
-        'merchant_category_code' => null,
-        'merchant_url' => 'url',
+        'accepted_currencies' => null,
         'active' => null,
-        'position' => null,
-        'payment_method_tokenization_enabled' => null,
         'created_at' => 'date-time',
+        'display_name' => null,
+        'fields' => null,
+        'merchant_account_id' => null,
+        'merchant_profile' => null,
+        'method' => null,
+        'network_tokens_enabled' => null,
+        'open_loop' => null,
+        'payment_method_tokenization_enabled' => null,
+        'payment_service_definition_id' => null,
+        'status' => null,
+        'three_d_secure_enabled' => null,
         'updated_at' => 'date-time',
-        'webhook_url' => 'url',
-        'fields' => null
+        'webhook_url' => 'url'
     ];
 
     /**
@@ -150,31 +138,25 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'type' => 'type',
-        'payment_service_definition_id' => 'payment_service_definition_id',
-        'method' => 'method',
-        'display_name' => 'display_name',
-        'status' => 'status',
-        'accepted_currencies' => 'accepted_currencies',
+        'id' => 'id',
         'accepted_countries' => 'accepted_countries',
-        'three_d_secure_enabled' => 'three_d_secure_enabled',
-        'acquirer_bin_visa' => 'acquirer_bin_visa',
-        'acquirer_bin_mastercard' => 'acquirer_bin_mastercard',
-        'acquirer_bin_amex' => 'acquirer_bin_amex',
-        'acquirer_bin_discover' => 'acquirer_bin_discover',
-        'acquirer_merchant_id' => 'acquirer_merchant_id',
-        'merchant_name' => 'merchant_name',
-        'merchant_country_code' => 'merchant_country_code',
-        'merchant_category_code' => 'merchant_category_code',
-        'merchant_url' => 'merchant_url',
+        'accepted_currencies' => 'accepted_currencies',
         'active' => 'active',
-        'position' => 'position',
-        'payment_method_tokenization_enabled' => 'payment_method_tokenization_enabled',
         'created_at' => 'created_at',
+        'display_name' => 'display_name',
+        'fields' => 'fields',
+        'merchant_account_id' => 'merchant_account_id',
+        'merchant_profile' => 'merchant_profile',
+        'method' => 'method',
+        'network_tokens_enabled' => 'network_tokens_enabled',
+        'open_loop' => 'open_loop',
+        'payment_method_tokenization_enabled' => 'payment_method_tokenization_enabled',
+        'payment_service_definition_id' => 'payment_service_definition_id',
+        'status' => 'status',
+        'three_d_secure_enabled' => 'three_d_secure_enabled',
         'updated_at' => 'updated_at',
-        'webhook_url' => 'webhook_url',
-        'fields' => 'fields'
+        'webhook_url' => 'webhook_url'
     ];
 
     /**
@@ -183,31 +165,25 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'type' => 'setType',
-        'payment_service_definition_id' => 'setPaymentServiceDefinitionId',
-        'method' => 'setMethod',
-        'display_name' => 'setDisplayName',
-        'status' => 'setStatus',
-        'accepted_currencies' => 'setAcceptedCurrencies',
+        'id' => 'setId',
         'accepted_countries' => 'setAcceptedCountries',
-        'three_d_secure_enabled' => 'setThreeDSecureEnabled',
-        'acquirer_bin_visa' => 'setAcquirerBinVisa',
-        'acquirer_bin_mastercard' => 'setAcquirerBinMastercard',
-        'acquirer_bin_amex' => 'setAcquirerBinAmex',
-        'acquirer_bin_discover' => 'setAcquirerBinDiscover',
-        'acquirer_merchant_id' => 'setAcquirerMerchantId',
-        'merchant_name' => 'setMerchantName',
-        'merchant_country_code' => 'setMerchantCountryCode',
-        'merchant_category_code' => 'setMerchantCategoryCode',
-        'merchant_url' => 'setMerchantUrl',
+        'accepted_currencies' => 'setAcceptedCurrencies',
         'active' => 'setActive',
-        'position' => 'setPosition',
-        'payment_method_tokenization_enabled' => 'setPaymentMethodTokenizationEnabled',
         'created_at' => 'setCreatedAt',
+        'display_name' => 'setDisplayName',
+        'fields' => 'setFields',
+        'merchant_account_id' => 'setMerchantAccountId',
+        'merchant_profile' => 'setMerchantProfile',
+        'method' => 'setMethod',
+        'network_tokens_enabled' => 'setNetworkTokensEnabled',
+        'open_loop' => 'setOpenLoop',
+        'payment_method_tokenization_enabled' => 'setPaymentMethodTokenizationEnabled',
+        'payment_service_definition_id' => 'setPaymentServiceDefinitionId',
+        'status' => 'setStatus',
+        'three_d_secure_enabled' => 'setThreeDSecureEnabled',
         'updated_at' => 'setUpdatedAt',
-        'webhook_url' => 'setWebhookUrl',
-        'fields' => 'setFields'
+        'webhook_url' => 'setWebhookUrl'
     ];
 
     /**
@@ -216,31 +192,25 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'type' => 'getType',
-        'payment_service_definition_id' => 'getPaymentServiceDefinitionId',
-        'method' => 'getMethod',
-        'display_name' => 'getDisplayName',
-        'status' => 'getStatus',
-        'accepted_currencies' => 'getAcceptedCurrencies',
+        'id' => 'getId',
         'accepted_countries' => 'getAcceptedCountries',
-        'three_d_secure_enabled' => 'getThreeDSecureEnabled',
-        'acquirer_bin_visa' => 'getAcquirerBinVisa',
-        'acquirer_bin_mastercard' => 'getAcquirerBinMastercard',
-        'acquirer_bin_amex' => 'getAcquirerBinAmex',
-        'acquirer_bin_discover' => 'getAcquirerBinDiscover',
-        'acquirer_merchant_id' => 'getAcquirerMerchantId',
-        'merchant_name' => 'getMerchantName',
-        'merchant_country_code' => 'getMerchantCountryCode',
-        'merchant_category_code' => 'getMerchantCategoryCode',
-        'merchant_url' => 'getMerchantUrl',
+        'accepted_currencies' => 'getAcceptedCurrencies',
         'active' => 'getActive',
-        'position' => 'getPosition',
-        'payment_method_tokenization_enabled' => 'getPaymentMethodTokenizationEnabled',
         'created_at' => 'getCreatedAt',
+        'display_name' => 'getDisplayName',
+        'fields' => 'getFields',
+        'merchant_account_id' => 'getMerchantAccountId',
+        'merchant_profile' => 'getMerchantProfile',
+        'method' => 'getMethod',
+        'network_tokens_enabled' => 'getNetworkTokensEnabled',
+        'open_loop' => 'getOpenLoop',
+        'payment_method_tokenization_enabled' => 'getPaymentMethodTokenizationEnabled',
+        'payment_service_definition_id' => 'getPaymentServiceDefinitionId',
+        'status' => 'getStatus',
+        'three_d_secure_enabled' => 'getThreeDSecureEnabled',
         'updated_at' => 'getUpdatedAt',
-        'webhook_url' => 'getWebhookUrl',
-        'fields' => 'getFields'
+        'webhook_url' => 'getWebhookUrl'
     ];
 
     /**
@@ -285,6 +255,67 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     public const TYPE_PAYMENT_SERVICE = 'payment-service';
+    public const METHOD_AFTERPAY = 'afterpay';
+    public const METHOD_ALIPAY = 'alipay';
+    public const METHOD_ALIPAYHK = 'alipayhk';
+    public const METHOD_APPLEPAY = 'applepay';
+    public const METHOD_BACS = 'bacs';
+    public const METHOD_BANCONTACT = 'bancontact';
+    public const METHOD_BANKED = 'banked';
+    public const METHOD_BECS = 'becs';
+    public const METHOD_BITPAY = 'bitpay';
+    public const METHOD_BOLETO = 'boleto';
+    public const METHOD_BOOST = 'boost';
+    public const METHOD_CARD = 'card';
+    public const METHOD_CHECKOUT_SESSION = 'checkout-session';
+    public const METHOD_CLICK_TO_PAY = 'click-to-pay';
+    public const METHOD_CLEARPAY = 'clearpay';
+    public const METHOD_DANA = 'dana';
+    public const METHOD_DCB = 'dcb';
+    public const METHOD_EPS = 'eps';
+    public const METHOD_FORTUMO = 'fortumo';
+    public const METHOD_GCASH = 'gcash';
+    public const METHOD_GIROPAY = 'giropay';
+    public const METHOD_GOCARDLESS = 'gocardless';
+    public const METHOD_GOOGLEPAY = 'googlepay';
+    public const METHOD_GOPAY = 'gopay';
+    public const METHOD_GRABPAY = 'grabpay';
+    public const METHOD_IDEAL = 'ideal';
+    public const METHOD_ID = 'id';
+    public const METHOD_KAKAOPAY = 'kakaopay';
+    public const METHOD_KLARNA = 'klarna';
+    public const METHOD_LAYBUY = 'laybuy';
+    public const METHOD_LINEPAY = 'linepay';
+    public const METHOD_LINKAJA = 'linkaja';
+    public const METHOD_MAYBANKQRPAY = 'maybankqrpay';
+    public const METHOD_MULTIBANCO = 'multibanco';
+    public const METHOD_ONEY_3X = 'oney_3x';
+    public const METHOD_ONEY_4X = 'oney_4x';
+    public const METHOD_ONEY_6X = 'oney_6x';
+    public const METHOD_ONEY_10X = 'oney_10x';
+    public const METHOD_ONEY_12X = 'oney_12x';
+    public const METHOD_OVO = 'ovo';
+    public const METHOD_OXXO = 'oxxo';
+    public const METHOD_PAYMAYA = 'paymaya';
+    public const METHOD_PAYPAL = 'paypal';
+    public const METHOD_PAYPALPAYLATER = 'paypalpaylater';
+    public const METHOD_PIX = 'pix';
+    public const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    public const METHOD_RAZORPAY = 'razorpay';
+    public const METHOD_SCALAPAY = 'scalapay';
+    public const METHOD_SEPA = 'sepa';
+    public const METHOD_SHOPEEPAY = 'shopeepay';
+    public const METHOD_SINGTELDASH = 'singteldash';
+    public const METHOD_SOFORT = 'sofort';
+    public const METHOD_STRIPEDD = 'stripedd';
+    public const METHOD_THAIQR = 'thaiqr';
+    public const METHOD_TOUCHNGO = 'touchngo';
+    public const METHOD_TRUEMONEY = 'truemoney';
+    public const METHOD_TRUSTLY = 'trustly';
+    public const METHOD_VENMO = 'venmo';
+    public const METHOD_WAAVE = 'waave';
+    public const METHOD_WECHAT = 'wechat';
+    public const METHOD_ZIPPAY = 'zippay';
     public const STATUS_PENDING = 'pending';
     public const STATUS_CREATED = 'created';
     public const STATUS_FAILED = 'failed';
@@ -298,6 +329,78 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::TYPE_PAYMENT_SERVICE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_AFTERPAY,
+            self::METHOD_ALIPAY,
+            self::METHOD_ALIPAYHK,
+            self::METHOD_APPLEPAY,
+            self::METHOD_BACS,
+            self::METHOD_BANCONTACT,
+            self::METHOD_BANKED,
+            self::METHOD_BECS,
+            self::METHOD_BITPAY,
+            self::METHOD_BOLETO,
+            self::METHOD_BOOST,
+            self::METHOD_CARD,
+            self::METHOD_CHECKOUT_SESSION,
+            self::METHOD_CLICK_TO_PAY,
+            self::METHOD_CLEARPAY,
+            self::METHOD_DANA,
+            self::METHOD_DCB,
+            self::METHOD_EPS,
+            self::METHOD_FORTUMO,
+            self::METHOD_GCASH,
+            self::METHOD_GIROPAY,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_GOPAY,
+            self::METHOD_GRABPAY,
+            self::METHOD_IDEAL,
+            self::METHOD_ID,
+            self::METHOD_KAKAOPAY,
+            self::METHOD_KLARNA,
+            self::METHOD_LAYBUY,
+            self::METHOD_LINEPAY,
+            self::METHOD_LINKAJA,
+            self::METHOD_MAYBANKQRPAY,
+            self::METHOD_MULTIBANCO,
+            self::METHOD_ONEY_3X,
+            self::METHOD_ONEY_4X,
+            self::METHOD_ONEY_6X,
+            self::METHOD_ONEY_10X,
+            self::METHOD_ONEY_12X,
+            self::METHOD_OVO,
+            self::METHOD_OXXO,
+            self::METHOD_PAYMAYA,
+            self::METHOD_PAYPAL,
+            self::METHOD_PAYPALPAYLATER,
+            self::METHOD_PIX,
+            self::METHOD_RABBITLINEPAY,
+            self::METHOD_RAZORPAY,
+            self::METHOD_SCALAPAY,
+            self::METHOD_SEPA,
+            self::METHOD_SHOPEEPAY,
+            self::METHOD_SINGTELDASH,
+            self::METHOD_SOFORT,
+            self::METHOD_STRIPEDD,
+            self::METHOD_THAIQR,
+            self::METHOD_TOUCHNGO,
+            self::METHOD_TRUEMONEY,
+            self::METHOD_TRUSTLY,
+            self::METHOD_VENMO,
+            self::METHOD_WAAVE,
+            self::METHOD_WECHAT,
+            self::METHOD_ZIPPAY,
         ];
     }
 
@@ -330,31 +433,25 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['payment_service_definition_id'] = $data['payment_service_definition_id'] ?? null;
-        $this->container['method'] = $data['method'] ?? null;
-        $this->container['display_name'] = $data['display_name'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['accepted_currencies'] = $data['accepted_currencies'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['accepted_countries'] = $data['accepted_countries'] ?? null;
-        $this->container['three_d_secure_enabled'] = $data['three_d_secure_enabled'] ?? false;
-        $this->container['acquirer_bin_visa'] = $data['acquirer_bin_visa'] ?? null;
-        $this->container['acquirer_bin_mastercard'] = $data['acquirer_bin_mastercard'] ?? null;
-        $this->container['acquirer_bin_amex'] = $data['acquirer_bin_amex'] ?? null;
-        $this->container['acquirer_bin_discover'] = $data['acquirer_bin_discover'] ?? null;
-        $this->container['acquirer_merchant_id'] = $data['acquirer_merchant_id'] ?? null;
-        $this->container['merchant_name'] = $data['merchant_name'] ?? null;
-        $this->container['merchant_country_code'] = $data['merchant_country_code'] ?? null;
-        $this->container['merchant_category_code'] = $data['merchant_category_code'] ?? null;
-        $this->container['merchant_url'] = $data['merchant_url'] ?? null;
+        $this->container['accepted_currencies'] = $data['accepted_currencies'] ?? null;
         $this->container['active'] = $data['active'] ?? true;
-        $this->container['position'] = $data['position'] ?? null;
-        $this->container['payment_method_tokenization_enabled'] = $data['payment_method_tokenization_enabled'] ?? false;
         $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['fields'] = $data['fields'] ?? null;
+        $this->container['merchant_account_id'] = $data['merchant_account_id'] ?? null;
+        $this->container['merchant_profile'] = $data['merchant_profile'] ?? null;
+        $this->container['method'] = $data['method'] ?? null;
+        $this->container['network_tokens_enabled'] = $data['network_tokens_enabled'] ?? null;
+        $this->container['open_loop'] = $data['open_loop'] ?? null;
+        $this->container['payment_method_tokenization_enabled'] = $data['payment_method_tokenization_enabled'] ?? false;
+        $this->container['payment_service_definition_id'] = $data['payment_service_definition_id'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['three_d_secure_enabled'] = $data['three_d_secure_enabled'] ?? false;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['webhook_url'] = $data['webhook_url'] ?? null;
-        $this->container['fields'] = $data['fields'] ?? null;
     }
 
     /**
@@ -366,6 +463,15 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 200)) {
             $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 200.";
         }
@@ -374,11 +480,27 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
         }
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if (!is_null($this->container['accepted_countries']) && (count($this->container['accepted_countries']) < 1)) {
+            $invalidProperties[] = "invalid value for 'accepted_countries', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['accepted_currencies']) && (count($this->container['accepted_currencies']) < 1)) {
+            $invalidProperties[] = "invalid value for 'accepted_currencies', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) > 200)) {
+            $invalidProperties[] = "invalid value for 'display_name', the character length must be smaller than or equal to 200.";
+        }
+
+        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'display_name', the character length must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
                 implode("', '", $allowedValues)
             );
         }
@@ -391,14 +513,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'payment_service_definition_id', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) > 200)) {
-            $invalidProperties[] = "invalid value for 'display_name', the character length must be smaller than or equal to 200.";
-        }
-
-        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'display_name', the character length must be bigger than or equal to 1.";
-        }
-
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -406,54 +520,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['status'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        if (!is_null($this->container['accepted_currencies']) && (count($this->container['accepted_currencies']) < 1)) {
-            $invalidProperties[] = "invalid value for 'accepted_currencies', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['accepted_countries']) && (count($this->container['accepted_countries']) < 1)) {
-            $invalidProperties[] = "invalid value for 'accepted_countries', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['acquirer_bin_visa']) && (mb_strlen($this->container['acquirer_bin_visa']) > 11)) {
-            $invalidProperties[] = "invalid value for 'acquirer_bin_visa', the character length must be smaller than or equal to 11.";
-        }
-
-        if (!is_null($this->container['acquirer_bin_mastercard']) && (mb_strlen($this->container['acquirer_bin_mastercard']) > 11)) {
-            $invalidProperties[] = "invalid value for 'acquirer_bin_mastercard', the character length must be smaller than or equal to 11.";
-        }
-
-        if (!is_null($this->container['acquirer_bin_amex']) && (mb_strlen($this->container['acquirer_bin_amex']) > 11)) {
-            $invalidProperties[] = "invalid value for 'acquirer_bin_amex', the character length must be smaller than or equal to 11.";
-        }
-
-        if (!is_null($this->container['acquirer_bin_discover']) && (mb_strlen($this->container['acquirer_bin_discover']) > 11)) {
-            $invalidProperties[] = "invalid value for 'acquirer_bin_discover', the character length must be smaller than or equal to 11.";
-        }
-
-        if (!is_null($this->container['acquirer_merchant_id']) && (mb_strlen($this->container['acquirer_merchant_id']) > 35)) {
-            $invalidProperties[] = "invalid value for 'acquirer_merchant_id', the character length must be smaller than or equal to 35.";
-        }
-
-        if (!is_null($this->container['merchant_name']) && (mb_strlen($this->container['merchant_name']) > 40)) {
-            $invalidProperties[] = "invalid value for 'merchant_name', the character length must be smaller than or equal to 40.";
-        }
-
-        if (!is_null($this->container['merchant_country_code']) && !preg_match("/^\\d{3}$/", $this->container['merchant_country_code'])) {
-            $invalidProperties[] = "invalid value for 'merchant_country_code', must be conform to the pattern /^\\d{3}$/.";
-        }
-
-        if (!is_null($this->container['merchant_category_code']) && (mb_strlen($this->container['merchant_category_code']) > 4)) {
-            $invalidProperties[] = "invalid value for 'merchant_category_code', the character length must be smaller than or equal to 4.";
-        }
-
-        if (!is_null($this->container['merchant_category_code']) && (mb_strlen($this->container['merchant_category_code']) < 4)) {
-            $invalidProperties[] = "invalid value for 'merchant_category_code', the character length must be bigger than or equal to 4.";
-        }
-
-        if (!is_null($this->container['merchant_url']) && (mb_strlen($this->container['merchant_url']) > 2048)) {
-            $invalidProperties[] = "invalid value for 'merchant_url', the character length must be smaller than or equal to 2048.";
         }
 
         return $invalidProperties;
@@ -470,37 +536,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id The ID of this payment service.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (!is_null($id) && (mb_strlen($id) > 200)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling PaymentService., must be smaller than or equal to 200.');
-        }
-        if (!is_null($id) && (mb_strlen($id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling PaymentService., must be bigger than or equal to 1.');
-        }
-
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets type
@@ -537,56 +572,138 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets payment_service_definition_id
+     * Gets id
      *
      * @return string|null
      */
-    public function getPaymentServiceDefinitionId()
+    public function getId()
     {
-        return $this->container['payment_service_definition_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets payment_service_definition_id
+     * Sets id
      *
-     * @param string|null $payment_service_definition_id The ID of the payment service definition used to create this service.
+     * @param string|null $id The ID of this payment service.
      *
      * @return self
      */
-    public function setPaymentServiceDefinitionId($payment_service_definition_id)
+    public function setId($id)
     {
-        if (!is_null($payment_service_definition_id) && (mb_strlen($payment_service_definition_id) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $payment_service_definition_id when calling PaymentService., must be smaller than or equal to 50.');
+        if (!is_null($id) && (mb_strlen($id) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling PaymentService., must be smaller than or equal to 200.');
         }
-        if (!is_null($payment_service_definition_id) && (mb_strlen($payment_service_definition_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $payment_service_definition_id when calling PaymentService., must be bigger than or equal to 1.');
+        if (!is_null($id) && (mb_strlen($id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling PaymentService., must be bigger than or equal to 1.');
         }
 
-        $this->container['payment_service_definition_id'] = $payment_service_definition_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets method
+     * Gets accepted_countries
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getMethod()
+    public function getAcceptedCountries()
     {
-        return $this->container['method'];
+        return $this->container['accepted_countries'];
     }
 
     /**
-     * Sets method
+     * Sets accepted_countries
      *
-     * @param string|null $method method
+     * @param string[]|null $accepted_countries A list of countries for which this service is enabled, in ISO two-letter code format.
      *
      * @return self
      */
-    public function setMethod($method)
+    public function setAcceptedCountries($accepted_countries)
     {
-        $this->container['method'] = $method;
+
+
+        if (!is_null($accepted_countries) && (count($accepted_countries) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $accepted_countries when calling PaymentService., number of items must be greater than or equal to 1.');
+        }
+        $this->container['accepted_countries'] = $accepted_countries;
+
+        return $this;
+    }
+
+    /**
+     * Gets accepted_currencies
+     *
+     * @return string[]|null
+     */
+    public function getAcceptedCurrencies()
+    {
+        return $this->container['accepted_currencies'];
+    }
+
+    /**
+     * Sets accepted_currencies
+     *
+     * @param string[]|null $accepted_currencies A list of currencies for which this service is enabled, in ISO 4217 three-letter code format.
+     *
+     * @return self
+     */
+    public function setAcceptedCurrencies($accepted_currencies)
+    {
+
+
+        if (!is_null($accepted_currencies) && (count($accepted_currencies) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $accepted_currencies when calling PaymentService., number of items must be greater than or equal to 1.');
+        }
+        $this->container['accepted_currencies'] = $accepted_currencies;
+
+        return $this;
+    }
+
+    /**
+     * Gets active
+     *
+     * @return bool|null
+     */
+    public function getActive()
+    {
+        return $this->container['active'];
+    }
+
+    /**
+     * Sets active
+     *
+     * @param bool|null $active Defines if this service is currently active or not.
+     *
+     * @return self
+     */
+    public function setActive($active)
+    {
+        $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at The date and time when this service was created.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -618,6 +735,215 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets fields
+     *
+     * @return \Gr4vy\model\GiftCardServiceFieldsInner[]|null
+     */
+    public function getFields()
+    {
+        return $this->container['fields'];
+    }
+
+    /**
+     * Sets fields
+     *
+     * @param \Gr4vy\model\GiftCardServiceFieldsInner[]|null $fields A list of fields, each containing a key-value pair for each field configured for this payment service. Fields marked as `secret` (see Payment Service Definition) are not returned.
+     *
+     * @return self
+     */
+    public function setFields($fields)
+    {
+        $this->container['fields'] = $fields;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_account_id
+     *
+     * @return string|null
+     */
+    public function getMerchantAccountId()
+    {
+        return $this->container['merchant_account_id'];
+    }
+
+    /**
+     * Sets merchant_account_id
+     *
+     * @param string|null $merchant_account_id The unique ID for a merchant account.
+     *
+     * @return self
+     */
+    public function setMerchantAccountId($merchant_account_id)
+    {
+        $this->container['merchant_account_id'] = $merchant_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_profile
+     *
+     * @return \Gr4vy\model\PaymentServiceMerchantProfile|null
+     */
+    public function getMerchantProfile()
+    {
+        return $this->container['merchant_profile'];
+    }
+
+    /**
+     * Sets merchant_profile
+     *
+     * @param \Gr4vy\model\PaymentServiceMerchantProfile|null $merchant_profile merchant_profile
+     *
+     * @return self
+     */
+    public function setMerchantProfile($merchant_profile)
+    {
+        $this->container['merchant_profile'] = $merchant_profile;
+
+        return $this;
+    }
+
+    /**
+     * Gets method
+     *
+     * @return string|null
+     */
+    public function getMethod()
+    {
+        return $this->container['method'];
+    }
+
+    /**
+     * Sets method
+     *
+     * @param string|null $method The payment method that this service handles.
+     *
+     * @return self
+     */
+    public function setMethod($method)
+    {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($method) && !in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets network_tokens_enabled
+     *
+     * @return bool|null
+     */
+    public function getNetworkTokensEnabled()
+    {
+        return $this->container['network_tokens_enabled'];
+    }
+
+    /**
+     * Sets network_tokens_enabled
+     *
+     * @param bool|null $network_tokens_enabled Defines if network tokens are enabled for the service. This feature can only be enabled if the payment service is set as `open_loop` and the PSP is set up to accept network tokens.
+     *
+     * @return self
+     */
+    public function setNetworkTokensEnabled($network_tokens_enabled)
+    {
+        $this->container['network_tokens_enabled'] = $network_tokens_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets open_loop
+     *
+     * @return bool|null
+     */
+    public function getOpenLoop()
+    {
+        return $this->container['open_loop'];
+    }
+
+    /**
+     * Sets open_loop
+     *
+     * @param bool|null $open_loop Defines if the service works as an open-loop service. This feature can only be enabled if the PSP is set up to accept previous scheme transaction IDs.
+     *
+     * @return self
+     */
+    public function setOpenLoop($open_loop)
+    {
+        $this->container['open_loop'] = $open_loop;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_method_tokenization_enabled
+     *
+     * @return bool|null
+     */
+    public function getPaymentMethodTokenizationEnabled()
+    {
+        return $this->container['payment_method_tokenization_enabled'];
+    }
+
+    /**
+     * Sets payment_method_tokenization_enabled
+     *
+     * @param bool|null $payment_method_tokenization_enabled Defines if tokenization is enabled for the service. This feature can only be enabled if the payment service is NOT set as `open_loop` and the PSP is set up to tokenize.
+     *
+     * @return self
+     */
+    public function setPaymentMethodTokenizationEnabled($payment_method_tokenization_enabled)
+    {
+        $this->container['payment_method_tokenization_enabled'] = $payment_method_tokenization_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_service_definition_id
+     *
+     * @return string|null
+     */
+    public function getPaymentServiceDefinitionId()
+    {
+        return $this->container['payment_service_definition_id'];
+    }
+
+    /**
+     * Sets payment_service_definition_id
+     *
+     * @param string|null $payment_service_definition_id The ID of the payment service definition used to create this service.
+     *
+     * @return self
+     */
+    public function setPaymentServiceDefinitionId($payment_service_definition_id)
+    {
+        if (!is_null($payment_service_definition_id) && (mb_strlen($payment_service_definition_id) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $payment_service_definition_id when calling PaymentService., must be smaller than or equal to 50.');
+        }
+        if (!is_null($payment_service_definition_id) && (mb_strlen($payment_service_definition_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $payment_service_definition_id when calling PaymentService., must be bigger than or equal to 1.');
+        }
+
+        $this->container['payment_service_definition_id'] = $payment_service_definition_id;
 
         return $this;
     }
@@ -657,64 +983,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets accepted_currencies
-     *
-     * @return string[]|null
-     */
-    public function getAcceptedCurrencies()
-    {
-        return $this->container['accepted_currencies'];
-    }
-
-    /**
-     * Sets accepted_currencies
-     *
-     * @param string[]|null $accepted_currencies A list of currencies for which this service is enabled, in ISO 4217 three-letter code format.
-     *
-     * @return self
-     */
-    public function setAcceptedCurrencies($accepted_currencies)
-    {
-
-
-        if (!is_null($accepted_currencies) && (count($accepted_currencies) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $accepted_currencies when calling PaymentService., number of items must be greater than or equal to 1.');
-        }
-        $this->container['accepted_currencies'] = $accepted_currencies;
-
-        return $this;
-    }
-
-    /**
-     * Gets accepted_countries
-     *
-     * @return string[]|null
-     */
-    public function getAcceptedCountries()
-    {
-        return $this->container['accepted_countries'];
-    }
-
-    /**
-     * Sets accepted_countries
-     *
-     * @param string[]|null $accepted_countries A list of countries for which this service is enabled, in ISO two-letter code format.
-     *
-     * @return self
-     */
-    public function setAcceptedCountries($accepted_countries)
-    {
-
-
-        if (!is_null($accepted_countries) && (count($accepted_countries) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $accepted_countries when calling PaymentService., number of items must be greater than or equal to 1.');
-        }
-        $this->container['accepted_countries'] = $accepted_countries;
-
-        return $this;
-    }
-
-    /**
      * Gets three_d_secure_enabled
      *
      * @return bool|null
@@ -734,358 +1002,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setThreeDSecureEnabled($three_d_secure_enabled)
     {
         $this->container['three_d_secure_enabled'] = $three_d_secure_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets acquirer_bin_visa
-     *
-     * @return string|null
-     */
-    public function getAcquirerBinVisa()
-    {
-        return $this->container['acquirer_bin_visa'];
-    }
-
-    /**
-     * Sets acquirer_bin_visa
-     *
-     * @param string|null $acquirer_bin_visa Acquiring institution identification code for VISA.
-     *
-     * @return self
-     */
-    public function setAcquirerBinVisa($acquirer_bin_visa)
-    {
-        if (!is_null($acquirer_bin_visa) && (mb_strlen($acquirer_bin_visa) > 11)) {
-            throw new \InvalidArgumentException('invalid length for $acquirer_bin_visa when calling PaymentService., must be smaller than or equal to 11.');
-        }
-
-        $this->container['acquirer_bin_visa'] = $acquirer_bin_visa;
-
-        return $this;
-    }
-
-    /**
-     * Gets acquirer_bin_mastercard
-     *
-     * @return string|null
-     */
-    public function getAcquirerBinMastercard()
-    {
-        return $this->container['acquirer_bin_mastercard'];
-    }
-
-    /**
-     * Sets acquirer_bin_mastercard
-     *
-     * @param string|null $acquirer_bin_mastercard Acquiring institution identification code for Mastercard.
-     *
-     * @return self
-     */
-    public function setAcquirerBinMastercard($acquirer_bin_mastercard)
-    {
-        if (!is_null($acquirer_bin_mastercard) && (mb_strlen($acquirer_bin_mastercard) > 11)) {
-            throw new \InvalidArgumentException('invalid length for $acquirer_bin_mastercard when calling PaymentService., must be smaller than or equal to 11.');
-        }
-
-        $this->container['acquirer_bin_mastercard'] = $acquirer_bin_mastercard;
-
-        return $this;
-    }
-
-    /**
-     * Gets acquirer_bin_amex
-     *
-     * @return string|null
-     */
-    public function getAcquirerBinAmex()
-    {
-        return $this->container['acquirer_bin_amex'];
-    }
-
-    /**
-     * Sets acquirer_bin_amex
-     *
-     * @param string|null $acquirer_bin_amex Acquiring institution identification code for Amex.
-     *
-     * @return self
-     */
-    public function setAcquirerBinAmex($acquirer_bin_amex)
-    {
-        if (!is_null($acquirer_bin_amex) && (mb_strlen($acquirer_bin_amex) > 11)) {
-            throw new \InvalidArgumentException('invalid length for $acquirer_bin_amex when calling PaymentService., must be smaller than or equal to 11.');
-        }
-
-        $this->container['acquirer_bin_amex'] = $acquirer_bin_amex;
-
-        return $this;
-    }
-
-    /**
-     * Gets acquirer_bin_discover
-     *
-     * @return string|null
-     */
-    public function getAcquirerBinDiscover()
-    {
-        return $this->container['acquirer_bin_discover'];
-    }
-
-    /**
-     * Sets acquirer_bin_discover
-     *
-     * @param string|null $acquirer_bin_discover Acquiring institution identification code for Discover.
-     *
-     * @return self
-     */
-    public function setAcquirerBinDiscover($acquirer_bin_discover)
-    {
-        if (!is_null($acquirer_bin_discover) && (mb_strlen($acquirer_bin_discover) > 11)) {
-            throw new \InvalidArgumentException('invalid length for $acquirer_bin_discover when calling PaymentService., must be smaller than or equal to 11.');
-        }
-
-        $this->container['acquirer_bin_discover'] = $acquirer_bin_discover;
-
-        return $this;
-    }
-
-    /**
-     * Gets acquirer_merchant_id
-     *
-     * @return string|null
-     */
-    public function getAcquirerMerchantId()
-    {
-        return $this->container['acquirer_merchant_id'];
-    }
-
-    /**
-     * Sets acquirer_merchant_id
-     *
-     * @param string|null $acquirer_merchant_id Merchant identifier used in authorisation requests (assigned by the acquirer).
-     *
-     * @return self
-     */
-    public function setAcquirerMerchantId($acquirer_merchant_id)
-    {
-        if (!is_null($acquirer_merchant_id) && (mb_strlen($acquirer_merchant_id) > 35)) {
-            throw new \InvalidArgumentException('invalid length for $acquirer_merchant_id when calling PaymentService., must be smaller than or equal to 35.');
-        }
-
-        $this->container['acquirer_merchant_id'] = $acquirer_merchant_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets merchant_name
-     *
-     * @return string|null
-     */
-    public function getMerchantName()
-    {
-        return $this->container['merchant_name'];
-    }
-
-    /**
-     * Sets merchant_name
-     *
-     * @param string|null $merchant_name Merchant name (assigned by the acquirer).
-     *
-     * @return self
-     */
-    public function setMerchantName($merchant_name)
-    {
-        if (!is_null($merchant_name) && (mb_strlen($merchant_name) > 40)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_name when calling PaymentService., must be smaller than or equal to 40.');
-        }
-
-        $this->container['merchant_name'] = $merchant_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets merchant_country_code
-     *
-     * @return string|null
-     */
-    public function getMerchantCountryCode()
-    {
-        return $this->container['merchant_country_code'];
-    }
-
-    /**
-     * Sets merchant_country_code
-     *
-     * @param string|null $merchant_country_code ISO 3166-1 numeric three-digit country code.
-     *
-     * @return self
-     */
-    public function setMerchantCountryCode($merchant_country_code)
-    {
-
-        if (!is_null($merchant_country_code) && (!preg_match("/^\\d{3}$/", $merchant_country_code))) {
-            throw new \InvalidArgumentException("invalid value for $merchant_country_code when calling PaymentService., must conform to the pattern /^\\d{3}$/.");
-        }
-
-        $this->container['merchant_country_code'] = $merchant_country_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets merchant_category_code
-     *
-     * @return string|null
-     */
-    public function getMerchantCategoryCode()
-    {
-        return $this->container['merchant_category_code'];
-    }
-
-    /**
-     * Sets merchant_category_code
-     *
-     * @param string|null $merchant_category_code Merchant category code that describes the business.
-     *
-     * @return self
-     */
-    public function setMerchantCategoryCode($merchant_category_code)
-    {
-        if (!is_null($merchant_category_code) && (mb_strlen($merchant_category_code) > 4)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_category_code when calling PaymentService., must be smaller than or equal to 4.');
-        }
-        if (!is_null($merchant_category_code) && (mb_strlen($merchant_category_code) < 4)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_category_code when calling PaymentService., must be bigger than or equal to 4.');
-        }
-
-        $this->container['merchant_category_code'] = $merchant_category_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets merchant_url
-     *
-     * @return string|null
-     */
-    public function getMerchantUrl()
-    {
-        return $this->container['merchant_url'];
-    }
-
-    /**
-     * Sets merchant_url
-     *
-     * @param string|null $merchant_url Fully qualified URL of 3-D Secure requestor website or customer care site.
-     *
-     * @return self
-     */
-    public function setMerchantUrl($merchant_url)
-    {
-        if (!is_null($merchant_url) && (mb_strlen($merchant_url) > 2048)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_url when calling PaymentService., must be smaller than or equal to 2048.');
-        }
-
-        $this->container['merchant_url'] = $merchant_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets active
-     *
-     * @return bool|null
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool|null $active Defines if this service is currently active or not.
-     *
-     * @return self
-     */
-    public function setActive($active)
-    {
-        $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
-     * Gets position
-     *
-     * @return float|null
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param float|null $position The numeric rank of a payment service. Payment services with a lower position value are processed first.
-     *
-     * @return self
-     */
-    public function setPosition($position)
-    {
-        $this->container['position'] = $position;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_method_tokenization_enabled
-     *
-     * @return bool|null
-     */
-    public function getPaymentMethodTokenizationEnabled()
-    {
-        return $this->container['payment_method_tokenization_enabled'];
-    }
-
-    /**
-     * Sets payment_method_tokenization_enabled
-     *
-     * @param bool|null $payment_method_tokenization_enabled Defines if tokenization is enabled for the service (can only be enabled if the payment service definition supports it).
-     *
-     * @return self
-     */
-    public function setPaymentMethodTokenizationEnabled($payment_method_tokenization_enabled)
-    {
-        $this->container['payment_method_tokenization_enabled'] = $payment_method_tokenization_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at The date and time when this service was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -1134,30 +1050,6 @@ class PaymentService implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWebhookUrl($webhook_url)
     {
         $this->container['webhook_url'] = $webhook_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets fields
-     *
-     * @return \Gr4vy\model\PaymentServiceFieldsInner[]|null
-     */
-    public function getFields()
-    {
-        return $this->container['fields'];
-    }
-
-    /**
-     * Sets fields
-     *
-     * @param \Gr4vy\model\PaymentServiceFieldsInner[]|null $fields A list of fields, each containing a key-value pair for each field configured for this payment service. Fields marked as `secret` (see Payment Service Definition) are not returned.
-     *
-     * @return self
-     */
-    public function setFields($fields)
-    {
-        $this->container['fields'] = $fields;
 
         return $this;
     }

@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * RedirectRequest Class Doc Comment
  *
  * @category Class
- * @description Request to use a redirect payment method in a transaction.
+ * @description Details to register a new redirect payment method.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -194,6 +194,27 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const METHOD_PAYPAL = 'paypal';
+    public const METHOD_BANKED = 'banked';
+    public const METHOD_BITPAY = 'bitpay';
+    public const METHOD_GOCARDLESS = 'gocardless';
+    public const METHOD_STRIPEDD = 'stripedd';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_PAYPAL,
+            self::METHOD_BANKED,
+            self::METHOD_BITPAY,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_STRIPEDD,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -231,6 +252,15 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['method'] === null) {
             $invalidProperties[] = "'method' can't be null";
         }
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['redirect_url'] === null) {
             $invalidProperties[] = "'redirect_url' can't be null";
         }
@@ -268,12 +298,22 @@ class RedirectRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets method
      *
-     * @param string $method method
+     * @param string $method The method to use, this can be any of the methods that support redirect requests.  When storing a new payment method, only `gocardless` and `stripedd` are currently supported.
      *
      * @return self
      */
     public function setMethod($method)
     {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['method'] = $method;
 
         return $this;

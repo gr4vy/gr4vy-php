@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * ThreeDSecureSummary Class Doc Comment
  *
  * @category Class
- * @description Details about the 3-D Secure challenge that was presented to the buyer for this transaction, where applicable.
+ * @description The 3-D Secure data that was sent to the payment service for the transaction.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -64,6 +64,7 @@ class ThreeDSecureSummary implements ModelInterface, ArrayAccess, \JsonSerializa
         'version' => 'string',
         'status' => 'string',
         'method' => 'string',
+        'error_data' => '\Gr4vy\model\ThreeDSecureSummaryErrorData',
         'response_data' => '\Gr4vy\model\ThreeDSecureDataV1V2'
     ];
 
@@ -78,6 +79,7 @@ class ThreeDSecureSummary implements ModelInterface, ArrayAccess, \JsonSerializa
         'version' => null,
         'status' => null,
         'method' => null,
+        'error_data' => null,
         'response_data' => null
     ];
 
@@ -111,6 +113,7 @@ class ThreeDSecureSummary implements ModelInterface, ArrayAccess, \JsonSerializa
         'version' => 'version',
         'status' => 'status',
         'method' => 'method',
+        'error_data' => 'error_data',
         'response_data' => 'response_data'
     ];
 
@@ -123,6 +126,7 @@ class ThreeDSecureSummary implements ModelInterface, ArrayAccess, \JsonSerializa
         'version' => 'setVersion',
         'status' => 'setStatus',
         'method' => 'setMethod',
+        'error_data' => 'setErrorData',
         'response_data' => 'setResponseData'
     ];
 
@@ -135,6 +139,7 @@ class ThreeDSecureSummary implements ModelInterface, ArrayAccess, \JsonSerializa
         'version' => 'getVersion',
         'status' => 'getStatus',
         'method' => 'getMethod',
+        'error_data' => 'getErrorData',
         'response_data' => 'getResponseData'
     ];
 
@@ -234,6 +239,7 @@ class ThreeDSecureSummary implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['version'] = $data['version'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['method'] = $data['method'] ?? null;
+        $this->container['error_data'] = $data['error_data'] ?? null;
         $this->container['response_data'] = $data['response_data'] ?? null;
     }
 
@@ -376,6 +382,30 @@ class ThreeDSecureSummary implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_data
+     *
+     * @return \Gr4vy\model\ThreeDSecureSummaryErrorData|null
+     */
+    public function getErrorData()
+    {
+        return $this->container['error_data'];
+    }
+
+    /**
+     * Sets error_data
+     *
+     * @param \Gr4vy\model\ThreeDSecureSummaryErrorData|null $error_data error_data
+     *
+     * @return self
+     */
+    public function setErrorData($error_data)
+    {
+        $this->container['error_data'] = $error_data;
 
         return $this;
     }

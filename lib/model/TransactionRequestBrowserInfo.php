@@ -36,6 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * TransactionRequestBrowserInfo Class Doc Comment
  *
  * @category Class
+ * @description Information about the browser used by the buyer.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

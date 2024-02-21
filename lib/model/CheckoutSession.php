@@ -63,7 +63,10 @@ class CheckoutSession implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'type' => 'string',
         'id' => 'string',
-        'expires_at' => 'string'
+        'expires_at' => '\DateTime',
+        'cart_items' => '\Gr4vy\model\CartItem[]',
+        'metadata' => 'array<string,string>',
+        'payment_method' => '\Gr4vy\model\CheckoutSessionPaymentMethod'
     ];
 
     /**
@@ -76,7 +79,10 @@ class CheckoutSession implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'type' => null,
         'id' => 'uuid',
-        'expires_at' => 'datetime'
+        'expires_at' => 'date-time',
+        'cart_items' => null,
+        'metadata' => null,
+        'payment_method' => null
     ];
 
     /**
@@ -108,7 +114,10 @@ class CheckoutSession implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'type' => 'type',
         'id' => 'id',
-        'expires_at' => 'expires_at'
+        'expires_at' => 'expires_at',
+        'cart_items' => 'cart_items',
+        'metadata' => 'metadata',
+        'payment_method' => 'payment_method'
     ];
 
     /**
@@ -119,7 +128,10 @@ class CheckoutSession implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'type' => 'setType',
         'id' => 'setId',
-        'expires_at' => 'setExpiresAt'
+        'expires_at' => 'setExpiresAt',
+        'cart_items' => 'setCartItems',
+        'metadata' => 'setMetadata',
+        'payment_method' => 'setPaymentMethod'
     ];
 
     /**
@@ -130,7 +142,10 @@ class CheckoutSession implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'type' => 'getType',
         'id' => 'getId',
-        'expires_at' => 'getExpiresAt'
+        'expires_at' => 'getExpiresAt',
+        'cart_items' => 'getCartItems',
+        'metadata' => 'getMetadata',
+        'payment_method' => 'getPaymentMethod'
     ];
 
     /**
@@ -206,6 +221,9 @@ class CheckoutSession implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['expires_at'] = $data['expires_at'] ?? null;
+        $this->container['cart_items'] = $data['cart_items'] ?? null;
+        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['payment_method'] = $data['payment_method'] ?? null;
     }
 
     /**
@@ -224,6 +242,10 @@ class CheckoutSession implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 20)) {
+            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 20.";
         }
 
         return $invalidProperties;
@@ -302,7 +324,7 @@ class CheckoutSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expires_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getExpiresAt()
     {
@@ -312,13 +334,89 @@ class CheckoutSession implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expires_at
      *
-     * @param string|null $expires_at The date and time when the Checkout Session will expire. By default this will be set to 1 hour from the date of creation.
+     * @param \DateTime|null $expires_at The date and time when the Checkout Session will expire. By default this will be set to 1 hour from the date of creation.
      *
      * @return self
      */
     public function setExpiresAt($expires_at)
     {
         $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets cart_items
+     *
+     * @return \Gr4vy\model\CartItem[]|null
+     */
+    public function getCartItems()
+    {
+        return $this->container['cart_items'];
+    }
+
+    /**
+     * Sets cart_items
+     *
+     * @param \Gr4vy\model\CartItem[]|null $cart_items An array of cart items that represents the line items of a transaction.
+     *
+     * @return self
+     */
+    public function setCartItems($cart_items)
+    {
+        $this->container['cart_items'] = $cart_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string>|null $metadata Any additional information about the transaction that you would like to store as key-value pairs. This data is passed to payment service providers that support it.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+
+        if (!is_null($metadata) && (count($metadata) > 20)) {
+            throw new \InvalidArgumentException('invalid value for $metadata when calling CheckoutSession., number of items must be less than or equal to 20.');
+        }
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_method
+     *
+     * @return \Gr4vy\model\CheckoutSessionPaymentMethod|null
+     */
+    public function getPaymentMethod()
+    {
+        return $this->container['payment_method'];
+    }
+
+    /**
+     * Sets payment_method
+     *
+     * @param \Gr4vy\model\CheckoutSessionPaymentMethod|null $payment_method payment_method
+     *
+     * @return self
+     */
+    public function setPaymentMethod($payment_method)
+    {
+        $this->container['payment_method'] = $payment_method;
 
         return $this;
     }

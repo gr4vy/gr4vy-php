@@ -64,6 +64,7 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
         'eci' => 'string',
         'version' => 'string',
         'directory_response' => 'string',
+        'scheme' => 'string',
         'authentication_response' => 'string',
         'cavv_algorithm' => 'string',
         'xid' => 'string',
@@ -82,6 +83,7 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
         'eci' => null,
         'version' => null,
         'directory_response' => null,
+        'scheme' => null,
         'authentication_response' => null,
         'cavv_algorithm' => null,
         'xid' => null,
@@ -119,6 +121,7 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
         'eci' => 'eci',
         'version' => 'version',
         'directory_response' => 'directory_response',
+        'scheme' => 'scheme',
         'authentication_response' => 'authentication_response',
         'cavv_algorithm' => 'cavv_algorithm',
         'xid' => 'xid',
@@ -135,6 +138,7 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
         'eci' => 'setEci',
         'version' => 'setVersion',
         'directory_response' => 'setDirectoryResponse',
+        'scheme' => 'setScheme',
         'authentication_response' => 'setAuthenticationResponse',
         'cavv_algorithm' => 'setCavvAlgorithm',
         'xid' => 'setXid',
@@ -151,6 +155,7 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
         'eci' => 'getEci',
         'version' => 'getVersion',
         'directory_response' => 'getDirectoryResponse',
+        'scheme' => 'getScheme',
         'authentication_response' => 'getAuthenticationResponse',
         'cavv_algorithm' => 'getCavvAlgorithm',
         'xid' => 'getXid',
@@ -198,6 +203,105 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const DIRECTORY_RESPONSE_C = 'C';
+    public const DIRECTORY_RESPONSE_Y = 'Y';
+    public const DIRECTORY_RESPONSE_A = 'A';
+    public const DIRECTORY_RESPONSE_N = 'N';
+    public const DIRECTORY_RESPONSE_R = 'R';
+    public const DIRECTORY_RESPONSE_U = 'U';
+    public const SCHEME_ACCEL = 'accel';
+    public const SCHEME_AMEX = 'amex';
+    public const SCHEME_BANCONTACT = 'bancontact';
+    public const SCHEME_CARTE_BANCAIRE = 'carte-bancaire';
+    public const SCHEME_CIRRUS = 'cirrus';
+    public const SCHEME_CULIANCE = 'culiance';
+    public const SCHEME_DANKORT = 'dankort';
+    public const SCHEME_DINERS_CLUB = 'diners-club';
+    public const SCHEME_DISCOVER = 'discover';
+    public const SCHEME_EFTPOS_AUSTRALIA = 'eftpos-australia';
+    public const SCHEME_ELO = 'elo';
+    public const SCHEME_HIPERCARD = 'hipercard';
+    public const SCHEME_JCB = 'jcb';
+    public const SCHEME_MAESTRO = 'maestro';
+    public const SCHEME_MASTERCARD = 'mastercard';
+    public const SCHEME_NYCE = 'nyce';
+    public const SCHEME_OTHER = 'other';
+    public const SCHEME_PULSE = 'pulse';
+    public const SCHEME_RUPAY = 'rupay';
+    public const SCHEME_STAR = 'star';
+    public const SCHEME_UNIONPAY = 'unionpay';
+    public const SCHEME_VISA = 'visa';
+    public const AUTHENTICATION_RESPONSE_Y = 'Y';
+    public const AUTHENTICATION_RESPONSE_A = 'A';
+    public const AUTHENTICATION_RESPONSE_N = 'N';
+    public const AUTHENTICATION_RESPONSE_R = 'R';
+    public const AUTHENTICATION_RESPONSE_U = 'U';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDirectoryResponseAllowableValues()
+    {
+        return [
+            self::DIRECTORY_RESPONSE_C,
+            self::DIRECTORY_RESPONSE_Y,
+            self::DIRECTORY_RESPONSE_A,
+            self::DIRECTORY_RESPONSE_N,
+            self::DIRECTORY_RESPONSE_R,
+            self::DIRECTORY_RESPONSE_U,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSchemeAllowableValues()
+    {
+        return [
+            self::SCHEME_ACCEL,
+            self::SCHEME_AMEX,
+            self::SCHEME_BANCONTACT,
+            self::SCHEME_CARTE_BANCAIRE,
+            self::SCHEME_CIRRUS,
+            self::SCHEME_CULIANCE,
+            self::SCHEME_DANKORT,
+            self::SCHEME_DINERS_CLUB,
+            self::SCHEME_DISCOVER,
+            self::SCHEME_EFTPOS_AUSTRALIA,
+            self::SCHEME_ELO,
+            self::SCHEME_HIPERCARD,
+            self::SCHEME_JCB,
+            self::SCHEME_MAESTRO,
+            self::SCHEME_MASTERCARD,
+            self::SCHEME_NYCE,
+            self::SCHEME_OTHER,
+            self::SCHEME_PULSE,
+            self::SCHEME_RUPAY,
+            self::SCHEME_STAR,
+            self::SCHEME_UNIONPAY,
+            self::SCHEME_VISA,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAuthenticationResponseAllowableValues()
+    {
+        return [
+            self::AUTHENTICATION_RESPONSE_Y,
+            self::AUTHENTICATION_RESPONSE_A,
+            self::AUTHENTICATION_RESPONSE_N,
+            self::AUTHENTICATION_RESPONSE_R,
+            self::AUTHENTICATION_RESPONSE_U,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -218,6 +322,7 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['eci'] = $data['eci'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['directory_response'] = $data['directory_response'] ?? null;
+        $this->container['scheme'] = $data['scheme'] ?? null;
         $this->container['authentication_response'] = $data['authentication_response'] ?? null;
         $this->container['cavv_algorithm'] = $data['cavv_algorithm'] ?? null;
         $this->container['xid'] = $data['xid'] ?? null;
@@ -261,13 +366,40 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['directory_response'] === null) {
             $invalidProperties[] = "'directory_response' can't be null";
         }
+        $allowedValues = $this->getDirectoryResponseAllowableValues();
+        if (!is_null($this->container['directory_response']) && !in_array($this->container['directory_response'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'directory_response', must be one of '%s'",
+                $this->container['directory_response'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ((mb_strlen($this->container['directory_response']) > 1)) {
             $invalidProperties[] = "invalid value for 'directory_response', the character length must be smaller than or equal to 1.";
+        }
+
+        $allowedValues = $this->getSchemeAllowableValues();
+        if (!is_null($this->container['scheme']) && !in_array($this->container['scheme'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'scheme', must be one of '%s'",
+                $this->container['scheme'],
+                implode("', '", $allowedValues)
+            );
         }
 
         if ($this->container['authentication_response'] === null) {
             $invalidProperties[] = "'authentication_response' can't be null";
         }
+        $allowedValues = $this->getAuthenticationResponseAllowableValues();
+        if (!is_null($this->container['authentication_response']) && !in_array($this->container['authentication_response'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'authentication_response', must be one of '%s'",
+                $this->container['authentication_response'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ((mb_strlen($this->container['authentication_response']) > 1)) {
             $invalidProperties[] = "invalid value for 'authentication_response', the character length must be smaller than or equal to 1.";
         }
@@ -400,17 +532,61 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets directory_response
      *
-     * @param string $directory_response For 3-D Secure version 1, the enrolment response. For 3-D Secure version , the transaction status from the `ARes`.
+     * @param string $directory_response The transaction status received as part of the authentication request.
      *
      * @return self
      */
     public function setDirectoryResponse($directory_response)
     {
+        $allowedValues = $this->getDirectoryResponseAllowableValues();
+        if (!in_array($directory_response, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'directory_response', must be one of '%s'",
+                    $directory_response,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         if ((mb_strlen($directory_response) > 1)) {
             throw new \InvalidArgumentException('invalid length for $directory_response when calling ThreeDSecureDataV1V2., must be smaller than or equal to 1.');
         }
 
         $this->container['directory_response'] = $directory_response;
+
+        return $this;
+    }
+
+    /**
+     * Gets scheme
+     *
+     * @return string|null
+     */
+    public function getScheme()
+    {
+        return $this->container['scheme'];
+    }
+
+    /**
+     * Sets scheme
+     *
+     * @param string|null $scheme The scheme/brand of the card that is used for 3-D Secure.
+     *
+     * @return self
+     */
+    public function setScheme($scheme)
+    {
+        $allowedValues = $this->getSchemeAllowableValues();
+        if (!is_null($scheme) && !in_array($scheme, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'scheme', must be one of '%s'",
+                    $scheme,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['scheme'] = $scheme;
 
         return $this;
     }
@@ -428,12 +604,22 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets authentication_response
      *
-     * @param string $authentication_response The transaction status from the challenge result (not required for frictionless).
+     * @param string $authentication_response The transaction status after a the 3DS challenge. This will be null in case of a frictionless 3DS flow.
      *
      * @return self
      */
     public function setAuthenticationResponse($authentication_response)
     {
+        $allowedValues = $this->getAuthenticationResponseAllowableValues();
+        if (!in_array($authentication_response, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'authentication_response', must be one of '%s'",
+                    $authentication_response,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         if ((mb_strlen($authentication_response) > 1)) {
             throw new \InvalidArgumentException('invalid length for $authentication_response when calling ThreeDSecureDataV1V2., must be smaller than or equal to 1.');
         }
@@ -456,7 +642,7 @@ class ThreeDSecureDataV1V2 implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets cavv_algorithm
      *
-     * @param string $cavv_algorithm The CAVV Algorithm used.
+     * @param string $cavv_algorithm The CAVV algorithm used.
      *
      * @return self
      */

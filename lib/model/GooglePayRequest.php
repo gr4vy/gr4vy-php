@@ -62,7 +62,10 @@ class GooglePayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'method' => 'string',
-        'token' => 'object'
+        'token' => 'string',
+        'assurance_details' => '\Gr4vy\model\GooglePayRequestAssuranceDetails',
+        'card_holder_name' => 'string',
+        'redirect_url' => 'string'
     ];
 
     /**
@@ -74,7 +77,10 @@ class GooglePayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'method' => null,
-        'token' => null
+        'token' => null,
+        'assurance_details' => null,
+        'card_holder_name' => null,
+        'redirect_url' => null
     ];
 
     /**
@@ -105,7 +111,10 @@ class GooglePayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'method' => 'method',
-        'token' => 'token'
+        'token' => 'token',
+        'assurance_details' => 'assurance_details',
+        'card_holder_name' => 'card_holder_name',
+        'redirect_url' => 'redirect_url'
     ];
 
     /**
@@ -115,7 +124,10 @@ class GooglePayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'method' => 'setMethod',
-        'token' => 'setToken'
+        'token' => 'setToken',
+        'assurance_details' => 'setAssuranceDetails',
+        'card_holder_name' => 'setCardHolderName',
+        'redirect_url' => 'setRedirectUrl'
     ];
 
     /**
@@ -125,7 +137,10 @@ class GooglePayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'method' => 'getMethod',
-        'token' => 'getToken'
+        'token' => 'getToken',
+        'assurance_details' => 'getAssuranceDetails',
+        'card_holder_name' => 'getCardHolderName',
+        'redirect_url' => 'getRedirectUrl'
     ];
 
     /**
@@ -200,6 +215,9 @@ class GooglePayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['method'] = $data['method'] ?? null;
         $this->container['token'] = $data['token'] ?? null;
+        $this->container['assurance_details'] = $data['assurance_details'] ?? null;
+        $this->container['card_holder_name'] = $data['card_holder_name'] ?? null;
+        $this->container['redirect_url'] = $data['redirect_url'] ?? null;
     }
 
     /**
@@ -278,7 +296,7 @@ class GooglePayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets token
      *
-     * @return object
+     * @return string
      */
     public function getToken()
     {
@@ -288,13 +306,85 @@ class GooglePayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets token
      *
-     * @param object $token The encrypted (opaque) token returned by the Google Pay API that represents a payment method.
+     * @param string $token The encrypted (opaque) token returned by the Google Pay API that represents a payment method.
      *
      * @return self
      */
     public function setToken($token)
     {
         $this->container['token'] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Gets assurance_details
+     *
+     * @return \Gr4vy\model\GooglePayRequestAssuranceDetails|null
+     */
+    public function getAssuranceDetails()
+    {
+        return $this->container['assurance_details'];
+    }
+
+    /**
+     * Sets assurance_details
+     *
+     * @param \Gr4vy\model\GooglePayRequestAssuranceDetails|null $assurance_details assurance_details
+     *
+     * @return self
+     */
+    public function setAssuranceDetails($assurance_details)
+    {
+        $this->container['assurance_details'] = $assurance_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets card_holder_name
+     *
+     * @return string|null
+     */
+    public function getCardHolderName()
+    {
+        return $this->container['card_holder_name'];
+    }
+
+    /**
+     * Sets card_holder_name
+     *
+     * @param string|null $card_holder_name Name of the card holder.
+     *
+     * @return self
+     */
+    public function setCardHolderName($card_holder_name)
+    {
+        $this->container['card_holder_name'] = $card_holder_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirect_url
+     *
+     * @return string|null
+     */
+    public function getRedirectUrl()
+    {
+        return $this->container['redirect_url'];
+    }
+
+    /**
+     * Sets redirect_url
+     *
+     * @param string|null $redirect_url We strongly recommend providing a `redirect_url` either when 3-D Secure is enabled and `three_d_secure_data` is not provided, or when using connections where 3DS is enabled. This value will be appended with both a transaction ID and status (e.g. `https://example.com/callback?gr4vy_transaction_id=123 &gr4vy_transaction_status=capture_succeeded`) after 3-D Secure has completed. For those cases, if the value is not present, the transaction will be marked as failed.
+     *
+     * @return self
+     */
+    public function setRedirectUrl($redirect_url)
+    {
+        $this->container['redirect_url'] = $redirect_url;
 
         return $this;
     }

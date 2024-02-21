@@ -119,36 +119,42 @@ class AuditLogsApi
     /**
      * Operation listAuditLogs
      *
-     * List Audit Logs
+     * List audit logs
      *
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
+     * @param  string $user_id Filters the results to only the items for which the &#x60;user&#x60; has an &#x60;id&#x60; that matches this value. (optional)
+     * @param  string $action Filters the results to only the items for which the &#x60;audit-log&#x60; has an &#x60;action&#x60; that matches this value. (optional)
+     * @param  string $resource_type Filters the results to only the items for which the &#x60;audit-log&#x60; has a &#x60;resource&#x60; that matches this type value. (optional)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\AuditLogs|\Gr4vy\model\Error401Unauthorized
      */
-    public function listAuditLogs($limit = 20, $cursor = null)
+    public function listAuditLogs($limit = 20, $cursor = null, $user_id = null, $action = null, $resource_type = null)
     {
-        list($response) = $this->listAuditLogsWithHttpInfo($limit, $cursor);
+        list($response) = $this->listAuditLogsWithHttpInfo($limit, $cursor, $user_id, $action, $resource_type);
         return $response;
     }
 
     /**
      * Operation listAuditLogsWithHttpInfo
      *
-     * List Audit Logs
+     * List audit logs
      *
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
+     * @param  string $user_id Filters the results to only the items for which the &#x60;user&#x60; has an &#x60;id&#x60; that matches this value. (optional)
+     * @param  string $action Filters the results to only the items for which the &#x60;audit-log&#x60; has an &#x60;action&#x60; that matches this value. (optional)
+     * @param  string $resource_type Filters the results to only the items for which the &#x60;audit-log&#x60; has a &#x60;resource&#x60; that matches this type value. (optional)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\AuditLogs|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAuditLogsWithHttpInfo($limit = 20, $cursor = null)
+    public function listAuditLogsWithHttpInfo($limit = 20, $cursor = null, $user_id = null, $action = null, $resource_type = null)
     {
-        $request = $this->listAuditLogsRequest($limit, $cursor);
+        $request = $this->listAuditLogsRequest($limit, $cursor, $user_id, $action, $resource_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -260,17 +266,20 @@ class AuditLogsApi
     /**
      * Operation listAuditLogsAsync
      *
-     * List Audit Logs
+     * List audit logs
      *
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
+     * @param  string $user_id Filters the results to only the items for which the &#x60;user&#x60; has an &#x60;id&#x60; that matches this value. (optional)
+     * @param  string $action Filters the results to only the items for which the &#x60;audit-log&#x60; has an &#x60;action&#x60; that matches this value. (optional)
+     * @param  string $resource_type Filters the results to only the items for which the &#x60;audit-log&#x60; has a &#x60;resource&#x60; that matches this type value. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAuditLogsAsync($limit = 20, $cursor = null)
+    public function listAuditLogsAsync($limit = 20, $cursor = null, $user_id = null, $action = null, $resource_type = null)
     {
-        return $this->listAuditLogsAsyncWithHttpInfo($limit, $cursor)
+        return $this->listAuditLogsAsyncWithHttpInfo($limit, $cursor, $user_id, $action, $resource_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -281,18 +290,21 @@ class AuditLogsApi
     /**
      * Operation listAuditLogsAsyncWithHttpInfo
      *
-     * List Audit Logs
+     * List audit logs
      *
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
+     * @param  string $user_id Filters the results to only the items for which the &#x60;user&#x60; has an &#x60;id&#x60; that matches this value. (optional)
+     * @param  string $action Filters the results to only the items for which the &#x60;audit-log&#x60; has an &#x60;action&#x60; that matches this value. (optional)
+     * @param  string $resource_type Filters the results to only the items for which the &#x60;audit-log&#x60; has a &#x60;resource&#x60; that matches this type value. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAuditLogsAsyncWithHttpInfo($limit = 20, $cursor = null)
+    public function listAuditLogsAsyncWithHttpInfo($limit = 20, $cursor = null, $user_id = null, $action = null, $resource_type = null)
     {
         $returnType = '\Gr4vy\model\AuditLogs';
-        $request = $this->listAuditLogsRequest($limit, $cursor);
+        $request = $this->listAuditLogsRequest($limit, $cursor, $user_id, $action, $resource_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -335,11 +347,14 @@ class AuditLogsApi
      *
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
+     * @param  string $user_id Filters the results to only the items for which the &#x60;user&#x60; has an &#x60;id&#x60; that matches this value. (optional)
+     * @param  string $action Filters the results to only the items for which the &#x60;audit-log&#x60; has an &#x60;action&#x60; that matches this value. (optional)
+     * @param  string $resource_type Filters the results to only the items for which the &#x60;audit-log&#x60; has a &#x60;resource&#x60; that matches this type value. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAuditLogsRequest($limit = 20, $cursor = null)
+    public function listAuditLogsRequest($limit = 20, $cursor = null, $user_id = null, $action = null, $resource_type = null)
     {
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AuditLogsApi.listAuditLogs, must be smaller than or equal to 100.');
@@ -369,6 +384,33 @@ class AuditLogsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $cursor,
             'cursor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $user_id,
+            'user_id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $action,
+            'action', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $resource_type,
+            'resource_type', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

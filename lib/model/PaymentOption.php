@@ -67,6 +67,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'mode' => 'string',
         'label' => 'string',
         'can_store_payment_method' => 'bool',
+        'can_delay_capture' => 'bool',
         'context' => '\Gr4vy\model\PaymentOptionContext'
     ];
 
@@ -84,6 +85,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'mode' => null,
         'label' => null,
         'can_store_payment_method' => null,
+        'can_delay_capture' => null,
         'context' => null
     ];
 
@@ -120,6 +122,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'mode' => 'mode',
         'label' => 'label',
         'can_store_payment_method' => 'can_store_payment_method',
+        'can_delay_capture' => 'can_delay_capture',
         'context' => 'context'
     ];
 
@@ -135,6 +138,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'mode' => 'setMode',
         'label' => 'setLabel',
         'can_store_payment_method' => 'setCanStorePaymentMethod',
+        'can_delay_capture' => 'setCanDelayCapture',
         'context' => 'setContext'
     ];
 
@@ -150,6 +154,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         'mode' => 'getMode',
         'label' => 'getLabel',
         'can_store_payment_method' => 'getCanStorePaymentMethod',
+        'can_delay_capture' => 'getCanDelayCapture',
         'context' => 'getContext'
     ];
 
@@ -195,6 +200,71 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     public const TYPE_PAYMENT_OPTION = 'payment-option';
+    public const METHOD_AFTERPAY = 'afterpay';
+    public const METHOD_ALIPAY = 'alipay';
+    public const METHOD_ALIPAYHK = 'alipayhk';
+    public const METHOD_APPLEPAY = 'applepay';
+    public const METHOD_BACS = 'bacs';
+    public const METHOD_BANCONTACT = 'bancontact';
+    public const METHOD_BANKED = 'banked';
+    public const METHOD_BECS = 'becs';
+    public const METHOD_BITPAY = 'bitpay';
+    public const METHOD_BOLETO = 'boleto';
+    public const METHOD_BOOST = 'boost';
+    public const METHOD_CARD = 'card';
+    public const METHOD_CHECKOUT_SESSION = 'checkout-session';
+    public const METHOD_CLICK_TO_PAY = 'click-to-pay';
+    public const METHOD_CLEARPAY = 'clearpay';
+    public const METHOD_DANA = 'dana';
+    public const METHOD_DCB = 'dcb';
+    public const METHOD_EPS = 'eps';
+    public const METHOD_FORTUMO = 'fortumo';
+    public const METHOD_GCASH = 'gcash';
+    public const METHOD_GIROPAY = 'giropay';
+    public const METHOD_GOCARDLESS = 'gocardless';
+    public const METHOD_GOOGLEPAY = 'googlepay';
+    public const METHOD_GOPAY = 'gopay';
+    public const METHOD_GRABPAY = 'grabpay';
+    public const METHOD_IDEAL = 'ideal';
+    public const METHOD_ID = 'id';
+    public const METHOD_KAKAOPAY = 'kakaopay';
+    public const METHOD_KLARNA = 'klarna';
+    public const METHOD_LAYBUY = 'laybuy';
+    public const METHOD_LINEPAY = 'linepay';
+    public const METHOD_LINKAJA = 'linkaja';
+    public const METHOD_MAYBANKQRPAY = 'maybankqrpay';
+    public const METHOD_MULTIBANCO = 'multibanco';
+    public const METHOD_ONEY_3X = 'oney_3x';
+    public const METHOD_ONEY_4X = 'oney_4x';
+    public const METHOD_ONEY_6X = 'oney_6x';
+    public const METHOD_ONEY_10X = 'oney_10x';
+    public const METHOD_ONEY_12X = 'oney_12x';
+    public const METHOD_OVO = 'ovo';
+    public const METHOD_OXXO = 'oxxo';
+    public const METHOD_PAYMAYA = 'paymaya';
+    public const METHOD_PAYPAL = 'paypal';
+    public const METHOD_PAYPALPAYLATER = 'paypalpaylater';
+    public const METHOD_PIX = 'pix';
+    public const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    public const METHOD_RAZORPAY = 'razorpay';
+    public const METHOD_SCALAPAY = 'scalapay';
+    public const METHOD_SEPA = 'sepa';
+    public const METHOD_SHOPEEPAY = 'shopeepay';
+    public const METHOD_SINGTELDASH = 'singteldash';
+    public const METHOD_SOFORT = 'sofort';
+    public const METHOD_STRIPEDD = 'stripedd';
+    public const METHOD_THAIQR = 'thaiqr';
+    public const METHOD_TOUCHNGO = 'touchngo';
+    public const METHOD_TRUEMONEY = 'truemoney';
+    public const METHOD_TRUSTLY = 'trustly';
+    public const METHOD_VENMO = 'venmo';
+    public const METHOD_WAAVE = 'waave';
+    public const METHOD_WECHAT = 'wechat';
+    public const METHOD_ZIPPAY = 'zippay';
+    public const MODE_CARD = 'card';
+    public const MODE_REDIRECT = 'redirect';
+    public const MODE_APPLEPAY = 'applepay';
+    public const MODE_GOOGLEPAY = 'googlepay';
 
     /**
      * Gets allowable values of the enum
@@ -205,6 +275,93 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::TYPE_PAYMENT_OPTION,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_AFTERPAY,
+            self::METHOD_ALIPAY,
+            self::METHOD_ALIPAYHK,
+            self::METHOD_APPLEPAY,
+            self::METHOD_BACS,
+            self::METHOD_BANCONTACT,
+            self::METHOD_BANKED,
+            self::METHOD_BECS,
+            self::METHOD_BITPAY,
+            self::METHOD_BOLETO,
+            self::METHOD_BOOST,
+            self::METHOD_CARD,
+            self::METHOD_CHECKOUT_SESSION,
+            self::METHOD_CLICK_TO_PAY,
+            self::METHOD_CLEARPAY,
+            self::METHOD_DANA,
+            self::METHOD_DCB,
+            self::METHOD_EPS,
+            self::METHOD_FORTUMO,
+            self::METHOD_GCASH,
+            self::METHOD_GIROPAY,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_GOPAY,
+            self::METHOD_GRABPAY,
+            self::METHOD_IDEAL,
+            self::METHOD_ID,
+            self::METHOD_KAKAOPAY,
+            self::METHOD_KLARNA,
+            self::METHOD_LAYBUY,
+            self::METHOD_LINEPAY,
+            self::METHOD_LINKAJA,
+            self::METHOD_MAYBANKQRPAY,
+            self::METHOD_MULTIBANCO,
+            self::METHOD_ONEY_3X,
+            self::METHOD_ONEY_4X,
+            self::METHOD_ONEY_6X,
+            self::METHOD_ONEY_10X,
+            self::METHOD_ONEY_12X,
+            self::METHOD_OVO,
+            self::METHOD_OXXO,
+            self::METHOD_PAYMAYA,
+            self::METHOD_PAYPAL,
+            self::METHOD_PAYPALPAYLATER,
+            self::METHOD_PIX,
+            self::METHOD_RABBITLINEPAY,
+            self::METHOD_RAZORPAY,
+            self::METHOD_SCALAPAY,
+            self::METHOD_SEPA,
+            self::METHOD_SHOPEEPAY,
+            self::METHOD_SINGTELDASH,
+            self::METHOD_SOFORT,
+            self::METHOD_STRIPEDD,
+            self::METHOD_THAIQR,
+            self::METHOD_TOUCHNGO,
+            self::METHOD_TRUEMONEY,
+            self::METHOD_TRUSTLY,
+            self::METHOD_VENMO,
+            self::METHOD_WAAVE,
+            self::METHOD_WECHAT,
+            self::METHOD_ZIPPAY,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getModeAllowableValues()
+    {
+        return [
+            self::MODE_CARD,
+            self::MODE_REDIRECT,
+            self::MODE_APPLEPAY,
+            self::MODE_GOOGLEPAY,
         ];
     }
 
@@ -229,6 +386,7 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['mode'] = $data['mode'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['can_store_payment_method'] = $data['can_store_payment_method'] ?? null;
+        $this->container['can_delay_capture'] = $data['can_delay_capture'] ?? null;
         $this->container['context'] = $data['context'] ?? null;
     }
 
@@ -246,6 +404,24 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'type', must be one of '%s'",
                 $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getModeAllowableValues();
+        if (!is_null($this->container['mode']) && !in_array($this->container['mode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'mode', must be one of '%s'",
+                $this->container['mode'],
                 implode("', '", $allowedValues)
             );
         }
@@ -312,12 +488,22 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets method
      *
-     * @param string|null $method method
+     * @param string|null $method The type of payment method that is available.
      *
      * @return self
      */
     public function setMethod($method)
     {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($method) && !in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['method'] = $method;
 
         return $this;
@@ -360,12 +546,22 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mode
      *
-     * @param string|null $mode mode
+     * @param string|null $mode The mode to use with this payment option.
      *
      * @return self
      */
     public function setMode($mode)
     {
+        $allowedValues = $this->getModeAllowableValues();
+        if (!is_null($mode) && !in_array($mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'mode', must be one of '%s'",
+                    $mode,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['mode'] = $mode;
 
         return $this;
@@ -415,6 +611,30 @@ class PaymentOption implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCanStorePaymentMethod($can_store_payment_method)
     {
         $this->container['can_store_payment_method'] = $can_store_payment_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets can_delay_capture
+     *
+     * @return bool|null
+     */
+    public function getCanDelayCapture()
+    {
+        return $this->container['can_delay_capture'];
+    }
+
+    /**
+     * Sets can_delay_capture
+     *
+     * @param bool|null $can_delay_capture A flag to indicate if delayed capture is supported.
+     *
+     * @return self
+     */
+    public function setCanDelayCapture($can_delay_capture)
+    {
+        $this->container['can_delay_capture'] = $can_delay_capture;
 
         return $this;
     }

@@ -63,8 +63,9 @@ class AuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'type' => 'string',
         'id' => 'string',
-        'timestamp' => 'string',
+        'timestamp' => '\DateTime',
         'action' => 'string',
+        'merchant_account_id' => 'string',
         'user' => '\Gr4vy\model\AuditLogUser',
         'resource' => '\Gr4vy\model\AuditLogResource'
     ];
@@ -79,8 +80,9 @@ class AuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'type' => null,
         'id' => 'uuid',
-        'timestamp' => 'datetime',
+        'timestamp' => 'date-time',
         'action' => null,
+        'merchant_account_id' => null,
         'user' => null,
         'resource' => null
     ];
@@ -116,6 +118,7 @@ class AuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'timestamp' => 'timestamp',
         'action' => 'action',
+        'merchant_account_id' => 'merchant_account_id',
         'user' => 'user',
         'resource' => 'resource'
     ];
@@ -130,6 +133,7 @@ class AuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'timestamp' => 'setTimestamp',
         'action' => 'setAction',
+        'merchant_account_id' => 'setMerchantAccountId',
         'user' => 'setUser',
         'resource' => 'setResource'
     ];
@@ -144,6 +148,7 @@ class AuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'timestamp' => 'getTimestamp',
         'action' => 'getAction',
+        'merchant_account_id' => 'getMerchantAccountId',
         'user' => 'getUser',
         'resource' => 'getResource'
     ];
@@ -239,6 +244,7 @@ class AuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['id'] = $data['id'] ?? null;
         $this->container['timestamp'] = $data['timestamp'] ?? null;
         $this->container['action'] = $data['action'] ?? null;
+        $this->container['merchant_account_id'] = $data['merchant_account_id'] ?? null;
         $this->container['user'] = $data['user'] ?? null;
         $this->container['resource'] = $data['resource'] ?? null;
     }
@@ -346,7 +352,7 @@ class AuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets timestamp
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getTimestamp()
     {
@@ -356,7 +362,7 @@ class AuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets timestamp
      *
-     * @param string|null $timestamp The date and time that the action was performed.
+     * @param \DateTime|null $timestamp The date and time that the action was performed.
      *
      * @return self
      */
@@ -397,6 +403,30 @@ class AuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['action'] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_account_id
+     *
+     * @return string|null
+     */
+    public function getMerchantAccountId()
+    {
+        return $this->container['merchant_account_id'];
+    }
+
+    /**
+     * Sets merchant_account_id
+     *
+     * @param string|null $merchant_account_id The ID of the merchant account this entry was created for.
+     *
+     * @return self
+     */
+    public function setMerchantAccountId($merchant_account_id)
+    {
+        $this->container['merchant_account_id'] = $merchant_account_id;
 
         return $this;
     }

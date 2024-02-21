@@ -61,8 +61,10 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'display_name' => 'string',
-        'email_address' => 'string'
+        'name' => 'string',
+        'email_address' => 'string',
+        'role_ids' => 'string[]',
+        'merchant_account_ids' => 'string[]'
     ];
 
     /**
@@ -73,8 +75,10 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'display_name' => null,
-        'email_address' => null
+        'name' => null,
+        'email_address' => null,
+        'role_ids' => 'uuid',
+        'merchant_account_ids' => null
     ];
 
     /**
@@ -104,8 +108,10 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'display_name' => 'display_name',
-        'email_address' => 'email_address'
+        'name' => 'name',
+        'email_address' => 'email_address',
+        'role_ids' => 'role_ids',
+        'merchant_account_ids' => 'merchant_account_ids'
     ];
 
     /**
@@ -114,8 +120,10 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'display_name' => 'setDisplayName',
-        'email_address' => 'setEmailAddress'
+        'name' => 'setName',
+        'email_address' => 'setEmailAddress',
+        'role_ids' => 'setRoleIds',
+        'merchant_account_ids' => 'setMerchantAccountIds'
     ];
 
     /**
@@ -124,8 +132,10 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'display_name' => 'getDisplayName',
-        'email_address' => 'getEmailAddress'
+        'name' => 'getName',
+        'email_address' => 'getEmailAddress',
+        'role_ids' => 'getRoleIds',
+        'merchant_account_ids' => 'getMerchantAccountIds'
     ];
 
     /**
@@ -185,8 +195,10 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['email_address'] = $data['email_address'] ?? null;
+        $this->container['role_ids'] = $data['role_ids'] ?? null;
+        $this->container['merchant_account_ids'] = $data['merchant_account_ids'] ?? null;
     }
 
     /**
@@ -198,12 +210,12 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) > 1000)) {
-            $invalidProperties[] = "invalid value for 'display_name', the character length must be smaller than or equal to 1000.";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 1000.";
         }
 
-        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'display_name', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
         if (!is_null($this->container['email_address']) && (mb_strlen($this->container['email_address']) > 200)) {
@@ -212,6 +224,10 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['email_address']) && (mb_strlen($this->container['email_address']) < 1)) {
             $invalidProperties[] = "invalid value for 'email_address', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['role_ids']) && (count($this->container['role_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'role_ids', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -230,32 +246,32 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets display_name
+     * Gets name
      *
      * @return string|null
      */
-    public function getDisplayName()
+    public function getName()
     {
-        return $this->container['display_name'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets display_name
+     * Sets name
      *
-     * @param string|null $display_name An external identifier that can be used to match the buyer against your own records. This value needs to be unique for all buyers.
+     * @param string|null $name The full name of the user which is used in the Gr4vy admin panel to give an user a human readable name.
      *
      * @return self
      */
-    public function setDisplayName($display_name)
+    public function setName($name)
     {
-        if (!is_null($display_name) && (mb_strlen($display_name) > 1000)) {
-            throw new \InvalidArgumentException('invalid length for $display_name when calling UserRequest., must be smaller than or equal to 1000.');
+        if (!is_null($name) && (mb_strlen($name) > 1000)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UserRequest., must be smaller than or equal to 1000.');
         }
-        if (!is_null($display_name) && (mb_strlen($display_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $display_name when calling UserRequest., must be bigger than or equal to 1.');
+        if (!is_null($name) && (mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UserRequest., must be bigger than or equal to 1.');
         }
 
-        $this->container['display_name'] = $display_name;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -273,7 +289,7 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email_address
      *
-     * @param string|null $email_address A unique name for this buyer which is used in the Gr4vy admin panel to give a buyer a human readable name.
+     * @param string|null $email_address The email address for this user.
      *
      * @return self
      */
@@ -287,6 +303,59 @@ class UserRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['email_address'] = $email_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets role_ids
+     *
+     * @return string[]|null
+     */
+    public function getRoleIds()
+    {
+        return $this->container['role_ids'];
+    }
+
+    /**
+     * Sets role_ids
+     *
+     * @param string[]|null $role_ids A list of role ids that will be assigned to the user being created. The creator must have `roles.write` or the role that is being assigned.
+     *
+     * @return self
+     */
+    public function setRoleIds($role_ids)
+    {
+
+
+        if (!is_null($role_ids) && (count($role_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $role_ids when calling UserRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['role_ids'] = $role_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_account_ids
+     *
+     * @return string[]|null
+     */
+    public function getMerchantAccountIds()
+    {
+        return $this->container['merchant_account_ids'];
+    }
+
+    /**
+     * Sets merchant_account_ids
+     *
+     * @param string[]|null $merchant_account_ids A list of merchant account IDs that the user being created will be assigned to.
+     *
+     * @return self
+     */
+    public function setMerchantAccountIds($merchant_account_ids)
+    {
+        $this->container['merchant_account_ids'] = $merchant_account_ids;
 
         return $this;
     }

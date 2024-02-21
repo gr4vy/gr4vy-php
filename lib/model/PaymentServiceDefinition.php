@@ -65,7 +65,7 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
         'type' => 'string',
         'display_name' => 'string',
         'method' => 'string',
-        'fields' => '\Gr4vy\model\PaymentServiceDefinitionFieldsInner[]',
+        'fields' => '\Gr4vy\model\GiftCardServiceDefinitionFieldsInner[]',
         'supported_currencies' => 'string[]',
         'supported_countries' => 'string[]',
         'mode' => 'string',
@@ -214,6 +214,171 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const TYPE_PAYMENT_SERVICE_DEFINITION = 'payment-service-definition';
+    public const METHOD_AFTERPAY = 'afterpay';
+    public const METHOD_ALIPAY = 'alipay';
+    public const METHOD_ALIPAYHK = 'alipayhk';
+    public const METHOD_APPLEPAY = 'applepay';
+    public const METHOD_BACS = 'bacs';
+    public const METHOD_BANCONTACT = 'bancontact';
+    public const METHOD_BANKED = 'banked';
+    public const METHOD_BECS = 'becs';
+    public const METHOD_BITPAY = 'bitpay';
+    public const METHOD_BOLETO = 'boleto';
+    public const METHOD_BOOST = 'boost';
+    public const METHOD_CARD = 'card';
+    public const METHOD_CHECKOUT_SESSION = 'checkout-session';
+    public const METHOD_CLICK_TO_PAY = 'click-to-pay';
+    public const METHOD_CLEARPAY = 'clearpay';
+    public const METHOD_DANA = 'dana';
+    public const METHOD_DCB = 'dcb';
+    public const METHOD_EPS = 'eps';
+    public const METHOD_FORTUMO = 'fortumo';
+    public const METHOD_GCASH = 'gcash';
+    public const METHOD_GIROPAY = 'giropay';
+    public const METHOD_GOCARDLESS = 'gocardless';
+    public const METHOD_GOOGLEPAY = 'googlepay';
+    public const METHOD_GOPAY = 'gopay';
+    public const METHOD_GRABPAY = 'grabpay';
+    public const METHOD_IDEAL = 'ideal';
+    public const METHOD_ID = 'id';
+    public const METHOD_KAKAOPAY = 'kakaopay';
+    public const METHOD_KLARNA = 'klarna';
+    public const METHOD_LAYBUY = 'laybuy';
+    public const METHOD_LINEPAY = 'linepay';
+    public const METHOD_LINKAJA = 'linkaja';
+    public const METHOD_MAYBANKQRPAY = 'maybankqrpay';
+    public const METHOD_MULTIBANCO = 'multibanco';
+    public const METHOD_ONEY_3X = 'oney_3x';
+    public const METHOD_ONEY_4X = 'oney_4x';
+    public const METHOD_ONEY_6X = 'oney_6x';
+    public const METHOD_ONEY_10X = 'oney_10x';
+    public const METHOD_ONEY_12X = 'oney_12x';
+    public const METHOD_OVO = 'ovo';
+    public const METHOD_OXXO = 'oxxo';
+    public const METHOD_PAYMAYA = 'paymaya';
+    public const METHOD_PAYPAL = 'paypal';
+    public const METHOD_PAYPALPAYLATER = 'paypalpaylater';
+    public const METHOD_PIX = 'pix';
+    public const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    public const METHOD_RAZORPAY = 'razorpay';
+    public const METHOD_SCALAPAY = 'scalapay';
+    public const METHOD_SEPA = 'sepa';
+    public const METHOD_SHOPEEPAY = 'shopeepay';
+    public const METHOD_SINGTELDASH = 'singteldash';
+    public const METHOD_SOFORT = 'sofort';
+    public const METHOD_STRIPEDD = 'stripedd';
+    public const METHOD_THAIQR = 'thaiqr';
+    public const METHOD_TOUCHNGO = 'touchngo';
+    public const METHOD_TRUEMONEY = 'truemoney';
+    public const METHOD_TRUSTLY = 'trustly';
+    public const METHOD_VENMO = 'venmo';
+    public const METHOD_WAAVE = 'waave';
+    public const METHOD_WECHAT = 'wechat';
+    public const METHOD_ZIPPAY = 'zippay';
+    public const MODE_CARD = 'card';
+    public const MODE_REDIRECT = 'redirect';
+    public const MODE_APPLEPAY = 'applepay';
+    public const MODE_GOOGLEPAY = 'googlepay';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_PAYMENT_SERVICE_DEFINITION,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_AFTERPAY,
+            self::METHOD_ALIPAY,
+            self::METHOD_ALIPAYHK,
+            self::METHOD_APPLEPAY,
+            self::METHOD_BACS,
+            self::METHOD_BANCONTACT,
+            self::METHOD_BANKED,
+            self::METHOD_BECS,
+            self::METHOD_BITPAY,
+            self::METHOD_BOLETO,
+            self::METHOD_BOOST,
+            self::METHOD_CARD,
+            self::METHOD_CHECKOUT_SESSION,
+            self::METHOD_CLICK_TO_PAY,
+            self::METHOD_CLEARPAY,
+            self::METHOD_DANA,
+            self::METHOD_DCB,
+            self::METHOD_EPS,
+            self::METHOD_FORTUMO,
+            self::METHOD_GCASH,
+            self::METHOD_GIROPAY,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_GOPAY,
+            self::METHOD_GRABPAY,
+            self::METHOD_IDEAL,
+            self::METHOD_ID,
+            self::METHOD_KAKAOPAY,
+            self::METHOD_KLARNA,
+            self::METHOD_LAYBUY,
+            self::METHOD_LINEPAY,
+            self::METHOD_LINKAJA,
+            self::METHOD_MAYBANKQRPAY,
+            self::METHOD_MULTIBANCO,
+            self::METHOD_ONEY_3X,
+            self::METHOD_ONEY_4X,
+            self::METHOD_ONEY_6X,
+            self::METHOD_ONEY_10X,
+            self::METHOD_ONEY_12X,
+            self::METHOD_OVO,
+            self::METHOD_OXXO,
+            self::METHOD_PAYMAYA,
+            self::METHOD_PAYPAL,
+            self::METHOD_PAYPALPAYLATER,
+            self::METHOD_PIX,
+            self::METHOD_RABBITLINEPAY,
+            self::METHOD_RAZORPAY,
+            self::METHOD_SCALAPAY,
+            self::METHOD_SEPA,
+            self::METHOD_SHOPEEPAY,
+            self::METHOD_SINGTELDASH,
+            self::METHOD_SOFORT,
+            self::METHOD_STRIPEDD,
+            self::METHOD_THAIQR,
+            self::METHOD_TOUCHNGO,
+            self::METHOD_TRUEMONEY,
+            self::METHOD_TRUSTLY,
+            self::METHOD_VENMO,
+            self::METHOD_WAAVE,
+            self::METHOD_WECHAT,
+            self::METHOD_ZIPPAY,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getModeAllowableValues()
+    {
+        return [
+            self::MODE_CARD,
+            self::MODE_REDIRECT,
+            self::MODE_APPLEPAY,
+            self::MODE_GOOGLEPAY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,6 +417,24 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if (!is_null($this->container['fields']) && (count($this->container['fields']) < 1)) {
             $invalidProperties[] = "invalid value for 'fields', number of items must be greater than or equal to 1.";
         }
@@ -262,6 +445,15 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
 
         if (!is_null($this->container['supported_countries']) && (count($this->container['supported_countries']) < 1)) {
             $invalidProperties[] = "invalid value for 'supported_countries', number of items must be greater than or equal to 1.";
+        }
+
+        $allowedValues = $this->getModeAllowableValues();
+        if (!is_null($this->container['mode']) && !in_array($this->container['mode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'mode', must be one of '%s'",
+                $this->container['mode'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -322,6 +514,16 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function setType($type)
     {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['type'] = $type;
 
         return $this;
@@ -364,12 +566,22 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets method
      *
-     * @param string|null $method method
+     * @param string|null $method The ID of the payment method that this services handles.
      *
      * @return self
      */
     public function setMethod($method)
     {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($method) && !in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['method'] = $method;
 
         return $this;
@@ -378,7 +590,7 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets fields
      *
-     * @return \Gr4vy\model\PaymentServiceDefinitionFieldsInner[]|null
+     * @return \Gr4vy\model\GiftCardServiceDefinitionFieldsInner[]|null
      */
     public function getFields()
     {
@@ -388,7 +600,7 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets fields
      *
-     * @param \Gr4vy\model\PaymentServiceDefinitionFieldsInner[]|null $fields A list of fields that need to be submitted when activating the payment. service.
+     * @param \Gr4vy\model\GiftCardServiceDefinitionFieldsInner[]|null $fields A list of fields that need to be submitted when activating the payment. service.
      *
      * @return self
      */
@@ -475,12 +687,22 @@ class PaymentServiceDefinition implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets mode
      *
-     * @param string|null $mode mode
+     * @param string|null $mode The mode of this payment service.
      *
      * @return self
      */
     public function setMode($mode)
     {
+        $allowedValues = $this->getModeAllowableValues();
+        if (!is_null($mode) && !in_array($mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'mode', must be one of '%s'",
+                    $mode,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['mode'] = $mode;
 
         return $this;

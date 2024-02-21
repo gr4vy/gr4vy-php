@@ -63,7 +63,9 @@ class AuditLogUser implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'staff' => 'bool'
+        'email_address' => 'string',
+        'staff' => 'bool',
+        'status' => 'string'
     ];
 
     /**
@@ -76,7 +78,9 @@ class AuditLogUser implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => 'uuid',
         'name' => null,
-        'staff' => null
+        'email_address' => null,
+        'staff' => null,
+        'status' => null
     ];
 
     /**
@@ -108,7 +112,9 @@ class AuditLogUser implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'staff' => 'staff'
+        'email_address' => 'email_address',
+        'staff' => 'staff',
+        'status' => 'status'
     ];
 
     /**
@@ -119,7 +125,9 @@ class AuditLogUser implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'staff' => 'setStaff'
+        'email_address' => 'setEmailAddress',
+        'staff' => 'setStaff',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -130,7 +138,9 @@ class AuditLogUser implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'staff' => 'getStaff'
+        'email_address' => 'getEmailAddress',
+        'staff' => 'getStaff',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -174,6 +184,23 @@ class AuditLogUser implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_DELETED = 'deleted';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_ACTIVE,
+            self::STATUS_PENDING,
+            self::STATUS_DELETED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -192,7 +219,9 @@ class AuditLogUser implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['email_address'] = $data['email_address'] ?? null;
         $this->container['staff'] = $data['staff'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -203,6 +232,15 @@ class AuditLogUser implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -268,6 +306,30 @@ class AuditLogUser implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets email_address
+     *
+     * @return string|null
+     */
+    public function getEmailAddress()
+    {
+        return $this->container['email_address'];
+    }
+
+    /**
+     * Sets email_address
+     *
+     * @param string|null $email_address The email address for this user.
+     *
+     * @return self
+     */
+    public function setEmailAddress($email_address)
+    {
+        $this->container['email_address'] = $email_address;
+
+        return $this;
+    }
+
+    /**
      * Gets staff
      *
      * @return bool|null
@@ -287,6 +349,40 @@ class AuditLogUser implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStaff($staff)
     {
         $this->container['staff'] = $staff;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status The status of the user.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

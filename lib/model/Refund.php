@@ -64,11 +64,14 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'string',
         'id' => 'string',
         'transaction_id' => 'string',
+        'payment_service_refund_id' => 'string',
         'status' => 'string',
         'currency' => 'string',
         'amount' => 'int',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'updated_at' => '\DateTime',
+        'target_type' => 'string',
+        'target_id' => 'string'
     ];
 
     /**
@@ -82,11 +85,14 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'id' => 'uuid',
         'transaction_id' => 'uuid',
+        'payment_service_refund_id' => null,
         'status' => null,
         'currency' => null,
         'amount' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'updated_at' => 'date-time',
+        'target_type' => null,
+        'target_id' => null
     ];
 
     /**
@@ -119,11 +125,14 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'type',
         'id' => 'id',
         'transaction_id' => 'transaction_id',
+        'payment_service_refund_id' => 'payment_service_refund_id',
         'status' => 'status',
         'currency' => 'currency',
         'amount' => 'amount',
         'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'updated_at' => 'updated_at',
+        'target_type' => 'target_type',
+        'target_id' => 'target_id'
     ];
 
     /**
@@ -135,11 +144,14 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'id' => 'setId',
         'transaction_id' => 'setTransactionId',
+        'payment_service_refund_id' => 'setPaymentServiceRefundId',
         'status' => 'setStatus',
         'currency' => 'setCurrency',
         'amount' => 'setAmount',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at' => 'setUpdatedAt',
+        'target_type' => 'setTargetType',
+        'target_id' => 'setTargetId'
     ];
 
     /**
@@ -151,11 +163,14 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'id' => 'getId',
         'transaction_id' => 'getTransactionId',
+        'payment_service_refund_id' => 'getPaymentServiceRefundId',
         'status' => 'getStatus',
         'currency' => 'getCurrency',
         'amount' => 'getAmount',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at' => 'getUpdatedAt',
+        'target_type' => 'getTargetType',
+        'target_id' => 'getTargetId'
     ];
 
     /**
@@ -205,6 +220,8 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
     public const STATUS_DECLINED = 'declined';
     public const STATUS_FAILED = 'failed';
     public const STATUS_VOIDED = 'voided';
+    public const TARGET_TYPE_PAYMENT_METHOD = 'payment-method';
+    public const TARGET_TYPE_GIFT_CARD_REDEMPTION = 'gift-card-redemption';
 
     /**
      * Gets allowable values of the enum
@@ -235,6 +252,19 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTargetTypeAllowableValues()
+    {
+        return [
+            self::TARGET_TYPE_PAYMENT_METHOD,
+            self::TARGET_TYPE_GIFT_CARD_REDEMPTION,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -252,11 +282,14 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['transaction_id'] = $data['transaction_id'] ?? null;
+        $this->container['payment_service_refund_id'] = $data['payment_service_refund_id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['amount'] = $data['amount'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['target_type'] = $data['target_type'] ?? null;
+        $this->container['target_id'] = $data['target_id'] ?? null;
     }
 
     /**
@@ -292,6 +325,15 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['amount']) && ($this->container['amount'] < 0)) {
             $invalidProperties[] = "invalid value for 'amount', must be bigger than or equal to 0.";
+        }
+
+        $allowedValues = $this->getTargetTypeAllowableValues();
+        if (!is_null($this->container['target_type']) && !in_array($this->container['target_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'target_type', must be one of '%s'",
+                $this->container['target_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -387,6 +429,30 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTransactionId($transaction_id)
     {
         $this->container['transaction_id'] = $transaction_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_service_refund_id
+     *
+     * @return string|null
+     */
+    public function getPaymentServiceRefundId()
+    {
+        return $this->container['payment_service_refund_id'];
+    }
+
+    /**
+     * Sets payment_service_refund_id
+     *
+     * @param string|null $payment_service_refund_id The payment service's unique ID for the refund.
+     *
+     * @return self
+     */
+    public function setPaymentServiceRefundId($payment_service_refund_id)
+    {
+        $this->container['payment_service_refund_id'] = $payment_service_refund_id;
 
         return $this;
     }
@@ -525,6 +591,64 @@ class Refund implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_type
+     *
+     * @return string|null
+     */
+    public function getTargetType()
+    {
+        return $this->container['target_type'];
+    }
+
+    /**
+     * Sets target_type
+     *
+     * @param string|null $target_type The type of the instrument that was refunded.
+     *
+     * @return self
+     */
+    public function setTargetType($target_type)
+    {
+        $allowedValues = $this->getTargetTypeAllowableValues();
+        if (!is_null($target_type) && !in_array($target_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'target_type', must be one of '%s'",
+                    $target_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['target_type'] = $target_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_id
+     *
+     * @return string|null
+     */
+    public function getTargetId()
+    {
+        return $this->container['target_id'];
+    }
+
+    /**
+     * Sets target_id
+     *
+     * @param string|null $target_id The optional ID of the instrument that was refunded. This may be `null` if the instrument was not stored.
+     *
+     * @return self
+     */
+    public function setTargetId($target_id)
+    {
+        $this->container['target_id'] = $target_id;
 
         return $this;
     }

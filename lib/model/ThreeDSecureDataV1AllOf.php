@@ -248,7 +248,7 @@ class ThreeDSecureDataV1AllOf implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets authentication_response
      *
-     * @param string $authentication_response The authentication response.
+     * @param string $authentication_response The response for the 3DS authentication call.
      *
      * @return self
      */
@@ -276,7 +276,7 @@ class ThreeDSecureDataV1AllOf implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets cavv_algorithm
      *
-     * @param string $cavv_algorithm The CAVV Algorithm used.
+     * @param string $cavv_algorithm The CAVV algorithm used.
      *
      * @return self
      */

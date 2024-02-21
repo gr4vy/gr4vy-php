@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * PaymentMethodsTokenized Class Doc Comment
  *
  * @category Class
- * @description A list of stored payment methods in token format.
+ * @description A list of stored payment methods in summarized format.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -220,7 +220,7 @@ class PaymentMethodsTokenized implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets items
      *
-     * @param \Gr4vy\model\PaymentMethodTokenized[]|null $items A list of stored payment methods in token format.
+     * @param \Gr4vy\model\PaymentMethodTokenized[]|null $items A list of stored payment methods in summarized format.
      *
      * @return self
      */

@@ -200,13 +200,15 @@ class ConnectionDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     public const GROUP_ANTI_FRAUD_SERVICE = 'anti-fraud-service';
-    public const GROUP_PAYMENT_SERVICE = 'payment-service';
     public const GROUP_DIGITAL_WALLET = 'digital-wallet';
+    public const GROUP_GIFT_CARD_SERVICE = 'gift-card-service';
+    public const GROUP_PAYMENT_SERVICE = 'payment-service';
     public const CATEGORY_ANTI_FRAUD = 'anti-fraud';
     public const CATEGORY_BANK = 'bank';
     public const CATEGORY_BNPL = 'bnpl';
     public const CATEGORY_CARD = 'card';
     public const CATEGORY_CASH = 'cash';
+    public const CATEGORY_STORED_CREDIT = 'stored-credit';
     public const CATEGORY_WALLET = 'wallet';
 
     /**
@@ -218,8 +220,9 @@ class ConnectionDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         return [
             self::GROUP_ANTI_FRAUD_SERVICE,
-            self::GROUP_PAYMENT_SERVICE,
             self::GROUP_DIGITAL_WALLET,
+            self::GROUP_GIFT_CARD_SERVICE,
+            self::GROUP_PAYMENT_SERVICE,
         ];
     }
 
@@ -236,6 +239,7 @@ class ConnectionDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
             self::CATEGORY_BNPL,
             self::CATEGORY_CARD,
             self::CATEGORY_CASH,
+            self::CATEGORY_STORED_CREDIT,
             self::CATEGORY_WALLET,
         ];
     }

@@ -61,6 +61,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'gateway' => 'string',
+        'gateway_merchant_id' => 'string',
         'merchant_name' => 'string',
         'supported_schemes' => 'string[]',
         'approval_ui' => '\Gr4vy\model\PaymentOptionApprovalUI',
@@ -75,6 +77,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'gateway' => null,
+        'gateway_merchant_id' => null,
         'merchant_name' => null,
         'supported_schemes' => null,
         'approval_ui' => null,
@@ -108,6 +112,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'gateway' => 'gateway',
+        'gateway_merchant_id' => 'gateway_merchant_id',
         'merchant_name' => 'merchant_name',
         'supported_schemes' => 'supported_schemes',
         'approval_ui' => 'approval_ui',
@@ -120,6 +126,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'gateway' => 'setGateway',
+        'gateway_merchant_id' => 'setGatewayMerchantId',
         'merchant_name' => 'setMerchantName',
         'supported_schemes' => 'setSupportedSchemes',
         'approval_ui' => 'setApprovalUi',
@@ -132,6 +140,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'gateway' => 'getGateway',
+        'gateway_merchant_id' => 'getGatewayMerchantId',
         'merchant_name' => 'getMerchantName',
         'supported_schemes' => 'getSupportedSchemes',
         'approval_ui' => 'getApprovalUi',
@@ -195,6 +205,8 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
+        $this->container['gateway'] = $data['gateway'] ?? null;
+        $this->container['gateway_merchant_id'] = $data['gateway_merchant_id'] ?? null;
         $this->container['merchant_name'] = $data['merchant_name'] ?? null;
         $this->container['supported_schemes'] = $data['supported_schemes'] ?? null;
         $this->container['approval_ui'] = $data['approval_ui'] ?? null;
@@ -224,6 +236,54 @@ class PaymentOptionContext implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets gateway
+     *
+     * @return string|null
+     */
+    public function getGateway()
+    {
+        return $this->container['gateway'];
+    }
+
+    /**
+     * Sets gateway
+     *
+     * @param string|null $gateway Gateway used for Google Pay payments.
+     *
+     * @return self
+     */
+    public function setGateway($gateway)
+    {
+        $this->container['gateway'] = $gateway;
+
+        return $this;
+    }
+
+    /**
+     * Gets gateway_merchant_id
+     *
+     * @return string|null
+     */
+    public function getGatewayMerchantId()
+    {
+        return $this->container['gateway_merchant_id'];
+    }
+
+    /**
+     * Sets gateway_merchant_id
+     *
+     * @param string|null $gateway_merchant_id Gateway merchant identifier used for Google Pay payments.
+     *
+     * @return self
+     */
+    public function setGatewayMerchantId($gateway_merchant_id)
+    {
+        $this->container['gateway_merchant_id'] = $gateway_merchant_id;
+
+        return $this;
+    }
 
     /**
      * Gets merchant_name

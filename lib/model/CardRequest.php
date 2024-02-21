@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * CardRequest Class Doc Comment
  *
  * @category Class
- * @description Card details to use in a transaction or to register a new payment method.
+ * @description Details to register a new card payment method.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -64,10 +64,10 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'method' => 'string',
         'number' => 'string',
         'expiration_date' => 'string',
-        'security_code' => 'string',
         'external_identifier' => 'string',
         'buyer_id' => 'string',
-        'buyer_external_identifier' => 'string'
+        'buyer_external_identifier' => 'string',
+        'redirect_url' => 'string'
     ];
 
     /**
@@ -81,10 +81,10 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'method' => null,
         'number' => null,
         'expiration_date' => null,
-        'security_code' => null,
         'external_identifier' => null,
         'buyer_id' => 'uuid',
-        'buyer_external_identifier' => null
+        'buyer_external_identifier' => null,
+        'redirect_url' => null
     ];
 
     /**
@@ -117,10 +117,10 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'method' => 'method',
         'number' => 'number',
         'expiration_date' => 'expiration_date',
-        'security_code' => 'security_code',
         'external_identifier' => 'external_identifier',
         'buyer_id' => 'buyer_id',
-        'buyer_external_identifier' => 'buyer_external_identifier'
+        'buyer_external_identifier' => 'buyer_external_identifier',
+        'redirect_url' => 'redirect_url'
     ];
 
     /**
@@ -132,10 +132,10 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'method' => 'setMethod',
         'number' => 'setNumber',
         'expiration_date' => 'setExpirationDate',
-        'security_code' => 'setSecurityCode',
         'external_identifier' => 'setExternalIdentifier',
         'buyer_id' => 'setBuyerId',
-        'buyer_external_identifier' => 'setBuyerExternalIdentifier'
+        'buyer_external_identifier' => 'setBuyerExternalIdentifier',
+        'redirect_url' => 'setRedirectUrl'
     ];
 
     /**
@@ -147,10 +147,10 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'method' => 'getMethod',
         'number' => 'getNumber',
         'expiration_date' => 'getExpirationDate',
-        'security_code' => 'getSecurityCode',
         'external_identifier' => 'getExternalIdentifier',
         'buyer_id' => 'getBuyerId',
-        'buyer_external_identifier' => 'getBuyerExternalIdentifier'
+        'buyer_external_identifier' => 'getBuyerExternalIdentifier',
+        'redirect_url' => 'getRedirectUrl'
     ];
 
     /**
@@ -226,10 +226,10 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['method'] = $data['method'] ?? null;
         $this->container['number'] = $data['number'] ?? null;
         $this->container['expiration_date'] = $data['expiration_date'] ?? null;
-        $this->container['security_code'] = $data['security_code'] ?? null;
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['buyer_id'] = $data['buyer_id'] ?? null;
         $this->container['buyer_external_identifier'] = $data['buyer_external_identifier'] ?? null;
+        $this->container['redirect_url'] = $data['redirect_url'] ?? null;
     }
 
     /**
@@ -281,21 +281,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!preg_match("/^\\d{2}\/\\d{2}$/", $this->container['expiration_date'])) {
             $invalidProperties[] = "invalid value for 'expiration_date', must be conform to the pattern /^\\d{2}\/\\d{2}$/.";
-        }
-
-        if ($this->container['security_code'] === null) {
-            $invalidProperties[] = "'security_code' can't be null";
-        }
-        if ((mb_strlen($this->container['security_code']) > 4)) {
-            $invalidProperties[] = "invalid value for 'security_code', the character length must be smaller than or equal to 4.";
-        }
-
-        if ((mb_strlen($this->container['security_code']) < 3)) {
-            $invalidProperties[] = "invalid value for 'security_code', the character length must be bigger than or equal to 3.";
-        }
-
-        if (!preg_match("/^\\d{3,4}$/", $this->container['security_code'])) {
-            $invalidProperties[] = "invalid value for 'security_code', must be conform to the pattern /^\\d{3,4}$/.";
         }
 
         return $invalidProperties;
@@ -416,40 +401,6 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets security_code
-     *
-     * @return string
-     */
-    public function getSecurityCode()
-    {
-        return $this->container['security_code'];
-    }
-
-    /**
-     * Sets security_code
-     *
-     * @param string $security_code The 3 or 4 digit security code often found on the card. This often referred to as the CVV or CVD.
-     *
-     * @return self
-     */
-    public function setSecurityCode($security_code)
-    {
-        if ((mb_strlen($security_code) > 4)) {
-            throw new \InvalidArgumentException('invalid length for $security_code when calling CardRequest., must be smaller than or equal to 4.');
-        }
-        if ((mb_strlen($security_code) < 3)) {
-            throw new \InvalidArgumentException('invalid length for $security_code when calling CardRequest., must be bigger than or equal to 3.');
-        }
-        if ((!preg_match("/^\\d{3,4}$/", $security_code))) {
-            throw new \InvalidArgumentException("invalid value for $security_code when calling CardRequest., must conform to the pattern /^\\d{3,4}$/.");
-        }
-
-        $this->container['security_code'] = $security_code;
-
-        return $this;
-    }
-
-    /**
      * Gets external_identifier
      *
      * @return string|null
@@ -517,6 +468,30 @@ class CardRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerExternalIdentifier($buyer_external_identifier)
     {
         $this->container['buyer_external_identifier'] = $buyer_external_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirect_url
+     *
+     * @return string|null
+     */
+    public function getRedirectUrl()
+    {
+        return $this->container['redirect_url'];
+    }
+
+    /**
+     * Sets redirect_url
+     *
+     * @param string|null $redirect_url The redirect URL to redirect a buyer to after they have authorized their transaction or payment method. This only applies to payment methods that require buyer approval.
+     *
+     * @return self
+     */
+    public function setRedirectUrl($redirect_url)
+    {
+        $this->container['redirect_url'] = $redirect_url;
 
         return $this;
     }

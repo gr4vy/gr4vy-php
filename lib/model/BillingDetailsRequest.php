@@ -66,7 +66,7 @@ class BillingDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'email_address' => 'string',
         'phone_number' => 'string',
         'address' => '\Gr4vy\model\BillingDetailsRequestAddress',
-        'tax_id' => '\Gr4vy\model\BillingDetailsTaxId'
+        'tax_id' => '\Gr4vy\model\BillingDetailsRequestTaxId'
     ];
 
     /**
@@ -427,7 +427,7 @@ class BillingDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets tax_id
      *
-     * @return \Gr4vy\model\BillingDetailsTaxId|null
+     * @return \Gr4vy\model\BillingDetailsRequestTaxId|null
      */
     public function getTaxId()
     {
@@ -437,7 +437,7 @@ class BillingDetailsRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets tax_id
      *
-     * @param \Gr4vy\model\BillingDetailsTaxId|null $tax_id tax_id
+     * @param \Gr4vy\model\BillingDetailsRequestTaxId|null $tax_id tax_id
      *
      * @return self
      */

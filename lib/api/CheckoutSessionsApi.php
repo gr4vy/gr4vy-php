@@ -117,320 +117,9 @@ class CheckoutSessionsApi
     }
 
     /**
-     * Operation addCheckoutSession
-     *
-     * Create a new Checkout Session
-     *
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\CheckoutSession|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\ErrorGeneric
-     */
-    public function addCheckoutSession()
-    {
-        list($response) = $this->addCheckoutSessionWithHttpInfo();
-        return $response;
-    }
-
-    /**
-     * Operation addCheckoutSessionWithHttpInfo
-     *
-     * Create a new Checkout Session
-     *
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\CheckoutSession|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\ErrorGeneric, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function addCheckoutSessionWithHttpInfo()
-    {
-        $request = $this->addCheckoutSessionRequest();
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\Gr4vy\model\CheckoutSession' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\CheckoutSession' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\CheckoutSession', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Gr4vy\model\CheckoutSession';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\CheckoutSession',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error401Unauthorized',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\ErrorGeneric',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation addCheckoutSessionAsync
-     *
-     * Create a new Checkout Session
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function addCheckoutSessionAsync()
-    {
-        return $this->addCheckoutSessionAsyncWithHttpInfo()
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation addCheckoutSessionAsyncWithHttpInfo
-     *
-     * Create a new Checkout Session
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function addCheckoutSessionAsyncWithHttpInfo()
-    {
-        $returnType = '\Gr4vy\model\CheckoutSession';
-        $request = $this->addCheckoutSessionRequest();
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'addCheckoutSession'
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function addCheckoutSessionRequest()
-    {
-
-        $resourcePath = '/checkout/sessions';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation deleteCheckoutSession
      *
-     * Delete a Checkout Session
+     * Delete checkout session
      *
      * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
      *
@@ -446,7 +135,7 @@ class CheckoutSessionsApi
     /**
      * Operation deleteCheckoutSessionWithHttpInfo
      *
-     * Delete a Checkout Session
+     * Delete checkout session
      *
      * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
      *
@@ -529,7 +218,7 @@ class CheckoutSessionsApi
     /**
      * Operation deleteCheckoutSessionAsync
      *
-     * Delete a Checkout Session
+     * Delete checkout session
      *
      * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
      *
@@ -549,7 +238,7 @@ class CheckoutSessionsApi
     /**
      * Operation deleteCheckoutSessionAsyncWithHttpInfo
      *
-     * Delete a Checkout Session
+     * Delete checkout session
      *
      * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
      *
@@ -684,7 +373,7 @@ class CheckoutSessionsApi
     /**
      * Operation getCheckoutSession
      *
-     * Get a Checkout Session
+     * Get checkout session
      *
      * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
      *
@@ -701,7 +390,7 @@ class CheckoutSessionsApi
     /**
      * Operation getCheckoutSessionWithHttpInfo
      *
-     * Get a Checkout Session
+     * Get checkout session
      *
      * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
      *
@@ -869,7 +558,7 @@ class CheckoutSessionsApi
     /**
      * Operation getCheckoutSessionAsync
      *
-     * Get a Checkout Session
+     * Get checkout session
      *
      * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
      *
@@ -889,7 +578,7 @@ class CheckoutSessionsApi
     /**
      * Operation getCheckoutSessionAsyncWithHttpInfo
      *
-     * Get a Checkout Session
+     * Get checkout session
      *
      * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
      *
@@ -1035,37 +724,36 @@ class CheckoutSessionsApi
     }
 
     /**
-     * Operation updateCheckoutSessionFields
+     * Operation newCheckoutSession
      *
-     * Update a Checkout Session&#39;s Secure Fields
+     * New checkout session
      *
-     * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
-     * @param  \Gr4vy\model\CheckoutSessionSecureFieldsUpdate $checkout_session_secure_fields_update checkout_session_secure_fields_update (optional)
+     * @param  \Gr4vy\model\CheckoutSessionCreateRequest $checkout_session_create_request checkout_session_create_request (optional)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Gr4vy\model\CheckoutSession|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord|\Gr4vy\model\ErrorGeneric
      */
-    public function updateCheckoutSessionFields($checkout_session_id, $checkout_session_secure_fields_update = null)
+    public function newCheckoutSession($checkout_session_create_request = null)
     {
-        $this->updateCheckoutSessionFieldsWithHttpInfo($checkout_session_id, $checkout_session_secure_fields_update);
+        list($response) = $this->newCheckoutSessionWithHttpInfo($checkout_session_create_request);
+        return $response;
     }
 
     /**
-     * Operation updateCheckoutSessionFieldsWithHttpInfo
+     * Operation newCheckoutSessionWithHttpInfo
      *
-     * Update a Checkout Session&#39;s Secure Fields
+     * New checkout session
      *
-     * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
-     * @param  \Gr4vy\model\CheckoutSessionSecureFieldsUpdate $checkout_session_secure_fields_update (optional)
+     * @param  \Gr4vy\model\CheckoutSessionCreateRequest $checkout_session_create_request (optional)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gr4vy\model\CheckoutSession|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord|\Gr4vy\model\ErrorGeneric, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCheckoutSessionFieldsWithHttpInfo($checkout_session_id, $checkout_session_secure_fields_update = null)
+    public function newCheckoutSessionWithHttpInfo($checkout_session_create_request = null)
     {
-        $request = $this->updateCheckoutSessionFieldsRequest($checkout_session_id, $checkout_session_secure_fields_update);
+        $request = $this->newCheckoutSessionRequest($checkout_session_create_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1102,10 +790,95 @@ class CheckoutSessionsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 201:
+                    if ('\Gr4vy\model\CheckoutSession' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\CheckoutSession' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\CheckoutSession', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\Gr4vy\model\Error409DuplicateRecord' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error409DuplicateRecord' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error409DuplicateRecord', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\CheckoutSession';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\CheckoutSession',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1114,10 +887,10 @@ class CheckoutSessionsApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 404:
+                case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gr4vy\model\Error404NotFound',
+                        '\Gr4vy\model\Error409DuplicateRecord',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1136,19 +909,18 @@ class CheckoutSessionsApi
     }
 
     /**
-     * Operation updateCheckoutSessionFieldsAsync
+     * Operation newCheckoutSessionAsync
      *
-     * Update a Checkout Session&#39;s Secure Fields
+     * New checkout session
      *
-     * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
-     * @param  \Gr4vy\model\CheckoutSessionSecureFieldsUpdate $checkout_session_secure_fields_update (optional)
+     * @param  \Gr4vy\model\CheckoutSessionCreateRequest $checkout_session_create_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCheckoutSessionFieldsAsync($checkout_session_id, $checkout_session_secure_fields_update = null)
+    public function newCheckoutSessionAsync($checkout_session_create_request = null)
     {
-        return $this->updateCheckoutSessionFieldsAsyncWithHttpInfo($checkout_session_id, $checkout_session_secure_fields_update)
+        return $this->newCheckoutSessionAsyncWithHttpInfo($checkout_session_create_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1157,26 +929,38 @@ class CheckoutSessionsApi
     }
 
     /**
-     * Operation updateCheckoutSessionFieldsAsyncWithHttpInfo
+     * Operation newCheckoutSessionAsyncWithHttpInfo
      *
-     * Update a Checkout Session&#39;s Secure Fields
+     * New checkout session
      *
-     * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
-     * @param  \Gr4vy\model\CheckoutSessionSecureFieldsUpdate $checkout_session_secure_fields_update (optional)
+     * @param  \Gr4vy\model\CheckoutSessionCreateRequest $checkout_session_create_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCheckoutSessionFieldsAsyncWithHttpInfo($checkout_session_id, $checkout_session_secure_fields_update = null)
+    public function newCheckoutSessionAsyncWithHttpInfo($checkout_session_create_request = null)
     {
-        $returnType = '';
-        $request = $this->updateCheckoutSessionFieldsRequest($checkout_session_id, $checkout_session_secure_fields_update);
+        $returnType = '\Gr4vy\model\CheckoutSession';
+        $request = $this->newCheckoutSessionRequest($checkout_session_create_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1196,24 +980,419 @@ class CheckoutSessionsApi
     }
 
     /**
-     * Create request for operation 'updateCheckoutSessionFields'
+     * Create request for operation 'newCheckoutSession'
      *
-     * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
-     * @param  \Gr4vy\model\CheckoutSessionSecureFieldsUpdate $checkout_session_secure_fields_update (optional)
+     * @param  \Gr4vy\model\CheckoutSessionCreateRequest $checkout_session_create_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCheckoutSessionFieldsRequest($checkout_session_id, $checkout_session_secure_fields_update = null)
+    public function newCheckoutSessionRequest($checkout_session_create_request = null)
+    {
+
+        $resourcePath = '/checkout/sessions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($checkout_session_create_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($checkout_session_create_request));
+            } else {
+                $httpBody = $checkout_session_create_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateCheckoutSession
+     *
+     * Update checkout session
+     *
+     * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
+     * @param  \Gr4vy\model\CheckoutSessionUpdateRequest $checkout_session_update_request checkout_session_update_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\CheckoutSession|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound|\Gr4vy\model\Error409DuplicateRecord|\Gr4vy\model\ErrorGeneric
+     */
+    public function updateCheckoutSession($checkout_session_id, $checkout_session_update_request = null)
+    {
+        list($response) = $this->updateCheckoutSessionWithHttpInfo($checkout_session_id, $checkout_session_update_request);
+        return $response;
+    }
+
+    /**
+     * Operation updateCheckoutSessionWithHttpInfo
+     *
+     * Update checkout session
+     *
+     * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
+     * @param  \Gr4vy\model\CheckoutSessionUpdateRequest $checkout_session_update_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\CheckoutSession|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound|\Gr4vy\model\Error409DuplicateRecord|\Gr4vy\model\ErrorGeneric, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateCheckoutSessionWithHttpInfo($checkout_session_id, $checkout_session_update_request = null)
+    {
+        $request = $this->updateCheckoutSessionRequest($checkout_session_id, $checkout_session_update_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Gr4vy\model\CheckoutSession' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\CheckoutSession' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\CheckoutSession', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Gr4vy\model\Error404NotFound' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error404NotFound' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error404NotFound', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\Gr4vy\model\Error409DuplicateRecord' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error409DuplicateRecord' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error409DuplicateRecord', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\CheckoutSession';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\CheckoutSession',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ErrorGeneric',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error404NotFound',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error409DuplicateRecord',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ErrorGeneric',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateCheckoutSessionAsync
+     *
+     * Update checkout session
+     *
+     * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
+     * @param  \Gr4vy\model\CheckoutSessionUpdateRequest $checkout_session_update_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCheckoutSessionAsync($checkout_session_id, $checkout_session_update_request = null)
+    {
+        return $this->updateCheckoutSessionAsyncWithHttpInfo($checkout_session_id, $checkout_session_update_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateCheckoutSessionAsyncWithHttpInfo
+     *
+     * Update checkout session
+     *
+     * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
+     * @param  \Gr4vy\model\CheckoutSessionUpdateRequest $checkout_session_update_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCheckoutSessionAsyncWithHttpInfo($checkout_session_id, $checkout_session_update_request = null)
+    {
+        $returnType = '\Gr4vy\model\CheckoutSession';
+        $request = $this->updateCheckoutSessionRequest($checkout_session_id, $checkout_session_update_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateCheckoutSession'
+     *
+     * @param  string $checkout_session_id The unique ID for a Checkout Session. (required)
+     * @param  \Gr4vy\model\CheckoutSessionUpdateRequest $checkout_session_update_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateCheckoutSessionRequest($checkout_session_id, $checkout_session_update_request = null)
     {
         // verify the required parameter 'checkout_session_id' is set
         if ($checkout_session_id === null || (is_array($checkout_session_id) && count($checkout_session_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $checkout_session_id when calling updateCheckoutSessionFields'
+                'Missing the required parameter $checkout_session_id when calling updateCheckoutSession'
             );
         }
 
-        $resourcePath = '/checkout/sessions/{checkout_session_id}/fields';
+        $resourcePath = '/checkout/sessions/{checkout_session_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1244,11 +1423,11 @@ class CheckoutSessionsApi
         }
 
         // for model (json/xml)
-        if (isset($checkout_session_secure_fields_update)) {
+        if (isset($checkout_session_update_request)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($checkout_session_secure_fields_update));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($checkout_session_update_request));
             } else {
-                $httpBody = $checkout_session_secure_fields_update;
+                $httpBody = $checkout_session_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -66,10 +66,13 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
         'expiration_date' => 'string',
         'security_code' => 'string',
         'external_identifier' => 'string',
-        'buyer_id' => 'string',
-        'buyer_external_identifier' => 'string',
         'redirect_url' => 'string',
-        'id' => 'string'
+        'id' => 'string',
+        'currency' => 'string',
+        'country' => 'string',
+        'token' => 'object',
+        'assurance_details' => '\Gr4vy\model\GooglePayRequestAssuranceDetails',
+        'card_holder_name' => 'string'
     ];
 
     /**
@@ -85,10 +88,13 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
         'expiration_date' => null,
         'security_code' => null,
         'external_identifier' => null,
-        'buyer_id' => 'uuid',
-        'buyer_external_identifier' => null,
         'redirect_url' => null,
-        'id' => null
+        'id' => null,
+        'currency' => null,
+        'country' => null,
+        'token' => null,
+        'assurance_details' => null,
+        'card_holder_name' => null
     ];
 
     /**
@@ -123,10 +129,13 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
         'expiration_date' => 'expiration_date',
         'security_code' => 'security_code',
         'external_identifier' => 'external_identifier',
-        'buyer_id' => 'buyer_id',
-        'buyer_external_identifier' => 'buyer_external_identifier',
         'redirect_url' => 'redirect_url',
-        'id' => 'id'
+        'id' => 'id',
+        'currency' => 'currency',
+        'country' => 'country',
+        'token' => 'token',
+        'assurance_details' => 'assurance_details',
+        'card_holder_name' => 'card_holder_name'
     ];
 
     /**
@@ -140,10 +149,13 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
         'expiration_date' => 'setExpirationDate',
         'security_code' => 'setSecurityCode',
         'external_identifier' => 'setExternalIdentifier',
-        'buyer_id' => 'setBuyerId',
-        'buyer_external_identifier' => 'setBuyerExternalIdentifier',
         'redirect_url' => 'setRedirectUrl',
-        'id' => 'setId'
+        'id' => 'setId',
+        'currency' => 'setCurrency',
+        'country' => 'setCountry',
+        'token' => 'setToken',
+        'assurance_details' => 'setAssuranceDetails',
+        'card_holder_name' => 'setCardHolderName'
     ];
 
     /**
@@ -157,10 +169,13 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
         'expiration_date' => 'getExpirationDate',
         'security_code' => 'getSecurityCode',
         'external_identifier' => 'getExternalIdentifier',
-        'buyer_id' => 'getBuyerId',
-        'buyer_external_identifier' => 'getBuyerExternalIdentifier',
         'redirect_url' => 'getRedirectUrl',
-        'id' => 'getId'
+        'id' => 'getId',
+        'currency' => 'getCurrency',
+        'country' => 'getCountry',
+        'token' => 'getToken',
+        'assurance_details' => 'getAssuranceDetails',
+        'card_holder_name' => 'getCardHolderName'
     ];
 
     /**
@@ -204,6 +219,139 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
+    public const METHOD_AFTERPAY = 'afterpay';
+    public const METHOD_ALIPAY = 'alipay';
+    public const METHOD_ALIPAYHK = 'alipayhk';
+    public const METHOD_APPLEPAY = 'applepay';
+    public const METHOD_BACS = 'bacs';
+    public const METHOD_BANCONTACT = 'bancontact';
+    public const METHOD_BANKED = 'banked';
+    public const METHOD_BECS = 'becs';
+    public const METHOD_BITPAY = 'bitpay';
+    public const METHOD_BOLETO = 'boleto';
+    public const METHOD_BOOST = 'boost';
+    public const METHOD_CARD = 'card';
+    public const METHOD_CHECKOUT_SESSION = 'checkout-session';
+    public const METHOD_CLICK_TO_PAY = 'click-to-pay';
+    public const METHOD_CLEARPAY = 'clearpay';
+    public const METHOD_DANA = 'dana';
+    public const METHOD_DCB = 'dcb';
+    public const METHOD_EPS = 'eps';
+    public const METHOD_FORTUMO = 'fortumo';
+    public const METHOD_GCASH = 'gcash';
+    public const METHOD_GIROPAY = 'giropay';
+    public const METHOD_GOCARDLESS = 'gocardless';
+    public const METHOD_GOOGLEPAY = 'googlepay';
+    public const METHOD_GOPAY = 'gopay';
+    public const METHOD_GRABPAY = 'grabpay';
+    public const METHOD_IDEAL = 'ideal';
+    public const METHOD_ID = 'id';
+    public const METHOD_KAKAOPAY = 'kakaopay';
+    public const METHOD_KLARNA = 'klarna';
+    public const METHOD_LAYBUY = 'laybuy';
+    public const METHOD_LINEPAY = 'linepay';
+    public const METHOD_LINKAJA = 'linkaja';
+    public const METHOD_MAYBANKQRPAY = 'maybankqrpay';
+    public const METHOD_MULTIBANCO = 'multibanco';
+    public const METHOD_ONEY_3X = 'oney_3x';
+    public const METHOD_ONEY_4X = 'oney_4x';
+    public const METHOD_ONEY_6X = 'oney_6x';
+    public const METHOD_ONEY_10X = 'oney_10x';
+    public const METHOD_ONEY_12X = 'oney_12x';
+    public const METHOD_OVO = 'ovo';
+    public const METHOD_OXXO = 'oxxo';
+    public const METHOD_PAYMAYA = 'paymaya';
+    public const METHOD_PAYPAL = 'paypal';
+    public const METHOD_PAYPALPAYLATER = 'paypalpaylater';
+    public const METHOD_PIX = 'pix';
+    public const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    public const METHOD_RAZORPAY = 'razorpay';
+    public const METHOD_SCALAPAY = 'scalapay';
+    public const METHOD_SEPA = 'sepa';
+    public const METHOD_SHOPEEPAY = 'shopeepay';
+    public const METHOD_SINGTELDASH = 'singteldash';
+    public const METHOD_SOFORT = 'sofort';
+    public const METHOD_STRIPEDD = 'stripedd';
+    public const METHOD_THAIQR = 'thaiqr';
+    public const METHOD_TOUCHNGO = 'touchngo';
+    public const METHOD_TRUEMONEY = 'truemoney';
+    public const METHOD_TRUSTLY = 'trustly';
+    public const METHOD_VENMO = 'venmo';
+    public const METHOD_WAAVE = 'waave';
+    public const METHOD_WECHAT = 'wechat';
+    public const METHOD_ZIPPAY = 'zippay';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_AFTERPAY,
+            self::METHOD_ALIPAY,
+            self::METHOD_ALIPAYHK,
+            self::METHOD_APPLEPAY,
+            self::METHOD_BACS,
+            self::METHOD_BANCONTACT,
+            self::METHOD_BANKED,
+            self::METHOD_BECS,
+            self::METHOD_BITPAY,
+            self::METHOD_BOLETO,
+            self::METHOD_BOOST,
+            self::METHOD_CARD,
+            self::METHOD_CHECKOUT_SESSION,
+            self::METHOD_CLICK_TO_PAY,
+            self::METHOD_CLEARPAY,
+            self::METHOD_DANA,
+            self::METHOD_DCB,
+            self::METHOD_EPS,
+            self::METHOD_FORTUMO,
+            self::METHOD_GCASH,
+            self::METHOD_GIROPAY,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_GOPAY,
+            self::METHOD_GRABPAY,
+            self::METHOD_IDEAL,
+            self::METHOD_ID,
+            self::METHOD_KAKAOPAY,
+            self::METHOD_KLARNA,
+            self::METHOD_LAYBUY,
+            self::METHOD_LINEPAY,
+            self::METHOD_LINKAJA,
+            self::METHOD_MAYBANKQRPAY,
+            self::METHOD_MULTIBANCO,
+            self::METHOD_ONEY_3X,
+            self::METHOD_ONEY_4X,
+            self::METHOD_ONEY_6X,
+            self::METHOD_ONEY_10X,
+            self::METHOD_ONEY_12X,
+            self::METHOD_OVO,
+            self::METHOD_OXXO,
+            self::METHOD_PAYMAYA,
+            self::METHOD_PAYPAL,
+            self::METHOD_PAYPALPAYLATER,
+            self::METHOD_PIX,
+            self::METHOD_RABBITLINEPAY,
+            self::METHOD_RAZORPAY,
+            self::METHOD_SCALAPAY,
+            self::METHOD_SEPA,
+            self::METHOD_SHOPEEPAY,
+            self::METHOD_SINGTELDASH,
+            self::METHOD_SOFORT,
+            self::METHOD_STRIPEDD,
+            self::METHOD_THAIQR,
+            self::METHOD_TOUCHNGO,
+            self::METHOD_TRUEMONEY,
+            self::METHOD_TRUSTLY,
+            self::METHOD_VENMO,
+            self::METHOD_WAAVE,
+            self::METHOD_WECHAT,
+            self::METHOD_ZIPPAY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -225,10 +373,13 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
         $this->container['expiration_date'] = $data['expiration_date'] ?? null;
         $this->container['security_code'] = $data['security_code'] ?? null;
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
-        $this->container['buyer_id'] = $data['buyer_id'] ?? null;
-        $this->container['buyer_external_identifier'] = $data['buyer_external_identifier'] ?? null;
         $this->container['redirect_url'] = $data['redirect_url'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
+        $this->container['token'] = $data['token'] ?? null;
+        $this->container['assurance_details'] = $data['assurance_details'] ?? null;
+        $this->container['card_holder_name'] = $data['card_holder_name'] ?? null;
     }
 
     /**
@@ -243,6 +394,15 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
         if ($this->container['method'] === null) {
             $invalidProperties[] = "'method' can't be null";
         }
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if (!is_null($this->container['number']) && (mb_strlen($this->container['number']) > 19)) {
             $invalidProperties[] = "invalid value for 'number', the character length must be smaller than or equal to 19.";
         }
@@ -307,12 +467,22 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Sets method
      *
-     * @param string $method method
+     * @param string $method The method to use for this request.
      *
      * @return self
      */
     public function setMethod($method)
     {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['method'] = $method;
 
         return $this;
@@ -331,7 +501,7 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Sets number
      *
-     * @param string|null $number The 13-19 digit number for this credit card as it can be found on the front of the card.  If a card has been stored with us previously, this number will represent the unique tokenized card ID provided via our API.
+     * @param string|null $number The 13-19 digit number for this credit card as it can be found on the front of the card.
      *
      * @return self
      */
@@ -365,7 +535,7 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Sets expiration_date
      *
-     * @param string|null $expiration_date The expiration date of the card, formatted `MM/YY`. If a card has been previously stored with us this value is optional.  If the `number` of this card represents a tokenized card, then this value is ignored.
+     * @param string|null $expiration_date The expiration date of the card, formatted `MM/YY`. If a card has been previously stored with us this value is optional.
      *
      * @return self
      */
@@ -399,7 +569,7 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Sets security_code
      *
-     * @param string|null $security_code The 3 or 4 digit security code often found on the card. This often referred to as the CVV or CVD.  If the `number` of this card represents a tokenized card, then this value is ignored.
+     * @param string|null $security_code The 3 or 4 digit security code often found on the card. This often referred to as the CVV or CVD.
      *
      * @return self
      */
@@ -445,54 +615,6 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets buyer_id
-     *
-     * @return string|null
-     */
-    public function getBuyerId()
-    {
-        return $this->container['buyer_id'];
-    }
-
-    /**
-     * Sets buyer_id
-     *
-     * @param string|null $buyer_id The ID of the buyer to associate this payment method to. If this field is provided then the `buyer_external_identifier` field needs to be unset.
-     *
-     * @return self
-     */
-    public function setBuyerId($buyer_id)
-    {
-        $this->container['buyer_id'] = $buyer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets buyer_external_identifier
-     *
-     * @return string|null
-     */
-    public function getBuyerExternalIdentifier()
-    {
-        return $this->container['buyer_external_identifier'];
-    }
-
-    /**
-     * Sets buyer_external_identifier
-     *
-     * @param string|null $buyer_external_identifier The `external_identifier` of the buyer to associate this payment method to. If this field is provided then the `buyer_id` field needs to be unset.
-     *
-     * @return self
-     */
-    public function setBuyerExternalIdentifier($buyer_external_identifier)
-    {
-        $this->container['buyer_external_identifier'] = $buyer_external_identifier;
-
-        return $this;
-    }
-
-    /**
      * Gets redirect_url
      *
      * @return string|null
@@ -529,13 +651,133 @@ class TransactionPaymentMethodRequest implements ModelInterface, ArrayAccess, \J
     /**
      * Sets id
      *
-     * @param string|null $id An identifier for a previously tokenized payment method. This id can represent any type of payment method.
+     * @param string|null $id An identifier for a previously tokenized payment method or checkout-session. This id can represent any type of payment method or checkout-session.
      *
      * @return self
      */
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency The ISO-4217 currency code to use this payment method for. This is used to select the payment service to use.
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets country
+     *
+     * @return string|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param string|null $country The 2-letter ISO code of the country to use this payment method for. This is used to select the payment service to use.
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets token
+     *
+     * @return object|null
+     */
+    public function getToken()
+    {
+        return $this->container['token'];
+    }
+
+    /**
+     * Sets token
+     *
+     * @param object|null $token The encrypted (opaque) token that was passed to the `onpaymentauthorized` callback by the Apple Pay integration.
+     *
+     * @return self
+     */
+    public function setToken($token)
+    {
+        $this->container['token'] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Gets assurance_details
+     *
+     * @return \Gr4vy\model\GooglePayRequestAssuranceDetails|null
+     */
+    public function getAssuranceDetails()
+    {
+        return $this->container['assurance_details'];
+    }
+
+    /**
+     * Sets assurance_details
+     *
+     * @param \Gr4vy\model\GooglePayRequestAssuranceDetails|null $assurance_details assurance_details
+     *
+     * @return self
+     */
+    public function setAssuranceDetails($assurance_details)
+    {
+        $this->container['assurance_details'] = $assurance_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets card_holder_name
+     *
+     * @return string|null
+     */
+    public function getCardHolderName()
+    {
+        return $this->container['card_holder_name'];
+    }
+
+    /**
+     * Sets card_holder_name
+     *
+     * @param string|null $card_holder_name Name of the card holder.
+     *
+     * @return self
+     */
+    public function setCardHolderName($card_holder_name)
+    {
+        $this->container['card_holder_name'] = $card_holder_name;
 
         return $this;
     }

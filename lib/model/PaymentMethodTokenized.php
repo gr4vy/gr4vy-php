@@ -63,14 +63,18 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'type' => 'string',
         'id' => 'string',
+        'merchant_account_id' => 'string',
         'method' => 'string',
         'label' => 'string',
         'scheme' => 'string',
+        'additional_schemes' => 'string[]',
         'expiration_date' => 'string',
         'approval_target' => 'string',
         'approval_url' => 'string',
         'currency' => 'string',
-        'country' => 'string'
+        'country' => 'string',
+        'last_replaced_at' => '\DateTime',
+        'has_replacement' => 'bool'
     ];
 
     /**
@@ -83,14 +87,18 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPIFormats = [
         'type' => null,
         'id' => 'uuid',
+        'merchant_account_id' => null,
         'method' => null,
         'label' => null,
         'scheme' => null,
+        'additional_schemes' => null,
         'expiration_date' => null,
         'approval_target' => null,
         'approval_url' => null,
         'currency' => null,
-        'country' => null
+        'country' => null,
+        'last_replaced_at' => 'date-time',
+        'has_replacement' => null
     ];
 
     /**
@@ -122,14 +130,18 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $attributeMap = [
         'type' => 'type',
         'id' => 'id',
+        'merchant_account_id' => 'merchant_account_id',
         'method' => 'method',
         'label' => 'label',
         'scheme' => 'scheme',
+        'additional_schemes' => 'additional_schemes',
         'expiration_date' => 'expiration_date',
         'approval_target' => 'approval_target',
         'approval_url' => 'approval_url',
         'currency' => 'currency',
-        'country' => 'country'
+        'country' => 'country',
+        'last_replaced_at' => 'last_replaced_at',
+        'has_replacement' => 'has_replacement'
     ];
 
     /**
@@ -140,14 +152,18 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $setters = [
         'type' => 'setType',
         'id' => 'setId',
+        'merchant_account_id' => 'setMerchantAccountId',
         'method' => 'setMethod',
         'label' => 'setLabel',
         'scheme' => 'setScheme',
+        'additional_schemes' => 'setAdditionalSchemes',
         'expiration_date' => 'setExpirationDate',
         'approval_target' => 'setApprovalTarget',
         'approval_url' => 'setApprovalUrl',
         'currency' => 'setCurrency',
-        'country' => 'setCountry'
+        'country' => 'setCountry',
+        'last_replaced_at' => 'setLastReplacedAt',
+        'has_replacement' => 'setHasReplacement'
     ];
 
     /**
@@ -158,14 +174,18 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $getters = [
         'type' => 'getType',
         'id' => 'getId',
+        'merchant_account_id' => 'getMerchantAccountId',
         'method' => 'getMethod',
         'label' => 'getLabel',
         'scheme' => 'getScheme',
+        'additional_schemes' => 'getAdditionalSchemes',
         'expiration_date' => 'getExpirationDate',
         'approval_target' => 'getApprovalTarget',
         'approval_url' => 'getApprovalUrl',
         'currency' => 'getCurrency',
-        'country' => 'getCountry'
+        'country' => 'getCountry',
+        'last_replaced_at' => 'getLastReplacedAt',
+        'has_replacement' => 'getHasReplacement'
     ];
 
     /**
@@ -210,19 +230,111 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     public const TYPE_PAYMENT_METHOD = 'payment-method';
+    public const METHOD_AFTERPAY = 'afterpay';
+    public const METHOD_ALIPAY = 'alipay';
+    public const METHOD_ALIPAYHK = 'alipayhk';
+    public const METHOD_APPLEPAY = 'applepay';
+    public const METHOD_BACS = 'bacs';
+    public const METHOD_BANCONTACT = 'bancontact';
+    public const METHOD_BANKED = 'banked';
+    public const METHOD_BECS = 'becs';
+    public const METHOD_BITPAY = 'bitpay';
+    public const METHOD_BOLETO = 'boleto';
+    public const METHOD_BOOST = 'boost';
+    public const METHOD_CARD = 'card';
+    public const METHOD_CHECKOUT_SESSION = 'checkout-session';
+    public const METHOD_CLICK_TO_PAY = 'click-to-pay';
+    public const METHOD_CLEARPAY = 'clearpay';
+    public const METHOD_DANA = 'dana';
+    public const METHOD_DCB = 'dcb';
+    public const METHOD_EPS = 'eps';
+    public const METHOD_FORTUMO = 'fortumo';
+    public const METHOD_GCASH = 'gcash';
+    public const METHOD_GIROPAY = 'giropay';
+    public const METHOD_GOCARDLESS = 'gocardless';
+    public const METHOD_GOOGLEPAY = 'googlepay';
+    public const METHOD_GOPAY = 'gopay';
+    public const METHOD_GRABPAY = 'grabpay';
+    public const METHOD_IDEAL = 'ideal';
+    public const METHOD_ID = 'id';
+    public const METHOD_KAKAOPAY = 'kakaopay';
+    public const METHOD_KLARNA = 'klarna';
+    public const METHOD_LAYBUY = 'laybuy';
+    public const METHOD_LINEPAY = 'linepay';
+    public const METHOD_LINKAJA = 'linkaja';
+    public const METHOD_MAYBANKQRPAY = 'maybankqrpay';
+    public const METHOD_MULTIBANCO = 'multibanco';
+    public const METHOD_ONEY_3X = 'oney_3x';
+    public const METHOD_ONEY_4X = 'oney_4x';
+    public const METHOD_ONEY_6X = 'oney_6x';
+    public const METHOD_ONEY_10X = 'oney_10x';
+    public const METHOD_ONEY_12X = 'oney_12x';
+    public const METHOD_OVO = 'ovo';
+    public const METHOD_OXXO = 'oxxo';
+    public const METHOD_PAYMAYA = 'paymaya';
+    public const METHOD_PAYPAL = 'paypal';
+    public const METHOD_PAYPALPAYLATER = 'paypalpaylater';
+    public const METHOD_PIX = 'pix';
+    public const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    public const METHOD_RAZORPAY = 'razorpay';
+    public const METHOD_SCALAPAY = 'scalapay';
+    public const METHOD_SEPA = 'sepa';
+    public const METHOD_SHOPEEPAY = 'shopeepay';
+    public const METHOD_SINGTELDASH = 'singteldash';
+    public const METHOD_SOFORT = 'sofort';
+    public const METHOD_STRIPEDD = 'stripedd';
+    public const METHOD_THAIQR = 'thaiqr';
+    public const METHOD_TOUCHNGO = 'touchngo';
+    public const METHOD_TRUEMONEY = 'truemoney';
+    public const METHOD_TRUSTLY = 'trustly';
+    public const METHOD_VENMO = 'venmo';
+    public const METHOD_WAAVE = 'waave';
+    public const METHOD_WECHAT = 'wechat';
+    public const METHOD_ZIPPAY = 'zippay';
+    public const SCHEME_ACCEL = 'accel';
     public const SCHEME_AMEX = 'amex';
+    public const SCHEME_BANCONTACT = 'bancontact';
+    public const SCHEME_CARTE_BANCAIRE = 'carte-bancaire';
+    public const SCHEME_CIRRUS = 'cirrus';
+    public const SCHEME_CULIANCE = 'culiance';
     public const SCHEME_DANKORT = 'dankort';
     public const SCHEME_DINERS_CLUB = 'diners-club';
     public const SCHEME_DISCOVER = 'discover';
     public const SCHEME_EFTPOS_AUSTRALIA = 'eftpos-australia';
     public const SCHEME_ELO = 'elo';
+    public const SCHEME_HIPERCARD = 'hipercard';
     public const SCHEME_JCB = 'jcb';
     public const SCHEME_MAESTRO = 'maestro';
     public const SCHEME_MASTERCARD = 'mastercard';
+    public const SCHEME_NYCE = 'nyce';
     public const SCHEME_OTHER = 'other';
+    public const SCHEME_PULSE = 'pulse';
     public const SCHEME_RUPAY = 'rupay';
+    public const SCHEME_STAR = 'star';
     public const SCHEME_UNIONPAY = 'unionpay';
     public const SCHEME_VISA = 'visa';
+    public const ADDITIONAL_SCHEMES_ACCEL = 'accel';
+    public const ADDITIONAL_SCHEMES_AMEX = 'amex';
+    public const ADDITIONAL_SCHEMES_BANCONTACT = 'bancontact';
+    public const ADDITIONAL_SCHEMES_CARTE_BANCAIRE = 'carte-bancaire';
+    public const ADDITIONAL_SCHEMES_CIRRUS = 'cirrus';
+    public const ADDITIONAL_SCHEMES_CULIANCE = 'culiance';
+    public const ADDITIONAL_SCHEMES_DANKORT = 'dankort';
+    public const ADDITIONAL_SCHEMES_DINERS_CLUB = 'diners-club';
+    public const ADDITIONAL_SCHEMES_DISCOVER = 'discover';
+    public const ADDITIONAL_SCHEMES_EFTPOS_AUSTRALIA = 'eftpos-australia';
+    public const ADDITIONAL_SCHEMES_ELO = 'elo';
+    public const ADDITIONAL_SCHEMES_HIPERCARD = 'hipercard';
+    public const ADDITIONAL_SCHEMES_JCB = 'jcb';
+    public const ADDITIONAL_SCHEMES_MAESTRO = 'maestro';
+    public const ADDITIONAL_SCHEMES_MASTERCARD = 'mastercard';
+    public const ADDITIONAL_SCHEMES_NYCE = 'nyce';
+    public const ADDITIONAL_SCHEMES_OTHER = 'other';
+    public const ADDITIONAL_SCHEMES_PULSE = 'pulse';
+    public const ADDITIONAL_SCHEMES_RUPAY = 'rupay';
+    public const ADDITIONAL_SCHEMES_STAR = 'star';
+    public const ADDITIONAL_SCHEMES_UNIONPAY = 'unionpay';
+    public const ADDITIONAL_SCHEMES_VISA = 'visa';
     public const APPROVAL_TARGET_ANY = 'any';
     public const APPROVAL_TARGET_NEW_WINDOW = 'new_window';
 
@@ -243,22 +355,136 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @return string[]
      */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_AFTERPAY,
+            self::METHOD_ALIPAY,
+            self::METHOD_ALIPAYHK,
+            self::METHOD_APPLEPAY,
+            self::METHOD_BACS,
+            self::METHOD_BANCONTACT,
+            self::METHOD_BANKED,
+            self::METHOD_BECS,
+            self::METHOD_BITPAY,
+            self::METHOD_BOLETO,
+            self::METHOD_BOOST,
+            self::METHOD_CARD,
+            self::METHOD_CHECKOUT_SESSION,
+            self::METHOD_CLICK_TO_PAY,
+            self::METHOD_CLEARPAY,
+            self::METHOD_DANA,
+            self::METHOD_DCB,
+            self::METHOD_EPS,
+            self::METHOD_FORTUMO,
+            self::METHOD_GCASH,
+            self::METHOD_GIROPAY,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_GOPAY,
+            self::METHOD_GRABPAY,
+            self::METHOD_IDEAL,
+            self::METHOD_ID,
+            self::METHOD_KAKAOPAY,
+            self::METHOD_KLARNA,
+            self::METHOD_LAYBUY,
+            self::METHOD_LINEPAY,
+            self::METHOD_LINKAJA,
+            self::METHOD_MAYBANKQRPAY,
+            self::METHOD_MULTIBANCO,
+            self::METHOD_ONEY_3X,
+            self::METHOD_ONEY_4X,
+            self::METHOD_ONEY_6X,
+            self::METHOD_ONEY_10X,
+            self::METHOD_ONEY_12X,
+            self::METHOD_OVO,
+            self::METHOD_OXXO,
+            self::METHOD_PAYMAYA,
+            self::METHOD_PAYPAL,
+            self::METHOD_PAYPALPAYLATER,
+            self::METHOD_PIX,
+            self::METHOD_RABBITLINEPAY,
+            self::METHOD_RAZORPAY,
+            self::METHOD_SCALAPAY,
+            self::METHOD_SEPA,
+            self::METHOD_SHOPEEPAY,
+            self::METHOD_SINGTELDASH,
+            self::METHOD_SOFORT,
+            self::METHOD_STRIPEDD,
+            self::METHOD_THAIQR,
+            self::METHOD_TOUCHNGO,
+            self::METHOD_TRUEMONEY,
+            self::METHOD_TRUSTLY,
+            self::METHOD_VENMO,
+            self::METHOD_WAAVE,
+            self::METHOD_WECHAT,
+            self::METHOD_ZIPPAY,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getSchemeAllowableValues()
     {
         return [
+            self::SCHEME_ACCEL,
             self::SCHEME_AMEX,
+            self::SCHEME_BANCONTACT,
+            self::SCHEME_CARTE_BANCAIRE,
+            self::SCHEME_CIRRUS,
+            self::SCHEME_CULIANCE,
             self::SCHEME_DANKORT,
             self::SCHEME_DINERS_CLUB,
             self::SCHEME_DISCOVER,
             self::SCHEME_EFTPOS_AUSTRALIA,
             self::SCHEME_ELO,
+            self::SCHEME_HIPERCARD,
             self::SCHEME_JCB,
             self::SCHEME_MAESTRO,
             self::SCHEME_MASTERCARD,
+            self::SCHEME_NYCE,
             self::SCHEME_OTHER,
+            self::SCHEME_PULSE,
             self::SCHEME_RUPAY,
+            self::SCHEME_STAR,
             self::SCHEME_UNIONPAY,
             self::SCHEME_VISA,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAdditionalSchemesAllowableValues()
+    {
+        return [
+            self::ADDITIONAL_SCHEMES_ACCEL,
+            self::ADDITIONAL_SCHEMES_AMEX,
+            self::ADDITIONAL_SCHEMES_BANCONTACT,
+            self::ADDITIONAL_SCHEMES_CARTE_BANCAIRE,
+            self::ADDITIONAL_SCHEMES_CIRRUS,
+            self::ADDITIONAL_SCHEMES_CULIANCE,
+            self::ADDITIONAL_SCHEMES_DANKORT,
+            self::ADDITIONAL_SCHEMES_DINERS_CLUB,
+            self::ADDITIONAL_SCHEMES_DISCOVER,
+            self::ADDITIONAL_SCHEMES_EFTPOS_AUSTRALIA,
+            self::ADDITIONAL_SCHEMES_ELO,
+            self::ADDITIONAL_SCHEMES_HIPERCARD,
+            self::ADDITIONAL_SCHEMES_JCB,
+            self::ADDITIONAL_SCHEMES_MAESTRO,
+            self::ADDITIONAL_SCHEMES_MASTERCARD,
+            self::ADDITIONAL_SCHEMES_NYCE,
+            self::ADDITIONAL_SCHEMES_OTHER,
+            self::ADDITIONAL_SCHEMES_PULSE,
+            self::ADDITIONAL_SCHEMES_RUPAY,
+            self::ADDITIONAL_SCHEMES_STAR,
+            self::ADDITIONAL_SCHEMES_UNIONPAY,
+            self::ADDITIONAL_SCHEMES_VISA,
         ];
     }
 
@@ -292,14 +518,18 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['merchant_account_id'] = $data['merchant_account_id'] ?? null;
         $this->container['method'] = $data['method'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['scheme'] = $data['scheme'] ?? null;
+        $this->container['additional_schemes'] = $data['additional_schemes'] ?? null;
         $this->container['expiration_date'] = $data['expiration_date'] ?? null;
         $this->container['approval_target'] = $data['approval_target'] ?? null;
         $this->container['approval_url'] = $data['approval_url'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
+        $this->container['last_replaced_at'] = $data['last_replaced_at'] ?? null;
+        $this->container['has_replacement'] = $data['has_replacement'] ?? null;
     }
 
     /**
@@ -316,6 +546,15 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'type', must be one of '%s'",
                 $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
                 implode("', '", $allowedValues)
             );
         }
@@ -424,6 +663,30 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets merchant_account_id
+     *
+     * @return string|null
+     */
+    public function getMerchantAccountId()
+    {
+        return $this->container['merchant_account_id'];
+    }
+
+    /**
+     * Sets merchant_account_id
+     *
+     * @param string|null $merchant_account_id The unique ID for a merchant account.
+     *
+     * @return self
+     */
+    public function setMerchantAccountId($merchant_account_id)
+    {
+        $this->container['merchant_account_id'] = $merchant_account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets method
      *
      * @return string|null
@@ -436,12 +699,22 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets method
      *
-     * @param string|null $method method
+     * @param string|null $method The type of this payment method.
      *
      * @return self
      */
     public function setMethod($method)
     {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($method) && !in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['method'] = $method;
 
         return $this;
@@ -501,6 +774,39 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
         $this->container['scheme'] = $scheme;
+
+        return $this;
+    }
+
+    /**
+     * Gets additional_schemes
+     *
+     * @return string[]|null
+     */
+    public function getAdditionalSchemes()
+    {
+        return $this->container['additional_schemes'];
+    }
+
+    /**
+     * Sets additional_schemes
+     *
+     * @param string[]|null $additional_schemes Additional schemes of the card. Only applies to card payment methods.
+     *
+     * @return self
+     */
+    public function setAdditionalSchemes($additional_schemes)
+    {
+        $allowedValues = $this->getAdditionalSchemesAllowableValues();
+        if (!is_null($additional_schemes) && array_diff($additional_schemes, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'additional_schemes', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['additional_schemes'] = $additional_schemes;
 
         return $this;
     }
@@ -641,6 +947,54 @@ class PaymentMethodTokenized implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCountry($country)
     {
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_replaced_at
+     *
+     * @return \DateTime|null
+     */
+    public function getLastReplacedAt()
+    {
+        return $this->container['last_replaced_at'];
+    }
+
+    /**
+     * Sets last_replaced_at
+     *
+     * @param \DateTime|null $last_replaced_at The date and time when this card was last replaced.  When the Account Updater determines that new card details are available, existing details are not changed immediately. There are three scenarios in which the actual replacement occurs:  1. When this card has expired. 2. When only the expiration date changed. 3. When a transaction using this card is declined with any of the following codes:     * `canceled_payment_method`     * `expired_payment_method`     * `unavailable_payment_method`     * `unknown_payment_method`  When the replacement is applied, this field is updated. For non-card payment methods, the value of this field is always set to `null`.
+     *
+     * @return self
+     */
+    public function setLastReplacedAt($last_replaced_at)
+    {
+        $this->container['last_replaced_at'] = $last_replaced_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_replacement
+     *
+     * @return bool|null
+     */
+    public function getHasReplacement()
+    {
+        return $this->container['has_replacement'];
+    }
+
+    /**
+     * Sets has_replacement
+     *
+     * @param bool|null $has_replacement Whether this card has a pending replacement that hasn't been applied yet.  When the Account Updater determines that new card details are available, existing details are not changed immediately, but this field is set to `true`. There are three scenarios in which the actual replacement occurs:  1. When this card has expired. 2. When only the expiration date changed. 3. When a transaction using this card is declined with any of the following codes:     * `canceled_payment_method`     * `expired_payment_method`     * `unavailable_payment_method`     * `unknown_payment_method`  When the replacement is applied, this field is set to `false`. For non-card payment methods, the value of this field is always set to `false`.
+     *
+     * @return self
+     */
+    public function setHasReplacement($has_replacement)
+    {
+        $this->container['has_replacement'] = $has_replacement;
 
         return $this;
     }

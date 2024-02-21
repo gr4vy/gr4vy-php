@@ -62,9 +62,9 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'method' => 'string',
+        'id' => 'string',
         'number' => 'string',
         'expiration_date' => 'string',
-        'security_code' => 'string',
         'external_identifier' => 'string',
         'buyer_id' => 'string',
         'buyer_external_identifier' => 'string',
@@ -82,9 +82,9 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'method' => null,
+        'id' => 'uuid',
         'number' => null,
         'expiration_date' => null,
-        'security_code' => null,
         'external_identifier' => null,
         'buyer_id' => 'uuid',
         'buyer_external_identifier' => null,
@@ -121,9 +121,9 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'method' => 'method',
+        'id' => 'id',
         'number' => 'number',
         'expiration_date' => 'expiration_date',
-        'security_code' => 'security_code',
         'external_identifier' => 'external_identifier',
         'buyer_id' => 'buyer_id',
         'buyer_external_identifier' => 'buyer_external_identifier',
@@ -139,9 +139,9 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'method' => 'setMethod',
+        'id' => 'setId',
         'number' => 'setNumber',
         'expiration_date' => 'setExpirationDate',
-        'security_code' => 'setSecurityCode',
         'external_identifier' => 'setExternalIdentifier',
         'buyer_id' => 'setBuyerId',
         'buyer_external_identifier' => 'setBuyerExternalIdentifier',
@@ -157,9 +157,9 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'method' => 'getMethod',
+        'id' => 'getId',
         'number' => 'getNumber',
         'expiration_date' => 'getExpirationDate',
-        'security_code' => 'getSecurityCode',
         'external_identifier' => 'getExternalIdentifier',
         'buyer_id' => 'getBuyerId',
         'buyer_external_identifier' => 'getBuyerExternalIdentifier',
@@ -226,9 +226,9 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['method'] = $data['method'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['number'] = $data['number'] ?? null;
         $this->container['expiration_date'] = $data['expiration_date'] ?? null;
-        $this->container['security_code'] = $data['security_code'] ?? null;
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
         $this->container['buyer_id'] = $data['buyer_id'] ?? null;
         $this->container['buyer_external_identifier'] = $data['buyer_external_identifier'] ?? null;
@@ -273,18 +273,6 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             $invalidProperties[] = "invalid value for 'expiration_date', must be conform to the pattern /^\\d\\d\/\\d\\d$/.";
         }
 
-        if (!is_null($this->container['security_code']) && (mb_strlen($this->container['security_code']) > 4)) {
-            $invalidProperties[] = "invalid value for 'security_code', the character length must be smaller than or equal to 4.";
-        }
-
-        if (!is_null($this->container['security_code']) && (mb_strlen($this->container['security_code']) < 3)) {
-            $invalidProperties[] = "invalid value for 'security_code', the character length must be bigger than or equal to 3.";
-        }
-
-        if (!is_null($this->container['security_code']) && !preg_match("/^\\d{3,4}$/", $this->container['security_code'])) {
-            $invalidProperties[] = "invalid value for 'security_code', must be conform to the pattern /^\\d{3,4}$/.";
-        }
-
         return $invalidProperties;
     }
 
@@ -313,13 +301,37 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets method
      *
-     * @param string $method method
+     * @param string $method The type of the funding source, e.g. `card`, `paypal`, or `checkout-session`.
      *
      * @return self
      */
     public function setMethod($method)
     {
         $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id The ID of a Checkout Session.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -337,7 +349,7 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets number
      *
-     * @param string|null $number The 13-19 digit number for this credit card as it can be found on the front of the card.  If a card has been stored with us previously, this number will represent the unique tokenized card ID provided via our API.
+     * @param string|null $number The 13-19 digit number for this credit card as it can be found on the front of the card.
      *
      * @return self
      */
@@ -371,7 +383,7 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets expiration_date
      *
-     * @param string|null $expiration_date The expiration date of the card, formatted `MM/YY`. If a card has been previously stored with us this value is optional.  If the `number` of this card represents a tokenized card, then this value is ignored.
+     * @param string|null $expiration_date The expiration date of the card, formatted `MM/YY`. If a card has been previously stored with us this value is optional.
      *
      * @return self
      */
@@ -388,40 +400,6 @@ class PaymentMethodRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         }
 
         $this->container['expiration_date'] = $expiration_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets security_code
-     *
-     * @return string|null
-     */
-    public function getSecurityCode()
-    {
-        return $this->container['security_code'];
-    }
-
-    /**
-     * Sets security_code
-     *
-     * @param string|null $security_code The 3 or 4 digit security code often found on the card. This often referred to as the CVV or CVD.  If the `number` of this card represents a tokenized card, then this value is ignored.
-     *
-     * @return self
-     */
-    public function setSecurityCode($security_code)
-    {
-        if (!is_null($security_code) && (mb_strlen($security_code) > 4)) {
-            throw new \InvalidArgumentException('invalid length for $security_code when calling PaymentMethodRequest., must be smaller than or equal to 4.');
-        }
-        if (!is_null($security_code) && (mb_strlen($security_code) < 3)) {
-            throw new \InvalidArgumentException('invalid length for $security_code when calling PaymentMethodRequest., must be bigger than or equal to 3.');
-        }
-        if (!is_null($security_code) && (!preg_match("/^\\d{3,4}$/", $security_code))) {
-            throw new \InvalidArgumentException("invalid value for $security_code when calling PaymentMethodRequest., must conform to the pattern /^\\d{3,4}$/.");
-        }
-
-        $this->container['security_code'] = $security_code;
 
         return $this;
     }

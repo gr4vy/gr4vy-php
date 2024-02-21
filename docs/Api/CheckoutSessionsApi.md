@@ -4,68 +4,11 @@ All URIs are relative to https://api.plantly.gr4vy.app.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addCheckoutSession()**](CheckoutSessionsApi.md#addCheckoutSession) | **POST** /checkout/sessions | Create a new Checkout Session
-[**deleteCheckoutSession()**](CheckoutSessionsApi.md#deleteCheckoutSession) | **DELETE** /checkout/sessions/{checkout_session_id} | Delete a Checkout Session
-[**getCheckoutSession()**](CheckoutSessionsApi.md#getCheckoutSession) | **GET** /checkout/sessions/{checkout_session_id} | Get a Checkout Session
-[**updateCheckoutSessionFields()**](CheckoutSessionsApi.md#updateCheckoutSessionFields) | **PUT** /checkout/sessions/{checkout_session_id}/fields | Update a Checkout Session&#39;s Secure Fields
+[**deleteCheckoutSession()**](CheckoutSessionsApi.md#deleteCheckoutSession) | **DELETE** /checkout/sessions/{checkout_session_id} | Delete checkout session
+[**getCheckoutSession()**](CheckoutSessionsApi.md#getCheckoutSession) | **GET** /checkout/sessions/{checkout_session_id} | Get checkout session
+[**newCheckoutSession()**](CheckoutSessionsApi.md#newCheckoutSession) | **POST** /checkout/sessions | New checkout session
+[**updateCheckoutSession()**](CheckoutSessionsApi.md#updateCheckoutSession) | **PUT** /checkout/sessions/{checkout_session_id} | Update checkout session
 
-
-## `addCheckoutSession()`
-
-```php
-addCheckoutSession(): \Gr4vy\model\CheckoutSession
-```
-
-Create a new Checkout Session
-
-Creates a new Checkout Session.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: BearerAuth
-$config = Gr4vy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Gr4vy\Api\CheckoutSessionsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-
-try {
-    $result = $apiInstance->addCheckoutSession();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CheckoutSessionsApi->addCheckoutSession: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**\Gr4vy\model\CheckoutSession**](../Model/CheckoutSession.md)
-
-### Authorization
-
-[BearerAuth](../../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `deleteCheckoutSession()`
 
@@ -73,7 +16,7 @@ This endpoint does not need any parameter.
 deleteCheckoutSession($checkout_session_id)
 ```
 
-Delete a Checkout Session
+Delete checkout session
 
 Deletes a Checkout Session.
 
@@ -132,7 +75,7 @@ void (empty response body)
 getCheckoutSession($checkout_session_id): \Gr4vy\model\CheckoutSession
 ```
 
-Get a Checkout Session
+Get checkout session
 
 Gets details about a current Checkout Session.
 
@@ -186,15 +129,75 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateCheckoutSessionFields()`
+## `newCheckoutSession()`
 
 ```php
-updateCheckoutSessionFields($checkout_session_id, $checkout_session_secure_fields_update)
+newCheckoutSession($checkout_session_create_request): \Gr4vy\model\CheckoutSession
 ```
 
-Update a Checkout Session's Secure Fields
+New checkout session
 
-Updates the Secure Fields of the Checkout Session. Once the fields have been received the `expires_at` will be updated to 5 minutes from the time of receipt.
+Creates a new Checkout Session.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: BearerAuth
+$config = Gr4vy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Gr4vy\Api\CheckoutSessionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$checkout_session_create_request = new \Gr4vy\model\CheckoutSessionCreateRequest(); // \Gr4vy\model\CheckoutSessionCreateRequest
+
+try {
+    $result = $apiInstance->newCheckoutSession($checkout_session_create_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CheckoutSessionsApi->newCheckoutSession: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **checkout_session_create_request** | [**\Gr4vy\model\CheckoutSessionCreateRequest**](../Model/CheckoutSessionCreateRequest.md)|  | [optional]
+
+### Return type
+
+[**\Gr4vy\model\CheckoutSession**](../Model/CheckoutSession.md)
+
+### Authorization
+
+[BearerAuth](../../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCheckoutSession()`
+
+```php
+updateCheckoutSession($checkout_session_id, $checkout_session_update_request): \Gr4vy\model\CheckoutSession
+```
+
+Update checkout session
+
+Updates a Checkout Session.
 
 ### Example
 
@@ -214,12 +217,13 @@ $apiInstance = new Gr4vy\Api\CheckoutSessionsApi(
     $config
 );
 $checkout_session_id = 8724fd24-5489-4a5d-90fd-0604df7d3b83; // string | The unique ID for a Checkout Session.
-$checkout_session_secure_fields_update = new \Gr4vy\model\CheckoutSessionSecureFieldsUpdate(); // \Gr4vy\model\CheckoutSessionSecureFieldsUpdate
+$checkout_session_update_request = new \Gr4vy\model\CheckoutSessionUpdateRequest(); // \Gr4vy\model\CheckoutSessionUpdateRequest
 
 try {
-    $apiInstance->updateCheckoutSessionFields($checkout_session_id, $checkout_session_secure_fields_update);
+    $result = $apiInstance->updateCheckoutSession($checkout_session_id, $checkout_session_update_request);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CheckoutSessionsApi->updateCheckoutSessionFields: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CheckoutSessionsApi->updateCheckoutSession: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -228,11 +232,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **checkout_session_id** | **string**| The unique ID for a Checkout Session. |
- **checkout_session_secure_fields_update** | [**\Gr4vy\model\CheckoutSessionSecureFieldsUpdate**](../Model/CheckoutSessionSecureFieldsUpdate.md)|  | [optional]
+ **checkout_session_update_request** | [**\Gr4vy\model\CheckoutSessionUpdateRequest**](../Model/CheckoutSessionUpdateRequest.md)|  | [optional]
 
 ### Return type
 
-void (empty response body)
+[**\Gr4vy\model\CheckoutSession**](../Model/CheckoutSession.md)
 
 ### Authorization
 

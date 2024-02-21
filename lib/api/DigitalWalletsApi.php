@@ -117,7 +117,7 @@ class DigitalWalletsApi
     }
 
     /**
-     * Operation deregisterDigitalWallet
+     * Operation deleteDigitalWallet
      *
      * De-register digital wallet
      *
@@ -127,13 +127,13 @@ class DigitalWalletsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deregisterDigitalWallet($digital_wallet_id)
+    public function deleteDigitalWallet($digital_wallet_id)
     {
-        $this->deregisterDigitalWalletWithHttpInfo($digital_wallet_id);
+        $this->deleteDigitalWalletWithHttpInfo($digital_wallet_id);
     }
 
     /**
-     * Operation deregisterDigitalWalletWithHttpInfo
+     * Operation deleteDigitalWalletWithHttpInfo
      *
      * De-register digital wallet
      *
@@ -143,9 +143,9 @@ class DigitalWalletsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deregisterDigitalWalletWithHttpInfo($digital_wallet_id)
+    public function deleteDigitalWalletWithHttpInfo($digital_wallet_id)
     {
-        $request = $this->deregisterDigitalWalletRequest($digital_wallet_id);
+        $request = $this->deleteDigitalWalletRequest($digital_wallet_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -208,7 +208,7 @@ class DigitalWalletsApi
     }
 
     /**
-     * Operation deregisterDigitalWalletAsync
+     * Operation deleteDigitalWalletAsync
      *
      * De-register digital wallet
      *
@@ -217,9 +217,9 @@ class DigitalWalletsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deregisterDigitalWalletAsync($digital_wallet_id)
+    public function deleteDigitalWalletAsync($digital_wallet_id)
     {
-        return $this->deregisterDigitalWalletAsyncWithHttpInfo($digital_wallet_id)
+        return $this->deleteDigitalWalletAsyncWithHttpInfo($digital_wallet_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -228,7 +228,7 @@ class DigitalWalletsApi
     }
 
     /**
-     * Operation deregisterDigitalWalletAsyncWithHttpInfo
+     * Operation deleteDigitalWalletAsyncWithHttpInfo
      *
      * De-register digital wallet
      *
@@ -237,10 +237,10 @@ class DigitalWalletsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deregisterDigitalWalletAsyncWithHttpInfo($digital_wallet_id)
+    public function deleteDigitalWalletAsyncWithHttpInfo($digital_wallet_id)
     {
         $returnType = '';
-        $request = $this->deregisterDigitalWalletRequest($digital_wallet_id);
+        $request = $this->deleteDigitalWalletRequest($digital_wallet_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -266,19 +266,19 @@ class DigitalWalletsApi
     }
 
     /**
-     * Create request for operation 'deregisterDigitalWallet'
+     * Create request for operation 'deleteDigitalWallet'
      *
      * @param  string $digital_wallet_id The ID of the registered digital wallet. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deregisterDigitalWalletRequest($digital_wallet_id)
+    public function deleteDigitalWalletRequest($digital_wallet_id)
     {
         // verify the required parameter 'digital_wallet_id' is set
         if ($digital_wallet_id === null || (is_array($digital_wallet_id) && count($digital_wallet_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $digital_wallet_id when calling deregisterDigitalWallet'
+                'Missing the required parameter $digital_wallet_id when calling deleteDigitalWallet'
             );
         }
 
@@ -981,7 +981,7 @@ class DigitalWalletsApi
     }
 
     /**
-     * Operation registerDigitalWallet
+     * Operation newDigitalWallet
      *
      * Register digital wallet
      *
@@ -989,16 +989,16 @@ class DigitalWalletsApi
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\DigitalWallet|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized
+     * @return \Gr4vy\model\DigitalWallet|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord
      */
-    public function registerDigitalWallet($digital_wallet_request = null)
+    public function newDigitalWallet($digital_wallet_request = null)
     {
-        list($response) = $this->registerDigitalWalletWithHttpInfo($digital_wallet_request);
+        list($response) = $this->newDigitalWalletWithHttpInfo($digital_wallet_request);
         return $response;
     }
 
     /**
-     * Operation registerDigitalWalletWithHttpInfo
+     * Operation newDigitalWalletWithHttpInfo
      *
      * Register digital wallet
      *
@@ -1006,11 +1006,11 @@ class DigitalWalletsApi
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\DigitalWallet|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gr4vy\model\DigitalWallet|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord, HTTP status code, HTTP response headers (array of strings)
      */
-    public function registerDigitalWalletWithHttpInfo($digital_wallet_request = null)
+    public function newDigitalWalletWithHttpInfo($digital_wallet_request = null)
     {
-        $request = $this->registerDigitalWalletRequest($digital_wallet_request);
+        $request = $this->newDigitalWalletRequest($digital_wallet_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1093,6 +1093,21 @@ class DigitalWalletsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 409:
+                    if ('\Gr4vy\model\Error409DuplicateRecord' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error409DuplicateRecord' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error409DuplicateRecord', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\Gr4vy\model\DigitalWallet';
@@ -1137,13 +1152,21 @@ class DigitalWalletsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error409DuplicateRecord',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation registerDigitalWalletAsync
+     * Operation newDigitalWalletAsync
      *
      * Register digital wallet
      *
@@ -1152,9 +1175,9 @@ class DigitalWalletsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerDigitalWalletAsync($digital_wallet_request = null)
+    public function newDigitalWalletAsync($digital_wallet_request = null)
     {
-        return $this->registerDigitalWalletAsyncWithHttpInfo($digital_wallet_request)
+        return $this->newDigitalWalletAsyncWithHttpInfo($digital_wallet_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1163,7 +1186,7 @@ class DigitalWalletsApi
     }
 
     /**
-     * Operation registerDigitalWalletAsyncWithHttpInfo
+     * Operation newDigitalWalletAsyncWithHttpInfo
      *
      * Register digital wallet
      *
@@ -1172,10 +1195,10 @@ class DigitalWalletsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerDigitalWalletAsyncWithHttpInfo($digital_wallet_request = null)
+    public function newDigitalWalletAsyncWithHttpInfo($digital_wallet_request = null)
     {
         $returnType = '\Gr4vy\model\DigitalWallet';
-        $request = $this->registerDigitalWalletRequest($digital_wallet_request);
+        $request = $this->newDigitalWalletRequest($digital_wallet_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1214,14 +1237,14 @@ class DigitalWalletsApi
     }
 
     /**
-     * Create request for operation 'registerDigitalWallet'
+     * Create request for operation 'newDigitalWallet'
      *
      * @param  \Gr4vy\model\DigitalWalletRequest $digital_wallet_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function registerDigitalWalletRequest($digital_wallet_request = null)
+    public function newDigitalWalletRequest($digital_wallet_request = null)
     {
 
         $resourcePath = '/digital-wallets';

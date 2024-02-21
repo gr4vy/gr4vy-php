@@ -4,22 +4,22 @@ All URIs are relative to https://api.plantly.gr4vy.app.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deregisterDigitalWallet()**](DigitalWalletsApi.md#deregisterDigitalWallet) | **DELETE** /digital-wallets/{digital_wallet_id} | De-register digital wallet
+[**deleteDigitalWallet()**](DigitalWalletsApi.md#deleteDigitalWallet) | **DELETE** /digital-wallets/{digital_wallet_id} | De-register digital wallet
 [**getDigitalWallet()**](DigitalWalletsApi.md#getDigitalWallet) | **GET** /digital-wallets/{digital_wallet_id} | Get digital wallet
 [**listDigitalWallets()**](DigitalWalletsApi.md#listDigitalWallets) | **GET** /digital-wallets | List digital wallets
-[**registerDigitalWallet()**](DigitalWalletsApi.md#registerDigitalWallet) | **POST** /digital-wallets | Register digital wallet
+[**newDigitalWallet()**](DigitalWalletsApi.md#newDigitalWallet) | **POST** /digital-wallets | Register digital wallet
 [**updateDigitalWallet()**](DigitalWalletsApi.md#updateDigitalWallet) | **PUT** /digital-wallets/{digital_wallet_id} | Update digital wallet
 
 
-## `deregisterDigitalWallet()`
+## `deleteDigitalWallet()`
 
 ```php
-deregisterDigitalWallet($digital_wallet_id)
+deleteDigitalWallet($digital_wallet_id)
 ```
 
 De-register digital wallet
 
-De-registers a digital wallet with a provider. Upon successful de-registration, the digital wallet's record is deleted and will no longer be available.
+De-registers a digital wallet with a provider. Upon successful de-registration, the digital wallet's record is deleted and will no longer be available.  A digital wallet of the Apple provider may only be de-registered if there are no active Apple Pay certificates. When there are only incomplete or expired Apple Pay certificates, these certificates are deleted alongside the Apple digital wallet's record.
 
 ### Example
 
@@ -41,9 +41,9 @@ $apiInstance = new Gr4vy\Api\DigitalWalletsApi(
 $digital_wallet_id = fe26475d-ec3e-4884-9553-f7356683f7f9; // string | The ID of the registered digital wallet.
 
 try {
-    $apiInstance->deregisterDigitalWallet($digital_wallet_id);
+    $apiInstance->deleteDigitalWallet($digital_wallet_id);
 } catch (Exception $e) {
-    echo 'Exception when calling DigitalWalletsApi->deregisterDigitalWallet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DigitalWalletsApi->deleteDigitalWallet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -187,10 +187,10 @@ This endpoint does not need any parameter.
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `registerDigitalWallet()`
+## `newDigitalWallet()`
 
 ```php
-registerDigitalWallet($digital_wallet_request): \Gr4vy\model\DigitalWallet
+newDigitalWallet($digital_wallet_request): \Gr4vy\model\DigitalWallet
 ```
 
 Register digital wallet
@@ -217,10 +217,10 @@ $apiInstance = new Gr4vy\Api\DigitalWalletsApi(
 $digital_wallet_request = new \Gr4vy\model\DigitalWalletRequest(); // \Gr4vy\model\DigitalWalletRequest
 
 try {
-    $result = $apiInstance->registerDigitalWallet($digital_wallet_request);
+    $result = $apiInstance->newDigitalWallet($digital_wallet_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DigitalWalletsApi->registerDigitalWallet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DigitalWalletsApi->newDigitalWallet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

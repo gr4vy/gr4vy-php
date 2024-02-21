@@ -36,6 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * BuyerSnapshotBillingDetails Class Doc Comment
  *
  * @category Class
+ * @description The billing details associated with the buyer, which include the address and tax ID.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

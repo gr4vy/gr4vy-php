@@ -63,9 +63,9 @@ class BuyerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'type' => 'string',
         'id' => 'string',
-        'external_identifier' => 'string',
+        'billing_details' => '\Gr4vy\model\BuyerSnapshotBillingDetails',
         'display_name' => 'string',
-        'billing_details' => '\Gr4vy\model\BuyerSnapshotBillingDetails'
+        'external_identifier' => 'string'
     ];
 
     /**
@@ -78,9 +78,9 @@ class BuyerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'type' => null,
         'id' => 'uuid',
-        'external_identifier' => null,
+        'billing_details' => null,
         'display_name' => null,
-        'billing_details' => null
+        'external_identifier' => null
     ];
 
     /**
@@ -112,9 +112,9 @@ class BuyerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'type' => 'type',
         'id' => 'id',
-        'external_identifier' => 'external_identifier',
+        'billing_details' => 'billing_details',
         'display_name' => 'display_name',
-        'billing_details' => 'billing_details'
+        'external_identifier' => 'external_identifier'
     ];
 
     /**
@@ -125,9 +125,9 @@ class BuyerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'type' => 'setType',
         'id' => 'setId',
-        'external_identifier' => 'setExternalIdentifier',
+        'billing_details' => 'setBillingDetails',
         'display_name' => 'setDisplayName',
-        'billing_details' => 'setBillingDetails'
+        'external_identifier' => 'setExternalIdentifier'
     ];
 
     /**
@@ -138,9 +138,9 @@ class BuyerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'type' => 'getType',
         'id' => 'getId',
-        'external_identifier' => 'getExternalIdentifier',
+        'billing_details' => 'getBillingDetails',
         'display_name' => 'getDisplayName',
-        'billing_details' => 'getBillingDetails'
+        'external_identifier' => 'getExternalIdentifier'
     ];
 
     /**
@@ -215,9 +215,9 @@ class BuyerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['external_identifier'] = $data['external_identifier'] ?? null;
-        $this->container['display_name'] = $data['display_name'] ?? null;
         $this->container['billing_details'] = $data['billing_details'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['external_identifier'] = $data['external_identifier'] ?? null;
     }
 
     /**
@@ -238,20 +238,20 @@ class BuyerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if (!is_null($this->container['external_identifier']) && (mb_strlen($this->container['external_identifier']) > 200)) {
-            $invalidProperties[] = "invalid value for 'external_identifier', the character length must be smaller than or equal to 200.";
-        }
-
-        if (!is_null($this->container['external_identifier']) && (mb_strlen($this->container['external_identifier']) < 1)) {
-            $invalidProperties[] = "invalid value for 'external_identifier', the character length must be bigger than or equal to 1.";
-        }
-
         if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) > 200)) {
             $invalidProperties[] = "invalid value for 'display_name', the character length must be smaller than or equal to 200.";
         }
 
         if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) < 1)) {
             $invalidProperties[] = "invalid value for 'display_name', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['external_identifier']) && (mb_strlen($this->container['external_identifier']) > 200)) {
+            $invalidProperties[] = "invalid value for 'external_identifier', the character length must be smaller than or equal to 200.";
+        }
+
+        if (!is_null($this->container['external_identifier']) && (mb_strlen($this->container['external_identifier']) < 1)) {
+            $invalidProperties[] = "invalid value for 'external_identifier', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -328,32 +328,25 @@ class BuyerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets external_identifier
+     * Gets billing_details
      *
-     * @return string|null
+     * @return \Gr4vy\model\BuyerSnapshotBillingDetails|null
      */
-    public function getExternalIdentifier()
+    public function getBillingDetails()
     {
-        return $this->container['external_identifier'];
+        return $this->container['billing_details'];
     }
 
     /**
-     * Sets external_identifier
+     * Sets billing_details
      *
-     * @param string|null $external_identifier An external identifier that can be used to match the buyer against your own records.
+     * @param \Gr4vy\model\BuyerSnapshotBillingDetails|null $billing_details billing_details
      *
      * @return self
      */
-    public function setExternalIdentifier($external_identifier)
+    public function setBillingDetails($billing_details)
     {
-        if (!is_null($external_identifier) && (mb_strlen($external_identifier) > 200)) {
-            throw new \InvalidArgumentException('invalid length for $external_identifier when calling BuyerSnapshot., must be smaller than or equal to 200.');
-        }
-        if (!is_null($external_identifier) && (mb_strlen($external_identifier) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $external_identifier when calling BuyerSnapshot., must be bigger than or equal to 1.');
-        }
-
-        $this->container['external_identifier'] = $external_identifier;
+        $this->container['billing_details'] = $billing_details;
 
         return $this;
     }
@@ -390,25 +383,32 @@ class BuyerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets billing_details
+     * Gets external_identifier
      *
-     * @return \Gr4vy\model\BuyerSnapshotBillingDetails|null
+     * @return string|null
      */
-    public function getBillingDetails()
+    public function getExternalIdentifier()
     {
-        return $this->container['billing_details'];
+        return $this->container['external_identifier'];
     }
 
     /**
-     * Sets billing_details
+     * Sets external_identifier
      *
-     * @param \Gr4vy\model\BuyerSnapshotBillingDetails|null $billing_details billing_details
+     * @param string|null $external_identifier An external identifier that can be used to match the buyer against your own records.
      *
      * @return self
      */
-    public function setBillingDetails($billing_details)
+    public function setExternalIdentifier($external_identifier)
     {
-        $this->container['billing_details'] = $billing_details;
+        if (!is_null($external_identifier) && (mb_strlen($external_identifier) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $external_identifier when calling BuyerSnapshot., must be smaller than or equal to 200.');
+        }
+        if (!is_null($external_identifier) && (mb_strlen($external_identifier) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $external_identifier when calling BuyerSnapshot., must be bigger than or equal to 1.');
+        }
+
+        $this->container['external_identifier'] = $external_identifier;
 
         return $this;
     }

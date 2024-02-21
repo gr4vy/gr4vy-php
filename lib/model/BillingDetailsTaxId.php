@@ -36,6 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * BillingDetailsTaxId Class Doc Comment
  *
  * @category Class
+ * @description The tax information associated with the billing details.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -170,6 +171,8 @@ class BillingDetailsTaxId implements ModelInterface, ArrayAccess, \JsonSerializa
 
     public const KIND_AE_TRN = 'ae.trn';
     public const KIND_AU_ABN = 'au.abn';
+    public const KIND_AR_DNI = 'ar.dni';
+    public const KIND_AR_CUIL = 'ar.cuil';
     public const KIND_AR_CUIT = 'ar.cuit';
     public const KIND_BR_CNPJ = 'br.cnpj';
     public const KIND_BR_CPF = 'br.cpf';
@@ -192,7 +195,7 @@ class BillingDetailsTaxId implements ModelInterface, ArrayAccess, \JsonSerializa
     public const KIND_JP_RN = 'jp.rn';
     public const KIND_KR_BRN = 'kr.brn';
     public const KIND_LI_UID = 'li.uid';
-    public const KIND_MX_RFC = 'mx.rfc';
+    public const KIND_MX_CURP = 'mx.curp';
     public const KIND_MY_FRP = 'my.frp';
     public const KIND_MY_ITN = 'my.itn';
     public const KIND_MY_NRIC = 'my.nric';
@@ -221,6 +224,8 @@ class BillingDetailsTaxId implements ModelInterface, ArrayAccess, \JsonSerializa
         return [
             self::KIND_AE_TRN,
             self::KIND_AU_ABN,
+            self::KIND_AR_DNI,
+            self::KIND_AR_CUIL,
             self::KIND_AR_CUIT,
             self::KIND_BR_CNPJ,
             self::KIND_BR_CPF,
@@ -243,7 +248,7 @@ class BillingDetailsTaxId implements ModelInterface, ArrayAccess, \JsonSerializa
             self::KIND_JP_RN,
             self::KIND_KR_BRN,
             self::KIND_LI_UID,
-            self::KIND_MX_RFC,
+            self::KIND_MX_CURP,
             self::KIND_MY_FRP,
             self::KIND_MY_ITN,
             self::KIND_MY_NRIC,

@@ -125,13 +125,13 @@ class PaymentOptionsApi
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
      * @param  int $amount Used by the Flow engine to filter the results based on the transaction amount. (optional)
      * @param  string $metadata Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. (optional)
-     * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en-US')
+     * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en')
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\PaymentOptions|\Gr4vy\model\Error400BadRequest|\Gr4vy\model\Error401Unauthorized
      */
-    public function listPaymentOptions($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en-US')
+    public function listPaymentOptions($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en')
     {
         list($response) = $this->listPaymentOptionsWithHttpInfo($country, $currency, $amount, $metadata, $locale);
         return $response;
@@ -146,13 +146,13 @@ class PaymentOptionsApi
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
      * @param  int $amount Used by the Flow engine to filter the results based on the transaction amount. (optional)
      * @param  string $metadata Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. (optional)
-     * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en-US')
+     * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en')
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\PaymentOptions|\Gr4vy\model\Error400BadRequest|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPaymentOptionsWithHttpInfo($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en-US')
+    public function listPaymentOptionsWithHttpInfo($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en')
     {
         $request = $this->listPaymentOptionsRequest($country, $currency, $amount, $metadata, $locale);
 
@@ -295,12 +295,12 @@ class PaymentOptionsApi
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
      * @param  int $amount Used by the Flow engine to filter the results based on the transaction amount. (optional)
      * @param  string $metadata Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. (optional)
-     * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en-US')
+     * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentOptionsAsync($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en-US')
+    public function listPaymentOptionsAsync($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en')
     {
         return $this->listPaymentOptionsAsyncWithHttpInfo($country, $currency, $amount, $metadata, $locale)
             ->then(
@@ -319,12 +319,12 @@ class PaymentOptionsApi
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
      * @param  int $amount Used by the Flow engine to filter the results based on the transaction amount. (optional)
      * @param  string $metadata Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. (optional)
-     * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en-US')
+     * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPaymentOptionsAsyncWithHttpInfo($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en-US')
+    public function listPaymentOptionsAsyncWithHttpInfo($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en')
     {
         $returnType = '\Gr4vy\model\PaymentOptions';
         $request = $this->listPaymentOptionsRequest($country, $currency, $amount, $metadata, $locale);
@@ -372,12 +372,12 @@ class PaymentOptionsApi
      * @param  string $currency Filters the results to only the items which support this currency code. A currency is formatted as 3-letter ISO currency code. (optional)
      * @param  int $amount Used by the Flow engine to filter the results based on the transaction amount. (optional)
      * @param  string $metadata Used by the Flow engine to filter available options based on various client-defined parameters. If present, this must be a string representing a valid JSON dictionary. (optional)
-     * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en-US')
+     * @param  string $locale An ISO 639-1 Language Code and optional ISO 3166 Country Code. This locale determines the language for the labels returned for every payment option. (optional, default to 'en')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPaymentOptionsRequest($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en-US')
+    public function listPaymentOptionsRequest($country = null, $currency = null, $amount = null, $metadata = null, $locale = 'en')
     {
         if ($locale !== null && !preg_match("/^[a-z]{2}(?:-[A-Z]{2})?$/", $locale)) {
             throw new \InvalidArgumentException("invalid value for \"locale\" when calling PaymentOptionsApi.listPaymentOptions, must conform to the pattern /^[a-z]{2}(?:-[A-Z]{2})?$/.");
@@ -495,6 +495,328 @@ class PaymentOptionsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postListPaymentOptions
+     *
+     * List payment options with POST
+     *
+     * @param  \Gr4vy\model\PaymentOptionsRequest $payment_options_request payment_options_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\PaymentOptions|\Gr4vy\model\Error400BadRequest|\Gr4vy\model\Error401Unauthorized
+     */
+    public function postListPaymentOptions($payment_options_request = null)
+    {
+        list($response) = $this->postListPaymentOptionsWithHttpInfo($payment_options_request);
+        return $response;
+    }
+
+    /**
+     * Operation postListPaymentOptionsWithHttpInfo
+     *
+     * List payment options with POST
+     *
+     * @param  \Gr4vy\model\PaymentOptionsRequest $payment_options_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\PaymentOptions|\Gr4vy\model\Error400BadRequest|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postListPaymentOptionsWithHttpInfo($payment_options_request = null)
+    {
+        $request = $this->postListPaymentOptionsRequest($payment_options_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Gr4vy\model\PaymentOptions' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\PaymentOptions' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\PaymentOptions', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Gr4vy\model\Error400BadRequest' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error400BadRequest' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error400BadRequest', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\PaymentOptions';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\PaymentOptions',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error400BadRequest',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postListPaymentOptionsAsync
+     *
+     * List payment options with POST
+     *
+     * @param  \Gr4vy\model\PaymentOptionsRequest $payment_options_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postListPaymentOptionsAsync($payment_options_request = null)
+    {
+        return $this->postListPaymentOptionsAsyncWithHttpInfo($payment_options_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postListPaymentOptionsAsyncWithHttpInfo
+     *
+     * List payment options with POST
+     *
+     * @param  \Gr4vy\model\PaymentOptionsRequest $payment_options_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postListPaymentOptionsAsyncWithHttpInfo($payment_options_request = null)
+    {
+        $returnType = '\Gr4vy\model\PaymentOptions';
+        $request = $this->postListPaymentOptionsRequest($payment_options_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postListPaymentOptions'
+     *
+     * @param  \Gr4vy\model\PaymentOptionsRequest $payment_options_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postListPaymentOptionsRequest($payment_options_request = null)
+    {
+
+        $resourcePath = '/payment-options';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($payment_options_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($payment_options_request));
+            } else {
+                $httpBody = $payment_options_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

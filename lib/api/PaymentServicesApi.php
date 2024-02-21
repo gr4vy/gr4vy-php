@@ -117,328 +117,6 @@ class PaymentServicesApi
     }
 
     /**
-     * Operation addPaymentService
-     *
-     * New payment service
-     *
-     * @param  \Gr4vy\model\PaymentServiceRequest $payment_service_request payment_service_request (optional)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\PaymentService|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized
-     */
-    public function addPaymentService($payment_service_request = null)
-    {
-        list($response) = $this->addPaymentServiceWithHttpInfo($payment_service_request);
-        return $response;
-    }
-
-    /**
-     * Operation addPaymentServiceWithHttpInfo
-     *
-     * New payment service
-     *
-     * @param  \Gr4vy\model\PaymentServiceRequest $payment_service_request (optional)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\PaymentService|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function addPaymentServiceWithHttpInfo($payment_service_request = null)
-    {
-        $request = $this->addPaymentServiceRequest($payment_service_request);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\Gr4vy\model\PaymentService' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\PaymentService' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\PaymentService', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Gr4vy\model\PaymentService';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\PaymentService',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\ErrorGeneric',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error401Unauthorized',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation addPaymentServiceAsync
-     *
-     * New payment service
-     *
-     * @param  \Gr4vy\model\PaymentServiceRequest $payment_service_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function addPaymentServiceAsync($payment_service_request = null)
-    {
-        return $this->addPaymentServiceAsyncWithHttpInfo($payment_service_request)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation addPaymentServiceAsyncWithHttpInfo
-     *
-     * New payment service
-     *
-     * @param  \Gr4vy\model\PaymentServiceRequest $payment_service_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function addPaymentServiceAsyncWithHttpInfo($payment_service_request = null)
-    {
-        $returnType = '\Gr4vy\model\PaymentService';
-        $request = $this->addPaymentServiceRequest($payment_service_request);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'addPaymentService'
-     *
-     * @param  \Gr4vy\model\PaymentServiceRequest $payment_service_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function addPaymentServiceRequest($payment_service_request = null)
-    {
-
-        $resourcePath = '/payment-services';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($payment_service_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($payment_service_request));
-            } else {
-                $httpBody = $payment_service_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation deletePaymentService
      *
      * Delete payment service
@@ -1021,7 +699,7 @@ class PaymentServicesApi
      *
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
-     * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. For example &#x60;card&#x60;. (optional)
      * @param  bool $deleted Filters the results to only show items which have been deleted. By default, deleted items will not be returned. (optional, default to false)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
@@ -1041,7 +719,7 @@ class PaymentServicesApi
      *
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
-     * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. For example &#x60;card&#x60;. (optional)
      * @param  bool $deleted Filters the results to only show items which have been deleted. By default, deleted items will not be returned. (optional, default to false)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
@@ -1166,7 +844,7 @@ class PaymentServicesApi
      *
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
-     * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. For example &#x60;card&#x60;. (optional)
      * @param  bool $deleted Filters the results to only show items which have been deleted. By default, deleted items will not be returned. (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -1189,7 +867,7 @@ class PaymentServicesApi
      *
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
-     * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. For example &#x60;card&#x60;. (optional)
      * @param  bool $deleted Filters the results to only show items which have been deleted. By default, deleted items will not be returned. (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -1241,7 +919,7 @@ class PaymentServicesApi
      *
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
-     * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. For example &#x60;card&#x60;. (optional)
      * @param  bool $deleted Filters the results to only show items which have been deleted. By default, deleted items will not be returned. (optional, default to false)
      *
      * @throws \InvalidArgumentException
@@ -1359,6 +1037,328 @@ class PaymentServicesApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation newPaymentService
+     *
+     * New payment service
+     *
+     * @param  \Gr4vy\model\PaymentServiceRequest $payment_service_request payment_service_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\PaymentService|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized
+     */
+    public function newPaymentService($payment_service_request = null)
+    {
+        list($response) = $this->newPaymentServiceWithHttpInfo($payment_service_request);
+        return $response;
+    }
+
+    /**
+     * Operation newPaymentServiceWithHttpInfo
+     *
+     * New payment service
+     *
+     * @param  \Gr4vy\model\PaymentServiceRequest $payment_service_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\PaymentService|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function newPaymentServiceWithHttpInfo($payment_service_request = null)
+    {
+        $request = $this->newPaymentServiceRequest($payment_service_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\Gr4vy\model\PaymentService' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\PaymentService' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\PaymentService', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\PaymentService';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\PaymentService',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ErrorGeneric',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation newPaymentServiceAsync
+     *
+     * New payment service
+     *
+     * @param  \Gr4vy\model\PaymentServiceRequest $payment_service_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function newPaymentServiceAsync($payment_service_request = null)
+    {
+        return $this->newPaymentServiceAsyncWithHttpInfo($payment_service_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation newPaymentServiceAsyncWithHttpInfo
+     *
+     * New payment service
+     *
+     * @param  \Gr4vy\model\PaymentServiceRequest $payment_service_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function newPaymentServiceAsyncWithHttpInfo($payment_service_request = null)
+    {
+        $returnType = '\Gr4vy\model\PaymentService';
+        $request = $this->newPaymentServiceRequest($payment_service_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'newPaymentService'
+     *
+     * @param  \Gr4vy\model\PaymentServiceRequest $payment_service_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function newPaymentServiceRequest($payment_service_request = null)
+    {
+
+        $resourcePath = '/payment-services';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($payment_service_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($payment_service_request));
+            } else {
+                $httpBody = $payment_service_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

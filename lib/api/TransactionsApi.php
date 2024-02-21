@@ -117,328 +117,6 @@ class TransactionsApi
     }
 
     /**
-     * Operation authorizeNewTransaction
-     *
-     * New transaction
-     *
-     * @param  \Gr4vy\model\TransactionRequest $transaction_request transaction_request (optional)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\Transaction|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized
-     */
-    public function authorizeNewTransaction($transaction_request = null)
-    {
-        list($response) = $this->authorizeNewTransactionWithHttpInfo($transaction_request);
-        return $response;
-    }
-
-    /**
-     * Operation authorizeNewTransactionWithHttpInfo
-     *
-     * New transaction
-     *
-     * @param  \Gr4vy\model\TransactionRequest $transaction_request (optional)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\Transaction|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function authorizeNewTransactionWithHttpInfo($transaction_request = null)
-    {
-        $request = $this->authorizeNewTransactionRequest($transaction_request);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\Gr4vy\model\Transaction' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Transaction' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Transaction', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Gr4vy\model\Transaction';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Transaction',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\ErrorGeneric',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error401Unauthorized',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation authorizeNewTransactionAsync
-     *
-     * New transaction
-     *
-     * @param  \Gr4vy\model\TransactionRequest $transaction_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function authorizeNewTransactionAsync($transaction_request = null)
-    {
-        return $this->authorizeNewTransactionAsyncWithHttpInfo($transaction_request)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation authorizeNewTransactionAsyncWithHttpInfo
-     *
-     * New transaction
-     *
-     * @param  \Gr4vy\model\TransactionRequest $transaction_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function authorizeNewTransactionAsyncWithHttpInfo($transaction_request = null)
-    {
-        $returnType = '\Gr4vy\model\Transaction';
-        $request = $this->authorizeNewTransactionRequest($transaction_request);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'authorizeNewTransaction'
-     *
-     * @param  \Gr4vy\model\TransactionRequest $transaction_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function authorizeNewTransactionRequest($transaction_request = null)
-    {
-
-        $resourcePath = '/transactions';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($transaction_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($transaction_request));
-            } else {
-                $httpBody = $transaction_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation captureTransaction
      *
      * Capture transaction
@@ -803,6 +481,355 @@ class TransactionsApi
     }
 
     /**
+     * Operation getRefund
+     *
+     * Get refund
+     *
+     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
+     * @param  string $refund_id The unique ID of the refund. (required)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\Refund|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
+     */
+    public function getRefund($transaction_id, $refund_id)
+    {
+        list($response) = $this->getRefundWithHttpInfo($transaction_id, $refund_id);
+        return $response;
+    }
+
+    /**
+     * Operation getRefundWithHttpInfo
+     *
+     * Get refund
+     *
+     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
+     * @param  string $refund_id The unique ID of the refund. (required)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\Refund|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getRefundWithHttpInfo($transaction_id, $refund_id)
+    {
+        $request = $this->getRefundRequest($transaction_id, $refund_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Gr4vy\model\Refund' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Refund' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Refund', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Gr4vy\model\Error404NotFound' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error404NotFound' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error404NotFound', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\Refund';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Refund',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error404NotFound',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getRefundAsync
+     *
+     * Get refund
+     *
+     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
+     * @param  string $refund_id The unique ID of the refund. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getRefundAsync($transaction_id, $refund_id)
+    {
+        return $this->getRefundAsyncWithHttpInfo($transaction_id, $refund_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getRefundAsyncWithHttpInfo
+     *
+     * Get refund
+     *
+     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
+     * @param  string $refund_id The unique ID of the refund. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getRefundAsyncWithHttpInfo($transaction_id, $refund_id)
+    {
+        $returnType = '\Gr4vy\model\Refund';
+        $request = $this->getRefundRequest($transaction_id, $refund_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getRefund'
+     *
+     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
+     * @param  string $refund_id The unique ID of the refund. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getRefundRequest($transaction_id, $refund_id)
+    {
+        // verify the required parameter 'transaction_id' is set
+        if ($transaction_id === null || (is_array($transaction_id) && count($transaction_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $transaction_id when calling getRefund'
+            );
+        }
+        // verify the required parameter 'refund_id' is set
+        if ($refund_id === null || (is_array($refund_id) && count($refund_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $refund_id when calling getRefund'
+            );
+        }
+
+        $resourcePath = '/transactions/{transaction_id}/refunds/{refund_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($transaction_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'transaction_id' . '}',
+                ObjectSerializer::toPathValue($transaction_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($refund_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'refund_id' . '}',
+                ObjectSerializer::toPathValue($refund_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getTransaction
      *
      * Get transaction
@@ -1133,389 +1160,36 @@ class TransactionsApi
     }
 
     /**
-     * Operation getTransactionRefund
-     *
-     * Get transaction refund
-     *
-     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     * @param  string $refund_id The unique ID of the refund. (required)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\Refund|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
-     */
-    public function getTransactionRefund($transaction_id, $refund_id)
-    {
-        list($response) = $this->getTransactionRefundWithHttpInfo($transaction_id, $refund_id);
-        return $response;
-    }
-
-    /**
-     * Operation getTransactionRefundWithHttpInfo
-     *
-     * Get transaction refund
-     *
-     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     * @param  string $refund_id The unique ID of the refund. (required)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\Refund|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getTransactionRefundWithHttpInfo($transaction_id, $refund_id)
-    {
-        $request = $this->getTransactionRefundRequest($transaction_id, $refund_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\Gr4vy\model\Refund' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Refund' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Refund', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 404:
-                    if ('\Gr4vy\model\Error404NotFound' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Error404NotFound' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error404NotFound', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Gr4vy\model\Refund';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Refund',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error401Unauthorized',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error404NotFound',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getTransactionRefundAsync
-     *
-     * Get transaction refund
-     *
-     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     * @param  string $refund_id The unique ID of the refund. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getTransactionRefundAsync($transaction_id, $refund_id)
-    {
-        return $this->getTransactionRefundAsyncWithHttpInfo($transaction_id, $refund_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getTransactionRefundAsyncWithHttpInfo
-     *
-     * Get transaction refund
-     *
-     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     * @param  string $refund_id The unique ID of the refund. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getTransactionRefundAsyncWithHttpInfo($transaction_id, $refund_id)
-    {
-        $returnType = '\Gr4vy\model\Refund';
-        $request = $this->getTransactionRefundRequest($transaction_id, $refund_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getTransactionRefund'
-     *
-     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     * @param  string $refund_id The unique ID of the refund. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getTransactionRefundRequest($transaction_id, $refund_id)
-    {
-        // verify the required parameter 'transaction_id' is set
-        if ($transaction_id === null || (is_array($transaction_id) && count($transaction_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $transaction_id when calling getTransactionRefund'
-            );
-        }
-        // verify the required parameter 'refund_id' is set
-        if ($refund_id === null || (is_array($refund_id) && count($refund_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $refund_id when calling getTransactionRefund'
-            );
-        }
-
-        $resourcePath = '/transactions/{transaction_id}/refunds/{refund_id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($transaction_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'transaction_id' . '}',
-                ObjectSerializer::toPathValue($transaction_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($refund_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'refund_id' . '}',
-                ObjectSerializer::toPathValue($refund_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation listTransactionRefunds
      *
-     * List transaction refunds
+     * List refunds
      *
      * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
-     * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\Refunds|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
      */
-    public function listTransactionRefunds($transaction_id, $limit = 20, $cursor = null)
+    public function listTransactionRefunds($transaction_id)
     {
-        list($response) = $this->listTransactionRefundsWithHttpInfo($transaction_id, $limit, $cursor);
+        list($response) = $this->listTransactionRefundsWithHttpInfo($transaction_id);
         return $response;
     }
 
     /**
      * Operation listTransactionRefundsWithHttpInfo
      *
-     * List transaction refunds
+     * List refunds
      *
      * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
-     * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\Refunds|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listTransactionRefundsWithHttpInfo($transaction_id, $limit = 20, $cursor = null)
+    public function listTransactionRefundsWithHttpInfo($transaction_id)
     {
-        $request = $this->listTransactionRefundsRequest($transaction_id, $limit, $cursor);
+        $request = $this->listTransactionRefundsRequest($transaction_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1650,18 +1324,16 @@ class TransactionsApi
     /**
      * Operation listTransactionRefundsAsync
      *
-     * List transaction refunds
+     * List refunds
      *
      * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
-     * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTransactionRefundsAsync($transaction_id, $limit = 20, $cursor = null)
+    public function listTransactionRefundsAsync($transaction_id)
     {
-        return $this->listTransactionRefundsAsyncWithHttpInfo($transaction_id, $limit, $cursor)
+        return $this->listTransactionRefundsAsyncWithHttpInfo($transaction_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1672,19 +1344,17 @@ class TransactionsApi
     /**
      * Operation listTransactionRefundsAsyncWithHttpInfo
      *
-     * List transaction refunds
+     * List refunds
      *
      * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
-     * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTransactionRefundsAsyncWithHttpInfo($transaction_id, $limit = 20, $cursor = null)
+    public function listTransactionRefundsAsyncWithHttpInfo($transaction_id)
     {
         $returnType = '\Gr4vy\model\Refunds';
-        $request = $this->listTransactionRefundsRequest($transaction_id, $limit, $cursor);
+        $request = $this->listTransactionRefundsRequest($transaction_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1726,13 +1396,11 @@ class TransactionsApi
      * Create request for operation 'listTransactionRefunds'
      *
      * @param  string $transaction_id The ID for the transaction to get the information for. (required)
-     * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
-     * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listTransactionRefundsRequest($transaction_id, $limit = 20, $cursor = null)
+    public function listTransactionRefundsRequest($transaction_id)
     {
         // verify the required parameter 'transaction_id' is set
         if ($transaction_id === null || (is_array($transaction_id) && count($transaction_id) === 0)) {
@@ -1740,13 +1408,6 @@ class TransactionsApi
                 'Missing the required parameter $transaction_id when calling listTransactionRefunds'
             );
         }
-        if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling TransactionsApi.listTransactionRefunds, must be smaller than or equal to 100.');
-        }
-        if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling TransactionsApi.listTransactionRefunds, must be bigger than or equal to 1.');
-        }
-
 
         $resourcePath = '/transactions/{transaction_id}/refunds';
         $formParams = [];
@@ -1755,24 +1416,6 @@ class TransactionsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $cursor,
-            'cursor', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
 
 
         // path params
@@ -1858,33 +1501,36 @@ class TransactionsApi
      * @param  int $amount_eq Filters for transactions that have an &#x60;amount&#x60; that is equal to the provided &#x60;amount_eq&#x60; value. (optional)
      * @param  int $amount_gte Filters for transactions that have an &#x60;amount&#x60; that is greater than or equal to the &#x60;amount_gte&#x60; value. (optional)
      * @param  int $amount_lte Filters for transactions that have an &#x60;amount&#x60; that is less than or equal to the &#x60;amount_lte&#x60; value. (optional)
+     * @param  string $checkout_session_id Filters for transactions that are linked to the unique ID for a Checkout Session. (optional)
      * @param  \DateTime $created_at_gte Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  \DateTime $created_at_lte Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  string[] $currency Filters for transactions that have matching &#x60;currency&#x60; values. The &#x60;currency&#x60; values provided must be formatted as 3-letter ISO currency code. (optional)
      * @param  string $external_identifier Filters the results to only the items for which the &#x60;external_identifier&#x60; matches this value. (optional)
-     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one refund in any state associated with it. When set to &#x60;false&#x60;, filter for transactions that have no refunds. (optional)
+     * @param  string $gift_card_id Filters for transactions that have at least one gift card redemption with a matching &#x60;gift_card_id&#x60; value. (optional)
+     * @param  string $gift_card_last4 Filters for transactions that have at least one gift card redemption where the last 4 digits of its gift card number matches exactly with the provided value. (optional)
+     * @param  bool $has_gift_card_redemptions When set to &#x60;true&#x60;, filters for transactions that have at least one gift card redemption associated with it. When set to &#x60;false&#x60;, filter for transactions that have no gift card redemptions. (optional)
+     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one completed refund (including gift card refunds) associated with it. When set to &#x60;false&#x60;, filter for transactions that have no completed refunds. (optional)
      * @param  string $id Filters for the transaction that has a matching &#x60;id&#x60; value. (optional)
      * @param  string[] $metadata Filters for transactions where their &#x60;metadata&#x60; values contain all of the provided &#x60;metadata&#x60; keys. The value sent for &#x60;metadata&#x60; must be formatted as a JSON string, and all keys and values must be strings. This value should also be URL encoded.  Duplicate keys are not supported. If a key is duplicated, only the last appearing value will be used. (optional)
      * @param  string[] $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string $payment_method_id Filters for transactions that have a payment method with an ID that matches exactly with the provided value. (optional)
+     * @param  string $payment_method_label Filters for transactions that have a payment method with a label that matches exactly with the provided value. (optional)
      * @param  string[] $payment_service_id Filters for transactions that were processed by the provided &#x60;payment_service_id&#x60; values. (optional)
      * @param  string $payment_service_transaction_id Filters for transactions that have a matching &#x60;payment_service_transaction_id&#x60; value. The &#x60;payment_service_transaction_id&#x60; is the identifier of the transaction given by the payment service. (optional)
-     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value: * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60; (optional)
+     * @param  bool $pending_review When set to &#x60;true&#x60;, filter for transactions that have a manual review pending. When set to &#x60;false&#x60;, filter for transactions that don&#39;t have a manual review pending. (optional)
+     * @param  string $reconciliation_id Filters for transactions based on their transaction reconciliation identifier. (optional)
+     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value.  * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60;  The search will apply against all fields at the same time. Please do not use this query parameter in a production application, as this API call is very inefficient and may negatively impact transaction performance. (optional) (deprecated)
      * @param  string[] $status Filters the results to only the transactions that have a &#x60;status&#x60; that matches with any of the provided status values. (optional)
      * @param  \DateTime $updated_at_gte Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  \DateTime $updated_at_lte Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
-     * @param  \DateTime $before_created_at Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_lte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $after_created_at Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_gte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_lte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_gte&#x60; instead. (optional) (deprecated)
-     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;status&#x60; instead. (optional) (deprecated)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\Transactions|\Gr4vy\model\Error401Unauthorized
      */
-    public function listTransactions($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_service_id = null, $payment_service_transaction_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $transaction_status = null)
+    public function listTransactions($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $checkout_session_id = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $gift_card_id = null, $gift_card_last4 = null, $has_gift_card_redemptions = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_method_id = null, $payment_method_label = null, $payment_service_id = null, $payment_service_transaction_id = null, $pending_review = null, $reconciliation_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null)
     {
-        list($response) = $this->listTransactionsWithHttpInfo($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $created_at_gte, $created_at_lte, $currency, $external_identifier, $has_refunds, $id, $metadata, $method, $payment_service_id, $payment_service_transaction_id, $search, $status, $updated_at_gte, $updated_at_lte, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $transaction_status);
+        list($response) = $this->listTransactionsWithHttpInfo($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $checkout_session_id, $created_at_gte, $created_at_lte, $currency, $external_identifier, $gift_card_id, $gift_card_last4, $has_gift_card_redemptions, $has_refunds, $id, $metadata, $method, $payment_method_id, $payment_method_label, $payment_service_id, $payment_service_transaction_id, $pending_review, $reconciliation_id, $search, $status, $updated_at_gte, $updated_at_lte);
         return $response;
     }
 
@@ -1900,33 +1546,36 @@ class TransactionsApi
      * @param  int $amount_eq Filters for transactions that have an &#x60;amount&#x60; that is equal to the provided &#x60;amount_eq&#x60; value. (optional)
      * @param  int $amount_gte Filters for transactions that have an &#x60;amount&#x60; that is greater than or equal to the &#x60;amount_gte&#x60; value. (optional)
      * @param  int $amount_lte Filters for transactions that have an &#x60;amount&#x60; that is less than or equal to the &#x60;amount_lte&#x60; value. (optional)
+     * @param  string $checkout_session_id Filters for transactions that are linked to the unique ID for a Checkout Session. (optional)
      * @param  \DateTime $created_at_gte Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  \DateTime $created_at_lte Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  string[] $currency Filters for transactions that have matching &#x60;currency&#x60; values. The &#x60;currency&#x60; values provided must be formatted as 3-letter ISO currency code. (optional)
      * @param  string $external_identifier Filters the results to only the items for which the &#x60;external_identifier&#x60; matches this value. (optional)
-     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one refund in any state associated with it. When set to &#x60;false&#x60;, filter for transactions that have no refunds. (optional)
+     * @param  string $gift_card_id Filters for transactions that have at least one gift card redemption with a matching &#x60;gift_card_id&#x60; value. (optional)
+     * @param  string $gift_card_last4 Filters for transactions that have at least one gift card redemption where the last 4 digits of its gift card number matches exactly with the provided value. (optional)
+     * @param  bool $has_gift_card_redemptions When set to &#x60;true&#x60;, filters for transactions that have at least one gift card redemption associated with it. When set to &#x60;false&#x60;, filter for transactions that have no gift card redemptions. (optional)
+     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one completed refund (including gift card refunds) associated with it. When set to &#x60;false&#x60;, filter for transactions that have no completed refunds. (optional)
      * @param  string $id Filters for the transaction that has a matching &#x60;id&#x60; value. (optional)
      * @param  string[] $metadata Filters for transactions where their &#x60;metadata&#x60; values contain all of the provided &#x60;metadata&#x60; keys. The value sent for &#x60;metadata&#x60; must be formatted as a JSON string, and all keys and values must be strings. This value should also be URL encoded.  Duplicate keys are not supported. If a key is duplicated, only the last appearing value will be used. (optional)
      * @param  string[] $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string $payment_method_id Filters for transactions that have a payment method with an ID that matches exactly with the provided value. (optional)
+     * @param  string $payment_method_label Filters for transactions that have a payment method with a label that matches exactly with the provided value. (optional)
      * @param  string[] $payment_service_id Filters for transactions that were processed by the provided &#x60;payment_service_id&#x60; values. (optional)
      * @param  string $payment_service_transaction_id Filters for transactions that have a matching &#x60;payment_service_transaction_id&#x60; value. The &#x60;payment_service_transaction_id&#x60; is the identifier of the transaction given by the payment service. (optional)
-     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value: * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60; (optional)
+     * @param  bool $pending_review When set to &#x60;true&#x60;, filter for transactions that have a manual review pending. When set to &#x60;false&#x60;, filter for transactions that don&#39;t have a manual review pending. (optional)
+     * @param  string $reconciliation_id Filters for transactions based on their transaction reconciliation identifier. (optional)
+     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value.  * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60;  The search will apply against all fields at the same time. Please do not use this query parameter in a production application, as this API call is very inefficient and may negatively impact transaction performance. (optional) (deprecated)
      * @param  string[] $status Filters the results to only the transactions that have a &#x60;status&#x60; that matches with any of the provided status values. (optional)
      * @param  \DateTime $updated_at_gte Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  \DateTime $updated_at_lte Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
-     * @param  \DateTime $before_created_at Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_lte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $after_created_at Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_gte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_lte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_gte&#x60; instead. (optional) (deprecated)
-     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;status&#x60; instead. (optional) (deprecated)
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\Transactions|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listTransactionsWithHttpInfo($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_service_id = null, $payment_service_transaction_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $transaction_status = null)
+    public function listTransactionsWithHttpInfo($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $checkout_session_id = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $gift_card_id = null, $gift_card_last4 = null, $has_gift_card_redemptions = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_method_id = null, $payment_method_label = null, $payment_service_id = null, $payment_service_transaction_id = null, $pending_review = null, $reconciliation_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null)
     {
-        $request = $this->listTransactionsRequest($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $created_at_gte, $created_at_lte, $currency, $external_identifier, $has_refunds, $id, $metadata, $method, $payment_service_id, $payment_service_transaction_id, $search, $status, $updated_at_gte, $updated_at_lte, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $transaction_status);
+        $request = $this->listTransactionsRequest($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $checkout_session_id, $created_at_gte, $created_at_lte, $currency, $external_identifier, $gift_card_id, $gift_card_last4, $has_gift_card_redemptions, $has_refunds, $id, $metadata, $method, $payment_method_id, $payment_method_label, $payment_service_id, $payment_service_transaction_id, $pending_review, $reconciliation_id, $search, $status, $updated_at_gte, $updated_at_lte);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2047,32 +1696,35 @@ class TransactionsApi
      * @param  int $amount_eq Filters for transactions that have an &#x60;amount&#x60; that is equal to the provided &#x60;amount_eq&#x60; value. (optional)
      * @param  int $amount_gte Filters for transactions that have an &#x60;amount&#x60; that is greater than or equal to the &#x60;amount_gte&#x60; value. (optional)
      * @param  int $amount_lte Filters for transactions that have an &#x60;amount&#x60; that is less than or equal to the &#x60;amount_lte&#x60; value. (optional)
+     * @param  string $checkout_session_id Filters for transactions that are linked to the unique ID for a Checkout Session. (optional)
      * @param  \DateTime $created_at_gte Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  \DateTime $created_at_lte Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  string[] $currency Filters for transactions that have matching &#x60;currency&#x60; values. The &#x60;currency&#x60; values provided must be formatted as 3-letter ISO currency code. (optional)
      * @param  string $external_identifier Filters the results to only the items for which the &#x60;external_identifier&#x60; matches this value. (optional)
-     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one refund in any state associated with it. When set to &#x60;false&#x60;, filter for transactions that have no refunds. (optional)
+     * @param  string $gift_card_id Filters for transactions that have at least one gift card redemption with a matching &#x60;gift_card_id&#x60; value. (optional)
+     * @param  string $gift_card_last4 Filters for transactions that have at least one gift card redemption where the last 4 digits of its gift card number matches exactly with the provided value. (optional)
+     * @param  bool $has_gift_card_redemptions When set to &#x60;true&#x60;, filters for transactions that have at least one gift card redemption associated with it. When set to &#x60;false&#x60;, filter for transactions that have no gift card redemptions. (optional)
+     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one completed refund (including gift card refunds) associated with it. When set to &#x60;false&#x60;, filter for transactions that have no completed refunds. (optional)
      * @param  string $id Filters for the transaction that has a matching &#x60;id&#x60; value. (optional)
      * @param  string[] $metadata Filters for transactions where their &#x60;metadata&#x60; values contain all of the provided &#x60;metadata&#x60; keys. The value sent for &#x60;metadata&#x60; must be formatted as a JSON string, and all keys and values must be strings. This value should also be URL encoded.  Duplicate keys are not supported. If a key is duplicated, only the last appearing value will be used. (optional)
      * @param  string[] $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string $payment_method_id Filters for transactions that have a payment method with an ID that matches exactly with the provided value. (optional)
+     * @param  string $payment_method_label Filters for transactions that have a payment method with a label that matches exactly with the provided value. (optional)
      * @param  string[] $payment_service_id Filters for transactions that were processed by the provided &#x60;payment_service_id&#x60; values. (optional)
      * @param  string $payment_service_transaction_id Filters for transactions that have a matching &#x60;payment_service_transaction_id&#x60; value. The &#x60;payment_service_transaction_id&#x60; is the identifier of the transaction given by the payment service. (optional)
-     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value: * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60; (optional)
+     * @param  bool $pending_review When set to &#x60;true&#x60;, filter for transactions that have a manual review pending. When set to &#x60;false&#x60;, filter for transactions that don&#39;t have a manual review pending. (optional)
+     * @param  string $reconciliation_id Filters for transactions based on their transaction reconciliation identifier. (optional)
+     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value.  * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60;  The search will apply against all fields at the same time. Please do not use this query parameter in a production application, as this API call is very inefficient and may negatively impact transaction performance. (optional) (deprecated)
      * @param  string[] $status Filters the results to only the transactions that have a &#x60;status&#x60; that matches with any of the provided status values. (optional)
      * @param  \DateTime $updated_at_gte Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  \DateTime $updated_at_lte Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
-     * @param  \DateTime $before_created_at Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_lte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $after_created_at Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_gte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_lte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_gte&#x60; instead. (optional) (deprecated)
-     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;status&#x60; instead. (optional) (deprecated)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTransactionsAsync($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_service_id = null, $payment_service_transaction_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $transaction_status = null)
+    public function listTransactionsAsync($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $checkout_session_id = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $gift_card_id = null, $gift_card_last4 = null, $has_gift_card_redemptions = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_method_id = null, $payment_method_label = null, $payment_service_id = null, $payment_service_transaction_id = null, $pending_review = null, $reconciliation_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null)
     {
-        return $this->listTransactionsAsyncWithHttpInfo($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $created_at_gte, $created_at_lte, $currency, $external_identifier, $has_refunds, $id, $metadata, $method, $payment_service_id, $payment_service_transaction_id, $search, $status, $updated_at_gte, $updated_at_lte, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $transaction_status)
+        return $this->listTransactionsAsyncWithHttpInfo($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $checkout_session_id, $created_at_gte, $created_at_lte, $currency, $external_identifier, $gift_card_id, $gift_card_last4, $has_gift_card_redemptions, $has_refunds, $id, $metadata, $method, $payment_method_id, $payment_method_label, $payment_service_id, $payment_service_transaction_id, $pending_review, $reconciliation_id, $search, $status, $updated_at_gte, $updated_at_lte)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2092,33 +1744,36 @@ class TransactionsApi
      * @param  int $amount_eq Filters for transactions that have an &#x60;amount&#x60; that is equal to the provided &#x60;amount_eq&#x60; value. (optional)
      * @param  int $amount_gte Filters for transactions that have an &#x60;amount&#x60; that is greater than or equal to the &#x60;amount_gte&#x60; value. (optional)
      * @param  int $amount_lte Filters for transactions that have an &#x60;amount&#x60; that is less than or equal to the &#x60;amount_lte&#x60; value. (optional)
+     * @param  string $checkout_session_id Filters for transactions that are linked to the unique ID for a Checkout Session. (optional)
      * @param  \DateTime $created_at_gte Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  \DateTime $created_at_lte Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  string[] $currency Filters for transactions that have matching &#x60;currency&#x60; values. The &#x60;currency&#x60; values provided must be formatted as 3-letter ISO currency code. (optional)
      * @param  string $external_identifier Filters the results to only the items for which the &#x60;external_identifier&#x60; matches this value. (optional)
-     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one refund in any state associated with it. When set to &#x60;false&#x60;, filter for transactions that have no refunds. (optional)
+     * @param  string $gift_card_id Filters for transactions that have at least one gift card redemption with a matching &#x60;gift_card_id&#x60; value. (optional)
+     * @param  string $gift_card_last4 Filters for transactions that have at least one gift card redemption where the last 4 digits of its gift card number matches exactly with the provided value. (optional)
+     * @param  bool $has_gift_card_redemptions When set to &#x60;true&#x60;, filters for transactions that have at least one gift card redemption associated with it. When set to &#x60;false&#x60;, filter for transactions that have no gift card redemptions. (optional)
+     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one completed refund (including gift card refunds) associated with it. When set to &#x60;false&#x60;, filter for transactions that have no completed refunds. (optional)
      * @param  string $id Filters for the transaction that has a matching &#x60;id&#x60; value. (optional)
      * @param  string[] $metadata Filters for transactions where their &#x60;metadata&#x60; values contain all of the provided &#x60;metadata&#x60; keys. The value sent for &#x60;metadata&#x60; must be formatted as a JSON string, and all keys and values must be strings. This value should also be URL encoded.  Duplicate keys are not supported. If a key is duplicated, only the last appearing value will be used. (optional)
      * @param  string[] $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string $payment_method_id Filters for transactions that have a payment method with an ID that matches exactly with the provided value. (optional)
+     * @param  string $payment_method_label Filters for transactions that have a payment method with a label that matches exactly with the provided value. (optional)
      * @param  string[] $payment_service_id Filters for transactions that were processed by the provided &#x60;payment_service_id&#x60; values. (optional)
      * @param  string $payment_service_transaction_id Filters for transactions that have a matching &#x60;payment_service_transaction_id&#x60; value. The &#x60;payment_service_transaction_id&#x60; is the identifier of the transaction given by the payment service. (optional)
-     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value: * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60; (optional)
+     * @param  bool $pending_review When set to &#x60;true&#x60;, filter for transactions that have a manual review pending. When set to &#x60;false&#x60;, filter for transactions that don&#39;t have a manual review pending. (optional)
+     * @param  string $reconciliation_id Filters for transactions based on their transaction reconciliation identifier. (optional)
+     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value.  * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60;  The search will apply against all fields at the same time. Please do not use this query parameter in a production application, as this API call is very inefficient and may negatively impact transaction performance. (optional) (deprecated)
      * @param  string[] $status Filters the results to only the transactions that have a &#x60;status&#x60; that matches with any of the provided status values. (optional)
      * @param  \DateTime $updated_at_gte Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  \DateTime $updated_at_lte Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
-     * @param  \DateTime $before_created_at Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_lte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $after_created_at Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_gte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_lte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_gte&#x60; instead. (optional) (deprecated)
-     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;status&#x60; instead. (optional) (deprecated)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listTransactionsAsyncWithHttpInfo($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_service_id = null, $payment_service_transaction_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $transaction_status = null)
+    public function listTransactionsAsyncWithHttpInfo($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $checkout_session_id = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $gift_card_id = null, $gift_card_last4 = null, $has_gift_card_redemptions = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_method_id = null, $payment_method_label = null, $payment_service_id = null, $payment_service_transaction_id = null, $pending_review = null, $reconciliation_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null)
     {
         $returnType = '\Gr4vy\model\Transactions';
-        $request = $this->listTransactionsRequest($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $created_at_gte, $created_at_lte, $currency, $external_identifier, $has_refunds, $id, $metadata, $method, $payment_service_id, $payment_service_transaction_id, $search, $status, $updated_at_gte, $updated_at_lte, $before_created_at, $after_created_at, $before_updated_at, $after_updated_at, $transaction_status);
+        $request = $this->listTransactionsRequest($buyer_external_identifier, $buyer_id, $cursor, $limit, $amount_eq, $amount_gte, $amount_lte, $checkout_session_id, $created_at_gte, $created_at_lte, $currency, $external_identifier, $gift_card_id, $gift_card_last4, $has_gift_card_redemptions, $has_refunds, $id, $metadata, $method, $payment_method_id, $payment_method_label, $payment_service_id, $payment_service_transaction_id, $pending_review, $reconciliation_id, $search, $status, $updated_at_gte, $updated_at_lte);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2166,36 +1821,46 @@ class TransactionsApi
      * @param  int $amount_eq Filters for transactions that have an &#x60;amount&#x60; that is equal to the provided &#x60;amount_eq&#x60; value. (optional)
      * @param  int $amount_gte Filters for transactions that have an &#x60;amount&#x60; that is greater than or equal to the &#x60;amount_gte&#x60; value. (optional)
      * @param  int $amount_lte Filters for transactions that have an &#x60;amount&#x60; that is less than or equal to the &#x60;amount_lte&#x60; value. (optional)
+     * @param  string $checkout_session_id Filters for transactions that are linked to the unique ID for a Checkout Session. (optional)
      * @param  \DateTime $created_at_gte Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  \DateTime $created_at_lte Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  string[] $currency Filters for transactions that have matching &#x60;currency&#x60; values. The &#x60;currency&#x60; values provided must be formatted as 3-letter ISO currency code. (optional)
      * @param  string $external_identifier Filters the results to only the items for which the &#x60;external_identifier&#x60; matches this value. (optional)
-     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one refund in any state associated with it. When set to &#x60;false&#x60;, filter for transactions that have no refunds. (optional)
+     * @param  string $gift_card_id Filters for transactions that have at least one gift card redemption with a matching &#x60;gift_card_id&#x60; value. (optional)
+     * @param  string $gift_card_last4 Filters for transactions that have at least one gift card redemption where the last 4 digits of its gift card number matches exactly with the provided value. (optional)
+     * @param  bool $has_gift_card_redemptions When set to &#x60;true&#x60;, filters for transactions that have at least one gift card redemption associated with it. When set to &#x60;false&#x60;, filter for transactions that have no gift card redemptions. (optional)
+     * @param  bool $has_refunds When set to &#x60;true&#x60;, filter for transactions that have at least one completed refund (including gift card refunds) associated with it. When set to &#x60;false&#x60;, filter for transactions that have no completed refunds. (optional)
      * @param  string $id Filters for the transaction that has a matching &#x60;id&#x60; value. (optional)
      * @param  string[] $metadata Filters for transactions where their &#x60;metadata&#x60; values contain all of the provided &#x60;metadata&#x60; keys. The value sent for &#x60;metadata&#x60; must be formatted as a JSON string, and all keys and values must be strings. This value should also be URL encoded.  Duplicate keys are not supported. If a key is duplicated, only the last appearing value will be used. (optional)
      * @param  string[] $method Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. (optional)
+     * @param  string $payment_method_id Filters for transactions that have a payment method with an ID that matches exactly with the provided value. (optional)
+     * @param  string $payment_method_label Filters for transactions that have a payment method with a label that matches exactly with the provided value. (optional)
      * @param  string[] $payment_service_id Filters for transactions that were processed by the provided &#x60;payment_service_id&#x60; values. (optional)
      * @param  string $payment_service_transaction_id Filters for transactions that have a matching &#x60;payment_service_transaction_id&#x60; value. The &#x60;payment_service_transaction_id&#x60; is the identifier of the transaction given by the payment service. (optional)
-     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value: * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60; (optional)
+     * @param  bool $pending_review When set to &#x60;true&#x60;, filter for transactions that have a manual review pending. When set to &#x60;false&#x60;, filter for transactions that don&#39;t have a manual review pending. (optional)
+     * @param  string $reconciliation_id Filters for transactions based on their transaction reconciliation identifier. (optional)
+     * @param  string $search Filters for transactions that have one of the following fields match exactly with the provided &#x60;search&#x60; value.  * &#x60;buyer_external_identifier&#x60; * &#x60;buyer_id&#x60; * &#x60;external_identifier&#x60; * &#x60;id&#x60; * &#x60;payment_service_transaction_id&#x60;  The search will apply against all fields at the same time. Please do not use this query parameter in a production application, as this API call is very inefficient and may negatively impact transaction performance. (optional) (deprecated)
      * @param  string[] $status Filters the results to only the transactions that have a &#x60;status&#x60; that matches with any of the provided status values. (optional)
      * @param  \DateTime $updated_at_gte Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
      * @param  \DateTime $updated_at_lte Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;. (optional)
-     * @param  \DateTime $before_created_at Filters the results to only transactions created before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_lte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $after_created_at Filters the results to only transactions created after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;created_at_gte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $before_updated_at Filters the results to only transactions last updated before this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_lte&#x60; instead. (optional) (deprecated)
-     * @param  \DateTime $after_updated_at Filters the results to only transactions last updated after this ISO date-time string. The time zone must be included.  Ensure that the date-time string is URL encoded, e.g. &#x60;2022-01-01T12:00:00+08:00&#x60; must be encoded as &#x60;2022-01-01T12%3A00%3A00%2B08%3A00&#x60;.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;updated_at_gte&#x60; instead. (optional) (deprecated)
-     * @param  string $transaction_status Filters the results to only the transactions for which the &#x60;status&#x60; matches this value.  **WARNING** This filter is deprecated and may be removed eventually, use &#x60;status&#x60; instead. (optional) (deprecated)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listTransactionsRequest($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_service_id = null, $payment_service_transaction_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null, $before_created_at = null, $after_created_at = null, $before_updated_at = null, $after_updated_at = null, $transaction_status = null)
+    public function listTransactionsRequest($buyer_external_identifier = null, $buyer_id = null, $cursor = null, $limit = 20, $amount_eq = null, $amount_gte = null, $amount_lte = null, $checkout_session_id = null, $created_at_gte = null, $created_at_lte = null, $currency = null, $external_identifier = null, $gift_card_id = null, $gift_card_last4 = null, $has_gift_card_redemptions = null, $has_refunds = null, $id = null, $metadata = null, $method = null, $payment_method_id = null, $payment_method_label = null, $payment_service_id = null, $payment_service_transaction_id = null, $pending_review = null, $reconciliation_id = null, $search = null, $status = null, $updated_at_gte = null, $updated_at_lte = null)
     {
         if ($limit !== null && $limit > 500) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling TransactionsApi.listTransactions, must be smaller than or equal to 500.');
         }
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling TransactionsApi.listTransactions, must be bigger than or equal to 1.');
+        }
+
+        if ($gift_card_last4 !== null && strlen($gift_card_last4) > 4) {
+            throw new \InvalidArgumentException('invalid length for "$gift_card_last4" when calling TransactionsApi.listTransactions, must be smaller than or equal to 4.');
+        }
+        if ($gift_card_last4 !== null && strlen($gift_card_last4) < 4) {
+            throw new \InvalidArgumentException('invalid length for "$gift_card_last4" when calling TransactionsApi.listTransactions, must be bigger than or equal to 4.');
         }
 
 
@@ -2271,6 +1936,15 @@ class TransactionsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $checkout_session_id,
+            'checkout_session_id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $created_at_gte,
             'created_at_gte', // param base name
             'string', // openApiType
@@ -2301,6 +1975,33 @@ class TransactionsApi
             $external_identifier,
             'external_identifier', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $gift_card_id,
+            'gift_card_id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $gift_card_last4,
+            'gift_card_last4', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $has_gift_card_redemptions,
+            'has_gift_card_redemptions', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2343,6 +2044,24 @@ class TransactionsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $payment_method_id,
+            'payment_method_id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $payment_method_label,
+            'payment_method_label', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $payment_service_id,
             'payment_service_id', // param base name
             'array', // openApiType
@@ -2354,6 +2073,24 @@ class TransactionsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $payment_service_transaction_id,
             'payment_service_transaction_id', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pending_review,
+            'pending_review', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $reconciliation_id,
+            'reconciliation_id', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2390,51 +2127,6 @@ class TransactionsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $updated_at_lte,
             'updated_at_lte', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $before_created_at,
-            'before_created_at', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after_created_at,
-            'after_created_at', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $before_updated_at,
-            'before_updated_at', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after_updated_at,
-            'after_updated_at', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $transaction_status,
-            'transaction_status', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2506,7 +2198,7 @@ class TransactionsApi
     }
 
     /**
-     * Operation refundTransaction
+     * Operation newRefund
      *
      * Refund transaction
      *
@@ -2517,14 +2209,14 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\Refund|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
      */
-    public function refundTransaction($transaction_id, $transaction_refund_request = null)
+    public function newRefund($transaction_id, $transaction_refund_request = null)
     {
-        list($response) = $this->refundTransactionWithHttpInfo($transaction_id, $transaction_refund_request);
+        list($response) = $this->newRefundWithHttpInfo($transaction_id, $transaction_refund_request);
         return $response;
     }
 
     /**
-     * Operation refundTransactionWithHttpInfo
+     * Operation newRefundWithHttpInfo
      *
      * Refund transaction
      *
@@ -2535,9 +2227,9 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\Refund|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
      */
-    public function refundTransactionWithHttpInfo($transaction_id, $transaction_refund_request = null)
+    public function newRefundWithHttpInfo($transaction_id, $transaction_refund_request = null)
     {
-        $request = $this->refundTransactionRequest($transaction_id, $transaction_refund_request);
+        $request = $this->newRefundRequest($transaction_id, $transaction_refund_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2693,7 +2385,7 @@ class TransactionsApi
     }
 
     /**
-     * Operation refundTransactionAsync
+     * Operation newRefundAsync
      *
      * Refund transaction
      *
@@ -2703,9 +2395,9 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function refundTransactionAsync($transaction_id, $transaction_refund_request = null)
+    public function newRefundAsync($transaction_id, $transaction_refund_request = null)
     {
-        return $this->refundTransactionAsyncWithHttpInfo($transaction_id, $transaction_refund_request)
+        return $this->newRefundAsyncWithHttpInfo($transaction_id, $transaction_refund_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2714,7 +2406,7 @@ class TransactionsApi
     }
 
     /**
-     * Operation refundTransactionAsyncWithHttpInfo
+     * Operation newRefundAsyncWithHttpInfo
      *
      * Refund transaction
      *
@@ -2724,10 +2416,10 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function refundTransactionAsyncWithHttpInfo($transaction_id, $transaction_refund_request = null)
+    public function newRefundAsyncWithHttpInfo($transaction_id, $transaction_refund_request = null)
     {
         $returnType = '\Gr4vy\model\Refund';
-        $request = $this->refundTransactionRequest($transaction_id, $transaction_refund_request);
+        $request = $this->newRefundRequest($transaction_id, $transaction_refund_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2766,7 +2458,7 @@ class TransactionsApi
     }
 
     /**
-     * Create request for operation 'refundTransaction'
+     * Create request for operation 'newRefund'
      *
      * @param  string $transaction_id The ID for the transaction to get the information for. (required)
      * @param  \Gr4vy\model\TransactionRefundRequest $transaction_refund_request (optional)
@@ -2774,12 +2466,12 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function refundTransactionRequest($transaction_id, $transaction_refund_request = null)
+    public function newRefundRequest($transaction_id, $transaction_refund_request = null)
     {
         // verify the required parameter 'transaction_id' is set
         if ($transaction_id === null || (is_array($transaction_id) && count($transaction_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $transaction_id when calling refundTransaction'
+                'Missing the required parameter $transaction_id when calling newRefund'
             );
         }
 
@@ -2787,7 +2479,7 @@ class TransactionsApi
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
-        $httpBody = '{}';
+        $httpBody = '';
         $multipart = false;
 
 
@@ -2821,6 +2513,740 @@ class TransactionsApi
                 $httpBody = $transaction_refund_request;
             }
         } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation newTransaction
+     *
+     * New transaction
+     *
+     * @param  string $idempotency_key A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions. (optional)
+     * @param  \Gr4vy\model\TransactionRequest $transaction_request transaction_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\Transaction|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord|\Gr4vy\model\Error429TooManyRequests
+     */
+    public function newTransaction($idempotency_key = null, $transaction_request = null)
+    {
+        list($response) = $this->newTransactionWithHttpInfo($idempotency_key, $transaction_request);
+        return $response;
+    }
+
+    /**
+     * Operation newTransactionWithHttpInfo
+     *
+     * New transaction
+     *
+     * @param  string $idempotency_key A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions. (optional)
+     * @param  \Gr4vy\model\TransactionRequest $transaction_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\Transaction|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord|\Gr4vy\model\Error429TooManyRequests, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function newTransactionWithHttpInfo($idempotency_key = null, $transaction_request = null)
+    {
+        $request = $this->newTransactionRequest($idempotency_key, $transaction_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\Gr4vy\model\Transaction' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Transaction' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Transaction', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\Gr4vy\model\Error409DuplicateRecord' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error409DuplicateRecord' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error409DuplicateRecord', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Gr4vy\model\Error429TooManyRequests' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error429TooManyRequests' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error429TooManyRequests', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\Transaction';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Transaction',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ErrorGeneric',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error409DuplicateRecord',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error429TooManyRequests',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation newTransactionAsync
+     *
+     * New transaction
+     *
+     * @param  string $idempotency_key A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions. (optional)
+     * @param  \Gr4vy\model\TransactionRequest $transaction_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function newTransactionAsync($idempotency_key = null, $transaction_request = null)
+    {
+        return $this->newTransactionAsyncWithHttpInfo($idempotency_key, $transaction_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation newTransactionAsyncWithHttpInfo
+     *
+     * New transaction
+     *
+     * @param  string $idempotency_key A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions. (optional)
+     * @param  \Gr4vy\model\TransactionRequest $transaction_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function newTransactionAsyncWithHttpInfo($idempotency_key = null, $transaction_request = null)
+    {
+        $returnType = '\Gr4vy\model\Transaction';
+        $request = $this->newTransactionRequest($idempotency_key, $transaction_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'newTransaction'
+     *
+     * @param  string $idempotency_key A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions. (optional)
+     * @param  \Gr4vy\model\TransactionRequest $transaction_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function newTransactionRequest($idempotency_key = null, $transaction_request = null)
+    {
+        if ($idempotency_key !== null && strlen($idempotency_key) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$idempotency_key" when calling TransactionsApi.newTransaction, must be smaller than or equal to 255.');
+        }
+
+
+        $resourcePath = '/transactions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($idempotency_key !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotency_key);
+        }
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($transaction_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($transaction_request));
+            } else {
+                $httpBody = $transaction_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation refundAll
+     *
+     * Refund all instruments in a transaction
+     *
+     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\Refunds|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
+     */
+    public function refundAll($transaction_id)
+    {
+        list($response) = $this->refundAllWithHttpInfo($transaction_id);
+        return $response;
+    }
+
+    /**
+     * Operation refundAllWithHttpInfo
+     *
+     * Refund all instruments in a transaction
+     *
+     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\Refunds|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function refundAllWithHttpInfo($transaction_id)
+    {
+        $request = $this->refundAllRequest($transaction_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\Gr4vy\model\Refunds' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Refunds' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Refunds', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Gr4vy\model\Error404NotFound' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error404NotFound' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error404NotFound', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\Refunds';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Refunds',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ErrorGeneric',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error404NotFound',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation refundAllAsync
+     *
+     * Refund all instruments in a transaction
+     *
+     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function refundAllAsync($transaction_id)
+    {
+        return $this->refundAllAsyncWithHttpInfo($transaction_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation refundAllAsyncWithHttpInfo
+     *
+     * Refund all instruments in a transaction
+     *
+     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function refundAllAsyncWithHttpInfo($transaction_id)
+    {
+        $returnType = '\Gr4vy\model\Refunds';
+        $request = $this->refundAllRequest($transaction_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'refundAll'
+     *
+     * @param  string $transaction_id The ID for the transaction to get the information for. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function refundAllRequest($transaction_id)
+    {
+        // verify the required parameter 'transaction_id' is set
+        if ($transaction_id === null || (is_array($transaction_id) && count($transaction_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $transaction_id when calling refundAll'
+            );
+        }
+
+        $resourcePath = '/transactions/{transaction_id}/refunds/all';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($transaction_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'transaction_id' . '}',
+                ObjectSerializer::toPathValue($transaction_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

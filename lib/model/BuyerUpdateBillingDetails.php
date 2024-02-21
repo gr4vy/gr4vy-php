@@ -36,6 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * BuyerUpdateBillingDetails Class Doc Comment
  *
  * @category Class
+ * @description The billing details of the buyer.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -65,7 +66,7 @@ class BuyerUpdateBillingDetails implements ModelInterface, ArrayAccess, \JsonSer
         'email_address' => 'string',
         'phone_number' => 'string',
         'address' => '\Gr4vy\model\BillingDetailsUpdateRequestAddress',
-        'tax_id' => '\Gr4vy\model\BillingDetailsTaxId'
+        'tax_id' => '\Gr4vy\model\BillingDetailsRequestTaxId'
     ];
 
     /**
@@ -426,7 +427,7 @@ class BuyerUpdateBillingDetails implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets tax_id
      *
-     * @return \Gr4vy\model\BillingDetailsTaxId|null
+     * @return \Gr4vy\model\BillingDetailsRequestTaxId|null
      */
     public function getTaxId()
     {
@@ -436,7 +437,7 @@ class BuyerUpdateBillingDetails implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets tax_id
      *
-     * @param \Gr4vy\model\BillingDetailsTaxId|null $tax_id tax_id
+     * @param \Gr4vy\model\BillingDetailsRequestTaxId|null $tax_id tax_id
      *
      * @return self
      */

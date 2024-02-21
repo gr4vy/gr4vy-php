@@ -62,7 +62,10 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'merchant_name' => 'string',
-        'domain_names' => 'string[]'
+        'domain_names' => 'string[]',
+        'merchant_display_name' => 'string',
+        'merchant_country_code' => 'string',
+        'merchant_url' => 'string'
     ];
 
     /**
@@ -74,7 +77,10 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'merchant_name' => null,
-        'domain_names' => null
+        'domain_names' => null,
+        'merchant_display_name' => null,
+        'merchant_country_code' => null,
+        'merchant_url' => null
     ];
 
     /**
@@ -105,7 +111,10 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'merchant_name' => 'merchant_name',
-        'domain_names' => 'domain_names'
+        'domain_names' => 'domain_names',
+        'merchant_display_name' => 'merchant_display_name',
+        'merchant_country_code' => 'merchant_country_code',
+        'merchant_url' => 'merchant_url'
     ];
 
     /**
@@ -115,7 +124,10 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'merchant_name' => 'setMerchantName',
-        'domain_names' => 'setDomainNames'
+        'domain_names' => 'setDomainNames',
+        'merchant_display_name' => 'setMerchantDisplayName',
+        'merchant_country_code' => 'setMerchantCountryCode',
+        'merchant_url' => 'setMerchantUrl'
     ];
 
     /**
@@ -125,7 +137,10 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'merchant_name' => 'getMerchantName',
-        'domain_names' => 'getDomainNames'
+        'domain_names' => 'getDomainNames',
+        'merchant_display_name' => 'getMerchantDisplayName',
+        'merchant_country_code' => 'getMerchantCountryCode',
+        'merchant_url' => 'getMerchantUrl'
     ];
 
     /**
@@ -187,6 +202,9 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $this->container['merchant_name'] = $data['merchant_name'] ?? null;
         $this->container['domain_names'] = $data['domain_names'] ?? null;
+        $this->container['merchant_display_name'] = $data['merchant_display_name'] ?? null;
+        $this->container['merchant_country_code'] = $data['merchant_country_code'] ?? null;
+        $this->container['merchant_url'] = $data['merchant_url'] ?? null;
     }
 
     /**
@@ -204,6 +222,14 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
 
         if (!is_null($this->container['domain_names']) && (count($this->container['domain_names']) < 1)) {
             $invalidProperties[] = "invalid value for 'domain_names', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['merchant_country_code']) && (mb_strlen($this->container['merchant_country_code']) > 2)) {
+            $invalidProperties[] = "invalid value for 'merchant_country_code', the character length must be smaller than or equal to 2.";
+        }
+
+        if (!is_null($this->container['merchant_country_code']) && (mb_strlen($this->container['merchant_country_code']) < 2)) {
+            $invalidProperties[] = "invalid value for 'merchant_country_code', the character length must be bigger than or equal to 2.";
         }
 
         return $invalidProperties;
@@ -272,6 +298,85 @@ class DigitalWalletUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('invalid length for $domain_names when calling DigitalWalletUpdate., number of items must be greater than or equal to 1.');
         }
         $this->container['domain_names'] = $domain_names;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_display_name
+     *
+     * @return string|null
+     */
+    public function getMerchantDisplayName()
+    {
+        return $this->container['merchant_display_name'];
+    }
+
+    /**
+     * Sets merchant_display_name
+     *
+     * @param string|null $merchant_display_name The consumer facing name of the merchant.
+     *
+     * @return self
+     */
+    public function setMerchantDisplayName($merchant_display_name)
+    {
+        $this->container['merchant_display_name'] = $merchant_display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_country_code
+     *
+     * @return string|null
+     */
+    public function getMerchantCountryCode()
+    {
+        return $this->container['merchant_country_code'];
+    }
+
+    /**
+     * Sets merchant_country_code
+     *
+     * @param string|null $merchant_country_code The country code where the merchant is registered.
+     *
+     * @return self
+     */
+    public function setMerchantCountryCode($merchant_country_code)
+    {
+        if (!is_null($merchant_country_code) && (mb_strlen($merchant_country_code) > 2)) {
+            throw new \InvalidArgumentException('invalid length for $merchant_country_code when calling DigitalWalletUpdate., must be smaller than or equal to 2.');
+        }
+        if (!is_null($merchant_country_code) && (mb_strlen($merchant_country_code) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $merchant_country_code when calling DigitalWalletUpdate., must be bigger than or equal to 2.');
+        }
+
+        $this->container['merchant_country_code'] = $merchant_country_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_url
+     *
+     * @return string|null
+     */
+    public function getMerchantUrl()
+    {
+        return $this->container['merchant_url'];
+    }
+
+    /**
+     * Sets merchant_url
+     *
+     * @param string|null $merchant_url The main URL of the merchant.
+     *
+     * @return self
+     */
+    public function setMerchantUrl($merchant_url)
+    {
+        $this->container['merchant_url'] = $merchant_url;
 
         return $this;
     }

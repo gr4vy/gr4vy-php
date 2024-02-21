@@ -63,20 +63,27 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'amount' => 'int',
         'currency' => 'string',
-        'country' => 'string',
         'payment_method' => '\Gr4vy\model\TransactionPaymentMethodRequest',
-        'store' => 'bool',
-        'intent' => 'string',
-        'external_identifier' => 'string',
-        'three_d_secure_data' => '\Gr4vy\model\ThreeDSecureDataV1V2',
-        'merchant_initiated' => 'bool',
-        'payment_source' => 'string',
-        'is_subsequent_payment' => 'bool',
-        'metadata' => 'array<string,string>',
-        'statement_descriptor' => '\Gr4vy\model\TransactionStatementDescriptor',
+        'anti_fraud_fingerprint' => 'string',
+        'async_capture' => 'bool',
+        'browser_info' => '\Gr4vy\model\TransactionRequestBrowserInfo',
+        'buyer_external_identifier' => 'string',
+        'buyer_id' => 'string',
         'cart_items' => '\Gr4vy\model\CartItem[]',
+        'connection_options' => '\Gr4vy\model\TransactionRequestConnectionOptions',
+        'country' => 'string',
+        'external_identifier' => 'string',
+        'gift_cards' => '\Gr4vy\model\TransactionGiftCardRequest[]',
+        'intent' => 'string',
+        'is_subsequent_payment' => 'bool',
+        'merchant_initiated' => 'bool',
+        'metadata' => 'array<string,string>',
+        'payment_source' => 'string',
         'previous_scheme_transaction_id' => 'string',
-        'browser_info' => '\Gr4vy\model\TransactionRequestBrowserInfo'
+        'shipping_details_id' => 'string',
+        'statement_descriptor' => '\Gr4vy\model\TransactionRequestStatementDescriptor',
+        'store' => 'bool',
+        'three_d_secure_data' => '\Gr4vy\model\ThreeDSecureDataV1V2'
     ];
 
     /**
@@ -89,20 +96,27 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPIFormats = [
         'amount' => null,
         'currency' => null,
-        'country' => null,
         'payment_method' => null,
-        'store' => null,
-        'intent' => null,
-        'external_identifier' => null,
-        'three_d_secure_data' => null,
-        'merchant_initiated' => null,
-        'payment_source' => null,
-        'is_subsequent_payment' => null,
-        'metadata' => null,
-        'statement_descriptor' => null,
+        'anti_fraud_fingerprint' => null,
+        'async_capture' => null,
+        'browser_info' => null,
+        'buyer_external_identifier' => null,
+        'buyer_id' => 'uuid',
         'cart_items' => null,
+        'connection_options' => null,
+        'country' => null,
+        'external_identifier' => null,
+        'gift_cards' => null,
+        'intent' => null,
+        'is_subsequent_payment' => null,
+        'merchant_initiated' => null,
+        'metadata' => null,
+        'payment_source' => null,
         'previous_scheme_transaction_id' => null,
-        'browser_info' => null
+        'shipping_details_id' => 'uuid',
+        'statement_descriptor' => null,
+        'store' => null,
+        'three_d_secure_data' => null
     ];
 
     /**
@@ -134,20 +148,27 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $attributeMap = [
         'amount' => 'amount',
         'currency' => 'currency',
-        'country' => 'country',
         'payment_method' => 'payment_method',
-        'store' => 'store',
-        'intent' => 'intent',
-        'external_identifier' => 'external_identifier',
-        'three_d_secure_data' => 'three_d_secure_data',
-        'merchant_initiated' => 'merchant_initiated',
-        'payment_source' => 'payment_source',
-        'is_subsequent_payment' => 'is_subsequent_payment',
-        'metadata' => 'metadata',
-        'statement_descriptor' => 'statement_descriptor',
+        'anti_fraud_fingerprint' => 'anti_fraud_fingerprint',
+        'async_capture' => 'async_capture',
+        'browser_info' => 'browser_info',
+        'buyer_external_identifier' => 'buyer_external_identifier',
+        'buyer_id' => 'buyer_id',
         'cart_items' => 'cart_items',
+        'connection_options' => 'connection_options',
+        'country' => 'country',
+        'external_identifier' => 'external_identifier',
+        'gift_cards' => 'gift_cards',
+        'intent' => 'intent',
+        'is_subsequent_payment' => 'is_subsequent_payment',
+        'merchant_initiated' => 'merchant_initiated',
+        'metadata' => 'metadata',
+        'payment_source' => 'payment_source',
         'previous_scheme_transaction_id' => 'previous_scheme_transaction_id',
-        'browser_info' => 'browser_info'
+        'shipping_details_id' => 'shipping_details_id',
+        'statement_descriptor' => 'statement_descriptor',
+        'store' => 'store',
+        'three_d_secure_data' => 'three_d_secure_data'
     ];
 
     /**
@@ -158,20 +179,27 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $setters = [
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
-        'country' => 'setCountry',
         'payment_method' => 'setPaymentMethod',
-        'store' => 'setStore',
-        'intent' => 'setIntent',
-        'external_identifier' => 'setExternalIdentifier',
-        'three_d_secure_data' => 'setThreeDSecureData',
-        'merchant_initiated' => 'setMerchantInitiated',
-        'payment_source' => 'setPaymentSource',
-        'is_subsequent_payment' => 'setIsSubsequentPayment',
-        'metadata' => 'setMetadata',
-        'statement_descriptor' => 'setStatementDescriptor',
+        'anti_fraud_fingerprint' => 'setAntiFraudFingerprint',
+        'async_capture' => 'setAsyncCapture',
+        'browser_info' => 'setBrowserInfo',
+        'buyer_external_identifier' => 'setBuyerExternalIdentifier',
+        'buyer_id' => 'setBuyerId',
         'cart_items' => 'setCartItems',
+        'connection_options' => 'setConnectionOptions',
+        'country' => 'setCountry',
+        'external_identifier' => 'setExternalIdentifier',
+        'gift_cards' => 'setGiftCards',
+        'intent' => 'setIntent',
+        'is_subsequent_payment' => 'setIsSubsequentPayment',
+        'merchant_initiated' => 'setMerchantInitiated',
+        'metadata' => 'setMetadata',
+        'payment_source' => 'setPaymentSource',
         'previous_scheme_transaction_id' => 'setPreviousSchemeTransactionId',
-        'browser_info' => 'setBrowserInfo'
+        'shipping_details_id' => 'setShippingDetailsId',
+        'statement_descriptor' => 'setStatementDescriptor',
+        'store' => 'setStore',
+        'three_d_secure_data' => 'setThreeDSecureData'
     ];
 
     /**
@@ -182,20 +210,27 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $getters = [
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
-        'country' => 'getCountry',
         'payment_method' => 'getPaymentMethod',
-        'store' => 'getStore',
-        'intent' => 'getIntent',
-        'external_identifier' => 'getExternalIdentifier',
-        'three_d_secure_data' => 'getThreeDSecureData',
-        'merchant_initiated' => 'getMerchantInitiated',
-        'payment_source' => 'getPaymentSource',
-        'is_subsequent_payment' => 'getIsSubsequentPayment',
-        'metadata' => 'getMetadata',
-        'statement_descriptor' => 'getStatementDescriptor',
+        'anti_fraud_fingerprint' => 'getAntiFraudFingerprint',
+        'async_capture' => 'getAsyncCapture',
+        'browser_info' => 'getBrowserInfo',
+        'buyer_external_identifier' => 'getBuyerExternalIdentifier',
+        'buyer_id' => 'getBuyerId',
         'cart_items' => 'getCartItems',
+        'connection_options' => 'getConnectionOptions',
+        'country' => 'getCountry',
+        'external_identifier' => 'getExternalIdentifier',
+        'gift_cards' => 'getGiftCards',
+        'intent' => 'getIntent',
+        'is_subsequent_payment' => 'getIsSubsequentPayment',
+        'merchant_initiated' => 'getMerchantInitiated',
+        'metadata' => 'getMetadata',
+        'payment_source' => 'getPaymentSource',
         'previous_scheme_transaction_id' => 'getPreviousSchemeTransactionId',
-        'browser_info' => 'getBrowserInfo'
+        'shipping_details_id' => 'getShippingDetailsId',
+        'statement_descriptor' => 'getStatementDescriptor',
+        'store' => 'getStore',
+        'three_d_secure_data' => 'getThreeDSecureData'
     ];
 
     /**
@@ -293,20 +328,27 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $this->container['amount'] = $data['amount'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
-        $this->container['country'] = $data['country'] ?? null;
         $this->container['payment_method'] = $data['payment_method'] ?? null;
-        $this->container['store'] = $data['store'] ?? false;
-        $this->container['intent'] = $data['intent'] ?? 'authorize';
-        $this->container['external_identifier'] = $data['external_identifier'] ?? null;
-        $this->container['three_d_secure_data'] = $data['three_d_secure_data'] ?? null;
-        $this->container['merchant_initiated'] = $data['merchant_initiated'] ?? false;
-        $this->container['payment_source'] = $data['payment_source'] ?? null;
-        $this->container['is_subsequent_payment'] = $data['is_subsequent_payment'] ?? false;
-        $this->container['metadata'] = $data['metadata'] ?? null;
-        $this->container['statement_descriptor'] = $data['statement_descriptor'] ?? null;
-        $this->container['cart_items'] = $data['cart_items'] ?? null;
-        $this->container['previous_scheme_transaction_id'] = $data['previous_scheme_transaction_id'] ?? null;
+        $this->container['anti_fraud_fingerprint'] = $data['anti_fraud_fingerprint'] ?? null;
+        $this->container['async_capture'] = $data['async_capture'] ?? false;
         $this->container['browser_info'] = $data['browser_info'] ?? null;
+        $this->container['buyer_external_identifier'] = $data['buyer_external_identifier'] ?? null;
+        $this->container['buyer_id'] = $data['buyer_id'] ?? null;
+        $this->container['cart_items'] = $data['cart_items'] ?? null;
+        $this->container['connection_options'] = $data['connection_options'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
+        $this->container['external_identifier'] = $data['external_identifier'] ?? null;
+        $this->container['gift_cards'] = $data['gift_cards'] ?? null;
+        $this->container['intent'] = $data['intent'] ?? 'authorize';
+        $this->container['is_subsequent_payment'] = $data['is_subsequent_payment'] ?? false;
+        $this->container['merchant_initiated'] = $data['merchant_initiated'] ?? false;
+        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['payment_source'] = $data['payment_source'] ?? null;
+        $this->container['previous_scheme_transaction_id'] = $data['previous_scheme_transaction_id'] ?? null;
+        $this->container['shipping_details_id'] = $data['shipping_details_id'] ?? null;
+        $this->container['statement_descriptor'] = $data['statement_descriptor'] ?? null;
+        $this->container['store'] = $data['store'] ?? false;
+        $this->container['three_d_secure_data'] = $data['three_d_secure_data'] ?? null;
     }
 
     /**
@@ -332,9 +374,10 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['payment_method'] === null) {
-            $invalidProperties[] = "'payment_method' can't be null";
+        if (!is_null($this->container['cart_items']) && (count($this->container['cart_items']) > 249)) {
+            $invalidProperties[] = "invalid value for 'cart_items', number of items must be less than or equal to 249.";
         }
+
         $allowedValues = $this->getIntentAllowableValues();
         if (!is_null($this->container['intent']) && !in_array($this->container['intent'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -344,6 +387,10 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
+        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 20)) {
+            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 20.";
+        }
+
         $allowedValues = $this->getPaymentSourceAllowableValues();
         if (!is_null($this->container['payment_source']) && !in_array($this->container['payment_source'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -351,14 +398,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->container['payment_source'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 20)) {
-            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 20.";
-        }
-
-        if (!is_null($this->container['cart_items']) && (count($this->container['cart_items']) > 249)) {
-            $invalidProperties[] = "invalid value for 'cart_items', number of items must be less than or equal to 249.";
         }
 
         return $invalidProperties;
@@ -389,7 +428,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets amount
      *
-     * @param int $amount The monetary amount to create an authorization for, in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`.  If the `intent` is set to `capture`, an amount greater than zero must be supplied.
+     * @param int $amount The monetary amount for this transaction, in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`.  If the `intent` is set to `capture`, an amount greater than zero must be supplied.  All gift card amounts are subtracted from this amount before the remainder is charged to the provided `payment_method`.
      *
      * @return self
      */
@@ -433,6 +472,202 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets payment_method
+     *
+     * @return \Gr4vy\model\TransactionPaymentMethodRequest|null
+     */
+    public function getPaymentMethod()
+    {
+        return $this->container['payment_method'];
+    }
+
+    /**
+     * Sets payment_method
+     *
+     * @param \Gr4vy\model\TransactionPaymentMethodRequest|null $payment_method payment_method
+     *
+     * @return self
+     */
+    public function setPaymentMethod($payment_method)
+    {
+        $this->container['payment_method'] = $payment_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets anti_fraud_fingerprint
+     *
+     * @return string|null
+     */
+    public function getAntiFraudFingerprint()
+    {
+        return $this->container['anti_fraud_fingerprint'];
+    }
+
+    /**
+     * Sets anti_fraud_fingerprint
+     *
+     * @param string|null $anti_fraud_fingerprint This field represents the fingerprint data to be passed to the active anti-fraud service.
+     *
+     * @return self
+     */
+    public function setAntiFraudFingerprint($anti_fraud_fingerprint)
+    {
+        $this->container['anti_fraud_fingerprint'] = $anti_fraud_fingerprint;
+
+        return $this;
+    }
+
+    /**
+     * Gets async_capture
+     *
+     * @return bool|null
+     */
+    public function getAsyncCapture()
+    {
+        return $this->container['async_capture'];
+    }
+
+    /**
+     * Sets async_capture
+     *
+     * @param bool|null $async_capture Whether to capture the transaction asynchronously.  - When `async_capture` is `false` (default), the transaction is captured   in the same request. - When `async_capture` is `true`, the transaction is automatically   captured at a later time.  Redirect transactions are not affected by this flag.  This flag can only be set to `true` when `intent` is set to `capture`.
+     *
+     * @return self
+     */
+    public function setAsyncCapture($async_capture)
+    {
+        $this->container['async_capture'] = $async_capture;
+
+        return $this;
+    }
+
+    /**
+     * Gets browser_info
+     *
+     * @return \Gr4vy\model\TransactionRequestBrowserInfo|null
+     */
+    public function getBrowserInfo()
+    {
+        return $this->container['browser_info'];
+    }
+
+    /**
+     * Sets browser_info
+     *
+     * @param \Gr4vy\model\TransactionRequestBrowserInfo|null $browser_info browser_info
+     *
+     * @return self
+     */
+    public function setBrowserInfo($browser_info)
+    {
+        $this->container['browser_info'] = $browser_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer_external_identifier
+     *
+     * @return string|null
+     */
+    public function getBuyerExternalIdentifier()
+    {
+        return $this->container['buyer_external_identifier'];
+    }
+
+    /**
+     * Sets buyer_external_identifier
+     *
+     * @param string|null $buyer_external_identifier The `external_identifier` of the buyer to associate this payment method to. If this field is provided then the `buyer_id` field needs to be unset.  If a stored payment method or gift card is provided, then the buyer for that payment method needs to match the buyer for this field.
+     *
+     * @return self
+     */
+    public function setBuyerExternalIdentifier($buyer_external_identifier)
+    {
+        $this->container['buyer_external_identifier'] = $buyer_external_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer_id
+     *
+     * @return string|null
+     */
+    public function getBuyerId()
+    {
+        return $this->container['buyer_id'];
+    }
+
+    /**
+     * Sets buyer_id
+     *
+     * @param string|null $buyer_id The ID of the buyer to associate this payment method to. If this field is provided then the `buyer_external_identifier` field needs to be unset.  If a stored payment method or gift card is provided, then the buyer for that payment method needs to match the buyer for this field.
+     *
+     * @return self
+     */
+    public function setBuyerId($buyer_id)
+    {
+        $this->container['buyer_id'] = $buyer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets cart_items
+     *
+     * @return \Gr4vy\model\CartItem[]|null
+     */
+    public function getCartItems()
+    {
+        return $this->container['cart_items'];
+    }
+
+    /**
+     * Sets cart_items
+     *
+     * @param \Gr4vy\model\CartItem[]|null $cart_items An array of cart items that represents the line items of a transaction.
+     *
+     * @return self
+     */
+    public function setCartItems($cart_items)
+    {
+
+        if (!is_null($cart_items) && (count($cart_items) > 249)) {
+            throw new \InvalidArgumentException('invalid value for $cart_items when calling TransactionRequest., number of items must be less than or equal to 249.');
+        }
+        $this->container['cart_items'] = $cart_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets connection_options
+     *
+     * @return \Gr4vy\model\TransactionRequestConnectionOptions|null
+     */
+    public function getConnectionOptions()
+    {
+        return $this->container['connection_options'];
+    }
+
+    /**
+     * Sets connection_options
+     *
+     * @param \Gr4vy\model\TransactionRequestConnectionOptions|null $connection_options connection_options
+     *
+     * @return self
+     */
+    public function setConnectionOptions($connection_options)
+    {
+        $this->container['connection_options'] = $connection_options;
+
+        return $this;
+    }
+
+    /**
      * Gets country
      *
      * @return string|null
@@ -457,49 +692,49 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets payment_method
+     * Gets external_identifier
      *
-     * @return \Gr4vy\model\TransactionPaymentMethodRequest
+     * @return string|null
      */
-    public function getPaymentMethod()
+    public function getExternalIdentifier()
     {
-        return $this->container['payment_method'];
+        return $this->container['external_identifier'];
     }
 
     /**
-     * Sets payment_method
+     * Sets external_identifier
      *
-     * @param \Gr4vy\model\TransactionPaymentMethodRequest $payment_method payment_method
+     * @param string|null $external_identifier An external identifier that can be used to match the transaction against your own records.
      *
      * @return self
      */
-    public function setPaymentMethod($payment_method)
+    public function setExternalIdentifier($external_identifier)
     {
-        $this->container['payment_method'] = $payment_method;
+        $this->container['external_identifier'] = $external_identifier;
 
         return $this;
     }
 
     /**
-     * Gets store
+     * Gets gift_cards
      *
-     * @return bool|null
+     * @return \Gr4vy\model\TransactionGiftCardRequest[]|null
      */
-    public function getStore()
+    public function getGiftCards()
     {
-        return $this->container['store'];
+        return $this->container['gift_cards'];
     }
 
     /**
-     * Sets store
+     * Sets gift_cards
      *
-     * @param bool|null $store Whether or not to also try and store the payment method with us so that it can be used again for future use. This is only supported for payment methods that support this feature. There are also a few restrictions on how the flag may be set:  * The flag has to be set to `true` when the `payment_source` is set to `recurring` or `installment`, and `merchant_initiated` is set to `false`.  * The flag has to be set to `false` (or not set) when using a previously tokenized payment method.
+     * @param \Gr4vy\model\TransactionGiftCardRequest[]|null $gift_cards The optional gift card(s) to use for this transaction. At least one gift card is required if no other `payment_method` has been added. By default, only a maximum limit of 10 gift cards may be used in a single transaction. Please contact our team to change this limit.
      *
      * @return self
      */
-    public function setStore($store)
+    public function setGiftCards($gift_cards)
     {
-        $this->container['store'] = $store;
+        $this->container['gift_cards'] = $gift_cards;
 
         return $this;
     }
@@ -539,49 +774,25 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets external_identifier
+     * Gets is_subsequent_payment
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getExternalIdentifier()
+    public function getIsSubsequentPayment()
     {
-        return $this->container['external_identifier'];
+        return $this->container['is_subsequent_payment'];
     }
 
     /**
-     * Sets external_identifier
+     * Sets is_subsequent_payment
      *
-     * @param string|null $external_identifier An external identifier that can be used to match the transaction against your own records.
+     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note there are some restrictions on how this flag may be used.  The flag can only be `false` (or not set) when the transaction meets one of the following criteria:  * It is not `merchant_initiated`. * `payment_source` is set to `card_on_file`.  The flag can only be set to `true` when the transaction meets one of the following criteria:  * It is not `merchant_initiated`. * `payment_source` is set to `recurring` or `installment` and `merchant_initiated` is set to `true`. * `payment_source` is set to `card_on_file`.
      *
      * @return self
      */
-    public function setExternalIdentifier($external_identifier)
+    public function setIsSubsequentPayment($is_subsequent_payment)
     {
-        $this->container['external_identifier'] = $external_identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets three_d_secure_data
-     *
-     * @return \Gr4vy\model\ThreeDSecureDataV1V2|null
-     */
-    public function getThreeDSecureData()
-    {
-        return $this->container['three_d_secure_data'];
-    }
-
-    /**
-     * Sets three_d_secure_data
-     *
-     * @param \Gr4vy\model\ThreeDSecureDataV1V2|null $three_d_secure_data three_d_secure_data
-     *
-     * @return self
-     */
-    public function setThreeDSecureData($three_d_secure_data)
-    {
-        $this->container['three_d_secure_data'] = $three_d_secure_data;
+        $this->container['is_subsequent_payment'] = $is_subsequent_payment;
 
         return $this;
     }
@@ -606,6 +817,34 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setMerchantInitiated($merchant_initiated)
     {
         $this->container['merchant_initiated'] = $merchant_initiated;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string>|null $metadata Any additional information about the transaction that you would like to store as key-value pairs. This data is passed to payment service providers that support it.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+
+        if (!is_null($metadata) && (count($metadata) > 20)) {
+            throw new \InvalidArgumentException('invalid value for $metadata when calling TransactionRequest., number of items must be less than or equal to 20.');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
@@ -645,110 +884,6 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets is_subsequent_payment
-     *
-     * @return bool|null
-     */
-    public function getIsSubsequentPayment()
-    {
-        return $this->container['is_subsequent_payment'];
-    }
-
-    /**
-     * Sets is_subsequent_payment
-     *
-     * @param bool|null $is_subsequent_payment Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note there are some restrictions on how this flag may be used.  The flag can only be `false` (or not set) when the transaction meets one of the following criteria:  * It is not `merchant_initiated`. * `payment_source` is set to `card_on_file`.  The flag can only be set to `true` when the transaction meets one of the following criteria:  * It is not `merchant_initiated`. * `payment_source` is set to `recurring` or `installment` and `merchant_initiated` is set to `true`. * `payment_source` is set to `card_on_file`.
-     *
-     * @return self
-     */
-    public function setIsSubsequentPayment($is_subsequent_payment)
-    {
-        $this->container['is_subsequent_payment'] = $is_subsequent_payment;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return array<string,string>|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param array<string,string>|null $metadata Any additional information about the transaction that you would like to store as key-value pairs. This data is passed to payment service providers that support it. Please visit https://gr4vy.com/docs/ under `Connections` for more information on how specific providers support metadata.
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-
-        if (!is_null($metadata) && (count($metadata) > 20)) {
-            throw new \InvalidArgumentException('invalid value for $metadata when calling TransactionRequest., number of items must be less than or equal to 20.');
-        }
-        $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets statement_descriptor
-     *
-     * @return \Gr4vy\model\TransactionStatementDescriptor|null
-     */
-    public function getStatementDescriptor()
-    {
-        return $this->container['statement_descriptor'];
-    }
-
-    /**
-     * Sets statement_descriptor
-     *
-     * @param \Gr4vy\model\TransactionStatementDescriptor|null $statement_descriptor statement_descriptor
-     *
-     * @return self
-     */
-    public function setStatementDescriptor($statement_descriptor)
-    {
-        $this->container['statement_descriptor'] = $statement_descriptor;
-
-        return $this;
-    }
-
-    /**
-     * Gets cart_items
-     *
-     * @return \Gr4vy\model\CartItem[]|null
-     */
-    public function getCartItems()
-    {
-        return $this->container['cart_items'];
-    }
-
-    /**
-     * Sets cart_items
-     *
-     * @param \Gr4vy\model\CartItem[]|null $cart_items An array of cart items that represents the line items of a transaction.
-     *
-     * @return self
-     */
-    public function setCartItems($cart_items)
-    {
-
-        if (!is_null($cart_items) && (count($cart_items) > 249)) {
-            throw new \InvalidArgumentException('invalid value for $cart_items when calling TransactionRequest., number of items must be less than or equal to 249.');
-        }
-        $this->container['cart_items'] = $cart_items;
-
-        return $this;
-    }
-
-    /**
      * Gets previous_scheme_transaction_id
      *
      * @return string|null
@@ -773,25 +908,97 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets browser_info
+     * Gets shipping_details_id
      *
-     * @return \Gr4vy\model\TransactionRequestBrowserInfo|null
+     * @return string|null
      */
-    public function getBrowserInfo()
+    public function getShippingDetailsId()
     {
-        return $this->container['browser_info'];
+        return $this->container['shipping_details_id'];
     }
 
     /**
-     * Sets browser_info
+     * Sets shipping_details_id
      *
-     * @param \Gr4vy\model\TransactionRequestBrowserInfo|null $browser_info browser_info
+     * @param string|null $shipping_details_id The unique identifier of a set of shipping details stored for the buyer.  If provided, the created transaction will include a copy of the details at the point of transaction creation; i.e. it will not be affected by later changes to the detail in the database.
      *
      * @return self
      */
-    public function setBrowserInfo($browser_info)
+    public function setShippingDetailsId($shipping_details_id)
     {
-        $this->container['browser_info'] = $browser_info;
+        $this->container['shipping_details_id'] = $shipping_details_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets statement_descriptor
+     *
+     * @return \Gr4vy\model\TransactionRequestStatementDescriptor|null
+     */
+    public function getStatementDescriptor()
+    {
+        return $this->container['statement_descriptor'];
+    }
+
+    /**
+     * Sets statement_descriptor
+     *
+     * @param \Gr4vy\model\TransactionRequestStatementDescriptor|null $statement_descriptor statement_descriptor
+     *
+     * @return self
+     */
+    public function setStatementDescriptor($statement_descriptor)
+    {
+        $this->container['statement_descriptor'] = $statement_descriptor;
+
+        return $this;
+    }
+
+    /**
+     * Gets store
+     *
+     * @return bool|null
+     */
+    public function getStore()
+    {
+        return $this->container['store'];
+    }
+
+    /**
+     * Sets store
+     *
+     * @param bool|null $store Whether or not to also try and store the payment method with us so that it can be used again for future use. This is only supported for payment methods that support this feature. There are also a few restrictions on how the flag may be set:  * The flag has to be set to `true` when the `payment_source` is set to `recurring` or `installment`, and `merchant_initiated` is set to `false`.  * The flag has to be set to `false` (or not set) when using a previously vaulted payment method.
+     *
+     * @return self
+     */
+    public function setStore($store)
+    {
+        $this->container['store'] = $store;
+
+        return $this;
+    }
+
+    /**
+     * Gets three_d_secure_data
+     *
+     * @return \Gr4vy\model\ThreeDSecureDataV1V2|null
+     */
+    public function getThreeDSecureData()
+    {
+        return $this->container['three_d_secure_data'];
+    }
+
+    /**
+     * Sets three_d_secure_data
+     *
+     * @param \Gr4vy\model\ThreeDSecureDataV1V2|null $three_d_secure_data three_d_secure_data
+     *
+     * @return self
+     */
+    public function setThreeDSecureData($three_d_secure_data)
+    {
+        $this->container['three_d_secure_data'] = $three_d_secure_data;
 
         return $this;
     }

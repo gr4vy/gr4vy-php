@@ -61,6 +61,7 @@ class ThreeDSecureDataV2AllOf implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'authentication_response' => 'string',
+        'directory_response' => 'string',
         'directory_transaction_id' => 'string'
     ];
 
@@ -73,6 +74,7 @@ class ThreeDSecureDataV2AllOf implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'authentication_response' => null,
+        'directory_response' => null,
         'directory_transaction_id' => null
     ];
 
@@ -104,6 +106,7 @@ class ThreeDSecureDataV2AllOf implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'authentication_response' => 'authentication_response',
+        'directory_response' => 'directory_response',
         'directory_transaction_id' => 'directory_transaction_id'
     ];
 
@@ -114,6 +117,7 @@ class ThreeDSecureDataV2AllOf implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'authentication_response' => 'setAuthenticationResponse',
+        'directory_response' => 'setDirectoryResponse',
         'directory_transaction_id' => 'setDirectoryTransactionId'
     ];
 
@@ -124,6 +128,7 @@ class ThreeDSecureDataV2AllOf implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'authentication_response' => 'getAuthenticationResponse',
+        'directory_response' => 'getDirectoryResponse',
         'directory_transaction_id' => 'getDirectoryTransactionId'
     ];
 
@@ -168,6 +173,50 @@ class ThreeDSecureDataV2AllOf implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
+    public const AUTHENTICATION_RESPONSE_Y = 'Y';
+    public const AUTHENTICATION_RESPONSE_A = 'A';
+    public const AUTHENTICATION_RESPONSE_N = 'N';
+    public const AUTHENTICATION_RESPONSE_R = 'R';
+    public const AUTHENTICATION_RESPONSE_U = 'U';
+    public const DIRECTORY_RESPONSE_C = 'C';
+    public const DIRECTORY_RESPONSE_Y = 'Y';
+    public const DIRECTORY_RESPONSE_A = 'A';
+    public const DIRECTORY_RESPONSE_N = 'N';
+    public const DIRECTORY_RESPONSE_R = 'R';
+    public const DIRECTORY_RESPONSE_U = 'U';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAuthenticationResponseAllowableValues()
+    {
+        return [
+            self::AUTHENTICATION_RESPONSE_Y,
+            self::AUTHENTICATION_RESPONSE_A,
+            self::AUTHENTICATION_RESPONSE_N,
+            self::AUTHENTICATION_RESPONSE_R,
+            self::AUTHENTICATION_RESPONSE_U,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDirectoryResponseAllowableValues()
+    {
+        return [
+            self::DIRECTORY_RESPONSE_C,
+            self::DIRECTORY_RESPONSE_Y,
+            self::DIRECTORY_RESPONSE_A,
+            self::DIRECTORY_RESPONSE_N,
+            self::DIRECTORY_RESPONSE_R,
+            self::DIRECTORY_RESPONSE_U,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -185,6 +234,7 @@ class ThreeDSecureDataV2AllOf implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(array $data = null)
     {
         $this->container['authentication_response'] = $data['authentication_response'] ?? null;
+        $this->container['directory_response'] = $data['directory_response'] ?? null;
         $this->container['directory_transaction_id'] = $data['directory_transaction_id'] ?? null;
     }
 
@@ -197,8 +247,30 @@ class ThreeDSecureDataV2AllOf implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getAuthenticationResponseAllowableValues();
+        if (!is_null($this->container['authentication_response']) && !in_array($this->container['authentication_response'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'authentication_response', must be one of '%s'",
+                $this->container['authentication_response'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if (!is_null($this->container['authentication_response']) && (mb_strlen($this->container['authentication_response']) > 1)) {
             $invalidProperties[] = "invalid value for 'authentication_response', the character length must be smaller than or equal to 1.";
+        }
+
+        $allowedValues = $this->getDirectoryResponseAllowableValues();
+        if (!is_null($this->container['directory_response']) && !in_array($this->container['directory_response'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'directory_response', must be one of '%s'",
+                $this->container['directory_response'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['directory_response']) && (mb_strlen($this->container['directory_response']) > 1)) {
+            $invalidProperties[] = "invalid value for 'directory_response', the character length must be smaller than or equal to 1.";
         }
 
         if ($this->container['directory_transaction_id'] === null) {
@@ -232,17 +304,65 @@ class ThreeDSecureDataV2AllOf implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets authentication_response
      *
-     * @param string|null $authentication_response The transaction status from the challenge result (not required for frictionless).
+     * @param string|null $authentication_response The transaction status after a the 3DS challenge. This will be null in case of a frictionless 3DS flow.
      *
      * @return self
      */
     public function setAuthenticationResponse($authentication_response)
     {
+        $allowedValues = $this->getAuthenticationResponseAllowableValues();
+        if (!is_null($authentication_response) && !in_array($authentication_response, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'authentication_response', must be one of '%s'",
+                    $authentication_response,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         if (!is_null($authentication_response) && (mb_strlen($authentication_response) > 1)) {
             throw new \InvalidArgumentException('invalid length for $authentication_response when calling ThreeDSecureDataV2AllOf., must be smaller than or equal to 1.');
         }
 
         $this->container['authentication_response'] = $authentication_response;
+
+        return $this;
+    }
+
+    /**
+     * Gets directory_response
+     *
+     * @return string|null
+     */
+    public function getDirectoryResponse()
+    {
+        return $this->container['directory_response'];
+    }
+
+    /**
+     * Sets directory_response
+     *
+     * @param string|null $directory_response The transaction status received as part of the authentication request.
+     *
+     * @return self
+     */
+    public function setDirectoryResponse($directory_response)
+    {
+        $allowedValues = $this->getDirectoryResponseAllowableValues();
+        if (!is_null($directory_response) && !in_array($directory_response, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'directory_response', must be one of '%s'",
+                    $directory_response,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        if (!is_null($directory_response) && (mb_strlen($directory_response) > 1)) {
+            throw new \InvalidArgumentException('invalid length for $directory_response when calling ThreeDSecureDataV2AllOf., must be smaller than or equal to 1.');
+        }
+
+        $this->container['directory_response'] = $directory_response;
 
         return $this;
     }

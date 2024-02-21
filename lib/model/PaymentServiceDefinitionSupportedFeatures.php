@@ -62,11 +62,16 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       */
     protected static $openAPITypes = [
         'delayed_capture' => 'bool',
-        'network_tokens' => 'bool',
+        'digital_wallets' => 'bool',
+        'network_tokens_default' => 'bool',
+        'network_tokens_toggle' => 'bool',
+        'open_loop' => 'bool',
+        'open_loop_toggle' => 'bool',
         'partial_refunds' => 'bool',
         'payment_method_tokenization' => 'bool',
         'payment_method_tokenization_toggle' => 'bool',
         'refunds' => 'bool',
+        'requires_webhook_setup' => 'bool',
         'three_d_secure_hosted' => 'bool',
         'three_d_secure_pass_through' => 'bool',
         'verify_credentials' => 'bool',
@@ -82,11 +87,16 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
       */
     protected static $openAPIFormats = [
         'delayed_capture' => null,
-        'network_tokens' => null,
+        'digital_wallets' => null,
+        'network_tokens_default' => null,
+        'network_tokens_toggle' => null,
+        'open_loop' => null,
+        'open_loop_toggle' => null,
         'partial_refunds' => null,
         'payment_method_tokenization' => null,
         'payment_method_tokenization_toggle' => null,
         'refunds' => null,
+        'requires_webhook_setup' => null,
         'three_d_secure_hosted' => null,
         'three_d_secure_pass_through' => null,
         'verify_credentials' => null,
@@ -121,11 +131,16 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      */
     protected static $attributeMap = [
         'delayed_capture' => 'delayed_capture',
-        'network_tokens' => 'network_tokens',
+        'digital_wallets' => 'digital_wallets',
+        'network_tokens_default' => 'network_tokens_default',
+        'network_tokens_toggle' => 'network_tokens_toggle',
+        'open_loop' => 'open_loop',
+        'open_loop_toggle' => 'open_loop_toggle',
         'partial_refunds' => 'partial_refunds',
         'payment_method_tokenization' => 'payment_method_tokenization',
         'payment_method_tokenization_toggle' => 'payment_method_tokenization_toggle',
         'refunds' => 'refunds',
+        'requires_webhook_setup' => 'requires_webhook_setup',
         'three_d_secure_hosted' => 'three_d_secure_hosted',
         'three_d_secure_pass_through' => 'three_d_secure_pass_through',
         'verify_credentials' => 'verify_credentials',
@@ -139,11 +154,16 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      */
     protected static $setters = [
         'delayed_capture' => 'setDelayedCapture',
-        'network_tokens' => 'setNetworkTokens',
+        'digital_wallets' => 'setDigitalWallets',
+        'network_tokens_default' => 'setNetworkTokensDefault',
+        'network_tokens_toggle' => 'setNetworkTokensToggle',
+        'open_loop' => 'setOpenLoop',
+        'open_loop_toggle' => 'setOpenLoopToggle',
         'partial_refunds' => 'setPartialRefunds',
         'payment_method_tokenization' => 'setPaymentMethodTokenization',
         'payment_method_tokenization_toggle' => 'setPaymentMethodTokenizationToggle',
         'refunds' => 'setRefunds',
+        'requires_webhook_setup' => 'setRequiresWebhookSetup',
         'three_d_secure_hosted' => 'setThreeDSecureHosted',
         'three_d_secure_pass_through' => 'setThreeDSecurePassThrough',
         'verify_credentials' => 'setVerifyCredentials',
@@ -157,11 +177,16 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
      */
     protected static $getters = [
         'delayed_capture' => 'getDelayedCapture',
-        'network_tokens' => 'getNetworkTokens',
+        'digital_wallets' => 'getDigitalWallets',
+        'network_tokens_default' => 'getNetworkTokensDefault',
+        'network_tokens_toggle' => 'getNetworkTokensToggle',
+        'open_loop' => 'getOpenLoop',
+        'open_loop_toggle' => 'getOpenLoopToggle',
         'partial_refunds' => 'getPartialRefunds',
         'payment_method_tokenization' => 'getPaymentMethodTokenization',
         'payment_method_tokenization_toggle' => 'getPaymentMethodTokenizationToggle',
         'refunds' => 'getRefunds',
+        'requires_webhook_setup' => 'getRequiresWebhookSetup',
         'three_d_secure_hosted' => 'getThreeDSecureHosted',
         'three_d_secure_pass_through' => 'getThreeDSecurePassThrough',
         'verify_credentials' => 'getVerifyCredentials',
@@ -226,11 +251,16 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
     public function __construct(array $data = null)
     {
         $this->container['delayed_capture'] = $data['delayed_capture'] ?? null;
-        $this->container['network_tokens'] = $data['network_tokens'] ?? null;
+        $this->container['digital_wallets'] = $data['digital_wallets'] ?? null;
+        $this->container['network_tokens_default'] = $data['network_tokens_default'] ?? null;
+        $this->container['network_tokens_toggle'] = $data['network_tokens_toggle'] ?? null;
+        $this->container['open_loop'] = $data['open_loop'] ?? null;
+        $this->container['open_loop_toggle'] = $data['open_loop_toggle'] ?? null;
         $this->container['partial_refunds'] = $data['partial_refunds'] ?? null;
         $this->container['payment_method_tokenization'] = $data['payment_method_tokenization'] ?? null;
         $this->container['payment_method_tokenization_toggle'] = $data['payment_method_tokenization_toggle'] ?? null;
         $this->container['refunds'] = $data['refunds'] ?? null;
+        $this->container['requires_webhook_setup'] = $data['requires_webhook_setup'] ?? null;
         $this->container['three_d_secure_hosted'] = $data['three_d_secure_hosted'] ?? null;
         $this->container['three_d_secure_pass_through'] = $data['three_d_secure_pass_through'] ?? null;
         $this->container['verify_credentials'] = $data['verify_credentials'] ?? null;
@@ -286,25 +316,121 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
     }
 
     /**
-     * Gets network_tokens
+     * Gets digital_wallets
      *
      * @return bool|null
      */
-    public function getNetworkTokens()
+    public function getDigitalWallets()
     {
-        return $this->container['network_tokens'];
+        return $this->container['digital_wallets'];
     }
 
     /**
-     * Sets network_tokens
+     * Sets digital_wallets
      *
-     * @param bool|null $network_tokens Supports passing decrypted digital wallet (e.g. Apple Pay) tokens to the underlying processor.
+     * @param bool|null $digital_wallets Supports passing decrypted digital wallet (e.g. Apple Pay) tokens to the underlying processor.
      *
      * @return self
      */
-    public function setNetworkTokens($network_tokens)
+    public function setDigitalWallets($digital_wallets)
     {
-        $this->container['network_tokens'] = $network_tokens;
+        $this->container['digital_wallets'] = $digital_wallets;
+
+        return $this;
+    }
+
+    /**
+     * Gets network_tokens_default
+     *
+     * @return bool|null
+     */
+    public function getNetworkTokensDefault()
+    {
+        return $this->container['network_tokens_default'];
+    }
+
+    /**
+     * Sets network_tokens_default
+     *
+     * @param bool|null $network_tokens_default Supports processing network tokens by default.
+     *
+     * @return self
+     */
+    public function setNetworkTokensDefault($network_tokens_default)
+    {
+        $this->container['network_tokens_default'] = $network_tokens_default;
+
+        return $this;
+    }
+
+    /**
+     * Gets network_tokens_toggle
+     *
+     * @return bool|null
+     */
+    public function getNetworkTokensToggle()
+    {
+        return $this->container['network_tokens_toggle'];
+    }
+
+    /**
+     * Sets network_tokens_toggle
+     *
+     * @param bool|null $network_tokens_toggle Supports toggling processing of network tokens on or off.
+     *
+     * @return self
+     */
+    public function setNetworkTokensToggle($network_tokens_toggle)
+    {
+        $this->container['network_tokens_toggle'] = $network_tokens_toggle;
+
+        return $this;
+    }
+
+    /**
+     * Gets open_loop
+     *
+     * @return bool|null
+     */
+    public function getOpenLoop()
+    {
+        return $this->container['open_loop'];
+    }
+
+    /**
+     * Sets open_loop
+     *
+     * @param bool|null $open_loop Supports processing transactions with either raw PAN details or network tokens.
+     *
+     * @return self
+     */
+    public function setOpenLoop($open_loop)
+    {
+        $this->container['open_loop'] = $open_loop;
+
+        return $this;
+    }
+
+    /**
+     * Gets open_loop_toggle
+     *
+     * @return bool|null
+     */
+    public function getOpenLoopToggle()
+    {
+        return $this->container['open_loop_toggle'];
+    }
+
+    /**
+     * Sets open_loop_toggle
+     *
+     * @param bool|null $open_loop_toggle Supports toggling processing as open-loop on or off.
+     *
+     * @return self
+     */
+    public function setOpenLoopToggle($open_loop_toggle)
+    {
+        $this->container['open_loop_toggle'] = $open_loop_toggle;
 
         return $this;
     }
@@ -401,6 +527,30 @@ class PaymentServiceDefinitionSupportedFeatures implements ModelInterface, Array
     public function setRefunds($refunds)
     {
         $this->container['refunds'] = $refunds;
+
+        return $this;
+    }
+
+    /**
+     * Gets requires_webhook_setup
+     *
+     * @return bool|null
+     */
+    public function getRequiresWebhookSetup()
+    {
+        return $this->container['requires_webhook_setup'];
+    }
+
+    /**
+     * Sets requires_webhook_setup
+     *
+     * @param bool|null $requires_webhook_setup Requires merchant to set up `webhook_url` manually with provider.
+     *
+     * @return self
+     */
+    public function setRequiresWebhookSetup($requires_webhook_setup)
+    {
+        $this->container['requires_webhook_setup'] = $requires_webhook_setup;
 
         return $this;
     }

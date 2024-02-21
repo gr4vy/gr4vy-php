@@ -61,11 +61,11 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'type' => 'string',
-        'payment_service_definition_id' => 'string',
+        'id' => 'string',
+        'display_name' => 'string',
         'method' => 'string',
-        'display_name' => 'string'
+        'payment_service_definition_id' => 'string'
     ];
 
     /**
@@ -76,11 +76,11 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
         'type' => null,
-        'payment_service_definition_id' => null,
+        'id' => null,
+        'display_name' => null,
         'method' => null,
-        'display_name' => null
+        'payment_service_definition_id' => null
     ];
 
     /**
@@ -110,11 +110,11 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'type' => 'type',
-        'payment_service_definition_id' => 'payment_service_definition_id',
+        'id' => 'id',
+        'display_name' => 'display_name',
         'method' => 'method',
-        'display_name' => 'display_name'
+        'payment_service_definition_id' => 'payment_service_definition_id'
     ];
 
     /**
@@ -123,11 +123,11 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'type' => 'setType',
-        'payment_service_definition_id' => 'setPaymentServiceDefinitionId',
+        'id' => 'setId',
+        'display_name' => 'setDisplayName',
         'method' => 'setMethod',
-        'display_name' => 'setDisplayName'
+        'payment_service_definition_id' => 'setPaymentServiceDefinitionId'
     ];
 
     /**
@@ -136,11 +136,11 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'type' => 'getType',
-        'payment_service_definition_id' => 'getPaymentServiceDefinitionId',
+        'id' => 'getId',
+        'display_name' => 'getDisplayName',
         'method' => 'getMethod',
-        'display_name' => 'getDisplayName'
+        'payment_service_definition_id' => 'getPaymentServiceDefinitionId'
     ];
 
     /**
@@ -185,6 +185,67 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     public const TYPE_PAYMENT_SERVICE = 'payment-service';
+    public const METHOD_AFTERPAY = 'afterpay';
+    public const METHOD_ALIPAY = 'alipay';
+    public const METHOD_ALIPAYHK = 'alipayhk';
+    public const METHOD_APPLEPAY = 'applepay';
+    public const METHOD_BACS = 'bacs';
+    public const METHOD_BANCONTACT = 'bancontact';
+    public const METHOD_BANKED = 'banked';
+    public const METHOD_BECS = 'becs';
+    public const METHOD_BITPAY = 'bitpay';
+    public const METHOD_BOLETO = 'boleto';
+    public const METHOD_BOOST = 'boost';
+    public const METHOD_CARD = 'card';
+    public const METHOD_CHECKOUT_SESSION = 'checkout-session';
+    public const METHOD_CLICK_TO_PAY = 'click-to-pay';
+    public const METHOD_CLEARPAY = 'clearpay';
+    public const METHOD_DANA = 'dana';
+    public const METHOD_DCB = 'dcb';
+    public const METHOD_EPS = 'eps';
+    public const METHOD_FORTUMO = 'fortumo';
+    public const METHOD_GCASH = 'gcash';
+    public const METHOD_GIROPAY = 'giropay';
+    public const METHOD_GOCARDLESS = 'gocardless';
+    public const METHOD_GOOGLEPAY = 'googlepay';
+    public const METHOD_GOPAY = 'gopay';
+    public const METHOD_GRABPAY = 'grabpay';
+    public const METHOD_IDEAL = 'ideal';
+    public const METHOD_ID = 'id';
+    public const METHOD_KAKAOPAY = 'kakaopay';
+    public const METHOD_KLARNA = 'klarna';
+    public const METHOD_LAYBUY = 'laybuy';
+    public const METHOD_LINEPAY = 'linepay';
+    public const METHOD_LINKAJA = 'linkaja';
+    public const METHOD_MAYBANKQRPAY = 'maybankqrpay';
+    public const METHOD_MULTIBANCO = 'multibanco';
+    public const METHOD_ONEY_3X = 'oney_3x';
+    public const METHOD_ONEY_4X = 'oney_4x';
+    public const METHOD_ONEY_6X = 'oney_6x';
+    public const METHOD_ONEY_10X = 'oney_10x';
+    public const METHOD_ONEY_12X = 'oney_12x';
+    public const METHOD_OVO = 'ovo';
+    public const METHOD_OXXO = 'oxxo';
+    public const METHOD_PAYMAYA = 'paymaya';
+    public const METHOD_PAYPAL = 'paypal';
+    public const METHOD_PAYPALPAYLATER = 'paypalpaylater';
+    public const METHOD_PIX = 'pix';
+    public const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    public const METHOD_RAZORPAY = 'razorpay';
+    public const METHOD_SCALAPAY = 'scalapay';
+    public const METHOD_SEPA = 'sepa';
+    public const METHOD_SHOPEEPAY = 'shopeepay';
+    public const METHOD_SINGTELDASH = 'singteldash';
+    public const METHOD_SOFORT = 'sofort';
+    public const METHOD_STRIPEDD = 'stripedd';
+    public const METHOD_THAIQR = 'thaiqr';
+    public const METHOD_TOUCHNGO = 'touchngo';
+    public const METHOD_TRUEMONEY = 'truemoney';
+    public const METHOD_TRUSTLY = 'trustly';
+    public const METHOD_VENMO = 'venmo';
+    public const METHOD_WAAVE = 'waave';
+    public const METHOD_WECHAT = 'wechat';
+    public const METHOD_ZIPPAY = 'zippay';
 
     /**
      * Gets allowable values of the enum
@@ -195,6 +256,78 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
     {
         return [
             self::TYPE_PAYMENT_SERVICE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_AFTERPAY,
+            self::METHOD_ALIPAY,
+            self::METHOD_ALIPAYHK,
+            self::METHOD_APPLEPAY,
+            self::METHOD_BACS,
+            self::METHOD_BANCONTACT,
+            self::METHOD_BANKED,
+            self::METHOD_BECS,
+            self::METHOD_BITPAY,
+            self::METHOD_BOLETO,
+            self::METHOD_BOOST,
+            self::METHOD_CARD,
+            self::METHOD_CHECKOUT_SESSION,
+            self::METHOD_CLICK_TO_PAY,
+            self::METHOD_CLEARPAY,
+            self::METHOD_DANA,
+            self::METHOD_DCB,
+            self::METHOD_EPS,
+            self::METHOD_FORTUMO,
+            self::METHOD_GCASH,
+            self::METHOD_GIROPAY,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_GOPAY,
+            self::METHOD_GRABPAY,
+            self::METHOD_IDEAL,
+            self::METHOD_ID,
+            self::METHOD_KAKAOPAY,
+            self::METHOD_KLARNA,
+            self::METHOD_LAYBUY,
+            self::METHOD_LINEPAY,
+            self::METHOD_LINKAJA,
+            self::METHOD_MAYBANKQRPAY,
+            self::METHOD_MULTIBANCO,
+            self::METHOD_ONEY_3X,
+            self::METHOD_ONEY_4X,
+            self::METHOD_ONEY_6X,
+            self::METHOD_ONEY_10X,
+            self::METHOD_ONEY_12X,
+            self::METHOD_OVO,
+            self::METHOD_OXXO,
+            self::METHOD_PAYMAYA,
+            self::METHOD_PAYPAL,
+            self::METHOD_PAYPALPAYLATER,
+            self::METHOD_PIX,
+            self::METHOD_RABBITLINEPAY,
+            self::METHOD_RAZORPAY,
+            self::METHOD_SCALAPAY,
+            self::METHOD_SEPA,
+            self::METHOD_SHOPEEPAY,
+            self::METHOD_SINGTELDASH,
+            self::METHOD_SOFORT,
+            self::METHOD_STRIPEDD,
+            self::METHOD_THAIQR,
+            self::METHOD_TOUCHNGO,
+            self::METHOD_TRUEMONEY,
+            self::METHOD_TRUSTLY,
+            self::METHOD_VENMO,
+            self::METHOD_WAAVE,
+            self::METHOD_WECHAT,
+            self::METHOD_ZIPPAY,
         ];
     }
 
@@ -213,11 +346,11 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['payment_service_definition_id'] = $data['payment_service_definition_id'] ?? null;
-        $this->container['method'] = $data['method'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['method'] = $data['method'] ?? null;
+        $this->container['payment_service_definition_id'] = $data['payment_service_definition_id'] ?? null;
     }
 
     /**
@@ -229,6 +362,15 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 200)) {
             $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 200.";
         }
@@ -237,11 +379,19 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
             $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
         }
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) > 50)) {
+            $invalidProperties[] = "invalid value for 'display_name', the character length must be smaller than or equal to 50.";
+        }
+
+        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'display_name', the character length must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
                 implode("', '", $allowedValues)
             );
         }
@@ -252,14 +402,6 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
 
         if (!is_null($this->container['payment_service_definition_id']) && (mb_strlen($this->container['payment_service_definition_id']) < 1)) {
             $invalidProperties[] = "invalid value for 'payment_service_definition_id', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'display_name', the character length must be smaller than or equal to 50.";
-        }
-
-        if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'display_name', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -276,37 +418,6 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id The ID of this payment service.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (!is_null($id) && (mb_strlen($id) > 200)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling PaymentServiceSnapshot., must be smaller than or equal to 200.');
-        }
-        if (!is_null($id) && (mb_strlen($id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling PaymentServiceSnapshot., must be bigger than or equal to 1.');
-        }
-
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets type
@@ -343,56 +454,32 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets payment_service_definition_id
+     * Gets id
      *
      * @return string|null
      */
-    public function getPaymentServiceDefinitionId()
+    public function getId()
     {
-        return $this->container['payment_service_definition_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets payment_service_definition_id
+     * Sets id
      *
-     * @param string|null $payment_service_definition_id The ID of the payment service definition used to create this service.
+     * @param string|null $id The ID of this payment service.
      *
      * @return self
      */
-    public function setPaymentServiceDefinitionId($payment_service_definition_id)
+    public function setId($id)
     {
-        if (!is_null($payment_service_definition_id) && (mb_strlen($payment_service_definition_id) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $payment_service_definition_id when calling PaymentServiceSnapshot., must be smaller than or equal to 50.');
+        if (!is_null($id) && (mb_strlen($id) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling PaymentServiceSnapshot., must be smaller than or equal to 200.');
         }
-        if (!is_null($payment_service_definition_id) && (mb_strlen($payment_service_definition_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $payment_service_definition_id when calling PaymentServiceSnapshot., must be bigger than or equal to 1.');
+        if (!is_null($id) && (mb_strlen($id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling PaymentServiceSnapshot., must be bigger than or equal to 1.');
         }
 
-        $this->container['payment_service_definition_id'] = $payment_service_definition_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets method
-     *
-     * @return string|null
-     */
-    public function getMethod()
-    {
-        return $this->container['method'];
-    }
-
-    /**
-     * Sets method
-     *
-     * @param string|null $method method
-     *
-     * @return self
-     */
-    public function setMethod($method)
-    {
-        $this->container['method'] = $method;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -424,6 +511,71 @@ class PaymentServiceSnapshot implements ModelInterface, ArrayAccess, \JsonSerial
         }
 
         $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets method
+     *
+     * @return string|null
+     */
+    public function getMethod()
+    {
+        return $this->container['method'];
+    }
+
+    /**
+     * Sets method
+     *
+     * @param string|null $method The payment method that this services handles.
+     *
+     * @return self
+     */
+    public function setMethod($method)
+    {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($method) && !in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_service_definition_id
+     *
+     * @return string|null
+     */
+    public function getPaymentServiceDefinitionId()
+    {
+        return $this->container['payment_service_definition_id'];
+    }
+
+    /**
+     * Sets payment_service_definition_id
+     *
+     * @param string|null $payment_service_definition_id The ID of the payment service definition used to create this service.
+     *
+     * @return self
+     */
+    public function setPaymentServiceDefinitionId($payment_service_definition_id)
+    {
+        if (!is_null($payment_service_definition_id) && (mb_strlen($payment_service_definition_id) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $payment_service_definition_id when calling PaymentServiceSnapshot., must be smaller than or equal to 50.');
+        }
+        if (!is_null($payment_service_definition_id) && (mb_strlen($payment_service_definition_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $payment_service_definition_id when calling PaymentServiceSnapshot., must be bigger than or equal to 1.');
+        }
+
+        $this->container['payment_service_definition_id'] = $payment_service_definition_id;
 
         return $this;
     }

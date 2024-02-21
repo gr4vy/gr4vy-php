@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * CheckoutSessionRequest Class Doc Comment
  *
  * @category Class
- * @description Details for a Checkout Session payment method.
+ * @description Details to register a new Checkout Session payment method.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -62,7 +62,11 @@ class CheckoutSessionRequest implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'method' => 'string',
-        'id' => 'string'
+        'id' => 'string',
+        'redirect_url' => 'string',
+        'external_identifier' => 'string',
+        'buyer_id' => 'string',
+        'buyer_external_identifier' => 'string'
     ];
 
     /**
@@ -74,7 +78,11 @@ class CheckoutSessionRequest implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'method' => null,
-        'id' => 'uuid'
+        'id' => 'uuid',
+        'redirect_url' => null,
+        'external_identifier' => null,
+        'buyer_id' => 'uuid',
+        'buyer_external_identifier' => null
     ];
 
     /**
@@ -105,7 +113,11 @@ class CheckoutSessionRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'method' => 'method',
-        'id' => 'id'
+        'id' => 'id',
+        'redirect_url' => 'redirect_url',
+        'external_identifier' => 'external_identifier',
+        'buyer_id' => 'buyer_id',
+        'buyer_external_identifier' => 'buyer_external_identifier'
     ];
 
     /**
@@ -115,7 +127,11 @@ class CheckoutSessionRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'method' => 'setMethod',
-        'id' => 'setId'
+        'id' => 'setId',
+        'redirect_url' => 'setRedirectUrl',
+        'external_identifier' => 'setExternalIdentifier',
+        'buyer_id' => 'setBuyerId',
+        'buyer_external_identifier' => 'setBuyerExternalIdentifier'
     ];
 
     /**
@@ -125,7 +141,11 @@ class CheckoutSessionRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'method' => 'getMethod',
-        'id' => 'getId'
+        'id' => 'getId',
+        'redirect_url' => 'getRedirectUrl',
+        'external_identifier' => 'getExternalIdentifier',
+        'buyer_id' => 'getBuyerId',
+        'buyer_external_identifier' => 'getBuyerExternalIdentifier'
     ];
 
     /**
@@ -200,6 +220,10 @@ class CheckoutSessionRequest implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->container['method'] = $data['method'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['redirect_url'] = $data['redirect_url'] ?? null;
+        $this->container['external_identifier'] = $data['external_identifier'] ?? null;
+        $this->container['buyer_id'] = $data['buyer_id'] ?? null;
+        $this->container['buyer_external_identifier'] = $data['buyer_external_identifier'] ?? null;
     }
 
     /**
@@ -295,6 +319,102 @@ class CheckoutSessionRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirect_url
+     *
+     * @return string|null
+     */
+    public function getRedirectUrl()
+    {
+        return $this->container['redirect_url'];
+    }
+
+    /**
+     * Sets redirect_url
+     *
+     * @param string|null $redirect_url The redirect URL to redirect a buyer to after they have authorized their transaction or payment method. This only applies to payment methods that require buyer approval.
+     *
+     * @return self
+     */
+    public function setRedirectUrl($redirect_url)
+    {
+        $this->container['redirect_url'] = $redirect_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_identifier
+     *
+     * @return string|null
+     */
+    public function getExternalIdentifier()
+    {
+        return $this->container['external_identifier'];
+    }
+
+    /**
+     * Sets external_identifier
+     *
+     * @param string|null $external_identifier An external identifier that can be used to match the card against your own records.
+     *
+     * @return self
+     */
+    public function setExternalIdentifier($external_identifier)
+    {
+        $this->container['external_identifier'] = $external_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer_id
+     *
+     * @return string|null
+     */
+    public function getBuyerId()
+    {
+        return $this->container['buyer_id'];
+    }
+
+    /**
+     * Sets buyer_id
+     *
+     * @param string|null $buyer_id The ID of the buyer to associate this payment method to. If this field is provided then the `buyer_external_identifier` field needs to be unset.
+     *
+     * @return self
+     */
+    public function setBuyerId($buyer_id)
+    {
+        $this->container['buyer_id'] = $buyer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer_external_identifier
+     *
+     * @return string|null
+     */
+    public function getBuyerExternalIdentifier()
+    {
+        return $this->container['buyer_external_identifier'];
+    }
+
+    /**
+     * Sets buyer_external_identifier
+     *
+     * @param string|null $buyer_external_identifier The `external_identifier` of the buyer to associate this payment method to. If this field is provided then the `buyer_id` field needs to be unset.
+     *
+     * @return self
+     */
+    public function setBuyerExternalIdentifier($buyer_external_identifier)
+    {
+        $this->container['buyer_external_identifier'] = $buyer_external_identifier;
 
         return $this;
     }

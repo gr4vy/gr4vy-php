@@ -36,6 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * BuyerBillingDetails Class Doc Comment
  *
  * @category Class
+ * @description The billing details associated with a buyer.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

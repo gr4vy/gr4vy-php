@@ -63,21 +63,26 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'type' => 'string',
         'id' => 'string',
-        'status' => 'string',
-        'method' => 'string',
-        'mode' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'external_identifier' => 'string',
-        'buyer' => '\Gr4vy\model\PaymentMethodBuyer',
-        'label' => 'string',
-        'scheme' => 'string',
-        'expiration_date' => 'string',
+        'additional_schemes' => 'string[]',
         'approval_target' => 'string',
         'approval_url' => 'string',
-        'currency' => 'string',
+        'buyer' => '\Gr4vy\model\GiftCardBuyer',
         'country' => 'string',
-        'details' => '\Gr4vy\model\PaymentMethodDetailsCard'
+        'created_at' => '\DateTime',
+        'currency' => 'string',
+        'details' => '\Gr4vy\model\PaymentMethodDetailsCard',
+        'expiration_date' => 'string',
+        'external_identifier' => 'string',
+        'has_replacement' => 'bool',
+        'label' => 'string',
+        'last_replaced_at' => '\DateTime',
+        'merchant_account_id' => 'string',
+        'method' => 'string',
+        'mode' => 'string',
+        'scheme' => 'string',
+        'status' => 'string',
+        'updated_at' => '\DateTime',
+        'fingerprint' => 'string'
     ];
 
     /**
@@ -90,21 +95,26 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'type' => null,
         'id' => 'uuid',
-        'status' => null,
-        'method' => null,
-        'mode' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'external_identifier' => null,
-        'buyer' => null,
-        'label' => null,
-        'scheme' => null,
-        'expiration_date' => null,
+        'additional_schemes' => null,
         'approval_target' => null,
         'approval_url' => null,
-        'currency' => null,
+        'buyer' => null,
         'country' => null,
-        'details' => null
+        'created_at' => 'date-time',
+        'currency' => null,
+        'details' => null,
+        'expiration_date' => null,
+        'external_identifier' => null,
+        'has_replacement' => null,
+        'label' => null,
+        'last_replaced_at' => 'date-time',
+        'merchant_account_id' => null,
+        'method' => null,
+        'mode' => null,
+        'scheme' => null,
+        'status' => null,
+        'updated_at' => 'date-time',
+        'fingerprint' => null
     ];
 
     /**
@@ -136,21 +146,26 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'type' => 'type',
         'id' => 'id',
-        'status' => 'status',
-        'method' => 'method',
-        'mode' => 'mode',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
-        'external_identifier' => 'external_identifier',
-        'buyer' => 'buyer',
-        'label' => 'label',
-        'scheme' => 'scheme',
-        'expiration_date' => 'expiration_date',
+        'additional_schemes' => 'additional_schemes',
         'approval_target' => 'approval_target',
         'approval_url' => 'approval_url',
-        'currency' => 'currency',
+        'buyer' => 'buyer',
         'country' => 'country',
-        'details' => 'details'
+        'created_at' => 'created_at',
+        'currency' => 'currency',
+        'details' => 'details',
+        'expiration_date' => 'expiration_date',
+        'external_identifier' => 'external_identifier',
+        'has_replacement' => 'has_replacement',
+        'label' => 'label',
+        'last_replaced_at' => 'last_replaced_at',
+        'merchant_account_id' => 'merchant_account_id',
+        'method' => 'method',
+        'mode' => 'mode',
+        'scheme' => 'scheme',
+        'status' => 'status',
+        'updated_at' => 'updated_at',
+        'fingerprint' => 'fingerprint'
     ];
 
     /**
@@ -161,21 +176,26 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'type' => 'setType',
         'id' => 'setId',
-        'status' => 'setStatus',
-        'method' => 'setMethod',
-        'mode' => 'setMode',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'external_identifier' => 'setExternalIdentifier',
-        'buyer' => 'setBuyer',
-        'label' => 'setLabel',
-        'scheme' => 'setScheme',
-        'expiration_date' => 'setExpirationDate',
+        'additional_schemes' => 'setAdditionalSchemes',
         'approval_target' => 'setApprovalTarget',
         'approval_url' => 'setApprovalUrl',
-        'currency' => 'setCurrency',
+        'buyer' => 'setBuyer',
         'country' => 'setCountry',
-        'details' => 'setDetails'
+        'created_at' => 'setCreatedAt',
+        'currency' => 'setCurrency',
+        'details' => 'setDetails',
+        'expiration_date' => 'setExpirationDate',
+        'external_identifier' => 'setExternalIdentifier',
+        'has_replacement' => 'setHasReplacement',
+        'label' => 'setLabel',
+        'last_replaced_at' => 'setLastReplacedAt',
+        'merchant_account_id' => 'setMerchantAccountId',
+        'method' => 'setMethod',
+        'mode' => 'setMode',
+        'scheme' => 'setScheme',
+        'status' => 'setStatus',
+        'updated_at' => 'setUpdatedAt',
+        'fingerprint' => 'setFingerprint'
     ];
 
     /**
@@ -186,21 +206,26 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'type' => 'getType',
         'id' => 'getId',
-        'status' => 'getStatus',
-        'method' => 'getMethod',
-        'mode' => 'getMode',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'external_identifier' => 'getExternalIdentifier',
-        'buyer' => 'getBuyer',
-        'label' => 'getLabel',
-        'scheme' => 'getScheme',
-        'expiration_date' => 'getExpirationDate',
+        'additional_schemes' => 'getAdditionalSchemes',
         'approval_target' => 'getApprovalTarget',
         'approval_url' => 'getApprovalUrl',
-        'currency' => 'getCurrency',
+        'buyer' => 'getBuyer',
         'country' => 'getCountry',
-        'details' => 'getDetails'
+        'created_at' => 'getCreatedAt',
+        'currency' => 'getCurrency',
+        'details' => 'getDetails',
+        'expiration_date' => 'getExpirationDate',
+        'external_identifier' => 'getExternalIdentifier',
+        'has_replacement' => 'getHasReplacement',
+        'label' => 'getLabel',
+        'last_replaced_at' => 'getLastReplacedAt',
+        'merchant_account_id' => 'getMerchantAccountId',
+        'method' => 'getMethod',
+        'mode' => 'getMode',
+        'scheme' => 'getScheme',
+        'status' => 'getStatus',
+        'updated_at' => 'getUpdatedAt',
+        'fingerprint' => 'getFingerprint'
     ];
 
     /**
@@ -245,12 +270,121 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     public const TYPE_PAYMENT_METHOD = 'payment-method';
+    public const ADDITIONAL_SCHEMES_ACCEL = 'accel';
+    public const ADDITIONAL_SCHEMES_AMEX = 'amex';
+    public const ADDITIONAL_SCHEMES_BANCONTACT = 'bancontact';
+    public const ADDITIONAL_SCHEMES_CARTE_BANCAIRE = 'carte-bancaire';
+    public const ADDITIONAL_SCHEMES_CIRRUS = 'cirrus';
+    public const ADDITIONAL_SCHEMES_CULIANCE = 'culiance';
+    public const ADDITIONAL_SCHEMES_DANKORT = 'dankort';
+    public const ADDITIONAL_SCHEMES_DINERS_CLUB = 'diners-club';
+    public const ADDITIONAL_SCHEMES_DISCOVER = 'discover';
+    public const ADDITIONAL_SCHEMES_EFTPOS_AUSTRALIA = 'eftpos-australia';
+    public const ADDITIONAL_SCHEMES_ELO = 'elo';
+    public const ADDITIONAL_SCHEMES_HIPERCARD = 'hipercard';
+    public const ADDITIONAL_SCHEMES_JCB = 'jcb';
+    public const ADDITIONAL_SCHEMES_MAESTRO = 'maestro';
+    public const ADDITIONAL_SCHEMES_MASTERCARD = 'mastercard';
+    public const ADDITIONAL_SCHEMES_NYCE = 'nyce';
+    public const ADDITIONAL_SCHEMES_OTHER = 'other';
+    public const ADDITIONAL_SCHEMES_PULSE = 'pulse';
+    public const ADDITIONAL_SCHEMES_RUPAY = 'rupay';
+    public const ADDITIONAL_SCHEMES_STAR = 'star';
+    public const ADDITIONAL_SCHEMES_UNIONPAY = 'unionpay';
+    public const ADDITIONAL_SCHEMES_VISA = 'visa';
+    public const APPROVAL_TARGET_ANY = 'any';
+    public const APPROVAL_TARGET_NEW_WINDOW = 'new_window';
+    public const METHOD_AFTERPAY = 'afterpay';
+    public const METHOD_ALIPAY = 'alipay';
+    public const METHOD_ALIPAYHK = 'alipayhk';
+    public const METHOD_APPLEPAY = 'applepay';
+    public const METHOD_BACS = 'bacs';
+    public const METHOD_BANCONTACT = 'bancontact';
+    public const METHOD_BANKED = 'banked';
+    public const METHOD_BECS = 'becs';
+    public const METHOD_BITPAY = 'bitpay';
+    public const METHOD_BOLETO = 'boleto';
+    public const METHOD_BOOST = 'boost';
+    public const METHOD_CARD = 'card';
+    public const METHOD_CHECKOUT_SESSION = 'checkout-session';
+    public const METHOD_CLICK_TO_PAY = 'click-to-pay';
+    public const METHOD_CLEARPAY = 'clearpay';
+    public const METHOD_DANA = 'dana';
+    public const METHOD_DCB = 'dcb';
+    public const METHOD_EPS = 'eps';
+    public const METHOD_FORTUMO = 'fortumo';
+    public const METHOD_GCASH = 'gcash';
+    public const METHOD_GIROPAY = 'giropay';
+    public const METHOD_GOCARDLESS = 'gocardless';
+    public const METHOD_GOOGLEPAY = 'googlepay';
+    public const METHOD_GOPAY = 'gopay';
+    public const METHOD_GRABPAY = 'grabpay';
+    public const METHOD_IDEAL = 'ideal';
+    public const METHOD_ID = 'id';
+    public const METHOD_KAKAOPAY = 'kakaopay';
+    public const METHOD_KLARNA = 'klarna';
+    public const METHOD_LAYBUY = 'laybuy';
+    public const METHOD_LINEPAY = 'linepay';
+    public const METHOD_LINKAJA = 'linkaja';
+    public const METHOD_MAYBANKQRPAY = 'maybankqrpay';
+    public const METHOD_MULTIBANCO = 'multibanco';
+    public const METHOD_ONEY_3X = 'oney_3x';
+    public const METHOD_ONEY_4X = 'oney_4x';
+    public const METHOD_ONEY_6X = 'oney_6x';
+    public const METHOD_ONEY_10X = 'oney_10x';
+    public const METHOD_ONEY_12X = 'oney_12x';
+    public const METHOD_OVO = 'ovo';
+    public const METHOD_OXXO = 'oxxo';
+    public const METHOD_PAYMAYA = 'paymaya';
+    public const METHOD_PAYPAL = 'paypal';
+    public const METHOD_PAYPALPAYLATER = 'paypalpaylater';
+    public const METHOD_PIX = 'pix';
+    public const METHOD_RABBITLINEPAY = 'rabbitlinepay';
+    public const METHOD_RAZORPAY = 'razorpay';
+    public const METHOD_SCALAPAY = 'scalapay';
+    public const METHOD_SEPA = 'sepa';
+    public const METHOD_SHOPEEPAY = 'shopeepay';
+    public const METHOD_SINGTELDASH = 'singteldash';
+    public const METHOD_SOFORT = 'sofort';
+    public const METHOD_STRIPEDD = 'stripedd';
+    public const METHOD_THAIQR = 'thaiqr';
+    public const METHOD_TOUCHNGO = 'touchngo';
+    public const METHOD_TRUEMONEY = 'truemoney';
+    public const METHOD_TRUSTLY = 'trustly';
+    public const METHOD_VENMO = 'venmo';
+    public const METHOD_WAAVE = 'waave';
+    public const METHOD_WECHAT = 'wechat';
+    public const METHOD_ZIPPAY = 'zippay';
+    public const MODE_CARD = 'card';
+    public const MODE_REDIRECT = 'redirect';
+    public const MODE_APPLEPAY = 'applepay';
+    public const MODE_GOOGLEPAY = 'googlepay';
+    public const SCHEME_ACCEL = 'accel';
+    public const SCHEME_AMEX = 'amex';
+    public const SCHEME_BANCONTACT = 'bancontact';
+    public const SCHEME_CARTE_BANCAIRE = 'carte-bancaire';
+    public const SCHEME_CIRRUS = 'cirrus';
+    public const SCHEME_CULIANCE = 'culiance';
+    public const SCHEME_DANKORT = 'dankort';
+    public const SCHEME_DINERS_CLUB = 'diners-club';
+    public const SCHEME_DISCOVER = 'discover';
+    public const SCHEME_EFTPOS_AUSTRALIA = 'eftpos-australia';
+    public const SCHEME_ELO = 'elo';
+    public const SCHEME_HIPERCARD = 'hipercard';
+    public const SCHEME_JCB = 'jcb';
+    public const SCHEME_MAESTRO = 'maestro';
+    public const SCHEME_MASTERCARD = 'mastercard';
+    public const SCHEME_NYCE = 'nyce';
+    public const SCHEME_OTHER = 'other';
+    public const SCHEME_PULSE = 'pulse';
+    public const SCHEME_RUPAY = 'rupay';
+    public const SCHEME_STAR = 'star';
+    public const SCHEME_UNIONPAY = 'unionpay';
+    public const SCHEME_VISA = 'visa';
     public const STATUS_PROCESSING = 'processing';
     public const STATUS_BUYER_APPROVAL_REQUIRED = 'buyer_approval_required';
     public const STATUS_SUCCEEDED = 'succeeded';
     public const STATUS_FAILED = 'failed';
-    public const APPROVAL_TARGET_ANY = 'any';
-    public const APPROVAL_TARGET_NEW_WINDOW = 'new_window';
 
     /**
      * Gets allowable values of the enum
@@ -269,13 +403,31 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
-    public function getStatusAllowableValues()
+    public function getAdditionalSchemesAllowableValues()
     {
         return [
-            self::STATUS_PROCESSING,
-            self::STATUS_BUYER_APPROVAL_REQUIRED,
-            self::STATUS_SUCCEEDED,
-            self::STATUS_FAILED,
+            self::ADDITIONAL_SCHEMES_ACCEL,
+            self::ADDITIONAL_SCHEMES_AMEX,
+            self::ADDITIONAL_SCHEMES_BANCONTACT,
+            self::ADDITIONAL_SCHEMES_CARTE_BANCAIRE,
+            self::ADDITIONAL_SCHEMES_CIRRUS,
+            self::ADDITIONAL_SCHEMES_CULIANCE,
+            self::ADDITIONAL_SCHEMES_DANKORT,
+            self::ADDITIONAL_SCHEMES_DINERS_CLUB,
+            self::ADDITIONAL_SCHEMES_DISCOVER,
+            self::ADDITIONAL_SCHEMES_EFTPOS_AUSTRALIA,
+            self::ADDITIONAL_SCHEMES_ELO,
+            self::ADDITIONAL_SCHEMES_HIPERCARD,
+            self::ADDITIONAL_SCHEMES_JCB,
+            self::ADDITIONAL_SCHEMES_MAESTRO,
+            self::ADDITIONAL_SCHEMES_MASTERCARD,
+            self::ADDITIONAL_SCHEMES_NYCE,
+            self::ADDITIONAL_SCHEMES_OTHER,
+            self::ADDITIONAL_SCHEMES_PULSE,
+            self::ADDITIONAL_SCHEMES_RUPAY,
+            self::ADDITIONAL_SCHEMES_STAR,
+            self::ADDITIONAL_SCHEMES_UNIONPAY,
+            self::ADDITIONAL_SCHEMES_VISA,
         ];
     }
 
@@ -289,6 +441,141 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::APPROVAL_TARGET_ANY,
             self::APPROVAL_TARGET_NEW_WINDOW,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMethodAllowableValues()
+    {
+        return [
+            self::METHOD_AFTERPAY,
+            self::METHOD_ALIPAY,
+            self::METHOD_ALIPAYHK,
+            self::METHOD_APPLEPAY,
+            self::METHOD_BACS,
+            self::METHOD_BANCONTACT,
+            self::METHOD_BANKED,
+            self::METHOD_BECS,
+            self::METHOD_BITPAY,
+            self::METHOD_BOLETO,
+            self::METHOD_BOOST,
+            self::METHOD_CARD,
+            self::METHOD_CHECKOUT_SESSION,
+            self::METHOD_CLICK_TO_PAY,
+            self::METHOD_CLEARPAY,
+            self::METHOD_DANA,
+            self::METHOD_DCB,
+            self::METHOD_EPS,
+            self::METHOD_FORTUMO,
+            self::METHOD_GCASH,
+            self::METHOD_GIROPAY,
+            self::METHOD_GOCARDLESS,
+            self::METHOD_GOOGLEPAY,
+            self::METHOD_GOPAY,
+            self::METHOD_GRABPAY,
+            self::METHOD_IDEAL,
+            self::METHOD_ID,
+            self::METHOD_KAKAOPAY,
+            self::METHOD_KLARNA,
+            self::METHOD_LAYBUY,
+            self::METHOD_LINEPAY,
+            self::METHOD_LINKAJA,
+            self::METHOD_MAYBANKQRPAY,
+            self::METHOD_MULTIBANCO,
+            self::METHOD_ONEY_3X,
+            self::METHOD_ONEY_4X,
+            self::METHOD_ONEY_6X,
+            self::METHOD_ONEY_10X,
+            self::METHOD_ONEY_12X,
+            self::METHOD_OVO,
+            self::METHOD_OXXO,
+            self::METHOD_PAYMAYA,
+            self::METHOD_PAYPAL,
+            self::METHOD_PAYPALPAYLATER,
+            self::METHOD_PIX,
+            self::METHOD_RABBITLINEPAY,
+            self::METHOD_RAZORPAY,
+            self::METHOD_SCALAPAY,
+            self::METHOD_SEPA,
+            self::METHOD_SHOPEEPAY,
+            self::METHOD_SINGTELDASH,
+            self::METHOD_SOFORT,
+            self::METHOD_STRIPEDD,
+            self::METHOD_THAIQR,
+            self::METHOD_TOUCHNGO,
+            self::METHOD_TRUEMONEY,
+            self::METHOD_TRUSTLY,
+            self::METHOD_VENMO,
+            self::METHOD_WAAVE,
+            self::METHOD_WECHAT,
+            self::METHOD_ZIPPAY,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getModeAllowableValues()
+    {
+        return [
+            self::MODE_CARD,
+            self::MODE_REDIRECT,
+            self::MODE_APPLEPAY,
+            self::MODE_GOOGLEPAY,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSchemeAllowableValues()
+    {
+        return [
+            self::SCHEME_ACCEL,
+            self::SCHEME_AMEX,
+            self::SCHEME_BANCONTACT,
+            self::SCHEME_CARTE_BANCAIRE,
+            self::SCHEME_CIRRUS,
+            self::SCHEME_CULIANCE,
+            self::SCHEME_DANKORT,
+            self::SCHEME_DINERS_CLUB,
+            self::SCHEME_DISCOVER,
+            self::SCHEME_EFTPOS_AUSTRALIA,
+            self::SCHEME_ELO,
+            self::SCHEME_HIPERCARD,
+            self::SCHEME_JCB,
+            self::SCHEME_MAESTRO,
+            self::SCHEME_MASTERCARD,
+            self::SCHEME_NYCE,
+            self::SCHEME_OTHER,
+            self::SCHEME_PULSE,
+            self::SCHEME_RUPAY,
+            self::SCHEME_STAR,
+            self::SCHEME_UNIONPAY,
+            self::SCHEME_VISA,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_PROCESSING,
+            self::STATUS_BUYER_APPROVAL_REQUIRED,
+            self::STATUS_SUCCEEDED,
+            self::STATUS_FAILED,
         ];
     }
 
@@ -309,21 +596,26 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['method'] = $data['method'] ?? null;
-        $this->container['mode'] = $data['mode'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['external_identifier'] = $data['external_identifier'] ?? null;
-        $this->container['buyer'] = $data['buyer'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['scheme'] = $data['scheme'] ?? null;
-        $this->container['expiration_date'] = $data['expiration_date'] ?? null;
+        $this->container['additional_schemes'] = $data['additional_schemes'] ?? null;
         $this->container['approval_target'] = $data['approval_target'] ?? null;
         $this->container['approval_url'] = $data['approval_url'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['buyer'] = $data['buyer'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
         $this->container['details'] = $data['details'] ?? null;
+        $this->container['expiration_date'] = $data['expiration_date'] ?? null;
+        $this->container['external_identifier'] = $data['external_identifier'] ?? null;
+        $this->container['has_replacement'] = $data['has_replacement'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
+        $this->container['last_replaced_at'] = $data['last_replaced_at'] ?? null;
+        $this->container['merchant_account_id'] = $data['merchant_account_id'] ?? null;
+        $this->container['method'] = $data['method'] ?? null;
+        $this->container['mode'] = $data['mode'] ?? null;
+        $this->container['scheme'] = $data['scheme'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['fingerprint'] = $data['fingerprint'] ?? null;
     }
 
     /**
@@ -344,11 +636,11 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        $allowedValues = $this->getApprovalTargetAllowableValues();
+        if (!is_null($this->container['approval_target']) && !in_array($this->container['approval_target'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
+                "invalid value '%s' for 'approval_target', must be one of '%s'",
+                $this->container['approval_target'],
                 implode("', '", $allowedValues)
             );
         }
@@ -365,11 +657,38 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'expiration_date', must be conform to the pattern /^\\d{2}\/\\d{2}$/.";
         }
 
-        $allowedValues = $this->getApprovalTargetAllowableValues();
-        if (!is_null($this->container['approval_target']) && !in_array($this->container['approval_target'], $allowedValues, true)) {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($this->container['method']) && !in_array($this->container['method'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'approval_target', must be one of '%s'",
-                $this->container['approval_target'],
+                "invalid value '%s' for 'method', must be one of '%s'",
+                $this->container['method'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getModeAllowableValues();
+        if (!is_null($this->container['mode']) && !in_array($this->container['mode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'mode', must be one of '%s'",
+                $this->container['mode'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSchemeAllowableValues();
+        if (!is_null($this->container['scheme']) && !in_array($this->container['scheme'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'scheme', must be one of '%s'",
+                $this->container['scheme'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -448,261 +767,34 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets status
+     * Gets additional_schemes
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getStatus()
+    public function getAdditionalSchemes()
     {
-        return $this->container['status'];
+        return $this->container['additional_schemes'];
     }
 
     /**
-     * Sets status
+     * Sets additional_schemes
      *
-     * @param string|null $status The state of the payment method.  - `processing` - The payment method is still being stored. - `buyer_approval_required` - Storing the payment method requires   the buyer to provide approval. Follow the `approval_url` for next steps. - `succeeded` - The payment method is approved and stored with all   relevant payment services. - `failed` - Storing the payment method did not succeed.
+     * @param string[]|null $additional_schemes Additional schemes of the card. Only applies to card payment methods.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setAdditionalSchemes($additional_schemes)
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+        $allowedValues = $this->getAdditionalSchemesAllowableValues();
+        if (!is_null($additional_schemes) && array_diff($additional_schemes, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
+                    "Invalid value for 'additional_schemes', must be one of '%s'",
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets method
-     *
-     * @return string|null
-     */
-    public function getMethod()
-    {
-        return $this->container['method'];
-    }
-
-    /**
-     * Sets method
-     *
-     * @param string|null $method method
-     *
-     * @return self
-     */
-    public function setMethod($method)
-    {
-        $this->container['method'] = $method;
-
-        return $this;
-    }
-
-    /**
-     * Gets mode
-     *
-     * @return string|null
-     */
-    public function getMode()
-    {
-        return $this->container['mode'];
-    }
-
-    /**
-     * Sets mode
-     *
-     * @param string|null $mode mode
-     *
-     * @return self
-     */
-    public function setMode($mode)
-    {
-        $this->container['mode'] = $mode;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at The date and time when this payment method was first created in our system.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at The date and time when this payment method was last updated in our system.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets external_identifier
-     *
-     * @return string|null
-     */
-    public function getExternalIdentifier()
-    {
-        return $this->container['external_identifier'];
-    }
-
-    /**
-     * Sets external_identifier
-     *
-     * @param string|null $external_identifier An external identifier that can be used to match the payment method against your own records.
-     *
-     * @return self
-     */
-    public function setExternalIdentifier($external_identifier)
-    {
-        $this->container['external_identifier'] = $external_identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets buyer
-     *
-     * @return \Gr4vy\model\PaymentMethodBuyer|null
-     */
-    public function getBuyer()
-    {
-        return $this->container['buyer'];
-    }
-
-    /**
-     * Sets buyer
-     *
-     * @param \Gr4vy\model\PaymentMethodBuyer|null $buyer buyer
-     *
-     * @return self
-     */
-    public function setBuyer($buyer)
-    {
-        $this->container['buyer'] = $buyer;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string|null
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string|null $label A label for the card or the account. For a `paypal` payment method this is the user's email address. For a card it is the last 4 digits of the card.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets scheme
-     *
-     * @return string|null
-     */
-    public function getScheme()
-    {
-        return $this->container['scheme'];
-    }
-
-    /**
-     * Sets scheme
-     *
-     * @param string|null $scheme The scheme of the card. Only applies to card payments.
-     *
-     * @return self
-     */
-    public function setScheme($scheme)
-    {
-        $this->container['scheme'] = $scheme;
-
-        return $this;
-    }
-
-    /**
-     * Gets expiration_date
-     *
-     * @return string|null
-     */
-    public function getExpirationDate()
-    {
-        return $this->container['expiration_date'];
-    }
-
-    /**
-     * Sets expiration_date
-     *
-     * @param string|null $expiration_date The expiration date for the payment method.
-     *
-     * @return self
-     */
-    public function setExpirationDate($expiration_date)
-    {
-        if (!is_null($expiration_date) && (mb_strlen($expiration_date) > 5)) {
-            throw new \InvalidArgumentException('invalid length for $expiration_date when calling PaymentMethod., must be smaller than or equal to 5.');
-        }
-        if (!is_null($expiration_date) && (mb_strlen($expiration_date) < 5)) {
-            throw new \InvalidArgumentException('invalid length for $expiration_date when calling PaymentMethod., must be bigger than or equal to 5.');
-        }
-        if (!is_null($expiration_date) && (!preg_match("/^\\d{2}\/\\d{2}$/", $expiration_date))) {
-            throw new \InvalidArgumentException("invalid value for $expiration_date when calling PaymentMethod., must conform to the pattern /^\\d{2}\/\\d{2}$/.");
-        }
-
-        $this->container['expiration_date'] = $expiration_date;
+        $this->container['additional_schemes'] = $additional_schemes;
 
         return $this;
     }
@@ -766,25 +858,25 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets currency
+     * Gets buyer
      *
-     * @return string|null
+     * @return \Gr4vy\model\GiftCardBuyer|null
      */
-    public function getCurrency()
+    public function getBuyer()
     {
-        return $this->container['currency'];
+        return $this->container['buyer'];
     }
 
     /**
-     * Sets currency
+     * Sets buyer
      *
-     * @param string|null $currency The ISO-4217 currency code that this payment method can be used for. If this value is `null` the payment method may be used for multiple currencies.
+     * @param \Gr4vy\model\GiftCardBuyer|null $buyer buyer
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setBuyer($buyer)
     {
-        $this->container['currency'] = $currency;
+        $this->container['buyer'] = $buyer;
 
         return $this;
     }
@@ -814,6 +906,54 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at The date and time when this payment method was first created in our system.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency The ISO-4217 currency code that this payment method can be used for. If this value is `null` the payment method may be used for multiple currencies.
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
      * Gets details
      *
      * @return \Gr4vy\model\PaymentMethodDetailsCard|null
@@ -833,6 +973,344 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDetails($details)
     {
         $this->container['details'] = $details;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiration_date
+     *
+     * @return string|null
+     */
+    public function getExpirationDate()
+    {
+        return $this->container['expiration_date'];
+    }
+
+    /**
+     * Sets expiration_date
+     *
+     * @param string|null $expiration_date The expiration date for the payment method.
+     *
+     * @return self
+     */
+    public function setExpirationDate($expiration_date)
+    {
+        if (!is_null($expiration_date) && (mb_strlen($expiration_date) > 5)) {
+            throw new \InvalidArgumentException('invalid length for $expiration_date when calling PaymentMethod., must be smaller than or equal to 5.');
+        }
+        if (!is_null($expiration_date) && (mb_strlen($expiration_date) < 5)) {
+            throw new \InvalidArgumentException('invalid length for $expiration_date when calling PaymentMethod., must be bigger than or equal to 5.');
+        }
+        if (!is_null($expiration_date) && (!preg_match("/^\\d{2}\/\\d{2}$/", $expiration_date))) {
+            throw new \InvalidArgumentException("invalid value for $expiration_date when calling PaymentMethod., must conform to the pattern /^\\d{2}\/\\d{2}$/.");
+        }
+
+        $this->container['expiration_date'] = $expiration_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_identifier
+     *
+     * @return string|null
+     */
+    public function getExternalIdentifier()
+    {
+        return $this->container['external_identifier'];
+    }
+
+    /**
+     * Sets external_identifier
+     *
+     * @param string|null $external_identifier An external identifier that can be used to match the payment method against your own records.
+     *
+     * @return self
+     */
+    public function setExternalIdentifier($external_identifier)
+    {
+        $this->container['external_identifier'] = $external_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_replacement
+     *
+     * @return bool|null
+     */
+    public function getHasReplacement()
+    {
+        return $this->container['has_replacement'];
+    }
+
+    /**
+     * Sets has_replacement
+     *
+     * @param bool|null $has_replacement Whether this card has a pending replacement that hasn't been applied yet.  When the Account Updater determines that new card details are available, existing details are not changed immediately, but this field is set to `true`. There are three scenarios in which the actual replacement occurs:  1. When this card has expired. 2. When only the expiration date changed. 3. When a transaction using this card is declined with any of the following codes:     * `canceled_payment_method`     * `expired_payment_method`     * `unavailable_payment_method`     * `unknown_payment_method`  When the replacement is applied, this field is set to `false`. For non-card payment methods, the value of this field is always set to `false`.
+     *
+     * @return self
+     */
+    public function setHasReplacement($has_replacement)
+    {
+        $this->container['has_replacement'] = $has_replacement;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label A label for the card or the account. For a `paypal` payment method this is the user's email address. For a card it is the last 4 digits of the card.
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_replaced_at
+     *
+     * @return \DateTime|null
+     */
+    public function getLastReplacedAt()
+    {
+        return $this->container['last_replaced_at'];
+    }
+
+    /**
+     * Sets last_replaced_at
+     *
+     * @param \DateTime|null $last_replaced_at The date and time when this card was last replaced.  When the Account Updater determines that new card details are available, existing details are not changed immediately. There are three scenarios in which the actual replacement occurs:  1. When this card has expired. 2. When only the expiration date changed. 3. When a transaction using this card is declined with any of the following codes:     * `canceled_payment_method`     * `expired_payment_method`     * `unavailable_payment_method`     * `unknown_payment_method`  When the replacement is applied, this field is updated. For non-card payment methods, the value of this field is always set to `null`.
+     *
+     * @return self
+     */
+    public function setLastReplacedAt($last_replaced_at)
+    {
+        $this->container['last_replaced_at'] = $last_replaced_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_account_id
+     *
+     * @return string|null
+     */
+    public function getMerchantAccountId()
+    {
+        return $this->container['merchant_account_id'];
+    }
+
+    /**
+     * Sets merchant_account_id
+     *
+     * @param string|null $merchant_account_id The unique ID for a merchant account.
+     *
+     * @return self
+     */
+    public function setMerchantAccountId($merchant_account_id)
+    {
+        $this->container['merchant_account_id'] = $merchant_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets method
+     *
+     * @return string|null
+     */
+    public function getMethod()
+    {
+        return $this->container['method'];
+    }
+
+    /**
+     * Sets method
+     *
+     * @param string|null $method The type of this payment method.
+     *
+     * @return self
+     */
+    public function setMethod($method)
+    {
+        $allowedValues = $this->getMethodAllowableValues();
+        if (!is_null($method) && !in_array($method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'method', must be one of '%s'",
+                    $method,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets mode
+     *
+     * @return string|null
+     */
+    public function getMode()
+    {
+        return $this->container['mode'];
+    }
+
+    /**
+     * Sets mode
+     *
+     * @param string|null $mode The mode to use with this payment method.
+     *
+     * @return self
+     */
+    public function setMode($mode)
+    {
+        $allowedValues = $this->getModeAllowableValues();
+        if (!is_null($mode) && !in_array($mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'mode', must be one of '%s'",
+                    $mode,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['mode'] = $mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets scheme
+     *
+     * @return string|null
+     */
+    public function getScheme()
+    {
+        return $this->container['scheme'];
+    }
+
+    /**
+     * Sets scheme
+     *
+     * @param string|null $scheme The scheme of the card. Only applies to card payments.
+     *
+     * @return self
+     */
+    public function setScheme($scheme)
+    {
+        $allowedValues = $this->getSchemeAllowableValues();
+        if (!is_null($scheme) && !in_array($scheme, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'scheme', must be one of '%s'",
+                    $scheme,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['scheme'] = $scheme;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status The state of the payment method.  - `processing` - The payment method is stored but has not been used yet. - `buyer_approval_required` - Storing the payment method requires   the buyer to provide approval. Follow the `approval_url` for next steps. - `succeeded` - The payment method is stored and has been used. - `failed` - The payment method could not be stored, or failed first use.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at The date and time when this payment method was last updated in our system.
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets fingerprint
+     *
+     * @return string|null
+     */
+    public function getFingerprint()
+    {
+        return $this->container['fingerprint'];
+    }
+
+    /**
+     * Sets fingerprint
+     *
+     * @param string|null $fingerprint The unique hash derived from the payment method identifier (e.g. card number).
+     *
+     * @return self
+     */
+    public function setFingerprint($fingerprint)
+    {
+        $this->container['fingerprint'] = $fingerprint;
 
         return $this;
     }

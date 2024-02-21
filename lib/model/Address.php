@@ -36,7 +36,7 @@ use \Gr4vy\ObjectSerializer;
  * Address Class Doc Comment
  *
  * @category Class
- * @description The billing address of the buyer.
+ * @description An address for the buyer.
  * @package  Gr4vy
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -252,8 +252,8 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'country', the character length must be smaller than or equal to 2.";
         }
 
-        if (!is_null($this->container['country']) && (mb_strlen($this->container['country']) < 1)) {
-            $invalidProperties[] = "invalid value for 'country', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['country']) && (mb_strlen($this->container['country']) < 2)) {
+            $invalidProperties[] = "invalid value for 'country', the character length must be bigger than or equal to 2.";
         }
 
         if (!is_null($this->container['postal_code']) && (mb_strlen($this->container['postal_code']) > 50)) {
@@ -340,7 +340,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets city
      *
-     * @param string|null $city The city for the billing address.
+     * @param string|null $city The city for the address.
      *
      * @return self
      */
@@ -371,7 +371,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param string|null $country The country for the billing address.
+     * @param string|null $country The country for the address in ISO 3166 format.
      *
      * @return self
      */
@@ -380,8 +380,8 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
         if (!is_null($country) && (mb_strlen($country) > 2)) {
             throw new \InvalidArgumentException('invalid length for $country when calling Address., must be smaller than or equal to 2.');
         }
-        if (!is_null($country) && (mb_strlen($country) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $country when calling Address., must be bigger than or equal to 1.');
+        if (!is_null($country) && (mb_strlen($country) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $country when calling Address., must be bigger than or equal to 2.');
         }
 
         $this->container['country'] = $country;
@@ -402,7 +402,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets postal_code
      *
-     * @param string|null $postal_code The postal code or zip code for the billing address.
+     * @param string|null $postal_code The postal code or zip code for the address.
      *
      * @return self
      */
@@ -433,7 +433,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets state
      *
-     * @param string|null $state The state, county, or province for the billing address.
+     * @param string|null $state The state, county, or province for the address.
      *
      * @return self
      */
@@ -464,7 +464,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets state_code
      *
-     * @param string|null $state_code The code of state, county, or province for the billing address in ISO 3166-2 format.
+     * @param string|null $state_code The code of state, county, or province for the address in ISO 3166-2 format.
      *
      * @return self
      */
@@ -495,7 +495,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets house_number_or_name
      *
-     * @param string|null $house_number_or_name The house number or name for the billing address. Not all payment services use this field but some do.
+     * @param string|null $house_number_or_name The house number or name for the address. Not all payment services use this field but some do.
      *
      * @return self
      */
@@ -526,7 +526,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets line1
      *
-     * @param string|null $line1 The first line of the billing address.
+     * @param string|null $line1 The first line of the address.
      *
      * @return self
      */
@@ -557,7 +557,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets line2
      *
-     * @param string|null $line2 The second line of the billing address.
+     * @param string|null $line2 The second line of the address.
      *
      * @return self
      */
@@ -588,7 +588,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets organization
      *
-     * @param string|null $organization The optional name of the company or organisation to add to the billing address.
+     * @param string|null $organization The optional name of the company or organisation to add to the address.
      *
      * @return self
      */

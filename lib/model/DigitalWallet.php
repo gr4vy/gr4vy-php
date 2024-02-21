@@ -62,13 +62,20 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'provider' => 'string',
         'id' => 'string',
+        'merchant_account_id' => 'string',
+        'provider' => 'string',
         'merchant_name' => 'string',
         'merchant_url' => 'string',
+        'merchant_display_name' => 'string',
+        'merchant_country_code' => 'string',
         'domain_names' => 'string[]',
+        'fields' => '\Gr4vy\model\DigitalWalletClickToPayFields',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'updated_at' => '\DateTime',
+        'active_certificate_count' => 'int',
+        'pending_certificate_count' => 'int',
+        'expired_certificate_count' => 'int'
     ];
 
     /**
@@ -80,13 +87,20 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'type' => null,
-        'provider' => null,
         'id' => 'uuid',
+        'merchant_account_id' => null,
+        'provider' => null,
         'merchant_name' => null,
         'merchant_url' => 'url',
+        'merchant_display_name' => null,
+        'merchant_country_code' => null,
         'domain_names' => null,
+        'fields' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'updated_at' => 'date-time',
+        'active_certificate_count' => null,
+        'pending_certificate_count' => null,
+        'expired_certificate_count' => null
     ];
 
     /**
@@ -117,13 +131,20 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'type' => 'type',
-        'provider' => 'provider',
         'id' => 'id',
+        'merchant_account_id' => 'merchant_account_id',
+        'provider' => 'provider',
         'merchant_name' => 'merchant_name',
         'merchant_url' => 'merchant_url',
+        'merchant_display_name' => 'merchant_display_name',
+        'merchant_country_code' => 'merchant_country_code',
         'domain_names' => 'domain_names',
+        'fields' => 'fields',
         'created_at' => 'created_at',
-        'updated_at' => 'updated_at'
+        'updated_at' => 'updated_at',
+        'active_certificate_count' => 'active_certificate_count',
+        'pending_certificate_count' => 'pending_certificate_count',
+        'expired_certificate_count' => 'expired_certificate_count'
     ];
 
     /**
@@ -133,13 +154,20 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'type' => 'setType',
-        'provider' => 'setProvider',
         'id' => 'setId',
+        'merchant_account_id' => 'setMerchantAccountId',
+        'provider' => 'setProvider',
         'merchant_name' => 'setMerchantName',
         'merchant_url' => 'setMerchantUrl',
+        'merchant_display_name' => 'setMerchantDisplayName',
+        'merchant_country_code' => 'setMerchantCountryCode',
         'domain_names' => 'setDomainNames',
+        'fields' => 'setFields',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at' => 'setUpdatedAt',
+        'active_certificate_count' => 'setActiveCertificateCount',
+        'pending_certificate_count' => 'setPendingCertificateCount',
+        'expired_certificate_count' => 'setExpiredCertificateCount'
     ];
 
     /**
@@ -149,13 +177,20 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'type' => 'getType',
-        'provider' => 'getProvider',
         'id' => 'getId',
+        'merchant_account_id' => 'getMerchantAccountId',
+        'provider' => 'getProvider',
         'merchant_name' => 'getMerchantName',
         'merchant_url' => 'getMerchantUrl',
+        'merchant_display_name' => 'getMerchantDisplayName',
+        'merchant_country_code' => 'getMerchantCountryCode',
         'domain_names' => 'getDomainNames',
+        'fields' => 'getFields',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at' => 'getUpdatedAt',
+        'active_certificate_count' => 'getActiveCertificateCount',
+        'pending_certificate_count' => 'getPendingCertificateCount',
+        'expired_certificate_count' => 'getExpiredCertificateCount'
     ];
 
     /**
@@ -244,13 +279,20 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['provider'] = $data['provider'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['merchant_account_id'] = $data['merchant_account_id'] ?? null;
+        $this->container['provider'] = $data['provider'] ?? null;
         $this->container['merchant_name'] = $data['merchant_name'] ?? null;
         $this->container['merchant_url'] = $data['merchant_url'] ?? null;
+        $this->container['merchant_display_name'] = $data['merchant_display_name'] ?? null;
+        $this->container['merchant_country_code'] = $data['merchant_country_code'] ?? null;
         $this->container['domain_names'] = $data['domain_names'] ?? null;
+        $this->container['fields'] = $data['fields'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['active_certificate_count'] = $data['active_certificate_count'] ?? null;
+        $this->container['pending_certificate_count'] = $data['pending_certificate_count'] ?? null;
+        $this->container['expired_certificate_count'] = $data['expired_certificate_count'] ?? null;
     }
 
     /**
@@ -278,6 +320,14 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['provider'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['merchant_country_code']) && (mb_strlen($this->container['merchant_country_code']) > 2)) {
+            $invalidProperties[] = "invalid value for 'merchant_country_code', the character length must be smaller than or equal to 2.";
+        }
+
+        if (!is_null($this->container['merchant_country_code']) && (mb_strlen($this->container['merchant_country_code']) < 2)) {
+            $invalidProperties[] = "invalid value for 'merchant_country_code', the character length must be bigger than or equal to 2.";
         }
 
         if (!is_null($this->container['domain_names']) && (count($this->container['domain_names']) > 99)) {
@@ -338,6 +388,54 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id The ID of the registered digital wallet.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_account_id
+     *
+     * @return string|null
+     */
+    public function getMerchantAccountId()
+    {
+        return $this->container['merchant_account_id'];
+    }
+
+    /**
+     * Sets merchant_account_id
+     *
+     * @param string|null $merchant_account_id The unique ID for a merchant account.
+     *
+     * @return self
+     */
+    public function setMerchantAccountId($merchant_account_id)
+    {
+        $this->container['merchant_account_id'] = $merchant_account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets provider
      *
      * @return string|null
@@ -367,30 +465,6 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['provider'] = $provider;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id The ID of the registered digital wallet.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
 
         return $this;
     }
@@ -444,6 +518,61 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets merchant_display_name
+     *
+     * @return string|null
+     */
+    public function getMerchantDisplayName()
+    {
+        return $this->container['merchant_display_name'];
+    }
+
+    /**
+     * Sets merchant_display_name
+     *
+     * @param string|null $merchant_display_name The consumer facing name of the merchant.
+     *
+     * @return self
+     */
+    public function setMerchantDisplayName($merchant_display_name)
+    {
+        $this->container['merchant_display_name'] = $merchant_display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_country_code
+     *
+     * @return string|null
+     */
+    public function getMerchantCountryCode()
+    {
+        return $this->container['merchant_country_code'];
+    }
+
+    /**
+     * Sets merchant_country_code
+     *
+     * @param string|null $merchant_country_code The country code where the merchant is registered.
+     *
+     * @return self
+     */
+    public function setMerchantCountryCode($merchant_country_code)
+    {
+        if (!is_null($merchant_country_code) && (mb_strlen($merchant_country_code) > 2)) {
+            throw new \InvalidArgumentException('invalid length for $merchant_country_code when calling DigitalWallet., must be smaller than or equal to 2.');
+        }
+        if (!is_null($merchant_country_code) && (mb_strlen($merchant_country_code) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $merchant_country_code when calling DigitalWallet., must be bigger than or equal to 2.');
+        }
+
+        $this->container['merchant_country_code'] = $merchant_country_code;
+
+        return $this;
+    }
+
+    /**
      * Gets domain_names
      *
      * @return string[]|null
@@ -470,6 +599,30 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('invalid length for $domain_names when calling DigitalWallet., number of items must be greater than or equal to 1.');
         }
         $this->container['domain_names'] = $domain_names;
+
+        return $this;
+    }
+
+    /**
+     * Gets fields
+     *
+     * @return \Gr4vy\model\DigitalWalletClickToPayFields|null
+     */
+    public function getFields()
+    {
+        return $this->container['fields'];
+    }
+
+    /**
+     * Sets fields
+     *
+     * @param \Gr4vy\model\DigitalWalletClickToPayFields|null $fields fields
+     *
+     * @return self
+     */
+    public function setFields($fields)
+    {
+        $this->container['fields'] = $fields;
 
         return $this;
     }
@@ -518,6 +671,78 @@ class DigitalWallet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets active_certificate_count
+     *
+     * @return int|null
+     */
+    public function getActiveCertificateCount()
+    {
+        return $this->container['active_certificate_count'];
+    }
+
+    /**
+     * Sets active_certificate_count
+     *
+     * @param int|null $active_certificate_count The number of active custom certificates registered for this digital wallet (Apple Pay only).
+     *
+     * @return self
+     */
+    public function setActiveCertificateCount($active_certificate_count)
+    {
+        $this->container['active_certificate_count'] = $active_certificate_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets pending_certificate_count
+     *
+     * @return int|null
+     */
+    public function getPendingCertificateCount()
+    {
+        return $this->container['pending_certificate_count'];
+    }
+
+    /**
+     * Sets pending_certificate_count
+     *
+     * @param int|null $pending_certificate_count The number of pending custom certificates registered for this digital wallet (Apple Pay only).
+     *
+     * @return self
+     */
+    public function setPendingCertificateCount($pending_certificate_count)
+    {
+        $this->container['pending_certificate_count'] = $pending_certificate_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets expired_certificate_count
+     *
+     * @return int|null
+     */
+    public function getExpiredCertificateCount()
+    {
+        return $this->container['expired_certificate_count'];
+    }
+
+    /**
+     * Sets expired_certificate_count
+     *
+     * @param int|null $expired_certificate_count The number of expired custom certificates registered for this digital wallet (Apple Pay only).
+     *
+     * @return self
+     */
+    public function setExpiredCertificateCount($expired_certificate_count)
+    {
+        $this->container['expired_certificate_count'] = $expired_certificate_count;
 
         return $this;
     }

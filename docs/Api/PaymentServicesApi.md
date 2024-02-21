@@ -4,72 +4,12 @@ All URIs are relative to https://api.plantly.gr4vy.app.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addPaymentService()**](PaymentServicesApi.md#addPaymentService) | **POST** /payment-services | New payment service
 [**deletePaymentService()**](PaymentServicesApi.md#deletePaymentService) | **DELETE** /payment-services/{payment_service_id} | Delete payment service
 [**getPaymentService()**](PaymentServicesApi.md#getPaymentService) | **GET** /payment-services/{payment_service_id} | Get payment service
 [**listPaymentServices()**](PaymentServicesApi.md#listPaymentServices) | **GET** /payment-services | List payment services
+[**newPaymentService()**](PaymentServicesApi.md#newPaymentService) | **POST** /payment-services | New payment service
 [**updatePaymentService()**](PaymentServicesApi.md#updatePaymentService) | **PUT** /payment-services/{payment_service_id} | Update payment service
 
-
-## `addPaymentService()`
-
-```php
-addPaymentService($payment_service_request): \Gr4vy\model\PaymentService
-```
-
-New payment service
-
-Adds a new payment service by providing a custom name and a value for each of the required fields.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: BearerAuth
-$config = Gr4vy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Gr4vy\Api\PaymentServicesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$payment_service_request = new \Gr4vy\model\PaymentServiceRequest(); // \Gr4vy\model\PaymentServiceRequest
-
-try {
-    $result = $apiInstance->addPaymentService($payment_service_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling PaymentServicesApi->addPaymentService: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **payment_service_request** | [**\Gr4vy\model\PaymentServiceRequest**](../Model/PaymentServiceRequest.md)|  | [optional]
-
-### Return type
-
-[**\Gr4vy\model\PaymentService**](../Model/PaymentService.md)
-
-### Authorization
-
-[BearerAuth](../../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `deletePaymentService()`
 
@@ -219,7 +159,7 @@ $apiInstance = new Gr4vy\Api\PaymentServicesApi(
 );
 $limit = 1; // int | Defines the maximum number of items to return for this request.
 $cursor = ZXhhbXBsZTE; // string | A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the `next_cursor` field. Similarly the `previous_cursor` can be used to reverse backwards in the list.
-$method = card; // string | Filters the results to only the items for which the `method` has been set to this value.
+$method = card; // string | Filters the results to only the items for which the `method` has been set to this value. For example `card`.
 $deleted = true; // bool | Filters the results to only show items which have been deleted. By default, deleted items will not be returned.
 
 try {
@@ -236,7 +176,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| Defines the maximum number of items to return for this request. | [optional] [default to 20]
  **cursor** | **string**| A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. | [optional]
- **method** | **string**| Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. | [optional]
+ **method** | **string**| Filters the results to only the items for which the &#x60;method&#x60; has been set to this value. For example &#x60;card&#x60;. | [optional]
  **deleted** | **bool**| Filters the results to only show items which have been deleted. By default, deleted items will not be returned. | [optional] [default to false]
 
 ### Return type
@@ -250,6 +190,66 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `newPaymentService()`
+
+```php
+newPaymentService($payment_service_request): \Gr4vy\model\PaymentService
+```
+
+New payment service
+
+Adds a new payment service by providing a custom name and a value for each of the required fields.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: BearerAuth
+$config = Gr4vy\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Gr4vy\Api\PaymentServicesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$payment_service_request = new \Gr4vy\model\PaymentServiceRequest(); // \Gr4vy\model\PaymentServiceRequest
+
+try {
+    $result = $apiInstance->newPaymentService($payment_service_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PaymentServicesApi->newPaymentService: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **payment_service_request** | [**\Gr4vy\model\PaymentServiceRequest**](../Model/PaymentServiceRequest.md)|  | [optional]
+
+### Return type
+
+[**\Gr4vy\model\PaymentService**](../Model/PaymentService.md)
+
+### Authorization
+
+[BearerAuth](../../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -55,7 +55,6 @@ class HeaderSelector
         }
 
         $headers['Content-Type'] = $this->selectContentTypeHeader($contentTypes);
-        $headers['X-GR4VY-MERCHANT-ACCOUNT-ID'] = "default";
         return $headers;
     }
 

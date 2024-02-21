@@ -65,6 +65,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'card_type' => 'string',
         'scheme' => 'string',
+        'scheme_icon_url' => 'string',
         'country' => 'string',
         'required_fields' => '\Gr4vy\model\RequiredFields'
     ];
@@ -81,6 +82,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'bin',
         'card_type' => null,
         'scheme' => null,
+        'scheme_icon_url' => null,
         'country' => null,
         'required_fields' => null
     ];
@@ -116,6 +118,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'card_type' => 'card_type',
         'scheme' => 'scheme',
+        'scheme_icon_url' => 'scheme_icon_url',
         'country' => 'country',
         'required_fields' => 'required_fields'
     ];
@@ -130,6 +133,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'card_type' => 'setCardType',
         'scheme' => 'setScheme',
+        'scheme_icon_url' => 'setSchemeIconUrl',
         'country' => 'setCountry',
         'required_fields' => 'setRequiredFields'
     ];
@@ -144,6 +148,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'card_type' => 'getCardType',
         'scheme' => 'getScheme',
+        'scheme_icon_url' => 'getSchemeIconUrl',
         'country' => 'getCountry',
         'required_fields' => 'getRequiredFields'
     ];
@@ -192,6 +197,28 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TYPE_CARD_DETAIL = 'card-detail';
     public const CARD_TYPE_CREDIT = 'credit';
     public const CARD_TYPE_DEBIT = 'debit';
+    public const SCHEME_ACCEL = 'accel';
+    public const SCHEME_AMEX = 'amex';
+    public const SCHEME_BANCONTACT = 'bancontact';
+    public const SCHEME_CARTE_BANCAIRE = 'carte-bancaire';
+    public const SCHEME_CIRRUS = 'cirrus';
+    public const SCHEME_CULIANCE = 'culiance';
+    public const SCHEME_DANKORT = 'dankort';
+    public const SCHEME_DINERS_CLUB = 'diners-club';
+    public const SCHEME_DISCOVER = 'discover';
+    public const SCHEME_EFTPOS_AUSTRALIA = 'eftpos-australia';
+    public const SCHEME_ELO = 'elo';
+    public const SCHEME_HIPERCARD = 'hipercard';
+    public const SCHEME_JCB = 'jcb';
+    public const SCHEME_MAESTRO = 'maestro';
+    public const SCHEME_MASTERCARD = 'mastercard';
+    public const SCHEME_NYCE = 'nyce';
+    public const SCHEME_OTHER = 'other';
+    public const SCHEME_PULSE = 'pulse';
+    public const SCHEME_RUPAY = 'rupay';
+    public const SCHEME_STAR = 'star';
+    public const SCHEME_UNIONPAY = 'unionpay';
+    public const SCHEME_VISA = 'visa';
 
     /**
      * Gets allowable values of the enum
@@ -219,6 +246,39 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSchemeAllowableValues()
+    {
+        return [
+            self::SCHEME_ACCEL,
+            self::SCHEME_AMEX,
+            self::SCHEME_BANCONTACT,
+            self::SCHEME_CARTE_BANCAIRE,
+            self::SCHEME_CIRRUS,
+            self::SCHEME_CULIANCE,
+            self::SCHEME_DANKORT,
+            self::SCHEME_DINERS_CLUB,
+            self::SCHEME_DISCOVER,
+            self::SCHEME_EFTPOS_AUSTRALIA,
+            self::SCHEME_ELO,
+            self::SCHEME_HIPERCARD,
+            self::SCHEME_JCB,
+            self::SCHEME_MAESTRO,
+            self::SCHEME_MASTERCARD,
+            self::SCHEME_NYCE,
+            self::SCHEME_OTHER,
+            self::SCHEME_PULSE,
+            self::SCHEME_RUPAY,
+            self::SCHEME_STAR,
+            self::SCHEME_UNIONPAY,
+            self::SCHEME_VISA,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -237,6 +297,7 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['id'] = $data['id'] ?? null;
         $this->container['card_type'] = $data['card_type'] ?? null;
         $this->container['scheme'] = $data['scheme'] ?? null;
+        $this->container['scheme_icon_url'] = $data['scheme_icon_url'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
         $this->container['required_fields'] = $data['required_fields'] ?? null;
     }
@@ -272,6 +333,15 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'card_type', must be one of '%s'",
                 $this->container['card_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSchemeAllowableValues();
+        if (!is_null($this->container['scheme']) && !in_array($this->container['scheme'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'scheme', must be one of '%s'",
+                $this->container['scheme'],
                 implode("', '", $allowedValues)
             );
         }
@@ -409,7 +479,41 @@ class CardDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setScheme($scheme)
     {
+        $allowedValues = $this->getSchemeAllowableValues();
+        if (!is_null($scheme) && !in_array($scheme, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'scheme', must be one of '%s'",
+                    $scheme,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['scheme'] = $scheme;
+
+        return $this;
+    }
+
+    /**
+     * Gets scheme_icon_url
+     *
+     * @return string|null
+     */
+    public function getSchemeIconUrl()
+    {
+        return $this->container['scheme_icon_url'];
+    }
+
+    /**
+     * Sets scheme_icon_url
+     *
+     * @param string|null $scheme_icon_url An icon to display for the card scheme.
+     *
+     * @return self
+     */
+    public function setSchemeIconUrl($scheme_icon_url)
+    {
+        $this->container['scheme_icon_url'] = $scheme_icon_url;
 
         return $this;
     }

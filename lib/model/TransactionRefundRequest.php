@@ -61,7 +61,9 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'int'
+        'amount' => 'int',
+        'target_type' => 'string',
+        'target_id' => 'string'
     ];
 
     /**
@@ -72,7 +74,9 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null
+        'amount' => null,
+        'target_type' => null,
+        'target_id' => 'uuid'
     ];
 
     /**
@@ -102,7 +106,9 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount'
+        'amount' => 'amount',
+        'target_type' => 'target_type',
+        'target_id' => 'target_id'
     ];
 
     /**
@@ -111,7 +117,9 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount'
+        'amount' => 'setAmount',
+        'target_type' => 'setTargetType',
+        'target_id' => 'setTargetId'
     ];
 
     /**
@@ -120,7 +128,9 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount'
+        'amount' => 'getAmount',
+        'target_type' => 'getTargetType',
+        'target_id' => 'getTargetId'
     ];
 
     /**
@@ -164,6 +174,21 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const TARGET_TYPE_PAYMENT_METHOD = 'payment-method';
+    public const TARGET_TYPE_GIFT_CARD_REDEMPTION = 'gift-card-redemption';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTargetTypeAllowableValues()
+    {
+        return [
+            self::TARGET_TYPE_PAYMENT_METHOD,
+            self::TARGET_TYPE_GIFT_CARD_REDEMPTION,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -181,6 +206,8 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(array $data = null)
     {
         $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['target_type'] = $data['target_type'] ?? 'payment-method';
+        $this->container['target_id'] = $data['target_id'] ?? null;
     }
 
     /**
@@ -198,6 +225,15 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
 
         if (!is_null($this->container['amount']) && ($this->container['amount'] < 1)) {
             $invalidProperties[] = "invalid value for 'amount', must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getTargetTypeAllowableValues();
+        if (!is_null($this->container['target_type']) && !in_array($this->container['target_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'target_type', must be one of '%s'",
+                $this->container['target_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -228,7 +264,7 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets amount
      *
-     * @param int|null $amount The amount requested to refund.  If omitted, a full refund will be requested.  Otherwise, the amount must be lower than or equal to the remaining balance in the associated transaction.  Negative and zero-amount refunds are not supported.
+     * @param int|null $amount The amount requested to refund.  If omitted, a full refund will be requested for the main payment method.  When set, the amount must be lower than or equal to the remaining balance in the associated transaction. Negative and zero-amount refunds are not supported.
      *
      * @return self
      */
@@ -243,6 +279,64 @@ class TransactionRefundRequest implements ModelInterface, ArrayAccess, \JsonSeri
         }
 
         $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_type
+     *
+     * @return string|null
+     */
+    public function getTargetType()
+    {
+        return $this->container['target_type'];
+    }
+
+    /**
+     * Sets target_type
+     *
+     * @param string|null $target_type The target type to refund for. This can be used to target a gift card to refund to instead of the main payment method.
+     *
+     * @return self
+     */
+    public function setTargetType($target_type)
+    {
+        $allowedValues = $this->getTargetTypeAllowableValues();
+        if (!is_null($target_type) && !in_array($target_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'target_type', must be one of '%s'",
+                    $target_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['target_type'] = $target_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_id
+     *
+     * @return string|null
+     */
+    public function getTargetId()
+    {
+        return $this->container['target_id'];
+    }
+
+    /**
+     * Sets target_id
+     *
+     * @param string|null $target_id The optional ID of the instrument to refund for. This is only required when the `target_type` is set to `gift-card-redemption`.
+     *
+     * @return self
+     */
+    public function setTargetId($target_id)
+    {
+        $this->container['target_id'] = $target_id;
 
         return $this;
     }

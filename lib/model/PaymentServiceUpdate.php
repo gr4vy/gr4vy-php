@@ -62,22 +62,15 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'display_name' => 'string',
-        'fields' => '\Gr4vy\model\PaymentServiceUpdateFieldsInner[]',
+        'fields' => '\Gr4vy\model\PaymentServiceRequestFieldsInner[]',
         'accepted_countries' => 'string[]',
         'accepted_currencies' => 'string[]',
         'three_d_secure_enabled' => 'bool',
-        'acquirer_bin_visa' => 'string',
-        'acquirer_bin_mastercard' => 'string',
-        'acquirer_bin_amex' => 'string',
-        'acquirer_bin_discover' => 'string',
-        'acquirer_merchant_id' => 'string',
-        'merchant_name' => 'string',
-        'merchant_country_code' => 'string',
-        'merchant_category_code' => 'string',
-        'merchant_url' => 'string',
+        'merchant_profile' => '\Gr4vy\model\PaymentServiceUpdateMerchantProfile',
         'active' => 'bool',
-        'position' => 'float',
-        'payment_method_tokenization_enabled' => 'bool'
+        'open_loop' => 'bool',
+        'payment_method_tokenization_enabled' => 'bool',
+        'network_tokens_enabled' => 'bool'
     ];
 
     /**
@@ -93,18 +86,11 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         'accepted_countries' => null,
         'accepted_currencies' => null,
         'three_d_secure_enabled' => null,
-        'acquirer_bin_visa' => null,
-        'acquirer_bin_mastercard' => null,
-        'acquirer_bin_amex' => null,
-        'acquirer_bin_discover' => null,
-        'acquirer_merchant_id' => null,
-        'merchant_name' => null,
-        'merchant_country_code' => null,
-        'merchant_category_code' => null,
-        'merchant_url' => 'url',
+        'merchant_profile' => null,
         'active' => null,
-        'position' => null,
-        'payment_method_tokenization_enabled' => null
+        'open_loop' => null,
+        'payment_method_tokenization_enabled' => null,
+        'network_tokens_enabled' => null
     ];
 
     /**
@@ -139,18 +125,11 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         'accepted_countries' => 'accepted_countries',
         'accepted_currencies' => 'accepted_currencies',
         'three_d_secure_enabled' => 'three_d_secure_enabled',
-        'acquirer_bin_visa' => 'acquirer_bin_visa',
-        'acquirer_bin_mastercard' => 'acquirer_bin_mastercard',
-        'acquirer_bin_amex' => 'acquirer_bin_amex',
-        'acquirer_bin_discover' => 'acquirer_bin_discover',
-        'acquirer_merchant_id' => 'acquirer_merchant_id',
-        'merchant_name' => 'merchant_name',
-        'merchant_country_code' => 'merchant_country_code',
-        'merchant_category_code' => 'merchant_category_code',
-        'merchant_url' => 'merchant_url',
+        'merchant_profile' => 'merchant_profile',
         'active' => 'active',
-        'position' => 'position',
-        'payment_method_tokenization_enabled' => 'payment_method_tokenization_enabled'
+        'open_loop' => 'open_loop',
+        'payment_method_tokenization_enabled' => 'payment_method_tokenization_enabled',
+        'network_tokens_enabled' => 'network_tokens_enabled'
     ];
 
     /**
@@ -164,18 +143,11 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         'accepted_countries' => 'setAcceptedCountries',
         'accepted_currencies' => 'setAcceptedCurrencies',
         'three_d_secure_enabled' => 'setThreeDSecureEnabled',
-        'acquirer_bin_visa' => 'setAcquirerBinVisa',
-        'acquirer_bin_mastercard' => 'setAcquirerBinMastercard',
-        'acquirer_bin_amex' => 'setAcquirerBinAmex',
-        'acquirer_bin_discover' => 'setAcquirerBinDiscover',
-        'acquirer_merchant_id' => 'setAcquirerMerchantId',
-        'merchant_name' => 'setMerchantName',
-        'merchant_country_code' => 'setMerchantCountryCode',
-        'merchant_category_code' => 'setMerchantCategoryCode',
-        'merchant_url' => 'setMerchantUrl',
+        'merchant_profile' => 'setMerchantProfile',
         'active' => 'setActive',
-        'position' => 'setPosition',
-        'payment_method_tokenization_enabled' => 'setPaymentMethodTokenizationEnabled'
+        'open_loop' => 'setOpenLoop',
+        'payment_method_tokenization_enabled' => 'setPaymentMethodTokenizationEnabled',
+        'network_tokens_enabled' => 'setNetworkTokensEnabled'
     ];
 
     /**
@@ -189,18 +161,11 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         'accepted_countries' => 'getAcceptedCountries',
         'accepted_currencies' => 'getAcceptedCurrencies',
         'three_d_secure_enabled' => 'getThreeDSecureEnabled',
-        'acquirer_bin_visa' => 'getAcquirerBinVisa',
-        'acquirer_bin_mastercard' => 'getAcquirerBinMastercard',
-        'acquirer_bin_amex' => 'getAcquirerBinAmex',
-        'acquirer_bin_discover' => 'getAcquirerBinDiscover',
-        'acquirer_merchant_id' => 'getAcquirerMerchantId',
-        'merchant_name' => 'getMerchantName',
-        'merchant_country_code' => 'getMerchantCountryCode',
-        'merchant_category_code' => 'getMerchantCategoryCode',
-        'merchant_url' => 'getMerchantUrl',
+        'merchant_profile' => 'getMerchantProfile',
         'active' => 'getActive',
-        'position' => 'getPosition',
-        'payment_method_tokenization_enabled' => 'getPaymentMethodTokenizationEnabled'
+        'open_loop' => 'getOpenLoop',
+        'payment_method_tokenization_enabled' => 'getPaymentMethodTokenizationEnabled',
+        'network_tokens_enabled' => 'getNetworkTokensEnabled'
     ];
 
     /**
@@ -265,18 +230,11 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['accepted_countries'] = $data['accepted_countries'] ?? null;
         $this->container['accepted_currencies'] = $data['accepted_currencies'] ?? null;
         $this->container['three_d_secure_enabled'] = $data['three_d_secure_enabled'] ?? false;
-        $this->container['acquirer_bin_visa'] = $data['acquirer_bin_visa'] ?? null;
-        $this->container['acquirer_bin_mastercard'] = $data['acquirer_bin_mastercard'] ?? null;
-        $this->container['acquirer_bin_amex'] = $data['acquirer_bin_amex'] ?? null;
-        $this->container['acquirer_bin_discover'] = $data['acquirer_bin_discover'] ?? null;
-        $this->container['acquirer_merchant_id'] = $data['acquirer_merchant_id'] ?? null;
-        $this->container['merchant_name'] = $data['merchant_name'] ?? null;
-        $this->container['merchant_country_code'] = $data['merchant_country_code'] ?? null;
-        $this->container['merchant_category_code'] = $data['merchant_category_code'] ?? null;
-        $this->container['merchant_url'] = $data['merchant_url'] ?? null;
+        $this->container['merchant_profile'] = $data['merchant_profile'] ?? null;
         $this->container['active'] = $data['active'] ?? true;
-        $this->container['position'] = $data['position'] ?? null;
+        $this->container['open_loop'] = $data['open_loop'] ?? null;
         $this->container['payment_method_tokenization_enabled'] = $data['payment_method_tokenization_enabled'] ?? false;
+        $this->container['network_tokens_enabled'] = $data['network_tokens_enabled'] ?? null;
     }
 
     /**
@@ -302,46 +260,6 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
 
         if (!is_null($this->container['accepted_currencies']) && (count($this->container['accepted_currencies']) < 1)) {
             $invalidProperties[] = "invalid value for 'accepted_currencies', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['acquirer_bin_visa']) && (mb_strlen($this->container['acquirer_bin_visa']) > 11)) {
-            $invalidProperties[] = "invalid value for 'acquirer_bin_visa', the character length must be smaller than or equal to 11.";
-        }
-
-        if (!is_null($this->container['acquirer_bin_mastercard']) && (mb_strlen($this->container['acquirer_bin_mastercard']) > 11)) {
-            $invalidProperties[] = "invalid value for 'acquirer_bin_mastercard', the character length must be smaller than or equal to 11.";
-        }
-
-        if (!is_null($this->container['acquirer_bin_amex']) && (mb_strlen($this->container['acquirer_bin_amex']) > 11)) {
-            $invalidProperties[] = "invalid value for 'acquirer_bin_amex', the character length must be smaller than or equal to 11.";
-        }
-
-        if (!is_null($this->container['acquirer_bin_discover']) && (mb_strlen($this->container['acquirer_bin_discover']) > 11)) {
-            $invalidProperties[] = "invalid value for 'acquirer_bin_discover', the character length must be smaller than or equal to 11.";
-        }
-
-        if (!is_null($this->container['acquirer_merchant_id']) && (mb_strlen($this->container['acquirer_merchant_id']) > 35)) {
-            $invalidProperties[] = "invalid value for 'acquirer_merchant_id', the character length must be smaller than or equal to 35.";
-        }
-
-        if (!is_null($this->container['merchant_name']) && (mb_strlen($this->container['merchant_name']) > 40)) {
-            $invalidProperties[] = "invalid value for 'merchant_name', the character length must be smaller than or equal to 40.";
-        }
-
-        if (!is_null($this->container['merchant_country_code']) && !preg_match("/^\\d{3}$/", $this->container['merchant_country_code'])) {
-            $invalidProperties[] = "invalid value for 'merchant_country_code', must be conform to the pattern /^\\d{3}$/.";
-        }
-
-        if (!is_null($this->container['merchant_category_code']) && (mb_strlen($this->container['merchant_category_code']) > 4)) {
-            $invalidProperties[] = "invalid value for 'merchant_category_code', the character length must be smaller than or equal to 4.";
-        }
-
-        if (!is_null($this->container['merchant_category_code']) && (mb_strlen($this->container['merchant_category_code']) < 4)) {
-            $invalidProperties[] = "invalid value for 'merchant_category_code', the character length must be bigger than or equal to 4.";
-        }
-
-        if (!is_null($this->container['merchant_url']) && (mb_strlen($this->container['merchant_url']) > 2048)) {
-            $invalidProperties[] = "invalid value for 'merchant_url', the character length must be smaller than or equal to 2048.";
         }
 
         return $invalidProperties;
@@ -393,7 +311,7 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets fields
      *
-     * @return \Gr4vy\model\PaymentServiceUpdateFieldsInner[]|null
+     * @return \Gr4vy\model\PaymentServiceRequestFieldsInner[]|null
      */
     public function getFields()
     {
@@ -403,7 +321,7 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets fields
      *
-     * @param \Gr4vy\model\PaymentServiceUpdateFieldsInner[]|null $fields A list of fields, each containing a key-value pair for each field defined by the definition for this payment service e.g. for stripe-card `secret_key` is required and so must be sent within this field.
+     * @param \Gr4vy\model\PaymentServiceRequestFieldsInner[]|null $fields A list of fields, each containing a key-value pair for each field defined by the definition for this payment service e.g. for stripe-card `secret_key` is required and so must be sent within this field.
      *
      * @return self
      */
@@ -497,257 +415,25 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets acquirer_bin_visa
+     * Gets merchant_profile
      *
-     * @return string|null
+     * @return \Gr4vy\model\PaymentServiceUpdateMerchantProfile|null
      */
-    public function getAcquirerBinVisa()
+    public function getMerchantProfile()
     {
-        return $this->container['acquirer_bin_visa'];
+        return $this->container['merchant_profile'];
     }
 
     /**
-     * Sets acquirer_bin_visa
+     * Sets merchant_profile
      *
-     * @param string|null $acquirer_bin_visa Acquiring institution identification code for VISA.
+     * @param \Gr4vy\model\PaymentServiceUpdateMerchantProfile|null $merchant_profile merchant_profile
      *
      * @return self
      */
-    public function setAcquirerBinVisa($acquirer_bin_visa)
+    public function setMerchantProfile($merchant_profile)
     {
-        if (!is_null($acquirer_bin_visa) && (mb_strlen($acquirer_bin_visa) > 11)) {
-            throw new \InvalidArgumentException('invalid length for $acquirer_bin_visa when calling PaymentServiceUpdate., must be smaller than or equal to 11.');
-        }
-
-        $this->container['acquirer_bin_visa'] = $acquirer_bin_visa;
-
-        return $this;
-    }
-
-    /**
-     * Gets acquirer_bin_mastercard
-     *
-     * @return string|null
-     */
-    public function getAcquirerBinMastercard()
-    {
-        return $this->container['acquirer_bin_mastercard'];
-    }
-
-    /**
-     * Sets acquirer_bin_mastercard
-     *
-     * @param string|null $acquirer_bin_mastercard Acquiring institution identification code for Mastercard.
-     *
-     * @return self
-     */
-    public function setAcquirerBinMastercard($acquirer_bin_mastercard)
-    {
-        if (!is_null($acquirer_bin_mastercard) && (mb_strlen($acquirer_bin_mastercard) > 11)) {
-            throw new \InvalidArgumentException('invalid length for $acquirer_bin_mastercard when calling PaymentServiceUpdate., must be smaller than or equal to 11.');
-        }
-
-        $this->container['acquirer_bin_mastercard'] = $acquirer_bin_mastercard;
-
-        return $this;
-    }
-
-    /**
-     * Gets acquirer_bin_amex
-     *
-     * @return string|null
-     */
-    public function getAcquirerBinAmex()
-    {
-        return $this->container['acquirer_bin_amex'];
-    }
-
-    /**
-     * Sets acquirer_bin_amex
-     *
-     * @param string|null $acquirer_bin_amex Acquiring institution identification code for Amex.
-     *
-     * @return self
-     */
-    public function setAcquirerBinAmex($acquirer_bin_amex)
-    {
-        if (!is_null($acquirer_bin_amex) && (mb_strlen($acquirer_bin_amex) > 11)) {
-            throw new \InvalidArgumentException('invalid length for $acquirer_bin_amex when calling PaymentServiceUpdate., must be smaller than or equal to 11.');
-        }
-
-        $this->container['acquirer_bin_amex'] = $acquirer_bin_amex;
-
-        return $this;
-    }
-
-    /**
-     * Gets acquirer_bin_discover
-     *
-     * @return string|null
-     */
-    public function getAcquirerBinDiscover()
-    {
-        return $this->container['acquirer_bin_discover'];
-    }
-
-    /**
-     * Sets acquirer_bin_discover
-     *
-     * @param string|null $acquirer_bin_discover Acquiring institution identification code for Discover.
-     *
-     * @return self
-     */
-    public function setAcquirerBinDiscover($acquirer_bin_discover)
-    {
-        if (!is_null($acquirer_bin_discover) && (mb_strlen($acquirer_bin_discover) > 11)) {
-            throw new \InvalidArgumentException('invalid length for $acquirer_bin_discover when calling PaymentServiceUpdate., must be smaller than or equal to 11.');
-        }
-
-        $this->container['acquirer_bin_discover'] = $acquirer_bin_discover;
-
-        return $this;
-    }
-
-    /**
-     * Gets acquirer_merchant_id
-     *
-     * @return string|null
-     */
-    public function getAcquirerMerchantId()
-    {
-        return $this->container['acquirer_merchant_id'];
-    }
-
-    /**
-     * Sets acquirer_merchant_id
-     *
-     * @param string|null $acquirer_merchant_id Merchant identifier used in authorisation requests (assigned by the acquirer).
-     *
-     * @return self
-     */
-    public function setAcquirerMerchantId($acquirer_merchant_id)
-    {
-        if (!is_null($acquirer_merchant_id) && (mb_strlen($acquirer_merchant_id) > 35)) {
-            throw new \InvalidArgumentException('invalid length for $acquirer_merchant_id when calling PaymentServiceUpdate., must be smaller than or equal to 35.');
-        }
-
-        $this->container['acquirer_merchant_id'] = $acquirer_merchant_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets merchant_name
-     *
-     * @return string|null
-     */
-    public function getMerchantName()
-    {
-        return $this->container['merchant_name'];
-    }
-
-    /**
-     * Sets merchant_name
-     *
-     * @param string|null $merchant_name Merchant name (assigned by the acquirer).
-     *
-     * @return self
-     */
-    public function setMerchantName($merchant_name)
-    {
-        if (!is_null($merchant_name) && (mb_strlen($merchant_name) > 40)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_name when calling PaymentServiceUpdate., must be smaller than or equal to 40.');
-        }
-
-        $this->container['merchant_name'] = $merchant_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets merchant_country_code
-     *
-     * @return string|null
-     */
-    public function getMerchantCountryCode()
-    {
-        return $this->container['merchant_country_code'];
-    }
-
-    /**
-     * Sets merchant_country_code
-     *
-     * @param string|null $merchant_country_code ISO 3166-1 numeric three-digit country code.
-     *
-     * @return self
-     */
-    public function setMerchantCountryCode($merchant_country_code)
-    {
-
-        if (!is_null($merchant_country_code) && (!preg_match("/^\\d{3}$/", $merchant_country_code))) {
-            throw new \InvalidArgumentException("invalid value for $merchant_country_code when calling PaymentServiceUpdate., must conform to the pattern /^\\d{3}$/.");
-        }
-
-        $this->container['merchant_country_code'] = $merchant_country_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets merchant_category_code
-     *
-     * @return string|null
-     */
-    public function getMerchantCategoryCode()
-    {
-        return $this->container['merchant_category_code'];
-    }
-
-    /**
-     * Sets merchant_category_code
-     *
-     * @param string|null $merchant_category_code Merchant category code that describes the business.
-     *
-     * @return self
-     */
-    public function setMerchantCategoryCode($merchant_category_code)
-    {
-        if (!is_null($merchant_category_code) && (mb_strlen($merchant_category_code) > 4)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_category_code when calling PaymentServiceUpdate., must be smaller than or equal to 4.');
-        }
-        if (!is_null($merchant_category_code) && (mb_strlen($merchant_category_code) < 4)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_category_code when calling PaymentServiceUpdate., must be bigger than or equal to 4.');
-        }
-
-        $this->container['merchant_category_code'] = $merchant_category_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets merchant_url
-     *
-     * @return string|null
-     */
-    public function getMerchantUrl()
-    {
-        return $this->container['merchant_url'];
-    }
-
-    /**
-     * Sets merchant_url
-     *
-     * @param string|null $merchant_url Fully qualified URL of 3-D Secure requestor website or customer care site.
-     *
-     * @return self
-     */
-    public function setMerchantUrl($merchant_url)
-    {
-        if (!is_null($merchant_url) && (mb_strlen($merchant_url) > 2048)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_url when calling PaymentServiceUpdate., must be smaller than or equal to 2048.');
-        }
-
-        $this->container['merchant_url'] = $merchant_url;
+        $this->container['merchant_profile'] = $merchant_profile;
 
         return $this;
     }
@@ -777,25 +463,25 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets position
+     * Gets open_loop
      *
-     * @return float|null
+     * @return bool|null
      */
-    public function getPosition()
+    public function getOpenLoop()
     {
-        return $this->container['position'];
+        return $this->container['open_loop'];
     }
 
     /**
-     * Sets position
+     * Sets open_loop
      *
-     * @param float|null $position The numeric rank of a payment service. Payment services with a lower position value are processed first. When a payment services is inserted at a position, any payment services with the the same value or higher are shifted down a position accordingly. When left out, the payment service is inserted at the end of the list.
+     * @param bool|null $open_loop Defines if the service works as an open-loop service. This feature can only be enabled if the PSP is set up to accept previous scheme transaction IDs.  If this value is set to `null`, it will be set to the value of `open_loop` in the payment service definition.  If `open_loop_toggle` is `false` in the payment service definition, `open_loop` should either not be provided or set to `null`, or it will fail with a validation error.
      *
      * @return self
      */
-    public function setPosition($position)
+    public function setOpenLoop($open_loop)
     {
-        $this->container['position'] = $position;
+        $this->container['open_loop'] = $open_loop;
 
         return $this;
     }
@@ -813,13 +499,37 @@ class PaymentServiceUpdate implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets payment_method_tokenization_enabled
      *
-     * @param bool|null $payment_method_tokenization_enabled Defines if tokenization is enabled for the service (can only be enabled if the payment service definition supports it).
+     * @param bool|null $payment_method_tokenization_enabled Defines if tokenization is enabled for the service. This feature can only be enabled if the payment service is NOT set as `open_loop` and the PSP is set up to tokenize.
      *
      * @return self
      */
     public function setPaymentMethodTokenizationEnabled($payment_method_tokenization_enabled)
     {
         $this->container['payment_method_tokenization_enabled'] = $payment_method_tokenization_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets network_tokens_enabled
+     *
+     * @return bool|null
+     */
+    public function getNetworkTokensEnabled()
+    {
+        return $this->container['network_tokens_enabled'];
+    }
+
+    /**
+     * Sets network_tokens_enabled
+     *
+     * @param bool|null $network_tokens_enabled Defines if network tokens are enabled for the service. This feature can only be enabled if the payment service is set as `open_loop` and the PSP is set up to accept network tokens.  If this value is set to `null`, it will be set to the value of `network_tokens_default` in the payment service definition.  If `network_tokens_toggle` is `false` in the payment service definition, `network_tokens_enabled` should either not be provided or set to `null`, or it will fail with a validation error.
+     *
+     * @return self
+     */
+    public function setNetworkTokensEnabled($network_tokens_enabled)
+    {
+        $this->container['network_tokens_enabled'] = $network_tokens_enabled;
 
         return $this;
     }

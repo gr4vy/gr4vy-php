@@ -117,351 +117,6 @@ class BuyersApi
     }
 
     /**
-     * Operation addBuyer
-     *
-     * New buyer
-     *
-     * @param  \Gr4vy\model\BuyerRequest $buyer_request buyer_request (optional)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord
-     */
-    public function addBuyer($buyer_request = null)
-    {
-        list($response) = $this->addBuyerWithHttpInfo($buyer_request);
-        return $response;
-    }
-
-    /**
-     * Operation addBuyerWithHttpInfo
-     *
-     * New buyer
-     *
-     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
-     *
-     * @throws \Gr4vy\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function addBuyerWithHttpInfo($buyer_request = null)
-    {
-        $request = $this->addBuyerRequest($buyer_request);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\Gr4vy\model\Buyer' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Buyer' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Buyer', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 409:
-                    if ('\Gr4vy\model\Error409DuplicateRecord' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Gr4vy\model\Error409DuplicateRecord' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error409DuplicateRecord', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Gr4vy\model\Buyer';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Buyer',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\ErrorGeneric',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error401Unauthorized',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gr4vy\model\Error409DuplicateRecord',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation addBuyerAsync
-     *
-     * New buyer
-     *
-     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function addBuyerAsync($buyer_request = null)
-    {
-        return $this->addBuyerAsyncWithHttpInfo($buyer_request)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation addBuyerAsyncWithHttpInfo
-     *
-     * New buyer
-     *
-     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function addBuyerAsyncWithHttpInfo($buyer_request = null)
-    {
-        $returnType = '\Gr4vy\model\Buyer';
-        $request = $this->addBuyerRequest($buyer_request);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'addBuyer'
-     *
-     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function addBuyerRequest($buyer_request = null)
-    {
-
-        $resourcePath = '/buyers';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($buyer_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($buyer_request));
-            } else {
-                $httpBody = $buyer_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation deleteBuyer
      *
      * Delete buyer
@@ -641,6 +296,271 @@ class BuyersApi
             $resourcePath = str_replace(
                 '{' . 'buyer_id' . '}',
                 ObjectSerializer::toPathValue($buyer_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteBuyerShippingDetail
+     *
+     * Delete buyer shipping detail
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $shipping_detail_id The unique ID for a buyer&#39;s shipping detail. (required)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteBuyerShippingDetail($buyer_id, $shipping_detail_id)
+    {
+        $this->deleteBuyerShippingDetailWithHttpInfo($buyer_id, $shipping_detail_id);
+    }
+
+    /**
+     * Operation deleteBuyerShippingDetailWithHttpInfo
+     *
+     * Delete buyer shipping detail
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $shipping_detail_id The unique ID for a buyer&#39;s shipping detail. (required)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteBuyerShippingDetailWithHttpInfo($buyer_id, $shipping_detail_id)
+    {
+        $request = $this->deleteBuyerShippingDetailRequest($buyer_id, $shipping_detail_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error404NotFound',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteBuyerShippingDetailAsync
+     *
+     * Delete buyer shipping detail
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $shipping_detail_id The unique ID for a buyer&#39;s shipping detail. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteBuyerShippingDetailAsync($buyer_id, $shipping_detail_id)
+    {
+        return $this->deleteBuyerShippingDetailAsyncWithHttpInfo($buyer_id, $shipping_detail_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteBuyerShippingDetailAsyncWithHttpInfo
+     *
+     * Delete buyer shipping detail
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $shipping_detail_id The unique ID for a buyer&#39;s shipping detail. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteBuyerShippingDetailAsyncWithHttpInfo($buyer_id, $shipping_detail_id)
+    {
+        $returnType = '';
+        $request = $this->deleteBuyerShippingDetailRequest($buyer_id, $shipping_detail_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteBuyerShippingDetail'
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $shipping_detail_id The unique ID for a buyer&#39;s shipping detail. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteBuyerShippingDetailRequest($buyer_id, $shipping_detail_id)
+    {
+        // verify the required parameter 'buyer_id' is set
+        if ($buyer_id === null || (is_array($buyer_id) && count($buyer_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $buyer_id when calling deleteBuyerShippingDetail'
+            );
+        }
+        // verify the required parameter 'shipping_detail_id' is set
+        if ($shipping_detail_id === null || (is_array($shipping_detail_id) && count($shipping_detail_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $shipping_detail_id when calling deleteBuyerShippingDetail'
+            );
+        }
+
+        $resourcePath = '/buyers/{buyer_id}/shipping-details/{shipping_detail_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($buyer_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'buyer_id' . '}',
+                ObjectSerializer::toPathValue($buyer_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($shipping_detail_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'shipping_detail_id' . '}',
+                ObjectSerializer::toPathValue($shipping_detail_id),
                 $resourcePath
             );
         }
@@ -1061,11 +981,342 @@ class BuyersApi
     }
 
     /**
+     * Operation listBuyerShippingDetails
+     *
+     * List buyer shipping details
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\ShippingDetails|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\ErrorGeneric
+     */
+    public function listBuyerShippingDetails($buyer_id)
+    {
+        list($response) = $this->listBuyerShippingDetailsWithHttpInfo($buyer_id);
+        return $response;
+    }
+
+    /**
+     * Operation listBuyerShippingDetailsWithHttpInfo
+     *
+     * List buyer shipping details
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\ShippingDetails|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\ErrorGeneric, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listBuyerShippingDetailsWithHttpInfo($buyer_id)
+    {
+        $request = $this->listBuyerShippingDetailsRequest($buyer_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Gr4vy\model\ShippingDetails' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ShippingDetails' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ShippingDetails', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\ShippingDetails';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ShippingDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ErrorGeneric',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listBuyerShippingDetailsAsync
+     *
+     * List buyer shipping details
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listBuyerShippingDetailsAsync($buyer_id)
+    {
+        return $this->listBuyerShippingDetailsAsyncWithHttpInfo($buyer_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listBuyerShippingDetailsAsyncWithHttpInfo
+     *
+     * List buyer shipping details
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listBuyerShippingDetailsAsyncWithHttpInfo($buyer_id)
+    {
+        $returnType = '\Gr4vy\model\ShippingDetails';
+        $request = $this->listBuyerShippingDetailsRequest($buyer_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listBuyerShippingDetails'
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listBuyerShippingDetailsRequest($buyer_id)
+    {
+        // verify the required parameter 'buyer_id' is set
+        if ($buyer_id === null || (is_array($buyer_id) && count($buyer_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $buyer_id when calling listBuyerShippingDetails'
+            );
+        }
+
+        $resourcePath = '/buyers/{buyer_id}/shipping-details';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($buyer_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'buyer_id' . '}',
+                ObjectSerializer::toPathValue($buyer_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listBuyers
      *
      * List buyers
      *
-     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches. (optional)
+     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches.  Please do not use this query parameter in a production application, as this API call is very inefficient and may negatively impact transaction performance. (optional) (deprecated)
+     * @param  string $external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that exactly matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1073,9 +1324,9 @@ class BuyersApi
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\Buyers|\Gr4vy\model\Error401Unauthorized
      */
-    public function listBuyers($search = null, $limit = 20, $cursor = null)
+    public function listBuyers($search = null, $external_identifier = null, $limit = 20, $cursor = null)
     {
-        list($response) = $this->listBuyersWithHttpInfo($search, $limit, $cursor);
+        list($response) = $this->listBuyersWithHttpInfo($search, $external_identifier, $limit, $cursor);
         return $response;
     }
 
@@ -1084,7 +1335,8 @@ class BuyersApi
      *
      * List buyers
      *
-     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches. (optional)
+     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches.  Please do not use this query parameter in a production application, as this API call is very inefficient and may negatively impact transaction performance. (optional) (deprecated)
+     * @param  string $external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that exactly matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1092,9 +1344,9 @@ class BuyersApi
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\Buyers|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listBuyersWithHttpInfo($search = null, $limit = 20, $cursor = null)
+    public function listBuyersWithHttpInfo($search = null, $external_identifier = null, $limit = 20, $cursor = null)
     {
-        $request = $this->listBuyersRequest($search, $limit, $cursor);
+        $request = $this->listBuyersRequest($search, $external_identifier, $limit, $cursor);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1208,16 +1460,17 @@ class BuyersApi
      *
      * List buyers
      *
-     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches. (optional)
+     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches.  Please do not use this query parameter in a production application, as this API call is very inefficient and may negatively impact transaction performance. (optional) (deprecated)
+     * @param  string $external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that exactly matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listBuyersAsync($search = null, $limit = 20, $cursor = null)
+    public function listBuyersAsync($search = null, $external_identifier = null, $limit = 20, $cursor = null)
     {
-        return $this->listBuyersAsyncWithHttpInfo($search, $limit, $cursor)
+        return $this->listBuyersAsyncWithHttpInfo($search, $external_identifier, $limit, $cursor)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1230,17 +1483,18 @@ class BuyersApi
      *
      * List buyers
      *
-     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches. (optional)
+     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches.  Please do not use this query parameter in a production application, as this API call is very inefficient and may negatively impact transaction performance. (optional) (deprecated)
+     * @param  string $external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that exactly matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listBuyersAsyncWithHttpInfo($search = null, $limit = 20, $cursor = null)
+    public function listBuyersAsyncWithHttpInfo($search = null, $external_identifier = null, $limit = 20, $cursor = null)
     {
         $returnType = '\Gr4vy\model\Buyers';
-        $request = $this->listBuyersRequest($search, $limit, $cursor);
+        $request = $this->listBuyersRequest($search, $external_identifier, $limit, $cursor);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1281,14 +1535,15 @@ class BuyersApi
     /**
      * Create request for operation 'listBuyers'
      *
-     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches. (optional)
+     * @param  string $search Filters the results to only the buyers for which the &#x60;display_name&#x60; or &#x60;external_identifier&#x60; matches this value. This field allows for a partial match, matching any buyer for which either of the fields partially or completely matches.  Please do not use this query parameter in a production application, as this API call is very inefficient and may negatively impact transaction performance. (optional) (deprecated)
+     * @param  string $external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that exactly matches this value. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listBuyersRequest($search = null, $limit = 20, $cursor = null)
+    public function listBuyersRequest($search = null, $external_identifier = null, $limit = 20, $cursor = null)
     {
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling BuyersApi.listBuyers, must be smaller than or equal to 100.');
@@ -1309,6 +1564,15 @@ class BuyersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $search,
             'search', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $external_identifier,
+            'external_identifier', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1398,6 +1662,692 @@ class BuyersApi
     }
 
     /**
+     * Operation newBuyer
+     *
+     * New buyer
+     *
+     * @param  \Gr4vy\model\BuyerRequest $buyer_request buyer_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord
+     */
+    public function newBuyer($buyer_request = null)
+    {
+        list($response) = $this->newBuyerWithHttpInfo($buyer_request);
+        return $response;
+    }
+
+    /**
+     * Operation newBuyerWithHttpInfo
+     *
+     * New buyer
+     *
+     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function newBuyerWithHttpInfo($buyer_request = null)
+    {
+        $request = $this->newBuyerRequest($buyer_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\Gr4vy\model\Buyer' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Buyer' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Buyer', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\Gr4vy\model\Error409DuplicateRecord' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error409DuplicateRecord' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error409DuplicateRecord', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\Buyer';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Buyer',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ErrorGeneric',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error409DuplicateRecord',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation newBuyerAsync
+     *
+     * New buyer
+     *
+     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function newBuyerAsync($buyer_request = null)
+    {
+        return $this->newBuyerAsyncWithHttpInfo($buyer_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation newBuyerAsyncWithHttpInfo
+     *
+     * New buyer
+     *
+     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function newBuyerAsyncWithHttpInfo($buyer_request = null)
+    {
+        $returnType = '\Gr4vy\model\Buyer';
+        $request = $this->newBuyerRequest($buyer_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'newBuyer'
+     *
+     * @param  \Gr4vy\model\BuyerRequest $buyer_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function newBuyerRequest($buyer_request = null)
+    {
+
+        $resourcePath = '/buyers';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($buyer_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($buyer_request));
+            } else {
+                $httpBody = $buyer_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation newBuyerShippingDetail
+     *
+     * New buyer shipping detail
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  \Gr4vy\model\ShippingDetailRequest $shipping_detail_request shipping_detail_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\ShippingDetail|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized
+     */
+    public function newBuyerShippingDetail($buyer_id, $shipping_detail_request = null)
+    {
+        list($response) = $this->newBuyerShippingDetailWithHttpInfo($buyer_id, $shipping_detail_request);
+        return $response;
+    }
+
+    /**
+     * Operation newBuyerShippingDetailWithHttpInfo
+     *
+     * New buyer shipping detail
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  \Gr4vy\model\ShippingDetailRequest $shipping_detail_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\ShippingDetail|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function newBuyerShippingDetailWithHttpInfo($buyer_id, $shipping_detail_request = null)
+    {
+        $request = $this->newBuyerShippingDetailRequest($buyer_id, $shipping_detail_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\Gr4vy\model\ShippingDetail' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ShippingDetail' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ShippingDetail', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\ShippingDetail';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ShippingDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ErrorGeneric',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation newBuyerShippingDetailAsync
+     *
+     * New buyer shipping detail
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  \Gr4vy\model\ShippingDetailRequest $shipping_detail_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function newBuyerShippingDetailAsync($buyer_id, $shipping_detail_request = null)
+    {
+        return $this->newBuyerShippingDetailAsyncWithHttpInfo($buyer_id, $shipping_detail_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation newBuyerShippingDetailAsyncWithHttpInfo
+     *
+     * New buyer shipping detail
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  \Gr4vy\model\ShippingDetailRequest $shipping_detail_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function newBuyerShippingDetailAsyncWithHttpInfo($buyer_id, $shipping_detail_request = null)
+    {
+        $returnType = '\Gr4vy\model\ShippingDetail';
+        $request = $this->newBuyerShippingDetailRequest($buyer_id, $shipping_detail_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'newBuyerShippingDetail'
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  \Gr4vy\model\ShippingDetailRequest $shipping_detail_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function newBuyerShippingDetailRequest($buyer_id, $shipping_detail_request = null)
+    {
+        // verify the required parameter 'buyer_id' is set
+        if ($buyer_id === null || (is_array($buyer_id) && count($buyer_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $buyer_id when calling newBuyerShippingDetail'
+            );
+        }
+
+        $resourcePath = '/buyers/{buyer_id}/shipping-details';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($buyer_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'buyer_id' . '}',
+                ObjectSerializer::toPathValue($buyer_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($shipping_detail_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($shipping_detail_request));
+            } else {
+                $httpBody = $shipping_detail_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateBuyer
      *
      * Update buyer
@@ -1407,7 +2357,7 @@ class BuyersApi
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
+     * @return \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound|\Gr4vy\model\Error409DuplicateRecord
      */
     public function updateBuyer($buyer_id, $buyer_update = null)
     {
@@ -1425,7 +2375,7 @@ class BuyersApi
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gr4vy\model\Buyer|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound|\Gr4vy\model\Error409DuplicateRecord, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateBuyerWithHttpInfo($buyer_id, $buyer_update = null)
     {
@@ -1527,6 +2477,21 @@ class BuyersApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 409:
+                    if ('\Gr4vy\model\Error409DuplicateRecord' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error409DuplicateRecord' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error409DuplicateRecord', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\Gr4vy\model\Buyer';
@@ -1575,6 +2540,14 @@ class BuyersApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Gr4vy\model\Error404NotFound',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error409DuplicateRecord',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1711,6 +2684,389 @@ class BuyersApi
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($buyer_update));
             } else {
                 $httpBody = $buyer_update;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateBuyerShippingDetail
+     *
+     * Update buyer shipping details
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $shipping_detail_id The unique ID for a buyer&#39;s shipping detail. (required)
+     * @param  \Gr4vy\model\ShippingDetailUpdateRequest $shipping_detail_update_request shipping_detail_update_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Gr4vy\model\ShippingDetail|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound
+     */
+    public function updateBuyerShippingDetail($buyer_id, $shipping_detail_id, $shipping_detail_update_request = null)
+    {
+        list($response) = $this->updateBuyerShippingDetailWithHttpInfo($buyer_id, $shipping_detail_id, $shipping_detail_update_request);
+        return $response;
+    }
+
+    /**
+     * Operation updateBuyerShippingDetailWithHttpInfo
+     *
+     * Update buyer shipping details
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $shipping_detail_id The unique ID for a buyer&#39;s shipping detail. (required)
+     * @param  \Gr4vy\model\ShippingDetailUpdateRequest $shipping_detail_update_request (optional)
+     *
+     * @throws \Gr4vy\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Gr4vy\model\ShippingDetail|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error404NotFound, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateBuyerShippingDetailWithHttpInfo($buyer_id, $shipping_detail_id, $shipping_detail_update_request = null)
+    {
+        $request = $this->updateBuyerShippingDetailRequest($buyer_id, $shipping_detail_id, $shipping_detail_update_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Gr4vy\model\ShippingDetail' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ShippingDetail' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ShippingDetail', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Gr4vy\model\ErrorGeneric' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\ErrorGeneric' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\ErrorGeneric', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Gr4vy\model\Error401Unauthorized' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error401Unauthorized' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error401Unauthorized', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Gr4vy\model\Error404NotFound' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error404NotFound' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error404NotFound', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Gr4vy\model\ShippingDetail';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ShippingDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\ErrorGeneric',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error401Unauthorized',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error404NotFound',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateBuyerShippingDetailAsync
+     *
+     * Update buyer shipping details
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $shipping_detail_id The unique ID for a buyer&#39;s shipping detail. (required)
+     * @param  \Gr4vy\model\ShippingDetailUpdateRequest $shipping_detail_update_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateBuyerShippingDetailAsync($buyer_id, $shipping_detail_id, $shipping_detail_update_request = null)
+    {
+        return $this->updateBuyerShippingDetailAsyncWithHttpInfo($buyer_id, $shipping_detail_id, $shipping_detail_update_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateBuyerShippingDetailAsyncWithHttpInfo
+     *
+     * Update buyer shipping details
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $shipping_detail_id The unique ID for a buyer&#39;s shipping detail. (required)
+     * @param  \Gr4vy\model\ShippingDetailUpdateRequest $shipping_detail_update_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateBuyerShippingDetailAsyncWithHttpInfo($buyer_id, $shipping_detail_id, $shipping_detail_update_request = null)
+    {
+        $returnType = '\Gr4vy\model\ShippingDetail';
+        $request = $this->updateBuyerShippingDetailRequest($buyer_id, $shipping_detail_id, $shipping_detail_update_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateBuyerShippingDetail'
+     *
+     * @param  string $buyer_id The unique ID for a buyer. (required)
+     * @param  string $shipping_detail_id The unique ID for a buyer&#39;s shipping detail. (required)
+     * @param  \Gr4vy\model\ShippingDetailUpdateRequest $shipping_detail_update_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateBuyerShippingDetailRequest($buyer_id, $shipping_detail_id, $shipping_detail_update_request = null)
+    {
+        // verify the required parameter 'buyer_id' is set
+        if ($buyer_id === null || (is_array($buyer_id) && count($buyer_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $buyer_id when calling updateBuyerShippingDetail'
+            );
+        }
+        // verify the required parameter 'shipping_detail_id' is set
+        if ($shipping_detail_id === null || (is_array($shipping_detail_id) && count($shipping_detail_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $shipping_detail_id when calling updateBuyerShippingDetail'
+            );
+        }
+
+        $resourcePath = '/buyers/{buyer_id}/shipping-details/{shipping_detail_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($buyer_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'buyer_id' . '}',
+                ObjectSerializer::toPathValue($buyer_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($shipping_detail_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'shipping_detail_id' . '}',
+                ObjectSerializer::toPathValue($shipping_detail_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($shipping_detail_update_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($shipping_detail_update_request));
+            } else {
+                $httpBody = $shipping_detail_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

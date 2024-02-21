@@ -64,6 +64,7 @@ class AntiFraudServiceCreate implements ModelInterface, ArrayAccess, \JsonSerial
         'anti_fraud_service_definition_id' => 'string',
         'display_name' => 'string',
         'active' => 'bool',
+        'reviews_enabled' => 'bool',
         'fields' => '\Gr4vy\model\AntiFraudServiceUpdateFieldsInner[]'
     ];
 
@@ -78,6 +79,7 @@ class AntiFraudServiceCreate implements ModelInterface, ArrayAccess, \JsonSerial
         'anti_fraud_service_definition_id' => null,
         'display_name' => null,
         'active' => null,
+        'reviews_enabled' => null,
         'fields' => null
     ];
 
@@ -111,6 +113,7 @@ class AntiFraudServiceCreate implements ModelInterface, ArrayAccess, \JsonSerial
         'anti_fraud_service_definition_id' => 'anti_fraud_service_definition_id',
         'display_name' => 'display_name',
         'active' => 'active',
+        'reviews_enabled' => 'reviews_enabled',
         'fields' => 'fields'
     ];
 
@@ -123,6 +126,7 @@ class AntiFraudServiceCreate implements ModelInterface, ArrayAccess, \JsonSerial
         'anti_fraud_service_definition_id' => 'setAntiFraudServiceDefinitionId',
         'display_name' => 'setDisplayName',
         'active' => 'setActive',
+        'reviews_enabled' => 'setReviewsEnabled',
         'fields' => 'setFields'
     ];
 
@@ -135,6 +139,7 @@ class AntiFraudServiceCreate implements ModelInterface, ArrayAccess, \JsonSerial
         'anti_fraud_service_definition_id' => 'getAntiFraudServiceDefinitionId',
         'display_name' => 'getDisplayName',
         'active' => 'getActive',
+        'reviews_enabled' => 'getReviewsEnabled',
         'fields' => 'getFields'
     ];
 
@@ -179,8 +184,9 @@ class AntiFraudServiceCreate implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    public const ANTI_FRAUD_SERVICE_DEFINITION_ID_SIFT = 'sift';
-    public const ANTI_FRAUD_SERVICE_DEFINITION_ID_CYBERSOURCE = 'cybersource';
+    public const ANTI_FRAUD_SERVICE_DEFINITION_ID_CYBERSOURCE_ANTI_FRAUD = 'cybersource-anti-fraud';
+    public const ANTI_FRAUD_SERVICE_DEFINITION_ID_FORTER_ANTI_FRAUD = 'forter-anti-fraud';
+    public const ANTI_FRAUD_SERVICE_DEFINITION_ID_SIFT_ANTI_FRAUD = 'sift-anti-fraud';
 
     /**
      * Gets allowable values of the enum
@@ -190,8 +196,9 @@ class AntiFraudServiceCreate implements ModelInterface, ArrayAccess, \JsonSerial
     public function getAntiFraudServiceDefinitionIdAllowableValues()
     {
         return [
-            self::ANTI_FRAUD_SERVICE_DEFINITION_ID_SIFT,
-            self::ANTI_FRAUD_SERVICE_DEFINITION_ID_CYBERSOURCE,
+            self::ANTI_FRAUD_SERVICE_DEFINITION_ID_CYBERSOURCE_ANTI_FRAUD,
+            self::ANTI_FRAUD_SERVICE_DEFINITION_ID_FORTER_ANTI_FRAUD,
+            self::ANTI_FRAUD_SERVICE_DEFINITION_ID_SIFT_ANTI_FRAUD,
         ];
     }
 
@@ -213,6 +220,7 @@ class AntiFraudServiceCreate implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['anti_fraud_service_definition_id'] = $data['anti_fraud_service_definition_id'] ?? null;
         $this->container['display_name'] = $data['display_name'] ?? null;
         $this->container['active'] = $data['active'] ?? true;
+        $this->container['reviews_enabled'] = $data['reviews_enabled'] ?? false;
         $this->container['fields'] = $data['fields'] ?? null;
     }
 
@@ -344,13 +352,37 @@ class AntiFraudServiceCreate implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets active
      *
-     * @param bool|null $active Defines if this service is currently active or not.
+     * @param bool|null $active Defines if this service is currently active or not. There can only be one active service at any time. When updating a service to active, the current active service will be deactivated.
      *
      * @return self
      */
     public function setActive($active)
     {
         $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets reviews_enabled
+     *
+     * @return bool|null
+     */
+    public function getReviewsEnabled()
+    {
+        return $this->container['reviews_enabled'];
+    }
+
+    /**
+     * Sets reviews_enabled
+     *
+     * @param bool|null $reviews_enabled Defines if this service needs to handle the review status from anti-fraud responses with a proper review workflow. If not, the review status will be treated as any other one.
+     *
+     * @return self
+     */
+    public function setReviewsEnabled($reviews_enabled)
+    {
+        $this->container['reviews_enabled'] = $reviews_enabled;
 
         return $this;
     }
@@ -368,7 +400,7 @@ class AntiFraudServiceCreate implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets fields
      *
-     * @param \Gr4vy\model\AntiFraudServiceUpdateFieldsInner[] $fields A list of fields, each containing a key-value pair for each field defined by the definition for this anti-fraud service e.g. for sift `api_key` must be sent within this field when creating the service.  For updates, only the fields sent here will be updated, existing ones will not be affected if not present.
+     * @param \Gr4vy\model\AntiFraudServiceUpdateFieldsInner[] $fields A list of fields, each containing a key-value pair for each field defined by the definition for this anti-fraud service e.g. for Sift `api_key` must be sent within this field when creating the service.  For updates, only the fields sent here will be updated, existing ones will not be affected if not present.
      *
      * @return self
      */

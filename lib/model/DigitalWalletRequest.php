@@ -64,6 +64,8 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'provider' => 'string',
         'merchant_name' => 'string',
         'merchant_url' => 'string',
+        'merchant_display_name' => 'string',
+        'merchant_country_code' => 'string',
         'domain_names' => 'string[]',
         'accept_terms_and_conditions' => 'bool'
     ];
@@ -79,6 +81,8 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'provider' => null,
         'merchant_name' => null,
         'merchant_url' => 'url',
+        'merchant_display_name' => null,
+        'merchant_country_code' => null,
         'domain_names' => null,
         'accept_terms_and_conditions' => null
     ];
@@ -113,6 +117,8 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'provider' => 'provider',
         'merchant_name' => 'merchant_name',
         'merchant_url' => 'merchant_url',
+        'merchant_display_name' => 'merchant_display_name',
+        'merchant_country_code' => 'merchant_country_code',
         'domain_names' => 'domain_names',
         'accept_terms_and_conditions' => 'accept_terms_and_conditions'
     ];
@@ -126,6 +132,8 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'provider' => 'setProvider',
         'merchant_name' => 'setMerchantName',
         'merchant_url' => 'setMerchantUrl',
+        'merchant_display_name' => 'setMerchantDisplayName',
+        'merchant_country_code' => 'setMerchantCountryCode',
         'domain_names' => 'setDomainNames',
         'accept_terms_and_conditions' => 'setAcceptTermsAndConditions'
     ];
@@ -139,6 +147,8 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'provider' => 'getProvider',
         'merchant_name' => 'getMerchantName',
         'merchant_url' => 'getMerchantUrl',
+        'merchant_display_name' => 'getMerchantDisplayName',
+        'merchant_country_code' => 'getMerchantCountryCode',
         'domain_names' => 'getDomainNames',
         'accept_terms_and_conditions' => 'getAcceptTermsAndConditions'
     ];
@@ -218,6 +228,8 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['provider'] = $data['provider'] ?? null;
         $this->container['merchant_name'] = $data['merchant_name'] ?? null;
         $this->container['merchant_url'] = $data['merchant_url'] ?? null;
+        $this->container['merchant_display_name'] = $data['merchant_display_name'] ?? null;
+        $this->container['merchant_country_code'] = $data['merchant_country_code'] ?? null;
         $this->container['domain_names'] = $data['domain_names'] ?? null;
         $this->container['accept_terms_and_conditions'] = $data['accept_terms_and_conditions'] ?? null;
     }
@@ -246,6 +258,14 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['merchant_name'] === null) {
             $invalidProperties[] = "'merchant_name' can't be null";
         }
+        if (!is_null($this->container['merchant_country_code']) && (mb_strlen($this->container['merchant_country_code']) > 2)) {
+            $invalidProperties[] = "invalid value for 'merchant_country_code', the character length must be smaller than or equal to 2.";
+        }
+
+        if (!is_null($this->container['merchant_country_code']) && (mb_strlen($this->container['merchant_country_code']) < 2)) {
+            $invalidProperties[] = "invalid value for 'merchant_country_code', the character length must be bigger than or equal to 2.";
+        }
+
         if ($this->container['domain_names'] === null) {
             $invalidProperties[] = "'domain_names' can't be null";
         }
@@ -346,13 +366,68 @@ class DigitalWalletRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets merchant_url
      *
-     * @param string|null $merchant_url The main URL of the merchant. This is used to register the merchant with a digital wallet provider and this URL is not displayed to the buyer.
+     * @param string|null $merchant_url The main URL of the merchant.
      *
      * @return self
      */
     public function setMerchantUrl($merchant_url)
     {
         $this->container['merchant_url'] = $merchant_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_display_name
+     *
+     * @return string|null
+     */
+    public function getMerchantDisplayName()
+    {
+        return $this->container['merchant_display_name'];
+    }
+
+    /**
+     * Sets merchant_display_name
+     *
+     * @param string|null $merchant_display_name The consumer facing name of the merchant.
+     *
+     * @return self
+     */
+    public function setMerchantDisplayName($merchant_display_name)
+    {
+        $this->container['merchant_display_name'] = $merchant_display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_country_code
+     *
+     * @return string|null
+     */
+    public function getMerchantCountryCode()
+    {
+        return $this->container['merchant_country_code'];
+    }
+
+    /**
+     * Sets merchant_country_code
+     *
+     * @param string|null $merchant_country_code The country code where the merchant is registered.
+     *
+     * @return self
+     */
+    public function setMerchantCountryCode($merchant_country_code)
+    {
+        if (!is_null($merchant_country_code) && (mb_strlen($merchant_country_code) > 2)) {
+            throw new \InvalidArgumentException('invalid length for $merchant_country_code when calling DigitalWalletRequest., must be smaller than or equal to 2.');
+        }
+        if (!is_null($merchant_country_code) && (mb_strlen($merchant_country_code) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $merchant_country_code when calling DigitalWalletRequest., must be bigger than or equal to 2.');
+        }
+
+        $this->container['merchant_country_code'] = $merchant_country_code;
 
         return $this;
     }

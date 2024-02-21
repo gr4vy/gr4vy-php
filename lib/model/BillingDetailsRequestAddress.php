@@ -258,8 +258,8 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
             $invalidProperties[] = "invalid value for 'country', the character length must be smaller than or equal to 2.";
         }
 
-        if ((mb_strlen($this->container['country']) < 1)) {
-            $invalidProperties[] = "invalid value for 'country', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['country']) < 2)) {
+            $invalidProperties[] = "invalid value for 'country', the character length must be bigger than or equal to 2.";
         }
 
         if ($this->container['postal_code'] === null) {
@@ -355,7 +355,7 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets city
      *
-     * @param string $city The city for the billing address.
+     * @param string $city The city for the address.
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets country
      *
-     * @param string $country The country for the billing address.
+     * @param string $country The country for the address in ISO 3166 format.
      *
      * @return self
      */
@@ -395,8 +395,8 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
         if ((mb_strlen($country) > 2)) {
             throw new \InvalidArgumentException('invalid length for $country when calling BillingDetailsRequestAddress., must be smaller than or equal to 2.');
         }
-        if ((mb_strlen($country) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $country when calling BillingDetailsRequestAddress., must be bigger than or equal to 1.');
+        if ((mb_strlen($country) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $country when calling BillingDetailsRequestAddress., must be bigger than or equal to 2.');
         }
 
         $this->container['country'] = $country;
@@ -417,7 +417,7 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets postal_code
      *
-     * @param string $postal_code The postal code or zip code for the billing address.
+     * @param string $postal_code The postal code or zip code for the address.
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets state
      *
-     * @param string $state The state, county, or province for the billing address.
+     * @param string $state The state, county, or province for the address.
      *
      * @return self
      */
@@ -479,7 +479,7 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets state_code
      *
-     * @param string|null $state_code The code of state, county, or province for the billing address in ISO 3166-2 format.
+     * @param string|null $state_code The code of state, county, or province for the address in ISO 3166-2 format.
      *
      * @return self
      */
@@ -510,7 +510,7 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets house_number_or_name
      *
-     * @param string|null $house_number_or_name The house number or name for the billing address. Not all payment services use this field but some do.
+     * @param string|null $house_number_or_name The house number or name for the address. Not all payment services use this field but some do.
      *
      * @return self
      */
@@ -541,7 +541,7 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets line1
      *
-     * @param string $line1 The first line of the billing address.
+     * @param string $line1 The first line of the address.
      *
      * @return self
      */
@@ -572,7 +572,7 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets line2
      *
-     * @param string|null $line2 The second line of the billing address.
+     * @param string|null $line2 The second line of the address.
      *
      * @return self
      */
@@ -603,7 +603,7 @@ class BillingDetailsRequestAddress implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets organization
      *
-     * @param string|null $organization The optional name of the company or organisation to add to the billing address.
+     * @param string|null $organization The optional name of the company or organisation to add to the address.
      *
      * @return self
      */

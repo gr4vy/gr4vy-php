@@ -62,10 +62,11 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'type' => 'string',
         'id' => 'string',
-        'external_identifier' => 'string',
-        'display_name' => 'string',
         'billing_details' => '\Gr4vy\model\BuyerBillingDetails',
         'created_at' => '\DateTime',
+        'display_name' => 'string',
+        'external_identifier' => 'string',
+        'merchant_account_id' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -79,10 +80,11 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'type' => null,
         'id' => 'uuid',
-        'external_identifier' => null,
-        'display_name' => null,
         'billing_details' => null,
         'created_at' => 'date-time',
+        'display_name' => null,
+        'external_identifier' => null,
+        'merchant_account_id' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -115,10 +117,11 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'type' => 'type',
         'id' => 'id',
-        'external_identifier' => 'external_identifier',
-        'display_name' => 'display_name',
         'billing_details' => 'billing_details',
         'created_at' => 'created_at',
+        'display_name' => 'display_name',
+        'external_identifier' => 'external_identifier',
+        'merchant_account_id' => 'merchant_account_id',
         'updated_at' => 'updated_at'
     ];
 
@@ -130,10 +133,11 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'type' => 'setType',
         'id' => 'setId',
-        'external_identifier' => 'setExternalIdentifier',
-        'display_name' => 'setDisplayName',
         'billing_details' => 'setBillingDetails',
         'created_at' => 'setCreatedAt',
+        'display_name' => 'setDisplayName',
+        'external_identifier' => 'setExternalIdentifier',
+        'merchant_account_id' => 'setMerchantAccountId',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -145,10 +149,11 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'type' => 'getType',
         'id' => 'getId',
-        'external_identifier' => 'getExternalIdentifier',
-        'display_name' => 'getDisplayName',
         'billing_details' => 'getBillingDetails',
         'created_at' => 'getCreatedAt',
+        'display_name' => 'getDisplayName',
+        'external_identifier' => 'getExternalIdentifier',
+        'merchant_account_id' => 'getMerchantAccountId',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -224,10 +229,11 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['type'] = $data['type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['external_identifier'] = $data['external_identifier'] ?? null;
-        $this->container['display_name'] = $data['display_name'] ?? null;
         $this->container['billing_details'] = $data['billing_details'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['external_identifier'] = $data['external_identifier'] ?? null;
+        $this->container['merchant_account_id'] = $data['merchant_account_id'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
@@ -249,20 +255,20 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if (!is_null($this->container['external_identifier']) && (mb_strlen($this->container['external_identifier']) > 200)) {
-            $invalidProperties[] = "invalid value for 'external_identifier', the character length must be smaller than or equal to 200.";
-        }
-
-        if (!is_null($this->container['external_identifier']) && (mb_strlen($this->container['external_identifier']) < 1)) {
-            $invalidProperties[] = "invalid value for 'external_identifier', the character length must be bigger than or equal to 1.";
-        }
-
         if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) > 200)) {
             $invalidProperties[] = "invalid value for 'display_name', the character length must be smaller than or equal to 200.";
         }
 
         if (!is_null($this->container['display_name']) && (mb_strlen($this->container['display_name']) < 1)) {
             $invalidProperties[] = "invalid value for 'display_name', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['external_identifier']) && (mb_strlen($this->container['external_identifier']) > 200)) {
+            $invalidProperties[] = "invalid value for 'external_identifier', the character length must be smaller than or equal to 200.";
+        }
+
+        if (!is_null($this->container['external_identifier']) && (mb_strlen($this->container['external_identifier']) < 1)) {
+            $invalidProperties[] = "invalid value for 'external_identifier', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -339,68 +345,6 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets external_identifier
-     *
-     * @return string|null
-     */
-    public function getExternalIdentifier()
-    {
-        return $this->container['external_identifier'];
-    }
-
-    /**
-     * Sets external_identifier
-     *
-     * @param string|null $external_identifier An external identifier that can be used to match the buyer against your own records.
-     *
-     * @return self
-     */
-    public function setExternalIdentifier($external_identifier)
-    {
-        if (!is_null($external_identifier) && (mb_strlen($external_identifier) > 200)) {
-            throw new \InvalidArgumentException('invalid length for $external_identifier when calling Buyer., must be smaller than or equal to 200.');
-        }
-        if (!is_null($external_identifier) && (mb_strlen($external_identifier) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $external_identifier when calling Buyer., must be bigger than or equal to 1.');
-        }
-
-        $this->container['external_identifier'] = $external_identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_name
-     *
-     * @return string|null
-     */
-    public function getDisplayName()
-    {
-        return $this->container['display_name'];
-    }
-
-    /**
-     * Sets display_name
-     *
-     * @param string|null $display_name A unique name for this buyer which is used in the Gr4vy admin panel to give a buyer a human readable name.
-     *
-     * @return self
-     */
-    public function setDisplayName($display_name)
-    {
-        if (!is_null($display_name) && (mb_strlen($display_name) > 200)) {
-            throw new \InvalidArgumentException('invalid length for $display_name when calling Buyer., must be smaller than or equal to 200.');
-        }
-        if (!is_null($display_name) && (mb_strlen($display_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $display_name when calling Buyer., must be bigger than or equal to 1.');
-        }
-
-        $this->container['display_name'] = $display_name;
-
-        return $this;
-    }
-
-    /**
      * Gets billing_details
      *
      * @return \Gr4vy\model\BuyerBillingDetails|null
@@ -444,6 +388,92 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCreatedAt($created_at)
     {
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_name
+     *
+     * @return string|null
+     */
+    public function getDisplayName()
+    {
+        return $this->container['display_name'];
+    }
+
+    /**
+     * Sets display_name
+     *
+     * @param string|null $display_name A unique name for this buyer which is used in the Gr4vy admin panel to give a buyer a human readable name.
+     *
+     * @return self
+     */
+    public function setDisplayName($display_name)
+    {
+        if (!is_null($display_name) && (mb_strlen($display_name) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $display_name when calling Buyer., must be smaller than or equal to 200.');
+        }
+        if (!is_null($display_name) && (mb_strlen($display_name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $display_name when calling Buyer., must be bigger than or equal to 1.');
+        }
+
+        $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_identifier
+     *
+     * @return string|null
+     */
+    public function getExternalIdentifier()
+    {
+        return $this->container['external_identifier'];
+    }
+
+    /**
+     * Sets external_identifier
+     *
+     * @param string|null $external_identifier An external identifier that can be used to match the buyer against your own records.
+     *
+     * @return self
+     */
+    public function setExternalIdentifier($external_identifier)
+    {
+        if (!is_null($external_identifier) && (mb_strlen($external_identifier) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $external_identifier when calling Buyer., must be smaller than or equal to 200.');
+        }
+        if (!is_null($external_identifier) && (mb_strlen($external_identifier) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $external_identifier when calling Buyer., must be bigger than or equal to 1.');
+        }
+
+        $this->container['external_identifier'] = $external_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_account_id
+     *
+     * @return string|null
+     */
+    public function getMerchantAccountId()
+    {
+        return $this->container['merchant_account_id'];
+    }
+
+    /**
+     * Sets merchant_account_id
+     *
+     * @param string|null $merchant_account_id The unique ID for a merchant account.
+     *
+     * @return self
+     */
+    public function setMerchantAccountId($merchant_account_id)
+    {
+        $this->container['merchant_account_id'] = $merchant_account_id;
 
         return $this;
     }

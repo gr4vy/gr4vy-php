@@ -365,7 +365,7 @@ class PaymentMethodsApi
     /**
      * Operation getPaymentMethod
      *
-     * Get stored payment method
+     * Get payment method
      *
      * @param  string $payment_method_id The ID of the payment method. (required)
      *
@@ -382,7 +382,7 @@ class PaymentMethodsApi
     /**
      * Operation getPaymentMethodWithHttpInfo
      *
-     * Get stored payment method
+     * Get payment method
      *
      * @param  string $payment_method_id The ID of the payment method. (required)
      *
@@ -527,7 +527,7 @@ class PaymentMethodsApi
     /**
      * Operation getPaymentMethodAsync
      *
-     * Get stored payment method
+     * Get payment method
      *
      * @param  string $payment_method_id The ID of the payment method. (required)
      *
@@ -547,7 +547,7 @@ class PaymentMethodsApi
     /**
      * Operation getPaymentMethodAsyncWithHttpInfo
      *
-     * Get stored payment method
+     * Get payment method
      *
      * @param  string $payment_method_id The ID of the payment method. (required)
      *
@@ -695,7 +695,7 @@ class PaymentMethodsApi
     /**
      * Operation listBuyerPaymentMethods
      *
-     * List stored payment methods for a buyer
+     * List payment methods for buyer
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
@@ -715,7 +715,7 @@ class PaymentMethodsApi
     /**
      * Operation listBuyerPaymentMethodsWithHttpInfo
      *
-     * List stored payment methods for a buyer
+     * List payment methods for buyer
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
@@ -863,7 +863,7 @@ class PaymentMethodsApi
     /**
      * Operation listBuyerPaymentMethodsAsync
      *
-     * List stored payment methods for a buyer
+     * List payment methods for buyer
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
@@ -886,7 +886,7 @@ class PaymentMethodsApi
     /**
      * Operation listBuyerPaymentMethodsAsyncWithHttpInfo
      *
-     * List stored payment methods for a buyer
+     * List payment methods for buyer
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
@@ -1066,7 +1066,7 @@ class PaymentMethodsApi
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
-     * @param  string $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. (optional)
+     * @param  string[] $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches with any of the provided status values. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1087,7 +1087,7 @@ class PaymentMethodsApi
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
-     * @param  string $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. (optional)
+     * @param  string[] $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches with any of the provided status values. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1213,7 +1213,7 @@ class PaymentMethodsApi
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
-     * @param  string $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. (optional)
+     * @param  string[] $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches with any of the provided status values. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1237,7 +1237,7 @@ class PaymentMethodsApi
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
-     * @param  string $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. (optional)
+     * @param  string[] $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches with any of the provided status values. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1290,7 +1290,7 @@ class PaymentMethodsApi
      *
      * @param  string $buyer_id Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;id&#x60; that matches this value. (optional)
      * @param  string $buyer_external_identifier Filters the results to only the items for which the &#x60;buyer&#x60; has an &#x60;external_identifier&#x60; that matches this value. (optional)
-     * @param  string $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches this value. (optional)
+     * @param  string[] $status Filters the results to only the payment methods for which the &#x60;status&#x60; matches with any of the provided status values. (optional)
      * @param  int $limit Defines the maximum number of items to return for this request. (optional, default to 20)
      * @param  string $cursor A cursor that identifies the page of results to return. This is used to paginate the results of this API.  For the first page of results, this parameter can be left out. For additional pages, use the value returned by the API in the &#x60;next_cursor&#x60; field. Similarly the &#x60;previous_cursor&#x60; can be used to reverse backwards in the list. (optional)
      *
@@ -1336,7 +1336,7 @@ class PaymentMethodsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $status,
             'status', // param base name
-            'string', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1425,7 +1425,7 @@ class PaymentMethodsApi
     }
 
     /**
-     * Operation storePaymentMethod
+     * Operation newPaymentMethod
      *
      * New payment method
      *
@@ -1433,16 +1433,16 @@ class PaymentMethodsApi
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gr4vy\model\PaymentMethod|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized
+     * @return \Gr4vy\model\PaymentMethod|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord
      */
-    public function storePaymentMethod($payment_method_request = null)
+    public function newPaymentMethod($payment_method_request = null)
     {
-        list($response) = $this->storePaymentMethodWithHttpInfo($payment_method_request);
+        list($response) = $this->newPaymentMethodWithHttpInfo($payment_method_request);
         return $response;
     }
 
     /**
-     * Operation storePaymentMethodWithHttpInfo
+     * Operation newPaymentMethodWithHttpInfo
      *
      * New payment method
      *
@@ -1450,11 +1450,11 @@ class PaymentMethodsApi
      *
      * @throws \Gr4vy\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gr4vy\model\PaymentMethod|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gr4vy\model\PaymentMethod|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized|\Gr4vy\model\Error409DuplicateRecord, HTTP status code, HTTP response headers (array of strings)
      */
-    public function storePaymentMethodWithHttpInfo($payment_method_request = null)
+    public function newPaymentMethodWithHttpInfo($payment_method_request = null)
     {
-        $request = $this->storePaymentMethodRequest($payment_method_request);
+        $request = $this->newPaymentMethodRequest($payment_method_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1537,6 +1537,21 @@ class PaymentMethodsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 409:
+                    if ('\Gr4vy\model\Error409DuplicateRecord' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Gr4vy\model\Error409DuplicateRecord' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Gr4vy\model\Error409DuplicateRecord', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\Gr4vy\model\PaymentMethod';
@@ -1581,13 +1596,21 @@ class PaymentMethodsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gr4vy\model\Error409DuplicateRecord',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation storePaymentMethodAsync
+     * Operation newPaymentMethodAsync
      *
      * New payment method
      *
@@ -1596,9 +1619,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storePaymentMethodAsync($payment_method_request = null)
+    public function newPaymentMethodAsync($payment_method_request = null)
     {
-        return $this->storePaymentMethodAsyncWithHttpInfo($payment_method_request)
+        return $this->newPaymentMethodAsyncWithHttpInfo($payment_method_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1607,7 +1630,7 @@ class PaymentMethodsApi
     }
 
     /**
-     * Operation storePaymentMethodAsyncWithHttpInfo
+     * Operation newPaymentMethodAsyncWithHttpInfo
      *
      * New payment method
      *
@@ -1616,10 +1639,10 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storePaymentMethodAsyncWithHttpInfo($payment_method_request = null)
+    public function newPaymentMethodAsyncWithHttpInfo($payment_method_request = null)
     {
         $returnType = '\Gr4vy\model\PaymentMethod';
-        $request = $this->storePaymentMethodRequest($payment_method_request);
+        $request = $this->newPaymentMethodRequest($payment_method_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1658,14 +1681,14 @@ class PaymentMethodsApi
     }
 
     /**
-     * Create request for operation 'storePaymentMethod'
+     * Create request for operation 'newPaymentMethod'
      *
      * @param  \Gr4vy\model\PaymentMethodRequest $payment_method_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function storePaymentMethodRequest($payment_method_request = null)
+    public function newPaymentMethodRequest($payment_method_request = null)
     {
 
         $resourcePath = '/payment-methods';

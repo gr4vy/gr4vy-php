@@ -63,7 +63,8 @@ class ThreeDSecureData implements ModelInterface, ArrayAccess, \JsonSerializable
         'cavv' => 'string',
         'eci' => 'string',
         'version' => 'string',
-        'directory_response' => 'string'
+        'directory_response' => 'string',
+        'scheme' => 'string'
     ];
 
     /**
@@ -77,7 +78,8 @@ class ThreeDSecureData implements ModelInterface, ArrayAccess, \JsonSerializable
         'cavv' => null,
         'eci' => null,
         'version' => null,
-        'directory_response' => null
+        'directory_response' => null,
+        'scheme' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class ThreeDSecureData implements ModelInterface, ArrayAccess, \JsonSerializable
         'cavv' => 'cavv',
         'eci' => 'eci',
         'version' => 'version',
-        'directory_response' => 'directory_response'
+        'directory_response' => 'directory_response',
+        'scheme' => 'scheme'
     ];
 
     /**
@@ -122,7 +125,8 @@ class ThreeDSecureData implements ModelInterface, ArrayAccess, \JsonSerializable
         'cavv' => 'setCavv',
         'eci' => 'setEci',
         'version' => 'setVersion',
-        'directory_response' => 'setDirectoryResponse'
+        'directory_response' => 'setDirectoryResponse',
+        'scheme' => 'setScheme'
     ];
 
     /**
@@ -134,7 +138,8 @@ class ThreeDSecureData implements ModelInterface, ArrayAccess, \JsonSerializable
         'cavv' => 'getCavv',
         'eci' => 'getEci',
         'version' => 'getVersion',
-        'directory_response' => 'getDirectoryResponse'
+        'directory_response' => 'getDirectoryResponse',
+        'scheme' => 'getScheme'
     ];
 
     /**
@@ -178,6 +183,61 @@ class ThreeDSecureData implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const SCHEME_ACCEL = 'accel';
+    public const SCHEME_AMEX = 'amex';
+    public const SCHEME_BANCONTACT = 'bancontact';
+    public const SCHEME_CARTE_BANCAIRE = 'carte-bancaire';
+    public const SCHEME_CIRRUS = 'cirrus';
+    public const SCHEME_CULIANCE = 'culiance';
+    public const SCHEME_DANKORT = 'dankort';
+    public const SCHEME_DINERS_CLUB = 'diners-club';
+    public const SCHEME_DISCOVER = 'discover';
+    public const SCHEME_EFTPOS_AUSTRALIA = 'eftpos-australia';
+    public const SCHEME_ELO = 'elo';
+    public const SCHEME_HIPERCARD = 'hipercard';
+    public const SCHEME_JCB = 'jcb';
+    public const SCHEME_MAESTRO = 'maestro';
+    public const SCHEME_MASTERCARD = 'mastercard';
+    public const SCHEME_NYCE = 'nyce';
+    public const SCHEME_OTHER = 'other';
+    public const SCHEME_PULSE = 'pulse';
+    public const SCHEME_RUPAY = 'rupay';
+    public const SCHEME_STAR = 'star';
+    public const SCHEME_UNIONPAY = 'unionpay';
+    public const SCHEME_VISA = 'visa';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSchemeAllowableValues()
+    {
+        return [
+            self::SCHEME_ACCEL,
+            self::SCHEME_AMEX,
+            self::SCHEME_BANCONTACT,
+            self::SCHEME_CARTE_BANCAIRE,
+            self::SCHEME_CIRRUS,
+            self::SCHEME_CULIANCE,
+            self::SCHEME_DANKORT,
+            self::SCHEME_DINERS_CLUB,
+            self::SCHEME_DISCOVER,
+            self::SCHEME_EFTPOS_AUSTRALIA,
+            self::SCHEME_ELO,
+            self::SCHEME_HIPERCARD,
+            self::SCHEME_JCB,
+            self::SCHEME_MAESTRO,
+            self::SCHEME_MASTERCARD,
+            self::SCHEME_NYCE,
+            self::SCHEME_OTHER,
+            self::SCHEME_PULSE,
+            self::SCHEME_RUPAY,
+            self::SCHEME_STAR,
+            self::SCHEME_UNIONPAY,
+            self::SCHEME_VISA,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -198,6 +258,7 @@ class ThreeDSecureData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['eci'] = $data['eci'] ?? null;
         $this->container['version'] = $data['version'] ?? null;
         $this->container['directory_response'] = $data['directory_response'] ?? null;
+        $this->container['scheme'] = $data['scheme'] ?? null;
     }
 
     /**
@@ -239,6 +300,15 @@ class ThreeDSecureData implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ((mb_strlen($this->container['directory_response']) > 1)) {
             $invalidProperties[] = "invalid value for 'directory_response', the character length must be smaller than or equal to 1.";
+        }
+
+        $allowedValues = $this->getSchemeAllowableValues();
+        if (!is_null($this->container['scheme']) && !in_array($this->container['scheme'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'scheme', must be one of '%s'",
+                $this->container['scheme'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -367,6 +437,40 @@ class ThreeDSecureData implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['directory_response'] = $directory_response;
+
+        return $this;
+    }
+
+    /**
+     * Gets scheme
+     *
+     * @return string|null
+     */
+    public function getScheme()
+    {
+        return $this->container['scheme'];
+    }
+
+    /**
+     * Sets scheme
+     *
+     * @param string|null $scheme The scheme/brand of the card that is used for 3-D Secure.
+     *
+     * @return self
+     */
+    public function setScheme($scheme)
+    {
+        $allowedValues = $this->getSchemeAllowableValues();
+        if (!is_null($scheme) && !in_array($scheme, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'scheme', must be one of '%s'",
+                    $scheme,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['scheme'] = $scheme;
 
         return $this;
     }
