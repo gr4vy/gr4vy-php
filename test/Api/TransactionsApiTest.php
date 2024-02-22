@@ -89,14 +89,15 @@ class TransactionsApiTest extends TestCase
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $apiInstance = new TransactionsApi(new Client(),$config->getConfig());
             //TODO: GBP/braintree was failing
-            $transaction_request = array("amount"=>1000,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/24", "security_code"=>"432"));
-            $result = $apiInstance->authorizeNewTransaction($transaction_request);
+            $transaction_request = array("amount"=>1000,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/24", "security_code"=>"432"), "anti_fraud_fingerprint"=>"123456");
+            $result = $apiInstance->authorizeNewTransaction($transaction_request, "216.164.198.29");
             $this->assertArrayHasKey("id", $result);
             $this->assertEquals($result->getType(), "transaction");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
     }
+
 
     /**
      * Test case for captureTransaction
@@ -159,7 +160,7 @@ class TransactionsApiTest extends TestCase
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $apiInstance = new TransactionsApi(new Client(),$config->getConfig());
-            $result = $apiInstance->listTransactions();
+            $result = $apiInstance->listTransactions(null, null, null, 5, null, null, null);
             $this->assertGreaterThan(0, count($result->getItems()), "Expected items to be greater than 0.");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
