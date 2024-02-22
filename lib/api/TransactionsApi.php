@@ -127,9 +127,9 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\Transaction|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized
      */
-    public function authorizeNewTransaction($transaction_request = null)
+    public function authorizeNewTransaction($transaction_request = null, $ip_address = null)
     {
-        list($response) = $this->authorizeNewTransactionWithHttpInfo($transaction_request);
+        list($response) = $this->authorizeNewTransactionWithHttpInfo($transaction_request, $ip_address);
         return $response;
     }
 
@@ -144,9 +144,9 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\Transaction|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function authorizeNewTransactionWithHttpInfo($transaction_request = null)
+    public function authorizeNewTransactionWithHttpInfo($transaction_request = null, $ip_address = null)
     {
-        $request = $this->authorizeNewTransactionRequest($transaction_request);
+        $request = $this->authorizeNewTransactionRequest($transaction_request, $ip_address);
 
         try {
             $options = $this->createHttpClientOption();
@@ -288,9 +288,9 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function authorizeNewTransactionAsync($transaction_request = null)
+    public function authorizeNewTransactionAsync($transaction_request = null, $ip_address = null)
     {
-        return $this->authorizeNewTransactionAsyncWithHttpInfo($transaction_request)
+        return $this->authorizeNewTransactionAsyncWithHttpInfo($transaction_request, $ip_address)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -308,10 +308,10 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function authorizeNewTransactionAsyncWithHttpInfo($transaction_request = null)
+    public function authorizeNewTransactionAsyncWithHttpInfo($transaction_request, $ip_address = null)
     {
         $returnType = '\Gr4vy\model\Transaction';
-        $request = $this->authorizeNewTransactionRequest($transaction_request);
+        $request = $this->authorizeNewTransactionRequest($transaction_request, $ip_address);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -357,7 +357,7 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function authorizeNewTransactionRequest($transaction_request = null)
+    public function authorizeNewTransactionRequest($transaction_request = null, $ip_address = null)
     {
 
         $resourcePath = '/transactions';
@@ -369,7 +369,9 @@ class TransactionsApi
 
 
 
-
+        if ($ip_address !== null) {
+            $headerParams['X-Forwarded-For'] = ObjectSerializer::toHeaderValue($ip_address);
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
