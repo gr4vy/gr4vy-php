@@ -89,8 +89,9 @@ class TransactionsApiTest extends TestCase
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $apiInstance = new TransactionsApi(new Client(),$config->getConfig());
             //TODO: GBP/braintree was failing
-            $transaction_request = array("amount"=>1000,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/24", "security_code"=>"432"), "anti_fraud_fingerprint"=>"123456");
-            $result = $apiInstance->authorizeNewTransaction($transaction_request, "216.164.198.29");
+            $transaction_request = array("amount"=>1000,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/28", "security_code"=>"432"), "anti_fraud_fingerprint"=>"123456");
+            $transaction_headers = array("X-Forwarded-For"=>"98.210.211.238", "Idempotency-Key"=>uniqid());
+            $result = $apiInstance->authorizeNewTransaction($transaction_request, $transaction_headers);
             $this->assertArrayHasKey("id", $result);
             $this->assertEquals($result->getType(), "transaction");
         } catch (Exception $e) {
@@ -137,7 +138,8 @@ class TransactionsApiTest extends TestCase
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $apiInstance = new TransactionsApi(new Client(),$config->getConfig());
             $transaction_request = array("amount"=>10000,"currency"=>"USD", "payment_method"=>array("method"=>"card", "number"=>"4111111111111111", "expiration_date"=> "01/28", "security_code"=>"555"));
-            $result = $apiInstance->authorizeNewTransaction($transaction_request);
+            $transaction_headers = array("X-Forwarded-For"=>"98.210.211.238", "Idempotency-Key"=>uniqid());
+            $result = $apiInstance->authorizeNewTransaction($transaction_request, $transaction_headers);
             $this->assertArrayHasKey("id", $result);
             $this->assertEquals($result->getType(), "transaction");
 

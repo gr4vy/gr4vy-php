@@ -127,9 +127,9 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \Gr4vy\model\Transaction|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized
      */
-    public function authorizeNewTransaction($transaction_request = null, $ip_address = null)
+    public function authorizeNewTransaction($transaction_request = null, $transaction_headers = null)
     {
-        list($response) = $this->authorizeNewTransactionWithHttpInfo($transaction_request, $ip_address);
+        list($response) = $this->authorizeNewTransactionWithHttpInfo($transaction_request, $transaction_headers);
         return $response;
     }
 
@@ -144,9 +144,9 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return array of \Gr4vy\model\Transaction|\Gr4vy\model\ErrorGeneric|\Gr4vy\model\Error401Unauthorized, HTTP status code, HTTP response headers (array of strings)
      */
-    public function authorizeNewTransactionWithHttpInfo($transaction_request = null, $ip_address = null)
+    public function authorizeNewTransactionWithHttpInfo($transaction_request = null, $transaction_headers = null)
     {
-        $request = $this->authorizeNewTransactionRequest($transaction_request, $ip_address);
+        $request = $this->authorizeNewTransactionRequest($transaction_request, $transaction_headers);
 
         try {
             $options = $this->createHttpClientOption();
@@ -288,9 +288,9 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function authorizeNewTransactionAsync($transaction_request = null, $ip_address = null)
+    public function authorizeNewTransactionAsync($transaction_request = null, $transaction_headers = null)
     {
-        return $this->authorizeNewTransactionAsyncWithHttpInfo($transaction_request, $ip_address)
+        return $this->authorizeNewTransactionAsyncWithHttpInfo($transaction_request, $transaction_headers)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -308,10 +308,10 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function authorizeNewTransactionAsyncWithHttpInfo($transaction_request, $ip_address = null)
+    public function authorizeNewTransactionAsyncWithHttpInfo($transaction_request, $transaction_headers = null)
     {
         $returnType = '\Gr4vy\model\Transaction';
-        $request = $this->authorizeNewTransactionRequest($transaction_request, $ip_address);
+        $request = $this->authorizeNewTransactionRequest($transaction_request, $transaction_headers);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -357,21 +357,16 @@ class TransactionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function authorizeNewTransactionRequest($transaction_request = null, $ip_address = null)
+    public function authorizeNewTransactionRequest($transaction_request = null, $transaction_headers = null)
     {
 
         $resourcePath = '/transactions';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
+        $headerParams = ($transaction_headers != null ? $transaction_headers : []);
         $httpBody = '';
         $multipart = false;
 
-
-
-        if ($ip_address !== null) {
-            $headerParams['X-Forwarded-For'] = ObjectSerializer::toHeaderValue($ip_address);
-        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -425,12 +420,13 @@ class TransactionsApi
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
+        print_r($headerParams);
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
             $headers
         );
-
+        print_r($headers);
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
