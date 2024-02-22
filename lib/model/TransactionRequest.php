@@ -65,6 +65,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => 'string',
         'country' => 'string',
         'payment_method' => '\Gr4vy\model\TransactionPaymentMethodRequest',
+        'anti_fraud_fingerprint' => 'string',
         'store' => 'bool',
         'intent' => 'string',
         'external_identifier' => 'string',
@@ -91,6 +92,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => null,
         'country' => null,
         'payment_method' => null,
+        'anti_fraud_fingerprint' => null,
         'store' => null,
         'intent' => null,
         'external_identifier' => null,
@@ -136,6 +138,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => 'currency',
         'country' => 'country',
         'payment_method' => 'payment_method',
+        'anti_fraud_fingerprint' => 'anti_fraud_fingerprint',
         'store' => 'store',
         'intent' => 'intent',
         'external_identifier' => 'external_identifier',
@@ -160,6 +163,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => 'setCurrency',
         'country' => 'setCountry',
         'payment_method' => 'setPaymentMethod',
+        'anti_fraud_fingerprint' => 'setAntiFraudFingerprint',
         'store' => 'setStore',
         'intent' => 'setIntent',
         'external_identifier' => 'setExternalIdentifier',
@@ -184,6 +188,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => 'getCurrency',
         'country' => 'getCountry',
         'payment_method' => 'getPaymentMethod',
+        'anti_fraud_fingerprint' => 'getAntiFraudFingerprint',
         'store' => 'getStore',
         'intent' => 'getIntent',
         'external_identifier' => 'getExternalIdentifier',
@@ -295,6 +300,7 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
         $this->container['payment_method'] = $data['payment_method'] ?? null;
+        $this->container['anti_fraud_fingerprint'] = $data['anti_fraud_fingerprint'] ?? null;
         $this->container['store'] = $data['store'] ?? false;
         $this->container['intent'] = $data['intent'] ?? 'authorize';
         $this->container['external_identifier'] = $data['external_identifier'] ?? null;
@@ -407,6 +413,32 @@ class TransactionRequest implements ModelInterface, ArrayAccess, \JsonSerializab
 
         return $this;
     }
+
+    /**
+     * Gets anti_fraud_fingerprint
+     *
+     * @return string|null
+     */
+    public function getAntiFraudFingerprint()
+    {
+        return $this->container['anti_fraud_fingerprint'];
+    }
+
+    /**
+     * Sets anti_fraud_fingerprint
+     *
+     * @param string|null $anti_fraud_fingerprint This field represents the fingerprint data to be passed to the active anti-fraud service.
+     *
+     * @return self
+     */
+    public function setAntiFraudFingerprint($anti_fraud_fingerprint)
+    {
+        $this->container['anti_fraud_fingerprint'] = $anti_fraud_fingerprint;
+
+        return $this;
+    }
+
+
 
     /**
      * Gets currency
