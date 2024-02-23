@@ -420,13 +420,11 @@ class TransactionsApi
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
-        print_r($headerParams);
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
             $headers
         );
-        print_r($headers);
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
