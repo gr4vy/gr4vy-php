@@ -125,7 +125,7 @@ class Gr4vyConfig
                 // Configures the time that the token was issue (iat claim)
                 ->issuedAt($now)
                 // Configures the time that the token can be used (nbf claim)
-                ->canOnlyBeUsedAfter($now->modify('+1 minute'))
+                ->canOnlyBeUsedAfter($now)#->modify('+1 minute'))
                 // Configures the expiration time of the token (exp claim)
                 ->expiresAt($now->modify('+1 hour'))
                 // Configures a new claim, called "uid"
