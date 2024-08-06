@@ -83,7 +83,6 @@ class ReportsApiTest extends TestCase
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
             $result = $config->generateReportDownloadUrl("5e7882ac-1bda-413f-9e78-4fcf650657da", "83770ad3-2465-4a74-8bd4-3aa80849cf4b");
-            print_r($result);
             $this->assertArrayHasKey("url", $result);
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
