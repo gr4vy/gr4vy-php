@@ -444,7 +444,7 @@ class Gr4vyConfig
         return $response;
     }
     public function generateReportDownloadUrl($report_id, $report_execution_id, $request = array()) {
-        $response = $this->post("/reports/". $report_id . "executions" . $report_execution_id, $request);
+        $response = $this->post("/reports/". $report_id . "/executions/" . $report_execution_id . "/url", $request);
         return $response;
     }
 }
