@@ -27,12 +27,13 @@ require __DIR__ . '/../vendor/autoload.php';
 $privateKeyLocation = __DIR__ . "/private_key.pem";
 
 $config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation);
+$apiInstance = new Gr4vy\Api\BuyersApi(new GuzzleHttp\Client(),$config->getConfig());
 
 try {
-    $result = $config->listBuyers();
+    $result = $apiInstance->listBuyers();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling listBuyers: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BuyersApi->listBuyers: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -51,24 +52,10 @@ $config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation, false, "
 ## Gr4vy Embed
 
 To create a token for Gr4vy Embed, call the `config->getEmbedToken()` function
-with the amount, currency, optional buyer information and optional checkout session for Gr4vy Embed.
+with the amount, currency, and optional buyer information for Gr4vy Embed.
 
 ```php
-//A checkout session allows multiple transaction attempts to be tied together
-$checkoutSession = $config->newCheckoutSession();
-
 echo $config->getEmbedToken(
-  array(
-    "amount"=> 200,
-    "currency" => "USD",
-    "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c"
-  ), 
-  $checkoutSession["id"]
-);
-```
-Or, generate a checkout session and Embed Token with a single call:
-```php
-echo $config->getEmbedTokenWithCheckoutSession(
   array(
     "amount"=> 200,
     "currency" => "USD",
@@ -77,7 +64,7 @@ echo $config->getEmbedTokenWithCheckoutSession(
 );
 ```
 
-You can now pass this token to your front end where it can be used to
+You can now pass this token to your frontend where it can be used to
 authenticate Gr4vy Embed.
 
 The `buyerId` and `buyerExternalIdentifier` fields can be used to allow the
@@ -86,29 +73,13 @@ be created before it can be used in this way.
 
 ```php
 $config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation);
+$apiInstance = new Gr4vy\Api\BuyersApi(new GuzzleHttp\Client(),$config->getConfig());
 
 $buyer_request = array("external_identifier"=>"412231123","display_name"=>"Tester T.");
-$buyer = $config->addBuyer($buyer_request);
+$buyer = $apiInstance->addBuyer($buyer_request);
 
-$embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> $buyer["id"]);
+$embed = array("amount"=> 200, "currency" => "USD", "buyer_id"=> $buyer->getId());
 $embedToken = $config->getEmbedToken($embed);
-```
-
-## Checkout Sessions
-
-A checkout session can be used across Embed sessions to track retries or shopping cart updates.  To achieve this the same `checkoutSessionId` can be used in multiple `getEmbedToken` calls.
-
-NOTE: a checkout session is valid for 1h from creation.
-
-```php
-$config->getEmbedToken(
-  array(
-    "amount"=> 200,
-    "currency" => "USD",
-    "buyer_id"=> "d757c76a-cbd7-4b56-95a3-40125b51b29c"
-  ), 
-  $storedCheckoutSessionId
-);
 ```
 
 ## Initialization
@@ -130,12 +101,12 @@ Your API key can be created in your admin panel on the **Integrations** tab.
 
 ## Multi merchant
 
-In a multi-merchant environment, the merchant account ID can be set by passing `merchantAccountId` to the Config:
+In a multi-merchant environment, the merchant account ID can be set by passing `MerchantAccountHeaderSelector` to the Api:
 
 ```php
-$config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation, false, "sandbox", "default");
-
-$config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation, false, "sandbox", "my_merchant_account_id");
+$headerSelector = new MerchantAccountHeaderSelector("my_merchant_account_id");
+$config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+$apiInstance = new BuyersApi(new Client(),$config->getConfig(), $headerSelector);
 ```
 
 ## Making API calls
@@ -143,21 +114,21 @@ $config = new Gr4vy\Gr4vyConfig("[YOUR_GR4VY_ID]", $privateKeyLocation, false, "
 This library conveniently maps every API path to a seperate function. For example, `GET /buyers?limit=100` would be:
 
 ```php
-$result = $config->listBuyers(100);
+$result = $apiInstance->listBuyers(100);
 ```
 
 To create or update a resource an `array` should be sent with the request data.
 
 ```php
 $buyer_request = array("external_identifier"=>"412231123","display_name"=>"Tester T.");
-$buyer = $config->addBuyer($buyer_request);
+$buyer = $apiInstance->addBuyer($buyer_request);
 ```
 
 Similarly, to update a buyer you will need to pass in the `BuyerUpdateRequest`.
 
 ```php
 $buyer_update = array("external_identifier"=>"testUpdateBuyer");
-$result = $config->updateBuyer($result["id"], $buyer_update);
+$result = $apiInstance->updateBuyer($result->getId(), $buyer_update);
 ```
 
 ## Generate API bearer token
@@ -166,7 +137,7 @@ The SDK can be used to create API access tokens for use with other request
 libraries.
 
 ```php
-$bearerToken = Gr4vyConfig::getToken($privateKeyLocation, array("*.read", "*.write"))->toString();
+$bearerToken = Gr4vyConfig::getToken($privateKeyLocation, array("*.read"))->toString();
 ```
 
 The first parameter is the location of your private key. The second
@@ -200,6 +171,15 @@ the following commands.
 ```bash
 composer install
 ./vendor/bin/phpunit test/
+```
+
+### Adding new APIs
+
+To add new APIs, run the following command to update the models and APIs based
+on the API spec.
+
+```sh
+./openapi-generator-generate.sh
 ```
 
 ### Publishing

@@ -29,7 +29,14 @@
 namespace Gr4vy\Test\Api;
 
 use \Gr4vy\Gr4vyConfig;
+use \Gr4vy\Api\BuyersApi;
+use \Gr4vy\Configuration;
+use \Gr4vy\ApiException;
+use \Gr4vy\ObjectSerializer;
+use \GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
+
+use \Gr4vy\MerchantAccountHeaderSelector;
 
 
 /**
@@ -83,9 +90,11 @@ class MerchantAccountTest extends TestCase
     {
 
         try {
-            $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation, false, "sandbox", "default");
-            $result = $config->listBuyers();
-            $this->assertGreaterThan(0, count($result["items"]), "Expected items to be greater than 0.");
+            $headerSelector = new MerchantAccountHeaderSelector("default");
+            $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+            $apiInstance = new BuyersApi(new Client(),$config->getConfig(), $headerSelector);
+            $result = $apiInstance->listBuyers();
+            $this->assertGreaterThan(0, count($result->getItems()), "Expected items to be greater than 0.");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
             // echo 'Exception when calling BuyersApi->listBuyers: ', $e->getMessage(), PHP_EOL;

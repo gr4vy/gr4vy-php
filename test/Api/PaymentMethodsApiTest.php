@@ -29,6 +29,11 @@
 namespace Gr4vy\Test\Api;
 
 use \Gr4vy\Gr4vyConfig;
+use \Gr4vy\Api\PaymentMethodsApi;
+use \GuzzleHttp\Client;
+use \Gr4vy\Configuration;
+use \Gr4vy\ApiException;
+use \Gr4vy\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -82,18 +87,20 @@ class PaymentMethodsApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+            $apiInstance = new PaymentMethodsApi(new Client(),$config->getConfig());
+
             $payment_method_request = array(
                 "method"=>"card",
                 "number"=>"4111111111111111",
                 "expiration_date"=>"11/25",
                 "security_code"=>"123"
             );
-            $result = $config->storePaymentMethod($payment_method_request);
+            $result = $apiInstance->storePaymentMethod($payment_method_request);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result["method"], "card");
+            $this->assertEquals($result->getMethod(), "card");
 
-            $result = $config->deletePaymentMethod($result["id"]);
-            $this->assertArrayHasKey("success", $result);
+            $result = $apiInstance->deletePaymentMethod($result->getId());
+            $this->assertEmpty($result);
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -109,6 +116,7 @@ class PaymentMethodsApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+            $apiInstance = new PaymentMethodsApi(new Client(),$config->getConfig());
 
             $payment_method_request = array(
                 "method"=>"card",
@@ -116,14 +124,15 @@ class PaymentMethodsApiTest extends TestCase
                 "expiration_date"=>"11/25",
                 "security_code"=>"123"
             );
-            $result = $config->storePaymentMethod($payment_method_request);
+            $result = $apiInstance->storePaymentMethod($payment_method_request);
+            $this->assertArrayHasKey("id", $result);
+            $this->assertEquals($result->getMethod(), "card");
+
+            $result = $apiInstance->getPaymentMethod($result["id"]);
             $this->assertArrayHasKey("id", $result);
 
-            $result = $config->getPaymentMethod($result["id"]);
-            $this->assertArrayHasKey("id", $result);
-
-            $result = $config->deletePaymentMethod($result["id"]);
-            $this->assertArrayHasKey("success", $result);
+            $result = $apiInstance->deletePaymentMethod($result->getId());
+            $this->assertEmpty($result);
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -137,11 +146,11 @@ class PaymentMethodsApiTest extends TestCase
      */
     public function testListBuyerPaymentMethods()
     {
-        $this->markTestIncomplete('Not implemented');
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $result = $config->listBuyerPaymentMethods("baa7b3b3-a4f1-49e3-afb0-0f41b48f5aa2");
-            $this->assertNotNull($result["items"]);
+            $apiInstance = new PaymentMethodsApi(new Client(),$config->getConfig());
+            $result = $apiInstance->listBuyerPaymentMethods("baa7b3b3-a4f1-49e3-afb0-0f41b48f5aa2");
+            $this->assertNotNull($result->getItems());
 
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
@@ -156,11 +165,12 @@ class PaymentMethodsApiTest extends TestCase
      */
     public function testListPaymentMethods()
     {
-        // $this->markTestIncomplete('Not implemented');
+        $this->markTestIncomplete('Not implemented');
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
-            $result = $config->listPaymentMethods();
-            $this->assertGreaterThan(0, count($result["items"]), "Expected items to be greater than 0.");
+            $apiInstance = new PaymentMethodsApi(new Client(),$config->getConfig());
+            $result = $apiInstance->listPaymentMethods();
+            $this->assertGreaterThan(0, count($result->getItems()), "Expected items to be greater than 0.");
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
@@ -176,6 +186,7 @@ class PaymentMethodsApiTest extends TestCase
     {
         try {
             $config = new Gr4vyConfig(self::$gr4vyId, self::$privateKeyLocation);
+            $apiInstance = new PaymentMethodsApi(new Client(),$config->getConfig());
 
             $payment_method_request = array(
                 "method"=>"card",
@@ -183,12 +194,12 @@ class PaymentMethodsApiTest extends TestCase
                 "expiration_date"=>"11/25",
                 "security_code"=>"123"
             );
-            $result = $config->storePaymentMethod($payment_method_request);
+            $result = $apiInstance->storePaymentMethod($payment_method_request);
             $this->assertArrayHasKey("id", $result);
-            $this->assertEquals($result["method"], "card");
+            $this->assertEquals($result->getMethod(), "card");
 
-            $result = $config->deletePaymentMethod($result["id"]);
-            $this->assertArrayHasKey("success", $result);
+            $result = $apiInstance->deletePaymentMethod($result->getId());
+            $this->assertEmpty($result);
         } catch (Exception $e) {
             $this->fail("Exception thrown: " . $e->getMessage());
         }
