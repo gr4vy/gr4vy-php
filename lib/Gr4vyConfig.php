@@ -403,6 +403,10 @@ class Gr4vyConfig
         $response = $this->get("/transactions/" . $transaction_id);
         return $response;
     }
+    public function syncTransaction($transaction_id) {
+        $response = $this->post("/transactions/" . $transaction_id . "/sync", null);
+        return $response;
+    }
     public function captureTransaction($transaction_id, $transaction_request) {
         $response = $this->post("/transactions/" . $transaction_id . "/capture", $transaction_request);
         return $response;
