@@ -341,7 +341,7 @@ class CartItem implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         if (!is_null($this->container['categories']) && (count($this->container['categories']) > 500)) {
-            $invalidProperties[] = "invalid value for 'categories', number of items must be less than or equal to 100.";
+            $invalidProperties[] = "invalid value for 'categories', number of items must be less than or equal to 500.";
         }
 
         $allowedValues = $this->getProductTypeAllowableValues();
@@ -656,8 +656,8 @@ class CartItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCategories($categories)
     {
 
-        if (!is_null($categories) && (count($categories) > 100)) {
-            throw new \InvalidArgumentException('invalid value for $categories when calling CartItem., number of items must be less than or equal to 100.');
+        if (!is_null($categories) && (count($categories) > 500)) {
+            throw new \InvalidArgumentException('invalid value for $categories when calling CartItem., number of items must be less than or equal to 500.');
         }
         $this->container['categories'] = $categories;
 
