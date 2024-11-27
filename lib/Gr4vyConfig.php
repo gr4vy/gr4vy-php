@@ -125,7 +125,7 @@ class Gr4vyConfig
                 // Configures the time that the token was issue (iat claim)
                 ->issuedAt($now)
                 // Configures the time that the token can be used (nbf claim)
-                ->canOnlyBeUsedAfter($now->modify('+1 minute'))
+                ->canOnlyBeUsedAfter($now)#->modify('+1 minute'))
                 // Configures the expiration time of the token (exp claim)
                 ->expiresAt($now->modify('+1 hour'))
                 // Configures a new claim, called "uid"
@@ -403,12 +403,20 @@ class Gr4vyConfig
         $response = $this->get("/transactions/" . $transaction_id);
         return $response;
     }
+    public function syncTransaction($transaction_id) {
+        $response = $this->post("/transactions/" . $transaction_id . "/sync", null);
+        return $response;
+    }
     public function captureTransaction($transaction_id, $transaction_request) {
         $response = $this->post("/transactions/" . $transaction_id . "/capture", $transaction_request);
         return $response;
     }
     public function listTransactions($params = array()) {
         $response = $this->get("/transactions", $params);
+        return $response;
+    }
+    public function getRefund($refund_id) {
+        $response = $this->get("/refunds/" . $refund_id);
         return $response;
     }
     public function refundTransaction($transaction_id, $refund_request) {
@@ -423,16 +431,24 @@ class Gr4vyConfig
         $response = $this->post("/checkout/sessions", $request);
         return $response;
     }
-    public function updateCheckoutSession($request = array()) {
+    public function updateCheckoutSession($checkout_session_id, $request = array()) {
         $response = $this->put("/checkout/sessions/" . $checkout_session_id, $request);
         return $response;
     }
-    public function updateCheckoutSessionFields($request = array()) {
+    public function updateCheckoutSessionFields($checkout_session_id, $request = array()) {
         $response = $this->put("/checkout/sessions/" . $checkout_session_id . "/fields", $request);
         return $response;
     }
-    public function deleteCheckoutSession() {
+    public function deleteCheckoutSession($checkout_session_id) {
         $response = $this->delete("/checkout/sessions/" . $checkout_session_id);
+        return $response;
+    }
+    public function getReportExecution($report_execution_id) {
+        $response = $this->get("/report-executions/" . $report_execution_id);
+        return $response;
+    }
+    public function generateReportDownloadUrl($report_id, $report_execution_id, $request = array()) {
+        $response = $this->post("/reports/". $report_id . "/executions/" . $report_execution_id . "/url", $request);
         return $response;
     }
 }
