@@ -36,6 +36,11 @@
             "Gr4vy\\": "lib/"
         }
     },
+    "config": {
+        "platform": {
+            "php": "8.1"
+        }
+    },
     "autoload-dev": {
         "psr-4": { "Gr4vy\\Test\\" : "test/" }
     }
