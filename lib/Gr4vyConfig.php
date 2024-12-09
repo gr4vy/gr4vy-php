@@ -451,4 +451,16 @@ class Gr4vyConfig
         $response = $this->post("/reports/". $report_id . "/executions/" . $report_execution_id . "/url", $request);
         return $response;
     }
+    public function newApplePaySesson($request = array()) {
+        $response = $this->post("/digital-wallets/apple/session/", $request);
+        return $response;
+    }
+    public function newGooglePaySession($request = array()) {
+        $response = $this->post("/digital-wallets/google/session/", $request);
+        return $response;
+    }
+    public function newClickToPaySession($request = array()) {
+        $response = $this->post("/digital-wallets/click-to-pay/session/", $request);
+        return $response;
+    }
 }
