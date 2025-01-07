@@ -452,15 +452,15 @@ class Gr4vyConfig
         return $response;
     }
     public function newApplePaySession($request = array()) {
-        $response = $this->post("/digital-wallets/apple/session/", $request);
+        $response = $this->post("/digital-wallets/apple/session", $request);
         return $response;
     }
     public function newGooglePaySession($request = array()) {
-        $response = $this->post("/digital-wallets/google/session/", $request);
+        $response = $this->post("/digital-wallets/google/session", $request);
         return $response;
     }
     public function newClickToPaySession($request = array()) {
-        $response = $this->post("/digital-wallets/click-to-pay/session/", $request);
+        $response = $this->post("/digital-wallets/click-to-pay/session", $request);
         return $response;
     }
 }
