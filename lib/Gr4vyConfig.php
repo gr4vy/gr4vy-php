@@ -203,6 +203,38 @@ class Gr4vyConfig
         return rtrim(str_replace(['+', '/'], ['-', '_'], base64_encode($b)), '=');
     }
 
+    public static function verifyWebhook(
+        $secret,
+        $payload,
+        $signatureHeader,
+        $timestampHeader,
+        $timestampTolerance = 0
+    ) {
+        if (empty($signatureHeader) || empty($timestampHeader)) {
+            throw new \Exception("Missing header values");
+        }
+    
+        if (!is_numeric($timestampHeader)) {
+            throw new \Exception("Invalid header timestamp");
+        }
+    
+        $timestamp = (int)$timestampHeader;
+        $signatures = explode(",", $signatureHeader);
+        $expectedSignature = hash_hmac(
+            'sha256',
+            $timestamp . '.' . $payload,
+            $secret
+        );
+    
+        if (!in_array($expectedSignature, $signatures, true)) {
+            throw new \Exception("No matching signature found");
+        }
+    
+        if ($timestampTolerance > 0 && $timestamp < (time() - $timestampTolerance)) {
+            throw new \Exception("Timestamp too old");
+        }
+    }
+
     private function get($endpoint, $params = array()) {
         $query = "";
         if (count($params) > 0) {
