@@ -269,7 +269,7 @@ class Gr4vyConfig
         $scopes = array("*.read", "*.write");
         $accessToken = self::getToken($this->privateKeyLocation, $scopes);
 
-        $payload = json_encode($data);
+        $payload = json_encode($data, JSON_FORCE_OBJECT);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -297,7 +297,7 @@ class Gr4vyConfig
         $scopes = array("*.read", "*.write");
         $accessToken = self::getToken($this->privateKeyLocation, $scopes);
 
-        $payload = json_encode($data);
+        $payload = json_encode($data, JSON_FORCE_OBJECT);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
