@@ -269,7 +269,11 @@ class Gr4vyConfig
         $scopes = array("*.read", "*.write");
         $accessToken = self::getToken($this->privateKeyLocation, $scopes);
 
-        $payload = json_encode($data);
+        if ($data == null) {
+            $payload = "{}";
+        } else {
+            $payload = json_encode($data);
+        }
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -297,8 +301,12 @@ class Gr4vyConfig
         $scopes = array("*.read", "*.write");
         $accessToken = self::getToken($this->privateKeyLocation, $scopes);
 
-        $payload = json_encode($data);
-
+        if ($data == null) {
+            $payload = "{}";
+        } else {
+            $payload = json_encode($data);
+        }
+        
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -455,19 +463,19 @@ class Gr4vyConfig
         $response = $this->post("/transactions/" . $transaction_id . "/refunds", $refund_request);
         return $response;
     }
-    public function voidTransaction($transaction_id, $request = array()) {
+    public function voidTransaction($transaction_id, $request = null) {
         $response = $this->post("/transactions/" . $transaction_id . "/void", $request);
         return $response;
     }
-    public function newCheckoutSession($request = array()) {
+    public function newCheckoutSession($request = null) {
         $response = $this->post("/checkout/sessions", $request);
         return $response;
     }
-    public function updateCheckoutSession($checkout_session_id, $request = array()) {
+    public function updateCheckoutSession($checkout_session_id, $request = null) {
         $response = $this->put("/checkout/sessions/" . $checkout_session_id, $request);
         return $response;
     }
-    public function updateCheckoutSessionFields($checkout_session_id, $request = array()) {
+    public function updateCheckoutSessionFields($checkout_session_id, $request = null) {
         $response = $this->put("/checkout/sessions/" . $checkout_session_id . "/fields", $request);
         return $response;
     }
@@ -479,7 +487,7 @@ class Gr4vyConfig
         $response = $this->get("/report-executions/" . $report_execution_id);
         return $response;
     }
-    public function generateReportDownloadUrl($report_id, $report_execution_id, $request = array()) {
+    public function generateReportDownloadUrl($report_id, $report_execution_id, $request = null) {
         $response = $this->post("/reports/". $report_id . "/executions/" . $report_execution_id . "/url", $request);
         return $response;
     }
