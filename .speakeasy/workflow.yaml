@@ -22,5 +22,5 @@ targets:
             registry:
                 location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi-php-code-samples
             labelOverride:
-                fixedValue: PHP (SDK)
+                fixedValue: PHP
             blocking: false
