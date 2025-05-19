@@ -1,0 +1,14 @@
+# AuditLogEntry
+
+
+## Fields
+
+| Field                                                         | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `type`                                                        | *?string*                                                     | :heavy_minus_sign:                                            | Always `audit-log`.                                           | audit-log                                                     |
+| `id`                                                          | *?string*                                                     | :heavy_minus_sign:                                            | The ID for the audit log entry.                               | 8d3fe99b-1422-42e6-bbb3-932d95ae5f79                          |
+| `merchantAccountId`                                           | *?string*                                                     | :heavy_minus_sign:                                            | The ID of the merchant account this entry was created for.    | default                                                       |
+| `resource`                                                    | [AuditLogEntryResource](./AuditLogEntryResource.md)           | :heavy_check_mark:                                            | N/A                                                           |                                                               |
+| `action`                                                      | [AuditLogAction](./AuditLogAction.md)                         | :heavy_check_mark:                                            | N/A                                                           | created                                                       |
+| `user`                                                        | [AuditLogEntryUser](./AuditLogEntryUser.md)                   | :heavy_check_mark:                                            | N/A                                                           |                                                               |
+| `timestamp`                                                   | [\DateTime](https://www.php.net/manual/en/class.datetime.php) | :heavy_check_mark:                                            | The date and time that the action was performed.              | 2022-01-01T00:00:00+00:00                                     |

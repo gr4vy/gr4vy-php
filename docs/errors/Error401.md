@@ -1,0 +1,12 @@
+# Error401
+
+
+## Fields
+
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `type`                                                            | *?string*                                                         | :heavy_minus_sign:                                                | Always `error`.                                                   | error                                                             |
+| `code`                                                            | *?string*                                                         | :heavy_minus_sign:                                                | Always `unauthorized`                                             | unauthorized                                                      |
+| `status`                                                          | *?int*                                                            | :heavy_minus_sign:                                                | Always `401`.                                                     | 401                                                               |
+| `message`                                                         | *?string*                                                         | :heavy_minus_sign:                                                | A human readable message that provides more context to the error. | No valid API authentication found                                 |
+| `details`                                                         | array<[ErrorDetail](../ErrorDetail.md)>                           | :heavy_minus_sign:                                                | A list of details that further ellaborate on the error.           |                                                                   |

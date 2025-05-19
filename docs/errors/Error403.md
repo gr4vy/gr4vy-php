@@ -1,0 +1,12 @@
+# Error403
+
+
+## Fields
+
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `type`                                                            | *?string*                                                         | :heavy_minus_sign:                                                | Always `error`.                                                   | error                                                             |
+| `code`                                                            | *?string*                                                         | :heavy_minus_sign:                                                | Always `forbidden`                                                | forbidden                                                         |
+| `status`                                                          | *?int*                                                            | :heavy_minus_sign:                                                | Always `403`.                                                     | 403                                                               |
+| `message`                                                         | *string*                                                          | :heavy_check_mark:                                                | A human readable message that provides more context to the error. | Request failed validation                                         |
+| `details`                                                         | array<[ErrorDetail](../ErrorDetail.md)>                           | :heavy_minus_sign:                                                | A list of details that further ellaborate on the error.           |                                                                   |

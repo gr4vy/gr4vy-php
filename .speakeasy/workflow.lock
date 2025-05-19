@@ -1,0 +1,44 @@
+speakeasyVersion: 1.547.1
+sources:
+    openapi:
+        sourceNamespace: openapi
+        sourceRevisionDigest: sha256:842932cbd5ef4c517ae13bb4288b9bec32a47338b4814540e65cd0be5eb9779a
+        sourceBlobDigest: sha256:9a3248f2c12c5f6fd8cfe23b8d94ba5df71af09ba16d60d9968eb274f7a9eaab
+        tags:
+            - latest
+            - 1.0.0
+targets:
+    php:
+        source: openapi
+        sourceNamespace: openapi
+        sourceRevisionDigest: sha256:842932cbd5ef4c517ae13bb4288b9bec32a47338b4814540e65cd0be5eb9779a
+        sourceBlobDigest: sha256:9a3248f2c12c5f6fd8cfe23b8d94ba5df71af09ba16d60d9968eb274f7a9eaab
+        codeSamplesNamespace: openapi-php-code-samples
+        codeSamplesRevisionDigest: sha256:6e24a35c7a70bc023d332a9caef918fa1580a1940ab4b0b7a70c1ba6d24fd753
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        openapi:
+            inputs:
+                - location: https://gr4vy.github.io/gr4vy-openapi/core/openapi.json
+            overlays:
+                - location: ./.speakeasy/overlays/servers.yaml
+                - location: ./.speakeasy/overlays/security.yaml
+                - location: ./.speakeasy/overlays/enums.yaml
+                - location: ./.speakeasy/overlays/retries.yaml
+                - location: ./.speakeasy/overlays/mid-global.yaml
+                - location: ./.speakeasy/overlays/fix-base-model.yaml
+                - location: ./.speakeasy/overlays/fix-checkout-session-body.yaml
+            registry:
+                location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi
+    targets:
+        php:
+            target: php
+            source: openapi
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi-php-code-samples
+                labelOverride:
+                    fixedValue: PHP (SDK)
+                blocking: false

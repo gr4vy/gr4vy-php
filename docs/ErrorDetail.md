@@ -1,0 +1,11 @@
+# ErrorDetail
+
+
+## Fields
+
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `location`                                                        | [ErrorLocation](./ErrorLocation.md)                               | :heavy_check_mark:                                                | N/A                                                               |                                                                   |
+| `pointer`                                                         | *string*                                                          | :heavy_check_mark:                                                | A JSON pointer for the particular property that caused the error. |                                                                   |
+| `message`                                                         | *string*                                                          | :heavy_check_mark:                                                | A human-readdable explanation of the error.                       | Unknown ISO 4217 currency code: USX                               |
+| `type`                                                            | *string*                                                          | :heavy_check_mark:                                                | The type of error that was raised for this property.              | value_error                                                       |
