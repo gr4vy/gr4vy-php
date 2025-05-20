@@ -1,9 +1,9 @@
-speakeasyVersion: 1.547.1
+speakeasyVersion: 1.548.1
 sources:
     openapi:
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:842932cbd5ef4c517ae13bb4288b9bec32a47338b4814540e65cd0be5eb9779a
-        sourceBlobDigest: sha256:9a3248f2c12c5f6fd8cfe23b8d94ba5df71af09ba16d60d9968eb274f7a9eaab
+        sourceRevisionDigest: sha256:d3e07384668d552d96e990411311cbdd2c50dd6749689efe1ec290ffd029d487
+        sourceBlobDigest: sha256:e5bc07bceca67e29326ba2a77d3625213cff58eed368e6d804ae5f49845ecab4
         tags:
             - latest
             - 1.0.0
@@ -11,10 +11,10 @@ targets:
     php:
         source: openapi
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:842932cbd5ef4c517ae13bb4288b9bec32a47338b4814540e65cd0be5eb9779a
-        sourceBlobDigest: sha256:9a3248f2c12c5f6fd8cfe23b8d94ba5df71af09ba16d60d9968eb274f7a9eaab
+        sourceRevisionDigest: sha256:d3e07384668d552d96e990411311cbdd2c50dd6749689efe1ec290ffd029d487
+        sourceBlobDigest: sha256:e5bc07bceca67e29326ba2a77d3625213cff58eed368e6d804ae5f49845ecab4
         codeSamplesNamespace: openapi-php-code-samples
-        codeSamplesRevisionDigest: sha256:6e24a35c7a70bc023d332a9caef918fa1580a1940ab4b0b7a70c1ba6d24fd753
+        codeSamplesRevisionDigest: sha256:b30262f5faf6fa322a0aa9bd33af266f9488af04793f2d13b9c2de09945bf135
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -40,5 +40,5 @@ workflow:
                 registry:
                     location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi-php-code-samples
                 labelOverride:
-                    fixedValue: PHP (SDK)
+                    fixedValue: PHP
                 blocking: false

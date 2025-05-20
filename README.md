@@ -1,6 +1,6 @@
-# gr4vy/gr4vy-php
+# Gr4vy PHP SDK (Beta)
 
-Developer-friendly & type-safe Php SDK specifically catered to leverage *gr4vy/gr4vy-php* API.
+Developer-friendly & type-safe PHP SDK specifically catered to leverage the **Gr4vy** API.
 
 <div align="left">
     <a href="https://www.speakeasy.com/?utm_source=gr4vy/gr4vy-php&utm_campaign=php"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
@@ -12,18 +12,14 @@ Developer-friendly & type-safe Php SDK specifically catered to leverage *gr4vy/g
 
 <br /><br />
 > [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/gr4vy/gr4vy). Delete this section before > publishing to a package manager.
+> This is a Beta release of our latest SDK. Please refer to the [legacy PHP SDK](https://github.com/gr4vy/gr4vy-php/tree/legacy) for the latest stable build.
 
-<!-- Start Summary [summary] -->
-## Summary
-
-Gr4vy: The Gr4vy API.
-<!-- End Summary [summary] -->
+<!-- No Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [gr4vy/gr4vy-php](#gr4vygr4vy-php)
+* [Gr4vy PHP SDK (Beta)](#gr4vy-php-sdk-beta)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)

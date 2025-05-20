@@ -22,6 +22,15 @@ class Airline
     public ?string $bookingCode = null;
 
     /**
+     * Indicates whether the cardholder is traveling.
+     *
+     * @var ?bool $isCardholderTraveling
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_cardholder_traveling')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $isCardholderTraveling = null;
+
+    /**
      * The address of the place/agency that issued the ticket.
      *
      * @var ?string $issuedAddress
@@ -179,6 +188,7 @@ class Airline
 
     /**
      * @param  ?string  $bookingCode
+     * @param  ?bool  $isCardholderTraveling
      * @param  ?string  $issuedAddress
      * @param  ?\DateTime  $issuedAt
      * @param  ?string  $issuingCarrierCode
@@ -198,9 +208,10 @@ class Airline
      * @param  ?string  $travelAgencyPlanName
      * @phpstan-pure
      */
-    public function __construct(?string $bookingCode = null, ?string $issuedAddress = null, ?\DateTime $issuedAt = null, ?string $issuingCarrierCode = null, ?string $issuingCarrierName = null, ?string $issuingIataDesignator = null, ?string $issuingIcaoCode = null, ?array $legs = null, ?string $passengerNameRecord = null, ?array $passengers = null, ?string $reservationSystem = null, ?bool $restrictedTicket = null, ?TicketDeliveryMethod $ticketDeliveryMethod = null, ?string $ticketNumber = null, ?string $travelAgencyCode = null, ?string $travelAgencyInvoiceNumber = null, ?string $travelAgencyName = null, ?string $travelAgencyPlanName = null)
+    public function __construct(?string $bookingCode = null, ?bool $isCardholderTraveling = null, ?string $issuedAddress = null, ?\DateTime $issuedAt = null, ?string $issuingCarrierCode = null, ?string $issuingCarrierName = null, ?string $issuingIataDesignator = null, ?string $issuingIcaoCode = null, ?array $legs = null, ?string $passengerNameRecord = null, ?array $passengers = null, ?string $reservationSystem = null, ?bool $restrictedTicket = null, ?TicketDeliveryMethod $ticketDeliveryMethod = null, ?string $ticketNumber = null, ?string $travelAgencyCode = null, ?string $travelAgencyInvoiceNumber = null, ?string $travelAgencyName = null, ?string $travelAgencyPlanName = null)
     {
         $this->bookingCode = $bookingCode;
+        $this->isCardholderTraveling = $isCardholderTraveling;
         $this->issuedAddress = $issuedAddress;
         $this->issuedAt = $issuedAt;
         $this->issuingCarrierCode = $issuingCarrierCode;

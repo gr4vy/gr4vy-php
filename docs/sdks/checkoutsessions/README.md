@@ -101,6 +101,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
     ),
     airline: new Gr4vy\Airline(
         bookingCode: 'X36Q9C',
+        isCardholderTraveling: true,
         issuedAddress: '123 Broadway, New York',
         issuedAt: Utils\Utils::parseDateTime('2013-07-16T19:23:00.000+00:00'),
         issuingCarrierCode: '649',
@@ -294,6 +295,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
     ),
     airline: new Gr4vy\Airline(
         bookingCode: 'X36Q9C',
+        isCardholderTraveling: true,
         issuedAddress: '123 Broadway, New York',
         issuedAt: Utils\Utils::parseDateTime('2013-07-16T19:23:00.000+00:00'),
         issuingCarrierCode: '649',
