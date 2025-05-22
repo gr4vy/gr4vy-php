@@ -59,7 +59,6 @@ composer require "gr4vy/gr4vy-php"
 ```
 <!-- End SDK Installation [installation] -->
 
-<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
 ### Example
@@ -70,33 +69,127 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Gr4vy;
+use Gr4vy\Auth;
+
+// Loaded the key from a file, env variable, 
+// or anywhere else
+$privateKey = "..."; 
 
 $sdk = Gr4vy\SDK::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
+    ->setId('example')
+    ->setServer('sandbox')
+    ->setSecuritySource(Auth::withToken($privateKey))
     ->setMerchantAccountId('default')
     ->build();
 
-$accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
-    paymentMethodIds: [
-        'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-        'f29e886e-93cc-4714-b4a3-12b7a718e595',
-    ],
-);
+$response = $sdk->transactions->list();
 
-$response = $sdk->accountUpdater->jobs->create(
-    accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    timeoutInSeconds: 1,
-    merchantAccountId: 'default'
-
-);
-
-if ($response->accountUpdaterJob !== null) {
+if ($response->transactions !== null) {
     // handle response
 }
 ```
-<!-- End SDK Example Usage [usage] -->
+
+<br /><br />
+> [!IMPORTANT]
+> Please use ` ->setSecuritySource(Auth::withToken($privateKey))` where the documentation mentions `->setSecurity('<YOUR_BEARER_TOKEN_HERE>')`.
+
+
+<!-- No SDK Example Usage [usage] -->
+
+## Bearer token generation
+
+Alternatively, you can create a token for use with the SDK or with your own client library.
+
+```php
+use Gr4vy\Auth;
+$token = Auth::getToken($privateKey),
+```
+
+> **Note:** This will only create a token once. Use `Auth::withToken` with our SDK to dynamically generate a token
+> for every request.
+
+
+## Embed token generation
+
+Alternatively, you can create a token for use with Embed as follows.
+
+```php
+use Gr4vy;
+use Gr4vy\Auth;
+
+// Loaded the key from a file, env variable, 
+// or anywhere else
+$privateKey = "..."; 
+
+$sdk = Gr4vy\SDK::builder()
+    ->setId('example')
+    ->setServer('sandbox')
+    ->setSecuritySource(Auth::withToken($privateKey))
+    ->setMerchantAccountId('default')
+    ->build();
+
+$response = $sdk->checkout_sessions.create();
+
+$token = $token = Auth::getEmbedToken(
+    privateKey: $privateKey,
+    expiresIn: '+1 hour',
+    checkoutSessionId: $response->checkoutSession->id,
+);
+```
+
+> **Note:** This will only create a token once. Use `Auth::withToken` with our SDK to dynamically generate a token
+> for every request.
+
+## Merchant account ID selection
+
+Depending on the key used, you might need to explicitly define a merchant account ID to use. In our API, 
+this uses the `X-GR4VY-MERCHANT-ACCOUNT-ID` header. When using the SDK, you can set the `merchantAccountId`
+when initializing the SDK.
+
+```php
+$sdk = Gr4vy\SDK::builder()
+    ->setId('example')
+    ->setServer('sandbox')
+    ->setSecuritySource(Auth::withToken($privateKey))
+    ->setMerchantAccountId('your-merchant-account-id')
+    ->build();
+```
+
+## Webhooks verification
+
+The SDK makes it easy to verify that incoming webhooks were actually sent by Gr4vy. Once you have configured the webhook subscription with its corresponding secret, that can be verified the following way:
+
+```php
+use Gr4vy;
+
+// Webhook payload and headers
+$payload = "your-webhook-payload";
+$secret = "your-webhook-secret";
+$signatureHeader = "signatures-from-header";
+$timestampHeader = "timestamp-from-header";
+$timestampTolerance = 300; // optional, in seconds (default: 0)
+
+try {
+    Webhooks::verifyWebhook(
+        secret: $secret$,
+        payload: $payload,
+        signatureHeader: $signatureHeader$,
+        timestampHeader: $timestampHeader,
+        timestampTolerance: $timestampTolerance
+    );
+}
+catch(Throwable $th$) {
+    // handle the exception
+}
+```
+
+### Parameters
+
+- **`payload`**: The raw payload string received in the webhook request.
+- **`secret`**: The secret used to sign the webhook. This is provided in your Gr4vy dashboard.
+- **`signatureHeader`**: The `X-Gr4vy-Signature` header from the webhook request.
+- **`timestampHeader`**: The `X-Gr4vy-Timestamp` header from the webhook request.
+- **`timestampTolerance`**: _(Optional)_ The maximum allowed difference (in seconds) between the current time and the timestamp in the webhook. Defaults to `0` (no tolerance).
 
 <!-- Start Authentication [security] -->
 ## Authentication
