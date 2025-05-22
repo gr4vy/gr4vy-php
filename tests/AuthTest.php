@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 final class AuthTest extends TestCase
 {
-    private string $privateKey = <<<EOD
+    private string $privateKey = <<<'EOD'
 -----BEGIN PRIVATE KEY-----
 MIHuAgEAMBAGByqGSM49AgEGBSuBBAAjBIHWMIHTAgEBBEIBABM9jQu+HT87oIik
 O6DiJjYeghr3V+VMBVNU2hCM3X/OAS6TUTylMbnjDnwWdmu7anVSnjvEY1a4KxQ9
@@ -47,7 +47,7 @@ EOD;
 
     private string $checkoutSessionId = '0ebde6a1-f66c-43ea-bb8b-73751864c604';
 
-    public function testGetTokenCreatesValidJwt(): void
+    public function test_get_token_creates_valid_jwt(): void
     {
         $token = Auth::getToken(
             privateKey: $this->privateKey,
@@ -67,7 +67,7 @@ EOD;
         $this->assertStringContainsString('gr4vy/gr4vy-php', $decoded['payload']['iss']);
     }
 
-    public function testGetTokenAcceptsOptionalEmbedData(): void
+    public function test_get_token_accepts_optional_embed_data(): void
     {
         $token = Auth::getToken(
             $this->privateKey,
@@ -84,7 +84,7 @@ EOD;
         $this->assertEquals($this->embedParams, $decoded['payload']['embed']);
     }
 
-    public function testGetTokenIgnoresEmbedDataIfScopeNotSet(): void
+    public function test_get_token_ignores_embed_data_if_scope_not_set(): void
     {
         $token = Auth::getToken(
             $this->privateKey,
@@ -100,7 +100,7 @@ EOD;
         $this->assertArrayNotHasKey('embed', $decoded['payload']);
     }
 
-    public function testGetEmbedTokenCreatesJwtForEmbed(): void
+    public function test_get_embed_token_creates_jwt_for_embed(): void
     {
         $token = Auth::getEmbedToken(
             $this->privateKey,
@@ -116,7 +116,7 @@ EOD;
         $this->assertEquals($this->embedParams, $decoded['payload']['embed']);
     }
 
-    public function testGetEmbedTokenAcceptsCheckoutSessionId(): void
+    public function test_get_embed_token_accepts_checkout_session_id(): void
     {
         $token = Auth::getEmbedToken(
             $this->privateKey,
@@ -130,7 +130,7 @@ EOD;
         $this->assertEquals($this->checkoutSessionId, $decoded['payload']['checkout_session_id']);
     }
 
-    public function testUpdateTokenResignsWithNewExpiration(): void
+    public function test_update_token_resigns_with_new_expiration(): void
     {
         $originalToken = Auth::getToken($this->privateKey, [JWTScope::READ_ALL], '+1 minute');
         sleep(2); // Ensure iat/exp/nbf will differ
@@ -146,7 +146,7 @@ EOD;
         $this->assertGreaterThan($originalDecoded['payload']['nbf'], $newDecoded['payload']['nbf']);
     }
 
-    public function testUpdateTokenAllowsEmbedParamsUpdate(): void
+    public function test_update_token_allows_embed_params_update(): void
     {
         $originalToken = Auth::getEmbedToken(
             $this->privateKey,
@@ -183,6 +183,7 @@ EOD;
         [$header, $payload, $signature] = explode('.', $jwt);
         $header = json_decode(base64_decode(strtr($header, '-_', '+/')), true);
         $payload = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
+
         return [
             'header' => $header,
             'payload' => $payload,

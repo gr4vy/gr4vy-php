@@ -18,6 +18,10 @@ targets:
     php:
         target: php
         source: openapi
+        publish:
+            packagist:
+                username: $packagist_username
+                token: $packagist_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi-php-code-samples

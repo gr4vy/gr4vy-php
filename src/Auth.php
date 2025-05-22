@@ -6,12 +6,12 @@ namespace Gr4vy;
 
 use DateTimeImmutable;
 use InvalidArgumentException;
+use Lcobucci\JWT\ClaimsFormatter;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Encoding\JoseEncoder;
 use Lcobucci\JWT\Signer;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Token\Parser;
-use Lcobucci\JWT\ClaimsFormatter;
 use Lcobucci\JWT\Token\RegisteredClaims;
 use Ramsey\Uuid\Uuid;
 
@@ -138,7 +138,7 @@ class Auth
                 // Configures the time that the token can be used (nbf claim)
             ->canOnlyBeUsedAfter(notBefore: $now)
                 // Configures the expiration time of the token (exp claim)
-            ->expiresAt(expiration:  $now->modify(modifier: $expiresIn))
+            ->expiresAt(expiration: $now->modify(modifier: $expiresIn))
                 // Configures a new claim, called "uid"
             ->withClaim(name: 'scopes', value: $scopes)
                 // // Configures a new header, called "foo"
