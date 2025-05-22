@@ -11,7 +11,29 @@ use Lcobucci\JWT\Encoding\JoseEncoder;
 use Lcobucci\JWT\Signer;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Token\Parser;
+use Lcobucci\JWT\ClaimsFormatter;
+use Lcobucci\JWT\Token\RegisteredClaims;
 use Ramsey\Uuid\Uuid;
+
+class UnixTimestampDateConversion implements ClaimsFormatter
+{
+    public function formatClaims(array $claims): array
+    {
+        foreach (RegisteredClaims::DATE_CLAIMS as $claim) {
+            if (! array_key_exists($claim, $claims)) {
+                continue;
+            }
+            $claims[$claim] = $this->convertDate($claims[$claim]);
+        }
+
+        return $claims;
+    }
+
+    private function convertDate(DateTimeImmutable $date): int
+    {
+        return $date->getTimestamp();
+    }
+}
 
 /**
  * Class JWTScope
@@ -106,7 +128,7 @@ class Auth
             verificationKey: InMemory::base64Encoded(contents: 'bm90dXNlZA==')
         );
 
-        $tokenBuilder = $config->builder()
+        $tokenBuilder = $config->builder(claimFormatter: new UnixTimestampDateConversion())
                 // Configures the issuer (iss claim)
             ->issuedBy(issuer: self::getIssuer())
                 // Configures the id (jti claim)
@@ -116,13 +138,13 @@ class Auth
                 // Configures the time that the token can be used (nbf claim)
             ->canOnlyBeUsedAfter(notBefore: $now)
                 // Configures the expiration time of the token (exp claim)
-            ->expiresAt(expiration: $now->modify(modifier: $expiresIn))
+            ->expiresAt(expiration:  $now->modify(modifier: $expiresIn))
                 // Configures a new claim, called "uid"
             ->withClaim(name: 'scopes', value: $scopes)
                 // // Configures a new header, called "foo"
             ->withHeader(name: 'kid', value: $kid);
 
-        if (count(value: $embedParams) > 0) {
+        if (in_array(needle: JWTScope::EMBED, haystack: $scopes) && isset($embedParams) && count(value: $embedParams) > 0) {
             $tokenBuilder = $tokenBuilder->withClaim(name: 'embed', value: $embedParams);
         }
 
