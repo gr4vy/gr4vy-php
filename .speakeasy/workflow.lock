@@ -1,0 +1,48 @@
+speakeasyVersion: 1.549.0
+sources:
+    openapi:
+        sourceNamespace: openapi
+        sourceRevisionDigest: sha256:341fc4b03d2e02b50db8879efda8f92910ecb26cfe0ff29fb9ed26fa757b4b46
+        sourceBlobDigest: sha256:2f56283de77c7715b3d2afd7cb3469ef74689096a7fa6d5e978e4b4346b3c9dd
+        tags:
+            - latest
+            - 1.0.0
+targets:
+    php:
+        source: openapi
+        sourceNamespace: openapi
+        sourceRevisionDigest: sha256:341fc4b03d2e02b50db8879efda8f92910ecb26cfe0ff29fb9ed26fa757b4b46
+        sourceBlobDigest: sha256:2f56283de77c7715b3d2afd7cb3469ef74689096a7fa6d5e978e4b4346b3c9dd
+        codeSamplesNamespace: openapi-php-code-samples
+        codeSamplesRevisionDigest: sha256:e8952f5b224bf40cd9d87ffc2b654b44c774971119b2ad48a598f668dae214f1
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        openapi:
+            inputs:
+                - location: https://gr4vy.github.io/gr4vy-openapi/core/openapi.json
+            overlays:
+                - location: ./.speakeasy/overlays/servers.yaml
+                - location: ./.speakeasy/overlays/security.yaml
+                - location: ./.speakeasy/overlays/enums.yaml
+                - location: ./.speakeasy/overlays/retries.yaml
+                - location: ./.speakeasy/overlays/mid-global.yaml
+                - location: ./.speakeasy/overlays/fix-base-model.yaml
+                - location: ./.speakeasy/overlays/fix-checkout-session-body.yaml
+            registry:
+                location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi
+    targets:
+        php:
+            target: php
+            source: openapi
+            publish:
+                packagist:
+                    username: $packagist_username
+                    token: $packagist_token
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi-php-code-samples
+                labelOverride:
+                    fixedValue: PHP
+                blocking: false
