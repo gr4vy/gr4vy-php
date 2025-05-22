@@ -21,7 +21,7 @@ final class CheckoutSessionsTest extends TestCase
         if (file_exists(filename: $filename)) {
             $privateKey = file_get_contents(filename: $filename);
         } else {
-            $privateKey = getenv(name: 'GR4VY_PRIVATE_KEY');
+            $privateKey = getenv(name: 'PRIVATE_KEY');
         }
 
         $sdk = Gr4vy\SDK::builder()
