@@ -3,10 +3,10 @@ id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
   docChecksum: 1e2598c25b6424d97a2c340d1d3d943b
   docVersion: 1.0.0
-  speakeasyVersion: 1.548.4
-  generationVersion: 2.605.6
-  releaseVersion: 0.0.16
-  configChecksum: 30f863fd45b95d96ebe0ddc2d337811e
+  speakeasyVersion: 1.549.0
+  generationVersion: 2.607.0
+  releaseVersion: 0.0.17
+  configChecksum: 7f13c2dfe4eb5e4afefe92c20e473f24
   published: true
 features:
   php:
