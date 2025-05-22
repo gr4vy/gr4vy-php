@@ -263,7 +263,8 @@ class Auth
      */
     private static function getIssuer(): string
     {
-        $issuer = new SDKConfiguration()->userAgent;
+        $config = new SDKConfiguration();
+        $issuer = $config->userAgent;
         if (empty($issuer)) {
             $issuer = 'speakeasy-sdk/php X.X.X X.X.X X.X.X gr4vy/gr4vy-php';
         }
