@@ -17,13 +17,13 @@ generation:
     oAuth2PasswordEnabled: false
   sdkHooksConfigAccess: true
 php:
-  version: 1.0.0-beta.2
+  version: 1.0.0-beta.4
   additionalDependencies:
     autoload: {}
     autoload-dev: {}
     require:
       lcobucci/jwt: ^5.5.0
-      paragonie/sodium_compat: '>= 2'
+      paragonie/sodium_compat_ext_sodium: '>= 1'
       ramsey/uuid: ^4.7.6
     require-dev: {}
   clientServerStatusCodesAsErrors: true
