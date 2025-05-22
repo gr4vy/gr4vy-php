@@ -20,11 +20,10 @@ class PaymentOption
 
     /**
      *
-     * @var Mode $mode
+     * @var string $mode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('mode')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Mode')]
-    public Mode $mode;
+    public string $mode;
 
     /**
      *
@@ -75,7 +74,7 @@ class PaymentOption
 
     /**
      * @param  string  $method
-     * @param  Mode  $mode
+     * @param  string  $mode
      * @param  bool  $canStorePaymentMethod
      * @param  bool  $canDelayCapture
      * @param  ?string  $type
@@ -84,7 +83,7 @@ class PaymentOption
      * @param  WalletPaymentOptionContext|GooglePayPaymentOptionContext|PaymentOptionContext|null  $context
      * @phpstan-pure
      */
-    public function __construct(string $method, Mode $mode, bool $canStorePaymentMethod, bool $canDelayCapture, ?string $iconUrl = null, ?string $label = null, WalletPaymentOptionContext|GooglePayPaymentOptionContext|PaymentOptionContext|null $context = null, ?string $type = 'payment-option')
+    public function __construct(string $method, string $mode, bool $canStorePaymentMethod, bool $canDelayCapture, ?string $iconUrl = null, ?string $label = null, WalletPaymentOptionContext|GooglePayPaymentOptionContext|PaymentOptionContext|null $context = null, ?string $type = 'payment-option')
     {
         $this->method = $method;
         $this->mode = $mode;

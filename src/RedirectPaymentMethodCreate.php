@@ -15,11 +15,10 @@ class RedirectPaymentMethodCreate
     /**
      * The method to use, this can be any of the methods that support redirect requests.
      *
-     * @var RedirectPaymentMethodCreateMethod $method
+     * @var string $method
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\RedirectPaymentMethodCreateMethod')]
-    public RedirectPaymentMethodCreateMethod $method;
+    public string $method;
 
     /**
      * The 2-letter ISO code of the country to use this payment method for. This is used to select the payment service to use.
@@ -73,7 +72,7 @@ class RedirectPaymentMethodCreate
     public ?string $externalIdentifier = null;
 
     /**
-     * @param  RedirectPaymentMethodCreateMethod  $method
+     * @param  string  $method
      * @param  string  $country
      * @param  string  $currency
      * @param  string  $redirectUrl
@@ -82,7 +81,7 @@ class RedirectPaymentMethodCreate
      * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(RedirectPaymentMethodCreateMethod $method, string $country, string $currency, string $redirectUrl, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?string $externalIdentifier = null)
+    public function __construct(string $method, string $country, string $currency, string $redirectUrl, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?string $externalIdentifier = null)
     {
         $this->method = $method;
         $this->country = $country;

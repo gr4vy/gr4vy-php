@@ -29,11 +29,10 @@ class PaymentService
 
     /**
      *
-     * @var Method $method
+     * @var string $method
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Method')]
-    public Method $method;
+    public string $method;
 
     /**
      * The display name for the payment service.
@@ -119,12 +118,11 @@ class PaymentService
 
     /**
      *
-     * @var ?PaymentServiceStatus $status
+     * @var ?string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaymentServiceStatus|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?PaymentServiceStatus $status = null;
+    public ?string $status = null;
 
     /**
      * Defines if this payment service has 3DS enabled.
@@ -212,7 +210,7 @@ class PaymentService
     /**
      * @param  string  $merchantAccountId
      * @param  string  $paymentServiceDefinitionId
-     * @param  Method  $method
+     * @param  string  $method
      * @param  string  $displayName
      * @param  int  $position
      * @param  array<string>  $acceptedCurrencies
@@ -226,7 +224,7 @@ class PaymentService
      * @param  ?string  $type
      * @param  ?string  $id
      * @param  ?bool  $active
-     * @param  ?PaymentServiceStatus  $status
+     * @param  ?string  $status
      * @param  ?bool  $isDeleted
      * @param  ?bool  $threeDSecureEnabled
      * @param  ?array<string, ?MerchantProfileSchemeSummary>  $merchantProfile
@@ -235,7 +233,7 @@ class PaymentService
      * @param  ?array<Field>  $reportingFields
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId, string $paymentServiceDefinitionId, Method $method, string $displayName, int $position, array $acceptedCurrencies, array $acceptedCountries, bool $paymentMethodTokenizationEnabled, bool $networkTokensEnabled, bool $openLoop, bool $settlementReportingEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?PaymentServiceStatus $status = null, ?bool $threeDSecureEnabled = null, ?array $merchantProfile = null, ?string $webhookUrl = null, ?array $fields = null, ?array $reportingFields = null, ?string $id = 'The ID of the payment service', ?bool $active = true, ?bool $isDeleted = false, ?string $type = 'payment-service')
+    public function __construct(string $merchantAccountId, string $paymentServiceDefinitionId, string $method, string $displayName, int $position, array $acceptedCurrencies, array $acceptedCountries, bool $paymentMethodTokenizationEnabled, bool $networkTokensEnabled, bool $openLoop, bool $settlementReportingEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?string $status = null, ?bool $threeDSecureEnabled = null, ?array $merchantProfile = null, ?string $webhookUrl = null, ?array $fields = null, ?array $reportingFields = null, ?string $id = 'The ID of the payment service', ?bool $active = true, ?bool $isDeleted = false, ?string $type = 'payment-service')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->paymentServiceDefinitionId = $paymentServiceDefinitionId;

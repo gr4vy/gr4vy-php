@@ -54,11 +54,10 @@ class Transaction
 
     /**
      *
-     * @var TransactionStatus $status
+     * @var string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionStatus')]
-    public TransactionStatus $status;
+    public string $status;
 
     /**
      * The amount for this transaction that has been authorized for the `payment_method`. This can be less than the `amount` if gift cards were used.
@@ -102,11 +101,10 @@ class Transaction
 
     /**
      *
-     * @var TransactionIntent $intent
+     * @var string $intent
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('intent')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionIntent')]
-    public TransactionIntent $intent;
+    public string $intent;
 
     /**
      * The gift cards redeemed for this transaction.
@@ -136,11 +134,10 @@ class Transaction
     /**
      * The way payment method information made it to this transaction.
      *
-     * @var TransactionPaymentSource $paymentSource
+     * @var string $paymentSource
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_source')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentSource')]
-    public TransactionPaymentSource $paymentSource;
+    public string $paymentSource;
 
     /**
      * Indicates whether the transaction was initiated by the merchant or the customer.
@@ -160,11 +157,10 @@ class Transaction
 
     /**
      *
-     * @var TransactionIntentOutcome $intentOutcome
+     * @var string $intentOutcome
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('intent_outcome')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionIntentOutcome')]
-    public TransactionIntentOutcome $intentOutcome;
+    public string $intentOutcome;
 
     /**
      * The outcome of the original intent of a transaction. This allows you to understand if the intent of the transaction (e.g. `capture` or `authorize`) has been achieved when dealing with multiple payment instruments.
@@ -232,22 +228,20 @@ class Transaction
     /**
      * The method used for the transaction.
      *
-     * @var ?Method $method
+     * @var ?string $method
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Method|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Method $method = null;
+    public ?string $method = null;
 
     /**
      * The name of the instrument used to process the transaction.
      *
-     * @var ?InstrumentType $instrumentType
+     * @var ?string $instrumentType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('instrument_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\InstrumentType|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?InstrumentType $instrumentType = null;
+    public ?string $instrumentType = null;
 
     /**
      * The standardized error code set by Gr4vy.
@@ -347,32 +341,29 @@ class Transaction
     /**
      * The response code received from the payment service for the Address Verification Check (AVS). This code is mapped to a standardized Gr4vy AVS response code.
      *
-     * @var ?AVSResponseCode $avsResponseCode
+     * @var ?string $avsResponseCode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('avs_response_code')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AVSResponseCode|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?AVSResponseCode $avsResponseCode = null;
+    public ?string $avsResponseCode = null;
 
     /**
      * The response code received from the payment service for the Card Verification Value (CVV). This code is mapped to a standardized Gr4vy CVV response code.
      *
-     * @var ?CVVResponseCode $cvvResponseCode
+     * @var ?string $cvvResponseCode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cvv_response_code')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CVVResponseCode|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CVVResponseCode $cvvResponseCode = null;
+    public ?string $cvvResponseCode = null;
 
     /**
      * The mapped decision received from the anti-fraud service. In case of a review decision this field is not updated once the review is resolved.
      *
-     * @var ?AntiFraudDecision $antiFraudDecision
+     * @var ?string $antiFraudDecision
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('anti_fraud_decision')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AntiFraudDecision|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?AntiFraudDecision $antiFraudDecision = null;
+    public ?string $antiFraudDecision = null;
 
     /**
      * An array of cart items that represents the line items of a transaction.
@@ -520,20 +511,20 @@ class Transaction
      * @param  string  $merchantAccountId
      * @param  string  $currency
      * @param  int  $amount
-     * @param  TransactionStatus  $status
+     * @param  string  $status
      * @param  int  $authorizedAmount
      * @param  int  $capturedAmount
      * @param  int  $refundedAmount
      * @param  int  $settledAmount
      * @param  bool  $settled
-     * @param  TransactionIntent  $intent
+     * @param  string  $intent
      * @param  array<GiftCardRedemption>  $giftCardRedemptions
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
-     * @param  TransactionPaymentSource  $paymentSource
+     * @param  string  $paymentSource
      * @param  bool  $merchantInitiated
      * @param  bool  $isSubsequentPayment
-     * @param  TransactionIntentOutcome  $intentOutcome
+     * @param  string  $intentOutcome
      * @param  bool  $multiTender
      * @param  bool  $accountFundingTransaction
      * @param  ?string  $type
@@ -543,8 +534,8 @@ class Transaction
      * @param  ?string  $country
      * @param  ?string  $externalIdentifier
      * @param  ?TransactionPaymentMethod  $paymentMethod
-     * @param  ?Method  $method
-     * @param  ?InstrumentType  $instrumentType
+     * @param  ?string  $method
+     * @param  ?string  $instrumentType
      * @param  ?string  $errorCode
      * @param  ?TransactionPaymentService  $paymentService
      * @param  ?TransactionBuyer  $buyer
@@ -555,9 +546,9 @@ class Transaction
      * @param  ?GiftCardService  $giftCardService
      * @param  ?Airline  $airline
      * @param  ?string  $authResponseCode
-     * @param  ?AVSResponseCode  $avsResponseCode
-     * @param  ?CVVResponseCode  $cvvResponseCode
-     * @param  ?AntiFraudDecision  $antiFraudDecision
+     * @param  ?string  $avsResponseCode
+     * @param  ?string  $cvvResponseCode
+     * @param  ?string  $antiFraudDecision
      * @param  ?array<CartItem>  $cartItems
      * @param  ?StatementDescriptor  $statementDescriptor
      * @param  ?string  $schemeTransactionId
@@ -573,7 +564,7 @@ class Transaction
      * @param  ?string  $merchantAdviceCode
      * @phpstan-pure
      */
-    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, TransactionStatus $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, TransactionIntent $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, TransactionPaymentSource $paymentSource, bool $merchantInitiated, bool $isSubsequentPayment, TransactionIntentOutcome $intentOutcome, bool $multiTender, bool $accountFundingTransaction, ?array $additionalIdentifiers = null, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?Method $method = null, ?InstrumentType $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?Airline $airline = null, ?string $authResponseCode = null, ?AVSResponseCode $avsResponseCode = null, ?CVVResponseCode $cvvResponseCode = null, ?AntiFraudDecision $antiFraudDecision = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $schemeTransactionId = null, ?TransactionThreeDSecureSummary $threeDSecure = null, ?string $paymentServiceTransactionId = null, ?array $metadata = null, ?\DateTime $authorizedAt = null, ?\DateTime $capturedAt = null, ?\DateTime $voidedAt = null, ?\DateTime $approvalExpiresAt = null, ?\DateTime $buyerApprovalTimedoutAt = null, ?Recipient $recipient = null, ?string $merchantAdviceCode = null, ?bool $pendingReview = false, ?string $type = 'transaction')
+    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, string $paymentSource, bool $merchantInitiated, bool $isSubsequentPayment, string $intentOutcome, bool $multiTender, bool $accountFundingTransaction, ?array $additionalIdentifiers = null, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?Airline $airline = null, ?string $authResponseCode = null, ?string $avsResponseCode = null, ?string $cvvResponseCode = null, ?string $antiFraudDecision = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $schemeTransactionId = null, ?TransactionThreeDSecureSummary $threeDSecure = null, ?string $paymentServiceTransactionId = null, ?array $metadata = null, ?\DateTime $authorizedAt = null, ?\DateTime $capturedAt = null, ?\DateTime $voidedAt = null, ?\DateTime $approvalExpiresAt = null, ?\DateTime $buyerApprovalTimedoutAt = null, ?Recipient $recipient = null, ?string $merchantAdviceCode = null, ?bool $pendingReview = false, ?string $type = 'transaction')
     {
         $this->id = $id;
         $this->reconciliationId = $reconciliationId;

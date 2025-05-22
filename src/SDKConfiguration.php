@@ -33,11 +33,11 @@ class SDKConfiguration
 
     public string $openapiDocVersion = '1.0.0';
 
-    public string $sdkVersion = '0.0.17';
+    public string $sdkVersion = '0.0.23';
 
     public string $genVersion = '2.607.0';
 
-    public string $userAgent = 'speakeasy-sdk/php 0.0.17 2.607.0 1.0.0 gr4vy/gr4vy-php';
+    public string $userAgent = 'speakeasy-sdk/php 0.0.23 2.607.0 1.0.0 gr4vy/gr4vy-php';
     /** @var array<string, array<string, array<string, mixed>>> */
     public ?array $globals = [
         'parameters' => [],
@@ -58,10 +58,10 @@ class SDKConfiguration
         }
 
         if ($this->server === '') {
-            $this->server = Gr4vy::SERVER_PRODUCTION;
+            $this->server = SDK::SERVER_PRODUCTION;
         }
 
-        return Gr4vy::SERVERS[$this->server];
+        return SDK::SERVERS[$this->server];
     }
 
     /**
@@ -70,7 +70,7 @@ class SDKConfiguration
     public function getServerDefaults(): ?array
     {
         if ($this->server === '') {
-            $this->server = Gr4vy::SERVER_PRODUCTION;
+            $this->server = SDK::SERVER_PRODUCTION;
         }
 
         return $this->serverDefaults[$this->server];
@@ -94,7 +94,7 @@ class SDKConfiguration
             return new Utils\ServerDetails(rtrim($this->serverUrl, '/'), []);
         }
 
-        return new Utils\ServerDetails(Gr4vy::SERVERS[$this->server], $this->serverDefaults[$this->server]);
+        return new Utils\ServerDetails(SDK::SERVERS[$this->server], $this->serverDefaults[$this->server]);
 
     }
 

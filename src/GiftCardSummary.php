@@ -82,12 +82,11 @@ class GiftCardSummary
     /**
      * If the last balance update failed, this will contain the internal code for this error.
      *
-     * @var ?GiftCardErrorCode $balanceErrorCode
+     * @var ?string $balanceErrorCode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('balance_error_code')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GiftCardErrorCode|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?GiftCardErrorCode $balanceErrorCode = null;
+    public ?string $balanceErrorCode = null;
 
     /**
      * If the last balance update failed, this will contain the the raw error code received from the gift card provider.
@@ -126,12 +125,12 @@ class GiftCardSummary
      * @param  ?string  $currency
      * @param  ?\DateTime  $expirationDate
      * @param  ?int  $balance
-     * @param  ?GiftCardErrorCode  $balanceErrorCode
+     * @param  ?string  $balanceErrorCode
      * @param  ?string  $balanceRawErrorCode
      * @param  ?string  $balanceRawErrorMessage
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId, string $bin, string $subBin, string $last4, ?string $id = null, ?string $currency = null, ?\DateTime $expirationDate = null, ?int $balance = null, ?GiftCardErrorCode $balanceErrorCode = null, ?string $balanceRawErrorCode = null, ?string $balanceRawErrorMessage = null, ?string $type = 'gift-card')
+    public function __construct(string $merchantAccountId, string $bin, string $subBin, string $last4, ?string $id = null, ?string $currency = null, ?\DateTime $expirationDate = null, ?int $balance = null, ?string $balanceErrorCode = null, ?string $balanceRawErrorCode = null, ?string $balanceRawErrorMessage = null, ?string $type = 'gift-card')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->bin = $bin;

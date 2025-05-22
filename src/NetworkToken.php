@@ -37,11 +37,10 @@ class NetworkToken
 
     /**
      *
-     * @var NetworkTokenStatus $status
+     * @var string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\NetworkTokenStatus')]
-    public NetworkTokenStatus $status;
+    public string $status;
 
     /**
      * The token value. Will be present if succeeded.
@@ -80,14 +79,14 @@ class NetworkToken
      * @param  string  $id
      * @param  string  $expirationDate
      * @param  string  $paymentMethodId
-     * @param  NetworkTokenStatus  $status
+     * @param  string  $status
      * @param  string  $token
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type
      * @phpstan-pure
      */
-    public function __construct(string $id, string $expirationDate, string $paymentMethodId, NetworkTokenStatus $status, string $token, \DateTime $createdAt, \DateTime $updatedAt, ?string $type = 'network-token')
+    public function __construct(string $id, string $expirationDate, string $paymentMethodId, string $status, string $token, \DateTime $createdAt, \DateTime $updatedAt, ?string $type = 'network-token')
     {
         $this->id = $id;
         $this->expirationDate = $expirationDate;

@@ -21,11 +21,10 @@ class AuditLogEntry
 
     /**
      *
-     * @var AuditLogAction $action
+     * @var string $action
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('action')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AuditLogAction')]
-    public AuditLogAction $action;
+    public string $action;
 
     /**
      *
@@ -72,7 +71,7 @@ class AuditLogEntry
 
     /**
      * @param  AuditLogEntryResource  $resource
-     * @param  AuditLogAction  $action
+     * @param  string  $action
      * @param  AuditLogEntryUser  $user
      * @param  \DateTime  $timestamp
      * @param  ?string  $type
@@ -80,7 +79,7 @@ class AuditLogEntry
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(AuditLogEntryResource $resource, AuditLogAction $action, AuditLogEntryUser $user, \DateTime $timestamp, ?string $id = null, ?string $merchantAccountId = null, ?string $type = 'audit-log')
+    public function __construct(AuditLogEntryResource $resource, string $action, AuditLogEntryUser $user, \DateTime $timestamp, ?string $id = null, ?string $merchantAccountId = null, ?string $type = 'audit-log')
     {
         $this->resource = $resource;
         $this->action = $action;

@@ -22,7 +22,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -89,7 +89,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -103,7 +103,7 @@ $payoutCreate = new Gr4vy\PayoutCreate(
     paymentMethod: new Gr4vy\PaymentMethodStoredCard(
         id: '852b951c-d7ea-4c98-b09e-4a1c9e97c077',
     ),
-    category: Gr4vy\PayoutCategory::OnlineGambling,
+    category: 'online_gambling',
     externalIdentifier: 'payout-12345',
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     buyer: new Gr4vy\GuestBuyerInput(
@@ -127,7 +127,7 @@ $payoutCreate = new Gr4vy\PayoutCreate(
             ),
             taxId: new Gr4vy\TaxId(
                 value: '12345678931',
-                kind: Gr4vy\TaxIdKind::NoVat,
+                kind: '<value>',
             ),
         ),
         shippingDetails: new Gr4vy\ShippingDetailsCreate(
@@ -231,7 +231,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )

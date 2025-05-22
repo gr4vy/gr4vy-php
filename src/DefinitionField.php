@@ -38,11 +38,10 @@ class DefinitionField
 
     /**
      *
-     * @var DefinitionFieldFormat $format
+     * @var string $format
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('format')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DefinitionFieldFormat')]
-    public DefinitionFieldFormat $format;
+    public string $format;
 
     /**
      * Defines if this field is secret. When `true` the field's value is not returned when querying the payment service information.
@@ -56,11 +55,11 @@ class DefinitionField
      * @param  string  $key
      * @param  string  $displayName
      * @param  bool  $required
-     * @param  DefinitionFieldFormat  $format
+     * @param  string  $format
      * @param  bool  $secret
      * @phpstan-pure
      */
-    public function __construct(string $key, string $displayName, bool $required, DefinitionFieldFormat $format, bool $secret)
+    public function __construct(string $key, string $displayName, bool $required, string $format, bool $secret)
     {
         $this->key = $key;
         $this->displayName = $displayName;

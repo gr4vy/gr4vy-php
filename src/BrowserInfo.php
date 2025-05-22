@@ -72,11 +72,10 @@ class BrowserInfo
     /**
      * The platform that is being used to access the website.
      *
-     * @var UserDevice $userDevice
+     * @var string $userDevice
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('user_device')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\UserDevice')]
-    public UserDevice $userDevice;
+    public string $userDevice;
 
     /**
      * The Accept header of the request from the buyer's browser.
@@ -96,11 +95,11 @@ class BrowserInfo
      * @param  int  $screenWidth
      * @param  int  $timeZoneOffset
      * @param  string  $userAgent
-     * @param  UserDevice  $userDevice
+     * @param  string  $userDevice
      * @param  ?string  $acceptHeader
      * @phpstan-pure
      */
-    public function __construct(bool $javascriptEnabled, bool $javaEnabled, string $language, int $colorDepth, int $screenHeight, int $screenWidth, int $timeZoneOffset, string $userAgent, UserDevice $userDevice, ?string $acceptHeader = null)
+    public function __construct(bool $javascriptEnabled, bool $javaEnabled, string $language, int $colorDepth, int $screenHeight, int $screenWidth, int $timeZoneOffset, string $userAgent, string $userDevice, ?string $acceptHeader = null)
     {
         $this->javascriptEnabled = $javascriptEnabled;
         $this->javaEnabled = $javaEnabled;

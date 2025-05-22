@@ -10,4 +10,4 @@
 | `name`                               | *string*                             | :heavy_check_mark:                   | The name of the user.                | John Doe                             |
 | `emailAddress`                       | *?string*                            | :heavy_minus_sign:                   | The email address for this user.     | john@example.com                     |
 | `isStaff`                            | *bool*                               | :heavy_check_mark:                   | Whether this is a Gr4vy staff user.  | false                                |
-| `status`                             | [UserStatus](./UserStatus.md)        | :heavy_check_mark:                   | N/A                                  |                                      |
+| `status`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |                                      |

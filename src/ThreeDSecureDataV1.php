@@ -70,12 +70,11 @@ class ThreeDSecureDataV1
     /**
      * The scheme/brand of the card that is used for 3-D Secure.
      *
-     * @var ?CardScheme $scheme
+     * @var ?string $scheme
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('scheme')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardScheme|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CardScheme $scheme = null;
+    public ?string $scheme = null;
 
     /**
      * @param  string  $cavv
@@ -85,10 +84,10 @@ class ThreeDSecureDataV1
      * @param  string  $authenticationResponse
      * @param  string  $cavvAlgorithm
      * @param  string  $xid
-     * @param  ?CardScheme  $scheme
+     * @param  ?string  $scheme
      * @phpstan-pure
      */
-    public function __construct(string $cavv, string $eci, string $version, string $directoryResponse, string $authenticationResponse, string $cavvAlgorithm, string $xid, ?CardScheme $scheme = null)
+    public function __construct(string $cavv, string $eci, string $version, string $directoryResponse, string $authenticationResponse, string $cavvAlgorithm, string $xid, ?string $scheme = null)
     {
         $this->cavv = $cavv;
         $this->eci = $eci;

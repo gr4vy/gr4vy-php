@@ -90,7 +90,7 @@ class ListTransactionsRequest
     /**
      * Filters the results to only the transactions that have a `status` that matches with any of the provided status values.
      *
-     * @var ?array<TransactionStatus> $status
+     * @var ?array<string> $status
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=status')]
     public ?array $status = null;
@@ -188,7 +188,7 @@ class ListTransactionsRequest
     /**
      * Filters for transactions that have matching `method` values.
      *
-     * @var ?array<Method> $method
+     * @var ?array<string> $method
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=method')]
     public ?array $method = null;
@@ -276,7 +276,7 @@ class ListTransactionsRequest
     /**
      * Filters the results to only the transactions that have a payment source that matches with any of the provided values.
      *
-     * @var ?array<TransactionPaymentSource> $paymentSource
+     * @var ?array<string> $paymentSource
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=payment_source')]
     public ?array $paymentSource = null;
@@ -317,7 +317,7 @@ class ListTransactionsRequest
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $buyerId
      * @param  ?string  $buyerEmailAddress
-     * @param  ?array<TransactionStatus>  $status
+     * @param  ?array<string>  $status
      * @param  ?string  $id
      * @param  ?string  $paymentServiceTransactionId
      * @param  ?string  $externalIdentifier
@@ -330,7 +330,7 @@ class ListTransactionsRequest
      * @param  ?string  $paymentMethodId
      * @param  ?string  $paymentMethodLabel
      * @param  ?string  $paymentMethodFingerprint
-     * @param  ?array<Method>  $method
+     * @param  ?array<string>  $method
      * @param  ?array<string>  $errorCode
      * @param  ?bool  $hasRefunds
      * @param  ?bool  $pendingReview
@@ -341,7 +341,7 @@ class ListTransactionsRequest
      * @param  ?string  $giftCardLast4
      * @param  ?bool  $hasSettlements
      * @param  ?string  $paymentMethodBin
-     * @param  ?array<TransactionPaymentSource>  $paymentSource
+     * @param  ?array<string>  $paymentSource
      * @param  ?bool  $isSubsequentPayment
      * @param  ?bool  $merchantInitiated
      * @phpstan-pure

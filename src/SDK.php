@@ -10,16 +10,16 @@ namespace Gr4vy;
 
 
 
-/** Gr4vy - Gr4vy: The Gr4vy API. */
-class Gr4vy
+/** SDK - Gr4vy: The Gr4vy API. */
+class SDK
 {
     public const SERVER_PRODUCTION = 'production';
 
     public const SERVER_SANDBOX = 'sandbox';
 
     public const SERVERS = [
-        Gr4vy::SERVER_PRODUCTION => 'https://api.{id}.gr4vy.app',
-        Gr4vy::SERVER_SANDBOX => 'https://api.sandbox.{id}.gr4vy.app',
+        SDK::SERVER_PRODUCTION => 'https://api.{id}.gr4vy.app',
+        SDK::SERVER_SANDBOX => 'https://api.sandbox.{id}.gr4vy.app',
     ];
 
     public AccountUpdater $accountUpdater;
@@ -55,11 +55,11 @@ class Gr4vy
     /**
      * Returns a new instance of the SDK builder used to configure and create the SDK instance.
      *
-     * @return Gr4vyBuilder
+     * @return SDKBuilder
      */
-    public static function builder(): Gr4vyBuilder
+    public static function builder(): SDKBuilder
     {
-        return new Gr4vyBuilder();
+        return new SDKBuilder();
     }
 
     /**

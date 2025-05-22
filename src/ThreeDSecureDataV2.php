@@ -54,12 +54,11 @@ class ThreeDSecureDataV2
     /**
      * The scheme/brand of the card that is used for 3-D Secure.
      *
-     * @var ?CardScheme $scheme
+     * @var ?string $scheme
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('scheme')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardScheme|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CardScheme $scheme = null;
+    public ?string $scheme = null;
 
     /**
      * The transaction status after a the 3DS challenge. This will be null in case of a frictionless 3DS flow.
@@ -76,11 +75,11 @@ class ThreeDSecureDataV2
      * @param  string  $version
      * @param  string  $directoryResponse
      * @param  string  $directoryTransactionId
-     * @param  ?CardScheme  $scheme
+     * @param  ?string  $scheme
      * @param  ?string  $authenticationResponse
      * @phpstan-pure
      */
-    public function __construct(string $cavv, string $eci, string $version, string $directoryResponse, string $directoryTransactionId, ?CardScheme $scheme = null, ?string $authenticationResponse = null)
+    public function __construct(string $cavv, string $eci, string $version, string $directoryResponse, string $directoryTransactionId, ?string $scheme = null, ?string $authenticationResponse = null)
     {
         $this->cavv = $cavv;
         $this->eci = $eci;

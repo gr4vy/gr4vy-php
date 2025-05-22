@@ -71,7 +71,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -117,7 +117,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -226,7 +226,6 @@ if ($response->accountUpdaterJob !== null) {
 
 * [list](docs/sdks/balances/README.md#list) - List gift card balances
 
-
 ### [merchantAccounts](docs/sdks/merchantaccounts/README.md)
 
 * [list](docs/sdks/merchantaccounts/README.md#list) - List all merchant accounts
@@ -289,6 +288,7 @@ if ($response->accountUpdaterJob !== null) {
 
 * [get](docs/sdks/refunds/README.md#get) - Get refund
 
+
 ### [transactions](docs/sdks/transactions/README.md)
 
 * [list](docs/sdks/transactions/README.md#list) - List transactions
@@ -337,7 +337,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -370,7 +370,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -410,7 +410,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 use Gr4vy\Utils\Retry;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -452,7 +452,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 use Gr4vy\Utils\Retry;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setRetryConfig(
         new Retry\RetryConfigBackoff(
             initialInterval: 1,
@@ -529,7 +529,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 use Gr4vy\errors;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -624,7 +624,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setServer('sandbox')
     ->setId('<id>')
     ->setSecurity(
@@ -662,7 +662,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setServerURL('https://api.example.gr4vy.app')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
@@ -711,7 +711,6 @@ vendor/bin/pint tests src --repair
 # static code analysis
 vendor/bin/phpstan analyse src tests --level 7 --memory-limit 1G --no-progress --error-format=table
 ```
-
 
 ## Maturity
 

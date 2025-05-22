@@ -23,7 +23,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -90,7 +90,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -107,7 +107,7 @@ $merchantAccountCreate = new Gr4vy\MerchantAccountCreate(
     loonClientKey: 'client-key-1234',
     loonSecretKey: 'key-12345',
     loonAcceptedSchemes: [
-        Gr4vy\CardScheme::Visa,
+        'visa',
     ],
     visaNetworkTokensRequestorId: 'id-12345',
     visaNetworkTokensAppId: 'id-12345',
@@ -175,7 +175,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -234,7 +234,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -251,7 +251,7 @@ $merchantAccountUpdate = new Gr4vy\MerchantAccountUpdate(
     loonClientKey: 'client-key-1234',
     loonSecretKey: 'key-12345',
     loonAcceptedSchemes: [
-        Gr4vy\CardScheme::Visa,
+        'visa',
     ],
     visaNetworkTokensRequestorId: 'id-12345',
     visaNetworkTokensAppId: 'id-12345',

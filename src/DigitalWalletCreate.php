@@ -14,11 +14,10 @@ class DigitalWalletCreate
 {
     /**
      *
-     * @var DigitalWalletProvider $provider
+     * @var string $provider
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('provider')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DigitalWalletProvider')]
-    public DigitalWalletProvider $provider;
+    public string $provider;
 
     /**
      *
@@ -69,7 +68,7 @@ class DigitalWalletCreate
     public ?string $merchantCountryCode = null;
 
     /**
-     * @param  DigitalWalletProvider  $provider
+     * @param  string  $provider
      * @param  string  $merchantName
      * @param  bool  $acceptTermsAndConditions
      * @param  ?array<string>  $domainNames
@@ -78,7 +77,7 @@ class DigitalWalletCreate
      * @param  ?string  $merchantCountryCode
      * @phpstan-pure
      */
-    public function __construct(DigitalWalletProvider $provider, string $merchantName, bool $acceptTermsAndConditions, ?array $domainNames = null, ?string $merchantDisplayName = null, ?string $merchantUrl = null, ?string $merchantCountryCode = null)
+    public function __construct(string $provider, string $merchantName, bool $acceptTermsAndConditions, ?array $domainNames = null, ?string $merchantDisplayName = null, ?string $merchantUrl = null, ?string $merchantCountryCode = null)
     {
         $this->provider = $provider;
         $this->merchantName = $merchantName;

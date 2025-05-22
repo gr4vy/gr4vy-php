@@ -13,11 +13,10 @@ class TransactionPaymentMethod
 {
     /**
      *
-     * @var Method $method
+     * @var string $method
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Method')]
-    public Method $method;
+    public string $method;
 
     /**
      * The optional URL that the buyer needs to be redirected to to further authorize their payment.
@@ -95,22 +94,20 @@ class TransactionPaymentMethod
     /**
      * The mode to use with this payment method.
      *
-     * @var ?Mode $mode
+     * @var ?string $mode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('mode')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Mode|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Mode $mode = null;
+    public ?string $mode = null;
 
     /**
      * The scheme of the card. Only applies to card payments.
      *
-     * @var ?CardScheme $scheme
+     * @var ?string $scheme
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('scheme')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardScheme|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CardScheme $scheme = null;
+    public ?string $scheme = null;
 
     /**
      * The ID of the payment method.
@@ -124,12 +121,11 @@ class TransactionPaymentMethod
     /**
      * The browser target that an approval URL must be opened in. If any or null, then there is no specific requirement.
      *
-     * @var ?ApprovalTarget $approvalTarget
+     * @var ?string $approvalTarget
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('approval_target')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ApprovalTarget|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?ApprovalTarget $approvalTarget = null;
+    public ?string $approvalTarget = null;
 
     /**
      * An external identifier that can be used to match the payment method against your own records.
@@ -159,7 +155,7 @@ class TransactionPaymentMethod
     public ?string $type = null;
 
     /**
-     * @param  Method  $method
+     * @param  string  $method
      * @param  ?string  $type
      * @param  ?string  $approvalUrl
      * @param  ?string  $country
@@ -169,15 +165,15 @@ class TransactionPaymentMethod
      * @param  ?string  $fingerprint
      * @param  ?string  $label
      * @param  ?\DateTime  $lastReplacedAt
-     * @param  ?Mode  $mode
-     * @param  ?CardScheme  $scheme
+     * @param  ?string  $mode
+     * @param  ?string  $scheme
      * @param  ?string  $id
-     * @param  ?ApprovalTarget  $approvalTarget
+     * @param  ?string  $approvalTarget
      * @param  ?string  $externalIdentifier
      * @param  ?string  $paymentAccountReference
      * @phpstan-pure
      */
-    public function __construct(Method $method, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?Mode $mode = null, ?CardScheme $scheme = null, ?string $id = null, ?ApprovalTarget $approvalTarget = null, ?string $externalIdentifier = null, ?string $paymentAccountReference = null, ?string $type = 'payment-method')
+    public function __construct(string $method, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?string $id = null, ?string $approvalTarget = null, ?string $externalIdentifier = null, ?string $paymentAccountReference = null, ?string $type = 'payment-method')
     {
         $this->method = $method;
         $this->approvalUrl = $approvalUrl;

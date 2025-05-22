@@ -46,7 +46,7 @@ class ListPaymentMethodsRequest
     /**
      * $status
      *
-     * @var ?array<PaymentMethodStatus> $status
+     * @var ?array<string> $status
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=status')]
     public ?array $status = null;
@@ -73,7 +73,7 @@ class ListPaymentMethodsRequest
      * @param  ?string  $cursor
      * @param  ?string  $buyerId
      * @param  ?string  $buyerExternalIdentifier
-     * @param  ?array<PaymentMethodStatus>  $status
+     * @param  ?array<string>  $status
      * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */

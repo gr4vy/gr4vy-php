@@ -11,9 +11,9 @@ namespace Gr4vy;
 use Gr4vy\Utils\Retry;
 
 /**
- * Gr4vyBuilder is used to configure and build an instance of the SDK.
+ * SDKBuilder is used to configure and build an instance of the SDK.
  */
-class Gr4vyBuilder
+class SDKBuilder
 {
     public function __construct(
         private SDKConfiguration $sdkConfig = new SDKConfiguration(),
@@ -24,9 +24,9 @@ class Gr4vyBuilder
      * setClient allows setting a custom Guzzle client for the SDK to make requests with.
      *
      * @param  \GuzzleHttp\ClientInterface  $client
-     * @return Gr4vyBuilder
+     * @return SDKBuilder
      */
-    public function setClient(\GuzzleHttp\ClientInterface $client): Gr4vyBuilder
+    public function setClient(\GuzzleHttp\ClientInterface $client): SDKBuilder
     {
         $this->sdkConfig->client = $client;
 
@@ -37,9 +37,9 @@ class Gr4vyBuilder
      * setSecurity is used to configure the security required for the SDK.
      *
      * @param  string  $bearerAuth
-     * @return Gr4vyBuilder
+     * @return SDKBuilder
      */
-    public function setSecurity(string $bearerAuth): Gr4vyBuilder
+    public function setSecurity(string $bearerAuth): SDKBuilder
     {
         $security = new Security(
             bearerAuth: $bearerAuth
@@ -54,9 +54,9 @@ class Gr4vyBuilder
      * unlike setSecurity, setSecuritySource accepts a closure that will be called to retrieve the security information.
      *
      * @param  pure-Closure(): string  $securitySource
-     * @return Gr4vyBuilder
+     * @return SDKBuilder
      */
-    public function setSecuritySource(\Closure $securitySource): Gr4vyBuilder
+    public function setSecuritySource(\Closure $securitySource): SDKBuilder
     {
         $this->sdkConfig->securitySource = fn () => new Security(bearerAuth: $securitySource());
 
@@ -68,9 +68,9 @@ class Gr4vyBuilder
      *
      * @param  string  $serverUrl
      * @param  array<string, string>  $params
-     * @return Gr4vyBuilder
+     * @return SDKBuilder
      */
-    public function setServerUrl(string $serverUrl, ?array $params = null): Gr4vyBuilder
+    public function setServerUrl(string $serverUrl, ?array $params = null): SDKBuilder
     {
         $this->sdkConfig->serverUrl = Utils\Utils::templateUrl($serverUrl, $params);
 
@@ -81,9 +81,9 @@ class Gr4vyBuilder
      * setServer is used to configure the server for the SDK
      *
      * @param  string  $server
-     * @return Gr4vyBuilder
+     * @return SDKBuilder
      */
-    public function setServer(string $server): Gr4vyBuilder
+    public function setServer(string $server): SDKBuilder
     {
         $this->sdkConfig->server = $server;
 
@@ -94,9 +94,9 @@ class Gr4vyBuilder
      * setId is used to configure the id variable for url substitution
      *
      * @param  string  $id
-     * @return Gr4vyBuilder
+     * @return SDKBuilder
      */
-    public function setId(string $id): Gr4vyBuilder
+    public function setId(string $id): SDKBuilder
     {
         foreach ($this->sdkConfig->serverDefaults as $server => $serverDefaults) {
             if (! array_key_exists('id', $serverDefaults)) {
@@ -111,9 +111,9 @@ class Gr4vyBuilder
      * setMerchantAccountId is used to configure the merchant_account_id parameter for the SDK.
      *
      * @param  string  $merchantAccountId
-     * @return Gr4vyBuilder
+     * @return SDKBuilder
      */
-    public function setMerchantAccountId(string $merchantAccountId): Gr4vyBuilder
+    public function setMerchantAccountId(string $merchantAccountId): SDKBuilder
     {
         if (! array_key_exists('header', $this->sdkConfig->globals['parameters'])) {
             $this->sdkConfig->globals['parameters']['header'] = [];
@@ -124,7 +124,7 @@ class Gr4vyBuilder
         return $this;
     }
 
-    public function setRetryConfig(Retry\RetryConfig $config): Gr4vyBuilder
+    public function setRetryConfig(Retry\RetryConfig $config): SDKBuilder
     {
         $this->sdkConfig->retryConfig = $config;
 
@@ -134,9 +134,9 @@ class Gr4vyBuilder
     /**
      * build is used to build the SDK with any of the configured options.
      *
-     * @return Gr4vy
+     * @return SDK
      */
-    public function build(): Gr4vy
+    public function build(): SDK
     {
         if ($this->sdkConfig->client === null) {
             $this->sdkConfig->client = new \GuzzleHttp\Client([
@@ -147,6 +147,6 @@ class Gr4vyBuilder
             $this->sdkConfig->client = Utils\Utils::configureSecurityClient($this->sdkConfig->client, $this->sdkConfig->getSecurity());
         }
 
-        return new Gr4vy($this->sdkConfig);
+        return new SDK($this->sdkConfig);
     }
 }

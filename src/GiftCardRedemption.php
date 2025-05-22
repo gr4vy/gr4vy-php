@@ -21,11 +21,10 @@ class GiftCardRedemption
 
     /**
      *
-     * @var GiftCardRedemptionStatus $status
+     * @var string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GiftCardRedemptionStatus')]
-    public GiftCardRedemptionStatus $status;
+    public string $status;
 
     /**
      * The amount redeemed for this gift card.
@@ -63,12 +62,11 @@ class GiftCardRedemption
     /**
      * If this gift card redemption resulted in an error, this will contain the internal code for the error.
      *
-     * @var ?GiftCardErrorCode $errorCode
+     * @var ?string $errorCode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error_code')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GiftCardErrorCode|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?GiftCardErrorCode $errorCode = null;
+    public ?string $errorCode = null;
 
     /**
      * If this gift card redemption resulted in an error, this will contain the raw error code received from the gift card provider.
@@ -99,18 +97,18 @@ class GiftCardRedemption
 
     /**
      * @param  string  $id
-     * @param  GiftCardRedemptionStatus  $status
+     * @param  string  $status
      * @param  int  $amount
      * @param  int  $refundedAmount
      * @param  TransactionGiftCard  $giftCard
      * @param  ?string  $type
      * @param  ?string  $giftCardServiceRedemptionId
-     * @param  ?GiftCardErrorCode  $errorCode
+     * @param  ?string  $errorCode
      * @param  ?string  $rawErrorCode
      * @param  ?string  $rawErrorMessage
      * @phpstan-pure
      */
-    public function __construct(string $id, GiftCardRedemptionStatus $status, int $amount, int $refundedAmount, TransactionGiftCard $giftCard, ?string $giftCardServiceRedemptionId = null, ?GiftCardErrorCode $errorCode = null, ?string $rawErrorCode = null, ?string $rawErrorMessage = null, ?string $type = 'gift-card-redemption')
+    public function __construct(string $id, string $status, int $amount, int $refundedAmount, TransactionGiftCard $giftCard, ?string $giftCardServiceRedemptionId = null, ?string $errorCode = null, ?string $rawErrorCode = null, ?string $rawErrorMessage = null, ?string $type = 'gift-card-redemption')
     {
         $this->id = $id;
         $this->status = $status;

@@ -29,11 +29,10 @@ class DigitalWallet
 
     /**
      *
-     * @var DigitalWalletProvider $provider
+     * @var string $provider
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('provider')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DigitalWalletProvider')]
-    public DigitalWalletProvider $provider;
+    public string $provider;
 
     /**
      * The name of the merchant the digital wallet is registered to.
@@ -144,7 +143,7 @@ class DigitalWallet
     /**
      * @param  string  $id
      * @param  string  $merchantAccountId
-     * @param  DigitalWalletProvider  $provider
+     * @param  string  $provider
      * @param  string  $merchantName
      * @param  array<string>  $domainNames
      * @param  \DateTime  $createdAt
@@ -159,7 +158,7 @@ class DigitalWallet
      * @param  ?array<string, mixed>  $fields
      * @phpstan-pure
      */
-    public function __construct(string $id, string $merchantAccountId, DigitalWalletProvider $provider, string $merchantName, array $domainNames, \DateTime $createdAt, \DateTime $updatedAt, ?string $merchantDisplayName = null, ?string $merchantUrl = null, ?string $merchantCountryCode = null, ?array $fields = null, ?int $activeCertificateCount = 0, ?int $pendingCertificateCount = 0, ?int $expiredCertificateCount = 0, ?string $type = 'digital-wallet')
+    public function __construct(string $id, string $merchantAccountId, string $provider, string $merchantName, array $domainNames, \DateTime $createdAt, \DateTime $updatedAt, ?string $merchantDisplayName = null, ?string $merchantUrl = null, ?string $merchantCountryCode = null, ?array $fields = null, ?int $activeCertificateCount = 0, ?int $pendingCertificateCount = 0, ?int $expiredCertificateCount = 0, ?string $type = 'digital-wallet')
     {
         $this->id = $id;
         $this->merchantAccountId = $merchantAccountId;

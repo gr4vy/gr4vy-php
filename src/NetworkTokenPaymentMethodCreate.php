@@ -48,22 +48,20 @@ class NetworkTokenPaymentMethodCreate
     /**
      * The optional source of the decrypted device token.
      *
-     * @var ?CardSource $cardSource
+     * @var ?string $cardSource
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('card_source')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardSource|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CardSource $cardSource = null;
+    public ?string $cardSource = null;
 
     /**
      * The original card scheme for which the token was generated.
      *
-     * @var ?CardScheme $cardScheme
+     * @var ?string $cardScheme
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('card_scheme')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardScheme|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CardScheme $cardScheme = null;
+    public ?string $cardScheme = null;
 
     /**
      * The last 4 digits of the original card used to generate the token.
@@ -106,14 +104,14 @@ class NetworkTokenPaymentMethodCreate
      * @param  string  $expirationDate
      * @param  ?string  $cryptogram
      * @param  ?string  $redirectUrl
-     * @param  ?CardSource  $cardSource
-     * @param  ?CardScheme  $cardScheme
+     * @param  ?string  $cardSource
+     * @param  ?string  $cardScheme
      * @param  ?string  $cardSuffix
      * @param  ?string  $cardholderName
      * @param  ?string  $eci
      * @phpstan-pure
      */
-    public function __construct(string $token, string $expirationDate, ?string $cryptogram = null, ?string $redirectUrl = null, ?CardSource $cardSource = null, ?CardScheme $cardScheme = null, ?string $cardSuffix = null, ?string $cardholderName = null, ?string $eci = null, string $method = 'network-token')
+    public function __construct(string $token, string $expirationDate, ?string $cryptogram = null, ?string $redirectUrl = null, ?string $cardSource = null, ?string $cardScheme = null, ?string $cardSuffix = null, ?string $cardholderName = null, ?string $eci = null, string $method = 'network-token')
     {
         $this->token = $token;
         $this->expirationDate = $expirationDate;

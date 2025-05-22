@@ -134,12 +134,11 @@ class Airline
     /**
      * The delivery method of the ticket.
      *
-     * @var ?TicketDeliveryMethod $ticketDeliveryMethod
+     * @var ?string $ticketDeliveryMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('ticket_delivery_method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TicketDeliveryMethod|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?TicketDeliveryMethod $ticketDeliveryMethod = null;
+    public ?string $ticketDeliveryMethod = null;
 
     /**
      * The airline's unique ticket number.
@@ -200,7 +199,7 @@ class Airline
      * @param  ?array<AirlinePassenger>  $passengers
      * @param  ?string  $reservationSystem
      * @param  ?bool  $restrictedTicket
-     * @param  ?TicketDeliveryMethod  $ticketDeliveryMethod
+     * @param  ?string  $ticketDeliveryMethod
      * @param  ?string  $ticketNumber
      * @param  ?string  $travelAgencyCode
      * @param  ?string  $travelAgencyInvoiceNumber
@@ -208,7 +207,7 @@ class Airline
      * @param  ?string  $travelAgencyPlanName
      * @phpstan-pure
      */
-    public function __construct(?string $bookingCode = null, ?bool $isCardholderTraveling = null, ?string $issuedAddress = null, ?\DateTime $issuedAt = null, ?string $issuingCarrierCode = null, ?string $issuingCarrierName = null, ?string $issuingIataDesignator = null, ?string $issuingIcaoCode = null, ?array $legs = null, ?string $passengerNameRecord = null, ?array $passengers = null, ?string $reservationSystem = null, ?bool $restrictedTicket = null, ?TicketDeliveryMethod $ticketDeliveryMethod = null, ?string $ticketNumber = null, ?string $travelAgencyCode = null, ?string $travelAgencyInvoiceNumber = null, ?string $travelAgencyName = null, ?string $travelAgencyPlanName = null)
+    public function __construct(?string $bookingCode = null, ?bool $isCardholderTraveling = null, ?string $issuedAddress = null, ?\DateTime $issuedAt = null, ?string $issuingCarrierCode = null, ?string $issuingCarrierName = null, ?string $issuingIataDesignator = null, ?string $issuingIcaoCode = null, ?array $legs = null, ?string $passengerNameRecord = null, ?array $passengers = null, ?string $reservationSystem = null, ?bool $restrictedTicket = null, ?string $ticketDeliveryMethod = null, ?string $ticketNumber = null, ?string $travelAgencyCode = null, ?string $travelAgencyInvoiceNumber = null, ?string $travelAgencyName = null, ?string $travelAgencyPlanName = null)
     {
         $this->bookingCode = $bookingCode;
         $this->isCardholderTraveling = $isCardholderTraveling;

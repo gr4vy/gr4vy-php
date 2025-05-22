@@ -13,11 +13,10 @@ class PaymentServiceConfiguration
 {
     /**
      *
-     * @var ApprovalTarget $approvalUiTarget
+     * @var string $approvalUiTarget
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('approval_ui_target')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ApprovalTarget')]
-    public ApprovalTarget $approvalUiTarget;
+    public string $approvalUiTarget;
 
     /**
      * Height of the approval interface in either pixels or view height (vh).
@@ -60,7 +59,7 @@ class PaymentServiceConfiguration
     public bool $cartItemsShouldMatchAmount;
 
     /**
-     * @param  ApprovalTarget  $approvalUiTarget
+     * @param  string  $approvalUiTarget
      * @param  string  $approvalUiHeight
      * @param  string  $approvalUiWidth
      * @param  int  $cartItemsLimit
@@ -68,7 +67,7 @@ class PaymentServiceConfiguration
      * @param  bool  $cartItemsShouldMatchAmount
      * @phpstan-pure
      */
-    public function __construct(ApprovalTarget $approvalUiTarget, string $approvalUiHeight, string $approvalUiWidth, int $cartItemsLimit, bool $cartItemsRequired, bool $cartItemsShouldMatchAmount)
+    public function __construct(string $approvalUiTarget, string $approvalUiHeight, string $approvalUiWidth, int $cartItemsLimit, bool $cartItemsRequired, bool $cartItemsShouldMatchAmount)
     {
         $this->approvalUiTarget = $approvalUiTarget;
         $this->approvalUiHeight = $approvalUiHeight;

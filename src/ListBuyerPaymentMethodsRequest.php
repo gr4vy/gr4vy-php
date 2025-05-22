@@ -54,10 +54,10 @@ class ListBuyerPaymentMethodsRequest
     /**
      * The direction to sort the payment methods in.
      *
-     * @var ?OrderBy $orderBy
+     * @var ?string $orderBy
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=order_by')]
-    public ?OrderBy $orderBy = null;
+    public ?string $orderBy = null;
 
     /**
      * The field to sort the payment methods by.
@@ -68,7 +68,7 @@ class ListBuyerPaymentMethodsRequest
     public ?string $sortBy = null;
 
     /**
-     * @param  ?OrderBy  $orderBy
+     * @param  ?string  $orderBy
      * @param  ?string  $merchantAccountId
      * @param  ?string  $buyerId
      * @param  ?string  $buyerExternalIdentifier
@@ -77,7 +77,7 @@ class ListBuyerPaymentMethodsRequest
      * @param  ?string  $currency
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?string $country = null, ?string $currency = null, ?OrderBy $orderBy = OrderBy::Desc, ?string $sortBy = 'last_used_at')
+    public function __construct(?string $merchantAccountId = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?string $country = null, ?string $currency = null, ?string $orderBy = 'desc', ?string $sortBy = 'last_used_at')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->buyerId = $buyerId;

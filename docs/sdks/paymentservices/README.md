@@ -26,7 +26,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -34,6 +34,7 @@ $sdk = Gr4vy\Gr4vy::builder()
     ->build();
 
 $request = new Gr4vy\ListPaymentServicesRequest(
+    method: 'card',
     cursor: 'ZXhhbXBsZTE',
     deleted: true,
 );
@@ -91,7 +92,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -193,7 +194,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -255,7 +256,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -347,7 +348,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -411,7 +412,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -484,7 +485,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )

@@ -20,7 +20,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -29,7 +29,7 @@ $sdk = Gr4vy\Gr4vy::builder()
 
 $request = new Gr4vy\ListAuditLogsRequest(
     cursor: 'ZXhhbXBsZTE',
-    action: Gr4vy\AuditLogAction::Created,
+    action: 'created',
     userId: '14b7b8c5-a6ba-4fb6-bbab-52d43c7f37ef',
     resourceType: 'user',
 );

@@ -32,12 +32,11 @@ class CheckoutSessionPaymentMethodDetails
     /**
      * The payment scheme of the card.
      *
-     * @var ?CardType $cardType
+     * @var ?string $cardType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('card_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardType|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CardType $cardType = null;
+    public ?string $cardType = null;
 
     /**
      * The card issuer.
@@ -51,11 +50,11 @@ class CheckoutSessionPaymentMethodDetails
     /**
      * @param  ?string  $bin
      * @param  ?string  $cardCountry
-     * @param  ?CardType  $cardType
+     * @param  ?string  $cardType
      * @param  ?string  $cardIssuerName
      * @phpstan-pure
      */
-    public function __construct(?string $bin = null, ?string $cardCountry = null, ?CardType $cardType = null, ?string $cardIssuerName = null)
+    public function __construct(?string $bin = null, ?string $cardCountry = null, ?string $cardType = null, ?string $cardIssuerName = null)
     {
         $this->bin = $bin;
         $this->cardCountry = $cardCountry;

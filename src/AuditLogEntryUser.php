@@ -29,11 +29,10 @@ class AuditLogEntryUser
 
     /**
      *
-     * @var UserStatus $status
+     * @var string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\UserStatus')]
-    public UserStatus $status;
+    public string $status;
 
     /**
      * The ID of the user.
@@ -65,13 +64,13 @@ class AuditLogEntryUser
     /**
      * @param  string  $name
      * @param  bool  $isStaff
-     * @param  UserStatus  $status
+     * @param  string  $status
      * @param  ?string  $type
      * @param  ?string  $id
      * @param  ?string  $emailAddress
      * @phpstan-pure
      */
-    public function __construct(string $name, bool $isStaff, UserStatus $status, ?string $id = null, ?string $emailAddress = null, ?string $type = 'user')
+    public function __construct(string $name, bool $isStaff, string $status, ?string $id = null, ?string $emailAddress = null, ?string $type = 'user')
     {
         $this->name = $name;
         $this->isStaff = $isStaff;

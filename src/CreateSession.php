@@ -14,11 +14,10 @@ class CreateSession
 {
     /**
      *
-     * @var CreateSessionStatus $status
+     * @var string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CreateSessionStatus')]
-    public CreateSessionStatus $status;
+    public string $status;
 
     /**
      * A generic error code that may be returned when the session could not be generated.
@@ -58,14 +57,14 @@ class CreateSession
     public ?string $type = null;
 
     /**
-     * @param  CreateSessionStatus  $status
+     * @param  string  $status
      * @param  ?string  $type
      * @param  ?string  $code
      * @param  ?int  $statusCode
      * @param  ?array<string, mixed>  $responseBody
      * @phpstan-pure
      */
-    public function __construct(CreateSessionStatus $status, ?string $code = null, ?int $statusCode = null, ?array $responseBody = null, ?string $type = 'payment-service-session')
+    public function __construct(string $status, ?string $code = null, ?int $statusCode = null, ?array $responseBody = null, ?string $type = 'payment-service-session')
     {
         $this->status = $status;
         $this->code = $code;

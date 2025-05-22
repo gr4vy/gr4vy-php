@@ -25,7 +25,7 @@ use Brick\DateTime\LocalDate;
 use Gr4vy;
 use Gr4vy\Utils;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -49,7 +49,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
                 'travel',
                 'gear',
             ],
-            productType: Gr4vy\ProductType::Physical,
+            productType: 'physical',
             sellerCountry: 'GB',
         ),
     ],
@@ -78,7 +78,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
             ),
             taxId: new Gr4vy\TaxId(
                 value: '12345678931',
-                kind: Gr4vy\TaxIdKind::MxRfc,
+                kind: '<value>',
             ),
         ),
         shippingDetails: new Gr4vy\ShippingDetailsCreate(
@@ -129,7 +129,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
                 feeAmount: 1200,
                 flightClass: 'E',
                 flightNumber: '101',
-                routeType: Gr4vy\RouteType::RoundTrip,
+                routeType: 'round_trip',
                 seatClass: 'F',
                 stopOver: false,
                 taxAmount: 1200,
@@ -138,7 +138,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
         passengerNameRecord: 'JOHN L',
         passengers: [
             new Gr4vy\AirlinePassenger(
-                ageGroup: Gr4vy\AgeGroup::Adult,
+                ageGroup: 'adult',
                 dateOfBirth: LocalDate::parse('2013-07-16'),
                 emailAddress: 'john@example.com',
                 firstName: 'John',
@@ -153,7 +153,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
         ],
         reservationSystem: 'Amadeus',
         restrictedTicket: false,
-        ticketDeliveryMethod: Gr4vy\TicketDeliveryMethod::Electronic,
+        ticketDeliveryMethod: 'electronic',
         ticketNumber: '123-1234-151555',
         travelAgencyCode: '12345',
         travelAgencyInvoiceNumber: 'EG15555155',
@@ -219,7 +219,7 @@ use Brick\DateTime\LocalDate;
 use Gr4vy;
 use Gr4vy\Utils;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -243,7 +243,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
                 'travel',
                 'gear',
             ],
-            productType: Gr4vy\ProductType::Physical,
+            productType: 'physical',
             sellerCountry: 'US',
         ),
     ],
@@ -272,7 +272,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
             ),
             taxId: new Gr4vy\TaxId(
                 value: '12345678931',
-                kind: Gr4vy\TaxIdKind::TwVat,
+                kind: '<value>',
             ),
         ),
         shippingDetails: new Gr4vy\ShippingDetailsCreate(
@@ -323,7 +323,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
                 feeAmount: 1200,
                 flightClass: 'E',
                 flightNumber: '101',
-                routeType: Gr4vy\RouteType::RoundTrip,
+                routeType: 'round_trip',
                 seatClass: 'F',
                 stopOver: false,
                 taxAmount: 1200,
@@ -332,7 +332,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
         passengerNameRecord: 'JOHN L',
         passengers: [
             new Gr4vy\AirlinePassenger(
-                ageGroup: Gr4vy\AgeGroup::Adult,
+                ageGroup: 'adult',
                 dateOfBirth: LocalDate::parse('2013-07-16'),
                 emailAddress: 'john@example.com',
                 firstName: 'John',
@@ -347,7 +347,7 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
         ],
         reservationSystem: 'Amadeus',
         restrictedTicket: false,
-        ticketDeliveryMethod: Gr4vy\TicketDeliveryMethod::Electronic,
+        ticketDeliveryMethod: 'electronic',
         ticketNumber: '123-1234-151555',
         travelAgencyCode: '12345',
         travelAgencyInvoiceNumber: 'EG15555155',
@@ -413,7 +413,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -476,7 +476,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )

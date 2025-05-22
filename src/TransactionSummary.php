@@ -54,11 +54,10 @@ class TransactionSummary
 
     /**
      *
-     * @var TransactionStatus $status
+     * @var string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionStatus')]
-    public TransactionStatus $status;
+    public string $status;
 
     /**
      * The amount for this transaction that has been authorized for the `payment_method`. This can be less than the `amount` if gift cards were used.
@@ -102,11 +101,10 @@ class TransactionSummary
 
     /**
      *
-     * @var TransactionIntent $intent
+     * @var string $intent
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('intent')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionIntent')]
-    public TransactionIntent $intent;
+    public string $intent;
 
     /**
      * The gift cards redeemed for this transaction.
@@ -173,22 +171,20 @@ class TransactionSummary
     /**
      * The method used for the transaction.
      *
-     * @var ?Method $method
+     * @var ?string $method
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Method|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Method $method = null;
+    public ?string $method = null;
 
     /**
      * The name of the instrument used to process the transaction.
      *
-     * @var ?InstrumentType $instrumentType
+     * @var ?string $instrumentType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('instrument_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\InstrumentType|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?InstrumentType $instrumentType = null;
+    public ?string $instrumentType = null;
 
     /**
      * The standardized error code set by Gr4vy.
@@ -290,13 +286,13 @@ class TransactionSummary
      * @param  string  $merchantAccountId
      * @param  string  $currency
      * @param  int  $amount
-     * @param  TransactionStatus  $status
+     * @param  string  $status
      * @param  int  $authorizedAmount
      * @param  int  $capturedAmount
      * @param  int  $refundedAmount
      * @param  int  $settledAmount
      * @param  bool  $settled
-     * @param  TransactionIntent  $intent
+     * @param  string  $intent
      * @param  array<GiftCardRedemption>  $giftCardRedemptions
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
@@ -306,8 +302,8 @@ class TransactionSummary
      * @param  ?string  $country
      * @param  ?string  $externalIdentifier
      * @param  ?TransactionPaymentMethod  $paymentMethod
-     * @param  ?Method  $method
-     * @param  ?InstrumentType  $instrumentType
+     * @param  ?string  $method
+     * @param  ?string  $instrumentType
      * @param  ?string  $errorCode
      * @param  ?TransactionPaymentService  $paymentService
      * @param  ?TransactionBuyer  $buyer
@@ -318,7 +314,7 @@ class TransactionSummary
      * @param  ?GiftCardService  $giftCardService
      * @phpstan-pure
      */
-    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, TransactionStatus $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, TransactionIntent $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?Method $method = null, ?InstrumentType $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?bool $pendingReview = false, ?string $type = 'transaction')
+    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?bool $pendingReview = false, ?string $type = 'transaction')
     {
         $this->id = $id;
         $this->reconciliationId = $reconciliationId;

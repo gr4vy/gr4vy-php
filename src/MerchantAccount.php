@@ -99,10 +99,10 @@ class MerchantAccount
     /**
      * Card schemes accepted when creating jobs using this set of Loon API keys. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
      *
-     * @var ?array<CardScheme> $loonAcceptedSchemes
+     * @var ?array<string> $loonAcceptedSchemes
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('loon_accepted_schemes')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CardScheme>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $loonAcceptedSchemes = null;
 
@@ -235,7 +235,7 @@ class MerchantAccount
      * @param  ?string  $outboundWebhookPassword
      * @param  ?string  $loonClientKey
      * @param  ?string  $loonSecretKey
-     * @param  ?array<CardScheme>  $loonAcceptedSchemes
+     * @param  ?array<string>  $loonAcceptedSchemes
      * @param  ?string  $accountUpdaterRequestEncryptionKey
      * @param  ?string  $accountUpdaterRequestEncryptionKeyId
      * @param  ?string  $accountUpdaterResponseDecryptionKey

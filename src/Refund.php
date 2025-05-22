@@ -29,11 +29,10 @@ class Refund
 
     /**
      *
-     * @var RefundStatus $status
+     * @var string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\RefundStatus')]
-    public RefundStatus $status;
+    public string $status;
 
     /**
      * The currency code for this refund.  Will always match that of the associated transaction.
@@ -53,11 +52,10 @@ class Refund
 
     /**
      *
-     * @var RefundTargetType $targetType
+     * @var string $targetType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('target_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\RefundTargetType')]
-    public RefundTargetType $targetType;
+    public string $targetType;
 
     /**
      * The base62 encoded refund ID. This represents a shorter version of this refund's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's refund against our system.
@@ -158,10 +156,10 @@ class Refund
     /**
      * @param  string  $id
      * @param  string  $transactionId
-     * @param  RefundStatus  $status
+     * @param  string  $status
      * @param  string  $currency
      * @param  int  $amount
-     * @param  RefundTargetType  $targetType
+     * @param  string  $targetType
      * @param  string  $reconciliationId
      * @param  string  $transactionReconciliationId
      * @param  \DateTime  $createdAt
@@ -175,7 +173,7 @@ class Refund
      * @param  ?Creator  $creator
      * @phpstan-pure
      */
-    public function __construct(string $id, string $transactionId, RefundStatus $status, string $currency, int $amount, RefundTargetType $targetType, string $reconciliationId, string $transactionReconciliationId, \DateTime $createdAt, \DateTime $updatedAt, ?string $paymentServiceRefundId = null, ?string $reason = null, ?string $targetId = null, ?string $externalIdentifier = null, ?string $transactionExternalIdentifier = null, ?Creator $creator = null, ?string $type = 'refund')
+    public function __construct(string $id, string $transactionId, string $status, string $currency, int $amount, string $targetType, string $reconciliationId, string $transactionReconciliationId, \DateTime $createdAt, \DateTime $updatedAt, ?string $paymentServiceRefundId = null, ?string $reason = null, ?string $targetId = null, ?string $externalIdentifier = null, ?string $transactionExternalIdentifier = null, ?Creator $creator = null, ?string $type = 'refund')
     {
         $this->id = $id;
         $this->transactionId = $transactionId;

@@ -29,11 +29,10 @@ class PaymentServiceDefinition
 
     /**
      *
-     * @var Method $method
+     * @var string $method
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Method')]
-    public Method $method;
+    public string $method;
 
     /**
      * A list of credentials and related fields which can be configured for this service.
@@ -73,11 +72,10 @@ class PaymentServiceDefinition
 
     /**
      *
-     * @var Mode $mode
+     * @var string $mode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('mode')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Mode')]
-    public Mode $mode;
+    public string $mode;
 
     /**
      * Features supported by the payment service.
@@ -126,12 +124,12 @@ class PaymentServiceDefinition
     /**
      * @param  string  $id
      * @param  string  $displayName
-     * @param  Method  $method
+     * @param  string  $method
      * @param  array<DefinitionField>  $fields
      * @param  array<DefinitionField>  $reportingFields
      * @param  array<string>  $supportedCurrencies
      * @param  array<string>  $supportedCountries
-     * @param  Mode  $mode
+     * @param  string  $mode
      * @param  array<string, bool>  $supportedFeatures
      * @param  array<RequiredCheckoutFields>  $requiredCheckoutFields
      * @param  PaymentServiceConfiguration  $configuration
@@ -139,7 +137,7 @@ class PaymentServiceDefinition
      * @param  ?string  $iconUrl
      * @phpstan-pure
      */
-    public function __construct(string $id, string $displayName, Method $method, array $fields, array $reportingFields, array $supportedCurrencies, array $supportedCountries, Mode $mode, array $supportedFeatures, array $requiredCheckoutFields, PaymentServiceConfiguration $configuration, ?string $iconUrl = null, ?string $type = 'payment-service-definition')
+    public function __construct(string $id, string $displayName, string $method, array $fields, array $reportingFields, array $supportedCurrencies, array $supportedCountries, string $mode, array $supportedFeatures, array $requiredCheckoutFields, PaymentServiceConfiguration $configuration, ?string $iconUrl = null, ?string $type = 'payment-service-definition')
     {
         $this->id = $id;
         $this->displayName = $displayName;

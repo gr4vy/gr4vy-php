@@ -24,7 +24,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -90,7 +90,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -118,7 +118,7 @@ $buyerCreate = new Gr4vy\BuyerCreate(
         ),
         taxId: new Gr4vy\TaxId(
             value: '12345678931',
-            kind: Gr4vy\TaxIdKind::CaPstMb,
+            kind: '<value>',
         ),
     ),
 );
@@ -178,7 +178,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -240,7 +240,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -268,7 +268,7 @@ $buyerUpdate = new Gr4vy\BuyerUpdate(
         ),
         taxId: new Gr4vy\TaxId(
             value: '12345678931',
-            kind: Gr4vy\TaxIdKind::AuAbn,
+            kind: '<value>',
         ),
     ),
 );
@@ -330,7 +330,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )

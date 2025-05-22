@@ -185,12 +185,11 @@ class AirlineLeg
     /**
      * The route type of the flight.
      *
-     * @var ?RouteType $routeType
+     * @var ?string $routeType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('route_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\RouteType|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?RouteType $routeType = null;
+    public ?string $routeType = null;
 
     /**
      * Indicates seat class (first class, business class, etc.).
@@ -239,13 +238,13 @@ class AirlineLeg
      * @param  ?int  $feeAmount
      * @param  ?string  $flightClass
      * @param  ?string  $flightNumber
-     * @param  ?RouteType  $routeType
+     * @param  ?string  $routeType
      * @param  ?string  $seatClass
      * @param  ?bool  $stopOver
      * @param  ?int  $taxAmount
      * @phpstan-pure
      */
-    public function __construct(?string $arrivalAirport = null, ?\DateTime $arrivalAt = null, ?string $arrivalCity = null, ?string $arrivalCountry = null, ?string $carrierCode = null, ?string $carrierName = null, ?string $iataDesignator = null, ?string $icaoCode = null, ?string $couponNumber = null, ?string $departureAirport = null, ?\DateTime $departureAt = null, ?string $departureCity = null, ?string $departureCountry = null, ?int $departureTaxAmount = null, ?int $fareAmount = null, ?string $fareBasisCode = null, ?int $feeAmount = null, ?string $flightClass = null, ?string $flightNumber = null, ?RouteType $routeType = null, ?string $seatClass = null, ?bool $stopOver = null, ?int $taxAmount = null)
+    public function __construct(?string $arrivalAirport = null, ?\DateTime $arrivalAt = null, ?string $arrivalCity = null, ?string $arrivalCountry = null, ?string $carrierCode = null, ?string $carrierName = null, ?string $iataDesignator = null, ?string $icaoCode = null, ?string $couponNumber = null, ?string $departureAirport = null, ?\DateTime $departureAt = null, ?string $departureCity = null, ?string $departureCountry = null, ?int $departureTaxAmount = null, ?int $fareAmount = null, ?string $fareBasisCode = null, ?int $feeAmount = null, ?string $flightClass = null, ?string $flightNumber = null, ?string $routeType = null, ?string $seatClass = null, ?bool $stopOver = null, ?int $taxAmount = null)
     {
         $this->arrivalAirport = $arrivalAirport;
         $this->arrivalAt = $arrivalAt;

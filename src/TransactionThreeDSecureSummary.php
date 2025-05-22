@@ -23,22 +23,20 @@ class TransactionThreeDSecureSummary
     /**
      * The status of the 3DS challenge for this transaction.
      *
-     * @var ?ThreeDSecureStatus $status
+     * @var ?string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ThreeDSecureStatus|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?ThreeDSecureStatus $status = null;
+    public ?string $status = null;
 
     /**
      * The method used for 3DS authentication for this transaction.
      *
-     * @var ?ThreeDSecureMethod $method
+     * @var ?string $method
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ThreeDSecureMethod|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?ThreeDSecureMethod $method = null;
+    public ?string $method = null;
 
     /**
      * The 3DS data sent to the payment service for this transaction. This will only be populated if external 3DS data was passed in directly as part of the transaction API call, or if our 3DS server returned a status code of `Y` or `A`. In case of a failure to authenticate (status `N`, `R`, or `U`) this field will not be populated. To see full details about the 3DS calls please use our transaction events API.
@@ -62,13 +60,13 @@ class TransactionThreeDSecureSummary
 
     /**
      * @param  ?string  $version
-     * @param  ?ThreeDSecureStatus  $status
-     * @param  ?ThreeDSecureMethod  $method
+     * @param  ?string  $status
+     * @param  ?string  $method
      * @param  ThreeDSecureDataV1|ThreeDSecureV2|null  $responseData
      * @param  ?ThreeDSecureError  $errorData
      * @phpstan-pure
      */
-    public function __construct(?string $version = null, ?ThreeDSecureStatus $status = null, ?ThreeDSecureMethod $method = null, ThreeDSecureDataV1|ThreeDSecureV2|null $responseData = null, ?ThreeDSecureError $errorData = null)
+    public function __construct(?string $version = null, ?string $status = null, ?string $method = null, ThreeDSecureDataV1|ThreeDSecureV2|null $responseData = null, ?ThreeDSecureError $errorData = null)
     {
         $this->version = $version;
         $this->status = $status;

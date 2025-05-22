@@ -21,11 +21,10 @@ class TransactionStatusSummary
 
     /**
      *
-     * @var TransactionStatus $status
+     * @var string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionStatus')]
-    public TransactionStatus $status;
+    public string $status;
 
     /**
      * Always `transaction`.
@@ -38,11 +37,11 @@ class TransactionStatusSummary
 
     /**
      * @param  string  $id
-     * @param  TransactionStatus  $status
+     * @param  string  $status
      * @param  ?string  $type
      * @phpstan-pure
      */
-    public function __construct(string $id, TransactionStatus $status, ?string $type = 'transaction')
+    public function __construct(string $id, string $status, ?string $type = 'transaction')
     {
         $this->id = $id;
         $this->status = $status;

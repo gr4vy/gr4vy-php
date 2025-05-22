@@ -27,7 +27,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 use Gr4vy\Utils;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -45,7 +45,7 @@ $request = new Gr4vy\ListTransactionsRequest(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     buyerEmailAddress: 'john@example.com',
     status: [
-        Gr4vy\TransactionStatus::AuthorizationSucceeded,
+        'authorization_succeeded',
     ],
     id: '7099948d-7286-47e4-aad8-b68f7eb44591',
     paymentServiceTransactionId: 'tx-12345',
@@ -66,7 +66,7 @@ $request = new Gr4vy\ListTransactionsRequest(
     paymentMethodLabel: '1234',
     paymentMethodFingerprint: 'a50b85c200ee0795d6fd33a5c66f37a4564f554355c5b46a756aac485dd168a4',
     method: [
-        Gr4vy\Method::Card,
+        'card',
     ],
     errorCode: [
         'insufficient_funds',
@@ -81,7 +81,7 @@ $request = new Gr4vy\ListTransactionsRequest(
     hasSettlements: true,
     paymentMethodBin: '411111',
     paymentSource: [
-        Gr4vy\TransactionPaymentSource::Recurring,
+        'recurring',
     ],
     isSubsequentPayment: true,
     merchantInitiated: true,
@@ -142,7 +142,7 @@ use Brick\DateTime\LocalDate;
 use Gr4vy;
 use Gr4vy\Utils;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -183,7 +183,7 @@ $transactionCreate = new Gr4vy\TransactionCreate(
             ),
             taxId: new Gr4vy\TaxId(
                 value: '12345678931',
-                kind: Gr4vy\TaxIdKind::BrCnpj,
+                kind: '<value>',
             ),
         ),
         shippingDetails: new Gr4vy\ShippingDetailsCreate(
@@ -207,8 +207,9 @@ $transactionCreate = new Gr4vy\TransactionCreate(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     buyerExternalIdentifier: 'buyer-12345',
     giftCards: [
-        new Gr4vy\GiftCardTokenTransactionCreate(
-            id: '356d56e5-fe16-42ae-97ee-8d55d846ae2e',
+        new Gr4vy\GiftCardTransactionCreate(
+            number: '4123455541234561234',
+            pin: '1234',
             amount: 1299,
         ),
     ],
@@ -218,7 +219,7 @@ $transactionCreate = new Gr4vy\TransactionCreate(
         eci: '05',
         version: '2.1.0',
         directoryResponse: 'C',
-        scheme: Gr4vy\CardScheme::Visa,
+        scheme: 'visa',
         authenticationResponse: 'Y',
         directoryTransactionId: 'c4e59ceb-a382-4d6a-bc87-385d591fa09d',
     ),
@@ -256,7 +257,7 @@ $transactionCreate = new Gr4vy\TransactionCreate(
                 feeAmount: 1200,
                 flightClass: 'E',
                 flightNumber: '101',
-                routeType: Gr4vy\RouteType::RoundTrip,
+                routeType: 'round_trip',
                 seatClass: 'F',
                 stopOver: false,
                 taxAmount: 1200,
@@ -265,7 +266,7 @@ $transactionCreate = new Gr4vy\TransactionCreate(
         passengerNameRecord: 'JOHN L',
         passengers: [
             new Gr4vy\AirlinePassenger(
-                ageGroup: Gr4vy\AgeGroup::Adult,
+                ageGroup: 'adult',
                 dateOfBirth: LocalDate::parse('2013-07-16'),
                 emailAddress: 'john@example.com',
                 firstName: 'John',
@@ -280,7 +281,7 @@ $transactionCreate = new Gr4vy\TransactionCreate(
         ],
         reservationSystem: 'Amadeus',
         restrictedTicket: false,
-        ticketDeliveryMethod: Gr4vy\TicketDeliveryMethod::Electronic,
+        ticketDeliveryMethod: 'electronic',
         ticketNumber: '123-1234-151555',
         travelAgencyCode: '12345',
         travelAgencyInvoiceNumber: 'EG15555155',
@@ -303,7 +304,7 @@ $transactionCreate = new Gr4vy\TransactionCreate(
                 'travel',
                 'gear',
             ],
-            productType: Gr4vy\ProductType::Physical,
+            productType: 'physical',
             sellerCountry: 'GB',
         ),
     ],
@@ -320,12 +321,12 @@ $transactionCreate = new Gr4vy\TransactionCreate(
         javascriptEnabled: false,
         javaEnabled: false,
         language: '<value>',
-        colorDepth: 233026,
-        screenHeight: 285144,
-        screenWidth: 702825,
-        timeZoneOffset: 891521,
+        colorDepth: 836800,
+        screenHeight: 233026,
+        screenWidth: 285144,
+        timeZoneOffset: 702825,
         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        userDevice: Gr4vy\UserDevice::Desktop,
+        userDevice: 'desktop',
         acceptHeader: '*/*',
     ),
     shippingDetailsId: 'bf8c36ad-02d9-4904-b0f9-a230b149e341',
@@ -407,7 +408,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -471,7 +472,7 @@ use Brick\DateTime\LocalDate;
 use Gr4vy;
 use Gr4vy\Utils;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -510,7 +511,7 @@ $transactionCapture = new Gr4vy\TransactionCapture(
                 feeAmount: 1200,
                 flightClass: 'E',
                 flightNumber: '101',
-                routeType: Gr4vy\RouteType::RoundTrip,
+                routeType: 'round_trip',
                 seatClass: 'F',
                 stopOver: false,
                 taxAmount: 1200,
@@ -519,7 +520,7 @@ $transactionCapture = new Gr4vy\TransactionCapture(
         passengerNameRecord: 'JOHN L',
         passengers: [
             new Gr4vy\AirlinePassenger(
-                ageGroup: Gr4vy\AgeGroup::Adult,
+                ageGroup: 'adult',
                 dateOfBirth: LocalDate::parse('2013-07-16'),
                 emailAddress: 'john@example.com',
                 firstName: 'John',
@@ -534,7 +535,7 @@ $transactionCapture = new Gr4vy\TransactionCapture(
         ],
         reservationSystem: 'Amadeus',
         restrictedTicket: false,
-        ticketDeliveryMethod: Gr4vy\TicketDeliveryMethod::Electronic,
+        ticketDeliveryMethod: 'electronic',
         ticketNumber: '123-1234-151555',
         travelAgencyCode: '12345',
         travelAgencyInvoiceNumber: 'EG15555155',
@@ -600,7 +601,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -664,7 +665,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -726,7 +727,7 @@ require 'vendor/autoload.php';
 
 use Gr4vy;
 
-$sdk = Gr4vy\Gr4vy::builder()
+$sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )

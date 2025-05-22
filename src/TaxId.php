@@ -21,18 +21,17 @@ class TaxId
 
     /**
      *
-     * @var TaxIdKind $kind
+     * @var string $kind
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('kind')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TaxIdKind')]
-    public TaxIdKind $kind;
+    public string $kind;
 
     /**
      * @param  string  $value
-     * @param  TaxIdKind  $kind
+     * @param  string  $kind
      * @phpstan-pure
      */
-    public function __construct(string $value, TaxIdKind $kind)
+    public function __construct(string $value, string $kind)
     {
         $this->value = $value;
         $this->kind = $kind;

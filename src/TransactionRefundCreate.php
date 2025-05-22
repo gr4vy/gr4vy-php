@@ -13,12 +13,11 @@ class TransactionRefundCreate
 {
     /**
      *
-     * @var ?RefundTargetType $targetType
+     * @var ?string $targetType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('target_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\RefundTargetType|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?RefundTargetType $targetType = null;
+    public ?string $targetType = null;
 
     /**
      * The amount requested to refund. If omitted, a full refund will be requested.
@@ -57,14 +56,14 @@ class TransactionRefundCreate
     public ?string $externalIdentifier = null;
 
     /**
-     * @param  ?RefundTargetType  $targetType
+     * @param  ?string  $targetType
      * @param  ?int  $amount
      * @param  ?string  $targetId
      * @param  ?string  $reason
      * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(?RefundTargetType $targetType = null, ?int $amount = null, ?string $targetId = null, ?string $reason = null, ?string $externalIdentifier = null)
+    public function __construct(?string $targetType = null, ?int $amount = null, ?string $targetId = null, ?string $reason = null, ?string $externalIdentifier = null)
     {
         $this->targetType = $targetType;
         $this->amount = $amount;

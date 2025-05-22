@@ -30,10 +30,10 @@ class ListAuditLogsRequest
     /**
      * Filters the results to only the items for which the `audit-log` has an `action` that matches this value.
      *
-     * @var ?AuditLogAction $action
+     * @var ?string $action
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=action')]
-    public ?AuditLogAction $action = null;
+    public ?string $action = null;
 
     /**
      * Filters the results to only the items for which the `user` has an `id` that matches this value.
@@ -63,12 +63,12 @@ class ListAuditLogsRequest
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
      * @param  ?string  $cursor
-     * @param  ?AuditLogAction  $action
+     * @param  ?string  $action
      * @param  ?string  $userId
      * @param  ?string  $resourceType
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?AuditLogAction $action = null, ?string $userId = null, ?string $resourceType = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?string $action = null, ?string $userId = null, ?string $resourceType = null, ?int $limit = 20)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->cursor = $cursor;

@@ -19,11 +19,10 @@ class PaymentMethod
 {
     /**
      *
-     * @var Method $method
+     * @var string $method
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Method')]
-    public Method $method;
+    public string $method;
 
     /**
      * The ID for the payment method.
@@ -67,11 +66,10 @@ class PaymentMethod
 
     /**
      *
-     * @var PaymentMethodStatus $status
+     * @var string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaymentMethodStatus')]
-    public PaymentMethodStatus $status;
+    public string $status;
 
     /**
      * The date and time when this payment method was first created in our system.
@@ -165,30 +163,28 @@ class PaymentMethod
     /**
      * The mode to use with this payment method.
      *
-     * @var ?Mode $mode
+     * @var ?string $mode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('mode')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Mode|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Mode $mode = null;
+    public ?string $mode = null;
 
     /**
      * The scheme of the card. Only applies to card payments.
      *
-     * @var ?CardScheme $scheme
+     * @var ?string $scheme
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('scheme')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardScheme|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CardScheme $scheme = null;
+    public ?string $scheme = null;
 
     /**
      * Additional schemes of the card besides the primary scheme. Only applies to card payment methods.
      *
-     * @var ?array<CardScheme> $additionalSchemes
+     * @var ?array<string> $additionalSchemes
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('additional_schemes')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CardScheme>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $additionalSchemes = null;
 
@@ -239,13 +235,13 @@ class PaymentMethod
     public ?string $type = null;
 
     /**
-     * @param  Method  $method
+     * @param  string  $method
      * @param  string  $id
      * @param  string  $merchantAccountId
      * @param  int  $citUsageCount
      * @param  bool  $hasReplacement
      * @param  int  $usageCount
-     * @param  PaymentMethodStatus  $status
+     * @param  string  $status
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type
@@ -257,16 +253,16 @@ class PaymentMethod
      * @param  ?string  $fingerprint
      * @param  ?string  $label
      * @param  ?\DateTime  $lastReplacedAt
-     * @param  ?Mode  $mode
-     * @param  ?CardScheme  $scheme
-     * @param  ?array<CardScheme>  $additionalSchemes
+     * @param  ?string  $mode
+     * @param  ?string  $scheme
+     * @param  ?array<string>  $additionalSchemes
      * @param  ?\DateTime  $citLastUsedAt
      * @param  ?\DateTime  $lastUsedAt
      * @param  ?Buyer  $buyer
      * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(Method $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, PaymentMethodStatus $status, \DateTime $createdAt, \DateTime $updatedAt, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?Mode $mode = null, ?CardScheme $scheme = null, ?array $additionalSchemes = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?Buyer $buyer = null, ?string $externalIdentifier = null, ?string $type = 'payment-method')
+    public function __construct(string $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, string $status, \DateTime $createdAt, \DateTime $updatedAt, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?array $additionalSchemes = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?Buyer $buyer = null, ?string $externalIdentifier = null, ?string $type = 'payment-method')
     {
         $this->method = $method;
         $this->id = $id;

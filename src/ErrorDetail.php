@@ -13,11 +13,10 @@ class ErrorDetail
 {
     /**
      *
-     * @var ErrorLocation $location
+     * @var string $location
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('location')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ErrorLocation')]
-    public ErrorLocation $location;
+    public string $location;
 
     /**
      * A JSON pointer for the particular property that caused the error.
@@ -44,13 +43,13 @@ class ErrorDetail
     public string $type;
 
     /**
-     * @param  ErrorLocation  $location
+     * @param  string  $location
      * @param  string  $pointer
      * @param  string  $message
      * @param  string  $type
      * @phpstan-pure
      */
-    public function __construct(ErrorLocation $location, string $pointer, string $message, string $type)
+    public function __construct(string $location, string $pointer, string $message, string $type)
     {
         $this->location = $location;
         $this->pointer = $pointer;

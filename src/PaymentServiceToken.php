@@ -37,11 +37,10 @@ class PaymentServiceToken
 
     /**
      *
-     * @var PaymentMethodStatus $status
+     * @var string $status
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaymentMethodStatus')]
-    public PaymentMethodStatus $status;
+    public string $status;
 
     /**
      * The date and time when this payment service token was first created in our system.
@@ -90,7 +89,7 @@ class PaymentServiceToken
      * @param  string  $id
      * @param  string  $paymentMethodId
      * @param  string  $paymentServiceId
-     * @param  PaymentMethodStatus  $status
+     * @param  string  $status
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type
@@ -98,7 +97,7 @@ class PaymentServiceToken
      * @param  ?string  $token
      * @phpstan-pure
      */
-    public function __construct(string $id, string $paymentMethodId, string $paymentServiceId, PaymentMethodStatus $status, \DateTime $createdAt, \DateTime $updatedAt, ?string $approvalUrl = null, ?string $token = null, ?string $type = 'payment-service-token')
+    public function __construct(string $id, string $paymentMethodId, string $paymentServiceId, string $status, \DateTime $createdAt, \DateTime $updatedAt, ?string $approvalUrl = null, ?string $token = null, ?string $type = 'payment-service-token')
     {
         $this->id = $id;
         $this->paymentMethodId = $paymentMethodId;

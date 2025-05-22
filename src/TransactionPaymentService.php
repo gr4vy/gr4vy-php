@@ -29,11 +29,10 @@ class TransactionPaymentService
 
     /**
      *
-     * @var Method $method
+     * @var string $method
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Method')]
-    public Method $method;
+    public string $method;
 
     /**
      * The display name for the payment service.
@@ -55,12 +54,12 @@ class TransactionPaymentService
     /**
      * @param  string  $id
      * @param  string  $paymentServiceDefinitionId
-     * @param  Method  $method
+     * @param  string  $method
      * @param  string  $displayName
      * @param  ?string  $type
      * @phpstan-pure
      */
-    public function __construct(string $id, string $paymentServiceDefinitionId, Method $method, string $displayName, ?string $type = 'payment-service')
+    public function __construct(string $id, string $paymentServiceDefinitionId, string $method, string $displayName, ?string $type = 'payment-service')
     {
         $this->id = $id;
         $this->paymentServiceDefinitionId = $paymentServiceDefinitionId;

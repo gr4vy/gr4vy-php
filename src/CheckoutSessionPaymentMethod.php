@@ -42,12 +42,11 @@ class CheckoutSessionPaymentMethod
     /**
      * The scheme of the card.
      *
-     * @var ?CardScheme $scheme
+     * @var ?string $scheme
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('scheme')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardScheme|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CardScheme $scheme = null;
+    public ?string $scheme = null;
 
     /**
      * The unique hash derived from the card number.
@@ -82,11 +81,11 @@ class CheckoutSessionPaymentMethod
      * @param  ?string  $id
      * @param  ?CheckoutSessionPaymentMethodDetails  $details
      * @param  ?string  $label
-     * @param  ?CardScheme  $scheme
+     * @param  ?string  $scheme
      * @param  ?string  $fingerprint
      * @phpstan-pure
      */
-    public function __construct(?string $id = null, ?CheckoutSessionPaymentMethodDetails $details = null, ?string $label = null, ?CardScheme $scheme = null, ?string $fingerprint = null, ?string $type = 'payment-method', ?string $method = 'card')
+    public function __construct(?string $id = null, ?CheckoutSessionPaymentMethodDetails $details = null, ?string $label = null, ?string $scheme = null, ?string $fingerprint = null, ?string $type = 'payment-method', ?string $method = 'card')
     {
         $this->id = $id;
         $this->details = $details;

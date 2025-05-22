@@ -102,12 +102,11 @@ class CartItem
     /**
      * The product type of the cart item.
      *
-     * @var ?ProductType $productType
+     * @var ?string $productType
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('product_type')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ProductType|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?ProductType $productType = null;
+    public ?string $productType = null;
 
     /**
      * The seller country of the cart item.
@@ -129,11 +128,11 @@ class CartItem
      * @param  ?string  $productUrl
      * @param  ?string  $imageUrl
      * @param  ?array<string>  $categories
-     * @param  ?ProductType  $productType
+     * @param  ?string  $productType
      * @param  ?string  $sellerCountry
      * @phpstan-pure
      */
-    public function __construct(string $name, int $quantity, int $unitAmount, ?int $discountAmount = null, ?int $taxAmount = null, ?string $externalIdentifier = null, ?string $sku = null, ?string $productUrl = null, ?string $imageUrl = null, ?array $categories = null, ?ProductType $productType = null, ?string $sellerCountry = null)
+    public function __construct(string $name, int $quantity, int $unitAmount, ?int $discountAmount = null, ?int $taxAmount = null, ?string $externalIdentifier = null, ?string $sku = null, ?string $productUrl = null, ?string $imageUrl = null, ?array $categories = null, ?string $productType = null, ?string $sellerCountry = null)
     {
         $this->name = $name;
         $this->quantity = $quantity;

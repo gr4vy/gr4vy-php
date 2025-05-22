@@ -30,12 +30,11 @@ class PaymentMethodCard
     /**
      * The optional card's network scheme.
      *
-     * @var ?CardScheme $cardScheme
+     * @var ?string $cardScheme
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('card_scheme')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardScheme|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CardScheme $cardScheme = null;
+    public ?string $cardScheme = null;
 
     /**
      * The merchant identifier for this card.
@@ -59,11 +58,11 @@ class PaymentMethodCard
      * @param  string  $number
      * @param  string  $expirationDate
      * @param  ?string  $method
-     * @param  ?CardScheme  $cardScheme
+     * @param  ?string  $cardScheme
      * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(string $number, string $expirationDate, ?CardScheme $cardScheme = null, ?string $externalIdentifier = null, ?string $method = 'card')
+    public function __construct(string $number, string $expirationDate, ?string $cardScheme = null, ?string $externalIdentifier = null, ?string $method = 'card')
     {
         $this->number = $number;
         $this->expirationDate = $expirationDate;

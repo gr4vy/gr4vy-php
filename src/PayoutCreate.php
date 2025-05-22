@@ -53,12 +53,11 @@ class PayoutCreate
     /**
      * The type of payout to process.
      *
-     * @var ?PayoutCategory $category
+     * @var ?string $category
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('category')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PayoutCategory|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?PayoutCategory $category = null;
+    public ?string $category = null;
 
     /**
      * A value that can be used to match the payout against your own records.
@@ -122,7 +121,7 @@ class PayoutCreate
      * @param  string  $currency
      * @param  string  $paymentServiceId
      * @param  PaymentMethodCard|PaymentMethodStoredCard  $paymentMethod
-     * @param  ?PayoutCategory  $category
+     * @param  ?string  $category
      * @param  ?string  $externalIdentifier
      * @param  ?string  $buyerId
      * @param  ?GuestBuyerInput  $buyer
@@ -131,7 +130,7 @@ class PayoutCreate
      * @param  ?ConnectionOptions  $connectionOptions
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $currency, string $paymentServiceId, PaymentMethodCard|PaymentMethodStoredCard $paymentMethod, ?PayoutCategory $category = null, ?string $externalIdentifier = null, ?string $buyerId = null, ?GuestBuyerInput $buyer = null, ?string $buyerExternalIdentifier = null, ?PayoutMerchant $merchant = null, ?ConnectionOptions $connectionOptions = null)
+    public function __construct(int $amount, string $currency, string $paymentServiceId, PaymentMethodCard|PaymentMethodStoredCard $paymentMethod, ?string $category = null, ?string $externalIdentifier = null, ?string $buyerId = null, ?GuestBuyerInput $buyer = null, ?string $buyerExternalIdentifier = null, ?PayoutMerchant $merchant = null, ?ConnectionOptions $connectionOptions = null)
     {
         $this->amount = $amount;
         $this->currency = $currency;

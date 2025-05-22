@@ -14,12 +14,11 @@ class AirlinePassenger
     /**
      * The age group for the passenger.
      *
-     * @var ?AgeGroup $ageGroup
+     * @var ?string $ageGroup
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('age_group')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AgeGroup|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?AgeGroup $ageGroup = null;
+    public ?string $ageGroup = null;
 
     /**
      * The passenger's date of birth in YYYY-MM-YY format.
@@ -112,7 +111,7 @@ class AirlinePassenger
     public ?string $countryCode = null;
 
     /**
-     * @param  ?AgeGroup  $ageGroup
+     * @param  ?string  $ageGroup
      * @param  ?LocalDate  $dateOfBirth
      * @param  ?string  $emailAddress
      * @param  ?string  $firstName
@@ -125,7 +124,7 @@ class AirlinePassenger
      * @param  ?string  $countryCode
      * @phpstan-pure
      */
-    public function __construct(?AgeGroup $ageGroup = null, ?LocalDate $dateOfBirth = null, ?string $emailAddress = null, ?string $firstName = null, ?string $frequentFlyerNumber = null, ?string $lastName = null, ?string $passportNumber = null, ?string $phoneNumber = null, ?string $ticketNumber = null, ?string $title = null, ?string $countryCode = null)
+    public function __construct(?string $ageGroup = null, ?LocalDate $dateOfBirth = null, ?string $emailAddress = null, ?string $firstName = null, ?string $frequentFlyerNumber = null, ?string $lastName = null, ?string $passportNumber = null, ?string $phoneNumber = null, ?string $ticketNumber = null, ?string $title = null, ?string $countryCode = null)
     {
         $this->ageGroup = $ageGroup;
         $this->dateOfBirth = $dateOfBirth;

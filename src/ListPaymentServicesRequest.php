@@ -22,10 +22,10 @@ class ListPaymentServicesRequest
     /**
      * Return any payment service for this method.
      *
-     * @var ?Method $method
+     * @var ?string $method
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=method')]
-    public ?Method $method = null;
+    public ?string $method = null;
 
     /**
      * A pointer to the page of results to return.
@@ -54,12 +54,12 @@ class ListPaymentServicesRequest
     /**
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
-     * @param  ?Method  $method
+     * @param  ?string  $method
      * @param  ?string  $cursor
      * @param  ?bool  $deleted
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?Method $method = null, ?string $cursor = null, ?bool $deleted = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $method = null, ?string $cursor = null, ?bool $deleted = null, ?int $limit = 20)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->method = $method;

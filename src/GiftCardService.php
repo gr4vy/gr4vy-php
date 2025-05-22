@@ -21,11 +21,10 @@ class GiftCardService
 
     /**
      *
-     * @var GiftCardServiceProvider $giftCardServiceDefinitionId
+     * @var string $giftCardServiceDefinitionId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gift_card_service_definition_id')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GiftCardServiceProvider')]
-    public GiftCardServiceProvider $giftCardServiceDefinitionId;
+    public string $giftCardServiceDefinitionId;
 
     /**
      * The display name for the gift card service.
@@ -46,12 +45,12 @@ class GiftCardService
 
     /**
      * @param  string  $id
-     * @param  GiftCardServiceProvider  $giftCardServiceDefinitionId
+     * @param  string  $giftCardServiceDefinitionId
      * @param  string  $displayName
      * @param  ?string  $type
      * @phpstan-pure
      */
-    public function __construct(string $id, GiftCardServiceProvider $giftCardServiceDefinitionId, string $displayName, ?string $type = 'gift-card-service')
+    public function __construct(string $id, string $giftCardServiceDefinitionId, string $displayName, ?string $type = 'gift-card-service')
     {
         $this->id = $id;
         $this->giftCardServiceDefinitionId = $giftCardServiceDefinitionId;
