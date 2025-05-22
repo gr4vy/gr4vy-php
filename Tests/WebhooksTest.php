@@ -13,7 +13,7 @@ final class WebhooksTest extends TestCase
     const VALID_SIGNATURE = '78aca0c78005107a654a957b8566fa6e0e5e06aea92d7da72a6da9e5a690d013';
     const SIGNATURE_HEADER = '78aca0c78005107a654a957b8566fa6e0e5e06aea92d7da72a6da9e5a690d013,other';
 
-    public function testVerifiesWebhookSignature(): void
+    public function test_verifies_webhook_signature(): void
     {
         $this->expectNotToPerformAssertions();
         Webhooks::verifyWebhook(
@@ -25,11 +25,11 @@ final class WebhooksTest extends TestCase
         );
     }
 
-    public function testRaisesErrorForOldTimestamp(): void
+    public function test_raises_error_for_old_timestamp(): void
     {
-        $oldTimestamp = (string)(time() - 120); // 2 minutes ago
-        $signature = hash_hmac('sha256', $oldTimestamp . '.' . self::PAYLOAD, self::SECRET);
-        $header = $signature . ',other';
+        $oldTimestamp = (string) (time() - 120); // 2 minutes ago
+        $signature = hash_hmac('sha256', $oldTimestamp.'.'.self::PAYLOAD, self::SECRET);
+        $header = $signature.',other';
 
         $this->expectExceptionMessage('Timestamp too old');
         Webhooks::verifyWebhook(
@@ -41,7 +41,7 @@ final class WebhooksTest extends TestCase
         );
     }
 
-    public function testRaisesErrorForWrongSignature(): void
+    public function test_raises_error_for_wrong_signature(): void
     {
         $this->expectExceptionMessage('No matching signature found');
         Webhooks::verifyWebhook(
@@ -53,7 +53,7 @@ final class WebhooksTest extends TestCase
         );
     }
 
-    public function testRaisesErrorForInvalidTimestamp(): void
+    public function test_raises_error_for_invalid_timestamp(): void
     {
         $this->expectExceptionMessage('Invalid header timestamp');
         Webhooks::verifyWebhook(
@@ -65,7 +65,7 @@ final class WebhooksTest extends TestCase
         );
     }
 
-    public function testRaisesErrorForMissingSignatureHeader(): void
+    public function test_raises_error_for_missing_signature_header(): void
     {
         $this->expectExceptionMessage('Missing header values');
         Webhooks::verifyWebhook(
@@ -77,7 +77,7 @@ final class WebhooksTest extends TestCase
         );
     }
 
-    public function testRaisesErrorForMissingTimestampHeader(): void
+    public function test_raises_error_for_missing_timestamp_header(): void
     {
         $this->expectExceptionMessage('Missing header values');
         Webhooks::verifyWebhook(

@@ -42,6 +42,7 @@ This SDK is designed to simplify development, reduce boilerplate code, and help 
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
 * [Development](#development)
+  * [Testing](#testing)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
 
@@ -692,6 +693,25 @@ if ($response->accountUpdaterJob !== null) {
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development
+
+## Testing
+
+To run the tests, install PHP and compose, ensure to download the `private_key.pem` for the test environment, and run the following.
+
+```sh
+composer install
+composer test
+```
+
+Additionally, the following tools can be used to lint the code.
+
+```sh
+# autoformat the code
+vendor/bin/pint tests src --repair 
+# static code analysis
+vendor/bin/phpstan analyse src tests --level 7 --memory-limit 1G --no-progress --error-format=table
+```
+
 
 ## Maturity
 
