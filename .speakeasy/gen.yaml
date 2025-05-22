@@ -17,11 +17,13 @@ generation:
     oAuth2PasswordEnabled: false
   sdkHooksConfigAccess: true
 php:
-  version: 0.0.3
+  version: 0.0.14
   additionalDependencies:
     autoload: {}
     autoload-dev: {}
-    require: {}
+    require:
+      lcobucci/jwt: ^5.5.0
+      ramsey/uuid: ^4.7.6
     require-dev: {}
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIException
