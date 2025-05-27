@@ -88,6 +88,20 @@ class ListTransactionsRequest
     public ?string $buyerEmailAddress = null;
 
     /**
+     *
+     * @var ?string $buyerSearch
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=buyer_search')]
+    public ?string $buyerSearch = null;
+
+    /**
+     *
+     * @var ?string $ipAddress
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=ip_address')]
+    public ?string $ipAddress = null;
+
+    /**
      * Filters the results to only the transactions that have a `status` that matches with any of the provided status values.
      *
      * @var ?array<string> $status
@@ -157,6 +171,14 @@ class ListTransactionsRequest
     public ?array $currency = null;
 
     /**
+     * Filters for transactions that have matching `country` values.
+     *
+     * @var ?array<string> $country
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=country')]
+    public ?array $country = null;
+
+    /**
      * Filters for transactions that were processed by the provided `payment_service_id` values.
      *
      * @var ?array<string> $paymentServiceId
@@ -177,6 +199,22 @@ class ListTransactionsRequest
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=payment_method_label')]
     public ?string $paymentMethodLabel = null;
+
+    /**
+     * Filters for transactions that have a payment method with a scheme that matches with the provided value.
+     *
+     * @var ?string $paymentMethodScheme
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=payment_method_scheme')]
+    public ?string $paymentMethodScheme = null;
+
+    /**
+     * Filters for transactions that have a payment method with a country that matches with the provided value.
+     *
+     * @var ?string $paymentMethodCountry
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=payment_method_country')]
+    public ?string $paymentMethodCountry = null;
 
     /**
      *
@@ -298,6 +336,14 @@ class ListTransactionsRequest
     public ?bool $merchantInitiated = null;
 
     /**
+     * Filters for transactions that attempted 3DS authentication or not.
+     *
+     * @var ?bool $used3ds
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=used_3ds')]
+    public ?bool $used3ds = null;
+
+    /**
      * The maximum number of items that are at returned.
      *
      * @var ?int $limit
@@ -317,6 +363,8 @@ class ListTransactionsRequest
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $buyerId
      * @param  ?string  $buyerEmailAddress
+     * @param  ?string  $buyerSearch
+     * @param  ?string  $ipAddress
      * @param  ?array<string>  $status
      * @param  ?string  $id
      * @param  ?string  $paymentServiceTransactionId
@@ -326,9 +374,12 @@ class ListTransactionsRequest
      * @param  ?int  $amountLte
      * @param  ?int  $amountGte
      * @param  ?array<string>  $currency
+     * @param  ?array<string>  $country
      * @param  ?array<string>  $paymentServiceId
      * @param  ?string  $paymentMethodId
      * @param  ?string  $paymentMethodLabel
+     * @param  ?string  $paymentMethodScheme
+     * @param  ?string  $paymentMethodCountry
      * @param  ?string  $paymentMethodFingerprint
      * @param  ?array<string>  $method
      * @param  ?array<string>  $errorCode
@@ -344,9 +395,10 @@ class ListTransactionsRequest
      * @param  ?array<string>  $paymentSource
      * @param  ?bool  $isSubsequentPayment
      * @param  ?bool  $merchantInitiated
+     * @param  ?bool  $used3ds
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?\DateTime $createdAtLte = null, ?\DateTime $createdAtGte = null, ?\DateTime $updatedAtLte = null, ?\DateTime $updatedAtGte = null, ?string $search = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $buyerEmailAddress = null, ?array $status = null, ?string $id = null, ?string $paymentServiceTransactionId = null, ?string $externalIdentifier = null, ?array $metadata = null, ?int $amountEq = null, ?int $amountLte = null, ?int $amountGte = null, ?array $currency = null, ?array $paymentServiceId = null, ?string $paymentMethodId = null, ?string $paymentMethodLabel = null, ?string $paymentMethodFingerprint = null, ?array $method = null, ?array $errorCode = null, ?bool $hasRefunds = null, ?bool $pendingReview = null, ?string $checkoutSessionId = null, ?string $reconciliationId = null, ?bool $hasGiftCardRedemptions = null, ?string $giftCardId = null, ?string $giftCardLast4 = null, ?bool $hasSettlements = null, ?string $paymentMethodBin = null, ?array $paymentSource = null, ?bool $isSubsequentPayment = null, ?bool $merchantInitiated = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?\DateTime $createdAtLte = null, ?\DateTime $createdAtGte = null, ?\DateTime $updatedAtLte = null, ?\DateTime $updatedAtGte = null, ?string $search = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $buyerEmailAddress = null, ?string $buyerSearch = null, ?string $ipAddress = null, ?array $status = null, ?string $id = null, ?string $paymentServiceTransactionId = null, ?string $externalIdentifier = null, ?array $metadata = null, ?int $amountEq = null, ?int $amountLte = null, ?int $amountGte = null, ?array $currency = null, ?array $country = null, ?array $paymentServiceId = null, ?string $paymentMethodId = null, ?string $paymentMethodLabel = null, ?string $paymentMethodScheme = null, ?string $paymentMethodCountry = null, ?string $paymentMethodFingerprint = null, ?array $method = null, ?array $errorCode = null, ?bool $hasRefunds = null, ?bool $pendingReview = null, ?string $checkoutSessionId = null, ?string $reconciliationId = null, ?bool $hasGiftCardRedemptions = null, ?string $giftCardId = null, ?string $giftCardLast4 = null, ?bool $hasSettlements = null, ?string $paymentMethodBin = null, ?array $paymentSource = null, ?bool $isSubsequentPayment = null, ?bool $merchantInitiated = null, ?bool $used3ds = null, ?int $limit = 20)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->cursor = $cursor;
@@ -358,6 +410,8 @@ class ListTransactionsRequest
         $this->buyerExternalIdentifier = $buyerExternalIdentifier;
         $this->buyerId = $buyerId;
         $this->buyerEmailAddress = $buyerEmailAddress;
+        $this->buyerSearch = $buyerSearch;
+        $this->ipAddress = $ipAddress;
         $this->status = $status;
         $this->id = $id;
         $this->paymentServiceTransactionId = $paymentServiceTransactionId;
@@ -367,9 +421,12 @@ class ListTransactionsRequest
         $this->amountLte = $amountLte;
         $this->amountGte = $amountGte;
         $this->currency = $currency;
+        $this->country = $country;
         $this->paymentServiceId = $paymentServiceId;
         $this->paymentMethodId = $paymentMethodId;
         $this->paymentMethodLabel = $paymentMethodLabel;
+        $this->paymentMethodScheme = $paymentMethodScheme;
+        $this->paymentMethodCountry = $paymentMethodCountry;
         $this->paymentMethodFingerprint = $paymentMethodFingerprint;
         $this->method = $method;
         $this->errorCode = $errorCode;
@@ -385,6 +442,7 @@ class ListTransactionsRequest
         $this->paymentSource = $paymentSource;
         $this->isSubsequentPayment = $isSubsequentPayment;
         $this->merchantInitiated = $merchantInitiated;
+        $this->used3ds = $used3ds;
         $this->limit = $limit;
     }
 }
