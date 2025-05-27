@@ -44,6 +44,8 @@ $request = new Gr4vy\ListTransactionsRequest(
     buyerExternalIdentifier: 'buyer-12345',
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     buyerEmailAddress: 'john@example.com',
+    buyerSearch: 'John',
+    ipAddress: '8.214.133.47',
     status: [
         'authorization_succeeded',
     ],
@@ -59,11 +61,16 @@ $request = new Gr4vy\ListTransactionsRequest(
     currency: [
         'USD',
     ],
+    country: [
+        'US',
+    ],
     paymentServiceId: [
         'fffd152a-9532-4087-9a4f-de58754210f0',
     ],
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
     paymentMethodLabel: '1234',
+    paymentMethodScheme: '["visa"]',
+    paymentMethodCountry: '["US"]',
     paymentMethodFingerprint: 'a50b85c200ee0795d6fd33a5c66f37a4564f554355c5b46a756aac485dd168a4',
     method: [
         'card',
@@ -85,6 +92,7 @@ $request = new Gr4vy\ListTransactionsRequest(
     ],
     isSubsequentPayment: true,
     merchantInitiated: true,
+    used3ds: true,
 );
 
 $responses = $sdk->transactions->list(
