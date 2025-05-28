@@ -45,7 +45,8 @@ class Error409
      * @var ?string $message
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('message')]
-    public ?string $message;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $message = null;
 
     /**
      * A list of details that further ellaborate on the error.
@@ -65,7 +66,7 @@ class Error409
      * @param  ?array<Gr4vy\ErrorDetail>  $details
      * @phpstan-pure
      */
-    public function __construct(?string $message = null, ?array $details = null, ?string $code = 'duplicate_record', ?int $status = 409, ?string $type = 'error')
+    public function __construct(?array $details = null, ?string $code = 'duplicate_record', ?int $status = 409, ?string $message = 'Generic error', ?string $type = 'error')
     {
         $this->type = $type;
         $this->code = $code;

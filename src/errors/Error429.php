@@ -45,7 +45,8 @@ class Error429
      * @var ?string $message
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('message')]
-    public ?string $message;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $message = null;
 
     /**
      * A list of details that further ellaborate on the error.
@@ -65,7 +66,7 @@ class Error429
      * @param  ?array<Gr4vy\ErrorDetail>  $details
      * @phpstan-pure
      */
-    public function __construct(?string $message = null, ?array $details = null, ?string $code = 'too_many_requests', ?int $status = 429, ?string $type = 'error')
+    public function __construct(?array $details = null, ?string $code = 'too_many_requests', ?int $status = 429, ?string $message = 'Generic error', ?string $type = 'error')
     {
         $this->type = $type;
         $this->code = $code;
