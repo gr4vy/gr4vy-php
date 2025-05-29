@@ -22,7 +22,6 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );

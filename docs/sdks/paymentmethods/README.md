@@ -106,7 +106,6 @@ $response = $sdk->paymentMethods->create(
         buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
         buyerExternalIdentifier: 'buyer-12345',
     ),
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -121,7 +120,6 @@ if ($response->paymentMethod !== null) {
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `requestBody`                                                                                           | [CardPaymentMethodCreate\|RedirectPaymentMethodCreate\|CheckoutSessionPaymentMethodCreate](../../Body.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |                                                                                                         |
-| `timeoutInSeconds`                                                                                      | *?float*                                                                                                | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |                                                                                                         |
 | `merchantAccountId`                                                                                     | *?string*                                                                                               | :heavy_minus_sign:                                                                                      | The ID of the merchant account to use for this request.                                                 | default                                                                                                 |
 
 ### Response

@@ -57,16 +57,14 @@ class DigitalWallets
      * Register a digital wallet like Apple Pay, Google Pay, or Click to Pay.
      *
      * @param  DigitalWalletCreate  $digitalWalletCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return ConfigureDigitalWalletResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(DigitalWalletCreate $digitalWalletCreate, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): ConfigureDigitalWalletResponse
+    public function create(DigitalWalletCreate $digitalWalletCreate, ?string $merchantAccountId = null, ?Options $options = null): ConfigureDigitalWalletResponse
     {
         $request = new ConfigureDigitalWalletRequest(
             digitalWalletCreate: $digitalWalletCreate,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -78,8 +76,6 @@ class DigitalWallets
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(ConfigureDigitalWalletRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -89,7 +85,6 @@ class DigitalWallets
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'configure_digital_wallet', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -269,24 +264,20 @@ class DigitalWallets
      * Delete a configured digital wallet.
      *
      * @param  string  $digitalWalletId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return DeleteDigitalWalletResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function delete(string $digitalWalletId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): DeleteDigitalWalletResponse
+    public function delete(string $digitalWalletId, ?string $merchantAccountId = null, ?Options $options = null): DeleteDigitalWalletResponse
     {
         $request = new DeleteDigitalWalletRequest(
             digitalWalletId: $digitalWalletId,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/digital-wallets/{digital_wallet_id}', DeleteDigitalWalletRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(DeleteDigitalWalletRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -296,7 +287,6 @@ class DigitalWallets
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($baseUrl, 'delete_digital_wallet', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -927,17 +917,15 @@ class DigitalWallets
      *
      * @param  DigitalWalletUpdate  $digitalWalletUpdate
      * @param  string  $digitalWalletId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return UpdateDigitalWalletResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function update(DigitalWalletUpdate $digitalWalletUpdate, string $digitalWalletId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): UpdateDigitalWalletResponse
+    public function update(DigitalWalletUpdate $digitalWalletUpdate, string $digitalWalletId, ?string $merchantAccountId = null, ?Options $options = null): UpdateDigitalWalletResponse
     {
         $request = new UpdateDigitalWalletRequest(
             digitalWalletId: $digitalWalletId,
             digitalWalletUpdate: $digitalWalletUpdate,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -949,8 +937,6 @@ class DigitalWallets
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(UpdateDigitalWalletRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -960,7 +946,6 @@ class DigitalWallets
         $httpRequest = new \GuzzleHttp\Psr7\Request('PUT', $url);
         $hookContext = new HookContext($baseUrl, 'update_digital_wallet', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

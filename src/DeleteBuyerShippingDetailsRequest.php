@@ -36,24 +36,15 @@ class DeleteBuyerShippingDetailsRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $buyerId
      * @param  string  $shippingDetailsId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $buyerId, string $shippingDetailsId, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $buyerId, string $shippingDetailsId, ?string $merchantAccountId = null)
     {
         $this->buyerId = $buyerId;
         $this->shippingDetailsId = $shippingDetailsId;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

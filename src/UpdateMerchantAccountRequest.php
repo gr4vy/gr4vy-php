@@ -27,22 +27,13 @@ class UpdateMerchantAccountRequest
     public MerchantAccountUpdate $merchantAccountUpdate;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $merchantAccountId
      * @param  MerchantAccountUpdate  $merchantAccountUpdate
-     * @param  ?float  $timeoutInSeconds
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId, MerchantAccountUpdate $merchantAccountUpdate, ?float $timeoutInSeconds = 1)
+    public function __construct(string $merchantAccountId, MerchantAccountUpdate $merchantAccountUpdate)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->merchantAccountUpdate = $merchantAccountUpdate;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

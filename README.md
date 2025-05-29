@@ -230,7 +230,6 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -643,7 +642,6 @@ try {
 
     $response = $sdk->accountUpdater->jobs->create(
         accountUpdaterJobCreate: $accountUpdaterJobCreate,
-        timeoutInSeconds: 1,
         merchantAccountId: 'default'
 
     );
@@ -739,7 +737,6 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -776,7 +773,6 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );

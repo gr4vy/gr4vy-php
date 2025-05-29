@@ -27,22 +27,13 @@ class CreateCheckoutSessionRequest
     public ?CheckoutSessionCreate $checkoutSessionCreate = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @param  ?CheckoutSessionCreate  $checkoutSessionCreate
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?CheckoutSessionCreate $checkoutSessionCreate = null, ?float $timeoutInSeconds = 1)
+    public function __construct(?string $merchantAccountId = null, ?CheckoutSessionCreate $checkoutSessionCreate = null)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->checkoutSessionCreate = $checkoutSessionCreate;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

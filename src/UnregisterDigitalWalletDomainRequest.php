@@ -34,24 +34,15 @@ class UnregisterDigitalWalletDomainRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $digitalWalletId
      * @param  DigitalWalletDomain  $digitalWalletDomain
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $digitalWalletId, DigitalWalletDomain $digitalWalletDomain, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $digitalWalletId, DigitalWalletDomain $digitalWalletDomain, ?string $merchantAccountId = null)
     {
         $this->digitalWalletId = $digitalWalletId;
         $this->digitalWalletDomain = $digitalWalletDomain;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

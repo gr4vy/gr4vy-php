@@ -27,22 +27,13 @@ class AddBuyerRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  BuyerCreate  $buyerCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(BuyerCreate $buyerCreate, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(BuyerCreate $buyerCreate, ?string $merchantAccountId = null)
     {
         $this->buyerCreate = $buyerCreate;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

@@ -163,7 +163,6 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
 );
 
 $response = $sdk->checkoutSessions->create(
-    timeoutInSeconds: 1,
     merchantAccountId: 'default',
     checkoutSessionCreate: $checkoutSessionCreate
 
@@ -178,7 +177,6 @@ if ($response->checkoutSession !== null) {
 
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `timeoutInSeconds`                                       | *?float*                                                 | :heavy_minus_sign:                                       | N/A                                                      |                                                          |
 | `merchantAccountId`                                      | *?string*                                                | :heavy_minus_sign:                                       | The ID of the merchant account to use for this request.  | default                                                  |
 | `checkoutSessionCreate`                                  | [?CheckoutSessionCreate](../../CheckoutSessionCreate.md) | :heavy_minus_sign:                                       | N/A                                                      |                                                          |
 
@@ -359,7 +357,6 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
 $response = $sdk->checkoutSessions->update(
     sessionId: '4137b1cf-39ac-42a8-bad6-1c680d5dab6b',
     checkoutSessionCreate: $checkoutSessionCreate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -375,7 +372,6 @@ if ($response->checkoutSession !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `sessionId`                                             | *string*                                                | :heavy_check_mark:                                      | The ID of the checkout session.                         | 4137b1cf-39ac-42a8-bad6-1c680d5dab6b                    |
 | `checkoutSessionCreate`                                 | [CheckoutSessionCreate](../../CheckoutSessionCreate.md) | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -424,7 +420,6 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->checkoutSessions->get(
     sessionId: '4137b1cf-39ac-42a8-bad6-1c680d5dab6b',
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -439,7 +434,6 @@ if ($response->checkoutSession !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `sessionId`                                             | *string*                                                | :heavy_check_mark:                                      | The ID of the checkout session.                         | 4137b1cf-39ac-42a8-bad6-1c680d5dab6b                    |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -487,7 +481,6 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->checkoutSessions->delete(
     sessionId: '4137b1cf-39ac-42a8-bad6-1c680d5dab6b',
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -502,7 +495,6 @@ if ($response->statusCode === 200) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `sessionId`                                             | *string*                                                | :heavy_check_mark:                                      | The ID of the checkout session.                         | 4137b1cf-39ac-42a8-bad6-1c680d5dab6b                    |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

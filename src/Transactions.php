@@ -55,17 +55,15 @@ class Transactions
      *
      * @param  TransactionCapture  $transactionCapture
      * @param  string  $transactionId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return CaptureTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function capture(TransactionCapture $transactionCapture, string $transactionId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): CaptureTransactionResponse
+    public function capture(TransactionCapture $transactionCapture, string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): CaptureTransactionResponse
     {
         $request = new CaptureTransactionRequest(
             transactionId: $transactionId,
             transactionCapture: $transactionCapture,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -77,8 +75,6 @@ class Transactions
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CaptureTransactionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -88,7 +84,6 @@ class Transactions
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'capture_transaction', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -268,17 +263,15 @@ class Transactions
      * Create a transaction.
      *
      * @param  TransactionCreate  $transactionCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @param  ?string  $idempotencyKey
      * @return CreateTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(TransactionCreate $transactionCreate, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?Options $options = null): CreateTransactionResponse
+    public function create(TransactionCreate $transactionCreate, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?Options $options = null): CreateTransactionResponse
     {
         $request = new CreateTransactionRequest(
             transactionCreate: $transactionCreate,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
             idempotencyKey: $idempotencyKey,
         );
@@ -291,8 +284,6 @@ class Transactions
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreateTransactionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -302,7 +293,6 @@ class Transactions
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'create_transaction', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -1239,24 +1229,20 @@ class Transactions
      * Fetch the latest status for a transaction.
      *
      * @param  string  $transactionId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return SyncTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function sync(string $transactionId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): SyncTransactionResponse
+    public function sync(string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): SyncTransactionResponse
     {
         $request = new SyncTransactionRequest(
             transactionId: $transactionId,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/sync', SyncTransactionRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(SyncTransactionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -1266,7 +1252,6 @@ class Transactions
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'sync_transaction', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -1446,24 +1431,20 @@ class Transactions
      * Void a previously authorized transaction.
      *
      * @param  string  $transactionId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return VoidTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function void(string $transactionId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): VoidTransactionResponse
+    public function void(string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): VoidTransactionResponse
     {
         $request = new VoidTransactionRequest(
             transactionId: $transactionId,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/void', VoidTransactionRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(VoidTransactionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -1473,7 +1454,6 @@ class Transactions
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'void_transaction', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

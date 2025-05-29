@@ -52,12 +52,11 @@ class BuyersGiftCards
      *
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $buyerId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return ListBuyerGiftCardsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): ListBuyerGiftCardsResponse
+    public function list(?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $merchantAccountId = null, ?Options $options = null): ListBuyerGiftCardsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -86,7 +85,6 @@ class BuyersGiftCards
         $request = new ListBuyerGiftCardsRequest(
             buyerExternalIdentifier: $buyerExternalIdentifier,
             buyerId: $buyerId,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());

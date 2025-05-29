@@ -55,17 +55,15 @@ class NetworkTokens
      *
      * @param  NetworkTokenCreate  $networkTokenCreate
      * @param  string  $paymentMethodId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return CreatePaymentMethodNetworkTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(NetworkTokenCreate $networkTokenCreate, string $paymentMethodId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodNetworkTokenResponse
+    public function create(NetworkTokenCreate $networkTokenCreate, string $paymentMethodId, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodNetworkTokenResponse
     {
         $request = new CreatePaymentMethodNetworkTokenRequest(
             paymentMethodId: $paymentMethodId,
             networkTokenCreate: $networkTokenCreate,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -77,8 +75,6 @@ class NetworkTokens
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreatePaymentMethodNetworkTokenRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -88,7 +84,6 @@ class NetworkTokens
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'create_payment_method_network_token', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -269,25 +264,21 @@ class NetworkTokens
      *
      * @param  string  $paymentMethodId
      * @param  string  $networkTokenId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return DeletePaymentMethodNetworkTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function delete(string $paymentMethodId, string $networkTokenId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentMethodNetworkTokenResponse
+    public function delete(string $paymentMethodId, string $networkTokenId, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentMethodNetworkTokenResponse
     {
         $request = new DeletePaymentMethodNetworkTokenRequest(
             paymentMethodId: $paymentMethodId,
             networkTokenId: $networkTokenId,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-methods/{payment_method_id}/network-tokens/{network_token_id}', DeletePaymentMethodNetworkTokenRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(DeletePaymentMethodNetworkTokenRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -297,7 +288,6 @@ class NetworkTokens
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($baseUrl, 'delete_payment_method_network_token', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -695,25 +685,21 @@ class NetworkTokens
      *
      * @param  string  $paymentMethodId
      * @param  string  $networkTokenId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return ResumePaymentMethodNetworkTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function resume(string $paymentMethodId, string $networkTokenId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): ResumePaymentMethodNetworkTokenResponse
+    public function resume(string $paymentMethodId, string $networkTokenId, ?string $merchantAccountId = null, ?Options $options = null): ResumePaymentMethodNetworkTokenResponse
     {
         $request = new ResumePaymentMethodNetworkTokenRequest(
             paymentMethodId: $paymentMethodId,
             networkTokenId: $networkTokenId,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/resume', ResumePaymentMethodNetworkTokenRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(ResumePaymentMethodNetworkTokenRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -723,7 +709,6 @@ class NetworkTokens
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'resume_payment_method_network_token', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -904,25 +889,21 @@ class NetworkTokens
      *
      * @param  string  $paymentMethodId
      * @param  string  $networkTokenId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return SuspendPaymentMethodNetworkTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function suspend(string $paymentMethodId, string $networkTokenId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): SuspendPaymentMethodNetworkTokenResponse
+    public function suspend(string $paymentMethodId, string $networkTokenId, ?string $merchantAccountId = null, ?Options $options = null): SuspendPaymentMethodNetworkTokenResponse
     {
         $request = new SuspendPaymentMethodNetworkTokenRequest(
             paymentMethodId: $paymentMethodId,
             networkTokenId: $networkTokenId,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/suspend', SuspendPaymentMethodNetworkTokenRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(SuspendPaymentMethodNetworkTokenRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -932,7 +913,6 @@ class NetworkTokens
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'suspend_payment_method_network_token', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

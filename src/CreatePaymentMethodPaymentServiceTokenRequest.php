@@ -35,24 +35,15 @@ class CreatePaymentMethodPaymentServiceTokenRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $paymentMethodId
      * @param  PaymentServiceTokenCreate  $paymentServiceTokenCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $paymentMethodId, PaymentServiceTokenCreate $paymentServiceTokenCreate, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $paymentMethodId, PaymentServiceTokenCreate $paymentServiceTokenCreate, ?string $merchantAccountId = null)
     {
         $this->paymentMethodId = $paymentMethodId;
         $this->paymentServiceTokenCreate = $paymentServiceTokenCreate;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

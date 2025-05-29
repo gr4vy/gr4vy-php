@@ -49,16 +49,14 @@ class Jobs
      * Schedule one or more stored cards for an account update.
      *
      * @param  AccountUpdaterJobCreate  $accountUpdaterJobCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return CreateAccountUpdaterJobResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(AccountUpdaterJobCreate $accountUpdaterJobCreate, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): CreateAccountUpdaterJobResponse
+    public function create(AccountUpdaterJobCreate $accountUpdaterJobCreate, ?string $merchantAccountId = null, ?Options $options = null): CreateAccountUpdaterJobResponse
     {
         $request = new CreateAccountUpdaterJobRequest(
             accountUpdaterJobCreate: $accountUpdaterJobCreate,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -70,8 +68,6 @@ class Jobs
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreateAccountUpdaterJobRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -81,7 +77,6 @@ class Jobs
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'create_account_updater_job', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

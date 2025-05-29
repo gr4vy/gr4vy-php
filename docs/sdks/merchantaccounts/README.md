@@ -97,7 +97,7 @@ $sdk = Gr4vy\SDK::builder()
     ->setMerchantAccountId('default')
     ->build();
 
-$merchantAccountCreate = new Gr4vy\MerchantAccountCreate(
+$request = new Gr4vy\MerchantAccountCreate(
     accountUpdaterRequestEncryptionKey: 'key-1234',
     accountUpdaterRequestEncryptionKeyId: 'key-id-1234',
     accountUpdaterResponseDecryptionKey: 'key-1234',
@@ -123,9 +123,7 @@ $merchantAccountCreate = new Gr4vy\MerchantAccountCreate(
 );
 
 $response = $sdk->merchantAccounts->create(
-    merchantAccountCreate: $merchantAccountCreate,
-    timeoutInSeconds: 1
-
+    request: $request
 );
 
 if ($response->merchantAccount !== null) {
@@ -135,10 +133,9 @@ if ($response->merchantAccount !== null) {
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `merchantAccountCreate`                                 | [MerchantAccountCreate](../../MerchantAccountCreate.md) | :heavy_check_mark:                                      | N/A                                                     |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `$request`                                                    | [Gr4vy\MerchantAccountCreate](../../MerchantAccountCreate.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
 
 ### Response
 
@@ -267,8 +264,7 @@ $merchantAccountUpdate = new Gr4vy\MerchantAccountUpdate(
 
 $response = $sdk->merchantAccounts->update(
     merchantAccountId: 'merchant-12345',
-    merchantAccountUpdate: $merchantAccountUpdate,
-    timeoutInSeconds: 1
+    merchantAccountUpdate: $merchantAccountUpdate
 
 );
 
@@ -283,7 +279,6 @@ if ($response->merchantAccount !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `merchantAccountId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the merchant account                          | merchant-12345                                          |
 | `merchantAccountUpdate`                                 | [MerchantAccountUpdate](../../MerchantAccountUpdate.md) | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 
 ### Response
 

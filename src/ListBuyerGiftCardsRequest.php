@@ -34,24 +34,15 @@ class ListBuyerGiftCardsRequest
     public ?string $buyerId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $buyerId
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(?string $merchantAccountId = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->buyerExternalIdentifier = $buyerExternalIdentifier;
         $this->buyerId = $buyerId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

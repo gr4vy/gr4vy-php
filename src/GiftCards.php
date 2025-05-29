@@ -54,16 +54,14 @@ class GiftCards
      * Store a new gift card in the vault.
      *
      * @param  GiftCardCreate  $giftCardCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return CreateGiftCardResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(GiftCardCreate $giftCardCreate, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): CreateGiftCardResponse
+    public function create(GiftCardCreate $giftCardCreate, ?string $merchantAccountId = null, ?Options $options = null): CreateGiftCardResponse
     {
         $request = new CreateGiftCardRequest(
             giftCardCreate: $giftCardCreate,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -75,8 +73,6 @@ class GiftCards
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreateGiftCardRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -86,7 +82,6 @@ class GiftCards
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'create_gift_card', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -266,24 +261,20 @@ class GiftCards
      * Removes a gift card from our system.
      *
      * @param  string  $giftCardId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return DeleteGiftCardResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function delete(string $giftCardId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): DeleteGiftCardResponse
+    public function delete(string $giftCardId, ?string $merchantAccountId = null, ?Options $options = null): DeleteGiftCardResponse
     {
         $request = new DeleteGiftCardRequest(
             giftCardId: $giftCardId,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/gift-cards/{gift_card_id}', DeleteGiftCardRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(DeleteGiftCardRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -293,7 +284,6 @@ class GiftCards
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($baseUrl, 'delete_gift_card', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
