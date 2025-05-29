@@ -27,22 +27,13 @@ class ListGiftCardBalancesRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  GiftCardBalanceRequest  $giftCardBalanceRequest
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(GiftCardBalanceRequest $giftCardBalanceRequest, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(GiftCardBalanceRequest $giftCardBalanceRequest, ?string $merchantAccountId = null)
     {
         $this->giftCardBalanceRequest = $giftCardBalanceRequest;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

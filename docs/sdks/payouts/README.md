@@ -178,7 +178,6 @@ $payoutCreate = new Gr4vy\PayoutCreate(
 
 $response = $sdk->payouts->create(
     payoutCreate: $payoutCreate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -193,7 +192,6 @@ if ($response->payoutSummary !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `payoutCreate`                                          | [PayoutCreate](../../PayoutCreate.md)                   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

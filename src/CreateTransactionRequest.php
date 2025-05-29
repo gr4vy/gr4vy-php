@@ -35,24 +35,15 @@ class CreateTransactionRequest
     public ?string $idempotencyKey = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  TransactionCreate  $transactionCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @param  ?string  $idempotencyKey
      * @phpstan-pure
      */
-    public function __construct(TransactionCreate $transactionCreate, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?float $timeoutInSeconds = 1)
+    public function __construct(TransactionCreate $transactionCreate, ?string $merchantAccountId = null, ?string $idempotencyKey = null)
     {
         $this->transactionCreate = $transactionCreate;
         $this->merchantAccountId = $merchantAccountId;
         $this->idempotencyKey = $idempotencyKey;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

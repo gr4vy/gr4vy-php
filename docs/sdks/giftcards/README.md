@@ -96,7 +96,6 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->giftCards->delete(
     giftCardId: '356d56e5-fe16-42ae-97ee-8d55d846ae2e',
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -111,7 +110,6 @@ if ($response->any !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `giftCardId`                                            | *string*                                                | :heavy_check_mark:                                      | The ID of the gift card.                                | 356d56e5-fe16-42ae-97ee-8d55d846ae2e                    |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -165,7 +163,6 @@ $giftCardCreate = new Gr4vy\GiftCardCreate(
 
 $response = $sdk->giftCards->create(
     giftCardCreate: $giftCardCreate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -180,7 +177,6 @@ if ($response->giftCard !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `giftCardCreate`                                        | [GiftCardCreate](../../GiftCardCreate.md)               | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

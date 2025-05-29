@@ -60,16 +60,14 @@ class Buyers
      * Create a new buyer record.
      *
      * @param  BuyerCreate  $buyerCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return AddBuyerResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(BuyerCreate $buyerCreate, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): AddBuyerResponse
+    public function create(BuyerCreate $buyerCreate, ?string $merchantAccountId = null, ?Options $options = null): AddBuyerResponse
     {
         $request = new AddBuyerRequest(
             buyerCreate: $buyerCreate,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -81,8 +79,6 @@ class Buyers
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(AddBuyerRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -92,7 +88,6 @@ class Buyers
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'add_buyer', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -272,24 +267,20 @@ class Buyers
      * Permanently removes a buyer record.
      *
      * @param  string  $buyerId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return DeleteBuyerResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function delete(string $buyerId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): DeleteBuyerResponse
+    public function delete(string $buyerId, ?string $merchantAccountId = null, ?Options $options = null): DeleteBuyerResponse
     {
         $request = new DeleteBuyerRequest(
             buyerId: $buyerId,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/buyers/{buyer_id}', DeleteBuyerRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(DeleteBuyerRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -299,7 +290,6 @@ class Buyers
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($baseUrl, 'delete_buyer', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -963,17 +953,15 @@ class Buyers
      *
      * @param  BuyerUpdate  $buyerUpdate
      * @param  string  $buyerId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return UpdateBuyerResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function update(BuyerUpdate $buyerUpdate, string $buyerId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): UpdateBuyerResponse
+    public function update(BuyerUpdate $buyerUpdate, string $buyerId, ?string $merchantAccountId = null, ?Options $options = null): UpdateBuyerResponse
     {
         $request = new UpdateBuyerRequest(
             buyerId: $buyerId,
             buyerUpdate: $buyerUpdate,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -985,8 +973,6 @@ class Buyers
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(UpdateBuyerRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -996,7 +982,6 @@ class Buyers
         $httpRequest = new \GuzzleHttp\Psr7\Request('PUT', $url);
         $hookContext = new HookContext($baseUrl, 'update_buyer', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

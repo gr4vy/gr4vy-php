@@ -34,24 +34,15 @@ class CreateFullTransactionRefundRequest
     public ?TransactionRefundAllCreate $transactionRefundAllCreate = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $transactionId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @param  ?TransactionRefundAllCreate  $transactionRefundAllCreate
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, ?string $merchantAccountId = null, ?TransactionRefundAllCreate $transactionRefundAllCreate = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $transactionId, ?string $merchantAccountId = null, ?TransactionRefundAllCreate $transactionRefundAllCreate = null)
     {
         $this->transactionId = $transactionId;
         $this->merchantAccountId = $merchantAccountId;
         $this->transactionRefundAllCreate = $transactionRefundAllCreate;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

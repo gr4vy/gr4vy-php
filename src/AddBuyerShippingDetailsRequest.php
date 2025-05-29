@@ -35,24 +35,15 @@ class AddBuyerShippingDetailsRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $buyerId
      * @param  ShippingDetailsCreate  $shippingDetailsCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $buyerId, ShippingDetailsCreate $shippingDetailsCreate, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $buyerId, ShippingDetailsCreate $shippingDetailsCreate, ?string $merchantAccountId = null)
     {
         $this->buyerId = $buyerId;
         $this->shippingDetailsCreate = $shippingDetailsCreate;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

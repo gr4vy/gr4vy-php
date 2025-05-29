@@ -15,9 +15,9 @@
     "brick/date-time": "^0.7.0",
     "phpdocumentor/type-resolver": "^1.8",
     "brick/math": "^0.12.1",
-    "ramsey/uuid": "^4.7.6",
     "lcobucci/jwt": "^5.5.0",
-    "paragonie/sodium_compat_ext_sodium": ">= 1"
+    "paragonie/sodium_compat_ext_sodium": ">= 1",
+    "ramsey/uuid": "^4.7.6"
   },
   "require-dev": {
     "laravel/pint": "^1.21.2",

@@ -28,22 +28,13 @@ class GetCheckoutSessionRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $sessionId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $sessionId, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $sessionId, ?string $merchantAccountId = null)
     {
         $this->sessionId = $sessionId;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

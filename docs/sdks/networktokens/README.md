@@ -102,7 +102,6 @@ $networkTokenCreate = new Gr4vy\NetworkTokenCreate(
 $response = $sdk->paymentMethods->networkTokens->create(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
     networkTokenCreate: $networkTokenCreate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -118,7 +117,6 @@ if ($response->networkToken !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
 | `networkTokenCreate`                                    | [NetworkTokenCreate](../../NetworkTokenCreate.md)       | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -168,7 +166,6 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->paymentMethods->networkTokens->suspend(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
     networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298',
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -184,7 +181,6 @@ if ($response->networkToken !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
 | `networkTokenId`                                        | *string*                                                | :heavy_check_mark:                                      | The ID of the network token                             | f8dd5cfc-7834-4847-95dc-f75a360e2298                    |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -234,7 +230,6 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->paymentMethods->networkTokens->resume(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
     networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298',
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -250,7 +245,6 @@ if ($response->networkToken !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
 | `networkTokenId`                                        | *string*                                                | :heavy_check_mark:                                      | The ID of the network token                             | f8dd5cfc-7834-4847-95dc-f75a360e2298                    |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -300,7 +294,6 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->paymentMethods->networkTokens->delete(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
     networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298',
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -316,7 +309,6 @@ if ($response->statusCode === 200) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
 | `networkTokenId`                                        | *string*                                                | :heavy_check_mark:                                      | The ID of the network token                             | f8dd5cfc-7834-4847-95dc-f75a360e2298                    |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

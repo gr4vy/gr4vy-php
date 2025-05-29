@@ -40,7 +40,6 @@ $digitalWalletCreate = new Gr4vy\DigitalWalletCreate(
 
 $response = $sdk->digitalWallets->create(
     digitalWalletCreate: $digitalWalletCreate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -55,7 +54,6 @@ if ($response->digitalWallet !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `digitalWalletCreate`                                   | [DigitalWalletCreate](../../DigitalWalletCreate.md)     | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -225,7 +223,6 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->digitalWallets->delete(
     digitalWalletId: '1808f5e6-b49c-4db9-94fa-22371ea352f5',
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -240,7 +237,6 @@ if ($response->any !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `digitalWalletId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the digital wallet to delete.                 | 1808f5e6-b49c-4db9-94fa-22371ea352f5                    |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -292,7 +288,6 @@ $digitalWalletUpdate = new Gr4vy\DigitalWalletUpdate(
 $response = $sdk->digitalWallets->update(
     digitalWalletId: '1808f5e6-b49c-4db9-94fa-22371ea352f5',
     digitalWalletUpdate: $digitalWalletUpdate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -308,7 +303,6 @@ if ($response->digitalWallet !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `digitalWalletId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the digital wallet to edit.                   | 1808f5e6-b49c-4db9-94fa-22371ea352f5                    |
 | `digitalWalletUpdate`                                   | [DigitalWalletUpdate](../../DigitalWalletUpdate.md)     | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

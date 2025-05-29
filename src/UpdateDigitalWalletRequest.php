@@ -35,24 +35,15 @@ class UpdateDigitalWalletRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $digitalWalletId
      * @param  DigitalWalletUpdate  $digitalWalletUpdate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $digitalWalletId, DigitalWalletUpdate $digitalWalletUpdate, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $digitalWalletId, DigitalWalletUpdate $digitalWalletUpdate, ?string $merchantAccountId = null)
     {
         $this->digitalWalletId = $digitalWalletId;
         $this->digitalWalletUpdate = $digitalWalletUpdate;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

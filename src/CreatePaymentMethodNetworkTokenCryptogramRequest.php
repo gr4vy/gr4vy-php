@@ -43,26 +43,17 @@ class CreatePaymentMethodNetworkTokenCryptogramRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $paymentMethodId
      * @param  string  $networkTokenId
      * @param  CryptogramCreate  $cryptogramCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $paymentMethodId, string $networkTokenId, CryptogramCreate $cryptogramCreate, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $paymentMethodId, string $networkTokenId, CryptogramCreate $cryptogramCreate, ?string $merchantAccountId = null)
     {
         $this->paymentMethodId = $paymentMethodId;
         $this->networkTokenId = $networkTokenId;
         $this->cryptogramCreate = $cryptogramCreate;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

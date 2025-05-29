@@ -101,7 +101,6 @@ $transactionRefundCreate = new Gr4vy\TransactionRefundCreate(
 $response = $sdk->transactions->refunds->create(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
     transactionRefundCreate: $transactionRefundCreate,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -117,7 +116,6 @@ if ($response->refund !== null) {
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | `transactionId`                                             | *string*                                                    | :heavy_check_mark:                                          | N/A                                                         | 7099948d-7286-47e4-aad8-b68f7eb44591                        |
 | `transactionRefundCreate`                                   | [TransactionRefundCreate](../../TransactionRefundCreate.md) | :heavy_check_mark:                                          | N/A                                                         |                                                             |
-| `timeoutInSeconds`                                          | *?float*                                                    | :heavy_minus_sign:                                          | N/A                                                         |                                                             |
 | `merchantAccountId`                                         | *?string*                                                   | :heavy_minus_sign:                                          | The ID of the merchant account to use for this request.     | default                                                     |
 
 ### Response

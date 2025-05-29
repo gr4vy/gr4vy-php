@@ -35,24 +35,15 @@ class UpdateBuyerRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $buyerId
      * @param  BuyerUpdate  $buyerUpdate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $buyerId, BuyerUpdate $buyerUpdate, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $buyerId, BuyerUpdate $buyerUpdate, ?string $merchantAccountId = null)
     {
         $this->buyerId = $buyerId;
         $this->buyerUpdate = $buyerUpdate;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

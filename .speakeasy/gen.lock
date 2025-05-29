@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 0f42060a2c6d6abfb348a2e8f2bc6d12
+  docChecksum: 7eb50ec02b4afd591b7b6a79b7b1e87f
   docVersion: 1.0.0
   speakeasyVersion: 1.552.0
   generationVersion: 2.610.0
-  releaseVersion: 1.0.0-beta.7
-  configChecksum: 2dd9319c4f5c9d64301a46b87097c854
+  releaseVersion: 1.0.0-beta.8
+  configChecksum: 1c583a7592f7e72ec19ec7117f7e075f
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -108,7 +108,6 @@ generatedFiles:
   - docs/CreateGiftCardResponse.md
   - docs/CreateGooglePayDigitalWalletSessionRequest.md
   - docs/CreateGooglePayDigitalWalletSessionResponse.md
-  - docs/CreateMerchantAccountRequest.md
   - docs/CreateMerchantAccountResponse.md
   - docs/CreatePaymentMethodNetworkTokenCryptogramRequest.md
   - docs/CreatePaymentMethodNetworkTokenCryptogramResponse.md
@@ -467,7 +466,6 @@ generatedFiles:
   - src/CreateGiftCardResponse.php
   - src/CreateGooglePayDigitalWalletSessionRequest.php
   - src/CreateGooglePayDigitalWalletSessionResponse.php
-  - src/CreateMerchantAccountRequest.php
   - src/CreateMerchantAccountResponse.php
   - src/CreatePaymentMethodNetworkTokenCryptogramRequest.php
   - src/CreatePaymentMethodNetworkTokenCryptogramResponse.php

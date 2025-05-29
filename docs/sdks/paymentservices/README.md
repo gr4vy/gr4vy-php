@@ -359,7 +359,6 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->paymentServices->delete(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -374,7 +373,6 @@ if ($response->any !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -432,7 +430,6 @@ $verifyCredentials = new Gr4vy\VerifyCredentials(
 
 $response = $sdk->paymentServices->verify(
     verifyCredentials: $verifyCredentials,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -447,7 +444,6 @@ if ($response->any !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `verifyCredentials`                                     | [VerifyCredentials](../../VerifyCredentials.md)         | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

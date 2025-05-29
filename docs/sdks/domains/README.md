@@ -35,7 +35,6 @@ $digitalWalletDomain = new Gr4vy\DigitalWalletDomain(
 $response = $sdk->digitalWallets->domains->create(
     digitalWalletId: '1808f5e6-b49c-4db9-94fa-22371ea352f5',
     digitalWalletDomain: $digitalWalletDomain,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -51,7 +50,6 @@ if ($response->any !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `digitalWalletId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the digital wallet to remove a domain for.    | 1808f5e6-b49c-4db9-94fa-22371ea352f5                    |
 | `digitalWalletDomain`                                   | [DigitalWalletDomain](../../DigitalWalletDomain.md)     | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -103,7 +101,6 @@ $digitalWalletDomain = new Gr4vy\DigitalWalletDomain(
 $response = $sdk->digitalWallets->domains->delete(
     digitalWalletId: '',
     digitalWalletDomain: $digitalWalletDomain,
-    timeoutInSeconds: 1,
     merchantAccountId: 'default'
 
 );
@@ -119,7 +116,6 @@ if ($response->any !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `digitalWalletId`                                       | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
 | `digitalWalletDomain`                                   | [DigitalWalletDomain](../../DigitalWalletDomain.md)     | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `timeoutInSeconds`                                      | *?float*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

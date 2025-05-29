@@ -28,22 +28,13 @@ class DeletePaymentServiceRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $paymentServiceId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $paymentServiceId, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $paymentServiceId, ?string $merchantAccountId = null)
     {
         $this->paymentServiceId = $paymentServiceId;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

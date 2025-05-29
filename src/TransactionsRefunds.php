@@ -55,17 +55,15 @@ class TransactionsRefunds
      *
      * @param  TransactionRefundCreate  $transactionRefundCreate
      * @param  string  $transactionId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return CreateTransactionRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(TransactionRefundCreate $transactionRefundCreate, string $transactionId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): CreateTransactionRefundResponse
+    public function create(TransactionRefundCreate $transactionRefundCreate, string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): CreateTransactionRefundResponse
     {
         $request = new CreateTransactionRefundRequest(
             transactionId: $transactionId,
             transactionRefundCreate: $transactionRefundCreate,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -77,8 +75,6 @@ class TransactionsRefunds
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreateTransactionRefundRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -88,7 +84,6 @@ class TransactionsRefunds
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'create_transaction_refund', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

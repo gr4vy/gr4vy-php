@@ -27,22 +27,13 @@ class VerifyPaymentServiceCredentialsRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  VerifyCredentials  $verifyCredentials
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(VerifyCredentials $verifyCredentials, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(VerifyCredentials $verifyCredentials, ?string $merchantAccountId = null)
     {
         $this->verifyCredentials = $verifyCredentials;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

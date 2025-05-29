@@ -27,22 +27,13 @@ class CreatePaymentMethodRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate  $requestBody
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate $requestBody, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate $requestBody, ?string $merchantAccountId = null)
     {
         $this->requestBody = $requestBody;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

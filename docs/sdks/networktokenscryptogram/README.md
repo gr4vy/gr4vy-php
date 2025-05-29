@@ -27,16 +27,16 @@ $sdk = Gr4vy\SDK::builder()
     ->setMerchantAccountId('default')
     ->build();
 
-$request = new Gr4vy\CreatePaymentMethodNetworkTokenCryptogramRequest(
-    paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-    networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298',
-    cryptogramCreate: new Gr4vy\CryptogramCreate(
-        merchantInitiated: false,
-    ),
+$cryptogramCreate = new Gr4vy\CryptogramCreate(
+    merchantInitiated: false,
 );
 
 $response = $sdk->paymentMethods->networkTokens->cryptogram->create(
-    request: $request
+    paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
+    networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298',
+    cryptogramCreate: $cryptogramCreate,
+    merchantAccountId: 'default'
+
 );
 
 if ($response->cryptogram !== null) {
@@ -46,9 +46,12 @@ if ($response->cryptogram !== null) {
 
 ### Parameters
 
-| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                          | [Gr4vy\CreatePaymentMethodNetworkTokenCryptogramRequest](../../CreatePaymentMethodNetworkTokenCryptogramRequest.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `paymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
+| `networkTokenId`                                        | *string*                                                | :heavy_check_mark:                                      | The ID of the network token                             | f8dd5cfc-7834-4847-95dc-f75a360e2298                    |
+| `cryptogramCreate`                                      | [CryptogramCreate](../../CryptogramCreate.md)           | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 

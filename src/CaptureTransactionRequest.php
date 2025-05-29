@@ -34,24 +34,15 @@ class CaptureTransactionRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  string  $transactionId
      * @param  TransactionCapture  $transactionCapture
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, TransactionCapture $transactionCapture, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(string $transactionId, TransactionCapture $transactionCapture, ?string $merchantAccountId = null)
     {
         $this->transactionId = $transactionId;
         $this->transactionCapture = $transactionCapture;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

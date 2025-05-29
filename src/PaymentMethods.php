@@ -57,16 +57,14 @@ class PaymentMethods
      * Store a new payment method.
      *
      * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate  $requestBody
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return CreatePaymentMethodResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate $requestBody, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodResponse
+    public function create(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate $requestBody, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodResponse
     {
         $request = new CreatePaymentMethodRequest(
             requestBody: $requestBody,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -78,8 +76,6 @@ class PaymentMethods
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreatePaymentMethodRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -89,7 +85,6 @@ class PaymentMethods
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'create_payment_method', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

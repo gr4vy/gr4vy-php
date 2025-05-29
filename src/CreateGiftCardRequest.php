@@ -27,22 +27,13 @@ class CreateGiftCardRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?float $timeoutInSeconds
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=timeout_in_seconds')]
-    public ?float $timeoutInSeconds = null;
-
-    /**
      * @param  GiftCardCreate  $giftCardCreate
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(GiftCardCreate $giftCardCreate, ?string $merchantAccountId = null, ?float $timeoutInSeconds = 1)
+    public function __construct(GiftCardCreate $giftCardCreate, ?string $merchantAccountId = null)
     {
         $this->giftCardCreate = $giftCardCreate;
         $this->merchantAccountId = $merchantAccountId;
-        $this->timeoutInSeconds = $timeoutInSeconds;
     }
 }

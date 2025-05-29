@@ -469,24 +469,20 @@ class PaymentServices
      * Deletes all the configuration of a payment service.
      *
      * @param  string  $paymentServiceId
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return DeletePaymentServiceResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function delete(string $paymentServiceId, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentServiceResponse
+    public function delete(string $paymentServiceId, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentServiceResponse
     {
         $request = new DeletePaymentServiceRequest(
             paymentServiceId: $paymentServiceId,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-services/{payment_service_id}', DeletePaymentServiceRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(DeletePaymentServiceRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -496,7 +492,6 @@ class PaymentServices
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($baseUrl, 'delete_payment_service', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -1375,16 +1370,14 @@ class PaymentServices
      * Verify the credentials of a configured payment service
      *
      * @param  VerifyCredentials  $verifyCredentials
-     * @param  ?float  $timeoutInSeconds
      * @param  ?string  $merchantAccountId
      * @return VerifyPaymentServiceCredentialsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function verify(VerifyCredentials $verifyCredentials, ?float $timeoutInSeconds = null, ?string $merchantAccountId = null, ?Options $options = null): VerifyPaymentServiceCredentialsResponse
+    public function verify(VerifyCredentials $verifyCredentials, ?string $merchantAccountId = null, ?Options $options = null): VerifyPaymentServiceCredentialsResponse
     {
         $request = new VerifyPaymentServiceCredentialsRequest(
             verifyCredentials: $verifyCredentials,
-            timeoutInSeconds: $timeoutInSeconds,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -1396,8 +1389,6 @@ class PaymentServices
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(VerifyPaymentServiceCredentialsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -1407,7 +1398,6 @@ class PaymentServices
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($baseUrl, 'verify_payment_service_credentials', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
