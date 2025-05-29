@@ -83,7 +83,12 @@ class SDK
         $this->checkoutSessions = new CheckoutSessions($this->sdkConfiguration);
         $this->merchantAccounts = new MerchantAccounts($this->sdkConfiguration);
         $this->payouts = new Payouts($this->sdkConfiguration);
-        $this->sdkConfiguration->client = $this->sdkConfiguration->initHooks($this->sdkConfiguration->client);
+        $this->initHooks();
 
+    }
+
+    private function initHooks(): void
+    {
+        $this->sdkConfiguration = $this->sdkConfiguration->hooks->sdkInit($this->sdkConfiguration);
     }
 }

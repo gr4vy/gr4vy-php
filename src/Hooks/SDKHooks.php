@@ -8,9 +8,10 @@
 declare(strict_types=1);
 
 namespace Gr4vy\Hooks;
+
+use Gr4vy\SDKConfiguration;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-
 
 class SDKHooks implements Hooks
 {
@@ -55,19 +56,17 @@ class SDKHooks implements Hooks
         $this->afterErrorHooks[] = $hook;
     }
 
-    public function sdkInit(string $baseUrl, \GuzzleHttp\ClientInterface $client): SDKRequestContext
+    public function sdkInit(SDKConfiguration $config): SDKConfiguration
     {
-        $rc = new SDKRequestContext($baseUrl, $client);
         foreach ($this->sdkInitHooks as $hook) {
             try {
-                $rc = $hook->sdkInit($rc->url, $rc->client);
+                $config = $hook->sdkInit($config);
             } catch (\Exception $e) {
                 throw new \Exception('An error occurred while calling SDKInit hook.', $e->getCode(), $e);
             }
-
         }
 
-        return $rc;
+        return $config;
     }
 
     public function beforeRequest(BeforeRequestContext $context, RequestInterface $request): RequestInterface
