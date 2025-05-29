@@ -9,7 +9,9 @@ declare(strict_types=1);
 
 namespace Gr4vy\Hooks;
 
+use Gr4vy\SDKConfiguration;
+
 interface SDKInitHook
 {
-    public function sdkInit(string $baseUrl, \GuzzleHttp\ClientInterface $client): SDKRequestContext;
+    public function sdkInit(SDKConfiguration $config): SDKConfiguration;
 }

@@ -20,7 +20,7 @@ class SDKConfiguration
 
     public string $server = '';
     /** @var array<string, array<string, string>> */
-    public ?array $serverDefaults = [
+    public ?array $serverVariables = [
         'production' => [
             'id' => 'example',
         ],
@@ -33,11 +33,11 @@ class SDKConfiguration
 
     public string $openapiDocVersion = '1.0.0';
 
-    public string $sdkVersion = '1.0.0-beta.8';
+    public string $sdkVersion = '1.0.0-beta.9';
 
-    public string $genVersion = '2.610.0';
+    public string $genVersion = '2.614.0';
 
-    public string $userAgent = 'speakeasy-sdk/php 1.0.0-beta.8 2.610.0 1.0.0 gr4vy/gr4vy-php';
+    public string $userAgent = 'speakeasy-sdk/php 1.0.0-beta.9 2.614.0 1.0.0 gr4vy/gr4vy-php';
     /** @var array<string, array<string, array<string, mixed>>> */
     public ?array $globals = [
         'parameters' => [],
@@ -67,13 +67,13 @@ class SDKConfiguration
     /**
      * @return array<string, string>
      */
-    public function getServerDefaults(): ?array
+    public function getServerVariables(): ?array
     {
         if ($this->server === '') {
             $this->server = SDK::SERVER_PRODUCTION;
         }
 
-        return $this->serverDefaults[$this->server];
+        return $this->serverVariables[$this->server];
     }
     public function hasSecurity(): bool
     {
@@ -94,7 +94,7 @@ class SDKConfiguration
             return new Utils\ServerDetails(rtrim($this->serverUrl, '/'), []);
         }
 
-        return new Utils\ServerDetails(SDK::SERVERS[$this->server], $this->serverDefaults[$this->server]);
+        return new Utils\ServerDetails(SDK::SERVERS[$this->server], $this->serverVariables[$this->server]);
 
     }
 
@@ -104,17 +104,6 @@ class SDKConfiguration
             return Utils\Utils::templateUrl($this->serverUrl.trim('/'), []);
         }
 
-        return Utils\Utils::templateUrl($this->getServerUrl(), $this->getServerDefaults());
-    }
-
-    public function initHooks(\GuzzleHttp\ClientInterface $client): \GuzzleHttp\ClientInterface
-    {
-        $preHooksUrl = $this->getTemplatedServerUrl();
-        $ret = $this->hooks->sdkInit($preHooksUrl, $client);
-        if ($preHooksUrl != $ret->url) {
-            $this->serverUrl = $ret->url;
-        }
-
-        return $ret->client;
+        return Utils\Utils::templateUrl($this->getServerUrl(), $this->getServerVariables());
     }
 }

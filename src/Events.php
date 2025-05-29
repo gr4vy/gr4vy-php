@@ -14,7 +14,7 @@ use Gr4vy\Utils\Retry;
 use Gr4vy\Utils\Retry\RetryUtils;
 use Speakeasy\Serializer\DeserializationContext;
 
-class Refunds
+class Events
 {
     private SDKConfiguration $sdkConfiguration;
     /**
@@ -46,16 +46,18 @@ class Refunds
     }
 
     /**
-     * Get refund
+     * List transaction events
      *
-     * Fetch a refund.
+     * Fetch a list of events for a transaction.
      *
-     * @param  string  $refundId
+     * @param  string  $transactionId
+     * @param  ?string  $cursor
+     * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
-     * @return GetRefundResponse
+     * @return ListTransactionEventsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function get(string $refundId, ?string $merchantAccountId = null, ?Options $options = null): GetRefundResponse
+    public function list(string $transactionId, ?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionEventsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -81,14 +83,18 @@ class Refunds
                 '5XX',
             ];
         }
-        $request = new GetRefundRequest(
-            refundId: $refundId,
+        $request = new ListTransactionEventsRequest(
+            transactionId: $transactionId,
+            cursor: $cursor,
+            limit: $limit,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/refunds/{refund_id}', GetRefundRequest::class, $request, $this->sdkConfiguration->globals);
+        $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/events', ListTransactionEventsRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(ListTransactionEventsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -96,8 +102,9 @@ class Refunds
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_refund', [], $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'list_transaction_events', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -119,12 +126,12 @@ class Refunds
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\Refund', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new GetRefundResponse(
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionTransactionEvent', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new ListTransactionEventsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    refund: $obj);
+                    collectionTransactionEvent: $obj);
 
                 return $response;
             } else {

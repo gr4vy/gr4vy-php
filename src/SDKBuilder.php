@@ -98,11 +98,11 @@ class SDKBuilder
      */
     public function setId(string $id): SDKBuilder
     {
-        foreach ($this->sdkConfig->serverDefaults as $server => $serverDefaults) {
-            if (! array_key_exists('id', $serverDefaults)) {
+        foreach ($this->sdkConfig->serverVariables as $server => $serverVariables) {
+            if (! array_key_exists('id', $serverVariables)) {
                 continue;
             }
-            $this->sdkConfig->serverDefaults[$server]['id'] = $id;
+            $this->sdkConfig->serverVariables[$server]['id'] = $id;
         }
 
         return $this;
