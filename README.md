@@ -392,7 +392,6 @@ if ($response->accountUpdaterJob !== null) {
 * [get](docs/sdks/transactions/README.md#get) - Get transaction
 * [capture](docs/sdks/transactions/README.md#capture) - Capture transaction
 * [void](docs/sdks/transactions/README.md#void) - Void transaction
-* [summary](docs/sdks/transactions/README.md#summary) - Get transaction summary
 * [sync](docs/sdks/transactions/README.md#sync) - Sync transaction
 
 #### [transactions->events](docs/sdks/events/README.md)
