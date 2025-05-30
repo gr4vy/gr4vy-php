@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 252992f082df302962bc576adf364565
+  docChecksum: 7ff6bb7e7023e8f2182b027245182c00
   docVersion: 1.0.0
-  speakeasyVersion: 1.553.2
-  generationVersion: 2.614.0
-  releaseVersion: 1.0.0-beta.9
-  configChecksum: b7c20e8143159238819e18175234f9ee
+  speakeasyVersion: 1.554.1
+  generationVersion: 2.616.1
+  releaseVersion: 1.0.0-beta.10
+  configChecksum: e7859880519e32ef9658ec1eef6fcc31
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -185,8 +185,6 @@ generatedFiles:
   - docs/GetTransactionRefundResponse.md
   - docs/GetTransactionRequest.md
   - docs/GetTransactionResponse.md
-  - docs/GetTransactionSummaryRequest.md
-  - docs/GetTransactionSummaryResponse.md
   - docs/GiftCard.md
   - docs/GiftCardBalanceRequest.md
   - docs/GiftCardCreate.md
@@ -317,7 +315,6 @@ generatedFiles:
   - docs/TransactionPaymentService.md
   - docs/TransactionRefundAllCreate.md
   - docs/TransactionRefundCreate.md
-  - docs/TransactionStatusSummary.md
   - docs/TransactionSummary.md
   - docs/TransactionThreeDSecureSummary.md
   - docs/UnregisterDigitalWalletDomainRequest.md
@@ -551,8 +548,6 @@ generatedFiles:
   - src/GetTransactionRefundResponse.php
   - src/GetTransactionRequest.php
   - src/GetTransactionResponse.php
-  - src/GetTransactionSummaryRequest.php
-  - src/GetTransactionSummaryResponse.php
   - src/GiftCard.php
   - src/GiftCardBalanceRequest.php
   - src/GiftCardCreate.php
@@ -704,7 +699,6 @@ generatedFiles:
   - src/TransactionPaymentService.php
   - src/TransactionRefundAllCreate.php
   - src/TransactionRefundCreate.php
-  - src/TransactionStatusSummary.php
   - src/TransactionSummary.php
   - src/TransactionThreeDSecureSummary.php
   - src/Transactions.php
