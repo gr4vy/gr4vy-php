@@ -35,6 +35,7 @@ $googlePaySessionRequest = new Gr4vy\GooglePaySessionRequest(
 
 $response = $sdk->digitalWallets->sessions->googlePay(
     googlePaySessionRequest: $googlePaySessionRequest,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -49,6 +50,7 @@ if ($response->googlePaySession !== null) {
 | Parameter                                                   | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | `googlePaySessionRequest`                                   | [GooglePaySessionRequest](../../GooglePaySessionRequest.md) | :heavy_check_mark:                                          | N/A                                                         |                                                             |
+| `applicationName`                                           | *?string*                                                   | :heavy_minus_sign:                                          | N/A                                                         |                                                             |
 | `merchantAccountId`                                         | *?string*                                                   | :heavy_minus_sign:                                          | The ID of the merchant account to use for this request.     | default                                                     |
 
 ### Response
@@ -100,6 +102,7 @@ $applePaySessionRequest = new Gr4vy\ApplePaySessionRequest(
 
 $response = $sdk->digitalWallets->sessions->applePay(
     applePaySessionRequest: $applePaySessionRequest,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -114,6 +117,7 @@ if ($response->applePaySession !== null) {
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               | Example                                                   |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
 | `applePaySessionRequest`                                  | [ApplePaySessionRequest](../../ApplePaySessionRequest.md) | :heavy_check_mark:                                        | N/A                                                       |                                                           |
+| `applicationName`                                         | *?string*                                                 | :heavy_minus_sign:                                        | N/A                                                       |                                                           |
 | `merchantAccountId`                                       | *?string*                                                 | :heavy_minus_sign:                                        | The ID of the merchant account to use for this request.   | default                                                   |
 
 ### Response
@@ -158,12 +162,14 @@ $sdk = Gr4vy\SDK::builder()
     ->setMerchantAccountId('default')
     ->build();
 
-$request = new Gr4vy\ClickToPaySessionRequest(
+$clickToPaySessionRequest = new Gr4vy\ClickToPaySessionRequest(
     checkoutSessionId: '4137b1cf-39ac-42a8-bad6-1c680d5dab6b',
 );
 
 $response = $sdk->digitalWallets->sessions->clickToPay(
-    request: $request
+    clickToPaySessionRequest: $clickToPaySessionRequest,
+    applicationName: 'core-api'
+
 );
 
 if ($response->clickToPaySession !== null) {
@@ -173,9 +179,10 @@ if ($response->clickToPaySession !== null) {
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `$request`                                                          | [Gr4vy\ClickToPaySessionRequest](../../ClickToPaySessionRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `clickToPaySessionRequest`                                    | [ClickToPaySessionRequest](../../ClickToPaySessionRequest.md) | :heavy_check_mark:                                            | N/A                                                           |
+| `applicationName`                                             | *?string*                                                     | :heavy_minus_sign:                                            | N/A                                                           |
 
 ### Response
 

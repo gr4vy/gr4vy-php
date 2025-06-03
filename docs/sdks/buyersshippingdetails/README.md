@@ -52,6 +52,7 @@ $shippingDetailsCreate = new Gr4vy\ShippingDetailsCreate(
 $response = $sdk->buyers->shippingDetails->create(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     shippingDetailsCreate: $shippingDetailsCreate,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -67,6 +68,7 @@ if ($response->shippingDetails !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `buyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to add shipping details to.         | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `shippingDetailsCreate`                                 | [ShippingDetailsCreate](../../ShippingDetailsCreate.md) | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -115,6 +117,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->buyers->shippingDetails->list(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -129,6 +132,7 @@ if ($response->collectionNoCursorShippingDetails !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `buyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to retrieve shipping details for.   | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -178,6 +182,7 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->buyers->shippingDetails->get(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     shippingDetailsId: 'bf8c36ad-02d9-4904-b0f9-a230b149e341',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -193,6 +198,7 @@ if ($response->shippingDetails !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `buyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to retrieve shipping details for.   | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `shippingDetailsId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the shipping details to retrieve.             | bf8c36ad-02d9-4904-b0f9-a230b149e341                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -237,30 +243,30 @@ $sdk = Gr4vy\SDK::builder()
     ->setMerchantAccountId('default')
     ->build();
 
-$shippingDetailsUpdate = new Gr4vy\ShippingDetailsUpdate(
-    firstName: 'John',
-    lastName: 'Doe',
-    emailAddress: 'john@example.com',
-    phoneNumber: '+1234567890',
-    address: new Gr4vy\Address(
-        city: 'San Jose',
-        country: 'US',
-        postalCode: '94560',
-        state: 'California',
-        stateCode: 'US-CA',
-        houseNumberOrName: '10',
-        line1: 'Stafford Appartments',
-        line2: '29th Street',
-        organization: 'Gr4vy',
+$request = new Gr4vy\UpdateBuyerShippingDetailsRequest(
+    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
+    shippingDetailsId: 'bf8c36ad-02d9-4904-b0f9-a230b149e341',
+    shippingDetailsUpdate: new Gr4vy\ShippingDetailsUpdate(
+        firstName: 'John',
+        lastName: 'Doe',
+        emailAddress: 'john@example.com',
+        phoneNumber: '+1234567890',
+        address: new Gr4vy\Address(
+            city: 'San Jose',
+            country: 'US',
+            postalCode: '94560',
+            state: 'California',
+            stateCode: 'US-CA',
+            houseNumberOrName: '10',
+            line1: 'Stafford Appartments',
+            line2: '29th Street',
+            organization: 'Gr4vy',
+        ),
     ),
 );
 
 $response = $sdk->buyers->shippingDetails->update(
-    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
-    shippingDetailsId: 'bf8c36ad-02d9-4904-b0f9-a230b149e341',
-    shippingDetailsUpdate: $shippingDetailsUpdate,
-    merchantAccountId: 'default'
-
+    request: $request
 );
 
 if ($response->shippingDetails !== null) {
@@ -270,12 +276,9 @@ if ($response->shippingDetails !== null) {
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `buyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to update shipping details for.     | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
-| `shippingDetailsId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the shipping details to update.               | bf8c36ad-02d9-4904-b0f9-a230b149e341                    |
-| `shippingDetailsUpdate`                                 | [ShippingDetailsUpdate](../../ShippingDetailsUpdate.md) | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `$request`                                                                            | [Gr4vy\UpdateBuyerShippingDetailsRequest](../../UpdateBuyerShippingDetailsRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
 
 ### Response
 
@@ -324,6 +327,7 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->buyers->shippingDetails->delete(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     shippingDetailsId: 'bf8c36ad-02d9-4904-b0f9-a230b149e341',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -339,6 +343,7 @@ if ($response->any !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `buyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to delete shipping details for.     | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `shippingDetailsId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the shipping details to delete.               | bf8c36ad-02d9-4904-b0f9-a230b149e341                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

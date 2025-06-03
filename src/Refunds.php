@@ -51,11 +51,12 @@ class Refunds
      * Fetch a refund.
      *
      * @param  string  $refundId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return GetRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function get(string $refundId, ?string $merchantAccountId = null, ?Options $options = null): GetRefundResponse
+    public function get(string $refundId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): GetRefundResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -83,12 +84,15 @@ class Refunds
         }
         $request = new GetRefundRequest(
             refundId: $refundId,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/refunds/{refund_id}', GetRefundRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(GetRefundRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -98,6 +102,7 @@ class Refunds
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_refund', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

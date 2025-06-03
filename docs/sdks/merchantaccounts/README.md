@@ -35,7 +35,8 @@ $sdk = Gr4vy\SDK::builder()
 $responses = $sdk->merchantAccounts->list(
     cursor: 'ZXhhbXBsZTE',
     limit: 20,
-    search: 'merchant-12345'
+    search: 'merchant-12345',
+    applicationName: 'core-api'
 
 );
 
@@ -54,6 +55,7 @@ foreach ($responses as $response) {
 | `cursor`                                          | *?string*                                         | :heavy_minus_sign:                                | A pointer to the page of results to return.       | ZXhhbXBsZTE                                       |
 | `limit`                                           | *?int*                                            | :heavy_minus_sign:                                | The maximum number of items that are at returned. | 20                                                |
 | `search`                                          | *?string*                                         | :heavy_minus_sign:                                | The search term to filter merchant accounts by.   | merchant-12345                                    |
+| `applicationName`                                 | *?string*                                         | :heavy_minus_sign:                                | N/A                                               |                                                   |
 
 ### Response
 
@@ -97,7 +99,7 @@ $sdk = Gr4vy\SDK::builder()
     ->setMerchantAccountId('default')
     ->build();
 
-$request = new Gr4vy\MerchantAccountCreate(
+$merchantAccountCreate = new Gr4vy\MerchantAccountCreate(
     accountUpdaterRequestEncryptionKey: 'key-1234',
     accountUpdaterRequestEncryptionKeyId: 'key-id-1234',
     accountUpdaterResponseDecryptionKey: 'key-1234',
@@ -123,7 +125,9 @@ $request = new Gr4vy\MerchantAccountCreate(
 );
 
 $response = $sdk->merchantAccounts->create(
-    request: $request
+    merchantAccountCreate: $merchantAccountCreate,
+    applicationName: 'core-api'
+
 );
 
 if ($response->merchantAccount !== null) {
@@ -133,9 +137,10 @@ if ($response->merchantAccount !== null) {
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `$request`                                                    | [Gr4vy\MerchantAccountCreate](../../MerchantAccountCreate.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `merchantAccountCreate`                                 | [MerchantAccountCreate](../../MerchantAccountCreate.md) | :heavy_check_mark:                                      | N/A                                                     |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |
 
 ### Response
 
@@ -182,7 +187,9 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->merchantAccounts->get(
-    merchantAccountId: 'merchant-12345'
+    merchantAccountId: 'merchant-12345',
+    applicationName: 'core-api'
+
 );
 
 if ($response->merchantAccount !== null) {
@@ -195,6 +202,7 @@ if ($response->merchantAccount !== null) {
 | Parameter                      | Type                           | Required                       | Description                    | Example                        |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `merchantAccountId`            | *string*                       | :heavy_check_mark:             | The ID of the merchant account | merchant-12345                 |
+| `applicationName`              | *?string*                      | :heavy_minus_sign:             | N/A                            |                                |
 
 ### Response
 
@@ -264,7 +272,8 @@ $merchantAccountUpdate = new Gr4vy\MerchantAccountUpdate(
 
 $response = $sdk->merchantAccounts->update(
     merchantAccountId: 'merchant-12345',
-    merchantAccountUpdate: $merchantAccountUpdate
+    merchantAccountUpdate: $merchantAccountUpdate,
+    applicationName: 'core-api'
 
 );
 
@@ -279,6 +288,7 @@ if ($response->merchantAccount !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `merchantAccountId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the merchant account                          | merchant-12345                                          |
 | `merchantAccountUpdate`                                 | [MerchantAccountUpdate](../../MerchantAccountUpdate.md) | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 
 ### Response
 

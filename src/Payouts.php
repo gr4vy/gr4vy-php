@@ -51,14 +51,16 @@ class Payouts
      * Creates a new payout.
      *
      * @param  PayoutCreate  $payoutCreate
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return CreatePayoutResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(PayoutCreate $payoutCreate, ?string $merchantAccountId = null, ?Options $options = null): CreatePayoutResponse
+    public function create(PayoutCreate $payoutCreate, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): CreatePayoutResponse
     {
         $request = new CreatePayoutRequest(
             payoutCreate: $payoutCreate,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -70,6 +72,8 @@ class Payouts
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
+
+        $qp = Utils\Utils::getQueryParams(CreatePayoutRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -79,6 +83,7 @@ class Payouts
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_payout', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -258,11 +263,12 @@ class Payouts
      * Retreives a payout.
      *
      * @param  string  $payoutId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return GetPayoutResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function get(string $payoutId, ?string $merchantAccountId = null, ?Options $options = null): GetPayoutResponse
+    public function get(string $payoutId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): GetPayoutResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -290,12 +296,15 @@ class Payouts
         }
         $request = new GetPayoutRequest(
             payoutId: $payoutId,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/payouts/{payout_id}', GetPayoutRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(GetPayoutRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -305,6 +314,7 @@ class Payouts
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_payout', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -485,11 +495,12 @@ class Payouts
      *
      * @param  ?string  $cursor
      * @param  ?int  $limit
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return ListPayoutsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListPayoutsResponse
+    private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): ListPayoutsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -518,6 +529,7 @@ class Payouts
         $request = new ListPayoutsRequest(
             cursor: $cursor,
             limit: $limit,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -565,7 +577,7 @@ class Payouts
                     collectionPayoutSummary: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $limit, $merchantAccountId): ?ListPayoutsResponse {
+                $response->next = function () use ($sdk, $responseData, $limit, $applicationName, $merchantAccountId): ?ListPayoutsResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -580,6 +592,7 @@ class Payouts
                     return $sdk->listIndividual(
                         cursor: $nextCursor,
                         limit: $limit,
+                        applicationName: $applicationName,
                         merchantAccountId: $merchantAccountId,
                     );
                 };
@@ -736,13 +749,14 @@ class Payouts
      *
      * @param  ?string  $cursor
      * @param  ?int  $limit
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return \Generator<ListPayoutsResponse>
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator
+    public function list(?string $cursor = null, ?int $limit = null, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($cursor, $limit, $merchantAccountId, $options);
+        $res = $this->listIndividual($cursor, $limit, $applicationName, $merchantAccountId, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);

@@ -19,11 +19,20 @@ class GetPaymentServiceDefinitionRequest
     public string $paymentServiceDefinitionId;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  string  $paymentServiceDefinitionId
+     * @param  ?string  $applicationName
      * @phpstan-pure
      */
-    public function __construct(string $paymentServiceDefinitionId)
+    public function __construct(string $paymentServiceDefinitionId, ?string $applicationName = 'core-api')
     {
         $this->paymentServiceDefinitionId = $paymentServiceDefinitionId;
+        $this->applicationName = $applicationName;
     }
 }

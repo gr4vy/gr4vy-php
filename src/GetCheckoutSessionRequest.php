@@ -28,13 +28,22 @@ class GetCheckoutSessionRequest
     public ?string $merchantAccountId = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  string  $sessionId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $sessionId, ?string $merchantAccountId = null)
+    public function __construct(string $sessionId, ?string $merchantAccountId = null, ?string $applicationName = 'core-api')
     {
         $this->sessionId = $sessionId;
         $this->merchantAccountId = $merchantAccountId;
+        $this->applicationName = $applicationName;
     }
 }

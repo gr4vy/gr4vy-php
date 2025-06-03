@@ -27,13 +27,22 @@ class CreateGiftCardRequest
     public ?string $merchantAccountId = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  GiftCardCreate  $giftCardCreate
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(GiftCardCreate $giftCardCreate, ?string $merchantAccountId = null)
+    public function __construct(GiftCardCreate $giftCardCreate, ?string $merchantAccountId = null, ?string $applicationName = 'core-api')
     {
         $this->giftCardCreate = $giftCardCreate;
         $this->merchantAccountId = $merchantAccountId;
+        $this->applicationName = $applicationName;
     }
 }

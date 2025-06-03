@@ -43,17 +43,26 @@ class ListTransactionEventsRequest
     public ?int $limit = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  string  $transactionId
      * @param  ?int  $limit
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @param  ?string  $cursor
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, ?string $merchantAccountId = null, ?string $cursor = null, ?int $limit = 100)
+    public function __construct(string $transactionId, ?string $merchantAccountId = null, ?string $cursor = null, ?int $limit = 100, ?string $applicationName = 'core-api')
     {
         $this->transactionId = $transactionId;
         $this->merchantAccountId = $merchantAccountId;
         $this->cursor = $cursor;
         $this->limit = $limit;
+        $this->applicationName = $applicationName;
     }
 }

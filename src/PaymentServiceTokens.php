@@ -52,15 +52,17 @@ class PaymentServiceTokens
      *
      * @param  PaymentServiceTokenCreate  $paymentServiceTokenCreate
      * @param  string  $paymentMethodId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return CreatePaymentMethodPaymentServiceTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(PaymentServiceTokenCreate $paymentServiceTokenCreate, string $paymentMethodId, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodPaymentServiceTokenResponse
+    public function create(PaymentServiceTokenCreate $paymentServiceTokenCreate, string $paymentMethodId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodPaymentServiceTokenResponse
     {
         $request = new CreatePaymentMethodPaymentServiceTokenRequest(
             paymentMethodId: $paymentMethodId,
             paymentServiceTokenCreate: $paymentServiceTokenCreate,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -72,6 +74,8 @@ class PaymentServiceTokens
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
+
+        $qp = Utils\Utils::getQueryParams(CreatePaymentMethodPaymentServiceTokenRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -81,6 +85,7 @@ class PaymentServiceTokens
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_payment_method_payment_service_token', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -261,21 +266,25 @@ class PaymentServiceTokens
      *
      * @param  string  $paymentMethodId
      * @param  string  $paymentServiceTokenId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return DeletePaymentMethodPaymentServiceTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function delete(string $paymentMethodId, string $paymentServiceTokenId, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentMethodPaymentServiceTokenResponse
+    public function delete(string $paymentMethodId, string $paymentServiceTokenId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentMethodPaymentServiceTokenResponse
     {
         $request = new DeletePaymentMethodPaymentServiceTokenRequest(
             paymentMethodId: $paymentMethodId,
             paymentServiceTokenId: $paymentServiceTokenId,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-methods/{payment_method_id}/payment-service-tokens/{payment_service_token_id}', DeletePaymentMethodPaymentServiceTokenRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(DeletePaymentMethodPaymentServiceTokenRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -285,6 +294,7 @@ class PaymentServiceTokens
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'delete_payment_method_payment_service_token', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -456,11 +466,12 @@ class PaymentServiceTokens
      *
      * @param  string  $paymentMethodId
      * @param  ?string  $paymentServiceId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return ListPaymentMethodPaymentServiceTokensResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(string $paymentMethodId, ?string $paymentServiceId = null, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentMethodPaymentServiceTokensResponse
+    public function list(string $paymentMethodId, ?string $paymentServiceId = null, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentMethodPaymentServiceTokensResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -489,6 +500,7 @@ class PaymentServiceTokens
         $request = new ListPaymentMethodPaymentServiceTokensRequest(
             paymentMethodId: $paymentMethodId,
             paymentServiceId: $paymentServiceId,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();

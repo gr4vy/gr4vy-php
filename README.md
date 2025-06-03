@@ -230,6 +230,7 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -446,7 +447,9 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->merchantAccounts->get(
-    merchantAccountId: 'merchant-12345'
+    merchantAccountId: 'merchant-12345',
+    applicationName: 'core-api'
+
 );
 
 if ($response->merchantAccount !== null) {
@@ -645,6 +648,7 @@ try {
 
     $response = $sdk->accountUpdater->jobs->create(
         accountUpdaterJobCreate: $accountUpdaterJobCreate,
+        applicationName: 'core-api',
         merchantAccountId: 'default'
 
     );
@@ -740,6 +744,7 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -776,6 +781,7 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );

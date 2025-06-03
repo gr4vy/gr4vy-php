@@ -352,7 +352,15 @@ class ListTransactionsRequest
     public ?int $limit = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  ?int  $limit
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @param  ?string  $cursor
      * @param  ?\DateTime  $createdAtLte
@@ -398,7 +406,7 @@ class ListTransactionsRequest
      * @param  ?bool  $used3ds
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?\DateTime $createdAtLte = null, ?\DateTime $createdAtGte = null, ?\DateTime $updatedAtLte = null, ?\DateTime $updatedAtGte = null, ?string $search = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $buyerEmailAddress = null, ?string $buyerSearch = null, ?string $ipAddress = null, ?array $status = null, ?string $id = null, ?string $paymentServiceTransactionId = null, ?string $externalIdentifier = null, ?array $metadata = null, ?int $amountEq = null, ?int $amountLte = null, ?int $amountGte = null, ?array $currency = null, ?array $country = null, ?array $paymentServiceId = null, ?string $paymentMethodId = null, ?string $paymentMethodLabel = null, ?string $paymentMethodScheme = null, ?string $paymentMethodCountry = null, ?string $paymentMethodFingerprint = null, ?array $method = null, ?array $errorCode = null, ?bool $hasRefunds = null, ?bool $pendingReview = null, ?string $checkoutSessionId = null, ?string $reconciliationId = null, ?bool $hasGiftCardRedemptions = null, ?string $giftCardId = null, ?string $giftCardLast4 = null, ?bool $hasSettlements = null, ?string $paymentMethodBin = null, ?array $paymentSource = null, ?bool $isSubsequentPayment = null, ?bool $merchantInitiated = null, ?bool $used3ds = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?\DateTime $createdAtLte = null, ?\DateTime $createdAtGte = null, ?\DateTime $updatedAtLte = null, ?\DateTime $updatedAtGte = null, ?string $search = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $buyerEmailAddress = null, ?string $buyerSearch = null, ?string $ipAddress = null, ?array $status = null, ?string $id = null, ?string $paymentServiceTransactionId = null, ?string $externalIdentifier = null, ?array $metadata = null, ?int $amountEq = null, ?int $amountLte = null, ?int $amountGte = null, ?array $currency = null, ?array $country = null, ?array $paymentServiceId = null, ?string $paymentMethodId = null, ?string $paymentMethodLabel = null, ?string $paymentMethodScheme = null, ?string $paymentMethodCountry = null, ?string $paymentMethodFingerprint = null, ?array $method = null, ?array $errorCode = null, ?bool $hasRefunds = null, ?bool $pendingReview = null, ?string $checkoutSessionId = null, ?string $reconciliationId = null, ?bool $hasGiftCardRedemptions = null, ?string $giftCardId = null, ?string $giftCardLast4 = null, ?bool $hasSettlements = null, ?string $paymentMethodBin = null, ?array $paymentSource = null, ?bool $isSubsequentPayment = null, ?bool $merchantInitiated = null, ?bool $used3ds = null, ?int $limit = 20, ?string $applicationName = 'core-api')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->cursor = $cursor;
@@ -444,5 +452,6 @@ class ListTransactionsRequest
         $this->merchantInitiated = $merchantInitiated;
         $this->used3ds = $used3ds;
         $this->limit = $limit;
+        $this->applicationName = $applicationName;
     }
 }

@@ -51,13 +51,15 @@ class CheckoutSessions
      * Create a new checkout session.
      *
      * @param  ?CheckoutSessionCreate  $checkoutSessionCreate
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return CreateCheckoutSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(?CheckoutSessionCreate $checkoutSessionCreate = null, ?string $merchantAccountId = null, ?Options $options = null): CreateCheckoutSessionResponse
+    public function create(?CheckoutSessionCreate $checkoutSessionCreate = null, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): CreateCheckoutSessionResponse
     {
         $request = new CreateCheckoutSessionRequest(
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
             checkoutSessionCreate: $checkoutSessionCreate,
         );
@@ -69,6 +71,8 @@ class CheckoutSessions
         if ($body !== null) {
             $httpOptions = array_merge_recursive($httpOptions, $body);
         }
+
+        $qp = Utils\Utils::getQueryParams(CreateCheckoutSessionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -78,6 +82,7 @@ class CheckoutSessions
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_checkout_session', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -257,20 +262,24 @@ class CheckoutSessions
      * Deleta a checkout session and all of its (PCI) data.
      *
      * @param  string  $sessionId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return DeleteCheckoutSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function delete(string $sessionId, ?string $merchantAccountId = null, ?Options $options = null): DeleteCheckoutSessionResponse
+    public function delete(string $sessionId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): DeleteCheckoutSessionResponse
     {
         $request = new DeleteCheckoutSessionRequest(
             sessionId: $sessionId,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/checkout/sessions/{session_id}', DeleteCheckoutSessionRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(DeleteCheckoutSessionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -280,6 +289,7 @@ class CheckoutSessions
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'delete_checkout_session', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -450,11 +460,12 @@ class CheckoutSessions
      * Retrieve the information stored on a checkout session.
      *
      * @param  string  $sessionId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return GetCheckoutSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function get(string $sessionId, ?string $merchantAccountId = null, ?Options $options = null): GetCheckoutSessionResponse
+    public function get(string $sessionId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): GetCheckoutSessionResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -482,12 +493,15 @@ class CheckoutSessions
         }
         $request = new GetCheckoutSessionRequest(
             sessionId: $sessionId,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/checkout/sessions/{session_id}', GetCheckoutSessionRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(GetCheckoutSessionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -497,6 +511,7 @@ class CheckoutSessions
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_checkout_session', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -666,15 +681,17 @@ class CheckoutSessions
      *
      * @param  CheckoutSessionCreate  $checkoutSessionCreate
      * @param  string  $sessionId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return UpdateCheckoutSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function update(CheckoutSessionCreate $checkoutSessionCreate, string $sessionId, ?string $merchantAccountId = null, ?Options $options = null): UpdateCheckoutSessionResponse
+    public function update(CheckoutSessionCreate $checkoutSessionCreate, string $sessionId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): UpdateCheckoutSessionResponse
     {
         $request = new UpdateCheckoutSessionRequest(
             sessionId: $sessionId,
             checkoutSessionCreate: $checkoutSessionCreate,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -686,6 +703,8 @@ class CheckoutSessions
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
+
+        $qp = Utils\Utils::getQueryParams(UpdateCheckoutSessionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -695,6 +714,7 @@ class CheckoutSessions
         $httpRequest = new \GuzzleHttp\Psr7\Request('PUT', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'update_checkout_session', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

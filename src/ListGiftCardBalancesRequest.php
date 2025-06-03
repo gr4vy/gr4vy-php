@@ -27,13 +27,22 @@ class ListGiftCardBalancesRequest
     public ?string $merchantAccountId = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  GiftCardBalanceRequest  $giftCardBalanceRequest
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(GiftCardBalanceRequest $giftCardBalanceRequest, ?string $merchantAccountId = null)
+    public function __construct(GiftCardBalanceRequest $giftCardBalanceRequest, ?string $merchantAccountId = null, ?string $applicationName = 'core-api')
     {
         $this->giftCardBalanceRequest = $giftCardBalanceRequest;
         $this->merchantAccountId = $merchantAccountId;
+        $this->applicationName = $applicationName;
     }
 }

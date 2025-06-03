@@ -27,13 +27,22 @@ class CreatePaymentMethodRequest
     public ?string $merchantAccountId = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate  $requestBody
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate $requestBody, ?string $merchantAccountId = null)
+    public function __construct(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate $requestBody, ?string $merchantAccountId = null, ?string $applicationName = 'core-api')
     {
         $this->requestBody = $requestBody;
         $this->merchantAccountId = $merchantAccountId;
+        $this->applicationName = $applicationName;
     }
 }

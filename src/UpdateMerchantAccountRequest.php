@@ -27,13 +27,22 @@ class UpdateMerchantAccountRequest
     public MerchantAccountUpdate $merchantAccountUpdate;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  string  $merchantAccountId
      * @param  MerchantAccountUpdate  $merchantAccountUpdate
+     * @param  ?string  $applicationName
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId, MerchantAccountUpdate $merchantAccountUpdate)
+    public function __construct(string $merchantAccountId, MerchantAccountUpdate $merchantAccountUpdate, ?string $applicationName = 'core-api')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->merchantAccountUpdate = $merchantAccountUpdate;
+        $this->applicationName = $applicationName;
     }
 }

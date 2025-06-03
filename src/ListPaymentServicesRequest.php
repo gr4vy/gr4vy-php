@@ -52,19 +52,28 @@ class ListPaymentServicesRequest
     public ?int $limit = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  ?int  $limit
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @param  ?string  $method
      * @param  ?string  $cursor
      * @param  ?bool  $deleted
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $method = null, ?string $cursor = null, ?bool $deleted = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $method = null, ?string $cursor = null, ?bool $deleted = null, ?int $limit = 20, ?string $applicationName = 'core-api')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->method = $method;
         $this->cursor = $cursor;
         $this->deleted = $deleted;
         $this->limit = $limit;
+        $this->applicationName = $applicationName;
     }
 }

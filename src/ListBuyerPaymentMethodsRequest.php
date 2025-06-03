@@ -60,6 +60,13 @@ class ListBuyerPaymentMethodsRequest
     public ?string $orderBy = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * The field to sort the payment methods by.
      *
      * @var ?string $sortBy
@@ -69,6 +76,7 @@ class ListBuyerPaymentMethodsRequest
 
     /**
      * @param  ?string  $orderBy
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @param  ?string  $buyerId
      * @param  ?string  $buyerExternalIdentifier
@@ -77,7 +85,7 @@ class ListBuyerPaymentMethodsRequest
      * @param  ?string  $currency
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?string $country = null, ?string $currency = null, ?string $orderBy = 'desc', ?string $sortBy = 'last_used_at')
+    public function __construct(?string $merchantAccountId = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?string $country = null, ?string $currency = null, ?string $orderBy = 'desc', ?string $applicationName = 'core-api', ?string $sortBy = 'last_used_at')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->buyerId = $buyerId;
@@ -85,6 +93,7 @@ class ListBuyerPaymentMethodsRequest
         $this->country = $country;
         $this->currency = $currency;
         $this->orderBy = $orderBy;
+        $this->applicationName = $applicationName;
         $this->sortBy = $sortBy;
     }
 }

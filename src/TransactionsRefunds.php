@@ -55,15 +55,17 @@ class TransactionsRefunds
      *
      * @param  TransactionRefundCreate  $transactionRefundCreate
      * @param  string  $transactionId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return CreateTransactionRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(TransactionRefundCreate $transactionRefundCreate, string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): CreateTransactionRefundResponse
+    public function create(TransactionRefundCreate $transactionRefundCreate, string $transactionId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): CreateTransactionRefundResponse
     {
         $request = new CreateTransactionRefundRequest(
             transactionId: $transactionId,
             transactionRefundCreate: $transactionRefundCreate,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -75,6 +77,8 @@ class TransactionsRefunds
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
+
+        $qp = Utils\Utils::getQueryParams(CreateTransactionRefundRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -84,6 +88,7 @@ class TransactionsRefunds
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_transaction_refund', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -264,11 +269,12 @@ class TransactionsRefunds
      *
      * @param  string  $transactionId
      * @param  string  $refundId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return GetTransactionRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function get(string $transactionId, string $refundId, ?string $merchantAccountId = null, ?Options $options = null): GetTransactionRefundResponse
+    public function get(string $transactionId, string $refundId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): GetTransactionRefundResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -297,12 +303,15 @@ class TransactionsRefunds
         $request = new GetTransactionRefundRequest(
             transactionId: $transactionId,
             refundId: $refundId,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/refunds/{refund_id}', GetTransactionRefundRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(GetTransactionRefundRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -312,6 +321,7 @@ class TransactionsRefunds
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_transaction_refund', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -491,11 +501,12 @@ class TransactionsRefunds
      * List refunds for a transaction.
      *
      * @param  string  $transactionId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return ListTransactionRefundsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionRefundsResponse
+    public function list(string $transactionId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionRefundsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -523,12 +534,15 @@ class TransactionsRefunds
         }
         $request = new ListTransactionRefundsRequest(
             transactionId: $transactionId,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/refunds', ListTransactionRefundsRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(ListTransactionRefundsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -538,6 +552,7 @@ class TransactionsRefunds
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'list_transaction_refunds', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

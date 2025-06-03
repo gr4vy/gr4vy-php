@@ -34,6 +34,7 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->paymentMethods->paymentServiceTokens->list(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -49,6 +50,7 @@ if ($response->collectionNoCursorPaymentServiceToken !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
 | `paymentServiceId`                                      | *?string*                                               | :heavy_minus_sign:                                      | The ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -102,6 +104,7 @@ $paymentServiceTokenCreate = new Gr4vy\PaymentServiceTokenCreate(
 $response = $sdk->paymentMethods->paymentServiceTokens->create(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
     paymentServiceTokenCreate: $paymentServiceTokenCreate,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -117,6 +120,7 @@ if ($response->paymentServiceToken !== null) {
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | `paymentMethodId`                                               | *string*                                                        | :heavy_check_mark:                                              | The ID of the payment method                                    | ef9496d8-53a5-4aad-8ca2-00eb68334389                            |
 | `paymentServiceTokenCreate`                                     | [PaymentServiceTokenCreate](../../PaymentServiceTokenCreate.md) | :heavy_check_mark:                                              | N/A                                                             |                                                                 |
+| `applicationName`                                               | *?string*                                                       | :heavy_minus_sign:                                              | N/A                                                             |                                                                 |
 | `merchantAccountId`                                             | *?string*                                                       | :heavy_minus_sign:                                              | The ID of the merchant account to use for this request.         | default                                                         |
 
 ### Response
@@ -166,6 +170,7 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->paymentMethods->paymentServiceTokens->delete(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
     paymentServiceTokenId: '703f2d99-3fd1-44bc-9cbd-a25a2d597886',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -181,6 +186,7 @@ if ($response->statusCode === 200) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
 | `paymentServiceTokenId`                                 | *string*                                                | :heavy_check_mark:                                      | The ID of the payment service token                     | 703f2d99-3fd1-44bc-9cbd-a25a2d597886                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
