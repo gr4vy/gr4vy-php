@@ -27,22 +27,13 @@ class CreateGooglePayDigitalWalletSessionRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?string $applicationName
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
-    public ?string $applicationName = null;
-
-    /**
      * @param  GooglePaySessionRequest  $googlePaySessionRequest
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(GooglePaySessionRequest $googlePaySessionRequest, ?string $merchantAccountId = null, ?string $applicationName = 'core-api')
+    public function __construct(GooglePaySessionRequest $googlePaySessionRequest, ?string $merchantAccountId = null)
     {
         $this->googlePaySessionRequest = $googlePaySessionRequest;
         $this->merchantAccountId = $merchantAccountId;
-        $this->applicationName = $applicationName;
     }
 }

@@ -26,7 +26,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $googlePaySessionRequest = new Gr4vy\GooglePaySessionRequest(
@@ -35,7 +34,6 @@ $googlePaySessionRequest = new Gr4vy\GooglePaySessionRequest(
 
 $response = $sdk->digitalWallets->sessions->googlePay(
     googlePaySessionRequest: $googlePaySessionRequest,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -50,7 +48,6 @@ if ($response->googlePaySession !== null) {
 | Parameter                                                   | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | `googlePaySessionRequest`                                   | [GooglePaySessionRequest](../../GooglePaySessionRequest.md) | :heavy_check_mark:                                          | N/A                                                         |                                                             |
-| `applicationName`                                           | *?string*                                                   | :heavy_minus_sign:                                          | N/A                                                         |                                                             |
 | `merchantAccountId`                                         | *?string*                                                   | :heavy_minus_sign:                                          | The ID of the merchant account to use for this request.     | default                                                     |
 
 ### Response
@@ -92,7 +89,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $applePaySessionRequest = new Gr4vy\ApplePaySessionRequest(
@@ -102,7 +98,6 @@ $applePaySessionRequest = new Gr4vy\ApplePaySessionRequest(
 
 $response = $sdk->digitalWallets->sessions->applePay(
     applePaySessionRequest: $applePaySessionRequest,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -117,7 +112,6 @@ if ($response->applePaySession !== null) {
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               | Example                                                   |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
 | `applePaySessionRequest`                                  | [ApplePaySessionRequest](../../ApplePaySessionRequest.md) | :heavy_check_mark:                                        | N/A                                                       |                                                           |
-| `applicationName`                                         | *?string*                                                 | :heavy_minus_sign:                                        | N/A                                                       |                                                           |
 | `merchantAccountId`                                       | *?string*                                                 | :heavy_minus_sign:                                        | The ID of the merchant account to use for this request.   | default                                                   |
 
 ### Response
@@ -159,17 +153,14 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
-$clickToPaySessionRequest = new Gr4vy\ClickToPaySessionRequest(
+$request = new Gr4vy\ClickToPaySessionRequest(
     checkoutSessionId: '4137b1cf-39ac-42a8-bad6-1c680d5dab6b',
 );
 
 $response = $sdk->digitalWallets->sessions->clickToPay(
-    clickToPaySessionRequest: $clickToPaySessionRequest,
-    applicationName: 'core-api'
-
+    request: $request
 );
 
 if ($response->clickToPaySession !== null) {
@@ -179,10 +170,9 @@ if ($response->clickToPaySession !== null) {
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `clickToPaySessionRequest`                                    | [ClickToPaySessionRequest](../../ClickToPaySessionRequest.md) | :heavy_check_mark:                                            | N/A                                                           |
-| `applicationName`                                             | *?string*                                                     | :heavy_minus_sign:                                            | N/A                                                           |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `$request`                                                          | [Gr4vy\ClickToPaySessionRequest](../../ClickToPaySessionRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 
 ### Response
 

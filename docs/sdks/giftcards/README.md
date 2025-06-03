@@ -27,14 +27,12 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
 
 $response = $sdk->giftCards->get(
     giftCardId: '356d56e5-fe16-42ae-97ee-8d55d846ae2e',
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -49,7 +47,6 @@ if ($response->giftCard !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `giftCardId`                                            | *string*                                                | :heavy_check_mark:                                      | The ID of the gift card.                                | 356d56e5-fe16-42ae-97ee-8d55d846ae2e                    |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -91,14 +88,12 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
 
 $response = $sdk->giftCards->delete(
     giftCardId: '356d56e5-fe16-42ae-97ee-8d55d846ae2e',
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -113,7 +108,6 @@ if ($response->any !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `giftCardId`                                            | *string*                                                | :heavy_check_mark:                                      | The ID of the gift card.                                | 356d56e5-fe16-42ae-97ee-8d55d846ae2e                    |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -155,19 +149,15 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $giftCardCreate = new Gr4vy\GiftCardCreate(
     number: '4123455541234561234',
     pin: '1234',
-    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
-    buyerExternalIdentifier: 'buyer-12345',
 );
 
 $response = $sdk->giftCards->create(
     giftCardCreate: $giftCardCreate,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -182,7 +172,6 @@ if ($response->giftCard !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `giftCardCreate`                                        | [GiftCardCreate](../../GiftCardCreate.md)               | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -224,7 +213,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $request = new Gr4vy\ListGiftCardsRequest();

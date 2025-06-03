@@ -30,14 +30,9 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
-$request = new Gr4vy\ListPaymentServicesRequest(
-    method: 'card',
-    cursor: 'ZXhhbXBsZTE',
-    deleted: true,
-);
+$request = new Gr4vy\ListPaymentServicesRequest();
 
 $responses = $sdk->paymentServices->list(
     request: $request
@@ -96,7 +91,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $paymentServiceCreate = new Gr4vy\PaymentServiceCreate(
@@ -108,13 +102,6 @@ $paymentServiceCreate = new Gr4vy\PaymentServiceCreate(
             value: 'key-12345',
         ),
     ],
-    reportingFields: [
-        new Gr4vy\Field(
-            key: 'api_key',
-            value: 'key-12345',
-        ),
-    ],
-    position: 1,
     acceptedCurrencies: [
         'USD',
         'EUR',
@@ -125,25 +112,10 @@ $paymentServiceCreate = new Gr4vy\PaymentServiceCreate(
         'DE',
         'GB',
     ],
-    active: false,
-    merchantProfile: [
-        'key' => new Gr4vy\MerchantProfileScheme(
-            merchantAcquirerBin: '516327',
-            merchantUrl: 'https://example.com',
-            merchantAcquirerId: '123456789012345',
-            merchantName: 'Acme Inc.',
-            merchantCountryCode: 'USD',
-            merchantCategoryCode: '1234',
-        ),
-    ],
-    paymentMethodTokenizationEnabled: true,
-    networkTokensEnabled: true,
-    openLoop: true,
 );
 
 $response = $sdk->paymentServices->create(
     paymentServiceCreate: $paymentServiceCreate,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -158,7 +130,6 @@ if ($response->paymentService !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceCreate`                                  | [PaymentServiceCreate](../../PaymentServiceCreate.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -200,14 +171,12 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
 
 $response = $sdk->paymentServices->get(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -222,7 +191,6 @@ if ($response->paymentService !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -264,43 +232,13 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
-$paymentServiceUpdate = new Gr4vy\PaymentServiceUpdate(
-    displayName: 'Stripe',
-    position: 1,
-    acceptedCurrencies: [
-        'USD',
-        'EUR',
-        'GBP',
-    ],
-    acceptedCountries: [
-        'US',
-        'DE',
-        'GB',
-    ],
-    active: false,
-    threeDSecureEnabled: true,
-    merchantProfile: [
-        'key' => new Gr4vy\MerchantProfileScheme(
-            merchantAcquirerBin: '516327',
-            merchantUrl: 'https://example.com',
-            merchantAcquirerId: '123456789012345',
-            merchantName: 'Acme Inc.',
-            merchantCountryCode: 'USD',
-            merchantCategoryCode: '1234',
-        ),
-    ],
-    paymentMethodTokenizationEnabled: true,
-    networkTokensEnabled: true,
-    openLoop: true,
-);
+$paymentServiceUpdate = new Gr4vy\PaymentServiceUpdate();
 
 $response = $sdk->paymentServices->update(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
     paymentServiceUpdate: $paymentServiceUpdate,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -316,7 +254,6 @@ if ($response->paymentService !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
 | `paymentServiceUpdate`                                  | [PaymentServiceUpdate](../../PaymentServiceUpdate.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -358,14 +295,12 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
 
 $response = $sdk->paymentServices->delete(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -380,7 +315,6 @@ if ($response->any !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -422,12 +356,10 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $verifyCredentials = new Gr4vy\VerifyCredentials(
     paymentServiceDefinitionId: 'stripe-card',
-    paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
     fields: [
         new Gr4vy\Field(
             key: 'api_key',
@@ -438,7 +370,6 @@ $verifyCredentials = new Gr4vy\VerifyCredentials(
 
 $response = $sdk->paymentServices->verify(
     verifyCredentials: $verifyCredentials,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -453,7 +384,6 @@ if ($response->any !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `verifyCredentials`                                     | [VerifyCredentials](../../VerifyCredentials.md)         | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -495,7 +425,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
@@ -505,7 +434,6 @@ $response = $sdk->paymentServices->session(
     requestBody: [
         'key' => '<value>',
     ],
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -521,7 +449,6 @@ if ($response->createSession !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
 | `requestBody`                                           | array<string, *mixed*>                                  | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

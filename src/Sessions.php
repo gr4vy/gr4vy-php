@@ -49,16 +49,14 @@ class Sessions
      * Create a session for use with Apple Pay.
      *
      * @param  ApplePaySessionRequest  $applePaySessionRequest
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return CreateApplePayDigitalWalletSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function applePay(ApplePaySessionRequest $applePaySessionRequest, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): CreateApplePayDigitalWalletSessionResponse
+    public function applePay(ApplePaySessionRequest $applePaySessionRequest, ?string $merchantAccountId = null, ?Options $options = null): CreateApplePayDigitalWalletSessionResponse
     {
         $request = new CreateApplePayDigitalWalletSessionRequest(
             applePaySessionRequest: $applePaySessionRequest,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -70,8 +68,6 @@ class Sessions
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreateApplePayDigitalWalletSessionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -81,7 +77,6 @@ class Sessions
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_apple_pay_digital_wallet_session', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -260,34 +255,26 @@ class Sessions
      *
      * Create a session for use with Click to Pay.
      *
-     * @param  ClickToPaySessionRequest  $clickToPaySessionRequest
-     * @param  ?string  $applicationName
+     * @param  ClickToPaySessionRequest  $request
      * @return CreateClickToPayDigitalWalletSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function clickToPay(ClickToPaySessionRequest $clickToPaySessionRequest, ?string $applicationName = null, ?Options $options = null): CreateClickToPayDigitalWalletSessionResponse
+    public function clickToPay(ClickToPaySessionRequest $request, ?Options $options = null): CreateClickToPayDigitalWalletSessionResponse
     {
-        $request = new CreateClickToPayDigitalWalletSessionRequest(
-            clickToPaySessionRequest: $clickToPaySessionRequest,
-            applicationName: $applicationName,
-        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/digital-wallets/click-to-pay/session');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, 'clickToPaySessionRequest', 'json');
+        $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreateClickToPayDigitalWalletSessionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_click_to_pay_digital_wallet_session', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -467,16 +454,14 @@ class Sessions
      * Create a session for use with Google Pay.
      *
      * @param  GooglePaySessionRequest  $googlePaySessionRequest
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return CreateGooglePayDigitalWalletSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function googlePay(GooglePaySessionRequest $googlePaySessionRequest, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): CreateGooglePayDigitalWalletSessionResponse
+    public function googlePay(GooglePaySessionRequest $googlePaySessionRequest, ?string $merchantAccountId = null, ?Options $options = null): CreateGooglePayDigitalWalletSessionResponse
     {
         $request = new CreateGooglePayDigitalWalletSessionRequest(
             googlePaySessionRequest: $googlePaySessionRequest,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -488,8 +473,6 @@ class Sessions
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreateGooglePayDigitalWalletSessionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -499,7 +482,6 @@ class Sessions
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_google_pay_digital_wallet_session', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

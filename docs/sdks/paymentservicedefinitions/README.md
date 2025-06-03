@@ -26,15 +26,13 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
 
 $responses = $sdk->paymentServiceDefinitions->list(
     cursor: 'ZXhhbXBsZTE',
-    limit: 20,
-    applicationName: 'core-api'
+    limit: 20
 
 );
 
@@ -52,7 +50,6 @@ foreach ($responses as $response) {
 | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
 | `cursor`                                          | *?string*                                         | :heavy_minus_sign:                                | A pointer to the page of results to return.       | ZXhhbXBsZTE                                       |
 | `limit`                                           | *?int*                                            | :heavy_minus_sign:                                | The maximum number of items that are at returned. | 20                                                |
-| `applicationName`                                 | *?string*                                         | :heavy_minus_sign:                                | N/A                                               |                                                   |
 
 ### Response
 
@@ -93,15 +90,12 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
 
 $response = $sdk->paymentServiceDefinitions->get(
-    paymentServiceDefinitionId: 'adyen-ideal',
-    applicationName: 'core-api'
-
+    paymentServiceDefinitionId: 'adyen-ideal'
 );
 
 if ($response->paymentServiceDefinition !== null) {
@@ -114,7 +108,6 @@ if ($response->paymentServiceDefinition !== null) {
 | Parameter                    | Type                         | Required                     | Description                  | Example                      |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
 | `paymentServiceDefinitionId` | *string*                     | :heavy_check_mark:           | N/A                          | adyen-ideal                  |
-| `applicationName`            | *?string*                    | :heavy_minus_sign:           | N/A                          |                              |
 
 ### Response
 
@@ -155,7 +148,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
@@ -164,8 +156,7 @@ $response = $sdk->paymentServiceDefinitions->session(
     paymentServiceDefinitionId: 'adyen-ideal',
     requestBody: [
         'key' => '<value>',
-    ],
-    applicationName: 'core-api'
+    ]
 
 );
 
@@ -180,7 +171,6 @@ if ($response->createSession !== null) {
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
 | `paymentServiceDefinitionId` | *string*                     | :heavy_check_mark:           | N/A                          | adyen-ideal                  |
 | `requestBody`                | array<string, *mixed*>       | :heavy_check_mark:           | N/A                          |                              |
-| `applicationName`            | *?string*                    | :heavy_minus_sign:           | N/A                          |                              |
 
 ### Response
 

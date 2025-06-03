@@ -24,15 +24,12 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
 
 $response = $sdk->cardSchemeDefinitions->list(
-    applicationName: 'core-api',
     merchantAccountId: 'default'
-
 );
 
 if ($response->collectionNoCursorCardSchemeDefinition !== null) {
@@ -44,7 +41,6 @@ if ($response->collectionNoCursorCardSchemeDefinition !== null) {
 
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

@@ -52,17 +52,15 @@ class BuyersShippingDetails
      *
      * @param  ShippingDetailsCreate  $shippingDetailsCreate
      * @param  string  $buyerId
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return AddBuyerShippingDetailsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(ShippingDetailsCreate $shippingDetailsCreate, string $buyerId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): AddBuyerShippingDetailsResponse
+    public function create(ShippingDetailsCreate $shippingDetailsCreate, string $buyerId, ?string $merchantAccountId = null, ?Options $options = null): AddBuyerShippingDetailsResponse
     {
         $request = new AddBuyerShippingDetailsRequest(
             buyerId: $buyerId,
             shippingDetailsCreate: $shippingDetailsCreate,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -74,8 +72,6 @@ class BuyersShippingDetails
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(AddBuyerShippingDetailsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -85,7 +81,6 @@ class BuyersShippingDetails
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'add_buyer_shipping_details', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -266,25 +261,21 @@ class BuyersShippingDetails
      *
      * @param  string  $buyerId
      * @param  string  $shippingDetailsId
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return DeleteBuyerShippingDetailsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function delete(string $buyerId, string $shippingDetailsId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): DeleteBuyerShippingDetailsResponse
+    public function delete(string $buyerId, string $shippingDetailsId, ?string $merchantAccountId = null, ?Options $options = null): DeleteBuyerShippingDetailsResponse
     {
         $request = new DeleteBuyerShippingDetailsRequest(
             buyerId: $buyerId,
             shippingDetailsId: $shippingDetailsId,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/buyers/{buyer_id}/shipping-details/{shipping_details_id}', DeleteBuyerShippingDetailsRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(DeleteBuyerShippingDetailsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -294,7 +285,6 @@ class BuyersShippingDetails
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'delete_buyer_shipping_details', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -475,12 +465,11 @@ class BuyersShippingDetails
      *
      * @param  string  $buyerId
      * @param  string  $shippingDetailsId
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return GetBuyerShippingDetailsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function get(string $buyerId, string $shippingDetailsId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): GetBuyerShippingDetailsResponse
+    public function get(string $buyerId, string $shippingDetailsId, ?string $merchantAccountId = null, ?Options $options = null): GetBuyerShippingDetailsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -509,15 +498,12 @@ class BuyersShippingDetails
         $request = new GetBuyerShippingDetailsRequest(
             buyerId: $buyerId,
             shippingDetailsId: $shippingDetailsId,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/buyers/{buyer_id}/shipping-details/{shipping_details_id}', GetBuyerShippingDetailsRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(GetBuyerShippingDetailsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -527,7 +513,6 @@ class BuyersShippingDetails
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_buyer_shipping_details', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -707,12 +692,11 @@ class BuyersShippingDetails
      * List all the shipping details associated to a specific buyer.
      *
      * @param  string  $buyerId
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return ListBuyerShippingDetailsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(string $buyerId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): ListBuyerShippingDetailsResponse
+    public function list(string $buyerId, ?string $merchantAccountId = null, ?Options $options = null): ListBuyerShippingDetailsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -740,15 +724,12 @@ class BuyersShippingDetails
         }
         $request = new ListBuyerShippingDetailsRequest(
             buyerId: $buyerId,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/buyers/{buyer_id}/shipping-details', ListBuyerShippingDetailsRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(ListBuyerShippingDetailsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -758,7 +739,6 @@ class BuyersShippingDetails
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'list_buyer_shipping_details', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -937,12 +917,21 @@ class BuyersShippingDetails
      *
      * Update the shipping details associated to a specific buyer.
      *
-     * @param  UpdateBuyerShippingDetailsRequest  $request
+     * @param  ShippingDetailsUpdate  $shippingDetailsUpdate
+     * @param  string  $buyerId
+     * @param  string  $shippingDetailsId
+     * @param  ?string  $merchantAccountId
      * @return UpdateBuyerShippingDetailsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function update(UpdateBuyerShippingDetailsRequest $request, ?Options $options = null): UpdateBuyerShippingDetailsResponse
+    public function update(ShippingDetailsUpdate $shippingDetailsUpdate, string $buyerId, string $shippingDetailsId, ?string $merchantAccountId = null, ?Options $options = null): UpdateBuyerShippingDetailsResponse
     {
+        $request = new UpdateBuyerShippingDetailsRequest(
+            buyerId: $buyerId,
+            shippingDetailsId: $shippingDetailsId,
+            shippingDetailsUpdate: $shippingDetailsUpdate,
+            merchantAccountId: $merchantAccountId,
+        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/buyers/{buyer_id}/shipping-details/{shipping_details_id}', UpdateBuyerShippingDetailsRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
@@ -952,8 +941,6 @@ class BuyersShippingDetails
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(UpdateBuyerShippingDetailsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -963,7 +950,6 @@ class BuyersShippingDetails
         $httpRequest = new \GuzzleHttp\Psr7\Request('PUT', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'update_buyer_shipping_details', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

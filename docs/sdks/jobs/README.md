@@ -24,7 +24,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
@@ -36,7 +35,6 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -51,7 +49,6 @@ if ($response->accountUpdaterJob !== null) {
 | Parameter                                                   | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | `accountUpdaterJobCreate`                                   | [AccountUpdaterJobCreate](../../AccountUpdaterJobCreate.md) | :heavy_check_mark:                                          | N/A                                                         |                                                             |
-| `applicationName`                                           | *?string*                                                   | :heavy_minus_sign:                                          | N/A                                                         |                                                             |
 | `merchantAccountId`                                         | *?string*                                                   | :heavy_minus_sign:                                          | The ID of the merchant account to use for this request.     | default                                                     |
 
 ### Response

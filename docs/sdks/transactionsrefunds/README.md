@@ -26,14 +26,12 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
 
 $response = $sdk->transactions->refunds->list(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -48,7 +46,6 @@ if ($response->collectionRefund !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `transactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -90,20 +87,13 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
-$transactionRefundCreate = new Gr4vy\TransactionRefundCreate(
-    amount: 1299,
-    targetId: '7a6c366d-9205-45ab-8021-0d9ee37f20f2',
-    reason: 'Refund due to user request.',
-    externalIdentifier: 'refund-12345',
-);
+$transactionRefundCreate = new Gr4vy\TransactionRefundCreate();
 
 $response = $sdk->transactions->refunds->create(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
     transactionRefundCreate: $transactionRefundCreate,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -119,7 +109,6 @@ if ($response->refund !== null) {
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | `transactionId`                                             | *string*                                                    | :heavy_check_mark:                                          | N/A                                                         | 7099948d-7286-47e4-aad8-b68f7eb44591                        |
 | `transactionRefundCreate`                                   | [TransactionRefundCreate](../../TransactionRefundCreate.md) | :heavy_check_mark:                                          | N/A                                                         |                                                             |
-| `applicationName`                                           | *?string*                                                   | :heavy_minus_sign:                                          | N/A                                                         |                                                             |
 | `merchantAccountId`                                         | *?string*                                                   | :heavy_minus_sign:                                          | The ID of the merchant account to use for this request.     | default                                                     |
 
 ### Response
@@ -161,7 +150,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
@@ -169,7 +157,6 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->transactions->refunds->get(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
     refundId: '6a1d4e46-14ed-4fe1-a45f-eff4e025d211',
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -185,7 +172,6 @@ if ($response->refund !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `transactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
 | `refundId`                                              | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 6a1d4e46-14ed-4fe1-a45f-eff4e025d211                    |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

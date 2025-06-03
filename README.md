@@ -218,7 +218,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
@@ -230,7 +229,6 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -441,15 +439,12 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
 
 $response = $sdk->merchantAccounts->get(
-    merchantAccountId: 'merchant-12345',
-    applicationName: 'core-api'
-
+    merchantAccountId: 'merchant-12345'
 );
 
 if ($response->merchantAccount !== null) {
@@ -476,14 +471,9 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest(
-    cursor: 'ZXhhbXBsZTE',
-    search: 'John',
-    externalIdentifier: 'buyer-12345',
-);
+$request = new Gr4vy\ListBuyersRequest();
 
 $responses = $sdk->buyers->list(
     request: $request
@@ -516,14 +506,9 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest(
-    cursor: 'ZXhhbXBsZTE',
-    search: 'John',
-    externalIdentifier: 'buyer-12345',
-);
+$request = new Gr4vy\ListBuyersRequest();
 
 $responses = $sdk->buyers->list(
     request: $request,
@@ -567,14 +552,9 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest(
-    cursor: 'ZXhhbXBsZTE',
-    search: 'John',
-    externalIdentifier: 'buyer-12345',
-);
+$request = new Gr4vy\ListBuyersRequest();
 
 $responses = $sdk->buyers->list(
     request: $request
@@ -635,7 +615,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 try {
@@ -648,7 +627,6 @@ try {
 
     $response = $sdk->accountUpdater->jobs->create(
         accountUpdaterJobCreate: $accountUpdaterJobCreate,
-        applicationName: 'core-api',
         merchantAccountId: 'default'
 
     );
@@ -732,7 +710,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
@@ -744,7 +721,6 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -769,7 +745,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
@@ -781,7 +756,6 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );

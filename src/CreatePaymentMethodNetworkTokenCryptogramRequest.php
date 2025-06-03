@@ -43,26 +43,17 @@ class CreatePaymentMethodNetworkTokenCryptogramRequest
     public ?string $merchantAccountId = null;
 
     /**
-     *
-     * @var ?string $applicationName
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
-    public ?string $applicationName = null;
-
-    /**
      * @param  string  $paymentMethodId
      * @param  string  $networkTokenId
      * @param  CryptogramCreate  $cryptogramCreate
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $paymentMethodId, string $networkTokenId, CryptogramCreate $cryptogramCreate, ?string $merchantAccountId = null, ?string $applicationName = 'core-api')
+    public function __construct(string $paymentMethodId, string $networkTokenId, CryptogramCreate $cryptogramCreate, ?string $merchantAccountId = null)
     {
         $this->paymentMethodId = $paymentMethodId;
         $this->networkTokenId = $networkTokenId;
         $this->cryptogramCreate = $cryptogramCreate;
         $this->merchantAccountId = $merchantAccountId;
-        $this->applicationName = $applicationName;
     }
 }

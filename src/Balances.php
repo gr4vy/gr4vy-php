@@ -49,16 +49,14 @@ class Balances
      * Fetch the balances for one or more gift cards.
      *
      * @param  GiftCardBalanceRequest  $giftCardBalanceRequest
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return ListGiftCardBalancesResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(GiftCardBalanceRequest $giftCardBalanceRequest, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): ListGiftCardBalancesResponse
+    public function list(GiftCardBalanceRequest $giftCardBalanceRequest, ?string $merchantAccountId = null, ?Options $options = null): ListGiftCardBalancesResponse
     {
         $request = new ListGiftCardBalancesRequest(
             giftCardBalanceRequest: $giftCardBalanceRequest,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -70,8 +68,6 @@ class Balances
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(ListGiftCardBalancesRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -81,7 +77,6 @@ class Balances
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'list_gift_card_balances', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

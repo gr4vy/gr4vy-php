@@ -48,12 +48,21 @@ class NetworkTokensCryptogram
      *
      * Provision a cryptogram for a network token.
      *
-     * @param  CreatePaymentMethodNetworkTokenCryptogramRequest  $request
+     * @param  CryptogramCreate  $cryptogramCreate
+     * @param  string  $paymentMethodId
+     * @param  string  $networkTokenId
+     * @param  ?string  $merchantAccountId
      * @return CreatePaymentMethodNetworkTokenCryptogramResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(CreatePaymentMethodNetworkTokenCryptogramRequest $request, ?Options $options = null): CreatePaymentMethodNetworkTokenCryptogramResponse
+    public function create(CryptogramCreate $cryptogramCreate, string $paymentMethodId, string $networkTokenId, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodNetworkTokenCryptogramResponse
     {
+        $request = new CreatePaymentMethodNetworkTokenCryptogramRequest(
+            paymentMethodId: $paymentMethodId,
+            networkTokenId: $networkTokenId,
+            cryptogramCreate: $cryptogramCreate,
+            merchantAccountId: $merchantAccountId,
+        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/cryptogram', CreatePaymentMethodNetworkTokenCryptogramRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
@@ -63,8 +72,6 @@ class NetworkTokensCryptogram
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreatePaymentMethodNetworkTokenCryptogramRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -74,7 +81,6 @@ class NetworkTokensCryptogram
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_payment_method_network_token_cryptogram', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

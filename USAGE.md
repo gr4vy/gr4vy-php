@@ -10,7 +10,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
@@ -22,7 +21,6 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 
 $response = $sdk->accountUpdater->jobs->create(
     accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
