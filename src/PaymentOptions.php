@@ -49,16 +49,14 @@ class PaymentOptions
      * List the payment options available at checkout. filtering by country, currency, and additional fields passed to Flow rules.
      *
      * @param  PaymentOptionRequest  $paymentOptionRequest
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return ListPaymentOptionsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(PaymentOptionRequest $paymentOptionRequest, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentOptionsResponse
+    public function list(PaymentOptionRequest $paymentOptionRequest, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentOptionsResponse
     {
         $request = new ListPaymentOptionsRequest(
             paymentOptionRequest: $paymentOptionRequest,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -70,8 +68,6 @@ class PaymentOptions
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(ListPaymentOptionsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -81,7 +77,6 @@ class PaymentOptions
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'list_payment_options', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

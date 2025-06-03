@@ -50,12 +50,11 @@ class CardSchemeDefinitions
      *
      * Fetch a list of the definitions of each card scheme.
      *
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return ListCardSchemeDefinitionsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): ListCardSchemeDefinitionsResponse
+    public function list(?string $merchantAccountId = null, ?Options $options = null): ListCardSchemeDefinitionsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -82,15 +81,12 @@ class CardSchemeDefinitions
             ];
         }
         $request = new ListCardSchemeDefinitionsRequest(
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/card-scheme-definitions');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(ListCardSchemeDefinitionsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -100,7 +96,6 @@ class CardSchemeDefinitions
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'list_card_scheme_definitions', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

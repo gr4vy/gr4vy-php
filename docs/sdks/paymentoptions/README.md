@@ -24,41 +24,12 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
-$paymentOptionRequest = new Gr4vy\PaymentOptionRequest(
-    metadata: [
-        'cohort' => 'a',
-    ],
-    country: 'US',
-    currency: 'USD',
-    amount: 1299,
-    cartItems: [
-        new Gr4vy\CartItem(
-            name: 'GoPro HD',
-            quantity: 2,
-            unitAmount: 1299,
-            discountAmount: 0,
-            taxAmount: 0,
-            externalIdentifier: 'goprohd',
-            sku: 'GPHD1078',
-            productUrl: 'https://example.com/catalog/go-pro-hd',
-            imageUrl: 'https://example.com/images/go-pro-hd.jpg',
-            categories: [
-                'camera',
-                'travel',
-                'gear',
-            ],
-            productType: 'physical',
-            sellerCountry: 'US',
-        ),
-    ],
-);
+$paymentOptionRequest = new Gr4vy\PaymentOptionRequest();
 
 $response = $sdk->paymentOptions->list(
     paymentOptionRequest: $paymentOptionRequest,
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -73,7 +44,6 @@ if ($response->collectionNoCursorPaymentOption !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentOptionRequest`                                  | [PaymentOptionRequest](../../PaymentOptionRequest.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

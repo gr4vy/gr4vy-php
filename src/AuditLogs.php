@@ -143,7 +143,6 @@ class AuditLogs
                             limit: $request != null ? $request->limit : null,
                             action: $request != null ? $request->action : null,
                             userId: $request != null ? $request->userId : null,
-                            applicationName: $request != null ? $request->applicationName : null,
                             resourceType: $request != null ? $request->resourceType : null,
                             merchantAccountId: $request != null ? $request->merchantAccountId : null,
                         ),

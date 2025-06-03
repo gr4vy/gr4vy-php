@@ -24,7 +24,6 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
 
@@ -32,7 +31,6 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->buyers->giftCards->list(
     buyerExternalIdentifier: '<value>',
     buyerId: '43dacd6f-2cf2-4482-b522-f7a251f63637',
-    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -48,7 +46,6 @@ if ($response->collectionNoCursorGiftCardSummary !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `buyerExternalIdentifier`                               | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `buyerId`                                               | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
-| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

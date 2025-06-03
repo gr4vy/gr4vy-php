@@ -52,17 +52,15 @@ class PaymentServices
      *
      * @param  PaymentServiceUpdate  $paymentServiceUpdate
      * @param  string  $paymentServiceId
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return CreatePaymentServiceResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function update(PaymentServiceUpdate $paymentServiceUpdate, string $paymentServiceId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentServiceResponse
+    public function update(PaymentServiceUpdate $paymentServiceUpdate, string $paymentServiceId, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentServiceResponse
     {
         $request = new CreatePaymentServiceRequest(
             paymentServiceId: $paymentServiceId,
             paymentServiceUpdate: $paymentServiceUpdate,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -74,8 +72,6 @@ class PaymentServices
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreatePaymentServiceRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -85,7 +81,6 @@ class PaymentServices
         $httpRequest = new \GuzzleHttp\Psr7\Request('PUT', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_payment_service', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -266,17 +261,15 @@ class PaymentServices
      *
      * @param  array<string, mixed>  $requestBody
      * @param  string  $paymentServiceId
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return CreatePaymentServiceSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function session(array $requestBody, string $paymentServiceId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentServiceSessionResponse
+    public function session(array $requestBody, string $paymentServiceId, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentServiceSessionResponse
     {
         $request = new CreatePaymentServiceSessionRequest(
             paymentServiceId: $paymentServiceId,
             requestBody: $requestBody,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -288,8 +281,6 @@ class PaymentServices
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(CreatePaymentServiceSessionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -299,7 +290,6 @@ class PaymentServices
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_payment_service_session', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -479,24 +469,20 @@ class PaymentServices
      * Deletes all the configuration of a payment service.
      *
      * @param  string  $paymentServiceId
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return DeletePaymentServiceResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function delete(string $paymentServiceId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentServiceResponse
+    public function delete(string $paymentServiceId, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentServiceResponse
     {
         $request = new DeletePaymentServiceRequest(
             paymentServiceId: $paymentServiceId,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-services/{payment_service_id}', DeletePaymentServiceRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(DeletePaymentServiceRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -506,7 +492,6 @@ class PaymentServices
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'delete_payment_service', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -686,12 +671,11 @@ class PaymentServices
      * Get the details of a configured payment service.
      *
      * @param  string  $paymentServiceId
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return GetPaymentServiceResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function get(string $paymentServiceId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): GetPaymentServiceResponse
+    public function get(string $paymentServiceId, ?string $merchantAccountId = null, ?Options $options = null): GetPaymentServiceResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -719,15 +703,12 @@ class PaymentServices
         }
         $request = new GetPaymentServiceRequest(
             paymentServiceId: $paymentServiceId,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-services/{payment_service_id}', GetPaymentServiceRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-
-        $qp = Utils\Utils::getQueryParams(GetPaymentServiceRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -737,7 +718,6 @@ class PaymentServices
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_payment_service', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -1009,7 +989,6 @@ class PaymentServices
                             cursor: $nextCursor,
                             limit: $request != null ? $request->limit : null,
                             deleted: $request != null ? $request->deleted : null,
-                            applicationName: $request != null ? $request->applicationName : null,
                             merchantAccountId: $request != null ? $request->merchantAccountId : null,
                         ),
                     );
@@ -1184,16 +1163,14 @@ class PaymentServices
      * Updates the configuration of a payment service.
      *
      * @param  PaymentServiceCreate  $paymentServiceCreate
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return UpdatePaymentServiceResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(PaymentServiceCreate $paymentServiceCreate, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): UpdatePaymentServiceResponse
+    public function create(PaymentServiceCreate $paymentServiceCreate, ?string $merchantAccountId = null, ?Options $options = null): UpdatePaymentServiceResponse
     {
         $request = new UpdatePaymentServiceRequest(
             paymentServiceCreate: $paymentServiceCreate,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -1205,8 +1182,6 @@ class PaymentServices
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(UpdatePaymentServiceRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -1216,7 +1191,6 @@ class PaymentServices
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'update_payment_service', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -1396,16 +1370,14 @@ class PaymentServices
      * Verify the credentials of a configured payment service
      *
      * @param  VerifyCredentials  $verifyCredentials
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return VerifyPaymentServiceCredentialsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function verify(VerifyCredentials $verifyCredentials, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): VerifyPaymentServiceCredentialsResponse
+    public function verify(VerifyCredentials $verifyCredentials, ?string $merchantAccountId = null, ?Options $options = null): VerifyPaymentServiceCredentialsResponse
     {
         $request = new VerifyPaymentServiceCredentialsRequest(
             verifyCredentials: $verifyCredentials,
-            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -1417,8 +1389,6 @@ class PaymentServices
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
-
-        $qp = Utils\Utils::getQueryParams(VerifyPaymentServiceCredentialsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -1428,7 +1398,6 @@ class PaymentServices
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'verify_payment_service_credentials', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
-        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

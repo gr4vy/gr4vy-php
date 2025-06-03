@@ -48,28 +48,19 @@ class ListGiftCardsRequest
     public ?int $limit = null;
 
     /**
-     *
-     * @var ?string $applicationName
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
-    public ?string $applicationName = null;
-
-    /**
      * @param  ?int  $limit
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $buyerId
      * @param  ?string  $cursor
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $cursor = null, ?int $limit = 20, ?string $applicationName = 'core-api')
+    public function __construct(?string $merchantAccountId = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $cursor = null, ?int $limit = 20)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->buyerExternalIdentifier = $buyerExternalIdentifier;
         $this->buyerId = $buyerId;
         $this->cursor = $cursor;
         $this->limit = $limit;
-        $this->applicationName = $applicationName;
     }
 }

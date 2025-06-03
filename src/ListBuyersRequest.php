@@ -52,28 +52,19 @@ class ListBuyersRequest
     public ?int $limit = null;
 
     /**
-     *
-     * @var ?string $applicationName
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
-    public ?string $applicationName = null;
-
-    /**
      * @param  ?int  $limit
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @param  ?string  $cursor
      * @param  ?string  $search
      * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?string $search = null, ?string $externalIdentifier = null, ?int $limit = 20, ?string $applicationName = 'core-api')
+    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?string $search = null, ?string $externalIdentifier = null, ?int $limit = 20)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->cursor = $cursor;
         $this->search = $search;
         $this->externalIdentifier = $externalIdentifier;
         $this->limit = $limit;
-        $this->applicationName = $applicationName;
     }
 }

@@ -24,15 +24,9 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
-$request = new Gr4vy\ListAuditLogsRequest(
-    cursor: 'ZXhhbXBsZTE',
-    action: 'created',
-    userId: '14b7b8c5-a6ba-4fb6-bbab-52d43c7f37ef',
-    resourceType: 'user',
-);
+$request = new Gr4vy\ListAuditLogsRequest();
 
 $responses = $sdk->auditLogs->list(
     request: $request

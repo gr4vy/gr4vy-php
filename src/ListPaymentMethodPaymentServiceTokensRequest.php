@@ -36,24 +36,15 @@ class ListPaymentMethodPaymentServiceTokensRequest
     public ?string $paymentServiceId = null;
 
     /**
-     *
-     * @var ?string $applicationName
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
-    public ?string $applicationName = null;
-
-    /**
      * @param  string  $paymentMethodId
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @param  ?string  $paymentServiceId
      * @phpstan-pure
      */
-    public function __construct(string $paymentMethodId, ?string $merchantAccountId = null, ?string $paymentServiceId = null, ?string $applicationName = 'core-api')
+    public function __construct(string $paymentMethodId, ?string $merchantAccountId = null, ?string $paymentServiceId = null)
     {
         $this->paymentMethodId = $paymentMethodId;
         $this->merchantAccountId = $merchantAccountId;
         $this->paymentServiceId = $paymentServiceId;
-        $this->applicationName = $applicationName;
     }
 }

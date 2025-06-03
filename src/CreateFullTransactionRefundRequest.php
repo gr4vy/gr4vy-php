@@ -34,24 +34,15 @@ class CreateFullTransactionRefundRequest
     public ?TransactionRefundAllCreate $transactionRefundAllCreate = null;
 
     /**
-     *
-     * @var ?string $applicationName
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
-    public ?string $applicationName = null;
-
-    /**
      * @param  string  $transactionId
-     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @param  ?TransactionRefundAllCreate  $transactionRefundAllCreate
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, ?string $merchantAccountId = null, ?TransactionRefundAllCreate $transactionRefundAllCreate = null, ?string $applicationName = 'core-api')
+    public function __construct(string $transactionId, ?string $merchantAccountId = null, ?TransactionRefundAllCreate $transactionRefundAllCreate = null)
     {
         $this->transactionId = $transactionId;
         $this->merchantAccountId = $merchantAccountId;
         $this->transactionRefundAllCreate = $transactionRefundAllCreate;
-        $this->applicationName = $applicationName;
     }
 }

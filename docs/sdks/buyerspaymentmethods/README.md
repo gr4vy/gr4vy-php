@@ -24,15 +24,9 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
-    ->setMerchantAccountId('default')
     ->build();
 
-$request = new Gr4vy\ListBuyerPaymentMethodsRequest(
-    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
-    buyerExternalIdentifier: 'buyer-12345',
-    country: 'US',
-    currency: 'USD',
-);
+$request = new Gr4vy\ListBuyerPaymentMethodsRequest();
 
 $response = $sdk->buyers->paymentMethods->list(
     request: $request
