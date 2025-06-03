@@ -58,6 +58,7 @@ $paymentOptionRequest = new Gr4vy\PaymentOptionRequest(
 
 $response = $sdk->paymentOptions->list(
     paymentOptionRequest: $paymentOptionRequest,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -72,6 +73,7 @@ if ($response->collectionNoCursorPaymentOption !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentOptionRequest`                                  | [PaymentOptionRequest](../../PaymentOptionRequest.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

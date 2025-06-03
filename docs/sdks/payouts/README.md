@@ -34,6 +34,7 @@ $sdk = Gr4vy\SDK::builder()
 $responses = $sdk->payouts->list(
     cursor: 'ZXhhbXBsZTE',
     limit: 20,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -52,6 +53,7 @@ foreach ($responses as $response) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `cursor`                                                | *?string*                                               | :heavy_minus_sign:                                      | A pointer to the page of results to return.             | ZXhhbXBsZTE                                             |
 | `limit`                                                 | *?int*                                                  | :heavy_minus_sign:                                      | The maximum number of items that are at returned.       | 20                                                      |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -178,6 +180,7 @@ $payoutCreate = new Gr4vy\PayoutCreate(
 
 $response = $sdk->payouts->create(
     payoutCreate: $payoutCreate,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -192,6 +195,7 @@ if ($response->payoutSummary !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `payoutCreate`                                          | [PayoutCreate](../../PayoutCreate.md)                   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -240,6 +244,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->payouts->get(
     payoutId: '4344fef2-bc2f-49a6-924f-343e62f67224',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -254,6 +259,7 @@ if ($response->payoutSummary !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `payoutId`                                              | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

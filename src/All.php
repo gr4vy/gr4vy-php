@@ -50,14 +50,16 @@ class All
      *
      * @param  string  $transactionId
      * @param  ?TransactionRefundAllCreate  $transactionRefundAllCreate
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return CreateFullTransactionRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(string $transactionId, ?TransactionRefundAllCreate $transactionRefundAllCreate = null, ?string $merchantAccountId = null, ?Options $options = null): CreateFullTransactionRefundResponse
+    public function create(string $transactionId, ?TransactionRefundAllCreate $transactionRefundAllCreate = null, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): CreateFullTransactionRefundResponse
     {
         $request = new CreateFullTransactionRefundRequest(
             transactionId: $transactionId,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
             transactionRefundAllCreate: $transactionRefundAllCreate,
         );
@@ -69,6 +71,8 @@ class All
         if ($body !== null) {
             $httpOptions = array_merge_recursive($httpOptions, $body);
         }
+
+        $qp = Utils\Utils::getQueryParams(CreateFullTransactionRefundRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -78,6 +82,7 @@ class All
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_full_transaction_refund', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -99,12 +104,12 @@ class All
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionNoCursorRefund', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionRefund', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new CreateFullTransactionRefundResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionNoCursorRefund: $obj);
+                    collectionRefund: $obj);
 
                 return $response;
             } else {

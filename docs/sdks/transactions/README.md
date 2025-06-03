@@ -360,6 +360,7 @@ $transactionCreate = new Gr4vy\TransactionCreate(
 
 $response = $sdk->transactions->create(
     transactionCreate: $transactionCreate,
+    applicationName: 'core-api',
     merchantAccountId: 'default',
     idempotencyKey: 'request-12345'
 
@@ -375,6 +376,7 @@ if ($response->transaction !== null) {
 | Parameter                                                                                                                                                                                             | Type                                                                                                                                                                                                  | Required                                                                                                                                                                                              | Description                                                                                                                                                                                           | Example                                                                                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `transactionCreate`                                                                                                                                                                                   | [TransactionCreate](../../TransactionCreate.md)                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                                    | N/A                                                                                                                                                                                                   |                                                                                                                                                                                                       |
+| `applicationName`                                                                                                                                                                                     | *?string*                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                    | N/A                                                                                                                                                                                                   |                                                                                                                                                                                                       |
 | `merchantAccountId`                                                                                                                                                                                   | *?string*                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                    | The ID of the merchant account to use for this request.                                                                                                                                               | default                                                                                                                                                                                               |
 | `idempotencyKey`                                                                                                                                                                                      | *?string*                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                    | A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions. | request-12345                                                                                                                                                                                         |
 
@@ -424,6 +426,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->transactions->get(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -438,6 +441,7 @@ if ($response->transaction !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `transactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -552,6 +556,7 @@ $transactionCapture = new Gr4vy\TransactionCapture(
 $response = $sdk->transactions->capture(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
     transactionCapture: $transactionCapture,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -567,6 +572,7 @@ if ($response->transaction !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `transactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
 | `transactionCapture`                                    | [TransactionCapture](../../TransactionCapture.md)       | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -615,6 +621,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->transactions->void(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -629,6 +636,7 @@ if ($response->transaction !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `transactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -677,6 +685,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->transactions->sync(
     transactionId: '2ee546e0-3b11-478e-afec-fdb362611e22',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -691,6 +700,7 @@ if ($response->transaction !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `transactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

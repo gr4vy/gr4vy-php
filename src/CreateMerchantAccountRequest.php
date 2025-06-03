@@ -9,15 +9,14 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 use Gr4vy\Utils\SpeakeasyMetadata;
-class ListCardSchemeDefinitionsRequest
+class CreateMerchantAccountRequest
 {
     /**
-     * The ID of the merchant account to use for this request.
      *
-     * @var ?string $merchantAccountId
+     * @var MerchantAccountCreate $merchantAccountCreate
      */
-    #[SpeakeasyMetadata('header:style=simple,explode=false,name=x-gr4vy-merchant-account-id')]
-    public ?string $merchantAccountId = null;
+    #[SpeakeasyMetadata('request:mediaType=application/json')]
+    public MerchantAccountCreate $merchantAccountCreate;
 
     /**
      *
@@ -27,13 +26,13 @@ class ListCardSchemeDefinitionsRequest
     public ?string $applicationName = null;
 
     /**
+     * @param  MerchantAccountCreate  $merchantAccountCreate
      * @param  ?string  $applicationName
-     * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $applicationName = 'core-api')
+    public function __construct(MerchantAccountCreate $merchantAccountCreate, ?string $applicationName = 'core-api')
     {
-        $this->merchantAccountId = $merchantAccountId;
+        $this->merchantAccountCreate = $merchantAccountCreate;
         $this->applicationName = $applicationName;
     }
 }

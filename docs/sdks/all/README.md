@@ -34,12 +34,13 @@ $transactionRefundAllCreate = new Gr4vy\TransactionRefundAllCreate(
 
 $response = $sdk->transactions->refunds->all->create(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
+    applicationName: 'core-api',
     merchantAccountId: 'default',
     transactionRefundAllCreate: $transactionRefundAllCreate
 
 );
 
-if ($response->collectionNoCursorRefund !== null) {
+if ($response->collectionRefund !== null) {
     // handle response
 }
 ```
@@ -49,6 +50,7 @@ if ($response->collectionNoCursorRefund !== null) {
 | Parameter                                                          | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | `transactionId`                                                    | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                | 7099948d-7286-47e4-aad8-b68f7eb44591                               |
+| `applicationName`                                                  | *?string*                                                          | :heavy_minus_sign:                                                 | N/A                                                                |                                                                    |
 | `merchantAccountId`                                                | *?string*                                                          | :heavy_minus_sign:                                                 | The ID of the merchant account to use for this request.            | default                                                            |
 | `transactionRefundAllCreate`                                       | [?TransactionRefundAllCreate](../../TransactionRefundAllCreate.md) | :heavy_minus_sign:                                                 | N/A                                                                |                                                                    |
 

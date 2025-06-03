@@ -50,26 +50,34 @@ class MerchantAccounts
      *
      * Create a new merchant account in an instance.
      *
-     * @param  MerchantAccountCreate  $request
+     * @param  MerchantAccountCreate  $merchantAccountCreate
+     * @param  ?string  $applicationName
      * @return CreateMerchantAccountResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(MerchantAccountCreate $request, ?Options $options = null): CreateMerchantAccountResponse
+    public function create(MerchantAccountCreate $merchantAccountCreate, ?string $applicationName = null, ?Options $options = null): CreateMerchantAccountResponse
     {
+        $request = new CreateMerchantAccountRequest(
+            merchantAccountCreate: $merchantAccountCreate,
+            applicationName: $applicationName,
+        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/merchant-accounts');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
+        $body = Utils\Utils::serializeRequestBody($request, 'merchantAccountCreate', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
+
+        $qp = Utils\Utils::getQueryParams(CreateMerchantAccountRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_merchant_account', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -249,10 +257,11 @@ class MerchantAccounts
      * Get info about a merchant account in an instance.
      *
      * @param  string  $merchantAccountId
+     * @param  ?string  $applicationName
      * @return GetMerchantAccountResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function get(string $merchantAccountId, ?Options $options = null): GetMerchantAccountResponse
+    public function get(string $merchantAccountId, ?string $applicationName = null, ?Options $options = null): GetMerchantAccountResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -280,16 +289,20 @@ class MerchantAccounts
         }
         $request = new GetMerchantAccountRequest(
             merchantAccountId: $merchantAccountId,
+            applicationName: $applicationName,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/merchant-accounts/{merchant_account_id}', GetMerchantAccountRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(GetMerchantAccountRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_merchant_account', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -471,10 +484,11 @@ class MerchantAccounts
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $search
+     * @param  ?string  $applicationName
      * @return ListMerchantAccountsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $search = null, ?Options $options = null): ListMerchantAccountsResponse
+    private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $search = null, ?string $applicationName = null, ?Options $options = null): ListMerchantAccountsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -504,6 +518,7 @@ class MerchantAccounts
             cursor: $cursor,
             limit: $limit,
             search: $search,
+            applicationName: $applicationName,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/merchant-accounts');
@@ -546,7 +561,7 @@ class MerchantAccounts
                     collectionMerchantAccount: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $limit, $search): ?ListMerchantAccountsResponse {
+                $response->next = function () use ($sdk, $responseData, $limit, $search, $applicationName): ?ListMerchantAccountsResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -562,6 +577,7 @@ class MerchantAccounts
                         cursor: $nextCursor,
                         limit: $limit,
                         search: $search,
+                        applicationName: $applicationName,
                     );
                 };
 
@@ -718,12 +734,13 @@ class MerchantAccounts
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $search
+     * @param  ?string  $applicationName
      * @return \Generator<ListMerchantAccountsResponse>
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?string $cursor = null, ?int $limit = null, ?string $search = null, ?Options $options = null): \Generator
+    public function list(?string $cursor = null, ?int $limit = null, ?string $search = null, ?string $applicationName = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($cursor, $limit, $search, $options);
+        $res = $this->listIndividual($cursor, $limit, $search, $applicationName, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
@@ -737,14 +754,16 @@ class MerchantAccounts
      *
      * @param  MerchantAccountUpdate  $merchantAccountUpdate
      * @param  string  $merchantAccountId
+     * @param  ?string  $applicationName
      * @return UpdateMerchantAccountResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function update(MerchantAccountUpdate $merchantAccountUpdate, string $merchantAccountId, ?Options $options = null): UpdateMerchantAccountResponse
+    public function update(MerchantAccountUpdate $merchantAccountUpdate, string $merchantAccountId, ?string $applicationName = null, ?Options $options = null): UpdateMerchantAccountResponse
     {
         $request = new UpdateMerchantAccountRequest(
             merchantAccountId: $merchantAccountId,
             merchantAccountUpdate: $merchantAccountUpdate,
+            applicationName: $applicationName,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/merchant-accounts/{merchant_account_id}', UpdateMerchantAccountRequest::class, $request, $this->sdkConfiguration->globals);
@@ -755,11 +774,14 @@ class MerchantAccounts
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
+
+        $qp = Utils\Utils::getQueryParams(UpdateMerchantAccountRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('PUT', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'update_merchant_account', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

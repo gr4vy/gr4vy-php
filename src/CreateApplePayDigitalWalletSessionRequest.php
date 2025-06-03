@@ -27,13 +27,22 @@ class CreateApplePayDigitalWalletSessionRequest
     public ?string $merchantAccountId = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  ApplePaySessionRequest  $applePaySessionRequest
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(ApplePaySessionRequest $applePaySessionRequest, ?string $merchantAccountId = null)
+    public function __construct(ApplePaySessionRequest $applePaySessionRequest, ?string $merchantAccountId = null, ?string $applicationName = 'core-api')
     {
         $this->applePaySessionRequest = $applePaySessionRequest;
         $this->merchantAccountId = $merchantAccountId;
+        $this->applicationName = $applicationName;
     }
 }

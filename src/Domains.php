@@ -50,15 +50,17 @@ class Domains
      *
      * @param  DigitalWalletDomain  $digitalWalletDomain
      * @param  string  $digitalWalletId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return RegisterDigitalWalletDomainResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(DigitalWalletDomain $digitalWalletDomain, string $digitalWalletId, ?string $merchantAccountId = null, ?Options $options = null): RegisterDigitalWalletDomainResponse
+    public function create(DigitalWalletDomain $digitalWalletDomain, string $digitalWalletId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): RegisterDigitalWalletDomainResponse
     {
         $request = new RegisterDigitalWalletDomainRequest(
             digitalWalletId: $digitalWalletId,
             digitalWalletDomain: $digitalWalletDomain,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -70,6 +72,8 @@ class Domains
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
+
+        $qp = Utils\Utils::getQueryParams(RegisterDigitalWalletDomainRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -79,6 +83,7 @@ class Domains
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'register_digital_wallet_domain', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -259,15 +264,17 @@ class Domains
      *
      * @param  DigitalWalletDomain  $digitalWalletDomain
      * @param  string  $digitalWalletId
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @return UnregisterDigitalWalletDomainResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function delete(DigitalWalletDomain $digitalWalletDomain, string $digitalWalletId, ?string $merchantAccountId = null, ?Options $options = null): UnregisterDigitalWalletDomainResponse
+    public function delete(DigitalWalletDomain $digitalWalletDomain, string $digitalWalletId, ?string $applicationName = null, ?string $merchantAccountId = null, ?Options $options = null): UnregisterDigitalWalletDomainResponse
     {
         $request = new UnregisterDigitalWalletDomainRequest(
             digitalWalletId: $digitalWalletId,
             digitalWalletDomain: $digitalWalletDomain,
+            applicationName: $applicationName,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -279,6 +286,8 @@ class Domains
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
+
+        $qp = Utils\Utils::getQueryParams(UnregisterDigitalWalletDomainRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -288,6 +297,7 @@ class Domains
         $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'unregister_digital_wallet_domain', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {

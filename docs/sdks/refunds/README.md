@@ -31,6 +31,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->refunds->get(
     refundId: '6a1d4e46-14ed-4fe1-a45f-eff4e025d211',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -45,6 +46,7 @@ if ($response->refund !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `refundId`                                              | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 6a1d4e46-14ed-4fe1-a45f-eff4e025d211                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

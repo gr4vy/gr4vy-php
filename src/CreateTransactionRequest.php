@@ -35,15 +35,24 @@ class CreateTransactionRequest
     public ?string $idempotencyKey = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  TransactionCreate  $transactionCreate
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @param  ?string  $idempotencyKey
      * @phpstan-pure
      */
-    public function __construct(TransactionCreate $transactionCreate, ?string $merchantAccountId = null, ?string $idempotencyKey = null)
+    public function __construct(TransactionCreate $transactionCreate, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?string $applicationName = 'core-api')
     {
         $this->transactionCreate = $transactionCreate;
         $this->merchantAccountId = $merchantAccountId;
         $this->idempotencyKey = $idempotencyKey;
+        $this->applicationName = $applicationName;
     }
 }

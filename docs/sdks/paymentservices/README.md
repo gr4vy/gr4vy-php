@@ -143,6 +143,7 @@ $paymentServiceCreate = new Gr4vy\PaymentServiceCreate(
 
 $response = $sdk->paymentServices->create(
     paymentServiceCreate: $paymentServiceCreate,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -157,6 +158,7 @@ if ($response->paymentService !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceCreate`                                  | [PaymentServiceCreate](../../PaymentServiceCreate.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -205,6 +207,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->paymentServices->get(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -219,6 +222,7 @@ if ($response->paymentService !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -296,6 +300,7 @@ $paymentServiceUpdate = new Gr4vy\PaymentServiceUpdate(
 $response = $sdk->paymentServices->update(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
     paymentServiceUpdate: $paymentServiceUpdate,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -311,6 +316,7 @@ if ($response->paymentService !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
 | `paymentServiceUpdate`                                  | [PaymentServiceUpdate](../../PaymentServiceUpdate.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -359,6 +365,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->paymentServices->delete(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -373,6 +380,7 @@ if ($response->any !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -430,6 +438,7 @@ $verifyCredentials = new Gr4vy\VerifyCredentials(
 
 $response = $sdk->paymentServices->verify(
     verifyCredentials: $verifyCredentials,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -444,6 +453,7 @@ if ($response->any !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `verifyCredentials`                                     | [VerifyCredentials](../../VerifyCredentials.md)         | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -495,6 +505,7 @@ $response = $sdk->paymentServices->session(
     requestBody: [
         'key' => '<value>',
     ],
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -510,6 +521,7 @@ if ($response->createSession !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
 | `requestBody`                                           | array<string, *mixed*>                                  | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

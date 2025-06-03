@@ -27,13 +27,22 @@ class CreatePaymentServiceDefinitionSessionRequest
     public array $requestBody;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  string  $paymentServiceDefinitionId
      * @param  array<string, mixed>  $requestBody
+     * @param  ?string  $applicationName
      * @phpstan-pure
      */
-    public function __construct(string $paymentServiceDefinitionId, array $requestBody)
+    public function __construct(string $paymentServiceDefinitionId, array $requestBody, ?string $applicationName = 'core-api')
     {
         $this->paymentServiceDefinitionId = $paymentServiceDefinitionId;
         $this->requestBody = $requestBody;
+        $this->applicationName = $applicationName;
     }
 }

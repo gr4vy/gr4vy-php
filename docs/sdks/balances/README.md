@@ -37,6 +37,7 @@ $giftCardBalanceRequest = new Gr4vy\GiftCardBalanceRequest(
 
 $response = $sdk->giftCards->balances->list(
     giftCardBalanceRequest: $giftCardBalanceRequest,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -51,6 +52,7 @@ if ($response->collectionNoCursorGiftCardSummary !== null) {
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               | Example                                                   |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
 | `giftCardBalanceRequest`                                  | [GiftCardBalanceRequest](../../GiftCardBalanceRequest.md) | :heavy_check_mark:                                        | N/A                                                       |                                                           |
+| `applicationName`                                         | *?string*                                                 | :heavy_minus_sign:                                        | N/A                                                       |                                                           |
 | `merchantAccountId`                                       | *?string*                                                 | :heavy_minus_sign:                                        | The ID of the merchant account to use for this request.   | default                                                   |
 
 ### Response

@@ -125,6 +125,7 @@ $buyerCreate = new Gr4vy\BuyerCreate(
 
 $response = $sdk->buyers->create(
     buyerCreate: $buyerCreate,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -139,6 +140,7 @@ if ($response->buyer !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `buyerCreate`                                           | [BuyerCreate](../../BuyerCreate.md)                     | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -187,6 +189,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->buyers->get(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -201,6 +204,7 @@ if ($response->buyer !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `buyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to retrieve.                        | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -274,6 +278,7 @@ $buyerUpdate = new Gr4vy\BuyerUpdate(
 $response = $sdk->buyers->update(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     buyerUpdate: $buyerUpdate,
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -289,6 +294,7 @@ if ($response->buyer !== null) {
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `buyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to edit.                            | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `buyerUpdate`                                           | [BuyerUpdate](../../BuyerUpdate.md)                     | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -337,6 +343,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->buyers->delete(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -351,6 +358,7 @@ if ($response->statusCode === 200) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `buyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to delete.                          | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

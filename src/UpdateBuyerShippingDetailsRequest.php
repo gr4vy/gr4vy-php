@@ -43,17 +43,26 @@ class UpdateBuyerShippingDetailsRequest
     public ?string $merchantAccountId = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  string  $buyerId
      * @param  string  $shippingDetailsId
      * @param  ShippingDetailsUpdate  $shippingDetailsUpdate
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $buyerId, string $shippingDetailsId, ShippingDetailsUpdate $shippingDetailsUpdate, ?string $merchantAccountId = null)
+    public function __construct(string $buyerId, string $shippingDetailsId, ShippingDetailsUpdate $shippingDetailsUpdate, ?string $merchantAccountId = null, ?string $applicationName = 'core-api')
     {
         $this->buyerId = $buyerId;
         $this->shippingDetailsId = $shippingDetailsId;
         $this->shippingDetailsUpdate = $shippingDetailsUpdate;
         $this->merchantAccountId = $merchantAccountId;
+        $this->applicationName = $applicationName;
     }
 }

@@ -20,11 +20,20 @@ class GetMerchantAccountRequest
     public string $merchantAccountId;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  string  $merchantAccountId
+     * @param  ?string  $applicationName
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId)
+    public function __construct(string $merchantAccountId, ?string $applicationName = 'core-api')
     {
         $this->merchantAccountId = $merchantAccountId;
+        $this->applicationName = $applicationName;
     }
 }

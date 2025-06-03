@@ -106,6 +106,7 @@ $response = $sdk->paymentMethods->create(
         buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
         buyerExternalIdentifier: 'buyer-12345',
     ),
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -120,6 +121,7 @@ if ($response->paymentMethod !== null) {
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `requestBody`                                                                                           | [CardPaymentMethodCreate\|RedirectPaymentMethodCreate\|CheckoutSessionPaymentMethodCreate](../../Body.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |                                                                                                         |
+| `applicationName`                                                                                       | *?string*                                                                                               | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |                                                                                                         |
 | `merchantAccountId`                                                                                     | *?string*                                                                                               | :heavy_minus_sign:                                                                                      | The ID of the merchant account to use for this request.                                                 | default                                                                                                 |
 
 ### Response
@@ -168,6 +170,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->paymentMethods->get(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -182,6 +185,7 @@ if ($response->paymentMethod !== null) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -230,6 +234,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->paymentMethods->delete(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
+    applicationName: 'core-api',
     merchantAccountId: 'default'
 
 );
@@ -244,6 +249,7 @@ if ($response->statusCode === 200) {
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `paymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
+| `applicationName`                                       | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

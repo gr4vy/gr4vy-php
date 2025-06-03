@@ -50,14 +50,11 @@ class Events
      *
      * Fetch a list of events for a transaction.
      *
-     * @param  string  $transactionId
-     * @param  ?string  $cursor
-     * @param  ?int  $limit
-     * @param  ?string  $merchantAccountId
+     * @param  ListTransactionEventsRequest  $request
      * @return ListTransactionEventsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(string $transactionId, ?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionEventsResponse
+    public function list(ListTransactionEventsRequest $request, ?Options $options = null): ListTransactionEventsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -83,12 +80,6 @@ class Events
                 '5XX',
             ];
         }
-        $request = new ListTransactionEventsRequest(
-            transactionId: $transactionId,
-            cursor: $cursor,
-            limit: $limit,
-            merchantAccountId: $merchantAccountId,
-        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/events', ListTransactionEventsRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;

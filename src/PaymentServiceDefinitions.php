@@ -52,14 +52,16 @@ class PaymentServiceDefinitions
      *
      * @param  array<string, mixed>  $requestBody
      * @param  string  $paymentServiceDefinitionId
+     * @param  ?string  $applicationName
      * @return CreatePaymentServiceDefinitionSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function session(array $requestBody, string $paymentServiceDefinitionId, ?Options $options = null): CreatePaymentServiceDefinitionSessionResponse
+    public function session(array $requestBody, string $paymentServiceDefinitionId, ?string $applicationName = null, ?Options $options = null): CreatePaymentServiceDefinitionSessionResponse
     {
         $request = new CreatePaymentServiceDefinitionSessionRequest(
             paymentServiceDefinitionId: $paymentServiceDefinitionId,
             requestBody: $requestBody,
+            applicationName: $applicationName,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-service-definitions/{payment_service_definition_id}/sessions', CreatePaymentServiceDefinitionSessionRequest::class, $request, $this->sdkConfiguration->globals);
@@ -70,11 +72,14 @@ class PaymentServiceDefinitions
             throw new \Exception('Request body is required');
         }
         $httpOptions = array_merge_recursive($httpOptions, $body);
+
+        $qp = Utils\Utils::getQueryParams(CreatePaymentServiceDefinitionSessionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_payment_service_definition_session', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -254,10 +259,11 @@ class PaymentServiceDefinitions
      * Get the definition of a payment service that can be configured.
      *
      * @param  string  $paymentServiceDefinitionId
+     * @param  ?string  $applicationName
      * @return GetPaymentServiceDefinitionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function get(string $paymentServiceDefinitionId, ?Options $options = null): GetPaymentServiceDefinitionResponse
+    public function get(string $paymentServiceDefinitionId, ?string $applicationName = null, ?Options $options = null): GetPaymentServiceDefinitionResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -285,16 +291,20 @@ class PaymentServiceDefinitions
         }
         $request = new GetPaymentServiceDefinitionRequest(
             paymentServiceDefinitionId: $paymentServiceDefinitionId,
+            applicationName: $applicationName,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-service-definitions/{payment_service_definition_id}', GetPaymentServiceDefinitionRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+
+        $qp = Utils\Utils::getQueryParams(GetPaymentServiceDefinitionRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_payment_service_definition', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
         try {
@@ -475,10 +485,11 @@ class PaymentServiceDefinitions
      *
      * @param  ?string  $cursor
      * @param  ?int  $limit
+     * @param  ?string  $applicationName
      * @return ListPaymentServiceDefinitionsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    private function listIndividual(?string $cursor = null, ?int $limit = null, ?Options $options = null): ListPaymentServiceDefinitionsResponse
+    private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $applicationName = null, ?Options $options = null): ListPaymentServiceDefinitionsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -507,6 +518,7 @@ class PaymentServiceDefinitions
         $request = new ListPaymentServiceDefinitionsRequest(
             cursor: $cursor,
             limit: $limit,
+            applicationName: $applicationName,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-service-definitions');
@@ -549,7 +561,7 @@ class PaymentServiceDefinitions
                     collectionPaymentServiceDefinition: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $limit): ?ListPaymentServiceDefinitionsResponse {
+                $response->next = function () use ($sdk, $responseData, $limit, $applicationName): ?ListPaymentServiceDefinitionsResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -564,6 +576,7 @@ class PaymentServiceDefinitions
                     return $sdk->listIndividual(
                         cursor: $nextCursor,
                         limit: $limit,
+                        applicationName: $applicationName,
                     );
                 };
 
@@ -719,12 +732,13 @@ class PaymentServiceDefinitions
      *
      * @param  ?string  $cursor
      * @param  ?int  $limit
+     * @param  ?string  $applicationName
      * @return \Generator<ListPaymentServiceDefinitionsResponse>
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?string $cursor = null, ?int $limit = null, ?Options $options = null): \Generator
+    public function list(?string $cursor = null, ?int $limit = null, ?string $applicationName = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($cursor, $limit, $options);
+        $res = $this->listIndividual($cursor, $limit, $applicationName, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);

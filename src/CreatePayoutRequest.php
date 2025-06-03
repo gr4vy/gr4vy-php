@@ -27,13 +27,22 @@ class CreatePayoutRequest
     public ?string $merchantAccountId = null;
 
     /**
+     *
+     * @var ?string $applicationName
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=application_name')]
+    public ?string $applicationName = null;
+
+    /**
      * @param  PayoutCreate  $payoutCreate
+     * @param  ?string  $applicationName
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(PayoutCreate $payoutCreate, ?string $merchantAccountId = null)
+    public function __construct(PayoutCreate $payoutCreate, ?string $merchantAccountId = null, ?string $applicationName = 'core-api')
     {
         $this->payoutCreate = $payoutCreate;
         $this->merchantAccountId = $merchantAccountId;
+        $this->applicationName = $applicationName;
     }
 }

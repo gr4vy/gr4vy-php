@@ -35,22 +35,22 @@ class CreateFullTransactionRefundResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionNoCursorRefund $collectionNoCursorRefund
+     * @var ?CollectionRefund $collectionRefund
      */
-    public ?CollectionNoCursorRefund $collectionNoCursorRefund = null;
+    public ?CollectionRefund $collectionRefund = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionNoCursorRefund  $collectionNoCursorRefund
+     * @param  ?CollectionRefund  $collectionRefund
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionNoCursorRefund $collectionNoCursorRefund = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionRefund $collectionRefund = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionNoCursorRefund = $collectionNoCursorRefund;
+        $this->collectionRefund = $collectionRefund;
     }
 }

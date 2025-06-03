@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 7ff6bb7e7023e8f2182b027245182c00
+  docChecksum: ddfa877b0036f36287ce4ce5cc08c0c2
   docVersion: 1.0.0
-  speakeasyVersion: 1.554.1
-  generationVersion: 2.616.1
-  releaseVersion: 1.0.0-beta.10
-  configChecksum: e7859880519e32ef9658ec1eef6fcc31
+  speakeasyVersion: 1.555.0
+  generationVersion: 2.618.0
+  releaseVersion: 1.0.0-beta.11
+  configChecksum: c19792dff24d0b7d2b6e1b9df7cd7385
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -83,7 +83,6 @@ generatedFiles:
   - docs/CollectionNoCursorPaymentMethodSummary.md
   - docs/CollectionNoCursorPaymentOption.md
   - docs/CollectionNoCursorPaymentServiceToken.md
-  - docs/CollectionNoCursorRefund.md
   - docs/CollectionNoCursorShippingDetails.md
   - docs/CollectionPaymentMethod.md
   - docs/CollectionPaymentService.md
@@ -102,6 +101,7 @@ generatedFiles:
   - docs/CreateApplePayDigitalWalletSessionResponse.md
   - docs/CreateCheckoutSessionRequest.md
   - docs/CreateCheckoutSessionResponse.md
+  - docs/CreateClickToPayDigitalWalletSessionRequest.md
   - docs/CreateClickToPayDigitalWalletSessionResponse.md
   - docs/CreateFullTransactionRefundRequest.md
   - docs/CreateFullTransactionRefundResponse.md
@@ -109,6 +109,7 @@ generatedFiles:
   - docs/CreateGiftCardResponse.md
   - docs/CreateGooglePayDigitalWalletSessionRequest.md
   - docs/CreateGooglePayDigitalWalletSessionResponse.md
+  - docs/CreateMerchantAccountRequest.md
   - docs/CreateMerchantAccountResponse.md
   - docs/CreatePaymentMethodNetworkTokenCryptogramRequest.md
   - docs/CreatePaymentMethodNetworkTokenCryptogramResponse.md
@@ -444,7 +445,6 @@ generatedFiles:
   - src/CollectionNoCursorPaymentMethodSummary.php
   - src/CollectionNoCursorPaymentOption.php
   - src/CollectionNoCursorPaymentServiceToken.php
-  - src/CollectionNoCursorRefund.php
   - src/CollectionNoCursorShippingDetails.php
   - src/CollectionPaymentMethod.php
   - src/CollectionPaymentService.php
@@ -462,6 +462,7 @@ generatedFiles:
   - src/CreateApplePayDigitalWalletSessionResponse.php
   - src/CreateCheckoutSessionRequest.php
   - src/CreateCheckoutSessionResponse.php
+  - src/CreateClickToPayDigitalWalletSessionRequest.php
   - src/CreateClickToPayDigitalWalletSessionResponse.php
   - src/CreateFullTransactionRefundRequest.php
   - src/CreateFullTransactionRefundResponse.php
@@ -469,6 +470,7 @@ generatedFiles:
   - src/CreateGiftCardResponse.php
   - src/CreateGooglePayDigitalWalletSessionRequest.php
   - src/CreateGooglePayDigitalWalletSessionResponse.php
+  - src/CreateMerchantAccountRequest.php
   - src/CreateMerchantAccountResponse.php
   - src/CreatePaymentMethodNetworkTokenCryptogramRequest.php
   - src/CreatePaymentMethodNetworkTokenCryptogramResponse.php
@@ -791,6 +793,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"payment_method_ids": ["ef9496d8-53a5-4aad-8ca2-00eb68334389", "f29e886e-93cc-4714-b4a3-12b7a718e595"]}
@@ -829,6 +832,7 @@ examples:
           limit: 20
           search: "John"
           external_identifier: "buyer-12345"
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -862,6 +866,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"display_name": "John Doe", "external_identifier": "buyer-12345", "billing_details": {"first_name": "John", "last_name": "Doe", "email_address": "john@example.com", "phone_number": "+1234567890", "address": {"city": "San Jose", "country": "US", "postal_code": "94560", "state": "California", "state_code": "US-CA", "house_number_or_name": "10", "line1": "Stafford Appartments", "line2": "29th Street", "organization": "Gr4vy"}, "tax_id": {"value": "12345678931", "kind": "ar.cuit"}}}
@@ -897,6 +902,8 @@ examples:
       parameters:
         path:
           buyer_id: "fe26475d-ec3e-4884-9553-f7356683f7f9"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -932,6 +939,7 @@ examples:
           buyer_id: "fe26475d-ec3e-4884-9553-f7356683f7f9"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"display_name": "John Doe", "external_identifier": "buyer-12345", "billing_details": null}
@@ -969,6 +977,7 @@ examples:
           buyer_id: "fe26475d-ec3e-4884-9553-f7356683f7f9"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "400":
@@ -1005,6 +1014,7 @@ examples:
           order_by: "desc"
           country: "US"
           currency: "USD"
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1038,6 +1048,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1073,6 +1084,7 @@ examples:
           buyer_id: "fe26475d-ec3e-4884-9553-f7356683f7f9"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"first_name": "John", "last_name": "Doe", "email_address": "john@example.com", "phone_number": "+1234567890", "address": {"city": "San Jose", "country": "US", "postal_code": "94560", "state": "California", "state_code": "US-CA", "house_number_or_name": "10", "line1": "Stafford Appartments", "line2": "29th Street", "organization": "Gr4vy"}}
@@ -1108,6 +1120,8 @@ examples:
       parameters:
         path:
           buyer_id: "fe26475d-ec3e-4884-9553-f7356683f7f9"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1142,6 +1156,8 @@ examples:
         path:
           buyer_id: "fe26475d-ec3e-4884-9553-f7356683f7f9"
           shipping_details_id: "bf8c36ad-02d9-4904-b0f9-a230b149e341"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1178,6 +1194,7 @@ examples:
           shipping_details_id: "bf8c36ad-02d9-4904-b0f9-a230b149e341"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"first_name": "John", "last_name": "Doe", "email_address": "john@example.com", "phone_number": "+1234567890", "address": {"city": "San Jose", "country": "US", "postal_code": "94560", "state": "California", "state_code": "US-CA", "house_number_or_name": "10", "line1": "Stafford Appartments", "line2": "29th Street", "organization": "Gr4vy"}}
@@ -1216,6 +1233,7 @@ examples:
           shipping_details_id: "bf8c36ad-02d9-4904-b0f9-a230b149e341"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1253,6 +1271,7 @@ examples:
           buyer_id: "fe26475d-ec3e-4884-9553-f7356683f7f9"
           buyer_external_identifier: "buyer-12345"
           external_identifier: "payment-method-12345"
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1286,6 +1305,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"method": "checkout-session", "id": "4137b1cf-39ac-42a8-bad6-1c680d5dab6b", "external_identifier": "card-12345", "buyer_id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "buyer_external_identifier": "buyer-12345"}
@@ -1321,6 +1341,8 @@ examples:
       parameters:
         path:
           payment_method_id: "ef9496d8-53a5-4aad-8ca2-00eb68334389"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1354,6 +1376,8 @@ examples:
       parameters:
         path:
           payment_method_id: "ef9496d8-53a5-4aad-8ca2-00eb68334389"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "400":
@@ -1387,6 +1411,7 @@ examples:
           payment_method_id: "ef9496d8-53a5-4aad-8ca2-00eb68334389"
         query:
           payment_service_id: "fffd152a-9532-4087-9a4f-de58754210f0"
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1422,6 +1447,7 @@ examples:
           payment_method_id: "ef9496d8-53a5-4aad-8ca2-00eb68334389"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"security_code": "123", "payment_service_id": "fffd152a-9532-4087-9a4f-de58754210f0", "redirect_url": "https://dual-futon.biz"}
@@ -1460,6 +1486,7 @@ examples:
           payment_service_token_id: "703f2d99-3fd1-44bc-9cbd-a25a2d597886"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "400":
@@ -1491,6 +1518,8 @@ examples:
       parameters:
         path:
           payment_method_id: "ef9496d8-53a5-4aad-8ca2-00eb68334389"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1526,6 +1555,7 @@ examples:
           payment_method_id: "ef9496d8-53a5-4aad-8ca2-00eb68334389"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"security_code": "123", "merchant_initiated": false, "is_subsequent_payment": false}
@@ -1564,6 +1594,7 @@ examples:
           network_token_id: "f8dd5cfc-7834-4847-95dc-f75a360e2298"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1600,6 +1631,7 @@ examples:
           network_token_id: "f8dd5cfc-7834-4847-95dc-f75a360e2298"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1636,6 +1668,7 @@ examples:
           network_token_id: "f8dd5cfc-7834-4847-95dc-f75a360e2298"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "400":
@@ -1670,6 +1703,7 @@ examples:
           network_token_id: "f8dd5cfc-7834-4847-95dc-f75a360e2298"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"merchant_initiated": false}
@@ -1705,6 +1739,8 @@ examples:
       parameters:
         path:
           gift_card_id: "356d56e5-fe16-42ae-97ee-8d55d846ae2e"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1740,6 +1776,7 @@ examples:
           gift_card_id: "356d56e5-fe16-42ae-97ee-8d55d846ae2e"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1773,6 +1810,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"number": "4123455541234561234", "pin": "1234", "buyer_id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "buyer_external_identifier": "buyer-12345"}
@@ -1808,6 +1846,7 @@ examples:
       parameters:
         query:
           limit: 20
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -1841,6 +1880,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"items": [{"id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e"}, {"id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e"}, {"number": "4123455541234561234", "pin": "1234"}]}
@@ -1873,6 +1913,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
   list_card_scheme_definitions:
     speakeasy-default-list-card-scheme-definitions:
+      parameters:
+        query:
+          application_name: "core-api"
       responses:
         "200":
           application/json: {"items": [{"type": "card-scheme-definition", "id": "visa", "icon_url": "https://api.sandbox.example.gr4vy.app/assets/card-scheme-definitions/visa.svg", "display_name": "Visa"}, {"type": "card-scheme-definition", "id": "visa", "icon_url": "https://api.sandbox.example.gr4vy.app/assets/card-scheme-definitions/visa.svg", "display_name": "Visa"}]}
@@ -1905,6 +1948,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"provider": "click-to-pay", "merchant_name": "<value>", "merchant_country_code": "DE", "accept_terms_and_conditions": false}
@@ -1937,6 +1981,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
   list_digital_wallets:
     speakeasy-default-list-digital-wallets:
+      parameters:
+        query:
+          application_name: "core-api"
       responses:
         "200":
           application/json: {"items": [{"type": "digital-wallet", "id": "1808f5e6-b49c-4db9-94fa-22371ea352f5", "merchant_account_id": "default", "provider": "click-to-pay", "merchant_name": "ACME Inc.", "merchant_display_name": "ACME", "merchant_url": "https://example.com", "merchant_country_code": "US", "domain_names": ["example.com"], "active_certificate_count": 2, "pending_certificate_count": 1, "expired_certificate_count": 0, "fields": {"digital_payment_application_id": "8faebf73-5b43-4514-b170-cbfb50c99fff", "digital_payment_application_name": "ACME"}, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}, {"type": "digital-wallet", "id": "1808f5e6-b49c-4db9-94fa-22371ea352f5", "merchant_account_id": "default", "provider": "click-to-pay", "merchant_name": "ACME Inc.", "merchant_display_name": "ACME", "merchant_url": "https://example.com", "merchant_country_code": "US", "domain_names": ["example.com"], "active_certificate_count": 2, "pending_certificate_count": 1, "expired_certificate_count": 0, "fields": {"digital_payment_application_id": "8faebf73-5b43-4514-b170-cbfb50c99fff", "digital_payment_application_name": "ACME"}, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}, {"type": "digital-wallet", "id": "1808f5e6-b49c-4db9-94fa-22371ea352f5", "merchant_account_id": "default", "provider": "click-to-pay", "merchant_name": "ACME Inc.", "merchant_display_name": "ACME", "merchant_url": "https://example.com", "merchant_country_code": "US", "domain_names": ["example.com"], "active_certificate_count": 2, "pending_certificate_count": 1, "expired_certificate_count": 0, "fields": {"digital_payment_application_id": "8faebf73-5b43-4514-b170-cbfb50c99fff", "digital_payment_application_name": "ACME"}, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}]}
@@ -1969,6 +2016,8 @@ examples:
       parameters:
         path:
           digital_wallet_id: "1808f5e6-b49c-4db9-94fa-22371ea352f5"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2004,6 +2053,7 @@ examples:
           digital_wallet_id: "1808f5e6-b49c-4db9-94fa-22371ea352f5"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2039,6 +2089,7 @@ examples:
           digital_wallet_id: "1808f5e6-b49c-4db9-94fa-22371ea352f5"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"merchant_country_code": "DE"}
@@ -2071,6 +2122,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
   create_google_pay_digital_wallet_session:
     speakeasy-default-create-google-pay-digital-wallet-session:
+      parameters:
+        query:
+          application_name: "core-api"
       requestBody:
         application/json: {"origin_domain": "example.com"}
       responses:
@@ -2102,6 +2156,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
   create_apple_pay_digital_wallet_session:
     speakeasy-default-create-apple-pay-digital-wallet-session:
+      parameters:
+        query:
+          application_name: "core-api"
       requestBody:
         application/json: {"validation_url": "https://apple-pay-gateway-cert.apple.com", "domain_name": "example.com"}
       responses:
@@ -2133,6 +2190,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
   create_click_to_pay_digital_wallet_session:
     speakeasy-default-create-click-to-pay-digital-wallet-session:
+      parameters:
+        query:
+          application_name: "core-api"
       requestBody:
         application/json: {"checkout_session_id": "4137b1cf-39ac-42a8-bad6-1c680d5dab6b"}
       responses:
@@ -2169,6 +2229,7 @@ examples:
           digital_wallet_id: "1808f5e6-b49c-4db9-94fa-22371ea352f5"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"domain_name": "example.com"}
@@ -2206,6 +2267,7 @@ examples:
           digital_wallet_id: ""
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"domain_name": "example.com"}
@@ -2283,6 +2345,7 @@ examples:
           payment_method_scheme: "[\"visa\"]"
           payment_method_country: "[\"US\"]"
           used_3ds: true
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2316,6 +2379,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header:
           idempotency-key: "request-12345"
       requestBody:
@@ -2352,6 +2416,8 @@ examples:
       parameters:
         path:
           transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2387,6 +2453,7 @@ examples:
           transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"amount": 1299, "airline": {"booking_code": "X36Q9C", "is_cardholder_traveling": true, "issued_address": "123 Broadway, New York", "issued_at": "2013-07-16T19:23:00.000+00:00", "issuing_carrier_code": "649", "issuing_carrier_name": "Air Transat A.T. Inc", "issuing_iata_designator": "TS", "issuing_icao_code": "TSC", "legs": [{"arrival_airport": "LAX", "arrival_at": "2013-07-16T19:23:00.000+00:00", "arrival_city": "Los Angeles", "arrival_country": "US", "carrier_code": "649", "carrier_name": "Air Transat A.T. Inc", "iata_designator": "TS", "icao_code": "TSC", "coupon_number": "15885566", "departure_airport": "LHR", "departure_at": "2013-07-16T19:23:00.000+00:00", "departure_city": "London", "departure_country": "GB", "departure_tax_amount": 1200, "fare_amount": 129900, "fare_basis_code": "FY", "fee_amount": 1200, "flight_class": "E", "flight_number": "101", "route_type": "round_trip", "seat_class": "F", "stop_over": false, "tax_amount": 1200}, {"arrival_airport": "LAX", "arrival_at": "2013-07-16T19:23:00.000+00:00", "arrival_city": "Los Angeles", "arrival_country": "US", "carrier_code": "649", "carrier_name": "Air Transat A.T. Inc", "iata_designator": "TS", "icao_code": "TSC", "coupon_number": "15885566", "departure_airport": "LHR", "departure_at": "2013-07-16T19:23:00.000+00:00", "departure_city": "London", "departure_country": "GB", "departure_tax_amount": 1200, "fare_amount": 129900, "fare_basis_code": "FY", "fee_amount": 1200, "flight_class": "E", "flight_number": "101", "route_type": "round_trip", "seat_class": "F", "stop_over": false, "tax_amount": 1200}], "passenger_name_record": "JOHN L", "passengers": [{"age_group": "adult", "date_of_birth": "2013-07-16", "email_address": "john@example.com", "first_name": "John", "frequent_flyer_number": "15885566", "last_name": "Luhn", "passport_number": "11117700225", "phone_number": "+1234567890", "ticket_number": "BA1236699999", "title": "Mr.", "country_code": "US"}], "reservation_system": "Amadeus", "restricted_ticket": false, "ticket_delivery_method": "electronic", "ticket_number": "123-1234-151555", "travel_agency_code": "12345", "travel_agency_invoice_number": "EG15555155", "travel_agency_name": "ACME Agency", "travel_agency_plan_name": "B733"}}
@@ -2424,6 +2491,7 @@ examples:
           transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2492,6 +2560,7 @@ examples:
           transaction_id: "2ee546e0-3b11-478e-afec-fdb362611e22"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2525,6 +2594,8 @@ examples:
       parameters:
         path:
           transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2560,6 +2631,7 @@ examples:
           transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"amount": 1299, "target_id": "7a6c366d-9205-45ab-8021-0d9ee37f20f2", "reason": "Refund due to user request.", "external_identifier": "refund-12345"}
@@ -2596,6 +2668,8 @@ examples:
         path:
           transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
           refund_id: "6a1d4e46-14ed-4fe1-a45f-eff4e025d211"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2631,12 +2705,13 @@ examples:
           transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"reason": "Refund due to user request.", "external_identifier": "refund-12345"}
       responses:
         "201":
-          application/json: {"items": [{"type": "refund", "id": "6a1d4e46-14ed-4fe1-a45f-eff4e025d211", "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591", "payment_service_refund_id": "refund_xYqd43gySMtori", "status": "failed", "currency": "EUR", "amount": 1299, "reason": "Refund due to user request.", "target_type": "payment-method", "target_id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "external_identifier": "refund-12345", "transaction_reconciliation_id": "aLEnfXbt7jZXl4gBUNl0Cn", "transaction_external_identifier": "transaction-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "creator": {"id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "name": "Jhon Doe", "email_address": "jhon.doe@gr4vy.com"}}, {"type": "refund", "id": "6a1d4e46-14ed-4fe1-a45f-eff4e025d211", "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591", "payment_service_refund_id": "refund_xYqd43gySMtori", "status": "failed", "currency": "EUR", "amount": 1299, "reason": "Refund due to user request.", "target_type": "payment-method", "target_id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "external_identifier": "refund-12345", "transaction_reconciliation_id": "aLEnfXbt7jZXl4gBUNl0Cn", "transaction_external_identifier": "transaction-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "creator": {"id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "name": "Jhon Doe", "email_address": "jhon.doe@gr4vy.com"}}, {"type": "refund", "id": "6a1d4e46-14ed-4fe1-a45f-eff4e025d211", "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591", "payment_service_refund_id": "refund_xYqd43gySMtori", "status": "failed", "currency": "EUR", "amount": 1299, "reason": "Refund due to user request.", "target_type": "payment-method", "target_id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "external_identifier": "refund-12345", "transaction_reconciliation_id": "aLEnfXbt7jZXl4gBUNl0Cn", "transaction_external_identifier": "transaction-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "creator": {"id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "name": "Jhon Doe", "email_address": "jhon.doe@gr4vy.com"}}]}
+          application/json: {"items": [{"type": "refund", "id": "6a1d4e46-14ed-4fe1-a45f-eff4e025d211", "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591", "payment_service_refund_id": "refund_xYqd43gySMtori", "status": "failed", "currency": "EUR", "amount": 1299, "reason": "Refund due to user request.", "target_type": "payment-method", "target_id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "external_identifier": "refund-12345", "transaction_reconciliation_id": "aLEnfXbt7jZXl4gBUNl0Cn", "transaction_external_identifier": "transaction-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "creator": {"id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "name": "Jhon Doe", "email_address": "jhon.doe@gr4vy.com"}}, {"type": "refund", "id": "6a1d4e46-14ed-4fe1-a45f-eff4e025d211", "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591", "payment_service_refund_id": "refund_xYqd43gySMtori", "status": "failed", "currency": "EUR", "amount": 1299, "reason": "Refund due to user request.", "target_type": "payment-method", "target_id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "external_identifier": "refund-12345", "transaction_reconciliation_id": "aLEnfXbt7jZXl4gBUNl0Cn", "transaction_external_identifier": "transaction-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "creator": {"id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "name": "Jhon Doe", "email_address": "jhon.doe@gr4vy.com"}}, {"type": "refund", "id": "6a1d4e46-14ed-4fe1-a45f-eff4e025d211", "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591", "payment_service_refund_id": "refund_xYqd43gySMtori", "status": "failed", "currency": "EUR", "amount": 1299, "reason": "Refund due to user request.", "target_type": "payment-method", "target_id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "external_identifier": "refund-12345", "transaction_reconciliation_id": "aLEnfXbt7jZXl4gBUNl0Cn", "transaction_external_identifier": "transaction-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "creator": {"id": "07e70d14-a0c0-4ff5-bd4a-509959af0e4d", "name": "Jhon Doe", "email_address": "jhon.doe@gr4vy.com"}}], "limit": 20, "next_cursor": "ZXhhbXBsZTE", "previous_cursor": "Xkjss7asS"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "401":
@@ -2666,6 +2741,8 @@ examples:
       parameters:
         path:
           refund_id: "6a1d4e46-14ed-4fe1-a45f-eff4e025d211"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2696,6 +2773,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
   list_payment_options:
     speakeasy-default-list-payment-options:
+      parameters:
+        query:
+          application_name: "core-api"
       requestBody:
         application/json: {"metadata": {"cohort": "a"}, "country": "US", "currency": "USD", "amount": 1299, "locale": "en", "cart_items": null}
       responses:
@@ -2731,6 +2811,7 @@ examples:
         query:
           cursor: "ZXhhbXBsZTE"
           limit: 20
+          application_name: "core-api"
       responses:
         "200":
           application/json: {"items": [], "limit": 20, "next_cursor": "ZXhhbXBsZTE", "previous_cursor": "Xkjss7asS"}
@@ -2763,6 +2844,8 @@ examples:
       parameters:
         path:
           payment_service_definition_id: "adyen-ideal"
+        query:
+          application_name: "core-api"
       responses:
         "200":
           application/json: {"id": "adyen-ideal", "type": "payment-service-definition", "display_name": "iDEAL", "method": "multibanco", "fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "boolean", "secret": true}], "reporting_fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true}, {"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true}], "supported_currencies": ["USD", "GBP", "EUR", "AUD"], "supported_countries": ["US"], "mode": "card", "icon_url": "https://example.com/icons/adyen-ideal.svg", "supported_features": {"key": true, "key1": false}, "required_checkout_fields": [{"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"], "conditions": {"country": ["IN"]}}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"], "conditions": {"country": ["IN"]}}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"], "conditions": {"country": ["IN"]}}], "configuration": {"approval_ui_target": "any", "approval_ui_height": "100px", "approval_ui_width": "100px", "cart_items_limit": 100, "cart_items_required": true, "cart_items_should_match_amount": true}}
@@ -2795,6 +2878,8 @@ examples:
       parameters:
         path:
           payment_service_definition_id: "adyen-ideal"
+        query:
+          application_name: "core-api"
       requestBody:
         application/json: {}
       responses:
@@ -2832,6 +2917,7 @@ examples:
           limit: 20
           deleted: true
           method: "card"
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2862,6 +2948,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
   update_payment_service:
     speakeasy-default-update-payment-service:
+      parameters:
+        query:
+          application_name: "core-api"
       requestBody:
         application/json: {"display_name": "Stripe", "payment_service_definition_id": "stripe-card", "fields": [{"key": "api_key", "value": "key-12345"}, {"key": "api_key", "value": "key-12345"}], "reporting_fields": [{"key": "api_key", "value": "key-12345"}, {"key": "api_key", "value": "key-12345"}, {"key": "api_key", "value": "key-12345"}], "position": 1, "accepted_currencies": ["USD", "EUR", "GBP"], "accepted_countries": ["US", "DE", "GB"], "active": true, "three_d_secure_enabled": true, "merchant_profile": {"key": {"merchant_acquirer_bin": "516327", "merchant_url": "https://example.com", "merchant_acquirer_id": "123456789012345", "merchant_name": "Acme Inc.", "merchant_country_code": "USD", "merchant_category_code": "1234"}, "key1": {"merchant_acquirer_bin": "516327", "merchant_url": "https://example.com", "merchant_acquirer_id": "123456789012345", "merchant_name": "Acme Inc.", "merchant_country_code": "USD", "merchant_category_code": "1234"}, "key2": {"merchant_acquirer_bin": "516327", "merchant_url": "https://example.com", "merchant_acquirer_id": "123456789012345", "merchant_name": "Acme Inc.", "merchant_country_code": "USD", "merchant_category_code": "1234"}}, "payment_method_tokenization_enabled": true, "network_tokens_enabled": true, "open_loop": true, "settlement_reporting_enabled": true}
       responses:
@@ -2896,6 +2985,8 @@ examples:
       parameters:
         path:
           payment_service_id: "fffd152a-9532-4087-9a4f-de58754210f0"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2929,6 +3020,8 @@ examples:
       parameters:
         path:
           payment_service_id: "fffd152a-9532-4087-9a4f-de58754210f0"
+        query:
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"display_name": "Stripe", "position": 1, "accepted_currencies": ["USD", "EUR", "GBP"], "accepted_countries": ["US", "DE", "GB"], "active": true, "three_d_secure_enabled": true, "merchant_profile": null, "payment_method_tokenization_enabled": true, "network_tokens_enabled": true, "open_loop": true, "settlement_reporting_enabled": true}
@@ -2966,6 +3059,7 @@ examples:
           payment_service_id: "fffd152a-9532-4087-9a4f-de58754210f0"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -2999,6 +3093,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"payment_service_definition_id": "stripe-card", "payment_service_id": "fffd152a-9532-4087-9a4f-de58754210f0", "fields": []}
@@ -3034,6 +3129,8 @@ examples:
       parameters:
         path:
           payment_service_id: "fffd152a-9532-4087-9a4f-de58754210f0"
+        query:
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {}
@@ -3073,6 +3170,7 @@ examples:
           action: "created"
           user_id: "14b7b8c5-a6ba-4fb6-bbab-52d43c7f37ef"
           resource_type: "user"
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -3106,6 +3204,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"cart_items": [{"name": "GoPro HD", "quantity": 2, "unit_amount": 1299, "discount_amount": 0, "tax_amount": 0, "external_identifier": "goprohd", "sku": "GPHD1078", "product_url": "https://example.com/catalog/go-pro-hd", "image_url": "https://example.com/images/go-pro-hd.jpg", "categories": ["camera", "travel", "gear"], "product_type": "physical", "seller_country": "US"}, {"name": "GoPro HD", "quantity": 2, "unit_amount": 1299, "discount_amount": 0, "tax_amount": 0, "external_identifier": "goprohd", "sku": "GPHD1078", "product_url": "https://example.com/catalog/go-pro-hd", "image_url": "https://example.com/images/go-pro-hd.jpg", "categories": ["camera", "travel", "gear"], "product_type": "physical", "seller_country": "US"}], "metadata": {"cohort": "cohort-a", "order_id": "order-12345"}, "buyer": {"display_name": "John Doe", "external_identifier": "buyer-12345", "billing_details": {"first_name": "John", "last_name": "Doe", "email_address": "john@example.com", "phone_number": "+1234567890", "address": {"city": "San Jose", "country": "US", "postal_code": "94560", "state": "California", "state_code": "US-CA", "house_number_or_name": "10", "line1": "Stafford Appartments", "line2": "29th Street", "organization": "Gr4vy"}, "tax_id": {"value": "12345678931", "kind": "my.frp"}}, "shipping_details": {"first_name": "John", "last_name": "Doe", "email_address": "john@example.com", "phone_number": "+1234567890", "address": null}}, "airline": {"booking_code": "X36Q9C", "is_cardholder_traveling": true, "issued_address": "123 Broadway, New York", "issued_at": "2013-07-16T19:23:00.000+00:00", "issuing_carrier_code": "649", "issuing_carrier_name": "Air Transat A.T. Inc", "issuing_iata_designator": "TS", "issuing_icao_code": "TSC", "legs": [{"arrival_airport": "LAX", "arrival_at": "2013-07-16T19:23:00.000+00:00", "arrival_city": "Los Angeles", "arrival_country": "US", "carrier_code": "649", "carrier_name": "Air Transat A.T. Inc", "iata_designator": "TS", "icao_code": "TSC", "coupon_number": "15885566", "departure_airport": "LHR", "departure_at": "2013-07-16T19:23:00.000+00:00", "departure_city": "London", "departure_country": "GB", "departure_tax_amount": 1200, "fare_amount": 129900, "fare_basis_code": "FY", "fee_amount": 1200, "flight_class": "E", "flight_number": "101", "route_type": "round_trip", "seat_class": "F", "stop_over": false, "tax_amount": 1200}, {"arrival_airport": "LAX", "arrival_at": "2013-07-16T19:23:00.000+00:00", "arrival_city": "Los Angeles", "arrival_country": "US", "carrier_code": "649", "carrier_name": "Air Transat A.T. Inc", "iata_designator": "TS", "icao_code": "TSC", "coupon_number": "15885566", "departure_airport": "LHR", "departure_at": "2013-07-16T19:23:00.000+00:00", "departure_city": "London", "departure_country": "GB", "departure_tax_amount": 1200, "fare_amount": 129900, "fare_basis_code": "FY", "fee_amount": 1200, "flight_class": "E", "flight_number": "101", "route_type": "round_trip", "seat_class": "F", "stop_over": false, "tax_amount": 1200}, {"arrival_airport": "LAX", "arrival_at": "2013-07-16T19:23:00.000+00:00", "arrival_city": "Los Angeles", "arrival_country": "US", "carrier_code": "649", "carrier_name": "Air Transat A.T. Inc", "iata_designator": "TS", "icao_code": "TSC", "coupon_number": "15885566", "departure_airport": "LHR", "departure_at": "2013-07-16T19:23:00.000+00:00", "departure_city": "London", "departure_country": "GB", "departure_tax_amount": 1200, "fare_amount": 129900, "fare_basis_code": "FY", "fee_amount": 1200, "flight_class": "E", "flight_number": "101", "route_type": "round_trip", "seat_class": "F", "stop_over": false, "tax_amount": 1200}], "passenger_name_record": "JOHN L", "passengers": [{"age_group": "adult", "date_of_birth": "2013-07-16", "email_address": "john@example.com", "first_name": "John", "frequent_flyer_number": "15885566", "last_name": "Luhn", "passport_number": "11117700225", "phone_number": "+1234567890", "ticket_number": "BA1236699999", "title": "Mr.", "country_code": "US"}, {"age_group": "adult", "date_of_birth": "2013-07-16", "email_address": "john@example.com", "first_name": "John", "frequent_flyer_number": "15885566", "last_name": "Luhn", "passport_number": "11117700225", "phone_number": "+1234567890", "ticket_number": "BA1236699999", "title": "Mr.", "country_code": "US"}], "reservation_system": "Amadeus", "restricted_ticket": false, "ticket_delivery_method": "electronic", "ticket_number": "123-1234-151555", "travel_agency_code": "12345", "travel_agency_invoice_number": "EG15555155", "travel_agency_name": "ACME Agency", "travel_agency_plan_name": "B733"}, "expires_in": 3600}
@@ -3143,6 +3242,7 @@ examples:
           session_id: "4137b1cf-39ac-42a8-bad6-1c680d5dab6b"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"cart_items": [{"name": "GoPro HD", "quantity": 2, "unit_amount": 1299, "discount_amount": 0, "tax_amount": 0, "external_identifier": "goprohd", "sku": "GPHD1078", "product_url": "https://example.com/catalog/go-pro-hd", "image_url": "https://example.com/images/go-pro-hd.jpg", "categories": ["camera", "travel", "gear"], "product_type": "physical", "seller_country": "GB"}, {"name": "GoPro HD", "quantity": 2, "unit_amount": 1299, "discount_amount": 0, "tax_amount": 0, "external_identifier": "goprohd", "sku": "GPHD1078", "product_url": "https://example.com/catalog/go-pro-hd", "image_url": "https://example.com/images/go-pro-hd.jpg", "categories": ["camera", "travel", "gear"], "product_type": "physical", "seller_country": "GB"}, {"name": "GoPro HD", "quantity": 2, "unit_amount": 1299, "discount_amount": 0, "tax_amount": 0, "external_identifier": "goprohd", "sku": "GPHD1078", "product_url": "https://example.com/catalog/go-pro-hd", "image_url": "https://example.com/images/go-pro-hd.jpg", "categories": ["camera", "travel", "gear"], "product_type": "physical", "seller_country": "GB"}], "metadata": {"cohort": "cohort-a", "order_id": "order-12345"}, "buyer": {"display_name": "John Doe", "external_identifier": "buyer-12345", "billing_details": {"first_name": "John", "last_name": "Doe", "email_address": "john@example.com", "phone_number": "+1234567890", "address": {"city": "San Jose", "country": "US", "postal_code": "94560", "state": "California", "state_code": "US-CA", "house_number_or_name": "10", "line1": "Stafford Appartments", "line2": "29th Street", "organization": "Gr4vy"}, "tax_id": {"value": "12345678931", "kind": "ar.cuit"}}, "shipping_details": {"first_name": "John", "last_name": "Doe", "email_address": "john@example.com", "phone_number": "+1234567890", "address": {"city": "San Jose", "country": "US", "postal_code": "94560", "state": "California", "state_code": "US-CA", "house_number_or_name": "10", "line1": "Stafford Appartments", "line2": "29th Street", "organization": "Gr4vy"}}}, "airline": {"booking_code": "X36Q9C", "is_cardholder_traveling": true, "issued_address": "123 Broadway, New York", "issued_at": "2013-07-16T19:23:00.000+00:00", "issuing_carrier_code": "649", "issuing_carrier_name": "Air Transat A.T. Inc", "issuing_iata_designator": "TS", "issuing_icao_code": "TSC", "legs": [{"arrival_airport": "LAX", "arrival_at": "2013-07-16T19:23:00.000+00:00", "arrival_city": "Los Angeles", "arrival_country": "US", "carrier_code": "649", "carrier_name": "Air Transat A.T. Inc", "iata_designator": "TS", "icao_code": "TSC", "coupon_number": "15885566", "departure_airport": "LHR", "departure_at": "2013-07-16T19:23:00.000+00:00", "departure_city": "London", "departure_country": "GB", "departure_tax_amount": 1200, "fare_amount": 129900, "fare_basis_code": "FY", "fee_amount": 1200, "flight_class": "E", "flight_number": "101", "route_type": "round_trip", "seat_class": "F", "stop_over": false, "tax_amount": 1200}], "passenger_name_record": "JOHN L", "passengers": [{"age_group": "adult", "date_of_birth": "2013-07-16", "email_address": "john@example.com", "first_name": "John", "frequent_flyer_number": "15885566", "last_name": "Luhn", "passport_number": "11117700225", "phone_number": "+1234567890", "ticket_number": "BA1236699999", "title": "Mr.", "country_code": "US"}], "reservation_system": "Amadeus", "restricted_ticket": false, "ticket_delivery_method": "electronic", "ticket_number": "123-1234-151555", "travel_agency_code": "12345", "travel_agency_invoice_number": "EG15555155", "travel_agency_name": "ACME Agency", "travel_agency_plan_name": "B733"}, "expires_in": 3600}
@@ -3180,6 +3280,7 @@ examples:
           session_id: "4137b1cf-39ac-42a8-bad6-1c680d5dab6b"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -3213,6 +3314,7 @@ examples:
           session_id: "4137b1cf-39ac-42a8-bad6-1c680d5dab6b"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       responses:
         "400":
@@ -3246,6 +3348,7 @@ examples:
           cursor: "ZXhhbXBsZTE"
           limit: 20
           search: "merchant-12345"
+          application_name: "core-api"
       responses:
         "200":
           application/json: {"items": [], "limit": 20, "next_cursor": "ZXhhbXBsZTE", "previous_cursor": "Xkjss7asS"}
@@ -3278,6 +3381,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
       requestBody:
         application/json: {"account_updater_enabled": true, "account_updater_request_encryption_key": "key-1234", "account_updater_request_encryption_key_id": "key-id-1234", "account_updater_response_decryption_key": "key-1234", "account_updater_response_decryption_key_id": "key-id-1234", "over_capture_amount": 1299, "over_capture_percentage": 25, "loon_client_key": "client-key-1234", "loon_secret_key": "key-12345", "loon_accepted_schemes": ["visa"], "visa_network_tokens_requestor_id": "id-12345", "visa_network_tokens_app_id": "id-12345", "amex_network_tokens_requestor_id": "id-12345", "amex_network_tokens_app_id": "id-12345", "mastercard_network_tokens_requestor_id": "id-12345", "mastercard_network_tokens_app_id": "id-12345", "outbound_webhook_url": "https://example.com/callback", "outbound_webhook_username": "user-12345", "outbound_webhook_password": "password-12345", "id": "merchant-12345", "display_name": "Example"}
       responses:
@@ -3312,6 +3416,8 @@ examples:
       parameters:
         path:
           merchant_account_id: "merchant-12345"
+        query:
+          application_name: "core-api"
       responses:
         "200":
           application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "outbound_webhook_url": "https://example.com/callback", "outbound_webhook_username": "user-12345", "outbound_webhook_password": "password-12345", "loon_client_key": "client-key-1234", "loon_secret_key": "key-12345", "loon_accepted_schemes": ["visa"], "account_updater_request_encryption_key": "key-1234", "account_updater_request_encryption_key_id": "key-id-1234", "account_updater_response_decryption_key": "key-1234", "account_updater_response_decryption_key_id": "key-id-1234", "account_updater_enabled": true, "over_capture_amount": 1299, "over_capture_percentage": 25, "visa_network_tokens_requestor_id": "id-12345", "visa_network_tokens_app_id": "id-12345", "amex_network_tokens_requestor_id": "id-12345", "amex_network_tokens_app_id": "id-12345", "mastercard_network_tokens_requestor_id": "id-12345", "mastercard_network_tokens_app_id": "id-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
@@ -3346,6 +3452,7 @@ examples:
           merchant_account_id: "merchant-12345"
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
       requestBody:
         application/json: {"account_updater_enabled": true, "account_updater_request_encryption_key": "key-1234", "account_updater_request_encryption_key_id": "key-id-1234", "account_updater_response_decryption_key": "key-1234", "account_updater_response_decryption_key_id": "key-id-1234", "over_capture_amount": 1299, "over_capture_percentage": 25, "loon_client_key": "client-key-1234", "loon_secret_key": "key-12345", "loon_accepted_schemes": ["visa"], "visa_network_tokens_requestor_id": "id-12345", "visa_network_tokens_app_id": "id-12345", "amex_network_tokens_requestor_id": "id-12345", "amex_network_tokens_app_id": "id-12345", "mastercard_network_tokens_requestor_id": "id-12345", "mastercard_network_tokens_app_id": "id-12345", "display_name": "Example", "outbound_webhook_url": "https://example.com/callback", "outbound_webhook_username": "user-12345", "outbound_webhook_password": "password-12345"}
       responses:
@@ -3381,6 +3488,7 @@ examples:
         query:
           cursor: "ZXhhbXBsZTE"
           limit: 20
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -3414,6 +3522,7 @@ examples:
       parameters:
         query:
           timeout_in_seconds: 1
+          application_name: "core-api"
         header: {}
       requestBody:
         application/json: {"amount": 1299, "currency": "EUR", "payment_service_id": "ed8bd87d-85ad-40cf-8e8f-007e21e55aad", "payment_method": {"method": "id", "id": "852b951c-d7ea-4c98-b09e-4a1c9e97c077"}, "category": "online_gambling", "external_identifier": "payout-12345", "buyer_id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "buyer": {"display_name": "John Doe", "external_identifier": "buyer-12345", "billing_details": {"first_name": "John", "last_name": "Doe", "email_address": "john@example.com", "phone_number": "+1234567890", "address": {"city": "San Jose", "country": "US", "postal_code": "94560", "state": "California", "state_code": "US-CA", "house_number_or_name": "10", "line1": "Stafford Appartments", "line2": "29th Street", "organization": "Gr4vy"}, "tax_id": {"value": "12345678931", "kind": "in.gst"}}, "shipping_details": {"first_name": "John", "last_name": "Doe", "email_address": "john@example.com", "phone_number": "+1234567890", "address": {"city": "San Jose", "country": "US", "postal_code": "94560", "state": "California", "state_code": "US-CA", "house_number_or_name": "10", "line1": "Stafford Appartments", "line2": "29th Street", "organization": "Gr4vy"}}}, "buyer_external_identifier": "buyer-12345", "merchant": null, "connection_options": {"checkout-card": {"processing_channel_id": "channel-1234", "source_id": "acct-1234"}}}
@@ -3449,6 +3558,8 @@ examples:
       parameters:
         path:
           payout_id: "4344fef2-bc2f-49a6-924f-343e62f67224"
+        query:
+          application_name: "core-api"
         header: {}
       responses:
         "200":
@@ -3485,6 +3596,7 @@ examples:
         query:
           cursor: "ZXhhbXBsZTE"
           limit: 100
+          application_name: "core-api"
       responses:
         "200":
           application/json: {"items": [{"type": "transaction-event", "id": "f133a3b7-e67e-4d83-bcd3-3e438fedf348", "name": "transaction-api-request", "created_at": "2013-07-16T19:23:00.000+00:00", "context": {}}], "limit": 20, "next_cursor": "ZXhhbXBsZTE", "previous_cursor": "Xkjss7asS"}
