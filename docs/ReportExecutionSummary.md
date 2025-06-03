@@ -1,0 +1,13 @@
+# ReportExecutionSummary
+
+
+## Fields
+
+| Field                                                         | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `type`                                                        | *?string*                                                     | :heavy_minus_sign:                                            | Always `report-execution`.                                    | report-execution                                              |
+| `id`                                                          | *string*                                                      | :heavy_check_mark:                                            | The unique ID for the report execution.                       | a1b2c3d4-5678-90ab-cdef-1234567890ab                          |
+| `createdAt`                                                   | [\DateTime](https://www.php.net/manual/en/class.datetime.php) | :heavy_check_mark:                                            | The date this report execution was created at.                | 2024-05-30T12:34:56.000Z                                      |
+| `updatedAt`                                                   | [\DateTime](https://www.php.net/manual/en/class.datetime.php) | :heavy_check_mark:                                            | The date this report execution was last updated.              | 2024-05-30T13:00:00.000Z                                      |
+| `status`                                                      | *string*                                                      | :heavy_check_mark:                                            | N/A                                                           |                                                               |
+| `context`                                                     | [ReportExecutionContext](./ReportExecutionContext.md)         | :heavy_check_mark:                                            | N/A                                                           |                                                               |
