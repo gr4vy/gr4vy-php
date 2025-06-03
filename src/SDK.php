@@ -24,35 +24,35 @@ class SDK
 
     public AccountUpdater $accountUpdater;
 
-    public Buyers $buyers;
+    public BuyersSDK $buyers;
 
-    public PaymentMethods $paymentMethods;
+    public PaymentMethodsSDK $paymentMethods;
 
-    public GiftCards $giftCards;
+    public GiftCardsSDK $giftCards;
 
-    public CardSchemeDefinitions $cardSchemeDefinitions;
+    public CardSchemeDefinitionsSDK $cardSchemeDefinitions;
 
-    public DigitalWallets $digitalWallets;
+    public DigitalWalletsSDK $digitalWallets;
 
     public Transactions $transactions;
 
-    public Refunds $refunds;
+    public RefundsSDK $refunds;
 
-    public PaymentOptions $paymentOptions;
+    public PaymentOptionsSDK $paymentOptions;
 
-    public PaymentServiceDefinitions $paymentServiceDefinitions;
+    public PaymentServiceDefinitionsSDK $paymentServiceDefinitions;
 
-    public PaymentServices $paymentServices;
+    public PaymentServicesSDK $paymentServices;
 
     public AuditLogs $auditLogs;
 
-    public Reports $reports;
+    public ReportsSDK $reports;
 
     public ReportsExecutions $reportsExecutions;
 
     public CheckoutSessions $checkoutSessions;
 
-    public MerchantAccounts $merchantAccounts;
+    public MerchantAccountsSDK $merchantAccounts;
 
     public Payouts $payouts;
 
@@ -73,21 +73,21 @@ class SDK
         public SDKConfiguration $sdkConfiguration,
     ) {
         $this->accountUpdater = new AccountUpdater($this->sdkConfiguration);
-        $this->buyers = new Buyers($this->sdkConfiguration);
-        $this->paymentMethods = new PaymentMethods($this->sdkConfiguration);
-        $this->giftCards = new GiftCards($this->sdkConfiguration);
-        $this->cardSchemeDefinitions = new CardSchemeDefinitions($this->sdkConfiguration);
-        $this->digitalWallets = new DigitalWallets($this->sdkConfiguration);
+        $this->buyers = new BuyersSDK($this->sdkConfiguration);
+        $this->paymentMethods = new PaymentMethodsSDK($this->sdkConfiguration);
+        $this->giftCards = new GiftCardsSDK($this->sdkConfiguration);
+        $this->cardSchemeDefinitions = new CardSchemeDefinitionsSDK($this->sdkConfiguration);
+        $this->digitalWallets = new DigitalWalletsSDK($this->sdkConfiguration);
         $this->transactions = new Transactions($this->sdkConfiguration);
-        $this->refunds = new Refunds($this->sdkConfiguration);
-        $this->paymentOptions = new PaymentOptions($this->sdkConfiguration);
-        $this->paymentServiceDefinitions = new PaymentServiceDefinitions($this->sdkConfiguration);
-        $this->paymentServices = new PaymentServices($this->sdkConfiguration);
+        $this->refunds = new RefundsSDK($this->sdkConfiguration);
+        $this->paymentOptions = new PaymentOptionsSDK($this->sdkConfiguration);
+        $this->paymentServiceDefinitions = new PaymentServiceDefinitionsSDK($this->sdkConfiguration);
+        $this->paymentServices = new PaymentServicesSDK($this->sdkConfiguration);
         $this->auditLogs = new AuditLogs($this->sdkConfiguration);
-        $this->reports = new Reports($this->sdkConfiguration);
+        $this->reports = new ReportsSDK($this->sdkConfiguration);
         $this->reportsExecutions = new ReportsExecutions($this->sdkConfiguration);
         $this->checkoutSessions = new CheckoutSessions($this->sdkConfiguration);
-        $this->merchantAccounts = new MerchantAccounts($this->sdkConfiguration);
+        $this->merchantAccounts = new MerchantAccountsSDK($this->sdkConfiguration);
         $this->payouts = new Payouts($this->sdkConfiguration);
         $this->initHooks();
 

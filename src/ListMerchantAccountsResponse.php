@@ -35,9 +35,9 @@ class ListMerchantAccountsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionMerchantAccount $collectionMerchantAccount
+     * @var ?MerchantAccounts $merchantAccounts
      */
-    public ?CollectionMerchantAccount $collectionMerchantAccount = null;
+    public ?MerchantAccounts $merchantAccounts = null;
 
     /**
      * @var \Closure(string): ?ListMerchantAccountsResponse $next
@@ -47,15 +47,15 @@ class ListMerchantAccountsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionMerchantAccount  $collectionMerchantAccount
+     * @param  ?MerchantAccounts  $merchantAccounts
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionMerchantAccount $collectionMerchantAccount = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?MerchantAccounts $merchantAccounts = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionMerchantAccount = $collectionMerchantAccount;
+        $this->merchantAccounts = $merchantAccounts;
     }
     /**
      * @param  string  $name

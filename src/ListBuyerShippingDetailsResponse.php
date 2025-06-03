@@ -35,22 +35,22 @@ class ListBuyerShippingDetailsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionNoCursorShippingDetails $collectionNoCursorShippingDetails
+     * @var ?ShippingDetailsList $shippingDetailsList
      */
-    public ?CollectionNoCursorShippingDetails $collectionNoCursorShippingDetails = null;
+    public ?ShippingDetailsList $shippingDetailsList = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionNoCursorShippingDetails  $collectionNoCursorShippingDetails
+     * @param  ?ShippingDetailsList  $shippingDetailsList
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionNoCursorShippingDetails $collectionNoCursorShippingDetails = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ShippingDetailsList $shippingDetailsList = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionNoCursorShippingDetails = $collectionNoCursorShippingDetails;
+        $this->shippingDetailsList = $shippingDetailsList;
     }
 }

@@ -126,12 +126,12 @@ class Events
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionTransactionEvent', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\TransactionEvents', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new ListTransactionEventsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionTransactionEvent: $obj);
+                    transactionEvents: $obj);
 
                 return $response;
             } else {

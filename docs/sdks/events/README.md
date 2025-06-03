@@ -36,7 +36,7 @@ $response = $sdk->transactions->events->list(
 
 );
 
-if ($response->collectionTransactionEvent !== null) {
+if ($response->transactionEvents !== null) {
     // handle response
 }
 ```

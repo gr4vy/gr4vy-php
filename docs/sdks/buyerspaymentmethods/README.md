@@ -32,7 +32,7 @@ $response = $sdk->buyers->paymentMethods->list(
     request: $request
 );
 
-if ($response->collectionNoCursorPaymentMethodSummary !== null) {
+if ($response->paymentMethodSummaries !== null) {
     // handle response
 }
 ```

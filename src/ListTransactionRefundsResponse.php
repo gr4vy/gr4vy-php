@@ -35,22 +35,22 @@ class ListTransactionRefundsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionRefund $collectionRefund
+     * @var ?Refunds $refunds
      */
-    public ?CollectionRefund $collectionRefund = null;
+    public ?Refunds $refunds = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionRefund  $collectionRefund
+     * @param  ?Refunds  $refunds
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionRefund $collectionRefund = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Refunds $refunds = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionRefund = $collectionRefund;
+        $this->refunds = $refunds;
     }
 }

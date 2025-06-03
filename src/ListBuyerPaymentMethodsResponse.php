@@ -35,22 +35,22 @@ class ListBuyerPaymentMethodsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionNoCursorPaymentMethodSummary $collectionNoCursorPaymentMethodSummary
+     * @var ?PaymentMethodSummaries $paymentMethodSummaries
      */
-    public ?CollectionNoCursorPaymentMethodSummary $collectionNoCursorPaymentMethodSummary = null;
+    public ?PaymentMethodSummaries $paymentMethodSummaries = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionNoCursorPaymentMethodSummary  $collectionNoCursorPaymentMethodSummary
+     * @param  ?PaymentMethodSummaries  $paymentMethodSummaries
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionNoCursorPaymentMethodSummary $collectionNoCursorPaymentMethodSummary = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PaymentMethodSummaries $paymentMethodSummaries = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionNoCursorPaymentMethodSummary = $collectionNoCursorPaymentMethodSummary;
+        $this->paymentMethodSummaries = $paymentMethodSummaries;
     }
 }

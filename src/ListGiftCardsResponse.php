@@ -35,9 +35,9 @@ class ListGiftCardsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionGiftCard $collectionGiftCard
+     * @var ?GiftCards $giftCards
      */
-    public ?CollectionGiftCard $collectionGiftCard = null;
+    public ?GiftCards $giftCards = null;
 
     /**
      * @var \Closure(string): ?ListGiftCardsResponse $next
@@ -47,15 +47,15 @@ class ListGiftCardsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionGiftCard  $collectionGiftCard
+     * @param  ?GiftCards  $giftCards
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionGiftCard $collectionGiftCard = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?GiftCards $giftCards = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionGiftCard = $collectionGiftCard;
+        $this->giftCards = $giftCards;
     }
     /**
      * @param  string  $name

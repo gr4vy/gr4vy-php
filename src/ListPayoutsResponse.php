@@ -35,9 +35,9 @@ class ListPayoutsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionPayoutSummary $collectionPayoutSummary
+     * @var ?PayoutSummaries $payoutSummaries
      */
-    public ?CollectionPayoutSummary $collectionPayoutSummary = null;
+    public ?PayoutSummaries $payoutSummaries = null;
 
     /**
      * @var \Closure(string): ?ListPayoutsResponse $next
@@ -47,15 +47,15 @@ class ListPayoutsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionPayoutSummary  $collectionPayoutSummary
+     * @param  ?PayoutSummaries  $payoutSummaries
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionPayoutSummary $collectionPayoutSummary = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PayoutSummaries $payoutSummaries = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionPayoutSummary = $collectionPayoutSummary;
+        $this->payoutSummaries = $payoutSummaries;
     }
     /**
      * @param  string  $name

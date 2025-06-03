@@ -760,12 +760,12 @@ class BuyersShippingDetails
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionNoCursorShippingDetails', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\ShippingDetailsList', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new ListBuyerShippingDetailsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionNoCursorShippingDetails: $obj);
+                    shippingDetailsList: $obj);
 
                 return $response;
             } else {

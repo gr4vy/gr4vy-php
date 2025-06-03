@@ -330,12 +330,12 @@ class Executions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionReportExecution', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\ReportExecutions', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new ListReportExecutionsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionReportExecution: $obj);
+                    reportExecutions: $obj);
                 $sdk = $this;
 
                 $response->next = function () use ($sdk, $responseData, $reportId, $limit, $merchantAccountId): ?ListReportExecutionsResponse {

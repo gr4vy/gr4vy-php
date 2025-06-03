@@ -35,22 +35,22 @@ class ListGiftCardBalancesResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionNoCursorGiftCardSummary $collectionNoCursorGiftCardSummary
+     * @var ?GiftCardSummaries $giftCardSummaries
      */
-    public ?CollectionNoCursorGiftCardSummary $collectionNoCursorGiftCardSummary = null;
+    public ?GiftCardSummaries $giftCardSummaries = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionNoCursorGiftCardSummary  $collectionNoCursorGiftCardSummary
+     * @param  ?GiftCardSummaries  $giftCardSummaries
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionNoCursorGiftCardSummary $collectionNoCursorGiftCardSummary = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?GiftCardSummaries $giftCardSummaries = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionNoCursorGiftCardSummary = $collectionNoCursorGiftCardSummary;
+        $this->giftCardSummaries = $giftCardSummaries;
     }
 }

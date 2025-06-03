@@ -117,12 +117,12 @@ class BuyersPaymentMethods
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionNoCursorPaymentMethodSummary', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\PaymentMethodSummaries', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new ListBuyerPaymentMethodsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionNoCursorPaymentMethodSummary: $obj);
+                    paymentMethodSummaries: $obj);
 
                 return $response;
             } else {

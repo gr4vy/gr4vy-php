@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 7225bf2c3c4c51c67fa3bad3af3ec5ba
+  docChecksum: 78284ec74810ae1076fbf09c0b330dc9
   docVersion: 1.0.0
   speakeasyVersion: 1.555.0
   generationVersion: 2.618.0
-  releaseVersion: 1.0.0-beta.13
-  configChecksum: 5a7b3703df912354a729fde254d61161
+  releaseVersion: 1.0.0-beta.14
+  configChecksum: 8d7e24d56143096ed16e938649649a1b
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -47,6 +47,7 @@ generatedFiles:
   - docs/AirlinePassenger.md
   - docs/ApplePayPaymentMethodCreate.md
   - docs/ApplePaySessionRequest.md
+  - docs/AuditLogEntries.md
   - docs/AuditLogEntry.md
   - docs/AuditLogEntryResource.md
   - docs/AuditLogEntryUser.md
@@ -57,10 +58,12 @@ generatedFiles:
   - docs/Buyer.md
   - docs/BuyerCreate.md
   - docs/BuyerUpdate.md
+  - docs/Buyers.md
   - docs/CaptureTransactionRequest.md
   - docs/CaptureTransactionResponse.md
   - docs/CardPaymentMethodCreate.md
   - docs/CardSchemeDefinition.md
+  - docs/CardSchemeDefinitions.md
   - docs/CardWithUrlPaymentMethodCreate.md
   - docs/CartItem.md
   - docs/CheckoutCardConnectionOptions.md
@@ -74,27 +77,6 @@ generatedFiles:
   - docs/ClickToPayPaymentMethodCreate.md
   - docs/ClickToPaySession.md
   - docs/ClickToPaySessionRequest.md
-  - docs/CollectionAuditLogEntry.md
-  - docs/CollectionBuyer.md
-  - docs/CollectionGiftCard.md
-  - docs/CollectionMerchantAccount.md
-  - docs/CollectionNoCursorCardSchemeDefinition.md
-  - docs/CollectionNoCursorDigitalWallet.md
-  - docs/CollectionNoCursorGiftCardSummary.md
-  - docs/CollectionNoCursorNetworkToken.md
-  - docs/CollectionNoCursorPaymentMethodSummary.md
-  - docs/CollectionNoCursorPaymentOption.md
-  - docs/CollectionNoCursorPaymentServiceToken.md
-  - docs/CollectionNoCursorShippingDetails.md
-  - docs/CollectionPaymentMethod.md
-  - docs/CollectionPaymentService.md
-  - docs/CollectionPaymentServiceDefinition.md
-  - docs/CollectionPayoutSummary.md
-  - docs/CollectionRefund.md
-  - docs/CollectionReport.md
-  - docs/CollectionReportExecution.md
-  - docs/CollectionTransactionEvent.md
-  - docs/CollectionTransactionSummary.md
   - docs/ConfigureDigitalWalletRequest.md
   - docs/ConfigureDigitalWalletResponse.md
   - docs/ConnectionOptions.md
@@ -163,6 +145,7 @@ generatedFiles:
   - docs/DigitalWalletCreate.md
   - docs/DigitalWalletDomain.md
   - docs/DigitalWalletUpdate.md
+  - docs/DigitalWallets.md
   - docs/ErrorDetail.md
   - docs/Field.md
   - docs/GetBuyerRequest.md
@@ -202,10 +185,12 @@ generatedFiles:
   - docs/GiftCardRequest.md
   - docs/GiftCardService.md
   - docs/GiftCardStoredRequest.md
+  - docs/GiftCardSummaries.md
   - docs/GiftCardSummary.md
   - docs/GiftCardTokenTransactionCreate.md
   - docs/GiftCardTransactionCreate.md
   - docs/GiftCardUnion.md
+  - docs/GiftCards.md
   - docs/GooglePayAssuranceDetails.md
   - docs/GooglePayFPANPaymentMethodCreate.md
   - docs/GooglePayPaymentMethodCreate.md
@@ -265,36 +250,46 @@ generatedFiles:
   - docs/MerchantAccount.md
   - docs/MerchantAccountCreate.md
   - docs/MerchantAccountUpdate.md
+  - docs/MerchantAccounts.md
   - docs/MerchantProfileScheme.md
   - docs/MerchantProfileSchemeSummary.md
   - docs/NetworkToken.md
   - docs/NetworkTokenCreate.md
   - docs/NetworkTokenPaymentMethodCreate.md
+  - docs/NetworkTokens.md
   - docs/PaymentMethod.md
   - docs/PaymentMethodCard.md
   - docs/PaymentMethodDetailsCard.md
   - docs/PaymentMethodStoredCard.md
+  - docs/PaymentMethodSummaries.md
   - docs/PaymentMethodSummary.md
+  - docs/PaymentMethods.md
   - docs/PaymentOption.md
   - docs/PaymentOptionContext.md
   - docs/PaymentOptionContextApprovalUI.md
   - docs/PaymentOptionRequest.md
+  - docs/PaymentOptions.md
   - docs/PaymentService.md
   - docs/PaymentServiceConfiguration.md
   - docs/PaymentServiceCreate.md
   - docs/PaymentServiceDefinition.md
+  - docs/PaymentServiceDefinitions.md
   - docs/PaymentServiceToken.md
   - docs/PaymentServiceTokenCreate.md
+  - docs/PaymentServiceTokens.md
   - docs/PaymentServiceUpdate.md
+  - docs/PaymentServices.md
   - docs/PayoutCreate.md
   - docs/PayoutCreatePaymentMethod.md
   - docs/PayoutMerchant.md
   - docs/PayoutMerchantSummary.md
   - docs/PayoutPaymentService.md
+  - docs/PayoutSummaries.md
   - docs/PayoutSummary.md
   - docs/Recipient.md
   - docs/RedirectPaymentMethodCreate.md
   - docs/Refund.md
+  - docs/Refunds.md
   - docs/RegisterDigitalWalletDomainRequest.md
   - docs/RegisterDigitalWalletDomainResponse.md
   - docs/Report.md
@@ -303,9 +298,11 @@ generatedFiles:
   - docs/ReportExecutionContext.md
   - docs/ReportExecutionSummary.md
   - docs/ReportExecutionUrl.md
+  - docs/ReportExecutions.md
   - docs/ReportSpec.md
   - docs/ReportSummary.md
   - docs/ReportUpdate.md
+  - docs/Reports.md
   - docs/RequiredCheckoutFields.md
   - docs/RequiredFields1.md
   - docs/RequiredFields2.md
@@ -315,6 +312,7 @@ generatedFiles:
   - docs/Security.md
   - docs/ShippingDetails.md
   - docs/ShippingDetailsCreate.md
+  - docs/ShippingDetailsList.md
   - docs/ShippingDetailsUpdate.md
   - docs/Spec.md
   - docs/StatementDescriptor.md
@@ -336,12 +334,14 @@ generatedFiles:
   - docs/TransactionCreate.md
   - docs/TransactionCreatePaymentMethod.md
   - docs/TransactionEvent.md
+  - docs/TransactionEvents.md
   - docs/TransactionGiftCard.md
   - docs/TransactionPaymentMethod.md
   - docs/TransactionPaymentService.md
   - docs/TransactionRefundAllCreate.md
   - docs/TransactionRefundCreate.md
   - docs/TransactionRetriesReportSpec.md
+  - docs/TransactionSummaries.md
   - docs/TransactionSummary.md
   - docs/TransactionThreeDSecureSummary.md
   - docs/TransactionsReportSpec.md
@@ -385,30 +385,30 @@ generatedFiles:
   - docs/sdks/all/README.md
   - docs/sdks/auditlogs/README.md
   - docs/sdks/balances/README.md
-  - docs/sdks/buyers/README.md
   - docs/sdks/buyersgiftcards/README.md
   - docs/sdks/buyerspaymentmethods/README.md
+  - docs/sdks/buyerssdk/README.md
   - docs/sdks/buyersshippingdetails/README.md
-  - docs/sdks/cardschemedefinitions/README.md
+  - docs/sdks/cardschemedefinitionssdk/README.md
   - docs/sdks/checkoutsessions/README.md
-  - docs/sdks/digitalwallets/README.md
+  - docs/sdks/digitalwalletssdk/README.md
   - docs/sdks/domains/README.md
   - docs/sdks/events/README.md
   - docs/sdks/executions/README.md
-  - docs/sdks/giftcards/README.md
+  - docs/sdks/giftcardssdk/README.md
   - docs/sdks/jobs/README.md
-  - docs/sdks/merchantaccounts/README.md
-  - docs/sdks/networktokens/README.md
+  - docs/sdks/merchantaccountssdk/README.md
   - docs/sdks/networktokenscryptogram/README.md
-  - docs/sdks/paymentmethods/README.md
-  - docs/sdks/paymentoptions/README.md
-  - docs/sdks/paymentservicedefinitions/README.md
-  - docs/sdks/paymentservices/README.md
-  - docs/sdks/paymentservicetokens/README.md
+  - docs/sdks/paymentmethodsnetworktokens/README.md
+  - docs/sdks/paymentmethodspaymentservicetokens/README.md
+  - docs/sdks/paymentmethodssdk/README.md
+  - docs/sdks/paymentoptionssdk/README.md
+  - docs/sdks/paymentservicedefinitionssdk/README.md
+  - docs/sdks/paymentservicessdk/README.md
   - docs/sdks/payouts/README.md
-  - docs/sdks/refunds/README.md
-  - docs/sdks/reports/README.md
+  - docs/sdks/refundssdk/README.md
   - docs/sdks/reportsexecutions/README.md
+  - docs/sdks/reportssdk/README.md
   - docs/sdks/sdk/README.md
   - docs/sdks/sessions/README.md
   - docs/sdks/transactions/README.md
@@ -434,6 +434,7 @@ generatedFiles:
   - src/All.php
   - src/ApplePayPaymentMethodCreate.php
   - src/ApplePaySessionRequest.php
+  - src/AuditLogEntries.php
   - src/AuditLogEntry.php
   - src/AuditLogEntryResource.php
   - src/AuditLogEntryUser.php
@@ -448,12 +449,14 @@ generatedFiles:
   - src/Buyers.php
   - src/BuyersGiftCards.php
   - src/BuyersPaymentMethods.php
+  - src/BuyersSDK.php
   - src/BuyersShippingDetails.php
   - src/CaptureTransactionRequest.php
   - src/CaptureTransactionResponse.php
   - src/CardPaymentMethodCreate.php
   - src/CardSchemeDefinition.php
   - src/CardSchemeDefinitions.php
+  - src/CardSchemeDefinitionsSDK.php
   - src/CardWithUrlPaymentMethodCreate.php
   - src/CartItem.php
   - src/CheckoutCardConnectionOptions.php
@@ -468,27 +471,6 @@ generatedFiles:
   - src/ClickToPayPaymentMethodCreate.php
   - src/ClickToPaySession.php
   - src/ClickToPaySessionRequest.php
-  - src/CollectionAuditLogEntry.php
-  - src/CollectionBuyer.php
-  - src/CollectionGiftCard.php
-  - src/CollectionMerchantAccount.php
-  - src/CollectionNoCursorCardSchemeDefinition.php
-  - src/CollectionNoCursorDigitalWallet.php
-  - src/CollectionNoCursorGiftCardSummary.php
-  - src/CollectionNoCursorNetworkToken.php
-  - src/CollectionNoCursorPaymentMethodSummary.php
-  - src/CollectionNoCursorPaymentOption.php
-  - src/CollectionNoCursorPaymentServiceToken.php
-  - src/CollectionNoCursorShippingDetails.php
-  - src/CollectionPaymentMethod.php
-  - src/CollectionPaymentService.php
-  - src/CollectionPaymentServiceDefinition.php
-  - src/CollectionPayoutSummary.php
-  - src/CollectionRefund.php
-  - src/CollectionReport.php
-  - src/CollectionReportExecution.php
-  - src/CollectionTransactionEvent.php
-  - src/CollectionTransactionSummary.php
   - src/ConfigureDigitalWalletRequest.php
   - src/ConfigureDigitalWalletResponse.php
   - src/ConnectionOptions.php
@@ -557,6 +539,7 @@ generatedFiles:
   - src/DigitalWalletDomain.php
   - src/DigitalWalletUpdate.php
   - src/DigitalWallets.php
+  - src/DigitalWalletsSDK.php
   - src/Domains.php
   - src/ErrorDetail.php
   - src/Events.php
@@ -599,10 +582,12 @@ generatedFiles:
   - src/GiftCardRequest.php
   - src/GiftCardService.php
   - src/GiftCardStoredRequest.php
+  - src/GiftCardSummaries.php
   - src/GiftCardSummary.php
   - src/GiftCardTokenTransactionCreate.php
   - src/GiftCardTransactionCreate.php
   - src/GiftCards.php
+  - src/GiftCardsSDK.php
   - src/GooglePayAssuranceDetails.php
   - src/GooglePayFPANPaymentMethodCreate.php
   - src/GooglePayPaymentMethodCreate.php
@@ -677,6 +662,7 @@ generatedFiles:
   - src/MerchantAccountCreate.php
   - src/MerchantAccountUpdate.php
   - src/MerchantAccounts.php
+  - src/MerchantAccountsSDK.php
   - src/MerchantProfileScheme.php
   - src/MerchantProfileSchemeSummary.php
   - src/NetworkToken.php
@@ -688,33 +674,42 @@ generatedFiles:
   - src/PaymentMethodCard.php
   - src/PaymentMethodDetailsCard.php
   - src/PaymentMethodStoredCard.php
+  - src/PaymentMethodSummaries.php
   - src/PaymentMethodSummary.php
   - src/PaymentMethods.php
+  - src/PaymentMethodsNetworkTokens.php
+  - src/PaymentMethodsPaymentServiceTokens.php
+  - src/PaymentMethodsSDK.php
   - src/PaymentOption.php
   - src/PaymentOptionContext.php
   - src/PaymentOptionContextApprovalUI.php
   - src/PaymentOptionRequest.php
   - src/PaymentOptions.php
+  - src/PaymentOptionsSDK.php
   - src/PaymentService.php
   - src/PaymentServiceConfiguration.php
   - src/PaymentServiceCreate.php
   - src/PaymentServiceDefinition.php
   - src/PaymentServiceDefinitions.php
+  - src/PaymentServiceDefinitionsSDK.php
   - src/PaymentServiceToken.php
   - src/PaymentServiceTokenCreate.php
   - src/PaymentServiceTokens.php
   - src/PaymentServiceUpdate.php
   - src/PaymentServices.php
+  - src/PaymentServicesSDK.php
   - src/PayoutCreate.php
   - src/PayoutMerchant.php
   - src/PayoutMerchantSummary.php
   - src/PayoutPaymentService.php
+  - src/PayoutSummaries.php
   - src/PayoutSummary.php
   - src/Payouts.php
   - src/Recipient.php
   - src/RedirectPaymentMethodCreate.php
   - src/Refund.php
   - src/Refunds.php
+  - src/RefundsSDK.php
   - src/RegisterDigitalWalletDomainRequest.php
   - src/RegisterDigitalWalletDomainResponse.php
   - src/Report.php
@@ -723,11 +718,13 @@ generatedFiles:
   - src/ReportExecutionContext.php
   - src/ReportExecutionSummary.php
   - src/ReportExecutionUrl.php
+  - src/ReportExecutions.php
   - src/ReportSpec.php
   - src/ReportSummary.php
   - src/ReportUpdate.php
   - src/Reports.php
   - src/ReportsExecutions.php
+  - src/ReportsSDK.php
   - src/RequiredCheckoutFields.php
   - src/ResumePaymentMethodNetworkTokenRequest.php
   - src/ResumePaymentMethodNetworkTokenResponse.php
@@ -738,6 +735,7 @@ generatedFiles:
   - src/Sessions.php
   - src/ShippingDetails.php
   - src/ShippingDetailsCreate.php
+  - src/ShippingDetailsList.php
   - src/ShippingDetailsUpdate.php
   - src/StatementDescriptor.php
   - src/SuspendPaymentMethodNetworkTokenRequest.php
@@ -755,12 +753,14 @@ generatedFiles:
   - src/TransactionCapture.php
   - src/TransactionCreate.php
   - src/TransactionEvent.php
+  - src/TransactionEvents.php
   - src/TransactionGiftCard.php
   - src/TransactionPaymentMethod.php
   - src/TransactionPaymentService.php
   - src/TransactionRefundAllCreate.php
   - src/TransactionRefundCreate.php
   - src/TransactionRetriesReportSpec.php
+  - src/TransactionSummaries.php
   - src/TransactionSummary.php
   - src/TransactionThreeDSecureSummary.php
   - src/Transactions.php

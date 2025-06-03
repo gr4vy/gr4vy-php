@@ -35,9 +35,9 @@ class ListReportsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionReport $collectionReport
+     * @var ?Reports $reports
      */
-    public ?CollectionReport $collectionReport = null;
+    public ?Reports $reports = null;
 
     /**
      * @var \Closure(string): ?ListReportsResponse $next
@@ -47,15 +47,15 @@ class ListReportsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionReport  $collectionReport
+     * @param  ?Reports  $reports
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionReport $collectionReport = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Reports $reports = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionReport = $collectionReport;
+        $this->reports = $reports;
     }
     /**
      * @param  string  $name

@@ -117,12 +117,12 @@ class AuditLogs
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionAuditLogEntry', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\AuditLogEntries', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new ListAuditLogsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionAuditLogEntry: $obj);
+                    auditLogEntries: $obj);
                 $sdk = $this;
 
                 $response->next = function () use ($sdk, $responseData, $request): ?ListAuditLogsResponse {

@@ -35,22 +35,22 @@ class ListTransactionEventsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionTransactionEvent $collectionTransactionEvent
+     * @var ?TransactionEvents $transactionEvents
      */
-    public ?CollectionTransactionEvent $collectionTransactionEvent = null;
+    public ?TransactionEvents $transactionEvents = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionTransactionEvent  $collectionTransactionEvent
+     * @param  ?TransactionEvents  $transactionEvents
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionTransactionEvent $collectionTransactionEvent = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?TransactionEvents $transactionEvents = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionTransactionEvent = $collectionTransactionEvent;
+        $this->transactionEvents = $transactionEvents;
     }
 }
