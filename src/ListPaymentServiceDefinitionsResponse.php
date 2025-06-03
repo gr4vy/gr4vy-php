@@ -35,9 +35,9 @@ class ListPaymentServiceDefinitionsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionPaymentServiceDefinition $collectionPaymentServiceDefinition
+     * @var ?PaymentServiceDefinitions $paymentServiceDefinitions
      */
-    public ?CollectionPaymentServiceDefinition $collectionPaymentServiceDefinition = null;
+    public ?PaymentServiceDefinitions $paymentServiceDefinitions = null;
 
     /**
      * @var \Closure(string): ?ListPaymentServiceDefinitionsResponse $next
@@ -47,15 +47,15 @@ class ListPaymentServiceDefinitionsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionPaymentServiceDefinition  $collectionPaymentServiceDefinition
+     * @param  ?PaymentServiceDefinitions  $paymentServiceDefinitions
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionPaymentServiceDefinition $collectionPaymentServiceDefinition = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PaymentServiceDefinitions $paymentServiceDefinitions = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionPaymentServiceDefinition = $collectionPaymentServiceDefinition;
+        $this->paymentServiceDefinitions = $paymentServiceDefinitions;
     }
     /**
      * @param  string  $name

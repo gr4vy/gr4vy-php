@@ -35,22 +35,22 @@ class ListPaymentMethodPaymentServiceTokensResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionNoCursorPaymentServiceToken $collectionNoCursorPaymentServiceToken
+     * @var ?PaymentServiceTokens $paymentServiceTokens
      */
-    public ?CollectionNoCursorPaymentServiceToken $collectionNoCursorPaymentServiceToken = null;
+    public ?PaymentServiceTokens $paymentServiceTokens = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionNoCursorPaymentServiceToken  $collectionNoCursorPaymentServiceToken
+     * @param  ?PaymentServiceTokens  $paymentServiceTokens
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionNoCursorPaymentServiceToken $collectionNoCursorPaymentServiceToken = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PaymentServiceTokens $paymentServiceTokens = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionNoCursorPaymentServiceToken = $collectionNoCursorPaymentServiceToken;
+        $this->paymentServiceTokens = $paymentServiceTokens;
     }
 }

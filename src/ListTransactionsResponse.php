@@ -35,9 +35,9 @@ class ListTransactionsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionTransactionSummary $collectionTransactionSummary
+     * @var ?TransactionSummaries $transactionSummaries
      */
-    public ?CollectionTransactionSummary $collectionTransactionSummary = null;
+    public ?TransactionSummaries $transactionSummaries = null;
 
     /**
      * @var \Closure(string): ?ListTransactionsResponse $next
@@ -47,15 +47,15 @@ class ListTransactionsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionTransactionSummary  $collectionTransactionSummary
+     * @param  ?TransactionSummaries  $transactionSummaries
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionTransactionSummary $collectionTransactionSummary = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?TransactionSummaries $transactionSummaries = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionTransactionSummary = $collectionTransactionSummary;
+        $this->transactionSummaries = $transactionSummaries;
     }
     /**
      * @param  string  $name

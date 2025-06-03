@@ -101,7 +101,7 @@ $response = $sdk->buyers->shippingDetails->list(
 
 );
 
-if ($response->collectionNoCursorShippingDetails !== null) {
+if ($response->shippingDetailsList !== null) {
     // handle response
 }
 ```

@@ -35,22 +35,22 @@ class ListDigitalWalletsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionNoCursorDigitalWallet $collectionNoCursorDigitalWallet
+     * @var ?DigitalWallets $digitalWallets
      */
-    public ?CollectionNoCursorDigitalWallet $collectionNoCursorDigitalWallet = null;
+    public ?DigitalWallets $digitalWallets = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionNoCursorDigitalWallet  $collectionNoCursorDigitalWallet
+     * @param  ?DigitalWallets  $digitalWallets
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionNoCursorDigitalWallet $collectionNoCursorDigitalWallet = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?DigitalWallets $digitalWallets = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionNoCursorDigitalWallet = $collectionNoCursorDigitalWallet;
+        $this->digitalWallets = $digitalWallets;
     }
 }

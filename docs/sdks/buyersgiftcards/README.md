@@ -35,7 +35,7 @@ $response = $sdk->buyers->giftCards->list(
 
 );
 
-if ($response->collectionNoCursorGiftCardSummary !== null) {
+if ($response->giftCardSummaries !== null) {
     // handle response
 }
 ```

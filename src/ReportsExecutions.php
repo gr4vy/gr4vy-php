@@ -343,12 +343,12 @@ class ReportsExecutions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionReportExecution', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\ReportExecutions', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new ListAllReportExecutionsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionReportExecution: $obj);
+                    reportExecutions: $obj);
 
                 return $response;
             } else {

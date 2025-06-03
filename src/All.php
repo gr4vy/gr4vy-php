@@ -99,12 +99,12 @@ class All
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionRefund', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Refunds', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new CreateFullTransactionRefundResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionRefund: $obj);
+                    refunds: $obj);
 
                 return $response;
             } else {

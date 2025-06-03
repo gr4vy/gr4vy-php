@@ -35,22 +35,22 @@ class ListPaymentMethodNetworkTokensResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionNoCursorNetworkToken $collectionNoCursorNetworkToken
+     * @var ?NetworkTokens $networkTokens
      */
-    public ?CollectionNoCursorNetworkToken $collectionNoCursorNetworkToken = null;
+    public ?NetworkTokens $networkTokens = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionNoCursorNetworkToken  $collectionNoCursorNetworkToken
+     * @param  ?NetworkTokens  $networkTokens
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionNoCursorNetworkToken $collectionNoCursorNetworkToken = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?NetworkTokens $networkTokens = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionNoCursorNetworkToken = $collectionNoCursorNetworkToken;
+        $this->networkTokens = $networkTokens;
     }
 }

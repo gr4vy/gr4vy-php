@@ -35,9 +35,9 @@ class ListAuditLogsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionAuditLogEntry $collectionAuditLogEntry
+     * @var ?AuditLogEntries $auditLogEntries
      */
-    public ?CollectionAuditLogEntry $collectionAuditLogEntry = null;
+    public ?AuditLogEntries $auditLogEntries = null;
 
     /**
      * @var \Closure(string): ?ListAuditLogsResponse $next
@@ -47,15 +47,15 @@ class ListAuditLogsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionAuditLogEntry  $collectionAuditLogEntry
+     * @param  ?AuditLogEntries  $auditLogEntries
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionAuditLogEntry $collectionAuditLogEntry = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?AuditLogEntries $auditLogEntries = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionAuditLogEntry = $collectionAuditLogEntry;
+        $this->auditLogEntries = $auditLogEntries;
     }
     /**
      * @param  string  $name

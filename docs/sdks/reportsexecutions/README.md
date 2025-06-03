@@ -33,7 +33,7 @@ $response = $sdk->reportsExecutions->list(
     request: $request
 );
 
-if ($response->collectionReportExecution !== null) {
+if ($response->reportExecutions !== null) {
     // handle response
 }
 ```

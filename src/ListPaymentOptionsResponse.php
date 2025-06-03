@@ -35,22 +35,22 @@ class ListPaymentOptionsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionNoCursorPaymentOption $collectionNoCursorPaymentOption
+     * @var ?PaymentOptions $paymentOptions
      */
-    public ?CollectionNoCursorPaymentOption $collectionNoCursorPaymentOption = null;
+    public ?PaymentOptions $paymentOptions = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionNoCursorPaymentOption  $collectionNoCursorPaymentOption
+     * @param  ?PaymentOptions  $paymentOptions
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionNoCursorPaymentOption $collectionNoCursorPaymentOption = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PaymentOptions $paymentOptions = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionNoCursorPaymentOption = $collectionNoCursorPaymentOption;
+        $this->paymentOptions = $paymentOptions;
     }
 }

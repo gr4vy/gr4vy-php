@@ -557,12 +557,12 @@ class Payouts
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionPayoutSummary', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\PayoutSummaries', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new ListPayoutsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionPayoutSummary: $obj);
+                    payoutSummaries: $obj);
                 $sdk = $this;
 
                 $response->next = function () use ($sdk, $responseData, $limit, $merchantAccountId): ?ListPayoutsResponse {

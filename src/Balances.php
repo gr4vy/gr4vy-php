@@ -98,12 +98,12 @@ class Balances
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionNoCursorGiftCardSummary', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\GiftCardSummaries', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new ListGiftCardBalancesResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionNoCursorGiftCardSummary: $obj);
+                    giftCardSummaries: $obj);
 
                 return $response;
             } else {

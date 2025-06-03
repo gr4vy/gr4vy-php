@@ -35,7 +35,7 @@ $response = $sdk->transactions->refunds->all->create(
 
 );
 
-if ($response->collectionRefund !== null) {
+if ($response->refunds !== null) {
     // handle response
 }
 ```

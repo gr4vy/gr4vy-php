@@ -35,22 +35,22 @@ class ListCardSchemeDefinitionsResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionNoCursorCardSchemeDefinition $collectionNoCursorCardSchemeDefinition
+     * @var ?CardSchemeDefinitions $cardSchemeDefinitions
      */
-    public ?CollectionNoCursorCardSchemeDefinition $collectionNoCursorCardSchemeDefinition = null;
+    public ?CardSchemeDefinitions $cardSchemeDefinitions = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionNoCursorCardSchemeDefinition  $collectionNoCursorCardSchemeDefinition
+     * @param  ?CardSchemeDefinitions  $cardSchemeDefinitions
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionNoCursorCardSchemeDefinition $collectionNoCursorCardSchemeDefinition = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CardSchemeDefinitions $cardSchemeDefinitions = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionNoCursorCardSchemeDefinition = $collectionNoCursorCardSchemeDefinition;
+        $this->cardSchemeDefinitions = $cardSchemeDefinitions;
     }
 }

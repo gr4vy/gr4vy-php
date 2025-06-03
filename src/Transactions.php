@@ -767,12 +767,12 @@ class Transactions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionTransactionSummary', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\TransactionSummaries', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new ListTransactionsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    collectionTransactionSummary: $obj);
+                    transactionSummaries: $obj);
                 $sdk = $this;
 
                 $response->next = function () use ($sdk, $responseData, $request): ?ListTransactionsResponse {

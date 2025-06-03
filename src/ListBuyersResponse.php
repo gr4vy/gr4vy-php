@@ -35,9 +35,9 @@ class ListBuyersResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionBuyer $collectionBuyer
+     * @var ?Buyers $buyers
      */
-    public ?CollectionBuyer $collectionBuyer = null;
+    public ?Buyers $buyers = null;
 
     /**
      * @var \Closure(string): ?ListBuyersResponse $next
@@ -47,15 +47,15 @@ class ListBuyersResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionBuyer  $collectionBuyer
+     * @param  ?Buyers  $buyers
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionBuyer $collectionBuyer = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Buyers $buyers = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionBuyer = $collectionBuyer;
+        $this->buyers = $buyers;
     }
     /**
      * @param  string  $name
