@@ -383,6 +383,23 @@ if ($response->accountUpdaterJob !== null) {
 
 * [get](docs/sdks/refunds/README.md#get) - Get refund
 
+### [reports](docs/sdks/reports/README.md)
+
+* [list](docs/sdks/reports/README.md#list) - List configured reports
+* [create](docs/sdks/reports/README.md#create) - Add a report
+* [get](docs/sdks/reports/README.md#get) - Get a report
+* [put](docs/sdks/reports/README.md#put) - Update a report
+
+#### [reports->executions](docs/sdks/executions/README.md)
+
+* [list](docs/sdks/executions/README.md#list) - List executions for report
+* [url](docs/sdks/executions/README.md#url) - Create URL for executed report
+
+### [reportsExecutions](docs/sdks/reportsexecutions/README.md)
+
+* [list](docs/sdks/reportsexecutions/README.md#list) - List executed reports
+* [get](docs/sdks/reportsexecutions/README.md#get) - Get executed report
+
 
 ### [transactions](docs/sdks/transactions/README.md)
 
