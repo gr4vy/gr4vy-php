@@ -21,6 +21,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -29,7 +30,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->cardSchemeDefinitions->list(
-    merchantAccountId: 'default'
+
 );
 
 if ($response->cardSchemeDefinitions !== null) {

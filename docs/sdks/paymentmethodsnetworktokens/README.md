@@ -25,6 +25,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -33,9 +34,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->paymentMethods->networkTokens->list(
-    paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-    merchantAccountId: 'default'
-
+    paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389'
 );
 
 if ($response->networkTokens !== null) {
@@ -86,6 +85,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -98,8 +98,7 @@ $networkTokenCreate = new Gr4vy\NetworkTokenCreate(
 
 $response = $sdk->paymentMethods->networkTokens->create(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-    networkTokenCreate: $networkTokenCreate,
-    merchantAccountId: 'default'
+    networkTokenCreate: $networkTokenCreate
 
 );
 
@@ -152,6 +151,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -161,8 +161,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->paymentMethods->networkTokens->suspend(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-    networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298',
-    merchantAccountId: 'default'
+    networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298'
 
 );
 
@@ -215,6 +214,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -224,8 +224,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->paymentMethods->networkTokens->resume(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-    networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298',
-    merchantAccountId: 'default'
+    networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298'
 
 );
 
@@ -278,6 +277,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -287,8 +287,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->paymentMethods->networkTokens->delete(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-    networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298',
-    merchantAccountId: 'default'
+    networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298'
 
 );
 

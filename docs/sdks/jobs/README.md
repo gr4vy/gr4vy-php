@@ -21,6 +21,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -34,9 +35,7 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 );
 
 $response = $sdk->accountUpdater->jobs->create(
-    accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    merchantAccountId: 'default'
-
+    accountUpdaterJobCreate: $accountUpdaterJobCreate
 );
 
 if ($response->accountUpdaterJob !== null) {

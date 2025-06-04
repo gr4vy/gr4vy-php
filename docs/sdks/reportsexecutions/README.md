@@ -22,6 +22,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -80,6 +81,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -88,9 +90,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->reportsExecutions->get(
-    reportExecutionId: '003bc416-f32a-420c-8eb2-062a386e1fb0',
-    merchantAccountId: 'default'
-
+    reportExecutionId: '003bc416-f32a-420c-8eb2-062a386e1fb0'
 );
 
 if ($response->reportExecution !== null) {

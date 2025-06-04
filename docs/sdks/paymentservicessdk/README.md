@@ -27,12 +27,17 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\ListPaymentServicesRequest();
+$request = new Gr4vy\ListPaymentServicesRequest(
+    method: 'card',
+    cursor: 'ZXhhbXBsZTE',
+    deleted: true,
+);
 
 $responses = $sdk->paymentServices->list(
     request: $request
@@ -88,6 +93,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -97,6 +103,10 @@ $paymentServiceCreate = new Gr4vy\PaymentServiceCreate(
     displayName: 'Stripe',
     paymentServiceDefinitionId: 'stripe-card',
     fields: [
+        new Gr4vy\Field(
+            key: 'api_key',
+            value: 'key-12345',
+        ),
         new Gr4vy\Field(
             key: 'api_key',
             value: 'key-12345',
@@ -112,12 +122,12 @@ $paymentServiceCreate = new Gr4vy\PaymentServiceCreate(
         'DE',
         'GB',
     ],
+    threeDSecureEnabled: true,
+    settlementReportingEnabled: true,
 );
 
 $response = $sdk->paymentServices->create(
-    paymentServiceCreate: $paymentServiceCreate,
-    merchantAccountId: 'default'
-
+    paymentServiceCreate: $paymentServiceCreate
 );
 
 if ($response->paymentService !== null) {
@@ -168,6 +178,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -176,9 +187,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->paymentServices->get(
-    paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
-    merchantAccountId: 'default'
-
+    paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0'
 );
 
 if ($response->paymentService !== null) {
@@ -229,17 +238,19 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$paymentServiceUpdate = new Gr4vy\PaymentServiceUpdate();
+$paymentServiceUpdate = new Gr4vy\PaymentServiceUpdate(
+    settlementReportingEnabled: true,
+);
 
 $response = $sdk->paymentServices->update(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
-    paymentServiceUpdate: $paymentServiceUpdate,
-    merchantAccountId: 'default'
+    paymentServiceUpdate: $paymentServiceUpdate
 
 );
 
@@ -292,6 +303,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -300,9 +312,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->paymentServices->delete(
-    paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
-    merchantAccountId: 'default'
-
+    paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0'
 );
 
 if ($response->any !== null) {
@@ -353,6 +363,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -360,18 +371,11 @@ $sdk = Gr4vy\SDK::builder()
 
 $verifyCredentials = new Gr4vy\VerifyCredentials(
     paymentServiceDefinitionId: 'stripe-card',
-    fields: [
-        new Gr4vy\Field(
-            key: 'api_key',
-            value: 'key-12345',
-        ),
-    ],
+    fields: [],
 );
 
 $response = $sdk->paymentServices->verify(
-    verifyCredentials: $verifyCredentials,
-    merchantAccountId: 'default'
-
+    verifyCredentials: $verifyCredentials
 );
 
 if ($response->any !== null) {
@@ -422,6 +426,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -432,9 +437,8 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->paymentServices->session(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
     requestBody: [
-        'key' => '<value>',
-    ],
-    merchantAccountId: 'default'
+
+    ]
 
 );
 

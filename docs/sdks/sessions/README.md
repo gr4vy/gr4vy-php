@@ -23,6 +23,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -33,9 +34,7 @@ $googlePaySessionRequest = new Gr4vy\GooglePaySessionRequest(
 );
 
 $response = $sdk->digitalWallets->sessions->googlePay(
-    googlePaySessionRequest: $googlePaySessionRequest,
-    merchantAccountId: 'default'
-
+    googlePaySessionRequest: $googlePaySessionRequest
 );
 
 if ($response->googlePaySession !== null) {
@@ -86,6 +85,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -97,9 +97,7 @@ $applePaySessionRequest = new Gr4vy\ApplePaySessionRequest(
 );
 
 $response = $sdk->digitalWallets->sessions->applePay(
-    applePaySessionRequest: $applePaySessionRequest,
-    merchantAccountId: 'default'
-
+    applePaySessionRequest: $applePaySessionRequest
 );
 
 if ($response->applePaySession !== null) {

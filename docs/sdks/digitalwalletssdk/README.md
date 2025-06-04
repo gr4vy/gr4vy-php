@@ -25,21 +25,20 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
 $digitalWalletCreate = new Gr4vy\DigitalWalletCreate(
-    provider: '<value>',
+    provider: 'click-to-pay',
     merchantName: '<value>',
     acceptTermsAndConditions: false,
 );
 
 $response = $sdk->digitalWallets->create(
-    digitalWalletCreate: $digitalWalletCreate,
-    merchantAccountId: 'default'
-
+    digitalWalletCreate: $digitalWalletCreate
 );
 
 if ($response->digitalWallet !== null) {
@@ -90,6 +89,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -98,7 +98,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->digitalWallets->list(
-    merchantAccountId: 'default'
+
 );
 
 if ($response->digitalWallets !== null) {
@@ -148,6 +148,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -156,9 +157,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->digitalWallets->get(
-    digitalWalletId: '1808f5e6-b49c-4db9-94fa-22371ea352f5',
-    merchantAccountId: 'default'
-
+    digitalWalletId: '1808f5e6-b49c-4db9-94fa-22371ea352f5'
 );
 
 if ($response->digitalWallet !== null) {
@@ -209,6 +208,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -217,9 +217,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->digitalWallets->delete(
-    digitalWalletId: '1808f5e6-b49c-4db9-94fa-22371ea352f5',
-    merchantAccountId: 'default'
-
+    digitalWalletId: '1808f5e6-b49c-4db9-94fa-22371ea352f5'
 );
 
 if ($response->any !== null) {
@@ -270,6 +268,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -279,8 +278,7 @@ $digitalWalletUpdate = new Gr4vy\DigitalWalletUpdate();
 
 $response = $sdk->digitalWallets->update(
     digitalWalletId: '1808f5e6-b49c-4db9-94fa-22371ea352f5',
-    digitalWalletUpdate: $digitalWalletUpdate,
-    merchantAccountId: 'default'
+    digitalWalletUpdate: $digitalWalletUpdate
 
 );
 

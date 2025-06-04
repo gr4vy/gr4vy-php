@@ -22,6 +22,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -33,8 +34,7 @@ $digitalWalletDomain = new Gr4vy\DigitalWalletDomain(
 
 $response = $sdk->digitalWallets->domains->create(
     digitalWalletId: '1808f5e6-b49c-4db9-94fa-22371ea352f5',
-    digitalWalletDomain: $digitalWalletDomain,
-    merchantAccountId: 'default'
+    digitalWalletDomain: $digitalWalletDomain
 
 );
 
@@ -87,6 +87,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -98,8 +99,7 @@ $digitalWalletDomain = new Gr4vy\DigitalWalletDomain(
 
 $response = $sdk->digitalWallets->domains->delete(
     digitalWalletId: '',
-    digitalWalletDomain: $digitalWalletDomain,
-    merchantAccountId: 'default'
+    digitalWalletDomain: $digitalWalletDomain
 
 );
 

@@ -21,6 +21,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -29,9 +30,7 @@ $sdk = Gr4vy\SDK::builder()
 $paymentOptionRequest = new Gr4vy\PaymentOptionRequest();
 
 $response = $sdk->paymentOptions->list(
-    paymentOptionRequest: $paymentOptionRequest,
-    merchantAccountId: 'default'
-
+    paymentOptionRequest: $paymentOptionRequest
 );
 
 if ($response->paymentOptions !== null) {

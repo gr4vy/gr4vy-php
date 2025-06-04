@@ -155,7 +155,7 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->paymentServiceDefinitions->session(
     paymentServiceDefinitionId: 'adyen-ideal',
     requestBody: [
-        'key' => '<value>',
+
     ]
 
 );

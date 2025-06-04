@@ -21,6 +21,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -29,9 +30,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->refunds->get(
-    refundId: '6a1d4e46-14ed-4fe1-a45f-eff4e025d211',
-    merchantAccountId: 'default'
-
+    refundId: '6a1d4e46-14ed-4fe1-a45f-eff4e025d211'
 );
 
 if ($response->refund !== null) {

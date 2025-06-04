@@ -21,12 +21,18 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\ListBuyerPaymentMethodsRequest();
+$request = new Gr4vy\ListBuyerPaymentMethodsRequest(
+    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
+    buyerExternalIdentifier: 'buyer-12345',
+    country: 'US',
+    currency: 'USD',
+);
 
 $response = $sdk->buyers->paymentMethods->list(
     request: $request

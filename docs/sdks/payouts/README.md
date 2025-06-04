@@ -23,6 +23,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -32,8 +33,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $responses = $sdk->payouts->list(
     cursor: 'ZXhhbXBsZTE',
-    limit: 20,
-    merchantAccountId: 'default'
+    limit: 20
 
 );
 
@@ -89,6 +89,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -96,7 +97,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $payoutCreate = new Gr4vy\PayoutCreate(
     amount: 1299,
-    currency: 'USD',
+    currency: 'EUR',
     paymentServiceId: 'ed8bd87d-85ad-40cf-8e8f-007e21e55aad',
     paymentMethod: new Gr4vy\PaymentMethodStoredCard(
         id: '852b951c-d7ea-4c98-b09e-4a1c9e97c077',
@@ -104,9 +105,7 @@ $payoutCreate = new Gr4vy\PayoutCreate(
 );
 
 $response = $sdk->payouts->create(
-    payoutCreate: $payoutCreate,
-    merchantAccountId: 'default'
-
+    payoutCreate: $payoutCreate
 );
 
 if ($response->payoutSummary !== null) {
@@ -157,6 +156,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -165,9 +165,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->payouts->get(
-    payoutId: '4344fef2-bc2f-49a6-924f-343e62f67224',
-    merchantAccountId: 'default'
-
+    payoutId: '4344fef2-bc2f-49a6-924f-343e62f67224'
 );
 
 if ($response->payoutSummary !== null) {

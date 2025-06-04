@@ -24,6 +24,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -32,9 +33,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->giftCards->get(
-    giftCardId: '356d56e5-fe16-42ae-97ee-8d55d846ae2e',
-    merchantAccountId: 'default'
-
+    giftCardId: '356d56e5-fe16-42ae-97ee-8d55d846ae2e'
 );
 
 if ($response->giftCard !== null) {
@@ -85,6 +84,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -93,9 +93,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->giftCards->delete(
-    giftCardId: '356d56e5-fe16-42ae-97ee-8d55d846ae2e',
-    merchantAccountId: 'default'
-
+    giftCardId: '356d56e5-fe16-42ae-97ee-8d55d846ae2e'
 );
 
 if ($response->any !== null) {
@@ -146,6 +144,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -157,9 +156,7 @@ $giftCardCreate = new Gr4vy\GiftCardCreate(
 );
 
 $response = $sdk->giftCards->create(
-    giftCardCreate: $giftCardCreate,
-    merchantAccountId: 'default'
-
+    giftCardCreate: $giftCardCreate
 );
 
 if ($response->giftCard !== null) {
@@ -210,6 +207,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
