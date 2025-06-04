@@ -48,8 +48,6 @@ class SDK
 
     public ReportsSDK $reports;
 
-    public ReportsExecutions $reportsExecutions;
-
     public CheckoutSessions $checkoutSessions;
 
     public MerchantAccountsSDK $merchantAccounts;
@@ -87,7 +85,6 @@ class SDK
         $this->paymentServices = new PaymentServicesSDK($this->sdkConfiguration);
         $this->auditLogs = new AuditLogs($this->sdkConfiguration);
         $this->reports = new ReportsSDK($this->sdkConfiguration);
-        $this->reportsExecutions = new ReportsExecutions($this->sdkConfiguration);
         $this->checkoutSessions = new CheckoutSessions($this->sdkConfiguration);
         $this->merchantAccounts = new MerchantAccountsSDK($this->sdkConfiguration);
         $this->payouts = new Payouts($this->sdkConfiguration);
