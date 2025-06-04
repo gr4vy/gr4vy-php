@@ -24,6 +24,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -85,6 +86,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -94,6 +96,7 @@ $reportCreate = new Gr4vy\ReportCreate(
     name: 'Monthly Transaction Report',
     schedule: '<value>',
     scheduleEnabled: true,
+    scheduleTimezone: 'UTC',
     spec: new Gr4vy\DetailedSettlementReportSpec(
         params: [
             'filters' => [
@@ -107,9 +110,7 @@ $reportCreate = new Gr4vy\ReportCreate(
 );
 
 $response = $sdk->reports->create(
-    reportCreate: $reportCreate,
-    merchantAccountId: 'default'
-
+    reportCreate: $reportCreate
 );
 
 if ($response->report !== null) {
@@ -160,6 +161,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -168,9 +170,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->reports->get(
-    reportId: '4d4c7123-b794-4fad-b1b9-5ab2606e6bbe',
-    merchantAccountId: 'default'
-
+    reportId: '4d4c7123-b794-4fad-b1b9-5ab2606e6bbe'
 );
 
 if ($response->report !== null) {
@@ -221,6 +221,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -230,8 +231,7 @@ $reportUpdate = new Gr4vy\ReportUpdate();
 
 $response = $sdk->reports->put(
     reportId: '4d4c7123-b794-4fad-b1b9-5ab2606e6bbe',
-    reportUpdate: $reportUpdate,
-    merchantAccountId: 'default'
+    reportUpdate: $reportUpdate
 
 );
 

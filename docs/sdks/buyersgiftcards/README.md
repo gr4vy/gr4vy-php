@@ -21,6 +21,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -29,9 +30,6 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->buyers->giftCards->list(
-    buyerExternalIdentifier: '<value>',
-    buyerId: '43dacd6f-2cf2-4482-b522-f7a251f63637',
-    merchantAccountId: 'default'
 
 );
 

@@ -21,16 +21,19 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$transactionRefundAllCreate = new Gr4vy\TransactionRefundAllCreate();
+$transactionRefundAllCreate = new Gr4vy\TransactionRefundAllCreate(
+    reason: 'Refund due to user request.',
+    externalIdentifier: 'refund-12345',
+);
 
 $response = $sdk->transactions->refunds->all->create(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
-    merchantAccountId: 'default',
     transactionRefundAllCreate: $transactionRefundAllCreate
 
 );

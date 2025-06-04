@@ -21,6 +21,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -33,8 +34,7 @@ $cryptogramCreate = new Gr4vy\CryptogramCreate(
 $response = $sdk->paymentMethods->networkTokens->cryptogram->create(
     paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
     networkTokenId: 'f8dd5cfc-7834-4847-95dc-f75a360e2298',
-    cryptogramCreate: $cryptogramCreate,
-    merchantAccountId: 'default'
+    cryptogramCreate: $cryptogramCreate
 
 );
 

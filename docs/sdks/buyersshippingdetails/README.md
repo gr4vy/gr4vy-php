@@ -25,6 +25,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -34,8 +35,7 @@ $shippingDetailsCreate = new Gr4vy\ShippingDetailsCreate();
 
 $response = $sdk->buyers->shippingDetails->create(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
-    shippingDetailsCreate: $shippingDetailsCreate,
-    merchantAccountId: 'default'
+    shippingDetailsCreate: $shippingDetailsCreate
 
 );
 
@@ -88,6 +88,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -96,9 +97,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->buyers->shippingDetails->list(
-    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
-    merchantAccountId: 'default'
-
+    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9'
 );
 
 if ($response->shippingDetailsList !== null) {
@@ -149,6 +148,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -158,8 +158,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->buyers->shippingDetails->get(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
-    shippingDetailsId: 'bf8c36ad-02d9-4904-b0f9-a230b149e341',
-    merchantAccountId: 'default'
+    shippingDetailsId: 'bf8c36ad-02d9-4904-b0f9-a230b149e341'
 
 );
 
@@ -212,6 +211,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -222,8 +222,7 @@ $shippingDetailsUpdate = new Gr4vy\ShippingDetailsUpdate();
 $response = $sdk->buyers->shippingDetails->update(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     shippingDetailsId: 'bf8c36ad-02d9-4904-b0f9-a230b149e341',
-    shippingDetailsUpdate: $shippingDetailsUpdate,
-    merchantAccountId: 'default'
+    shippingDetailsUpdate: $shippingDetailsUpdate
 
 );
 
@@ -277,6 +276,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -286,8 +286,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->buyers->shippingDetails->delete(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
-    shippingDetailsId: 'bf8c36ad-02d9-4904-b0f9-a230b149e341',
-    merchantAccountId: 'default'
+    shippingDetailsId: 'bf8c36ad-02d9-4904-b0f9-a230b149e341'
 
 );
 

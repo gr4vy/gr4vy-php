@@ -23,6 +23,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -31,9 +32,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->transactions->refunds->list(
-    transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
-    merchantAccountId: 'default'
-
+    transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591'
 );
 
 if ($response->refunds !== null) {
@@ -84,6 +83,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -93,8 +93,7 @@ $transactionRefundCreate = new Gr4vy\TransactionRefundCreate();
 
 $response = $sdk->transactions->refunds->create(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
-    transactionRefundCreate: $transactionRefundCreate,
-    merchantAccountId: 'default'
+    transactionRefundCreate: $transactionRefundCreate
 
 );
 
@@ -147,6 +146,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -156,8 +156,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $response = $sdk->transactions->refunds->get(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
-    refundId: '6a1d4e46-14ed-4fe1-a45f-eff4e025d211',
-    merchantAccountId: 'default'
+    refundId: '6a1d4e46-14ed-4fe1-a45f-eff4e025d211'
 
 );
 

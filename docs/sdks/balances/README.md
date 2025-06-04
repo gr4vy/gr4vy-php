@@ -21,6 +21,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -31,13 +32,18 @@ $giftCardBalanceRequest = new Gr4vy\GiftCardBalanceRequest(
         new Gr4vy\GiftCardStoredRequest(
             id: '356d56e5-fe16-42ae-97ee-8d55d846ae2e',
         ),
+        new Gr4vy\GiftCardStoredRequest(
+            id: '356d56e5-fe16-42ae-97ee-8d55d846ae2e',
+        ),
+        new Gr4vy\GiftCardRequest(
+            number: '4123455541234561234',
+            pin: '1234',
+        ),
     ],
 );
 
 $response = $sdk->giftCards->balances->list(
-    giftCardBalanceRequest: $giftCardBalanceRequest,
-    merchantAccountId: 'default'
-
+    giftCardBalanceRequest: $giftCardBalanceRequest
 );
 
 if ($response->giftCardSummaries !== null) {

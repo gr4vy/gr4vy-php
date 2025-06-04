@@ -1,18 +1,18 @@
-# MerchantAccountsSDK
-(*merchantAccounts*)
+# PaymentLinks
+(*paymentLinks*)
 
 ## Overview
 
 ### Available Operations
 
-* [list](#list) - List all merchant accounts
-* [create](#create) - Create a merchant account
-* [get](#get) - Get a merchant account
-* [update](#update) - Update a merchant account
+* [create](#create) - Add a payment link
+* [list](#list) - List all payment links
+* [expire](#expire) - Expire a payment link
+* [get](#get) - Get payment link
 
-## list
+## create
 
-List all merchant accounts in an instance.
+Create a new payment link.
 
 ### Example Usage
 
@@ -24,39 +24,37 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-
-
-$responses = $sdk->merchantAccounts->list(
-    cursor: 'ZXhhbXBsZTE',
-    limit: 20,
-    search: 'merchant-12345'
-
+$paymentLinkCreate = new Gr4vy\PaymentLinkCreate(
+    amount: 1299,
+    country: 'DE',
+    currency: 'EUR',
 );
 
+$response = $sdk->paymentLinks->create(
+    paymentLinkCreate: $paymentLinkCreate
+);
 
-foreach ($responses as $response) {
-    if ($response->statusCode === 200) {
-        // handle response
-    }
+if ($response->paymentLink !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                         | Type                                              | Required                                          | Description                                       | Example                                           |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `cursor`                                          | *?string*                                         | :heavy_minus_sign:                                | A pointer to the page of results to return.       | ZXhhbXBsZTE                                       |
-| `limit`                                           | *?int*                                            | :heavy_minus_sign:                                | The maximum number of items that are at returned. | 20                                                |
-| `search`                                          | *?string*                                         | :heavy_minus_sign:                                | The search term to filter merchant accounts by.   | merchant-12345                                    |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `paymentLinkCreate`                                     | [PaymentLinkCreate](../../PaymentLinkCreate.md)         | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
-**[?ListMerchantAccountsResponse](../../ListMerchantAccountsResponse.md)**
+**[?AddPaymentLinkResponse](../../AddPaymentLinkResponse.md)**
 
 ### Errors
 
@@ -76,9 +74,9 @@ foreach ($responses as $response) {
 | errors\Error504            | 504                        | application/json           |
 | errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
-## create
+## list
 
-Create a new merchant account in an instance.
+List all created payment links.
 
 ### Example Usage
 
@@ -90,35 +88,97 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\MerchantAccountCreate(
-    accountUpdaterEnabled: true,
-    id: 'merchant-12345',
-    displayName: 'Example',
+
+
+$responses = $sdk->paymentLinks->list(
+    limit: 20
 );
 
-$response = $sdk->merchantAccounts->create(
-    request: $request
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `cursor`                                                | *?string*                                               | :heavy_minus_sign:                                      | A pointer to the page of results to return.             | ZXhhbXBsZTE                                             |
+| `limit`                                                 | *?int*                                                  | :heavy_minus_sign:                                      | The maximum number of items that are returned.          | 20                                                      |
+| `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
+
+### Response
+
+**[?ListPaymentLinksResponse](../../ListPaymentLinksResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors\Error400            | 400                        | application/json           |
+| errors\Error401            | 401                        | application/json           |
+| errors\Error403            | 403                        | application/json           |
+| errors\Error404            | 404                        | application/json           |
+| errors\Error405            | 405                        | application/json           |
+| errors\Error409            | 409                        | application/json           |
+| errors\HTTPValidationError | 422                        | application/json           |
+| errors\Error425            | 425                        | application/json           |
+| errors\Error429            | 429                        | application/json           |
+| errors\Error500            | 500                        | application/json           |
+| errors\Error502            | 502                        | application/json           |
+| errors\Error504            | 504                        | application/json           |
+| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## expire
+
+Expire an existing payment link.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Gr4vy;
+
+$sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+
+
+$response = $sdk->paymentLinks->expire(
+    paymentLinkId: 'a1b2c3d4-5678-90ab-cdef-1234567890ab'
 );
 
-if ($response->merchantAccount !== null) {
+if ($response->statusCode === 200) {
     // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `$request`                                                    | [Gr4vy\MerchantAccountCreate](../../MerchantAccountCreate.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `paymentLinkId`                                         | *string*                                                | :heavy_check_mark:                                      | The unique identifier for the payment link.             | a1b2c3d4-5678-90ab-cdef-1234567890ab                    |
+| `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
-**[?CreateMerchantAccountResponse](../../CreateMerchantAccountResponse.md)**
+**[?ExpirePaymentLinkResponse](../../ExpirePaymentLinkResponse.md)**
 
 ### Errors
 
@@ -140,7 +200,7 @@ if ($response->merchantAccount !== null) {
 
 ## get
 
-Get info about a merchant account in an instance.
+Fetch the details for a payment link.
 
 ### Example Usage
 
@@ -152,6 +212,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -159,73 +220,11 @@ $sdk = Gr4vy\SDK::builder()
 
 
 
-$response = $sdk->merchantAccounts->get(
-    merchantAccountId: 'merchant-12345'
+$response = $sdk->paymentLinks->get(
+    paymentLinkId: 'a1b2c3d4-5678-90ab-cdef-1234567890ab'
 );
 
-if ($response->merchantAccount !== null) {
-    // handle response
-}
-```
-
-### Parameters
-
-| Parameter                      | Type                           | Required                       | Description                    | Example                        |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `merchantAccountId`            | *string*                       | :heavy_check_mark:             | The ID of the merchant account | merchant-12345                 |
-
-### Response
-
-**[?GetMerchantAccountResponse](../../GetMerchantAccountResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors\Error400            | 400                        | application/json           |
-| errors\Error401            | 401                        | application/json           |
-| errors\Error403            | 403                        | application/json           |
-| errors\Error404            | 404                        | application/json           |
-| errors\Error405            | 405                        | application/json           |
-| errors\Error409            | 409                        | application/json           |
-| errors\HTTPValidationError | 422                        | application/json           |
-| errors\Error425            | 425                        | application/json           |
-| errors\Error429            | 429                        | application/json           |
-| errors\Error500            | 500                        | application/json           |
-| errors\Error502            | 502                        | application/json           |
-| errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
-
-## update
-
-Update info for a merchant account in an instance.
-
-### Example Usage
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Gr4vy;
-
-$sdk = Gr4vy\SDK::builder()
-    ->setSecurity(
-        '<YOUR_BEARER_TOKEN_HERE>'
-    )
-    ->build();
-
-$merchantAccountUpdate = new Gr4vy\MerchantAccountUpdate(
-    accountUpdaterEnabled: true,
-);
-
-$response = $sdk->merchantAccounts->update(
-    merchantAccountId: 'merchant-12345',
-    merchantAccountUpdate: $merchantAccountUpdate
-
-);
-
-if ($response->merchantAccount !== null) {
+if ($response->paymentLink !== null) {
     // handle response
 }
 ```
@@ -234,12 +233,12 @@ if ($response->merchantAccount !== null) {
 
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `merchantAccountId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the merchant account                          | merchant-12345                                          |
-| `merchantAccountUpdate`                                 | [MerchantAccountUpdate](../../MerchantAccountUpdate.md) | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `paymentLinkId`                                         | *string*                                                | :heavy_check_mark:                                      | The unique identifier for the payment link.             | a1b2c3d4-5678-90ab-cdef-1234567890ab                    |
+| `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
-**[?UpdateMerchantAccountResponse](../../UpdateMerchantAccountResponse.md)**
+**[?GetPaymentLinkResponse](../../GetPaymentLinkResponse.md)**
 
 ### Errors
 

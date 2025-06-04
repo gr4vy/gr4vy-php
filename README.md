@@ -218,6 +218,7 @@ $sdk = Gr4vy\SDK::builder()
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
+    ->setMerchantAccountId('default')
     ->build();
 
 $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
@@ -228,9 +229,7 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 );
 
 $response = $sdk->accountUpdater->jobs->create(
-    accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    merchantAccountId: 'default'
-
+    accountUpdaterJobCreate: $accountUpdaterJobCreate
 );
 
 if ($response->accountUpdaterJob !== null) {
@@ -327,6 +326,13 @@ if ($response->accountUpdaterJob !== null) {
 * [create](docs/sdks/merchantaccountssdk/README.md#create) - Create a merchant account
 * [get](docs/sdks/merchantaccountssdk/README.md#get) - Get a merchant account
 * [update](docs/sdks/merchantaccountssdk/README.md#update) - Update a merchant account
+
+### [paymentLinks](docs/sdks/paymentlinks/README.md)
+
+* [create](docs/sdks/paymentlinks/README.md#create) - Add a payment link
+* [list](docs/sdks/paymentlinks/README.md#list) - List all payment links
+* [expire](docs/sdks/paymentlinks/README.md#expire) - Expire a payment link
+* [get](docs/sdks/paymentlinks/README.md#get) - Get payment link
 
 ### [paymentMethods](docs/sdks/paymentmethodssdk/README.md)
 
@@ -432,7 +438,7 @@ if ($response->accountUpdaterJob !== null) {
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `merchant_account_id` to `'default'` at SDK initialization and then you do not have to pass the same value on calls to operations like `get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `merchant_account_id` to `` at SDK initialization and then you do not have to pass the same value on calls to operations like `get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -453,6 +459,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -485,12 +492,17 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest();
+$request = new Gr4vy\ListBuyersRequest(
+    cursor: 'ZXhhbXBsZTE',
+    search: 'John',
+    externalIdentifier: 'buyer-12345',
+);
 
 $responses = $sdk->buyers->list(
     request: $request
@@ -520,12 +532,17 @@ use Gr4vy;
 use Gr4vy\Utils\Retry;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest();
+$request = new Gr4vy\ListBuyersRequest(
+    cursor: 'ZXhhbXBsZTE',
+    search: 'John',
+    externalIdentifier: 'buyer-12345',
+);
 
 $responses = $sdk->buyers->list(
     request: $request,
@@ -566,12 +583,17 @@ $sdk = Gr4vy\SDK::builder()
             retryConnectionErrors: false,
         )
   )
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest();
+$request = new Gr4vy\ListBuyersRequest(
+    cursor: 'ZXhhbXBsZTE',
+    search: 'John',
+    externalIdentifier: 'buyer-12345',
+);
 
 $responses = $sdk->buyers->list(
     request: $request
@@ -629,6 +651,7 @@ use Gr4vy;
 use Gr4vy\errors;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -643,9 +666,7 @@ try {
     );
 
     $response = $sdk->accountUpdater->jobs->create(
-        accountUpdaterJobCreate: $accountUpdaterJobCreate,
-        merchantAccountId: 'default'
-
+        accountUpdaterJobCreate: $accountUpdaterJobCreate
     );
 
     if ($response->accountUpdaterJob !== null) {
@@ -724,6 +745,7 @@ use Gr4vy;
 $sdk = Gr4vy\SDK::builder()
     ->setServer('sandbox')
     ->setId('<id>')
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -737,9 +759,7 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 );
 
 $response = $sdk->accountUpdater->jobs->create(
-    accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    merchantAccountId: 'default'
-
+    accountUpdaterJobCreate: $accountUpdaterJobCreate
 );
 
 if ($response->accountUpdaterJob !== null) {
@@ -759,6 +779,7 @@ use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
     ->setServerURL('https://api.example.gr4vy.app')
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -772,9 +793,7 @@ $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
 );
 
 $response = $sdk->accountUpdater->jobs->create(
-    accountUpdaterJobCreate: $accountUpdaterJobCreate,
-    merchantAccountId: 'default'
-
+    accountUpdaterJobCreate: $accountUpdaterJobCreate
 );
 
 if ($response->accountUpdaterJob !== null) {

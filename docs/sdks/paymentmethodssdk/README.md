@@ -24,12 +24,18 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\ListPaymentMethodsRequest();
+$request = new Gr4vy\ListPaymentMethodsRequest(
+    cursor: 'ZXhhbXBsZTE',
+    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
+    buyerExternalIdentifier: 'buyer-12345',
+    externalIdentifier: 'payment-method-12345',
+);
 
 $responses = $sdk->paymentMethods->list(
     request: $request
@@ -85,6 +91,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -95,9 +102,7 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->paymentMethods->create(
     requestBody: new Gr4vy\CheckoutSessionPaymentMethodCreate(
         id: '4137b1cf-39ac-42a8-bad6-1c680d5dab6b',
-    ),
-    merchantAccountId: 'default'
-
+    )
 );
 
 if ($response->paymentMethod !== null) {
@@ -148,6 +153,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -156,9 +162,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->paymentMethods->get(
-    paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-    merchantAccountId: 'default'
-
+    paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389'
 );
 
 if ($response->paymentMethod !== null) {
@@ -209,6 +213,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -217,9 +222,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->paymentMethods->delete(
-    paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-    merchantAccountId: 'default'
-
+    paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389'
 );
 
 if ($response->statusCode === 200) {

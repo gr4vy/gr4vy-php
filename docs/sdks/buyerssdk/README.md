@@ -25,12 +25,17 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest();
+$request = new Gr4vy\ListBuyersRequest(
+    cursor: 'ZXhhbXBsZTE',
+    search: 'John',
+    externalIdentifier: 'buyer-12345',
+);
 
 $responses = $sdk->buyers->list(
     request: $request
@@ -86,6 +91,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -94,9 +100,7 @@ $sdk = Gr4vy\SDK::builder()
 $buyerCreate = new Gr4vy\BuyerCreate();
 
 $response = $sdk->buyers->create(
-    buyerCreate: $buyerCreate,
-    merchantAccountId: 'default'
-
+    buyerCreate: $buyerCreate
 );
 
 if ($response->buyer !== null) {
@@ -147,6 +151,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -155,9 +160,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->buyers->get(
-    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
-    merchantAccountId: 'default'
-
+    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9'
 );
 
 if ($response->buyer !== null) {
@@ -208,6 +211,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -217,8 +221,7 @@ $buyerUpdate = new Gr4vy\BuyerUpdate();
 
 $response = $sdk->buyers->update(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
-    buyerUpdate: $buyerUpdate,
-    merchantAccountId: 'default'
+    buyerUpdate: $buyerUpdate
 
 );
 
@@ -271,6 +274,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -279,9 +283,7 @@ $sdk = Gr4vy\SDK::builder()
 
 
 $response = $sdk->buyers->delete(
-    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
-    merchantAccountId: 'default'
-
+    buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9'
 );
 
 if ($response->statusCode === 200) {

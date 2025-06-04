@@ -21,6 +21,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
@@ -31,8 +32,7 @@ $sdk = Gr4vy\SDK::builder()
 $response = $sdk->transactions->events->list(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
     cursor: 'ZXhhbXBsZTE',
-    limit: 100,
-    merchantAccountId: 'default'
+    limit: 100
 
 );
 
