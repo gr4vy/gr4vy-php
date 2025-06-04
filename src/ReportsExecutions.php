@@ -280,7 +280,7 @@ class ReportsExecutions
      * @return ListAllReportExecutionsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?ListAllReportExecutionsRequest $request = null, ?Options $options = null): ListAllReportExecutionsResponse
+    private function listIndividual(?ListAllReportExecutionsRequest $request = null, ?Options $options = null): ListAllReportExecutionsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -349,6 +349,34 @@ class ReportsExecutions
                     contentType: $contentType,
                     rawResponse: $httpResponse,
                     reportExecutions: $obj);
+                $sdk = $this;
+
+                $response->next = function () use ($sdk, $responseData, $request): ?ListAllReportExecutionsResponse {
+                    $jsonObject = new \JsonPath\JsonObject($responseData);
+                    $nextCursor = $jsonObject->get('$.next_cursor');
+                    if ($nextCursor == null) {
+                        return null;
+                    } else {
+                        $nextCursor = $nextCursor[0];
+                        if ($nextCursor == null) {
+                            return null;
+                        }
+                    }
+
+                    return $sdk->listIndividual(
+                        request: new ListAllReportExecutionsRequest(
+                            cursor: $nextCursor,
+                            limit: $request != null ? $request->limit : null,
+                            reportName: $request != null ? $request->reportName : null,
+                            createdAtLte: $request != null ? $request->createdAtLte : null,
+                            createdAtGte: $request != null ? $request->createdAtGte : null,
+                            status: $request != null ? $request->status : null,
+                            creatorId: $request != null ? $request->creatorId : null,
+                            merchantAccountId: $request != null ? $request->merchantAccountId : null,
+                        ),
+                    );
+                };
+
 
                 return $response;
             } else {
@@ -492,6 +520,23 @@ class ReportsExecutions
             throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
             throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        }
+    }
+    /**
+     * List executed reports
+     *
+     * List all executed reports that have been generated.
+     *
+     * @param  ?ListAllReportExecutionsRequest  $request
+     * @return \Generator<ListAllReportExecutionsResponse>
+     * @throws \Gr4vy\errors\APIException
+     */
+    public function list(?ListAllReportExecutionsRequest $request = null, ?Options $options = null): \Generator
+    {
+        $res = $this->listIndividual($request, $options);
+        while ($res !== null) {
+            yield $res;
+            $res = $res->next($res);
         }
     }
 

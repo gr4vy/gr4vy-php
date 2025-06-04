@@ -40,6 +40,10 @@ class ListAllReportExecutionsResponse
     public ?ReportExecutions $reportExecutions = null;
 
     /**
+     * @var \Closure(string): ?ListAllReportExecutionsResponse $next
+     */
+    public \Closure $next;
+    /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
@@ -52,5 +56,18 @@ class ListAllReportExecutionsResponse
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
         $this->reportExecutions = $reportExecutions;
+    }
+    /**
+     * @param  string  $name
+     * @param  array<mixed>  $args
+     * @return ?ListAllReportExecutionsResponse
+     */
+    public function __call($name, $args): ?ListAllReportExecutionsResponse
+    {
+        if ($name === 'next') {
+            return call_user_func_array($this->next, $args);
+        }
+
+        return null;
     }
 }

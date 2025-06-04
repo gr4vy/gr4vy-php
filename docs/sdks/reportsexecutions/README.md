@@ -30,12 +30,15 @@ $sdk = Gr4vy\SDK::builder()
 
 $request = new Gr4vy\ListAllReportExecutionsRequest();
 
-$response = $sdk->reportsExecutions->list(
+$responses = $sdk->reportsExecutions->list(
     request: $request
 );
 
-if ($response->reportExecutions !== null) {
-    // handle response
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
 }
 ```
 
