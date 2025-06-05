@@ -21,6 +21,8 @@ class Transactions
 
     public Events $events;
 
+    public TransactionsSettlements $settlements;
+
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
@@ -29,6 +31,7 @@ class Transactions
         $this->sdkConfiguration = $sdkConfig;
         $this->refunds = new TransactionsRefunds($this->sdkConfiguration);
         $this->events = new Events($this->sdkConfiguration);
+        $this->settlements = new TransactionsSettlements($this->sdkConfiguration);
     }
     /**
      * @param  string  $baseUrl
