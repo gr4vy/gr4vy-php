@@ -29,7 +29,7 @@ class Settlement
     public string $merchantAccountId;
 
     /**
-     * Date and time the settlement was created.
+     * The date and time the settlement was created, in ISO 8601 format.
      *
      * @var \DateTime $createdAt
      */
@@ -37,7 +37,7 @@ class Settlement
     public \DateTime $createdAt;
 
     /**
-     * Date and time the settlement was last updated.
+     * The date and time the settlement was last updated, in ISO 8601 format.
      *
      * @var \DateTime $updatedAt
      */
@@ -45,7 +45,7 @@ class Settlement
     public \DateTime $updatedAt;
 
     /**
-     * Date and time the settlement was posted.
+     * The date and time the settlement was posted, in ISO 8601 format.
      *
      * @var \DateTime $postedAt
      */
@@ -53,7 +53,7 @@ class Settlement
     public \DateTime $postedAt;
 
     /**
-     * Date and time the settlement was ingested.
+     * The date and time the settlement was ingested, in ISO 8601 format.
      *
      * @var \DateTime $ingestedAt
      */

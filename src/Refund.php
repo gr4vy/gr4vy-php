@@ -12,7 +12,7 @@ namespace Gr4vy;
 class Refund
 {
     /**
-     * The ID for the refund.
+     * The unique identifier for the refund.
      *
      * @var string $id
      */
@@ -35,7 +35,7 @@ class Refund
     public string $status;
 
     /**
-     * The currency code for this refund.  Will always match that of the associated transaction.
+     * The ISO 4217 currency code for this refund. Will always match that of the associated transaction.
      *
      * @var string $currency
      */
@@ -43,7 +43,7 @@ class Refund
     public string $currency;
 
     /**
-     * The amount requested for this refund.
+     * The amount of this refund, in the smallest currency unit (for example, cents or pence).
      *
      * @var int $amount
      */

@@ -14,7 +14,7 @@ use Gr4vy\Utils\Retry;
 use Gr4vy\Utils\Retry\RetryUtils;
 use Speakeasy\Serializer\DeserializationContext;
 
-class Events
+class ReportExecutionsSDK
 {
     private SDKConfiguration $sdkConfiguration;
     /**
@@ -46,18 +46,15 @@ class Events
     }
 
     /**
-     * List transaction events
+     * List executed reports
      *
-     * Retrieve a paginated list of events related to processing a transaction, including status changes, API requests, and webhook delivery attempts. Events are listed in chronological order, with the most recent events first.
+     * List all executed reports that have been generated.
      *
-     * @param  string  $transactionId
-     * @param  ?string  $cursor
-     * @param  ?int  $limit
-     * @param  ?string  $merchantAccountId
-     * @return ListTransactionEventsResponse
+     * @param  ?ListAllReportExecutionsRequest  $request
+     * @return ListAllReportExecutionsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(string $transactionId, ?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionEventsResponse
+    private function listIndividual(?ListAllReportExecutionsRequest $request = null, ?Options $options = null): ListAllReportExecutionsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -83,18 +80,12 @@ class Events
                 '5XX',
             ];
         }
-        $request = new ListTransactionEventsRequest(
-            transactionId: $transactionId,
-            cursor: $cursor,
-            limit: $limit,
-            merchantAccountId: $merchantAccountId,
-        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/events', ListTransactionEventsRequest::class, $request, $this->sdkConfiguration->globals);
+        $url = Utils\Utils::generateUrl($baseUrl, '/report-executions');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
 
-        $qp = Utils\Utils::getQueryParams(ListTransactionEventsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
+        $qp = Utils\Utils::getQueryParams(ListAllReportExecutionsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
@@ -102,7 +93,7 @@ class Events
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'list_transaction_events', [], $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'list_all_report_executions', [], $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -126,12 +117,40 @@ class Events
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\TransactionEvents', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new ListTransactionEventsResponse(
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\ReportExecutions', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new ListAllReportExecutionsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    transactionEvents: $obj);
+                    reportExecutions: $obj);
+                $sdk = $this;
+
+                $response->next = function () use ($sdk, $responseData, $request): ?ListAllReportExecutionsResponse {
+                    $jsonObject = new \JsonPath\JsonObject($responseData);
+                    $nextCursor = $jsonObject->get('$.next_cursor');
+                    if ($nextCursor == null) {
+                        return null;
+                    } else {
+                        $nextCursor = $nextCursor[0];
+                        if ($nextCursor == null) {
+                            return null;
+                        }
+                    }
+
+                    return $sdk->listIndividual(
+                        request: new ListAllReportExecutionsRequest(
+                            cursor: $nextCursor,
+                            limit: $request != null ? $request->limit : null,
+                            reportName: $request != null ? $request->reportName : null,
+                            createdAtLte: $request != null ? $request->createdAtLte : null,
+                            createdAtGte: $request != null ? $request->createdAtGte : null,
+                            status: $request != null ? $request->status : null,
+                            creatorId: $request != null ? $request->creatorId : null,
+                            merchantAccountId: $request != null ? $request->merchantAccountId : null,
+                        ),
+                    );
+                };
+
 
                 return $response;
             } else {
@@ -275,6 +294,23 @@ class Events
             throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
             throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        }
+    }
+    /**
+     * List executed reports
+     *
+     * List all executed reports that have been generated.
+     *
+     * @param  ?ListAllReportExecutionsRequest  $request
+     * @return \Generator<ListAllReportExecutionsResponse>
+     * @throws \Gr4vy\errors\APIException
+     */
+    public function list(?ListAllReportExecutionsRequest $request = null, ?Options $options = null): \Generator
+    {
+        $res = $this->listIndividual($request, $options);
+        while ($res !== null) {
+            yield $res;
+            $res = $res->next($res);
         }
     }
 
