@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 24139dd9245c2b92230ce95662487e9d
+  docChecksum: 105ad65718fb6237dcacc71a806d7789
   docVersion: 1.0.0
-  speakeasyVersion: 1.555.2
-  generationVersion: 2.620.2
-  releaseVersion: 1.0.0-beta.17
-  configChecksum: ed661667f2247162168e20dcd7e00c15
+  speakeasyVersion: 1.556.2
+  generationVersion: 2.621.3
+  releaseVersion: 1.0.0-beta.18
+  configChecksum: bef8bcee664c8a796dd97b9e567b2830
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -185,6 +185,8 @@ generatedFiles:
   - docs/GetTransactionRefundResponse.md
   - docs/GetTransactionRequest.md
   - docs/GetTransactionResponse.md
+  - docs/GetTransactionSettlementRequest.md
+  - docs/GetTransactionSettlementResponse.md
   - docs/GiftCard.md
   - docs/GiftCardBalanceRequest.md
   - docs/GiftCardCreate.md
@@ -253,6 +255,8 @@ generatedFiles:
   - docs/ListTransactionEventsResponse.md
   - docs/ListTransactionRefundsRequest.md
   - docs/ListTransactionRefundsResponse.md
+  - docs/ListTransactionSettlementsRequest.md
+  - docs/ListTransactionSettlementsResponse.md
   - docs/ListTransactionsRequest.md
   - docs/ListTransactionsResponse.md
   - docs/Loc.md
@@ -321,6 +325,8 @@ generatedFiles:
   - docs/ResumePaymentMethodNetworkTokenRequest.md
   - docs/ResumePaymentMethodNetworkTokenResponse.md
   - docs/Security.md
+  - docs/Settlement.md
+  - docs/Settlements.md
   - docs/ShippingDetails.md
   - docs/ShippingDetailsCreate.md
   - docs/ShippingDetailsList.md
@@ -424,6 +430,7 @@ generatedFiles:
   - docs/sdks/sessions/README.md
   - docs/sdks/transactions/README.md
   - docs/sdks/transactionsrefunds/README.md
+  - docs/sdks/transactionssettlements/README.md
   - phpstan.neon
   - phpunit.xml
   - pint.json
@@ -593,6 +600,8 @@ generatedFiles:
   - src/GetTransactionRefundResponse.php
   - src/GetTransactionRequest.php
   - src/GetTransactionResponse.php
+  - src/GetTransactionSettlementRequest.php
+  - src/GetTransactionSettlementResponse.php
   - src/GiftCard.php
   - src/GiftCardBalanceRequest.php
   - src/GiftCardCreate.php
@@ -676,6 +685,8 @@ generatedFiles:
   - src/ListTransactionEventsResponse.php
   - src/ListTransactionRefundsRequest.php
   - src/ListTransactionRefundsResponse.php
+  - src/ListTransactionSettlementsRequest.php
+  - src/ListTransactionSettlementsResponse.php
   - src/ListTransactionsRequest.php
   - src/ListTransactionsResponse.php
   - src/MerchantAccount.php
@@ -755,6 +766,8 @@ generatedFiles:
   - src/SDKConfiguration.php
   - src/Security.php
   - src/Sessions.php
+  - src/Settlement.php
+  - src/Settlements.php
   - src/ShippingDetails.php
   - src/ShippingDetailsCreate.php
   - src/ShippingDetailsList.php
@@ -788,6 +801,7 @@ generatedFiles:
   - src/Transactions.php
   - src/TransactionsRefunds.php
   - src/TransactionsReportSpec.php
+  - src/TransactionsSettlements.php
   - src/UnregisterDigitalWalletDomainRequest.php
   - src/UnregisterDigitalWalletDomainResponse.php
   - src/UpdateBuyerRequest.php
@@ -4070,6 +4084,71 @@ examples:
       responses:
         "200":
           application/json: {"id": "a1b2c3d4-5678-90ab-cdef-1234567890ab", "type": "payment-link", "url": "https://example.com/link/a1b2c3d4-5678-90ab-cdef-1234567890ab", "amount": 1299, "country": "DE", "currency": "EUR", "intent": "<value>", "cart_items": [{"name": "Widget", "quantity": 2, "unit_amount": 1299}], "payment_source": "<value>", "created_at": "2024-05-30T12:34:56.000Z", "updated_at": "2024-05-30T13:00:00.000Z", "status": "<value>"}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  get_transaction_settlement:
+    speakeasy-default-get-transaction-settlement:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+          settlement_id: "b1e2c3d4-5678-1234-9abc-1234567890ab"
+      responses:
+        "200":
+          application/json: {"type": "settlement", "id": "b1e2c3d4-5678-1234-9abc-1234567890ab", "merchant_account_id": "default", "created_at": "2024-06-01T12:00:00.000Z", "updated_at": "2024-06-01T12:00:00.000Z", "posted_at": "2024-06-01T12:00:00.000Z", "ingested_at": "2024-06-01T12:00:00.000Z", "currency": "EUR", "amount": 1100, "commission": 100, "payment_service_report_id": "a1b2c3d4-5678-1234-9abc-1234567890ab", "payment_service_report_file_ids": ["f1e2d3c4-5678-1234-9abc-1234567890ab"], "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591"}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  list_transaction_settlements:
+    speakeasy-default-list-transaction-settlements:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+      responses:
+        "200":
+          application/json: {"items": []}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":

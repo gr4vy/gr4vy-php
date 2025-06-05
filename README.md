@@ -427,6 +427,11 @@ if ($response->accountUpdaterJob !== null) {
 
 * [create](docs/sdks/all/README.md#create) - Create batch transaction refund
 
+#### [transactions->settlements](docs/sdks/transactionssettlements/README.md)
+
+* [get](docs/sdks/transactionssettlements/README.md#get) - Get transaction settlement
+* [list](docs/sdks/transactionssettlements/README.md#list) - List transaction settlements
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 

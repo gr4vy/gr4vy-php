@@ -12,6 +12,7 @@ use Gr4vy\Utils\SpeakeasyMetadata;
 class GetTransactionRefundRequest
 {
     /**
+     * The ID of the transaction
      *
      * @var string $transactionId
      */
@@ -19,6 +20,7 @@ class GetTransactionRefundRequest
     public string $transactionId;
 
     /**
+     * The ID of the refund
      *
      * @var string $refundId
      */

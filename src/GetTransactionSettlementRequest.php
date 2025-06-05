@@ -9,10 +9,10 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 use Gr4vy\Utils\SpeakeasyMetadata;
-class CaptureTransactionRequest
+class GetTransactionSettlementRequest
 {
     /**
-     * The ID of the transaction
+     * The unique identifier of the transaction.
      *
      * @var string $transactionId
      */
@@ -20,11 +20,12 @@ class CaptureTransactionRequest
     public string $transactionId;
 
     /**
+     * The unique identifier of the settlement.
      *
-     * @var TransactionCapture $transactionCapture
+     * @var string $settlementId
      */
-    #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public TransactionCapture $transactionCapture;
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=settlement_id')]
+    public string $settlementId;
 
     /**
      * The ID of the merchant account to use for this request.
@@ -36,14 +37,14 @@ class CaptureTransactionRequest
 
     /**
      * @param  string  $transactionId
-     * @param  TransactionCapture  $transactionCapture
+     * @param  string  $settlementId
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, TransactionCapture $transactionCapture, ?string $merchantAccountId = null)
+    public function __construct(string $transactionId, string $settlementId, ?string $merchantAccountId = null)
     {
         $this->transactionId = $transactionId;
-        $this->transactionCapture = $transactionCapture;
+        $this->settlementId = $settlementId;
         $this->merchantAccountId = $merchantAccountId;
     }
 }

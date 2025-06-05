@@ -12,6 +12,7 @@ use Gr4vy\Utils\SpeakeasyMetadata;
 class ListTransactionRefundsRequest
 {
     /**
+     * The ID of the transaction
      *
      * @var string $transactionId
      */

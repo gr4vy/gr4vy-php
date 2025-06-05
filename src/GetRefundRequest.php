@@ -12,6 +12,7 @@ use Gr4vy\Utils\SpeakeasyMetadata;
 class GetRefundRequest
 {
     /**
+     * The ID of the refund
      *
      * @var string $refundId
      */
