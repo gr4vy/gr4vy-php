@@ -33,7 +33,7 @@ class CreateTransactionResponse
     public \Psr\Http\Message\ResponseInterface $rawResponse;
 
     /**
-     * Returns the transaction.
+     * Returns the created transaction.
      *
      * @var ?Transaction $transaction
      */

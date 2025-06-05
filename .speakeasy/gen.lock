@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 23b71b6873e3cd10fe3efd3d45af41e1
+  docChecksum: c3800b8a888fa4e6c6e677c573c8de90
   docVersion: 1.0.0
   speakeasyVersion: 1.556.2
   generationVersion: 2.621.3
-  releaseVersion: 1.0.0-beta.19
-  configChecksum: bd360aa77ba966b20ec4cae1f8d38c60
+  releaseVersion: 1.0.0-beta.20
+  configChecksum: 09e57f3ee96338591358f156763cb413
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -425,6 +425,7 @@ generatedFiles:
   - docs/sdks/paymentservicessdk/README.md
   - docs/sdks/payouts/README.md
   - docs/sdks/refundssdk/README.md
+  - docs/sdks/reportexecutionssdk/README.md
   - docs/sdks/reportssdk/README.md
   - docs/sdks/sdk/README.md
   - docs/sdks/sessions/README.md
@@ -753,6 +754,7 @@ generatedFiles:
   - src/ReportExecutionSummary.php
   - src/ReportExecutionUrl.php
   - src/ReportExecutions.php
+  - src/ReportExecutionsSDK.php
   - src/ReportSpec.php
   - src/ReportSummary.php
   - src/ReportUpdate.php

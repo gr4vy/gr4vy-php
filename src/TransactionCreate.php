@@ -20,7 +20,7 @@ class TransactionCreate
     public int $amount;
 
     /**
-     * A supported ISO-4217 currency code. For redirect requests, this value must match the one specified for `currency` in `payment_method`.
+     * A supported ISO 4217 currency code. For redirect requests, this value must match the one specified for `currency` in `payment_method`.
      *
      * @var string $currency
      */

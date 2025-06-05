@@ -20,7 +20,7 @@ class TransactionRefundCreate
     public ?string $targetType = null;
 
     /**
-     * The amount requested to refund. If omitted, a full refund will be requested.
+     * The amount to refund, in the smallest currency unit (e.g., cents). If omitted, a full refund will be requested.
      *
      * @var ?int $amount
      */

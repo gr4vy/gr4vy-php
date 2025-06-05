@@ -20,7 +20,7 @@ class GiftCardTokenTransactionCreate
     public string $id;
 
     /**
-     * The monetary amount for this transaction to charge against the gift card, in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`.
+     * The monetary amount for this transaction to charge against the gift card, in the smallest currency unit (for example, cents or pence).
      *
      * @var int $amount
      */

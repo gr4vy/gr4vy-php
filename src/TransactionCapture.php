@@ -9,11 +9,11 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-/** TransactionCapture - Request body for capturing an authorized transaction */
+/** TransactionCapture - Request body for capturing an authorized transaction. */
 class TransactionCapture
 {
     /**
-     * The amount to capture. This normally needs to be equal or less than the authorized amount, unless over-capture is available.
+     * The amount to capture, in the smallest currency unit (e.g., cents). This must be less than or equal to the authorized amount, unless over-capture is available.
      *
      * @var ?int $amount
      */
