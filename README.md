@@ -26,7 +26,7 @@ This SDK is designed to simplify development, reduce boilerplate code, and help 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [Gr4vy PHP SDK (Beta)](#gr4vy-php-sdk-beta)
+* [Gr4vy PHP SDK](#gr4vy-php-sdk)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Bearer token generation](#bearer-token-generation)
@@ -823,12 +823,6 @@ vendor/bin/pint tests src --repair
 # static code analysis
 vendor/bin/phpstan analyse src tests --level 7 --memory-limit 1G --no-progress --error-format=table
 ```
-
-## Maturity
-
-This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning usage
-to a specific package version. This way, you can install the same version each time without breaking changes unless you are intentionally
-looking for the latest version.
 
 ## Contributions
 
