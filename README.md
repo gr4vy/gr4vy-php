@@ -1,4 +1,4 @@
-# Gr4vy PHP SDK (Beta)
+# Gr4vy PHP SDK
 
 Developer-friendly & type-safe PHP SDK specifically catered to leverage the **Gr4vy** API.
 
@@ -6,11 +6,6 @@ Developer-friendly & type-safe PHP SDK specifically catered to leverage the **Gr
     <a href="https://packagist.org/packages/gr4vy/gr4vy-php"><img alt="Packagist Version" src="https://img.shields.io/packagist/v/gr4vy/gr4vy-php?include_prereleases&style=for-the-badge"></a>
     <a href="https://www.speakeasy.com/?utm_source=gr4vy/gr4vy-php&utm_campaign=php"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
 </div>
-
-
-<br /><br />
-> [!IMPORTANT]
-> This is a Beta release of our latest SDK. Please refer to the [legacy PHP SDK](https://github.com/gr4vy/gr4vy-php/tree/legacy) for the latest stable build.
 
 ## Summary
 
