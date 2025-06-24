@@ -488,6 +488,15 @@ class Transaction
     public ?string $merchantAdviceCode = null;
 
     /**
+     * The number of installments for this transaction, if applicable.
+     *
+     * @var ?int $installmentCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('installment_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $installmentCount = null;
+
+    /**
      * Whether a manual anti fraud review is pending with an anti fraud service.
      *
      * @var ?bool $pendingReview
@@ -562,9 +571,10 @@ class Transaction
      * @param  ?\DateTime  $buyerApprovalTimedoutAt
      * @param  ?Recipient  $recipient
      * @param  ?string  $merchantAdviceCode
+     * @param  ?int  $installmentCount
      * @phpstan-pure
      */
-    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, string $paymentSource, bool $merchantInitiated, bool $isSubsequentPayment, string $intentOutcome, bool $multiTender, bool $accountFundingTransaction, ?array $additionalIdentifiers = null, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?Airline $airline = null, ?string $authResponseCode = null, ?string $avsResponseCode = null, ?string $cvvResponseCode = null, ?string $antiFraudDecision = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $schemeTransactionId = null, ?TransactionThreeDSecureSummary $threeDSecure = null, ?string $paymentServiceTransactionId = null, ?array $metadata = null, ?\DateTime $authorizedAt = null, ?\DateTime $capturedAt = null, ?\DateTime $voidedAt = null, ?\DateTime $approvalExpiresAt = null, ?\DateTime $buyerApprovalTimedoutAt = null, ?Recipient $recipient = null, ?string $merchantAdviceCode = null, ?bool $pendingReview = false, ?string $type = 'transaction')
+    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, string $paymentSource, bool $merchantInitiated, bool $isSubsequentPayment, string $intentOutcome, bool $multiTender, bool $accountFundingTransaction, ?array $additionalIdentifiers = null, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?Airline $airline = null, ?string $authResponseCode = null, ?string $avsResponseCode = null, ?string $cvvResponseCode = null, ?string $antiFraudDecision = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $schemeTransactionId = null, ?TransactionThreeDSecureSummary $threeDSecure = null, ?string $paymentServiceTransactionId = null, ?array $metadata = null, ?\DateTime $authorizedAt = null, ?\DateTime $capturedAt = null, ?\DateTime $voidedAt = null, ?\DateTime $approvalExpiresAt = null, ?\DateTime $buyerApprovalTimedoutAt = null, ?Recipient $recipient = null, ?string $merchantAdviceCode = null, ?int $installmentCount = null, ?bool $pendingReview = false, ?string $type = 'transaction')
     {
         $this->id = $id;
         $this->reconciliationId = $reconciliationId;
@@ -620,6 +630,7 @@ class Transaction
         $this->buyerApprovalTimedoutAt = $buyerApprovalTimedoutAt;
         $this->recipient = $recipient;
         $this->merchantAdviceCode = $merchantAdviceCode;
+        $this->installmentCount = $installmentCount;
         $this->pendingReview = $pendingReview;
         $this->type = $type;
     }
