@@ -27,6 +27,17 @@ class CreateTransactionRequest
     public ?string $merchantAccountId = null;
 
     /**
+     * The IP address to forward from the customer. Use this when calling
+     *
+     * our API from the server side to ensure the customer's address is
+     * passed to downstream services, rather than your server IP.
+     *
+     * @var ?string $xForwardedFor
+     */
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Forwarded-For')]
+    public ?string $xForwardedFor = null;
+
+    /**
      * A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.
      *
      * @var ?string $idempotencyKey
@@ -37,13 +48,15 @@ class CreateTransactionRequest
     /**
      * @param  TransactionCreate  $transactionCreate
      * @param  ?string  $merchantAccountId
+     * @param  ?string  $xForwardedFor
      * @param  ?string  $idempotencyKey
      * @phpstan-pure
      */
-    public function __construct(TransactionCreate $transactionCreate, ?string $merchantAccountId = null, ?string $idempotencyKey = null)
+    public function __construct(TransactionCreate $transactionCreate, ?string $merchantAccountId = null, ?string $xForwardedFor = null, ?string $idempotencyKey = null)
     {
         $this->transactionCreate = $transactionCreate;
         $this->merchantAccountId = $merchantAccountId;
+        $this->xForwardedFor = $xForwardedFor;
         $this->idempotencyKey = $idempotencyKey;
     }
 }
