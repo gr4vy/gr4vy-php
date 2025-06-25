@@ -271,15 +271,17 @@ class Transactions
      * @param  TransactionCreate  $transactionCreate
      * @param  ?string  $merchantAccountId
      * @param  ?string  $idempotencyKey
+     * @param  ?string  $xForwardedFor
      * @return CreateTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(TransactionCreate $transactionCreate, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?Options $options = null): CreateTransactionResponse
+    public function create(TransactionCreate $transactionCreate, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?string $xForwardedFor = null, ?Options $options = null): CreateTransactionResponse
     {
         $request = new CreateTransactionRequest(
             transactionCreate: $transactionCreate,
             merchantAccountId: $merchantAccountId,
             idempotencyKey: $idempotencyKey,
+            xForwardedFor: $xForwardedFor,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/transactions');
