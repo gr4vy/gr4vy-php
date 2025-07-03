@@ -21,10 +21,10 @@ class SDKConfiguration
     public string $server = '';
     /** @var array<string, array<string, string>> */
     public ?array $serverVariables = [
-        'production' => [
+        'sandbox' => [
             'id' => 'example',
         ],
-        'sandbox' => [
+        'production' => [
             'id' => 'example',
         ],
     ];
@@ -33,11 +33,11 @@ class SDKConfiguration
 
     public string $openapiDocVersion = '1.0.0';
 
-    public string $sdkVersion = '1.0.3';
+    public string $sdkVersion = '1.1.0';
 
-    public string $genVersion = '2.638.1';
+    public string $genVersion = '2.648.5';
 
-    public string $userAgent = 'speakeasy-sdk/php 1.0.3 2.638.1 1.0.0 gr4vy/gr4vy-php';
+    public string $userAgent = 'speakeasy-sdk/php 1.1.0 2.648.5 1.0.0 gr4vy/gr4vy-php';
     /** @var array<string, array<string, array<string, mixed>>> */
     public ?array $globals = [
         'parameters' => [],
@@ -58,7 +58,7 @@ class SDKConfiguration
         }
 
         if ($this->server === '') {
-            $this->server = SDK::SERVER_PRODUCTION;
+            $this->server = SDK::SERVER_SANDBOX;
         }
 
         return SDK::SERVERS[$this->server];
@@ -70,7 +70,7 @@ class SDKConfiguration
     public function getServerVariables(): ?array
     {
         if ($this->server === '') {
-            $this->server = SDK::SERVER_PRODUCTION;
+            $this->server = SDK::SERVER_SANDBOX;
         }
 
         return $this->serverVariables[$this->server];

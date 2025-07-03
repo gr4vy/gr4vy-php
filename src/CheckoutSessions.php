@@ -254,7 +254,7 @@ class CheckoutSessions
     /**
      * Delete checkout session
      *
-     * Deleta a checkout session and all of its (PCI) data.
+     * Delete a checkout session and all of its (PCI) data.
      *
      * @param  string  $sessionId
      * @param  ?string  $merchantAccountId
