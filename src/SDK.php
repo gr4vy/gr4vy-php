@@ -13,13 +13,13 @@ namespace Gr4vy;
 /** SDK - Gr4vy: The Gr4vy API. */
 class SDK
 {
-    public const SERVER_PRODUCTION = 'production';
-
     public const SERVER_SANDBOX = 'sandbox';
 
+    public const SERVER_PRODUCTION = 'production';
+
     public const SERVERS = [
-        SDK::SERVER_PRODUCTION => 'https://api.{id}.gr4vy.app',
         SDK::SERVER_SANDBOX => 'https://api.sandbox.{id}.gr4vy.app',
+        SDK::SERVER_PRODUCTION => 'https://api.{id}.gr4vy.app',
     ];
 
     public AccountUpdater $accountUpdater;

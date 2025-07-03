@@ -723,8 +723,8 @@ You can override the default server globally using the `setServer(string $server
 
 | Name         | Server                               | Variables | Description |
 | ------------ | ------------------------------------ | --------- | ----------- |
-| `production` | `https://api.{id}.gr4vy.app`         | `id`      |             |
 | `sandbox`    | `https://api.sandbox.{id}.gr4vy.app` | `id`      |             |
+| `production` | `https://api.{id}.gr4vy.app`         | `id`      |             |
 
 If the selected server has variables, you may override its default values using the associated builder method(s):
 
@@ -742,7 +742,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
-    ->setServer('sandbox')
+    ->setServer('production')
     ->setId('<id>')
     ->setMerchantAccountId('default')
     ->setSecurity(
@@ -777,7 +777,7 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
-    ->setServerURL('https://api.example.gr4vy.app')
+    ->setServerURL('https://api.sandbox.example.gr4vy.app')
     ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
