@@ -3,10 +3,10 @@ id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
   docChecksum: 6746acebf346337623798d1632275795
   docVersion: 1.0.0
-  speakeasyVersion: 1.575.3
-  generationVersion: 2.648.5
-  releaseVersion: 1.1.0
-  configChecksum: d907c2e7e623f38e3dcddeb1a3bc9c24
+  speakeasyVersion: 1.575.5
+  generationVersion: 2.648.7
+  releaseVersion: 1.1.1
+  configChecksum: d033dd5bd3f34196ed530cdea674a37c
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
