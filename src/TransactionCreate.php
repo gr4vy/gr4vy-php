@@ -36,15 +36,6 @@ class TransactionCreate
     public ?string $intent = null;
 
     /**
-     * The way payment method information made it to this transaction.
-     *
-     * @var ?string $paymentSource
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_source')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $paymentSource = null;
-
-    /**
      * The 2-letter ISO code of the country where the transaction is processed. This is also used to filter the payment services that can process the transaction. If this value is provided for redirect requests and it's not `null`, it must match the one specified for `country` in `payment_method`. Otherwise, the value specified for `country` in `payment_method` will be assumed implicitly.
      *
      * @var ?string $country
@@ -278,6 +269,15 @@ class TransactionCreate
     public ?bool $merchantInitiated = null;
 
     /**
+     * The use-case for the the transaction.
+     *
+     * @var ?string $paymentSource
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_source')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $paymentSource = null;
+
+    /**
      * Whether to capture the transaction asynchronously.
      *
      *
@@ -343,12 +343,11 @@ class TransactionCreate
      * @param  ?int  $installmentCount
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyerInput $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?array $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
+    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyerInput $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?array $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?string $paymentSource = 'ecommerce', ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
     {
         $this->amount = $amount;
         $this->currency = $currency;
         $this->intent = $intent;
-        $this->paymentSource = $paymentSource;
         $this->country = $country;
         $this->paymentMethod = $paymentMethod;
         $this->buyer = $buyer;
@@ -372,6 +371,7 @@ class TransactionCreate
         $this->store = $store;
         $this->isSubsequentPayment = $isSubsequentPayment;
         $this->merchantInitiated = $merchantInitiated;
+        $this->paymentSource = $paymentSource;
         $this->asyncCapture = $asyncCapture;
         $this->accountFundingTransaction = $accountFundingTransaction;
         $this->allowPartialAuthorization = $allowPartialAuthorization;
