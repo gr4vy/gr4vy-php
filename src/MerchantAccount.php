@@ -52,33 +52,6 @@ class MerchantAccount
     public \DateTime $updatedAt;
 
     /**
-     * An optional endpoint URL to deliver webhook notifications to.
-     *
-     * @var ?string $outboundWebhookUrl
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('outbound_webhook_url')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $outboundWebhookUrl = null;
-
-    /**
-     * The optional username to use when `outbound_webhook_url` is configured and requires basic authentication.
-     *
-     * @var ?string $outboundWebhookUsername
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('outbound_webhook_username')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $outboundWebhookUsername = null;
-
-    /**
-     * The optional password to use when `outbound_webhook_url` is configured and requires basic authentication
-     *
-     * @var ?string $outboundWebhookPassword
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('outbound_webhook_password')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $outboundWebhookPassword = null;
-
-    /**
      * Client key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
      *
      * @var ?string $loonClientKey
@@ -230,9 +203,6 @@ class MerchantAccount
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type
-     * @param  ?string  $outboundWebhookUrl
-     * @param  ?string  $outboundWebhookUsername
-     * @param  ?string  $outboundWebhookPassword
      * @param  ?string  $loonClientKey
      * @param  ?string  $loonSecretKey
      * @param  ?array<string>  $loonAcceptedSchemes
@@ -250,16 +220,13 @@ class MerchantAccount
      * @param  ?string  $mastercardNetworkTokensAppId
      * @phpstan-pure
      */
-    public function __construct(string $id, string $displayName, bool $accountUpdaterEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?string $outboundWebhookUrl = null, ?string $outboundWebhookUsername = null, ?string $outboundWebhookPassword = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $type = 'merchant-account')
+    public function __construct(string $id, string $displayName, bool $accountUpdaterEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $type = 'merchant-account')
     {
         $this->id = $id;
         $this->displayName = $displayName;
         $this->accountUpdaterEnabled = $accountUpdaterEnabled;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
-        $this->outboundWebhookUrl = $outboundWebhookUrl;
-        $this->outboundWebhookUsername = $outboundWebhookUsername;
-        $this->outboundWebhookPassword = $outboundWebhookPassword;
         $this->loonClientKey = $loonClientKey;
         $this->loonSecretKey = $loonSecretKey;
         $this->loonAcceptedSchemes = $loonAcceptedSchemes;
