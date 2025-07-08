@@ -164,33 +164,6 @@ class MerchantAccountCreate
     public ?string $mastercardNetworkTokensAppId = null;
 
     /**
-     * An optional endpoint URL to deliver webhook notifications to.
-     *
-     * @var ?string $outboundWebhookUrl
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('outbound_webhook_url')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $outboundWebhookUrl = null;
-
-    /**
-     * The optional username to use when `outbound_webhook_url` is configured and requires basic authentication.
-     *
-     * @var ?string $outboundWebhookUsername
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('outbound_webhook_username')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $outboundWebhookUsername = null;
-
-    /**
-     * The optional password to use when `outbound_webhook_url` is configured and requires basic authentication
-     *
-     * @var ?string $outboundWebhookPassword
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('outbound_webhook_password')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $outboundWebhookPassword = null;
-
-    /**
      * Whether the Real-Time Account Updater service is enabled for this merchant account. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `false`, the Account Updater service doesn't get called if a payment fails with expired or invalid card details. If the field is set to `true`, the service is called. Please note that for this to work the other `account_updater_* fields` must be set as well.
      *
      * @var ?bool $accountUpdaterEnabled
@@ -218,12 +191,9 @@ class MerchantAccountCreate
      * @param  ?string  $amexNetworkTokensAppId
      * @param  ?string  $mastercardNetworkTokensRequestorId
      * @param  ?string  $mastercardNetworkTokensAppId
-     * @param  ?string  $outboundWebhookUrl
-     * @param  ?string  $outboundWebhookUsername
-     * @param  ?string  $outboundWebhookPassword
      * @phpstan-pure
      */
-    public function __construct(string $id, string $displayName, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $outboundWebhookUrl = null, ?string $outboundWebhookUsername = null, ?string $outboundWebhookPassword = null, ?bool $accountUpdaterEnabled = false)
+    public function __construct(string $id, string $displayName, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?bool $accountUpdaterEnabled = false)
     {
         $this->id = $id;
         $this->displayName = $displayName;
@@ -242,9 +212,6 @@ class MerchantAccountCreate
         $this->amexNetworkTokensAppId = $amexNetworkTokensAppId;
         $this->mastercardNetworkTokensRequestorId = $mastercardNetworkTokensRequestorId;
         $this->mastercardNetworkTokensAppId = $mastercardNetworkTokensAppId;
-        $this->outboundWebhookUrl = $outboundWebhookUrl;
-        $this->outboundWebhookUsername = $outboundWebhookUsername;
-        $this->outboundWebhookPassword = $outboundWebhookPassword;
         $this->accountUpdaterEnabled = $accountUpdaterEnabled;
     }
 }
