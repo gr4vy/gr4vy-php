@@ -59,7 +59,7 @@ class PaymentLink
     public string $intent;
 
     /**
-     * The payment source for the payment link.
+     * The way payment method information made it to this transaction.
      *
      * @var string $paymentSource
      */
