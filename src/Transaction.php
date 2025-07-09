@@ -132,7 +132,7 @@ class Transaction
     public \DateTime $updatedAt;
 
     /**
-     * The source of the transaction.
+     * The way payment method information made it to this transaction.
      *
      * @var string $paymentSource
      */

@@ -44,6 +44,15 @@ class PaymentLinkCreate
     public ?string $intent = null;
 
     /**
+     * The way payment method information made it to this transaction.
+     *
+     * @var ?string $paymentSource
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_source')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $paymentSource = null;
+
+    /**
      * The guest buyer for the payment link.
      *
      * @var ?GuestBuyerInput $buyer
@@ -193,15 +202,6 @@ class PaymentLinkCreate
     public ?array $metadata = null;
 
     /**
-     * The payment source for the payment link.
-     *
-     * @var ?string $paymentSource
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_source')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $paymentSource = null;
-
-    /**
      * @param  int  $amount
      * @param  string  $country
      * @param  string  $currency
@@ -225,12 +225,13 @@ class PaymentLinkCreate
      * @param  ?array<string, mixed>  $metadata
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $country, string $currency, ?string $intent = null, ?GuestBuyerInput $buyer = null, ?\DateTime $expiresAt = null, ?array $connectionOptions = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $cartItems = null, ?array $metadata = null, ?string $paymentSource = 'ecommerce')
+    public function __construct(int $amount, string $country, string $currency, ?string $intent = null, ?string $paymentSource = null, ?GuestBuyerInput $buyer = null, ?\DateTime $expiresAt = null, ?array $connectionOptions = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $cartItems = null, ?array $metadata = null)
     {
         $this->amount = $amount;
         $this->country = $country;
         $this->currency = $currency;
         $this->intent = $intent;
+        $this->paymentSource = $paymentSource;
         $this->buyer = $buyer;
         $this->expiresAt = $expiresAt;
         $this->connectionOptions = $connectionOptions;
@@ -247,6 +248,5 @@ class PaymentLinkCreate
         $this->returnUrl = $returnUrl;
         $this->cartItems = $cartItems;
         $this->metadata = $metadata;
-        $this->paymentSource = $paymentSource;
     }
 }
