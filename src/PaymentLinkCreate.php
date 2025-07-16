@@ -74,12 +74,12 @@ class PaymentLinkCreate
     /**
      * Connection options for the payment link.
      *
-     * @var ?array<string, array<string, mixed>> $connectionOptions
+     * @var ?TransactionConnectionOptions $connectionOptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('connection_options')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, array<string, mixed>>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionConnectionOptions|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?array $connectionOptions = null;
+    public ?TransactionConnectionOptions $connectionOptions = null;
 
     /**
      * The merchant reference for the payment link.
@@ -209,7 +209,7 @@ class PaymentLinkCreate
      * @param  ?string  $paymentSource
      * @param  ?GuestBuyerInput  $buyer
      * @param  ?\DateTime  $expiresAt
-     * @param  ?array<string, array<string, mixed>>  $connectionOptions
+     * @param  ?TransactionConnectionOptions  $connectionOptions
      * @param  ?string  $externalIdentifier
      * @param  ?StatementDescriptor  $statementDescriptor
      * @param  ?string  $locale
@@ -225,7 +225,7 @@ class PaymentLinkCreate
      * @param  ?array<string, mixed>  $metadata
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $country, string $currency, ?string $intent = null, ?string $paymentSource = null, ?GuestBuyerInput $buyer = null, ?\DateTime $expiresAt = null, ?array $connectionOptions = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $cartItems = null, ?array $metadata = null)
+    public function __construct(int $amount, string $country, string $currency, ?string $intent = null, ?string $paymentSource = null, ?GuestBuyerInput $buyer = null, ?\DateTime $expiresAt = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $cartItems = null, ?array $metadata = null)
     {
         $this->amount = $amount;
         $this->country = $country;

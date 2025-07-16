@@ -109,12 +109,12 @@ class PayoutCreate
     /**
      * Optional fields for processing payouts on specific payment services.
      *
-     * @var ?ConnectionOptions $connectionOptions
+     * @var ?PayoutConnectionOptions $connectionOptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('connection_options')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ConnectionOptions|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PayoutConnectionOptions|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?ConnectionOptions $connectionOptions = null;
+    public ?PayoutConnectionOptions $connectionOptions = null;
 
     /**
      * @param  int  $amount
@@ -127,10 +127,10 @@ class PayoutCreate
      * @param  ?GuestBuyerInput  $buyer
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?PayoutMerchant  $merchant
-     * @param  ?ConnectionOptions  $connectionOptions
+     * @param  ?PayoutConnectionOptions  $connectionOptions
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $currency, string $paymentServiceId, PaymentMethodCard|PaymentMethodStoredCard $paymentMethod, ?string $category = null, ?string $externalIdentifier = null, ?string $buyerId = null, ?GuestBuyerInput $buyer = null, ?string $buyerExternalIdentifier = null, ?PayoutMerchant $merchant = null, ?ConnectionOptions $connectionOptions = null)
+    public function __construct(int $amount, string $currency, string $paymentServiceId, PaymentMethodCard|PaymentMethodStoredCard $paymentMethod, ?string $category = null, ?string $externalIdentifier = null, ?string $buyerId = null, ?GuestBuyerInput $buyer = null, ?string $buyerExternalIdentifier = null, ?PayoutMerchant $merchant = null, ?PayoutConnectionOptions $connectionOptions = null)
     {
         $this->amount = $amount;
         $this->currency = $currency;

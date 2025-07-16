@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class CheckoutCardConnectionOptions
+class CheckoutPayoutOptions
 {
     /**
      * The processing channel to be used for the payment.

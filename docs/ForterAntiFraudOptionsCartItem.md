@@ -1,0 +1,10 @@
+# ForterAntiFraudOptionsCartItem
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `basicItemData`                                                                                      | [?ForterAntiFraudOptionsCartItemBasicItemData](./ForterAntiFraudOptionsCartItemBasicItemData.md)     | :heavy_minus_sign:                                                                                   | Basic information about the cart item.                                                               |
+| `deliveryDetails`                                                                                    | [?ForterAntiFraudOptionsCartItemDeliveryDetails](./ForterAntiFraudOptionsCartItemDeliveryDetails.md) | :heavy_minus_sign:                                                                                   | Details about how the item will be delivered.                                                        |
+| `beneficiaries`                                                                                      | array<[ForterAntiFraudOptionsCartItemBeneficiary](./ForterAntiFraudOptionsCartItemBeneficiary.md)>   | :heavy_minus_sign:                                                                                   | List of beneficiaries who will receive this item.                                                    |
