@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 73bb344f94f988e2257dc2526d462385
+  docChecksum: 6e9dca0e736c9b203e5b6f126b083151
   docVersion: 1.0.0
-  speakeasyVersion: 1.581.2
-  generationVersion: 2.656.9
-  releaseVersion: 1.1.6
-  configChecksum: 9c42329900e5e09eec5541c09ad4c9f7
+  speakeasyVersion: 1.582.0
+  generationVersion: 2.657.1
+  releaseVersion: 1.1.7
+  configChecksum: 01e3c2df3766a2b33f1217b88c40013a
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -36,6 +36,7 @@ generatedFiles:
   - docs/AccountUpdaterInquirySummary.md
   - docs/AccountUpdaterJob.md
   - docs/AccountUpdaterJobCreate.md
+  - docs/AccountUpdaterOptions.md
   - docs/AddBuyerRequest.md
   - docs/AddBuyerResponse.md
   - docs/AddBuyerShippingDetailsRequest.md
@@ -45,6 +46,11 @@ generatedFiles:
   - docs/AddReportRequest.md
   - docs/AddReportResponse.md
   - docs/Address.md
+  - docs/AdyenCardOptions.md
+  - docs/AdyenOptions.md
+  - docs/AdyenSepaOptions.md
+  - docs/AffirmItineraryOptions.md
+  - docs/AffirmOptions.md
   - docs/Airline.md
   - docs/AirlineLeg.md
   - docs/AirlinePassenger.md
@@ -57,6 +63,8 @@ generatedFiles:
   - docs/BillingDetailsInput.md
   - docs/BillingDetailsOutput.md
   - docs/Body.md
+  - docs/BraintreeDynamicDataFieldsOptions.md
+  - docs/BraintreeOptions.md
   - docs/BrowserInfo.md
   - docs/Buyer.md
   - docs/BuyerCreate.md
@@ -69,7 +77,7 @@ generatedFiles:
   - docs/CardSchemeDefinitions.md
   - docs/CardWithUrlPaymentMethodCreate.md
   - docs/CartItem.md
-  - docs/CheckoutCardConnectionOptions.md
+  - docs/CheckoutPayoutOptions.md
   - docs/CheckoutSession.md
   - docs/CheckoutSessionCreate.md
   - docs/CheckoutSessionPaymentMethod.md
@@ -80,10 +88,8 @@ generatedFiles:
   - docs/ClickToPayPaymentMethodCreate.md
   - docs/ClickToPaySession.md
   - docs/ClickToPaySessionRequest.md
-  - docs/CollectionPaymentLink.md
   - docs/ConfigureDigitalWalletRequest.md
   - docs/ConfigureDigitalWalletResponse.md
-  - docs/ConnectionOptions.md
   - docs/Context.md
   - docs/CreateAccountUpdaterJobRequest.md
   - docs/CreateAccountUpdaterJobResponse.md
@@ -125,6 +131,8 @@ generatedFiles:
   - docs/Creator.md
   - docs/Cryptogram.md
   - docs/CryptogramCreate.md
+  - docs/CybersourceAntiFraudOptions.md
+  - docs/CybersourceOptions.md
   - docs/DefinitionField.md
   - docs/DeleteBuyerRequest.md
   - docs/DeleteBuyerResponse.md
@@ -150,10 +158,25 @@ generatedFiles:
   - docs/DigitalWalletDomain.md
   - docs/DigitalWalletUpdate.md
   - docs/DigitalWallets.md
+  - docs/DlocalOptions.md
+  - docs/DlocalWalletOptions.md
   - docs/ErrorDetail.md
   - docs/ExpirePaymentLinkRequest.md
   - docs/ExpirePaymentLinkResponse.md
   - docs/Field.md
+  - docs/FiservInstallmentOptions.md
+  - docs/FiservOptions.md
+  - docs/ForterAntiFraudOptions.md
+  - docs/ForterAntiFraudOptionsCartItem.md
+  - docs/ForterAntiFraudOptionsCartItemBasicItemData.md
+  - docs/ForterAntiFraudOptionsCartItemBeneficiary.md
+  - docs/ForterAntiFraudOptionsCartItemBeneficiaryAddress.md
+  - docs/ForterAntiFraudOptionsCartItemBeneficiaryComments.md
+  - docs/ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails.md
+  - docs/ForterAntiFraudOptionsCartItemBeneficiaryPhone.md
+  - docs/ForterAntiFraudOptionsCartItemDeliveryDetails.md
+  - docs/ForterAntiFraudOptionsDiscount.md
+  - docs/ForterAntiFraudOptionsDiscountCouponDiscountAmount.md
   - docs/GetBuyerRequest.md
   - docs/GetBuyerResponse.md
   - docs/GetBuyerShippingDetailsRequest.md
@@ -201,6 +224,7 @@ generatedFiles:
   - docs/GiftCardTransactionCreate.md
   - docs/GiftCardUnion.md
   - docs/GiftCards.md
+  - docs/GivingBlockOptions.md
   - docs/GooglePayAssuranceDetails.md
   - docs/GooglePayFPANPaymentMethodCreate.md
   - docs/GooglePayPaymentMethodCreate.md
@@ -210,6 +234,7 @@ generatedFiles:
   - docs/GuestBuyerInput.md
   - docs/GuestBuyerOutput.md
   - docs/Item.md
+  - docs/LatitudeOptions.md
   - docs/ListAllReportExecutionsRequest.md
   - docs/ListAllReportExecutionsResponse.md
   - docs/ListAuditLogsRequest.md
@@ -261,18 +286,25 @@ generatedFiles:
   - docs/ListTransactionsRequest.md
   - docs/ListTransactionsResponse.md
   - docs/Loc.md
+  - docs/MattildaTapiOptions.md
   - docs/MerchantAccount.md
   - docs/MerchantAccountCreate.md
   - docs/MerchantAccountUpdate.md
   - docs/MerchantAccounts.md
   - docs/MerchantProfileScheme.md
   - docs/MerchantProfileSchemeSummary.md
+  - docs/MockCardMerchantAdviceCodeOptions.md
+  - docs/MockCardOptions.md
   - docs/NetworkToken.md
   - docs/NetworkTokenCreate.md
   - docs/NetworkTokenPaymentMethodCreate.md
   - docs/NetworkTokens.md
+  - docs/NuveiAirlineDataOptions.md
+  - docs/NuveiOptions.md
+  - docs/OxxoOptions.md
   - docs/PaymentLink.md
   - docs/PaymentLinkCreate.md
+  - docs/PaymentLinks.md
   - docs/PaymentMethod.md
   - docs/PaymentMethodCard.md
   - docs/PaymentMethodDetailsCard.md
@@ -295,6 +327,7 @@ generatedFiles:
   - docs/PaymentServiceTokens.md
   - docs/PaymentServiceUpdate.md
   - docs/PaymentServices.md
+  - docs/PayoutConnectionOptions.md
   - docs/PayoutCreate.md
   - docs/PayoutCreatePaymentMethod.md
   - docs/PayoutMerchant.md
@@ -302,6 +335,8 @@ generatedFiles:
   - docs/PayoutPaymentService.md
   - docs/PayoutSummaries.md
   - docs/PayoutSummary.md
+  - docs/PaypalOptions.md
+  - docs/PowertranzOptions.md
   - docs/Recipient.md
   - docs/RedirectPaymentMethodCreate.md
   - docs/Refund.md
@@ -334,6 +369,8 @@ generatedFiles:
   - docs/ShippingDetailsUpdate.md
   - docs/Spec.md
   - docs/StatementDescriptor.md
+  - docs/StripeConnectOptions.md
+  - docs/StripeOptions.md
   - docs/SuspendPaymentMethodNetworkTokenRequest.md
   - docs/SuspendPaymentMethodNetworkTokenResponse.md
   - docs/SyncTransactionRequest.md
@@ -349,6 +386,7 @@ generatedFiles:
   - docs/Transaction.md
   - docs/TransactionBuyer.md
   - docs/TransactionCapture.md
+  - docs/TransactionConnectionOptions.md
   - docs/TransactionCreate.md
   - docs/TransactionCreatePaymentMethod.md
   - docs/TransactionEvent.md
@@ -364,6 +402,9 @@ generatedFiles:
   - docs/TransactionThreeDSecureSummary.md
   - docs/TransactionUpdate.md
   - docs/TransactionsReportSpec.md
+  - docs/TravelHubCustomData.md
+  - docs/TravelhubOptions.md
+  - docs/TrustlyOptions.md
   - docs/UnregisterDigitalWalletDomainRequest.md
   - docs/UnregisterDigitalWalletDomainResponse.md
   - docs/UpdateBuyerRequest.md
@@ -390,6 +431,10 @@ generatedFiles:
   - docs/VoidTransactionResponse.md
   - docs/VoidableField.md
   - docs/WalletPaymentOptionContext.md
+  - docs/WpayEverdaypayOptions.md
+  - docs/WpayPaytoOptions.md
+  - docs/WpayPaytoResourceOptions.md
+  - docs/WpayPaytoSimulationOptions.md
   - docs/errors/Error400.md
   - docs/errors/Error401.md
   - docs/errors/Error403.md
@@ -420,7 +465,7 @@ generatedFiles:
   - docs/sdks/jobs/README.md
   - docs/sdks/merchantaccountssdk/README.md
   - docs/sdks/networktokenscryptogram/README.md
-  - docs/sdks/paymentlinks/README.md
+  - docs/sdks/paymentlinkssdk/README.md
   - docs/sdks/paymentmethodsnetworktokens/README.md
   - docs/sdks/paymentmethodspaymentservicetokens/README.md
   - docs/sdks/paymentmethodssdk/README.md
@@ -444,6 +489,7 @@ generatedFiles:
   - src/AccountUpdaterInquirySummary.php
   - src/AccountUpdaterJob.php
   - src/AccountUpdaterJobCreate.php
+  - src/AccountUpdaterOptions.php
   - src/AddBuyerRequest.php
   - src/AddBuyerResponse.php
   - src/AddBuyerShippingDetailsRequest.php
@@ -453,6 +499,11 @@ generatedFiles:
   - src/AddReportRequest.php
   - src/AddReportResponse.php
   - src/Address.php
+  - src/AdyenCardOptions.php
+  - src/AdyenOptions.php
+  - src/AdyenSepaOptions.php
+  - src/AffirmItineraryOptions.php
+  - src/AffirmOptions.php
   - src/Airline.php
   - src/AirlineLeg.php
   - src/AirlinePassenger.php
@@ -467,6 +518,8 @@ generatedFiles:
   - src/Balances.php
   - src/BillingDetailsInput.php
   - src/BillingDetailsOutput.php
+  - src/BraintreeDynamicDataFieldsOptions.php
+  - src/BraintreeOptions.php
   - src/BrowserInfo.php
   - src/Buyer.php
   - src/BuyerCreate.php
@@ -484,7 +537,7 @@ generatedFiles:
   - src/CardSchemeDefinitionsSDK.php
   - src/CardWithUrlPaymentMethodCreate.php
   - src/CartItem.php
-  - src/CheckoutCardConnectionOptions.php
+  - src/CheckoutPayoutOptions.php
   - src/CheckoutSession.php
   - src/CheckoutSessionCreate.php
   - src/CheckoutSessionPaymentMethod.php
@@ -496,10 +549,8 @@ generatedFiles:
   - src/ClickToPayPaymentMethodCreate.php
   - src/ClickToPaySession.php
   - src/ClickToPaySessionRequest.php
-  - src/CollectionPaymentLink.php
   - src/ConfigureDigitalWalletRequest.php
   - src/ConfigureDigitalWalletResponse.php
-  - src/ConnectionOptions.php
   - src/CreateAccountUpdaterJobRequest.php
   - src/CreateAccountUpdaterJobResponse.php
   - src/CreateApplePayDigitalWalletSessionRequest.php
@@ -540,6 +591,8 @@ generatedFiles:
   - src/Creator.php
   - src/Cryptogram.php
   - src/CryptogramCreate.php
+  - src/CybersourceAntiFraudOptions.php
+  - src/CybersourceOptions.php
   - src/DefinitionField.php
   - src/DeleteBuyerRequest.php
   - src/DeleteBuyerResponse.php
@@ -566,6 +619,8 @@ generatedFiles:
   - src/DigitalWalletUpdate.php
   - src/DigitalWallets.php
   - src/DigitalWalletsSDK.php
+  - src/DlocalOptions.php
+  - src/DlocalWalletOptions.php
   - src/Domains.php
   - src/ErrorDetail.php
   - src/Events.php
@@ -573,6 +628,19 @@ generatedFiles:
   - src/ExpirePaymentLinkRequest.php
   - src/ExpirePaymentLinkResponse.php
   - src/Field.php
+  - src/FiservInstallmentOptions.php
+  - src/FiservOptions.php
+  - src/ForterAntiFraudOptions.php
+  - src/ForterAntiFraudOptionsCartItem.php
+  - src/ForterAntiFraudOptionsCartItemBasicItemData.php
+  - src/ForterAntiFraudOptionsCartItemBeneficiary.php
+  - src/ForterAntiFraudOptionsCartItemBeneficiaryAddress.php
+  - src/ForterAntiFraudOptionsCartItemBeneficiaryComments.php
+  - src/ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails.php
+  - src/ForterAntiFraudOptionsCartItemBeneficiaryPhone.php
+  - src/ForterAntiFraudOptionsCartItemDeliveryDetails.php
+  - src/ForterAntiFraudOptionsDiscount.php
+  - src/ForterAntiFraudOptionsDiscountCouponDiscountAmount.php
   - src/GetBuyerRequest.php
   - src/GetBuyerResponse.php
   - src/GetBuyerShippingDetailsRequest.php
@@ -620,6 +688,7 @@ generatedFiles:
   - src/GiftCardTransactionCreate.php
   - src/GiftCards.php
   - src/GiftCardsSDK.php
+  - src/GivingBlockOptions.php
   - src/GooglePayAssuranceDetails.php
   - src/GooglePayFPANPaymentMethodCreate.php
   - src/GooglePayPaymentMethodCreate.php
@@ -644,6 +713,7 @@ generatedFiles:
   - src/Hooks/Session.php
   - src/Hooks/TokenResponse.php
   - src/Jobs.php
+  - src/LatitudeOptions.php
   - src/ListAllReportExecutionsRequest.php
   - src/ListAllReportExecutionsResponse.php
   - src/ListAuditLogsRequest.php
@@ -694,6 +764,7 @@ generatedFiles:
   - src/ListTransactionSettlementsResponse.php
   - src/ListTransactionsRequest.php
   - src/ListTransactionsResponse.php
+  - src/MattildaTapiOptions.php
   - src/MerchantAccount.php
   - src/MerchantAccountCreate.php
   - src/MerchantAccountUpdate.php
@@ -701,14 +772,20 @@ generatedFiles:
   - src/MerchantAccountsSDK.php
   - src/MerchantProfileScheme.php
   - src/MerchantProfileSchemeSummary.php
+  - src/MockCardMerchantAdviceCodeOptions.php
+  - src/MockCardOptions.php
   - src/NetworkToken.php
   - src/NetworkTokenCreate.php
   - src/NetworkTokenPaymentMethodCreate.php
   - src/NetworkTokens.php
   - src/NetworkTokensCryptogram.php
+  - src/NuveiAirlineDataOptions.php
+  - src/NuveiOptions.php
+  - src/OxxoOptions.php
   - src/PaymentLink.php
   - src/PaymentLinkCreate.php
   - src/PaymentLinks.php
+  - src/PaymentLinksSDK.php
   - src/PaymentMethod.php
   - src/PaymentMethodCard.php
   - src/PaymentMethodDetailsCard.php
@@ -737,6 +814,7 @@ generatedFiles:
   - src/PaymentServiceUpdate.php
   - src/PaymentServices.php
   - src/PaymentServicesSDK.php
+  - src/PayoutConnectionOptions.php
   - src/PayoutCreate.php
   - src/PayoutMerchant.php
   - src/PayoutMerchantSummary.php
@@ -744,6 +822,8 @@ generatedFiles:
   - src/PayoutSummaries.php
   - src/PayoutSummary.php
   - src/Payouts.php
+  - src/PaypalOptions.php
+  - src/PowertranzOptions.php
   - src/Recipient.php
   - src/RedirectPaymentMethodCreate.php
   - src/Refund.php
@@ -779,6 +859,8 @@ generatedFiles:
   - src/ShippingDetailsList.php
   - src/ShippingDetailsUpdate.php
   - src/StatementDescriptor.php
+  - src/StripeConnectOptions.php
+  - src/StripeOptions.php
   - src/SuspendPaymentMethodNetworkTokenRequest.php
   - src/SuspendPaymentMethodNetworkTokenResponse.php
   - src/SyncTransactionRequest.php
@@ -792,6 +874,7 @@ generatedFiles:
   - src/Transaction.php
   - src/TransactionBuyer.php
   - src/TransactionCapture.php
+  - src/TransactionConnectionOptions.php
   - src/TransactionCreate.php
   - src/TransactionEvent.php
   - src/TransactionEvents.php
@@ -809,6 +892,9 @@ generatedFiles:
   - src/TransactionsRefunds.php
   - src/TransactionsReportSpec.php
   - src/TransactionsSettlements.php
+  - src/TravelHubCustomData.php
+  - src/TravelhubOptions.php
+  - src/TrustlyOptions.php
   - src/UnregisterDigitalWalletDomainRequest.php
   - src/UnregisterDigitalWalletDomainResponse.php
   - src/UpdateBuyerRequest.php
@@ -870,6 +956,10 @@ generatedFiles:
   - src/VoidTransactionResponse.php
   - src/VoidableField.php
   - src/WalletPaymentOptionContext.php
+  - src/WpayEverdaypayOptions.php
+  - src/WpayPaytoOptions.php
+  - src/WpayPaytoResourceOptions.php
+  - src/WpayPaytoSimulationOptions.php
   - src/errors/APIException.php
   - src/errors/Error400.php
   - src/errors/Error400Throwable.php

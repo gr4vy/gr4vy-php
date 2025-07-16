@@ -191,12 +191,12 @@ class TransactionCreate
     /**
      * Allows for passing optional configuration per connection to take advantage of connection specific features. When provided, the data is only passed to the target connection type to prevent sharing configuration across connections. Please note that each of the keys this object are in kebab-case, for example `cybersource-anti-fraud` as they represent the ID of the connector. All the other keys will be snake case, for example `merchant_defined_data` or camel case to match an external API that the connector uses.
      *
-     * @var ?array<string, array<string, mixed>> $connectionOptions
+     * @var ?TransactionConnectionOptions $connectionOptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('connection_options')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, array<string, mixed>>|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionConnectionOptions|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?array $connectionOptions = null;
+    public ?TransactionConnectionOptions $connectionOptions = null;
 
     /**
      * This field represents the fingerprint data to be passed to the active anti-fraud service.
@@ -336,14 +336,14 @@ class TransactionCreate
      * @param  ?string  $previousSchemeTransactionId
      * @param  ?BrowserInfo  $browserInfo
      * @param  ?string  $shippingDetailsId
-     * @param  ?array<string, array<string, mixed>>  $connectionOptions
+     * @param  ?TransactionConnectionOptions  $connectionOptions
      * @param  ?string  $antiFraudFingerprint
      * @param  ?string  $paymentServiceId
      * @param  ?Recipient  $recipient
      * @param  ?int  $installmentCount
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyerInput $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?array $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
+    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyerInput $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
     {
         $this->amount = $amount;
         $this->currency = $currency;

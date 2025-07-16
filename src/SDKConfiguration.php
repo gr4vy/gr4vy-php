@@ -33,11 +33,11 @@ class SDKConfiguration
 
     public string $openapiDocVersion = '1.0.0';
 
-    public string $sdkVersion = '1.1.6';
+    public string $sdkVersion = '1.1.7';
 
-    public string $genVersion = '2.656.9';
+    public string $genVersion = '2.657.1';
 
-    public string $userAgent = 'speakeasy-sdk/php 1.1.6 2.656.9 1.0.0 gr4vy/gr4vy-php';
+    public string $userAgent = 'speakeasy-sdk/php 1.1.7 2.657.1 1.0.0 gr4vy/gr4vy-php';
     /** @var array<string, array<string, array<string, mixed>>> */
     public ?array $globals = [
         'parameters' => [],

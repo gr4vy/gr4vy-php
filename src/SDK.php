@@ -56,7 +56,7 @@ class SDK
 
     public Payouts $payouts;
 
-    public PaymentLinks $paymentLinks;
+    public PaymentLinksSDK $paymentLinks;
 
     /**
      * Returns a new instance of the SDK builder used to configure and create the SDK instance.
@@ -91,7 +91,7 @@ class SDK
         $this->checkoutSessions = new CheckoutSessions($this->sdkConfiguration);
         $this->merchantAccounts = new MerchantAccountsSDK($this->sdkConfiguration);
         $this->payouts = new Payouts($this->sdkConfiguration);
-        $this->paymentLinks = new PaymentLinks($this->sdkConfiguration);
+        $this->paymentLinks = new PaymentLinksSDK($this->sdkConfiguration);
         $this->initHooks();
 
     }

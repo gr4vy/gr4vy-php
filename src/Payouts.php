@@ -46,7 +46,7 @@ class Payouts
     }
 
     /**
-     * Create a payout.
+     * Create a payout
      *
      * Creates a new payout.
      *
@@ -253,9 +253,9 @@ class Payouts
     }
 
     /**
-     * Get a payout.
+     * Get a payout
      *
-     * Retreives a payout.
+     * Retrieves a payout.
      *
      * @param  string  $payoutId
      * @param  ?string  $merchantAccountId
@@ -479,7 +479,7 @@ class Payouts
     }
 
     /**
-     * List payouts created.
+     * List payouts created
      *
      * Returns a list of payouts made.
      *
@@ -730,7 +730,7 @@ class Payouts
         }
     }
     /**
-     * List payouts created.
+     * List payouts created
      *
      * Returns a list of payouts made.
      *

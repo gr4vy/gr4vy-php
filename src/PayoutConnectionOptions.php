@@ -9,23 +9,23 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class ConnectionOptions
+class PayoutConnectionOptions
 {
     /**
      * Custom options for `checkout-card` payment service.
      *
-     * @var ?CheckoutCardConnectionOptions $checkoutCard
+     * @var ?CheckoutPayoutOptions $checkoutCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('checkout-card')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutCardConnectionOptions|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutPayoutOptions|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CheckoutCardConnectionOptions $checkoutCard = null;
+    public ?CheckoutPayoutOptions $checkoutCard = null;
 
     /**
-     * @param  ?CheckoutCardConnectionOptions  $checkoutCard
+     * @param  ?CheckoutPayoutOptions  $checkoutCard
      * @phpstan-pure
      */
-    public function __construct(?CheckoutCardConnectionOptions $checkoutCard = null)
+    public function __construct(?CheckoutPayoutOptions $checkoutCard = null)
     {
         $this->checkoutCard = $checkoutCard;
     }

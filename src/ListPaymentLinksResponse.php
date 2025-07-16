@@ -35,9 +35,9 @@ class ListPaymentLinksResponse
     /**
      * Successful Response
      *
-     * @var ?CollectionPaymentLink $collectionPaymentLink
+     * @var ?PaymentLinks $paymentLinks
      */
-    public ?CollectionPaymentLink $collectionPaymentLink = null;
+    public ?PaymentLinks $paymentLinks = null;
 
     /**
      * @var \Closure(string): ?ListPaymentLinksResponse $next
@@ -47,15 +47,15 @@ class ListPaymentLinksResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CollectionPaymentLink  $collectionPaymentLink
+     * @param  ?PaymentLinks  $paymentLinks
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionPaymentLink $collectionPaymentLink = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PaymentLinks $paymentLinks = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->collectionPaymentLink = $collectionPaymentLink;
+        $this->paymentLinks = $paymentLinks;
     }
     /**
      * @param  string  $name
