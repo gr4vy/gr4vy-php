@@ -255,7 +255,7 @@ class PaymentServicesSDK
     }
 
     /**
-     * Create a session for apayment service definition
+     * Create a session for a payment service definition
      *
      * Creates a session for a payment service that supports sessions.
      *
