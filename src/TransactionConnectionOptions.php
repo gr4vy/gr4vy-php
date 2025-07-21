@@ -262,6 +262,16 @@ class TransactionConnectionOptions
     public ?MattildaTapiOptions $mattildaTapi = null;
 
     /**
+     * Custom options to be passed to the `mattilda-tapifintechs` connector.
+     *
+     * @var ?MattildaTapiOptions $mattildaTapifintechs
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('mattilda-tapifintechs')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\MattildaTapiOptions|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?MattildaTapiOptions $mattildaTapifintechs = null;
+
+    /**
      * Custom options to be passed to the `mock-card` connector.
      *
      * @var ?MockCardOptions $mockCard
@@ -397,6 +407,7 @@ class TransactionConnectionOptions
      * @param  ?LatitudeOptions  $latitudeLatitude
      * @param  ?LatitudeOptions  $latitudeLatitudeds
      * @param  ?MattildaTapiOptions  $mattildaTapi
+     * @param  ?MattildaTapiOptions  $mattildaTapifintechs
      * @param  ?MockCardOptions  $mockCard
      * @param  ?NuveiOptions  $nuveiCard
      * @param  ?OxxoOptions  $oxxoOxxo
@@ -410,7 +421,7 @@ class TransactionConnectionOptions
      * @param  ?WpayPaytoOptions  $wpayPayto
      * @phpstan-pure
      */
-    public function __construct(?AccountUpdaterOptions $accountUpdater = null, ?AdyenOptions $adyenAfterpay = null, ?AdyenOptions $adyenAlipay = null, ?AdyenCardOptions $adyenCard = null, ?AdyenOptions $adyenCashapp = null, ?AdyenOptions $adyenGiropay = null, ?AdyenOptions $adyenIdeal = null, ?AdyenSepaOptions $adyenSepa = null, ?AdyenOptions $adyenSofort = null, ?AdyenOptions $adyenVipps = null, ?AffirmOptions $affirmAffirm = null, ?BraintreeOptions $braintreeCard = null, ?CybersourceAntiFraudOptions $cybersourceAntiFraud = null, ?CybersourceOptions $cybersourceCard = null, ?CybersourceOptions $cybersourceIdeal = null, ?CybersourceOptions $cybersourceKcp = null, ?DlocalOptions $dlocalNequi = null, ?FiservOptions $fiservCard = null, ?ForterAntiFraudOptions $forterAntiFraud = null, ?LatitudeOptions $gemGem = null, ?LatitudeOptions $gemGemds = null, ?GivingBlockOptions $givingblockGivingblock = null, ?LatitudeOptions $latitudeLatitude = null, ?LatitudeOptions $latitudeLatitudeds = null, ?MattildaTapiOptions $mattildaTapi = null, ?MockCardOptions $mockCard = null, ?NuveiOptions $nuveiCard = null, ?OxxoOptions $oxxoOxxo = null, ?PaypalOptions $paypalPaypal = null, ?PaypalOptions $paypalPaypalpaylater = null, ?PowertranzOptions $powertranzCard = null, ?StripeOptions $stripeCard = null, ?TravelhubOptions $travelhubCard = null, ?TrustlyOptions $trustlyTrustly = null, ?WpayEverdaypayOptions $wpayEverydaypay = null, ?WpayPaytoOptions $wpayPayto = null)
+    public function __construct(?AccountUpdaterOptions $accountUpdater = null, ?AdyenOptions $adyenAfterpay = null, ?AdyenOptions $adyenAlipay = null, ?AdyenCardOptions $adyenCard = null, ?AdyenOptions $adyenCashapp = null, ?AdyenOptions $adyenGiropay = null, ?AdyenOptions $adyenIdeal = null, ?AdyenSepaOptions $adyenSepa = null, ?AdyenOptions $adyenSofort = null, ?AdyenOptions $adyenVipps = null, ?AffirmOptions $affirmAffirm = null, ?BraintreeOptions $braintreeCard = null, ?CybersourceAntiFraudOptions $cybersourceAntiFraud = null, ?CybersourceOptions $cybersourceCard = null, ?CybersourceOptions $cybersourceIdeal = null, ?CybersourceOptions $cybersourceKcp = null, ?DlocalOptions $dlocalNequi = null, ?FiservOptions $fiservCard = null, ?ForterAntiFraudOptions $forterAntiFraud = null, ?LatitudeOptions $gemGem = null, ?LatitudeOptions $gemGemds = null, ?GivingBlockOptions $givingblockGivingblock = null, ?LatitudeOptions $latitudeLatitude = null, ?LatitudeOptions $latitudeLatitudeds = null, ?MattildaTapiOptions $mattildaTapi = null, ?MattildaTapiOptions $mattildaTapifintechs = null, ?MockCardOptions $mockCard = null, ?NuveiOptions $nuveiCard = null, ?OxxoOptions $oxxoOxxo = null, ?PaypalOptions $paypalPaypal = null, ?PaypalOptions $paypalPaypalpaylater = null, ?PowertranzOptions $powertranzCard = null, ?StripeOptions $stripeCard = null, ?TravelhubOptions $travelhubCard = null, ?TrustlyOptions $trustlyTrustly = null, ?WpayEverdaypayOptions $wpayEverydaypay = null, ?WpayPaytoOptions $wpayPayto = null)
     {
         $this->accountUpdater = $accountUpdater;
         $this->adyenAfterpay = $adyenAfterpay;
@@ -437,6 +448,7 @@ class TransactionConnectionOptions
         $this->latitudeLatitude = $latitudeLatitude;
         $this->latitudeLatitudeds = $latitudeLatitudeds;
         $this->mattildaTapi = $mattildaTapi;
+        $this->mattildaTapifintechs = $mattildaTapifintechs;
         $this->mockCard = $mockCard;
         $this->nuveiCard = $nuveiCard;
         $this->oxxoOxxo = $oxxoOxxo;
