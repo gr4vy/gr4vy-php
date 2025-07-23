@@ -9,36 +9,73 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-/** TransactionCapture - Request body for capturing an authorized transaction. */
 class TransactionCapture
 {
     /**
-     * The amount to capture, in the smallest currency unit (e.g., cents). This must be less than or equal to the authorized amount, unless over-capture is available.
      *
-     * @var ?int $amount
+     * @var string $status
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?int $amount = null;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    public string $status;
 
     /**
-     * The airline data to submit to the payment service during the capture call.
+     * A full transaction resource.
      *
-     * @var ?Airline $airline
+     * @var Transaction $transaction
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('airline')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Airline|null')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Airline $airline = null;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('transaction')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Transaction')]
+    public Transaction $transaction;
 
     /**
-     * @param  ?int  $amount
-     * @param  ?Airline  $airline
+     * The standardized error code set by Gr4vy.
+     *
+     * @var ?string $code
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('code')]
+    public ?string $code;
+
+    /**
+     * This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
+     *
+     * @var ?string $rawResponseCode
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('raw_response_code')]
+    public ?string $rawResponseCode;
+
+    /**
+     * This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
+     *
+     * @var ?string $rawResponseDescription
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('raw_response_description')]
+    public ?string $rawResponseDescription;
+
+    /**
+     * Always `transaction-capture`.
+     *
+     * @var ?string $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $type = null;
+
+    /**
+     * @param  string  $status
+     * @param  Transaction  $transaction
+     * @param  ?string  $type
+     * @param  ?string  $code
+     * @param  ?string  $rawResponseCode
+     * @param  ?string  $rawResponseDescription
      * @phpstan-pure
      */
-    public function __construct(?int $amount = null, ?Airline $airline = null)
+    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $type = 'transaction-capture')
     {
-        $this->amount = $amount;
-        $this->airline = $airline;
+        $this->status = $status;
+        $this->transaction = $transaction;
+        $this->code = $code;
+        $this->rawResponseCode = $rawResponseCode;
+        $this->rawResponseDescription = $rawResponseDescription;
+        $this->type = $type;
     }
 }

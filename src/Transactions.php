@@ -59,24 +59,26 @@ class Transactions
      *
      * Captures a previously authorized transaction. You can capture the full or a partial amount, as long as it does not exceed the authorized amount (unless over-capture is enabled).
      *
-     * @param  TransactionCapture  $transactionCapture
+     * @param  TransactionCaptureCreate  $transactionCaptureCreate
      * @param  string  $transactionId
+     * @param  ?string  $prefer
      * @param  ?string  $merchantAccountId
      * @return CaptureTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function capture(TransactionCapture $transactionCapture, string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): CaptureTransactionResponse
+    public function capture(TransactionCaptureCreate $transactionCaptureCreate, string $transactionId, ?string $prefer = null, ?string $merchantAccountId = null, ?Options $options = null): CaptureTransactionResponse
     {
         $request = new CaptureTransactionRequest(
             transactionId: $transactionId,
-            transactionCapture: $transactionCapture,
+            transactionCaptureCreate: $transactionCaptureCreate,
+            prefer: $prefer,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/capture', CaptureTransactionRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, 'transactionCapture', 'json');
+        $body = Utils\Utils::serializeRequestBody($request, 'transactionCaptureCreate', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
@@ -111,12 +113,12 @@ class Transactions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\Transaction', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Transaction|\Gr4vy\TransactionCapture', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new CaptureTransactionResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    transaction: $obj);
+                    responseCaptureTransaction: $obj);
 
                 return $response;
             } else {
