@@ -21,10 +21,10 @@ class CaptureTransactionRequest
 
     /**
      *
-     * @var TransactionCapture $transactionCapture
+     * @var TransactionCaptureCreate $transactionCaptureCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public TransactionCapture $transactionCapture;
+    public TransactionCaptureCreate $transactionCaptureCreate;
 
     /**
      * The ID of the merchant account to use for this request.
@@ -35,15 +35,25 @@ class CaptureTransactionRequest
     public ?string $merchantAccountId = null;
 
     /**
+     * The preferred resource type in the response.
+     *
+     * @var ?string $prefer
+     */
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=prefer')]
+    public ?string $prefer = null;
+
+    /**
      * @param  string  $transactionId
-     * @param  TransactionCapture  $transactionCapture
+     * @param  TransactionCaptureCreate  $transactionCaptureCreate
      * @param  ?string  $merchantAccountId
+     * @param  ?string  $prefer
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, TransactionCapture $transactionCapture, ?string $merchantAccountId = null)
+    public function __construct(string $transactionId, TransactionCaptureCreate $transactionCaptureCreate, ?string $merchantAccountId = null, ?string $prefer = null)
     {
         $this->transactionId = $transactionId;
-        $this->transactionCapture = $transactionCapture;
+        $this->transactionCaptureCreate = $transactionCaptureCreate;
         $this->merchantAccountId = $merchantAccountId;
+        $this->prefer = $prefer;
     }
 }
