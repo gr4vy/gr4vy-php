@@ -37,19 +37,19 @@ class CaptureTransactionRequest
     /**
      * The preferred resource type in the response.
      *
-     * @var ?string $prefer
+     * @var ?array<string> $prefer
      */
     #[SpeakeasyMetadata('header:style=simple,explode=false,name=prefer')]
-    public ?string $prefer = null;
+    public ?array $prefer = null;
 
     /**
      * @param  string  $transactionId
      * @param  TransactionCaptureCreate  $transactionCaptureCreate
      * @param  ?string  $merchantAccountId
-     * @param  ?string  $prefer
+     * @param  ?array<string>  $prefer
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, TransactionCaptureCreate $transactionCaptureCreate, ?string $merchantAccountId = null, ?string $prefer = null)
+    public function __construct(string $transactionId, TransactionCaptureCreate $transactionCaptureCreate, ?string $merchantAccountId = null, ?array $prefer = null)
     {
         $this->transactionId = $transactionId;
         $this->transactionCaptureCreate = $transactionCaptureCreate;

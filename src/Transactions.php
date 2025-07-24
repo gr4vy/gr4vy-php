@@ -61,12 +61,12 @@ class Transactions
      *
      * @param  TransactionCaptureCreate  $transactionCaptureCreate
      * @param  string  $transactionId
-     * @param  ?string  $prefer
+     * @param  ?array<string>  $prefer
      * @param  ?string  $merchantAccountId
      * @return CaptureTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function capture(TransactionCaptureCreate $transactionCaptureCreate, string $transactionId, ?string $prefer = null, ?string $merchantAccountId = null, ?Options $options = null): CaptureTransactionResponse
+    public function capture(TransactionCaptureCreate $transactionCaptureCreate, string $transactionId, ?array $prefer = null, ?string $merchantAccountId = null, ?Options $options = null): CaptureTransactionResponse
     {
         $request = new CaptureTransactionRequest(
             transactionId: $transactionId,
@@ -1424,14 +1424,16 @@ class Transactions
      * Voids a previously authorized transaction. If the transaction was not yet successfully authorized, or was already captured, the void will not be processed. This operation releases the hold on the buyer's funds. Captured transactions can be refunded instead.
      *
      * @param  string  $transactionId
+     * @param  ?array<string>  $prefer
      * @param  ?string  $merchantAccountId
      * @return VoidTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function void(string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): VoidTransactionResponse
+    public function void(string $transactionId, ?array $prefer = null, ?string $merchantAccountId = null, ?Options $options = null): VoidTransactionResponse
     {
         $request = new VoidTransactionRequest(
             transactionId: $transactionId,
+            prefer: $prefer,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -1468,12 +1470,12 @@ class Transactions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\Transaction', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Transaction|\Gr4vy\TransactionVoid', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new VoidTransactionResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    transaction: $obj);
+                    responseVoidTransaction: $obj);
 
                 return $response;
             } else {
