@@ -28,13 +28,23 @@ class VoidTransactionRequest
     public ?string $merchantAccountId = null;
 
     /**
+     * The preferred resource type in the response.
+     *
+     * @var ?array<string> $prefer
+     */
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=prefer')]
+    public ?array $prefer = null;
+
+    /**
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
+     * @param  ?array<string>  $prefer
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, ?string $merchantAccountId = null)
+    public function __construct(string $transactionId, ?string $merchantAccountId = null, ?array $prefer = null)
     {
         $this->transactionId = $transactionId;
         $this->merchantAccountId = $merchantAccountId;
+        $this->prefer = $prefer;
     }
 }

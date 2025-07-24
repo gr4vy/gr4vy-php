@@ -35,22 +35,22 @@ class VoidTransactionResponse
     /**
      * Successful Response
      *
-     * @var ?Transaction $transaction
+     * @var Transaction|TransactionVoid|null $responseVoidTransaction
      */
-    public ?Transaction $transaction = null;
+    public Transaction|TransactionVoid|null $responseVoidTransaction = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Transaction  $transaction
+     * @param  Transaction|TransactionVoid|null  $responseVoidTransaction
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Transaction $transaction = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Transaction|TransactionVoid|null $responseVoidTransaction = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->transaction = $transaction;
+        $this->responseVoidTransaction = $responseVoidTransaction;
     }
 }
