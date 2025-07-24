@@ -30,18 +30,19 @@ class TravelHubCustomData
     /**
      * The type of the custom data field.
      *
-     * @var string $type
+     * @var ?string $type
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
-    public string $type;
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $type = null;
 
     /**
      * @param  string  $name
      * @param  string  $value
-     * @param  string  $type
+     * @param  ?string  $type
      * @phpstan-pure
      */
-    public function __construct(string $name, string $value, string $type)
+    public function __construct(string $name, string $value, ?string $type = null)
     {
         $this->name = $name;
         $this->value = $value;
