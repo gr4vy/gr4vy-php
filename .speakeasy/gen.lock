@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 329fac11c293d477ba5e9c5901126a38
+  docChecksum: cc00fc9bdfa1eda37b16a0769f0eb066
   docVersion: 1.0.0
-  speakeasyVersion: 1.592.0
+  speakeasyVersion: 1.592.1
   generationVersion: 2.667.0
-  releaseVersion: 1.1.14
-  configChecksum: 6e9d012facc5cd113cb989927d47b35d
+  releaseVersion: 1.1.15
+  configChecksum: 3c2d56be4279e224a28b33192e87236f
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
