@@ -19,6 +19,7 @@ Returns a paginated list of transactions for the merchant account, sorted by mos
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_transactions" method="get" path="/transactions" -->
 ```php
 declare(strict_types=1);
 
@@ -155,6 +156,7 @@ Create a new transaction using a supported payment method. If additional buyer a
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_transaction" method="post" path="/transactions" -->
 ```php
 declare(strict_types=1);
 
@@ -227,6 +229,7 @@ Retrieve the details of a transaction by its unique identifier.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_transaction" method="get" path="/transactions/{transaction_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -287,6 +290,7 @@ Manually updates a transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="update_transaction" method="put" path="/transactions/{transaction_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -350,6 +354,7 @@ Captures a previously authorized transaction. You can capture the full or a part
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="capture_transaction" method="post" path="/transactions/{transaction_id}/capture" -->
 ```php
 declare(strict_types=1);
 
@@ -414,6 +419,7 @@ Voids a previously authorized transaction. If the transaction was not yet succes
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="void_transaction" method="post" path="/transactions/{transaction_id}/void" -->
 ```php
 declare(strict_types=1);
 
@@ -475,6 +481,7 @@ Synchronizes the status of a transaction with the underlying payment service pro
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="sync_transaction" method="post" path="/transactions/{transaction_id}/sync" -->
 ```php
 declare(strict_types=1);
 

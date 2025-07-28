@@ -16,6 +16,7 @@ List all merchant accounts in an instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_merchant_accounts" method="get" path="/merchant-accounts" -->
 ```php
 declare(strict_types=1);
 
@@ -82,6 +83,7 @@ Create a new merchant account in an instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_merchant_account" method="post" path="/merchant-accounts" -->
 ```php
 declare(strict_types=1);
 
@@ -144,6 +146,7 @@ Get info about a merchant account in an instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_merchant_account" method="get" path="/merchant-accounts/{merchant_account_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -202,6 +205,7 @@ Update info for a merchant account in an instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="update_merchant_account" method="put" path="/merchant-accounts/{merchant_account_id}" -->
 ```php
 declare(strict_types=1);
 

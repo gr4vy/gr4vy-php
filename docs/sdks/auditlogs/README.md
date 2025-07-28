@@ -13,6 +13,7 @@ Returns a list of activity by dashboard users.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_audit_logs" method="get" path="/audit-logs" -->
 ```php
 declare(strict_types=1);
 

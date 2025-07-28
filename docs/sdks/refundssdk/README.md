@@ -13,6 +13,7 @@ Fetch a refund.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_refund" method="get" path="/refunds/{refund_id}" -->
 ```php
 declare(strict_types=1);
 

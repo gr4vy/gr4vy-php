@@ -14,6 +14,7 @@ Retrieve a specific settlement for a transaction by its unique identifier.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_transaction_settlement" method="get" path="/transactions/{transaction_id}/settlements/{settlement_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -77,6 +78,7 @@ List all settlements for a specific transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_transaction_settlements" method="get" path="/transactions/{transaction_id}/settlements" -->
 ```php
 declare(strict_types=1);
 

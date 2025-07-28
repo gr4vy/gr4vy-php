@@ -17,6 +17,7 @@ Associate shipping details to a buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="add_buyer_shipping_details" method="post" path="/buyers/{buyer_id}/shipping-details" -->
 ```php
 declare(strict_types=1);
 
@@ -80,6 +81,7 @@ List all the shipping details associated to a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_buyer_shipping_details" method="get" path="/buyers/{buyer_id}/shipping-details" -->
 ```php
 declare(strict_types=1);
 
@@ -140,6 +142,7 @@ Get a buyer's shipping details.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_buyer_shipping_details" method="get" path="/buyers/{buyer_id}/shipping-details/{shipping_details_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -203,6 +206,7 @@ Update the shipping details associated to a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="update_buyer_shipping_details" method="put" path="/buyers/{buyer_id}/shipping-details/{shipping_details_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -268,6 +272,7 @@ Delete the shipping details associated to a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="delete_buyer_shipping_details" method="delete" path="/buyers/{buyer_id}/shipping-details/{shipping_details_id}" -->
 ```php
 declare(strict_types=1);
 

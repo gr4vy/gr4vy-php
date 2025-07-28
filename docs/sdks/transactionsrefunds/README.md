@@ -15,6 +15,7 @@ List refunds for a transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_transaction_refunds" method="get" path="/transactions/{transaction_id}/refunds" -->
 ```php
 declare(strict_types=1);
 
@@ -75,6 +76,7 @@ Create a refund for a transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_transaction_refund" method="post" path="/transactions/{transaction_id}/refunds" -->
 ```php
 declare(strict_types=1);
 
@@ -138,6 +140,7 @@ Fetch refund for a transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_transaction_refund" method="get" path="/transactions/{transaction_id}/refunds/{refund_id}" -->
 ```php
 declare(strict_types=1);
 

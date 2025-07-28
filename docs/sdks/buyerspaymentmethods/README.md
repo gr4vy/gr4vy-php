@@ -13,6 +13,7 @@ List all the stored payment methods for a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_buyer_payment_methods" method="get" path="/buyers/payment-methods" -->
 ```php
 declare(strict_types=1);
 

@@ -17,6 +17,7 @@ List all network tokens stored for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_payment_method_network_tokens" method="get" path="/payment-methods/{payment_method_id}/network-tokens" -->
 ```php
 declare(strict_types=1);
 
@@ -77,6 +78,7 @@ Provision a network token for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_payment_method_network_token" method="post" path="/payment-methods/{payment_method_id}/network-tokens" -->
 ```php
 declare(strict_types=1);
 
@@ -143,6 +145,7 @@ Suspend a network token for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="suspend_payment_method_network_token" method="post" path="/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/suspend" -->
 ```php
 declare(strict_types=1);
 
@@ -206,6 +209,7 @@ Resume a suspended network token for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="resume_payment_method_network_token" method="post" path="/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/resume" -->
 ```php
 declare(strict_types=1);
 
@@ -269,6 +273,7 @@ Delete a network token for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="delete_payment_method_network_token" method="delete" path="/payment-methods/{payment_method_id}/network-tokens/{network_token_id}" -->
 ```php
 declare(strict_types=1);
 

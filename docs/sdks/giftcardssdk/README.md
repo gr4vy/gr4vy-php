@@ -16,6 +16,7 @@ Fetch details about a gift card.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_gift_card" method="get" path="/gift-cards/{gift_card_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -76,6 +77,7 @@ Removes a gift card from our system.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="delete_gift_card" method="delete" path="/gift-cards/{gift_card_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -136,6 +138,7 @@ Store a new gift card in the vault.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_gift_card" method="post" path="/gift-cards" -->
 ```php
 declare(strict_types=1);
 
@@ -199,6 +202,7 @@ Browser all gift cards.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_gift_cards" method="get" path="/gift-cards" -->
 ```php
 declare(strict_types=1);
 

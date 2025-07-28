@@ -15,6 +15,7 @@ Create a session for use with Google Pay.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_google_pay_digital_wallet_session" method="post" path="/digital-wallets/google/session" -->
 ```php
 declare(strict_types=1);
 
@@ -77,6 +78,7 @@ Create a session for use with Apple Pay.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_apple_pay_digital_wallet_session" method="post" path="/digital-wallets/apple/session" -->
 ```php
 declare(strict_types=1);
 
@@ -140,6 +142,7 @@ Create a session for use with Click to Pay.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_click_to_pay_digital_wallet_session" method="post" path="/digital-wallets/click-to-pay/session" -->
 ```php
 declare(strict_types=1);
 

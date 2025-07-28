@@ -16,6 +16,7 @@ Create a new payment link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="add_payment_link" method="post" path="/payment-links" -->
 ```php
 declare(strict_types=1);
 
@@ -80,6 +81,7 @@ List all created payment links.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_payment_links" method="get" path="/payment-links" -->
 ```php
 declare(strict_types=1);
 
@@ -144,6 +146,7 @@ Expire an existing payment link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="expire_payment_link" method="post" path="/payment-links/{payment_link_id}/expire" -->
 ```php
 declare(strict_types=1);
 
@@ -204,6 +207,7 @@ Fetch the details for a payment link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_payment_link" method="get" path="/payment-links/{payment_link_id}" -->
 ```php
 declare(strict_types=1);
 
