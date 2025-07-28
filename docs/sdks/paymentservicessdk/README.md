@@ -19,6 +19,7 @@ List the configured payment services.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_payment_services" method="get" path="/payment-services" -->
 ```php
 declare(strict_types=1);
 
@@ -85,6 +86,7 @@ Updates the configuration of a payment service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="update_payment_service" method="post" path="/payment-services" -->
 ```php
 declare(strict_types=1);
 
@@ -170,6 +172,7 @@ Get the details of a configured payment service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_payment_service" method="get" path="/payment-services/{payment_service_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -230,6 +233,7 @@ Configures a new payment service for use by merchants.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_payment_service" method="put" path="/payment-services/{payment_service_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -295,6 +299,7 @@ Deletes all the configuration of a payment service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="delete_payment_service" method="delete" path="/payment-services/{payment_service_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -355,6 +360,7 @@ Verify the credentials of a configured payment service
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="verify_payment_service_credentials" method="post" path="/payment-services/verify" -->
 ```php
 declare(strict_types=1);
 
@@ -418,6 +424,7 @@ Creates a session for a payment service that supports sessions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_payment_service_session" method="post" path="/payment-services/{payment_service_id}/sessions" -->
 ```php
 declare(strict_types=1);
 

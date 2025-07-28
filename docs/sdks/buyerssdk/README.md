@@ -17,6 +17,7 @@ List all buyers or search for a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_buyers" method="get" path="/buyers" -->
 ```php
 declare(strict_types=1);
 
@@ -83,6 +84,7 @@ Create a new buyer record.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="add_buyer" method="post" path="/buyers" -->
 ```php
 declare(strict_types=1);
 
@@ -143,6 +145,7 @@ Fetches a buyer by its ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_buyer" method="get" path="/buyers/{buyer_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -203,6 +206,7 @@ Updates a buyer record.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="update_buyer" method="put" path="/buyers/{buyer_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -266,6 +270,7 @@ Permanently removes a buyer record.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="delete_buyer" method="delete" path="/buyers/{buyer_id}" -->
 ```php
 declare(strict_types=1);
 

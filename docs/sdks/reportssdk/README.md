@@ -16,6 +16,7 @@ List all configured reports that can be generated.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_reports" method="get" path="/reports" -->
 ```php
 declare(strict_types=1);
 
@@ -78,6 +79,7 @@ Create a new report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="add_report" method="post" path="/reports" -->
 ```php
 declare(strict_types=1);
 
@@ -153,6 +155,7 @@ Fetches a report by its ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_report" method="get" path="/reports/{report_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -213,6 +216,7 @@ Updates the configuration of a report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="update_report" method="put" path="/reports/{report_id}" -->
 ```php
 declare(strict_types=1);
 

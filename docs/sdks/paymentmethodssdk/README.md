@@ -16,6 +16,7 @@ List all stored payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_payment_methods" method="get" path="/payment-methods" -->
 ```php
 declare(strict_types=1);
 
@@ -83,6 +84,7 @@ Store a new payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_payment_method" method="post" path="/payment-methods" -->
 ```php
 declare(strict_types=1);
 
@@ -145,6 +147,7 @@ Retrieve a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_payment_method" method="get" path="/payment-methods/{payment_method_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -205,6 +208,7 @@ Delete a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="delete_payment_method" method="delete" path="/payment-methods/{payment_method_id}" -->
 ```php
 declare(strict_types=1);
 

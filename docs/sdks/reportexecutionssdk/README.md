@@ -13,6 +13,7 @@ List all executed reports that have been generated.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_all_report_executions" method="get" path="/report-executions" -->
 ```php
 declare(strict_types=1);
 

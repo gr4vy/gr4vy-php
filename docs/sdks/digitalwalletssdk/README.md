@@ -17,6 +17,7 @@ Register a digital wallet like Apple Pay, Google Pay, or Click to Pay.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="configure_digital_wallet" method="post" path="/digital-wallets" -->
 ```php
 declare(strict_types=1);
 
@@ -81,6 +82,7 @@ List configured digital wallets.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_digital_wallets" method="get" path="/digital-wallets" -->
 ```php
 declare(strict_types=1);
 
@@ -140,6 +142,7 @@ Fetch the details a digital wallet.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_digital_wallet" method="get" path="/digital-wallets/{digital_wallet_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -200,6 +203,7 @@ Delete a configured digital wallet.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="delete_digital_wallet" method="delete" path="/digital-wallets/{digital_wallet_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -260,6 +264,7 @@ Update a digital wallet.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="update_digital_wallet" method="put" path="/digital-wallets/{digital_wallet_id}" -->
 ```php
 declare(strict_types=1);
 

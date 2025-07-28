@@ -15,6 +15,7 @@ Returns a list of payouts made.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_payouts" method="get" path="/payouts" -->
 ```php
 declare(strict_types=1);
 
@@ -81,6 +82,7 @@ Creates a new payout.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_payout" method="post" path="/payouts" -->
 ```php
 declare(strict_types=1);
 
@@ -148,6 +150,7 @@ Retrieves a payout.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_payout" method="get" path="/payouts/{payout_id}" -->
 ```php
 declare(strict_types=1);
 

@@ -14,6 +14,7 @@ Register a digital wallet domain (Apple Pay only).
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="register_digital_wallet_domain" method="post" path="/digital-wallets/{digital_wallet_id}/domains" -->
 ```php
 declare(strict_types=1);
 
@@ -79,6 +80,7 @@ Remove a digital wallet domain (Apple Pay only).
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="unregister_digital_wallet_domain" method="delete" path="/digital-wallets/{digital_wallet_id}/domains" -->
 ```php
 declare(strict_types=1);
 

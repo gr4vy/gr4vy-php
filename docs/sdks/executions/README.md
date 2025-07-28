@@ -15,6 +15,7 @@ List all executions of a specific report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="list_report_executions" method="get" path="/reports/{report_id}/executions" -->
 ```php
 declare(strict_types=1);
 
@@ -82,6 +83,7 @@ Creates a download URL for a specific execution of a report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="create_report_execution_url" method="post" path="/reports/{report_id}/executions/{report_execution_id}/url" -->
 ```php
 declare(strict_types=1);
 
@@ -145,6 +147,7 @@ Fetch a specific executed report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="php" operationID="get_report_execution" method="get" path="/report-executions/{report_execution_id}" -->
 ```php
 declare(strict_types=1);
 
