@@ -145,6 +145,33 @@ class Refund
     public ?Creator $creator = null;
 
     /**
+     * The standardized error code set by Gr4vy.
+     *
+     * @var ?string $errorCode
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('error_code')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $errorCode = null;
+
+    /**
+     * This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
+     *
+     * @var ?string $rawResponseCode
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('raw_response_code')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $rawResponseCode = null;
+
+    /**
+     *  This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
+     *
+     * @var ?string $rawResponseDescription
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('raw_response_description')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $rawResponseDescription = null;
+
+    /**
      * Always `refund`.
      *
      * @var ?string $type
@@ -171,9 +198,12 @@ class Refund
      * @param  ?string  $externalIdentifier
      * @param  ?string  $transactionExternalIdentifier
      * @param  ?Creator  $creator
+     * @param  ?string  $errorCode
+     * @param  ?string  $rawResponseCode
+     * @param  ?string  $rawResponseDescription
      * @phpstan-pure
      */
-    public function __construct(string $id, string $transactionId, string $status, string $currency, int $amount, string $targetType, string $reconciliationId, string $transactionReconciliationId, \DateTime $createdAt, \DateTime $updatedAt, ?string $paymentServiceRefundId = null, ?string $reason = null, ?string $targetId = null, ?string $externalIdentifier = null, ?string $transactionExternalIdentifier = null, ?Creator $creator = null, ?string $type = 'refund')
+    public function __construct(string $id, string $transactionId, string $status, string $currency, int $amount, string $targetType, string $reconciliationId, string $transactionReconciliationId, \DateTime $createdAt, \DateTime $updatedAt, ?string $paymentServiceRefundId = null, ?string $reason = null, ?string $targetId = null, ?string $externalIdentifier = null, ?string $transactionExternalIdentifier = null, ?Creator $creator = null, ?string $errorCode = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $type = 'refund')
     {
         $this->id = $id;
         $this->transactionId = $transactionId;
@@ -191,6 +221,9 @@ class Refund
         $this->externalIdentifier = $externalIdentifier;
         $this->transactionExternalIdentifier = $transactionExternalIdentifier;
         $this->creator = $creator;
+        $this->errorCode = $errorCode;
+        $this->rawResponseCode = $rawResponseCode;
+        $this->rawResponseDescription = $rawResponseDescription;
         $this->type = $type;
     }
 }
