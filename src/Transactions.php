@@ -806,7 +806,6 @@ class Transactions
                             buyerExternalIdentifier: $request != null ? $request->buyerExternalIdentifier : null,
                             buyerId: $request != null ? $request->buyerId : null,
                             buyerEmailAddress: $request != null ? $request->buyerEmailAddress : null,
-                            buyerSearch: $request != null ? $request->buyerSearch : null,
                             ipAddress: $request != null ? $request->ipAddress : null,
                             status: $request != null ? $request->status : null,
                             id: $request != null ? $request->id : null,
@@ -839,6 +838,7 @@ class Transactions
                             isSubsequentPayment: $request != null ? $request->isSubsequentPayment : null,
                             merchantInitiated: $request != null ? $request->merchantInitiated : null,
                             used3ds: $request != null ? $request->used3ds : null,
+                            buyerSearch: $request != null ? $request->buyerSearch : null,
                             merchantAccountId: $request != null ? $request->merchantAccountId : null,
                         ),
                     );
