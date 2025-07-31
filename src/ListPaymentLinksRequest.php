@@ -28,6 +28,14 @@ class ListPaymentLinksRequest
     public ?string $cursor = null;
 
     /**
+     * Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.
+     *
+     * @var ?array<string> $buyerSearch
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=buyer_search')]
+    public ?array $buyerSearch = null;
+
+    /**
      * The maximum number of items that are returned.
      *
      * @var ?int $limit
@@ -39,12 +47,14 @@ class ListPaymentLinksRequest
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
      * @param  ?string  $cursor
+     * @param  ?array<string>  $buyerSearch
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?array $buyerSearch = null, ?int $limit = 20)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->cursor = $cursor;
+        $this->buyerSearch = $buyerSearch;
         $this->limit = $limit;
     }
 }

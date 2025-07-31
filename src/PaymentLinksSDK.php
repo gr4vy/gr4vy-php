@@ -678,11 +678,12 @@ class PaymentLinksSDK
      *
      * @param  ?string  $cursor
      * @param  ?int  $limit
+     * @param  ?array<string>  $buyerSearch
      * @param  ?string  $merchantAccountId
      * @return ListPaymentLinksResponse
      * @throws \Gr4vy\errors\APIException
      */
-    private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentLinksResponse
+    private function listIndividual(?string $cursor = null, ?int $limit = null, ?array $buyerSearch = null, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentLinksResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -711,6 +712,7 @@ class PaymentLinksSDK
         $request = new ListPaymentLinksRequest(
             cursor: $cursor,
             limit: $limit,
+            buyerSearch: $buyerSearch,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
@@ -758,7 +760,7 @@ class PaymentLinksSDK
                     paymentLinks: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $limit, $merchantAccountId): ?ListPaymentLinksResponse {
+                $response->next = function () use ($sdk, $responseData, $limit, $buyerSearch, $merchantAccountId): ?ListPaymentLinksResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -773,6 +775,7 @@ class PaymentLinksSDK
                     return $sdk->listIndividual(
                         cursor: $nextCursor,
                         limit: $limit,
+                        buyerSearch: $buyerSearch,
                         merchantAccountId: $merchantAccountId,
                     );
                 };
@@ -929,13 +932,14 @@ class PaymentLinksSDK
      *
      * @param  ?string  $cursor
      * @param  ?int  $limit
+     * @param  ?array<string>  $buyerSearch
      * @param  ?string  $merchantAccountId
      * @return \Generator<ListPaymentLinksResponse>
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator
+    public function list(?string $cursor = null, ?int $limit = null, ?array $buyerSearch = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($cursor, $limit, $merchantAccountId, $options);
+        $res = $this->listIndividual($cursor, $limit, $buyerSearch, $merchantAccountId, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);

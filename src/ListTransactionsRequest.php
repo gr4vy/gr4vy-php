@@ -88,14 +88,6 @@ class ListTransactionsRequest
     public ?string $buyerEmailAddress = null;
 
     /**
-     * Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.
-     *
-     * @var ?array<string> $buyerSearch
-     */
-    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=buyer_search')]
-    public ?array $buyerSearch = null;
-
-    /**
      *
      * @var ?string $ipAddress
      */
@@ -345,6 +337,14 @@ class ListTransactionsRequest
     public ?bool $used3ds = null;
 
     /**
+     * Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.
+     *
+     * @var ?array<string> $buyerSearch
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=buyer_search')]
+    public ?array $buyerSearch = null;
+
+    /**
      * The maximum number of items that are at returned.
      *
      * @var ?int $limit
@@ -364,7 +364,6 @@ class ListTransactionsRequest
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $buyerId
      * @param  ?string  $buyerEmailAddress
-     * @param  ?array<string>  $buyerSearch
      * @param  ?string  $ipAddress
      * @param  ?array<string>  $status
      * @param  ?string  $id
@@ -397,9 +396,10 @@ class ListTransactionsRequest
      * @param  ?bool  $isSubsequentPayment
      * @param  ?bool  $merchantInitiated
      * @param  ?bool  $used3ds
+     * @param  ?array<string>  $buyerSearch
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?\DateTime $createdAtLte = null, ?\DateTime $createdAtGte = null, ?\DateTime $updatedAtLte = null, ?\DateTime $updatedAtGte = null, ?string $search = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $buyerEmailAddress = null, ?array $buyerSearch = null, ?string $ipAddress = null, ?array $status = null, ?string $id = null, ?string $paymentServiceTransactionId = null, ?string $externalIdentifier = null, ?array $metadata = null, ?int $amountEq = null, ?int $amountLte = null, ?int $amountGte = null, ?array $currency = null, ?array $country = null, ?array $paymentServiceId = null, ?string $paymentMethodId = null, ?string $paymentMethodLabel = null, ?array $paymentMethodScheme = null, ?string $paymentMethodCountry = null, ?string $paymentMethodFingerprint = null, ?array $method = null, ?array $errorCode = null, ?bool $hasRefunds = null, ?bool $pendingReview = null, ?string $checkoutSessionId = null, ?string $reconciliationId = null, ?bool $hasGiftCardRedemptions = null, ?string $giftCardId = null, ?string $giftCardLast4 = null, ?bool $hasSettlements = null, ?string $paymentMethodBin = null, ?array $paymentSource = null, ?bool $isSubsequentPayment = null, ?bool $merchantInitiated = null, ?bool $used3ds = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?\DateTime $createdAtLte = null, ?\DateTime $createdAtGte = null, ?\DateTime $updatedAtLte = null, ?\DateTime $updatedAtGte = null, ?string $search = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $buyerEmailAddress = null, ?string $ipAddress = null, ?array $status = null, ?string $id = null, ?string $paymentServiceTransactionId = null, ?string $externalIdentifier = null, ?array $metadata = null, ?int $amountEq = null, ?int $amountLte = null, ?int $amountGte = null, ?array $currency = null, ?array $country = null, ?array $paymentServiceId = null, ?string $paymentMethodId = null, ?string $paymentMethodLabel = null, ?array $paymentMethodScheme = null, ?string $paymentMethodCountry = null, ?string $paymentMethodFingerprint = null, ?array $method = null, ?array $errorCode = null, ?bool $hasRefunds = null, ?bool $pendingReview = null, ?string $checkoutSessionId = null, ?string $reconciliationId = null, ?bool $hasGiftCardRedemptions = null, ?string $giftCardId = null, ?string $giftCardLast4 = null, ?bool $hasSettlements = null, ?string $paymentMethodBin = null, ?array $paymentSource = null, ?bool $isSubsequentPayment = null, ?bool $merchantInitiated = null, ?bool $used3ds = null, ?array $buyerSearch = null, ?int $limit = 20)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->cursor = $cursor;
@@ -411,7 +411,6 @@ class ListTransactionsRequest
         $this->buyerExternalIdentifier = $buyerExternalIdentifier;
         $this->buyerId = $buyerId;
         $this->buyerEmailAddress = $buyerEmailAddress;
-        $this->buyerSearch = $buyerSearch;
         $this->ipAddress = $ipAddress;
         $this->status = $status;
         $this->id = $id;
@@ -444,6 +443,7 @@ class ListTransactionsRequest
         $this->isSubsequentPayment = $isSubsequentPayment;
         $this->merchantInitiated = $merchantInitiated;
         $this->used3ds = $used3ds;
+        $this->buyerSearch = $buyerSearch;
         $this->limit = $limit;
     }
 }

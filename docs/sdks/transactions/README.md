@@ -45,12 +45,6 @@ $request = new Gr4vy\ListTransactionsRequest(
     buyerExternalIdentifier: 'buyer-12345',
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     buyerEmailAddress: 'john@example.com',
-    buyerSearch: [
-        'J',
-        'o',
-        'h',
-        'n',
-    ],
     ipAddress: '8.214.133.47',
     status: [
         'authorization_succeeded',
@@ -108,6 +102,12 @@ $request = new Gr4vy\ListTransactionsRequest(
     isSubsequentPayment: true,
     merchantInitiated: true,
     used3ds: true,
+    buyerSearch: [
+        'J',
+        'o',
+        'h',
+        'n',
+    ],
 );
 
 $responses = $sdk->transactions->list(
