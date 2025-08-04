@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: ea56f027522cd7b9f6eb65895ec1138f
+  docChecksum: 0151f67b38ab731264de85807d63f89c
   docVersion: 1.0.0
   speakeasyVersion: 1.596.0
   generationVersion: 2.672.0
-  releaseVersion: 1.1.19
-  configChecksum: ad0adb1aa127ce2d841de6267aa6a3bc
+  releaseVersion: 1.1.20
+  configChecksum: 16c04cb136bc5273321664203a1b01d5
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -37,6 +37,7 @@ generatedFiles:
   - docs/AccountUpdaterJob.md
   - docs/AccountUpdaterJobCreate.md
   - docs/AccountUpdaterOptions.md
+  - docs/AccountsReceivablesReportSpec.md
   - docs/AddBuyerRequest.md
   - docs/AddBuyerResponse.md
   - docs/AddBuyerShippingDetailsRequest.md
@@ -494,6 +495,7 @@ generatedFiles:
   - src/AccountUpdaterJob.php
   - src/AccountUpdaterJobCreate.php
   - src/AccountUpdaterOptions.php
+  - src/AccountsReceivablesReportSpec.php
   - src/AddBuyerRequest.php
   - src/AddBuyerResponse.php
   - src/AddBuyerShippingDetailsRequest.php

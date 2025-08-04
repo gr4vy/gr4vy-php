@@ -37,12 +37,12 @@ class ReportCreate
     /**
      * The report specification.
      *
-     * @var TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec $spec
+     * @var TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec|AccountsReceivablesReportSpec $spec
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('spec')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionsReportSpec|\Gr4vy\TransactionRetriesReportSpec|\Gr4vy\DetailedSettlementReportSpec')]
-    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'model', map: ['TransactionsReportSpec' => '\Gr4vy\TransactionsReportSpec', 'TransactionRetriesReportSpec' => '\Gr4vy\TransactionRetriesReportSpec', 'DetailedSettlementReportSpec' => '\Gr4vy\DetailedSettlementReportSpec'])]
-    public TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec $spec;
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionsReportSpec|\Gr4vy\TransactionRetriesReportSpec|\Gr4vy\DetailedSettlementReportSpec|\Gr4vy\AccountsReceivablesReportSpec')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'model', map: ['TransactionsReportSpec' => '\Gr4vy\TransactionsReportSpec', 'TransactionRetriesReportSpec' => '\Gr4vy\TransactionRetriesReportSpec', 'DetailedSettlementReportSpec' => '\Gr4vy\DetailedSettlementReportSpec', 'AccountsReceivablesReportSpec' => '\Gr4vy\AccountsReceivablesReportSpec'])]
+    public TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec|AccountsReceivablesReportSpec $spec;
 
     /**
      * A description of the report.
@@ -66,12 +66,12 @@ class ReportCreate
      * @param  string  $name
      * @param  string  $schedule
      * @param  bool  $scheduleEnabled
-     * @param  TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec  $spec
+     * @param  TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec|AccountsReceivablesReportSpec  $spec
      * @param  ?string  $scheduleTimezone
      * @param  ?string  $description
      * @phpstan-pure
      */
-    public function __construct(string $name, string $schedule, bool $scheduleEnabled, TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec $spec, ?string $description = null, ?string $scheduleTimezone = 'Etc/UTC')
+    public function __construct(string $name, string $schedule, bool $scheduleEnabled, TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec|AccountsReceivablesReportSpec $spec, ?string $description = null, ?string $scheduleTimezone = 'Etc/UTC')
     {
         $this->name = $name;
         $this->schedule = $schedule;
