@@ -215,18 +215,13 @@ $sdk = Gr4vy\SDK::builder()
     ->setMerchantAccountId('default')
     ->build();
 
-$accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
-    paymentMethodIds: [
-        'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-        'f29e886e-93cc-4714-b4a3-12b7a718e595',
-    ],
+
+
+$response = $sdk->browsePaymentMethodDefinitionsGet(
+
 );
 
-$response = $sdk->accountUpdater->jobs->create(
-    accountUpdaterJobCreate: $accountUpdaterJobCreate
-);
-
-if ($response->accountUpdaterJob !== null) {
+if ($response->any !== null) {
     // handle response
 }
 ```
@@ -400,6 +395,9 @@ if ($response->accountUpdaterJob !== null) {
 * [url](docs/sdks/executions/README.md#url) - Create URL for executed report
 * [get](docs/sdks/executions/README.md#get) - Get executed report
 
+### [SDK](docs/sdks/sdk/README.md)
+
+* [browsePaymentMethodDefinitionsGet](docs/sdks/sdk/README.md#browsepaymentmethoddefinitionsget) - Browse
 
 ### [transactions](docs/sdks/transactions/README.md)
 
@@ -538,14 +536,9 @@ $sdk = Gr4vy\SDK::builder()
     )
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest(
-    cursor: 'ZXhhbXBsZTE',
-    search: 'John',
-    externalIdentifier: 'buyer-12345',
-);
 
-$responses = $sdk->buyers->list(
-    request: $request,
+
+$response = $sdk->browsePaymentMethodDefinitionsGet(
     options: Utils\Options->builder()->setRetryConfig(
         new Retry\RetryConfigBackoff(
             initialInterval: 1,
@@ -556,11 +549,8 @@ $responses = $sdk->buyers->list(
         ))->build()
 );
 
-
-foreach ($responses as $response) {
-    if ($response->statusCode === 200) {
-        // handle response
-    }
+if ($response->any !== null) {
+    // handle response
 }
 ```
 
@@ -589,21 +579,14 @@ $sdk = Gr4vy\SDK::builder()
     )
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest(
-    cursor: 'ZXhhbXBsZTE',
-    search: 'John',
-    externalIdentifier: 'buyer-12345',
+
+
+$response = $sdk->browsePaymentMethodDefinitionsGet(
+
 );
 
-$responses = $sdk->buyers->list(
-    request: $request
-);
-
-
-foreach ($responses as $response) {
-    if ($response->statusCode === 200) {
-        // handle response
-    }
+if ($response->any !== null) {
+    // handle response
 }
 ```
 <!-- End Retries [retries] -->
@@ -622,22 +605,11 @@ By default an API error will raise a `errors\APIException` exception, which has 
 | `$rawResponse` | *?\Psr\Http\Message\ResponseInterface*  | The raw HTTP response |
 | `$body`        | *string*                                | The response content  |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `create` method throws the following exceptions:
+When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `browsePaymentMethodDefinitionsGet` method throws the following exceptions:
 
 | Error Type                 | Status Code | Content Type     |
 | -------------------------- | ----------- | ---------------- |
-| errors\Error400            | 400         | application/json |
-| errors\Error401            | 401         | application/json |
-| errors\Error403            | 403         | application/json |
-| errors\Error404            | 404         | application/json |
-| errors\Error405            | 405         | application/json |
-| errors\Error409            | 409         | application/json |
 | errors\HTTPValidationError | 422         | application/json |
-| errors\Error425            | 425         | application/json |
-| errors\Error429            | 429         | application/json |
-| errors\Error500            | 500         | application/json |
-| errors\Error502            | 502         | application/json |
-| errors\Error504            | 504         | application/json |
 | errors\APIException        | 4XX, 5XX    | \*/\*            |
 
 ### Example
@@ -658,54 +630,14 @@ $sdk = Gr4vy\SDK::builder()
     ->build();
 
 try {
-    $accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
-        paymentMethodIds: [
-            'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-            'f29e886e-93cc-4714-b4a3-12b7a718e595',
-        ],
+    $response = $sdk->browsePaymentMethodDefinitionsGet(
+
     );
 
-    $response = $sdk->accountUpdater->jobs->create(
-        accountUpdaterJobCreate: $accountUpdaterJobCreate
-    );
-
-    if ($response->accountUpdaterJob !== null) {
+    if ($response->any !== null) {
         // handle response
     }
-} catch (errors\Error400Throwable $e) {
-    // handle $e->$container data
-    throw $e;
-} catch (errors\Error401Throwable $e) {
-    // handle $e->$container data
-    throw $e;
-} catch (errors\Error403Throwable $e) {
-    // handle $e->$container data
-    throw $e;
-} catch (errors\Error404Throwable $e) {
-    // handle $e->$container data
-    throw $e;
-} catch (errors\Error405Throwable $e) {
-    // handle $e->$container data
-    throw $e;
-} catch (errors\Error409Throwable $e) {
-    // handle $e->$container data
-    throw $e;
 } catch (errors\HTTPValidationErrorThrowable $e) {
-    // handle $e->$container data
-    throw $e;
-} catch (errors\Error425Throwable $e) {
-    // handle $e->$container data
-    throw $e;
-} catch (errors\Error429Throwable $e) {
-    // handle $e->$container data
-    throw $e;
-} catch (errors\Error500Throwable $e) {
-    // handle $e->$container data
-    throw $e;
-} catch (errors\Error502Throwable $e) {
-    // handle $e->$container data
-    throw $e;
-} catch (errors\Error504Throwable $e) {
     // handle $e->$container data
     throw $e;
 } catch (errors\APIException $e) {
@@ -751,18 +683,13 @@ $sdk = Gr4vy\SDK::builder()
     )
     ->build();
 
-$accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
-    paymentMethodIds: [
-        'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-        'f29e886e-93cc-4714-b4a3-12b7a718e595',
-    ],
+
+
+$response = $sdk->browsePaymentMethodDefinitionsGet(
+
 );
 
-$response = $sdk->accountUpdater->jobs->create(
-    accountUpdaterJobCreate: $accountUpdaterJobCreate
-);
-
-if ($response->accountUpdaterJob !== null) {
+if ($response->any !== null) {
     // handle response
 }
 ```
@@ -785,18 +712,13 @@ $sdk = Gr4vy\SDK::builder()
     )
     ->build();
 
-$accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
-    paymentMethodIds: [
-        'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-        'f29e886e-93cc-4714-b4a3-12b7a718e595',
-    ],
+
+
+$response = $sdk->browsePaymentMethodDefinitionsGet(
+
 );
 
-$response = $sdk->accountUpdater->jobs->create(
-    accountUpdaterJobCreate: $accountUpdaterJobCreate
-);
-
-if ($response->accountUpdaterJob !== null) {
+if ($response->any !== null) {
     // handle response
 }
 ```
