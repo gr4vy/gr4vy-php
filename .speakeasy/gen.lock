@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 4a6244cef441481dc39561591242cd3a
+  docChecksum: 512abf1b27eb13217b476cb89d7a06a0
   docVersion: 1.0.0
   speakeasyVersion: 1.598.3
   generationVersion: 2.674.3
-  releaseVersion: 1.1.23
-  configChecksum: ccc27ca558226f6cd26bdfa60f60af21
+  releaseVersion: 1.1.24
+  configChecksum: c34d1b90ed9cbe27f8cd33f5f98c2fac
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -66,6 +66,8 @@ generatedFiles:
   - docs/Body.md
   - docs/BraintreeDynamicDataFieldsOptions.md
   - docs/BraintreeOptions.md
+  - docs/BrowsePaymentMethodDefinitionsGetRequest.md
+  - docs/BrowsePaymentMethodDefinitionsGetResponse.md
   - docs/BrowserInfo.md
   - docs/Buyer.md
   - docs/BuyerCreate.md
@@ -526,6 +528,8 @@ generatedFiles:
   - src/BillingDetailsOutput.php
   - src/BraintreeDynamicDataFieldsOptions.php
   - src/BraintreeOptions.php
+  - src/BrowsePaymentMethodDefinitionsGetRequest.php
+  - src/BrowsePaymentMethodDefinitionsGetResponse.php
   - src/BrowserInfo.php
   - src/Buyer.php
   - src/BuyerCreate.php
@@ -4314,5 +4318,12 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  browse_payment_method_definitions_get:
+    speakeasy-default-browse-payment-method-definitions-get:
+      responses:
+        "200":
+          application/json: "<value>"
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}

@@ -13,18 +13,13 @@ $sdk = Gr4vy\SDK::builder()
     )
     ->build();
 
-$accountUpdaterJobCreate = new Gr4vy\AccountUpdaterJobCreate(
-    paymentMethodIds: [
-        'ef9496d8-53a5-4aad-8ca2-00eb68334389',
-        'f29e886e-93cc-4714-b4a3-12b7a718e595',
-    ],
+
+
+$response = $sdk->browsePaymentMethodDefinitionsGet(
+
 );
 
-$response = $sdk->accountUpdater->jobs->create(
-    accountUpdaterJobCreate: $accountUpdaterJobCreate
-);
-
-if ($response->accountUpdaterJob !== null) {
+if ($response->any !== null) {
     // handle response
 }
 ```
