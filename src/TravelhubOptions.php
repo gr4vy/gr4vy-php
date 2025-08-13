@@ -22,11 +22,22 @@ class TravelhubOptions
     public ?array $customData = null;
 
     /**
+     * Customer company name to pass to the TravelHub API.
+     *
+     * @var ?string $companyName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('companyName')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $companyName = null;
+
+    /**
      * @param  ?array<TravelHubCustomData>  $customData
+     * @param  ?string  $companyName
      * @phpstan-pure
      */
-    public function __construct(?array $customData = null)
+    public function __construct(?array $customData = null, ?string $companyName = null)
     {
         $this->customData = $customData;
+        $this->companyName = $companyName;
     }
 }
