@@ -21,11 +21,22 @@ class TrustlyOptions
     public ?bool $refreshSplitToken = null;
 
     /**
+     * URL scheme for an app.
+     *
+     * @var ?string $urlScheme
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('urlScheme')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $urlScheme = null;
+
+    /**
      * @param  ?bool  $refreshSplitToken
+     * @param  ?string  $urlScheme
      * @phpstan-pure
      */
-    public function __construct(?bool $refreshSplitToken = null)
+    public function __construct(?bool $refreshSplitToken = null, ?string $urlScheme = null)
     {
         $this->refreshSplitToken = $refreshSplitToken;
+        $this->urlScheme = $urlScheme;
     }
 }
