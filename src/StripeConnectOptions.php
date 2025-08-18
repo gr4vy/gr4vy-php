@@ -48,17 +48,28 @@ class StripeConnectOptions
     public ?string $transferDataDestination = null;
 
     /**
+     * A string that identifies the payment as part of a group.
+     *
+     * @var ?string $transferGroup
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('transfer_group')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $transferGroup = null;
+
+    /**
      * @param  ?string  $stripeAccount
      * @param  ?int  $applicationFeeAmount
      * @param  ?string  $onBehalfOf
      * @param  ?string  $transferDataDestination
+     * @param  ?string  $transferGroup
      * @phpstan-pure
      */
-    public function __construct(?string $stripeAccount = null, ?int $applicationFeeAmount = null, ?string $onBehalfOf = null, ?string $transferDataDestination = null)
+    public function __construct(?string $stripeAccount = null, ?int $applicationFeeAmount = null, ?string $onBehalfOf = null, ?string $transferDataDestination = null, ?string $transferGroup = null)
     {
         $this->stripeAccount = $stripeAccount;
         $this->applicationFeeAmount = $applicationFeeAmount;
         $this->onBehalfOf = $onBehalfOf;
         $this->transferDataDestination = $transferDataDestination;
+        $this->transferGroup = $transferGroup;
     }
 }
