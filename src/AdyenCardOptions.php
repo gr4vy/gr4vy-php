@@ -58,19 +58,31 @@ class AdyenCardOptions
     public ?string $windowOrigin = null;
 
     /**
+     * Passes information of splitting payment amounts to the Adyen API.
+     *
+     * @var ?AdyenSplitsOptions $splits
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('splits')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenSplitsOptions|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?AdyenSplitsOptions $splits = null;
+
+    /**
      * @param  ?bool  $autoRescue
      * @param  ?int  $maxDaysToRescue
      * @param  ?array<string, string>  $additionalData
      * @param  ?string  $autoRescueScenario
      * @param  ?string  $windowOrigin
+     * @param  ?AdyenSplitsOptions  $splits
      * @phpstan-pure
      */
-    public function __construct(?bool $autoRescue = null, ?int $maxDaysToRescue = null, ?array $additionalData = null, ?string $autoRescueScenario = null, ?string $windowOrigin = null)
+    public function __construct(?bool $autoRescue = null, ?int $maxDaysToRescue = null, ?array $additionalData = null, ?string $autoRescueScenario = null, ?string $windowOrigin = null, ?AdyenSplitsOptions $splits = null)
     {
         $this->autoRescue = $autoRescue;
         $this->maxDaysToRescue = $maxDaysToRescue;
         $this->additionalData = $additionalData;
         $this->autoRescueScenario = $autoRescueScenario;
         $this->windowOrigin = $windowOrigin;
+        $this->splits = $splits;
     }
 }
