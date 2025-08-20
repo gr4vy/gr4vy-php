@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: c05d1ce5a5ea72d66261c31e152ab74f
+  docChecksum: f15e816525bf36430951ddd302b2455d
   docVersion: 1.0.0
   speakeasyVersion: 1.606.0
   generationVersion: 2.686.7
-  releaseVersion: 1.1.29
-  configChecksum: f37312de776be3cae64b0510bb960129
+  releaseVersion: 1.1.30
+  configChecksum: f8ecab67efb3553c8ef25ca23a9ebd05
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -50,6 +50,7 @@ generatedFiles:
   - docs/AdyenCardOptions.md
   - docs/AdyenOptions.md
   - docs/AdyenSepaOptions.md
+  - docs/AdyenSplitsOptions.md
   - docs/AffirmItineraryOptions.md
   - docs/AffirmOptions.md
   - docs/Airline.md
@@ -508,6 +509,7 @@ generatedFiles:
   - src/AdyenCardOptions.php
   - src/AdyenOptions.php
   - src/AdyenSepaOptions.php
+  - src/AdyenSplitsOptions.php
   - src/AffirmItineraryOptions.php
   - src/AffirmOptions.php
   - src/Airline.php
@@ -4323,11 +4325,4 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## SDK Changes Detected:
-  * `sdk->transactions->create()`:  `response.canceledAt` **Added**
-  * `sdk->transactions->get()`:  `response.canceledAt` **Added**
-  * `sdk->transactions->update()`:  `response.canceledAt` **Added**
-  * `sdk->transactions->capture()`:  `response.[transaction]->canceledAt` **Added**
-  * `sdk->transactions->void()`:  `response.[transaction]->canceledAt` **Added**
-  * `sdk->transactions->sync()`:  `response.canceledAt` **Added**
+releaseNotes: "## SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->adyen-card->splits` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->adyen-card->splits` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->adyen-card->splits` **Added**\n"
