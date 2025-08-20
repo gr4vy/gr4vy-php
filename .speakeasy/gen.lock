@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 48c333ee506aead119e6938aa495b0e7
+  docChecksum: c05d1ce5a5ea72d66261c31e152ab74f
   docVersion: 1.0.0
-  speakeasyVersion: 1.605.1
-  generationVersion: 2.684.0
-  releaseVersion: 1.1.28
-  configChecksum: 77ac740e4851094e7c03e4fa684dd916
+  speakeasyVersion: 1.606.0
+  generationVersion: 2.686.7
+  releaseVersion: 1.1.29
+  configChecksum: f37312de776be3cae64b0510bb960129
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -4323,4 +4323,11 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->stripe-card->stripeConnect->transferGroup` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->stripe-card->stripeConnect->transferGroup` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->stripe-card->stripeConnect->transferGroup` **Added**\n"
+releaseNotes: |
+  ## SDK Changes Detected:
+  * `sdk->transactions->create()`:  `response.canceledAt` **Added**
+  * `sdk->transactions->get()`:  `response.canceledAt` **Added**
+  * `sdk->transactions->update()`:  `response.canceledAt` **Added**
+  * `sdk->transactions->capture()`:  `response.[transaction]->canceledAt` **Added**
+  * `sdk->transactions->void()`:  `response.[transaction]->canceledAt` **Added**
+  * `sdk->transactions->sync()`:  `response.canceledAt` **Added**
