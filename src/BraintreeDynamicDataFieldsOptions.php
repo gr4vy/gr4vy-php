@@ -30,13 +30,24 @@ class BraintreeDynamicDataFieldsOptions
     public ?string $purchaseOrderNumber = null;
 
     /**
+     * Passes the `vaultPaymentMethodCriteria` field when creating a new transaction.
+     *
+     * @var ?string $vaultPaymentMethodCriteria
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('vault_payment_method_criteria')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $vaultPaymentMethodCriteria = null;
+
+    /**
      * @param  ?string  $threeDsAuthStatus
      * @param  ?string  $purchaseOrderNumber
+     * @param  ?string  $vaultPaymentMethodCriteria
      * @phpstan-pure
      */
-    public function __construct(?string $threeDsAuthStatus = null, ?string $purchaseOrderNumber = null)
+    public function __construct(?string $threeDsAuthStatus = null, ?string $purchaseOrderNumber = null, ?string $vaultPaymentMethodCriteria = null)
     {
         $this->threeDsAuthStatus = $threeDsAuthStatus;
         $this->purchaseOrderNumber = $purchaseOrderNumber;
+        $this->vaultPaymentMethodCriteria = $vaultPaymentMethodCriteria;
     }
 }
