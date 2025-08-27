@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: c9a92d3f01f998fe4a16abd9eae40d07
+  docChecksum: 01c3af4e4b872f7ea767448607276f75
   docVersion: 1.0.0
-  speakeasyVersion: 1.606.0
-  generationVersion: 2.686.7
-  releaseVersion: 1.1.31
-  configChecksum: f0279e61330a348a1f4889ab2bf30f6c
+  speakeasyVersion: 1.606.8
+  generationVersion: 2.687.13
+  releaseVersion: 1.1.32
+  configChecksum: 7a55c5adb74be6d5e05f67fd4f74cd15
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -4325,4 +4325,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->braintree-card->dynamicDataFields->vaultPaymentMethodCriteria` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->braintree-card->dynamicDataFields->vaultPaymentMethodCriteria` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->braintree-card->dynamicDataFields->vaultPaymentMethodCriteria` **Added**\n"
