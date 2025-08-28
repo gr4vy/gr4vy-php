@@ -409,6 +409,7 @@ if ($response->accountUpdaterJob !== null) {
 * [update](docs/sdks/transactions/README.md#update) - Manually update a transaction
 * [capture](docs/sdks/transactions/README.md#capture) - Capture transaction
 * [void](docs/sdks/transactions/README.md#void) - Void transaction
+* [cancel](docs/sdks/transactions/README.md#cancel) - Cancel transaction
 * [sync](docs/sdks/transactions/README.md#sync) - Sync transaction
 
 #### [transactions->events](docs/sdks/events/README.md)
