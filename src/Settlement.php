@@ -13,7 +13,7 @@ namespace Gr4vy;
 class Settlement
 {
     /**
-     * The unique identifier for the settlement.
+     * The unique identifier for the record.
      *
      * @var string $id
      */
@@ -21,7 +21,7 @@ class Settlement
     public string $id;
 
     /**
-     * The merchant account this settlement belongs to.
+     * The merchant account this record belongs to.
      *
      * @var string $merchantAccountId
      */
@@ -29,7 +29,7 @@ class Settlement
     public string $merchantAccountId;
 
     /**
-     * The date and time the settlement was created, in ISO 8601 format.
+     * The date and time the record was created, in ISO 8601 format.
      *
      * @var \DateTime $createdAt
      */
@@ -37,7 +37,7 @@ class Settlement
     public \DateTime $createdAt;
 
     /**
-     * The date and time the settlement was last updated, in ISO 8601 format.
+     * The date and time the record was last updated, in ISO 8601 format.
      *
      * @var \DateTime $updatedAt
      */
@@ -45,7 +45,7 @@ class Settlement
     public \DateTime $updatedAt;
 
     /**
-     * The date and time the settlement was posted, in ISO 8601 format.
+     * The date and time the record was posted, in ISO 8601 format.
      *
      * @var \DateTime $postedAt
      */
@@ -53,7 +53,7 @@ class Settlement
     public \DateTime $postedAt;
 
     /**
-     * The date and time the settlement was ingested, in ISO 8601 format.
+     * The date and time the record was ingested, in ISO 8601 format.
      *
      * @var \DateTime $ingestedAt
      */
@@ -61,7 +61,7 @@ class Settlement
     public \DateTime $ingestedAt;
 
     /**
-     * ISO 4217 currency code for the settlement.
+     * ISO 4217 currency code.
      *
      * @var string $currency
      */
@@ -69,7 +69,7 @@ class Settlement
     public string $currency;
 
     /**
-     * The total settled amount in the smallest currency unit (e.g. cents).
+     * The total amount in the smallest currency unit (e.g. cents).
      *
      * @var int $amount
      */
@@ -102,7 +102,7 @@ class Settlement
     public array $paymentServiceReportFileIds;
 
     /**
-     * The transaction this settlement is associated with.
+     * The transaction this record is associated with.
      *
      * @var string $transactionId
      */
@@ -110,7 +110,7 @@ class Settlement
     public string $transactionId;
 
     /**
-     * The exchange rate used for settlement, if applicable.
+     * The exchange rate, if applicable.
      *
      * @var ?float $exchangeRate
      */
@@ -146,7 +146,7 @@ class Settlement
     public ?int $schemeFee = null;
 
     /**
-     * Always 'settlement'.
+     * Always `settlement`.
      *
      * @var ?string $type
      */
