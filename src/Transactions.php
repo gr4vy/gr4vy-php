@@ -991,7 +991,7 @@ class Transactions
                         return null;
                     } else {
                         $nextCursor = $nextCursor[0];
-                        if ($nextCursor == null) {
+                        if ($nextCursor == null || (is_string($nextCursor) && trim($nextCursor) === '')) {
                             return null;
                         }
                     }
@@ -1040,6 +1040,7 @@ class Transactions
                             isSubsequentPayment: $request != null ? $request->isSubsequentPayment : null,
                             merchantInitiated: $request != null ? $request->merchantInitiated : null,
                             used3ds: $request != null ? $request->used3ds : null,
+                            disputed: $request != null ? $request->disputed : null,
                             buyerSearch: $request != null ? $request->buyerSearch : null,
                             merchantAccountId: $request != null ? $request->merchantAccountId : null,
                         ),

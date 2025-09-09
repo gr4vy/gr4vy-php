@@ -132,6 +132,14 @@ class TransactionSummary
     public \DateTime $updatedAt;
 
     /**
+     * Indicates whether this transaction has been disputed.
+     *
+     * @var bool $disputed
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('disputed')]
+    public bool $disputed;
+
+    /**
      * The ISO 4217 currency code of this transaction's settlement.
      *
      * @var ?string $settledCurrency
@@ -296,6 +304,7 @@ class TransactionSummary
      * @param  array<GiftCardRedemption>  $giftCardRedemptions
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
+     * @param  bool  $disputed
      * @param  ?string  $type
      * @param  ?bool  $pendingReview
      * @param  ?string  $settledCurrency
@@ -314,7 +323,7 @@ class TransactionSummary
      * @param  ?GiftCardService  $giftCardService
      * @phpstan-pure
      */
-    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?bool $pendingReview = false, ?string $type = 'transaction')
+    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?bool $pendingReview = false, ?string $type = 'transaction')
     {
         $this->id = $id;
         $this->reconciliationId = $reconciliationId;
@@ -331,6 +340,7 @@ class TransactionSummary
         $this->giftCardRedemptions = $giftCardRedemptions;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
+        $this->disputed = $disputed;
         $this->settledCurrency = $settledCurrency;
         $this->country = $country;
         $this->externalIdentifier = $externalIdentifier;
