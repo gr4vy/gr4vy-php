@@ -67,15 +67,25 @@ class StatementDescriptor
     public ?string $url = null;
 
     /**
+     * The merchant's postal code or zip code.
+     *
+     * @var ?string $postalCode
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('postal_code')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $postalCode = null;
+
+    /**
      * @param  ?string  $name
      * @param  ?string  $description
      * @param  ?string  $city
      * @param  ?string  $country
      * @param  ?string  $phoneNumber
      * @param  ?string  $url
+     * @param  ?string  $postalCode
      * @phpstan-pure
      */
-    public function __construct(?string $name = null, ?string $description = null, ?string $city = null, ?string $country = null, ?string $phoneNumber = null, ?string $url = null)
+    public function __construct(?string $name = null, ?string $description = null, ?string $city = null, ?string $country = null, ?string $phoneNumber = null, ?string $url = null, ?string $postalCode = null)
     {
         $this->name = $name;
         $this->description = $description;
@@ -83,5 +93,6 @@ class StatementDescriptor
         $this->country = $country;
         $this->phoneNumber = $phoneNumber;
         $this->url = $url;
+        $this->postalCode = $postalCode;
     }
 }

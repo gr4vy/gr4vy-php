@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 695441aaaa55a446fa552d21e5825a43
+  docChecksum: 779ddfe84a67d985a1fff62d9fa183eb
   docVersion: 1.0.0
-  speakeasyVersion: 1.613.0
-  generationVersion: 2.696.0
-  releaseVersion: 1.1.35
-  configChecksum: e3e1f7f1688e68df82a3126e9557a871
+  speakeasyVersion: 1.615.2
+  generationVersion: 2.698.4
+  releaseVersion: 1.1.36
+  configChecksum: 25d835c26047b800540e4eec5e26ba26
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -15,7 +15,7 @@ features:
     constsAndDefaults: 0.2.0
     core: 3.8.10
     flattening: 2.81.1
-    globalSecurity: 2.81.8
+    globalSecurity: 2.81.9
     globalSecurityFlattening: 0.1.2
     globalServerURLs: 2.82.2
     globals: 2.82.2
@@ -4363,4 +4363,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->list()`: \n  *  `request->disputed` **Added**\n  *  `response.items->[]->disputed` **Added**\n* `sdk->transactions->create()`:  `response.disputed` **Added**\n* `sdk->transactions->get()`:  `response.disputed` **Added**\n* `sdk->transactions->update()`:  `response.disputed` **Added**\n* `sdk->transactions->capture()`:  `response.[transaction]->disputed` **Added**\n* `sdk->transactions->void()`:  `response.[transaction]->disputed` **Added**\n* `sdk->transactions->cancel()`:  `response.transaction->disputed` **Added**\n* `sdk->transactions->sync()`:  `response.disputed` **Added**\n"
+releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate` **Changed**\n  *  `response.statementDescriptor->postalCode` **Added**\n* `sdk->transactions->get()`:  `response.statementDescriptor->postalCode` **Added**\n* `sdk->transactions->update()`:  `response.statementDescriptor->postalCode` **Added**\n* `sdk->transactions->capture()`:  `response.[transaction]->statementDescriptor->postalCode` **Added**\n* `sdk->transactions->void()`:  `response.[transaction]->statementDescriptor->postalCode` **Added**\n* `sdk->transactions->cancel()`:  `response.transaction->statementDescriptor->postalCode` **Added**\n* `sdk->transactions->sync()`:  `response.statementDescriptor->postalCode` **Added**\n* `sdk->payment-links->list()`:  `response.items->[]->statementDescriptor->postalCode` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->statementDescriptor->postalCode` **Added**\n  *  `response.statementDescriptor->postalCode` **Added**\n* `sdk->payment-links->get()`:  `response.statementDescriptor->postalCode` **Added**\n"
