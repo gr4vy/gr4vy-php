@@ -63,7 +63,7 @@ class CartItem
     public ?string $externalIdentifier = null;
 
     /**
-     * The SKU for the item.
+     * The SKU or product code for the item.
      *
      * @var ?string $sku
      */
@@ -118,6 +118,60 @@ class CartItem
     public ?string $sellerCountry = null;
 
     /**
+     * Whether the item is exempt of tax.
+     *
+     * @var ?bool $taxExempt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_exempt')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $taxExempt = null;
+
+    /**
+     * The unit of measure or the unit of measure code.
+     *
+     * @var ?string $unitOfMeasure
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('unit_of_measure')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $unitOfMeasure = null;
+
+    /**
+     * Item commodity code. Generally a UNSPSC code.
+     *
+     * @var ?string $commodityCode
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('commodity_code')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $commodityCode = null;
+
+    /**
+     * Brief item description.
+     *
+     * @var ?string $description
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('description')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $description = null;
+
+    /**
+     * Item import or export duties represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`
+     *
+     * @var ?int $dutyAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('duty_amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $dutyAmount = null;
+
+    /**
+     * Freight/shipping amount represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`
+     *
+     * @var ?int $shippingAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('shipping_amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $shippingAmount = null;
+
+    /**
      * @param  string  $name
      * @param  int  $quantity
      * @param  int  $unitAmount
@@ -130,9 +184,15 @@ class CartItem
      * @param  ?array<string>  $categories
      * @param  ?string  $productType
      * @param  ?string  $sellerCountry
+     * @param  ?bool  $taxExempt
+     * @param  ?string  $unitOfMeasure
+     * @param  ?string  $commodityCode
+     * @param  ?string  $description
+     * @param  ?int  $dutyAmount
+     * @param  ?int  $shippingAmount
      * @phpstan-pure
      */
-    public function __construct(string $name, int $quantity, int $unitAmount, ?int $discountAmount = null, ?int $taxAmount = null, ?string $externalIdentifier = null, ?string $sku = null, ?string $productUrl = null, ?string $imageUrl = null, ?array $categories = null, ?string $productType = null, ?string $sellerCountry = null)
+    public function __construct(string $name, int $quantity, int $unitAmount, ?int $discountAmount = null, ?int $taxAmount = null, ?string $externalIdentifier = null, ?string $sku = null, ?string $productUrl = null, ?string $imageUrl = null, ?array $categories = null, ?string $productType = null, ?string $sellerCountry = null, ?bool $taxExempt = null, ?string $unitOfMeasure = null, ?string $commodityCode = null, ?string $description = null, ?int $dutyAmount = null, ?int $shippingAmount = null)
     {
         $this->name = $name;
         $this->quantity = $quantity;
@@ -146,5 +206,11 @@ class CartItem
         $this->categories = $categories;
         $this->productType = $productType;
         $this->sellerCountry = $sellerCountry;
+        $this->taxExempt = $taxExempt;
+        $this->unitOfMeasure = $unitOfMeasure;
+        $this->commodityCode = $commodityCode;
+        $this->description = $description;
+        $this->dutyAmount = $dutyAmount;
+        $this->shippingAmount = $shippingAmount;
     }
 }
