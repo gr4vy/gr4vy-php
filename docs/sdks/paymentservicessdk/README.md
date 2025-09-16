@@ -320,7 +320,7 @@ $response = $sdk->paymentServices->delete(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0'
 );
 
-if ($response->any !== null) {
+if ($response->statusCode === 200) {
     // handle response
 }
 ```

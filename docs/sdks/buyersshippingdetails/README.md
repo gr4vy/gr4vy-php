@@ -295,7 +295,7 @@ $response = $sdk->buyers->shippingDetails->delete(
 
 );
 
-if ($response->any !== null) {
+if ($response->statusCode === 200) {
     // handle response
 }
 ```

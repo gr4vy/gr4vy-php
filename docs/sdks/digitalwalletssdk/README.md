@@ -224,7 +224,7 @@ $response = $sdk->digitalWallets->delete(
     digitalWalletId: '1808f5e6-b49c-4db9-94fa-22371ea352f5'
 );
 
-if ($response->any !== null) {
+if ($response->statusCode === 200) {
     // handle response
 }
 ```
