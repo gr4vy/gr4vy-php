@@ -99,6 +99,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $request = new Gr4vy\MerchantAccountCreate(
     accountUpdaterEnabled: true,
+    asyncNetworkTokensEnabled: true,
     id: 'merchant-12345',
     displayName: 'Example',
 );
@@ -221,6 +222,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $merchantAccountUpdate = new Gr4vy\MerchantAccountUpdate(
     accountUpdaterEnabled: true,
+    asyncNetworkTokensEnabled: true,
 );
 
 $response = $sdk->merchantAccounts->update(

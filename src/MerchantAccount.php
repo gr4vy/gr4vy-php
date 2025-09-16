@@ -188,6 +188,15 @@ class MerchantAccount
     public ?string $mastercardNetworkTokensAppId = null;
 
     /**
+     * When enabled network tokens will be generated asynchronously and only used on subsequent transactions to speed up transaction processing.
+     *
+     * @var ?bool $asyncNetworkTokensEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('async_network_tokens_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $asyncNetworkTokensEnabled = null;
+
+    /**
      * Always `merchant-account`.
      *
      * @var ?string $type
@@ -203,6 +212,7 @@ class MerchantAccount
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type
+     * @param  ?bool  $asyncNetworkTokensEnabled
      * @param  ?string  $loonClientKey
      * @param  ?string  $loonSecretKey
      * @param  ?array<string>  $loonAcceptedSchemes
@@ -220,7 +230,7 @@ class MerchantAccount
      * @param  ?string  $mastercardNetworkTokensAppId
      * @phpstan-pure
      */
-    public function __construct(string $id, string $displayName, bool $accountUpdaterEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $type = 'merchant-account')
+    public function __construct(string $id, string $displayName, bool $accountUpdaterEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?bool $asyncNetworkTokensEnabled = false, ?string $type = 'merchant-account')
     {
         $this->id = $id;
         $this->displayName = $displayName;
@@ -242,6 +252,7 @@ class MerchantAccount
         $this->amexNetworkTokensAppId = $amexNetworkTokensAppId;
         $this->mastercardNetworkTokensRequestorId = $mastercardNetworkTokensRequestorId;
         $this->mastercardNetworkTokensAppId = $mastercardNetworkTokensAppId;
+        $this->asyncNetworkTokensEnabled = $asyncNetworkTokensEnabled;
         $this->type = $type;
     }
 }
