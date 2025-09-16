@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 22545b5992c1bc9e4df09bce03791f45
+  docChecksum: fc44ae5677ea9cd1e51813ffef591a60
   docVersion: 1.0.0
   speakeasyVersion: 1.615.2
   generationVersion: 2.698.4
-  releaseVersion: 1.1.37
-  configChecksum: f7b6b50a0a5bbdca66f90a4253ee6058
+  releaseVersion: 1.1.38
+  configChecksum: f37b5e86c2be58ed1f967a1f188f93d7
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -4363,4 +4363,10 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->cartItems->[]` **Changed**\n  *  `response.cartItems->[]` **Changed**\n* `sdk->transactions->get()`:  `response.cartItems->[]` **Changed**\n* `sdk->transactions->update()`:  `response.cartItems->[]` **Changed**\n* `sdk->transactions->capture()`:  `response.[transaction]->cartItems->[]` **Changed**\n* `sdk->transactions->void()`:  `response.[transactionVoid]->transaction->cartItems->[]` **Changed**\n* `sdk->transactions->cancel()`:  `response.transaction->cartItems->[]` **Changed**\n* `sdk->transactions->sync()`:  `response.cartItems->[]` **Changed**\n* `sdk->payment-options->list()`: \n  *  `request.paymentOptionRequest->cartItems->[]` **Changed**\n* `sdk->checkout-sessions->create()`: \n  *  `request.checkoutSessionCreate->cartItems->[]` **Changed**\n  *  `response.cartItems->[]` **Changed**\n* `sdk->checkout-sessions->get()`:  `response.cartItems->[]` **Changed**\n* `sdk->checkout-sessions->update()`: \n  *  `request.checkoutSessionCreate->cartItems->[]` **Changed**\n  *  `response.cartItems->[]` **Changed**\n* `sdk->payment-links->list()`:  `response.items->[]->cartItems->[]` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->cartItems->[]` **Changed**\n  *  `response.cartItems->[]` **Changed**\n* `sdk->payment-links->get()`:  `response.cartItems->[]` **Changed**\n"
+releaseNotes: |
+  ## Php SDK Changes Detected:
+  * `sdk->buyers->shipping-details->delete()`:  `response` **Changed** **Breaking** :warning:
+  * `sdk->gift-cards->delete()`:  `response` **Changed** **Breaking** :warning:
+  * `sdk->digital-wallets->delete()`:  `response` **Changed** **Breaking** :warning:
+  * `sdk->digital-wallets->domains->delete()`:  `response` **Changed** **Breaking** :warning:
+  * `sdk->payment-services->delete()`:  `response` **Changed** **Breaking** :warning:

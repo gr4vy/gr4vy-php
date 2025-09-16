@@ -105,7 +105,7 @@ $response = $sdk->digitalWallets->domains->delete(
 
 );
 
-if ($response->any !== null) {
+if ($response->statusCode === 200) {
     // handle response
 }
 ```

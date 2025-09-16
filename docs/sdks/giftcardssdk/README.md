@@ -98,7 +98,7 @@ $response = $sdk->giftCards->delete(
     giftCardId: '356d56e5-fe16-42ae-97ee-8d55d846ae2e'
 );
 
-if ($response->any !== null) {
+if ($response->statusCode === 200) {
     // handle response
 }
 ```
