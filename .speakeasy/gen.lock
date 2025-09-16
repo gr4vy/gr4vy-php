@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 84be2b1b3b18b60517210a56ded1da52
+  docChecksum: 511127adeb8a98759d84f7f03a2b18ba
   docVersion: 1.0.0
-  speakeasyVersion: 1.615.2
-  generationVersion: 2.698.4
-  releaseVersion: 1.1.39
-  configChecksum: 003b3ac98202b0261744e774582a751a
+  speakeasyVersion: 1.617.1
+  generationVersion: 2.701.8
+  releaseVersion: 1.1.40
+  configChecksum: a2a11bbc2e58a141362bb456881bcf3f
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -305,6 +305,7 @@ generatedFiles:
   - docs/NetworkTokens.md
   - docs/NuveiAirlineDataOptions.md
   - docs/NuveiOptions.md
+  - docs/NuveiPSEOptions.md
   - docs/OxxoOptions.md
   - docs/PaymentLink.md
   - docs/PaymentLinkCreate.md
@@ -794,6 +795,7 @@ generatedFiles:
   - src/NetworkTokensCryptogram.php
   - src/NuveiAirlineDataOptions.php
   - src/NuveiOptions.php
+  - src/NuveiPSEOptions.php
   - src/OxxoOptions.php
   - src/PaymentLink.php
   - src/PaymentLinkCreate.php
@@ -4363,4 +4365,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes Detected:\n* `sdk->merchant-accounts->list()`:  `response.items->[]->asyncNetworkTokensEnabled` **Added**\n* `sdk->merchant-accounts->create()`: \n  *  `request->asyncNetworkTokensEnabled` **Added**\n  *  `response.asyncNetworkTokensEnabled` **Added**\n* `sdk->merchant-accounts->get()`:  `response.asyncNetworkTokensEnabled` **Added**\n* `sdk->merchant-accounts->update()`: \n  *  `request.merchantAccountUpdate->asyncNetworkTokensEnabled` **Added**\n  *  `response.asyncNetworkTokensEnabled` **Added**\n"
+releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->nuvei-pse` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->nuvei-pse` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->nuvei-pse` **Added**\n"
