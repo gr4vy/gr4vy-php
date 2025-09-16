@@ -173,9 +173,19 @@ class MerchantAccountCreate
     public ?bool $accountUpdaterEnabled = null;
 
     /**
+     * When enabled network tokens will be generated asynchronously and only used on subsequent transactions to speed up transaction processing.
+     *
+     * @var ?bool $asyncNetworkTokensEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('async_network_tokens_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $asyncNetworkTokensEnabled = null;
+
+    /**
      * @param  string  $id
      * @param  string  $displayName
      * @param  ?bool  $accountUpdaterEnabled
+     * @param  ?bool  $asyncNetworkTokensEnabled
      * @param  ?string  $accountUpdaterRequestEncryptionKey
      * @param  ?string  $accountUpdaterRequestEncryptionKeyId
      * @param  ?string  $accountUpdaterResponseDecryptionKey
@@ -193,7 +203,7 @@ class MerchantAccountCreate
      * @param  ?string  $mastercardNetworkTokensAppId
      * @phpstan-pure
      */
-    public function __construct(string $id, string $displayName, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?bool $accountUpdaterEnabled = false)
+    public function __construct(string $id, string $displayName, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?bool $accountUpdaterEnabled = false, ?bool $asyncNetworkTokensEnabled = false)
     {
         $this->id = $id;
         $this->displayName = $displayName;
@@ -213,5 +223,6 @@ class MerchantAccountCreate
         $this->mastercardNetworkTokensRequestorId = $mastercardNetworkTokensRequestorId;
         $this->mastercardNetworkTokensAppId = $mastercardNetworkTokensAppId;
         $this->accountUpdaterEnabled = $accountUpdaterEnabled;
+        $this->asyncNetworkTokensEnabled = $asyncNetworkTokensEnabled;
     }
 }

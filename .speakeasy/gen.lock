@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: fc44ae5677ea9cd1e51813ffef591a60
+  docChecksum: 84be2b1b3b18b60517210a56ded1da52
   docVersion: 1.0.0
   speakeasyVersion: 1.615.2
   generationVersion: 2.698.4
-  releaseVersion: 1.1.38
-  configChecksum: f37b5e86c2be58ed1f967a1f188f93d7
+  releaseVersion: 1.1.39
+  configChecksum: 003b3ac98202b0261744e774582a751a
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -3597,10 +3597,10 @@ examples:
           timeout_in_seconds: 1
           application_name: "core-api"
       requestBody:
-        application/json: {"account_updater_enabled": true, "id": "merchant-12345", "display_name": "Example"}
+        application/json: {"account_updater_enabled": true, "async_network_tokens_enabled": true, "id": "merchant-12345", "display_name": "Example"}
       responses:
         "201":
-          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "async_network_tokens_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -3634,7 +3634,7 @@ examples:
           application_name: "core-api"
       responses:
         "200":
-          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "async_network_tokens_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -3668,10 +3668,10 @@ examples:
           timeout_in_seconds: 1
           application_name: "core-api"
       requestBody:
-        application/json: {"account_updater_enabled": true}
+        application/json: {"account_updater_enabled": true, "async_network_tokens_enabled": true}
       responses:
         "200":
-          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "async_network_tokens_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4363,10 +4363,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes Detected:
-  * `sdk->buyers->shipping-details->delete()`:  `response` **Changed** **Breaking** :warning:
-  * `sdk->gift-cards->delete()`:  `response` **Changed** **Breaking** :warning:
-  * `sdk->digital-wallets->delete()`:  `response` **Changed** **Breaking** :warning:
-  * `sdk->digital-wallets->domains->delete()`:  `response` **Changed** **Breaking** :warning:
-  * `sdk->payment-services->delete()`:  `response` **Changed** **Breaking** :warning:
+releaseNotes: "## Php SDK Changes Detected:\n* `sdk->merchant-accounts->list()`:  `response.items->[]->asyncNetworkTokensEnabled` **Added**\n* `sdk->merchant-accounts->create()`: \n  *  `request->asyncNetworkTokensEnabled` **Added**\n  *  `response.asyncNetworkTokensEnabled` **Added**\n* `sdk->merchant-accounts->get()`:  `response.asyncNetworkTokensEnabled` **Added**\n* `sdk->merchant-accounts->update()`: \n  *  `request.merchantAccountUpdate->asyncNetworkTokensEnabled` **Added**\n  *  `response.asyncNetworkTokensEnabled` **Added**\n"
