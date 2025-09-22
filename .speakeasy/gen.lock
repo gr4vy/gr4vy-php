@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 511127adeb8a98759d84f7f03a2b18ba
+  docChecksum: f8803804c226e6ed2f5750f7c227b1d6
   docVersion: 1.0.0
-  speakeasyVersion: 1.617.1
-  generationVersion: 2.701.8
-  releaseVersion: 1.1.40
-  configChecksum: a2a11bbc2e58a141362bb456881bcf3f
+  speakeasyVersion: 1.622.1
+  generationVersion: 2.709.0
+  releaseVersion: 1.1.41
+  configChecksum: 55bec389d626b96ab8a7c48fc84fb07f
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -4365,4 +4365,3 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->nuvei-pse` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->nuvei-pse` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->nuvei-pse` **Added**\n"
