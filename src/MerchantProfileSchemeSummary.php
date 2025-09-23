@@ -20,14 +20,6 @@ class MerchantProfileSchemeSummary
     public string $merchantAcquirerBin;
 
     /**
-     * URL to send when calling 3DS through this scheme.
-     *
-     * @var string $merchantUrl
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('merchant_url')]
-    public string $merchantUrl;
-
-    /**
      * Merchant ID to use when calling 3DS through this scheme.
      *
      * @var string $merchantAcquirerId
@@ -43,7 +35,7 @@ class MerchantProfileSchemeSummary
     public string $merchantName;
 
     /**
-     * Merchant country code to use when calling 3DS through this scheme.
+     * The merchant's ISO 3166-1 numeric country code.
      *
      * @var string $merchantCountryCode
      */
@@ -59,6 +51,14 @@ class MerchantProfileSchemeSummary
     public string $merchantCategoryCode;
 
     /**
+     * URL to send when calling 3DS through this scheme.
+     *
+     * @var string $merchantUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('merchant_url')]
+    public string $merchantUrl;
+
+    /**
      * The date and time when this profile was first created in our system.
      *
      * @var \DateTime $createdAt
@@ -68,22 +68,22 @@ class MerchantProfileSchemeSummary
 
     /**
      * @param  string  $merchantAcquirerBin
-     * @param  string  $merchantUrl
      * @param  string  $merchantAcquirerId
      * @param  string  $merchantName
      * @param  string  $merchantCountryCode
      * @param  string  $merchantCategoryCode
+     * @param  string  $merchantUrl
      * @param  \DateTime  $createdAt
      * @phpstan-pure
      */
-    public function __construct(string $merchantAcquirerBin, string $merchantUrl, string $merchantAcquirerId, string $merchantName, string $merchantCountryCode, string $merchantCategoryCode, \DateTime $createdAt)
+    public function __construct(string $merchantAcquirerBin, string $merchantAcquirerId, string $merchantName, string $merchantCountryCode, string $merchantCategoryCode, string $merchantUrl, \DateTime $createdAt)
     {
         $this->merchantAcquirerBin = $merchantAcquirerBin;
-        $this->merchantUrl = $merchantUrl;
         $this->merchantAcquirerId = $merchantAcquirerId;
         $this->merchantName = $merchantName;
         $this->merchantCountryCode = $merchantCountryCode;
         $this->merchantCategoryCode = $merchantCategoryCode;
+        $this->merchantUrl = $merchantUrl;
         $this->createdAt = $createdAt;
     }
 }
