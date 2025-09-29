@@ -238,6 +238,16 @@ class PaymentLink
     public ?ShippingDetails $shippingDetails = null;
 
     /**
+     * The connection options for the payment link.
+     *
+     * @var ?array<string, array<string, mixed>> $connectionOptions
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('connection_options')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, array<string, mixed>>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $connectionOptions = null;
+
+    /**
      * Always `payment-link`.
      *
      * @var ?string $type
@@ -274,9 +284,10 @@ class PaymentLink
      * @param  ?array<string, mixed>  $metadata
      * @param  ?TransactionBuyer  $buyer
      * @param  ?ShippingDetails  $shippingDetails
+     * @param  ?array<string, array<string, mixed>>  $connectionOptions
      * @phpstan-pure
      */
-    public function __construct(string $id, string $url, int $amount, string $country, string $currency, string $intent, string $paymentSource, \DateTime $createdAt, \DateTime $updatedAt, string $status, ?array $cartItems = null, ?\DateTime $expiresAt = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $metadata = null, ?TransactionBuyer $buyer = null, ?ShippingDetails $shippingDetails = null, ?string $type = 'payment-link')
+    public function __construct(string $id, string $url, int $amount, string $country, string $currency, string $intent, string $paymentSource, \DateTime $createdAt, \DateTime $updatedAt, string $status, ?array $cartItems = null, ?\DateTime $expiresAt = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $metadata = null, ?TransactionBuyer $buyer = null, ?ShippingDetails $shippingDetails = null, ?array $connectionOptions = null, ?string $type = 'payment-link')
     {
         $this->id = $id;
         $this->url = $url;
@@ -304,6 +315,7 @@ class PaymentLink
         $this->metadata = $metadata;
         $this->buyer = $buyer;
         $this->shippingDetails = $shippingDetails;
+        $this->connectionOptions = $connectionOptions;
         $this->type = $type;
     }
 }
