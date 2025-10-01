@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: ed05b1666537c16941215ab03f6ef917
+  docChecksum: e0273b34307fa1f45644b599adc3368e
   docVersion: 1.0.0
-  speakeasyVersion: 1.631.4
+  speakeasyVersion: 1.631.5
   generationVersion: 2.716.16
-  releaseVersion: 1.1.45
-  configChecksum: 503bb18dae2ef15df151ba9282d4cd25
+  releaseVersion: 1.1.46
+  configChecksum: ecfec1a89b4028da5d145937980801ee
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -4365,8 +4365,3 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes Detected:
-  * `sdk->payment-links->list()`:  `response.items->[]->connectionOptions` **Added**
-  * `sdk->payment-links->create()`:  `response.connectionOptions` **Added**
-  * `sdk->payment-links->get()`:  `response.connectionOptions` **Added**
