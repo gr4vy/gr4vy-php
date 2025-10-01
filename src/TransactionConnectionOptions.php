@@ -182,6 +182,16 @@ class TransactionConnectionOptions
     public ?DlocalOptions $dlocalNequi = null;
 
     /**
+     * Custom options to be passed to the `dlocal-upi` connector.
+     *
+     * @var ?DlocalUPIOptions $dlocalUpi
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('dlocal-upi')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DlocalUPIOptions|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?DlocalUPIOptions $dlocalUpi = null;
+
+    /**
      * Custom options to be passed to the `fiserv-card` connector.
      *
      * @var ?FiservOptions $fiservCard
@@ -409,6 +419,7 @@ class TransactionConnectionOptions
      * @param  ?CybersourceOptions  $cybersourceIdeal
      * @param  ?CybersourceOptions  $cybersourceKcp
      * @param  ?DlocalOptions  $dlocalNequi
+     * @param  ?DlocalUPIOptions  $dlocalUpi
      * @param  ?FiservOptions  $fiservCard
      * @param  ?ForterAntiFraudOptions  $forterAntiFraud
      * @param  ?LatitudeOptions  $gemGem
@@ -432,7 +443,7 @@ class TransactionConnectionOptions
      * @param  ?WpayPaytoOptions  $wpayPayto
      * @phpstan-pure
      */
-    public function __construct(?AccountUpdaterOptions $accountUpdater = null, ?AdyenOptions $adyenAfterpay = null, ?AdyenOptions $adyenAlipay = null, ?AdyenCardOptions $adyenCard = null, ?AdyenOptions $adyenCashapp = null, ?AdyenOptions $adyenGiropay = null, ?AdyenOptions $adyenIdeal = null, ?AdyenSepaOptions $adyenSepa = null, ?AdyenOptions $adyenSofort = null, ?AdyenOptions $adyenVipps = null, ?AffirmOptions $affirmAffirm = null, ?BraintreeOptions $braintreeCard = null, ?CybersourceAntiFraudOptions $cybersourceAntiFraud = null, ?CybersourceOptions $cybersourceCard = null, ?CybersourceOptions $cybersourceIdeal = null, ?CybersourceOptions $cybersourceKcp = null, ?DlocalOptions $dlocalNequi = null, ?FiservOptions $fiservCard = null, ?ForterAntiFraudOptions $forterAntiFraud = null, ?LatitudeOptions $gemGem = null, ?LatitudeOptions $gemGemds = null, ?GivingBlockOptions $givingblockGivingblock = null, ?LatitudeOptions $latitudeLatitude = null, ?LatitudeOptions $latitudeLatitudeds = null, ?MattildaTapiOptions $mattildaTapi = null, ?MattildaTapiOptions $mattildaTapifintechs = null, ?MockCardOptions $mockCard = null, ?NuveiOptions $nuveiCard = null, ?NuveiPSEOptions $nuveiPse = null, ?OxxoOptions $oxxoOxxo = null, ?PaypalOptions $paypalPaypal = null, ?PaypalOptions $paypalPaypalpaylater = null, ?PowertranzOptions $powertranzCard = null, ?StripeOptions $stripeCard = null, ?TravelhubOptions $travelhubCard = null, ?TrustlyOptions $trustlyTrustly = null, ?WpayEverdaypayOptions $wpayEverydaypay = null, ?WpayPaytoOptions $wpayPayto = null)
+    public function __construct(?AccountUpdaterOptions $accountUpdater = null, ?AdyenOptions $adyenAfterpay = null, ?AdyenOptions $adyenAlipay = null, ?AdyenCardOptions $adyenCard = null, ?AdyenOptions $adyenCashapp = null, ?AdyenOptions $adyenGiropay = null, ?AdyenOptions $adyenIdeal = null, ?AdyenSepaOptions $adyenSepa = null, ?AdyenOptions $adyenSofort = null, ?AdyenOptions $adyenVipps = null, ?AffirmOptions $affirmAffirm = null, ?BraintreeOptions $braintreeCard = null, ?CybersourceAntiFraudOptions $cybersourceAntiFraud = null, ?CybersourceOptions $cybersourceCard = null, ?CybersourceOptions $cybersourceIdeal = null, ?CybersourceOptions $cybersourceKcp = null, ?DlocalOptions $dlocalNequi = null, ?DlocalUPIOptions $dlocalUpi = null, ?FiservOptions $fiservCard = null, ?ForterAntiFraudOptions $forterAntiFraud = null, ?LatitudeOptions $gemGem = null, ?LatitudeOptions $gemGemds = null, ?GivingBlockOptions $givingblockGivingblock = null, ?LatitudeOptions $latitudeLatitude = null, ?LatitudeOptions $latitudeLatitudeds = null, ?MattildaTapiOptions $mattildaTapi = null, ?MattildaTapiOptions $mattildaTapifintechs = null, ?MockCardOptions $mockCard = null, ?NuveiOptions $nuveiCard = null, ?NuveiPSEOptions $nuveiPse = null, ?OxxoOptions $oxxoOxxo = null, ?PaypalOptions $paypalPaypal = null, ?PaypalOptions $paypalPaypalpaylater = null, ?PowertranzOptions $powertranzCard = null, ?StripeOptions $stripeCard = null, ?TravelhubOptions $travelhubCard = null, ?TrustlyOptions $trustlyTrustly = null, ?WpayEverdaypayOptions $wpayEverydaypay = null, ?WpayPaytoOptions $wpayPayto = null)
     {
         $this->accountUpdater = $accountUpdater;
         $this->adyenAfterpay = $adyenAfterpay;
@@ -451,6 +462,7 @@ class TransactionConnectionOptions
         $this->cybersourceIdeal = $cybersourceIdeal;
         $this->cybersourceKcp = $cybersourceKcp;
         $this->dlocalNequi = $dlocalNequi;
+        $this->dlocalUpi = $dlocalUpi;
         $this->fiservCard = $fiservCard;
         $this->forterAntiFraud = $forterAntiFraud;
         $this->gemGem = $gemGem;

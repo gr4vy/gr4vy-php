@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: e0273b34307fa1f45644b599adc3368e
+  docChecksum: af76904973a1cf34a70cb67945417500
   docVersion: 1.0.0
   speakeasyVersion: 1.631.5
   generationVersion: 2.716.16
-  releaseVersion: 1.1.46
-  configChecksum: ecfec1a89b4028da5d145937980801ee
+  releaseVersion: 1.1.47
+  configChecksum: 068054782be958d463fa5e19c67dcffe
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -163,6 +163,9 @@ generatedFiles:
   - docs/DigitalWalletUpdate.md
   - docs/DigitalWallets.md
   - docs/DlocalOptions.md
+  - docs/DlocalUPIOptions.md
+  - docs/DlocalUPIRecurringInfoOptions.md
+  - docs/DlocalUPIWalletOptions.md
   - docs/DlocalWalletOptions.md
   - docs/ErrorDetail.md
   - docs/ExpirePaymentLinkRequest.md
@@ -634,6 +637,9 @@ generatedFiles:
   - src/DigitalWallets.php
   - src/DigitalWalletsSDK.php
   - src/DlocalOptions.php
+  - src/DlocalUPIOptions.php
+  - src/DlocalUPIRecurringInfoOptions.php
+  - src/DlocalUPIWalletOptions.php
   - src/DlocalWalletOptions.php
   - src/Domains.php
   - src/ErrorDetail.php
@@ -4365,3 +4371,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->dlocal-upi` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->dlocal-upi` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->dlocal-upi` **Added**\n"
