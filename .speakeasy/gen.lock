@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 1e2f9d47db39278756eaa06f985b6b1d
+  docChecksum: e24efeff583b8ea702c02041e86453e6
   docVersion: 1.0.0
   speakeasyVersion: 1.634.2
   generationVersion: 2.721.3
-  releaseVersion: 1.1.49
-  configChecksum: f850063740f5d66d2d93d2c3287065b6
+  releaseVersion: 1.1.50
+  configChecksum: 77e9f79e4ea1bd319974855a823e48cd
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -4373,6 +4373,3 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes Detected:
-  * `sdk->reports->executions->url()`:  `request.reportExecutionUrlGenerate` **Added**

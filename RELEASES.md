@@ -709,3 +709,13 @@ Based on:
 - [php v1.1.49] .
 ### Releases
 - [Composer v1.1.49] https://packagist.org/packages/gr4vy/gr4vy-php#v1.1.49 - .
+
+## 2025-10-06 07:21:34
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.634.2 (2.721.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.1.50] .
+### Releases
+- [Composer v1.1.50] https://packagist.org/packages/gr4vy/gr4vy-php#v1.1.50 - .
