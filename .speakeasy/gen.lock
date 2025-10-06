@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: c42cf852daa8dacbe2c6e775e9b24398
+  docChecksum: 1e2f9d47db39278756eaa06f985b6b1d
   docVersion: 1.0.0
-  speakeasyVersion: 1.633.1
-  generationVersion: 2.720.1
-  releaseVersion: 1.1.48
-  configChecksum: 15f80f690dd33386116d4d0fba45b389
+  speakeasyVersion: 1.634.2
+  generationVersion: 2.721.3
+  releaseVersion: 1.1.49
+  configChecksum: f850063740f5d66d2d93d2c3287065b6
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -357,6 +357,7 @@ generatedFiles:
   - docs/ReportExecutionContext.md
   - docs/ReportExecutionSummary.md
   - docs/ReportExecutionUrl.md
+  - docs/ReportExecutionUrlGenerate.md
   - docs/ReportExecutions.md
   - docs/ReportSpec.md
   - docs/ReportSummary.md
@@ -858,6 +859,7 @@ generatedFiles:
   - src/ReportExecutionContext.php
   - src/ReportExecutionSummary.php
   - src/ReportExecutionUrl.php
+  - src/ReportExecutionUrlGenerate.php
   - src/ReportExecutions.php
   - src/ReportExecutionsSDK.php
   - src/ReportSpec.php
@@ -4371,3 +4373,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Php SDK Changes Detected:
+  * `sdk->reports->executions->url()`:  `request.reportExecutionUrlGenerate` **Added**
