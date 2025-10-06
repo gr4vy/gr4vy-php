@@ -143,7 +143,7 @@ class Auth
      * @param  array<string,mixed>|null  $embedParams  Optional embed parameters.
      * @return string The generated JWT token.
      */
-    public static function getToken(string $privateKey, array $scopes = [JWTScope::READ_ALL, JWTScope::WRITE_ALL], string $expiresIn = '+30s', ?string $checkoutSessionId = null, ?array $embedParams = null): string
+    public static function getToken(string $privateKey, array $scopes = [JWTScope::READ_ALL, JWTScope::WRITE_ALL], string $expiresIn = '+30 seconds', ?string $checkoutSessionId = null, ?array $embedParams = null): string
     {
         $kid = self::getKeyId(privateKey: $privateKey);
 
@@ -217,10 +217,9 @@ class Auth
      * @param  array<string,mixed>|null  $embedParams  Optional embed parameters.
      * @return string The generated embed JWT token.
      */
-    public static function getEmbedToken(string $privateKey, string $expiresIn = '+1h', ?string $checkoutSessionId = null, ?array $embedParams = null): string
+    public static function getEmbedToken(string $privateKey, string $expiresIn = '+1 hour', ?string $checkoutSessionId = null, ?array $embedParams = null): string
     {
         $scopes = [JWTScope::EMBED];
-        $expiresIn = '+1h';
 
         return self::getToken(privateKey: $privateKey, scopes: $scopes, expiresIn: $expiresIn, checkoutSessionId: $checkoutSessionId, embedParams: $embedParams);
     }
