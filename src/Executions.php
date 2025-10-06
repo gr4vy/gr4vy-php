@@ -52,21 +52,27 @@ class Executions
      *
      * @param  string  $reportId
      * @param  string  $reportExecutionId
+     * @param  ?ReportExecutionUrlGenerate  $reportExecutionUrlGenerate
      * @param  ?string  $merchantAccountId
      * @return CreateReportExecutionUrlResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function url(string $reportId, string $reportExecutionId, ?string $merchantAccountId = null, ?Options $options = null): CreateReportExecutionUrlResponse
+    public function url(string $reportId, string $reportExecutionId, ?ReportExecutionUrlGenerate $reportExecutionUrlGenerate = null, ?string $merchantAccountId = null, ?Options $options = null): CreateReportExecutionUrlResponse
     {
         $request = new CreateReportExecutionUrlRequest(
             reportId: $reportId,
             reportExecutionId: $reportExecutionId,
             merchantAccountId: $merchantAccountId,
+            reportExecutionUrlGenerate: $reportExecutionUrlGenerate,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/reports/{report_id}/executions/{report_execution_id}/url', CreateReportExecutionUrlRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, 'reportExecutionUrlGenerate', 'json');
+        if ($body !== null) {
+            $httpOptions = array_merge_recursive($httpOptions, $body);
+        }
         $httpOptions = array_merge_recursive($httpOptions, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
         if (! array_key_exists('headers', $httpOptions)) {
             $httpOptions['headers'] = [];
