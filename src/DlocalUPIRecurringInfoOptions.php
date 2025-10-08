@@ -12,7 +12,7 @@ namespace Gr4vy;
 class DlocalUPIRecurringInfoOptions
 {
     /**
-     * Indicates the frequency unit for the subscription. Allowed values are: `DAILY`, `WEEKLY`, `MONTHLY`, `QUARTERLY`, `SEMI_ANNUAL`, and `ANNUAL`.
+     * Indicates the frequency unit for the subscription. Allowed values are: `DAY`, `WEEK`, `MONTH`, `BI_MONTHLY`, `QUARTER`, `SEMI_ANNUALLY`, `YEAR`, `ONDEMAND`.
      *
      * @var string $subscriptionFrequencyUnit
      */
