@@ -244,9 +244,6 @@ if ($response->accountUpdaterJob !== null) {
 <details open>
 <summary>Available methods</summary>
 
-### [accountUpdater](docs/sdks/accountupdater/README.md)
-
-
 #### [accountUpdater->jobs](docs/sdks/jobs/README.md)
 
 * [create](docs/sdks/jobs/README.md#create) - Create account updater job
@@ -405,7 +402,6 @@ if ($response->accountUpdaterJob !== null) {
 * [list](docs/sdks/executions/README.md#list) - List executions for report
 * [url](docs/sdks/executions/README.md#url) - Create URL for executed report
 * [get](docs/sdks/executions/README.md#get) - Get executed report
-
 
 ### [transactions](docs/sdks/transactions/README.md)
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: e24efeff583b8ea702c02041e86453e6
+  docChecksum: 0b24fbbe783f1df588e49276463832e6
   docVersion: 1.0.0
-  speakeasyVersion: 1.634.2
-  generationVersion: 2.721.3
-  releaseVersion: 1.1.50
-  configChecksum: 77e9f79e4ea1bd319974855a823e48cd
+  speakeasyVersion: 1.636.1
+  generationVersion: 2.723.4
+  releaseVersion: 1.1.52
+  configChecksum: b65f768e339ef25c5661417e45a67e72
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -19,14 +19,14 @@ features:
     globalSecurityFlattening: 0.1.2
     globalServerURLs: 2.82.2
     globals: 2.82.2
-    groups: 2.81.2
+    groups: 2.81.3
     ignores: 2.81.1
     methodArguments: 0.1.0
     nameOverrides: 2.81.2
     nullables: 1.0.1
     pagination: 0.1.4
     responseFormat: 0.1.0
-    retries: 0.1.0
+    retries: 0.1.1
     serverIDs: 2.81.1
     unions: 0.1.5
 generatedFiles:
@@ -461,7 +461,6 @@ generatedFiles:
   - docs/errors/Error502.md
   - docs/errors/Error504.md
   - docs/errors/HTTPValidationError.md
-  - docs/sdks/accountupdater/README.md
   - docs/sdks/all/README.md
   - docs/sdks/auditlogs/README.md
   - docs/sdks/balances/README.md
@@ -490,7 +489,6 @@ generatedFiles:
   - docs/sdks/refundssdk/README.md
   - docs/sdks/reportexecutionssdk/README.md
   - docs/sdks/reportssdk/README.md
-  - docs/sdks/sdk/README.md
   - docs/sdks/sessions/README.md
   - docs/sdks/transactions/README.md
   - docs/sdks/transactionsrefunds/README.md
