@@ -104,6 +104,15 @@ class PaymentServiceDefinition
     public PaymentServiceConfiguration $configuration;
 
     /**
+     * List of supported integration clients. Defaults to redirect for most redirect connectors.
+     *
+     * @var ?array<string> $supportedIntegrationClients
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('supported_integration_clients')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    public ?array $supportedIntegrationClients;
+
+    /**
      * An icon to display for the payment service.
      *
      * @var ?string $iconUrl
@@ -134,10 +143,11 @@ class PaymentServiceDefinition
      * @param  array<RequiredCheckoutFields>  $requiredCheckoutFields
      * @param  PaymentServiceConfiguration  $configuration
      * @param  ?string  $type
+     * @param  ?array<string>  $supportedIntegrationClients
      * @param  ?string  $iconUrl
      * @phpstan-pure
      */
-    public function __construct(string $id, string $displayName, string $method, array $fields, array $reportingFields, array $supportedCurrencies, array $supportedCountries, string $mode, array $supportedFeatures, array $requiredCheckoutFields, PaymentServiceConfiguration $configuration, ?string $iconUrl = null, ?string $type = 'payment-service-definition')
+    public function __construct(string $id, string $displayName, string $method, array $fields, array $reportingFields, array $supportedCurrencies, array $supportedCountries, string $mode, array $supportedFeatures, array $requiredCheckoutFields, PaymentServiceConfiguration $configuration, ?array $supportedIntegrationClients = null, ?string $iconUrl = null, ?string $type = 'payment-service-definition')
     {
         $this->id = $id;
         $this->displayName = $displayName;
@@ -150,6 +160,7 @@ class PaymentServiceDefinition
         $this->supportedFeatures = $supportedFeatures;
         $this->requiredCheckoutFields = $requiredCheckoutFields;
         $this->configuration = $configuration;
+        $this->supportedIntegrationClients = $supportedIntegrationClients;
         $this->iconUrl = $iconUrl;
         $this->type = $type;
     }

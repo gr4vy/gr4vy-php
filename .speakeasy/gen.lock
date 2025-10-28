@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 1026842960ff7c8f6059350d37ff01ec
+  docChecksum: 513edc8b44ab669c59b1cfdd8709585b
   docVersion: 1.0.0
-  speakeasyVersion: 1.638.0
-  generationVersion: 2.728.0
-  releaseVersion: 1.2.1
-  configChecksum: c0dc09072d9682e16dcc124551f51948
+  speakeasyVersion: 1.640.0
+  generationVersion: 2.730.5
+  releaseVersion: 1.2.2
+  configChecksum: e33f77f396b14a618bfc44eb65c57deb
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -3070,7 +3070,7 @@ examples:
           application_name: "core-api"
       responses:
         "200":
-          application/json: {"id": "adyen-ideal", "type": "payment-service-definition", "display_name": "iDEAL", "method": "multibanco", "fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "boolean", "secret": true}], "reporting_fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true}, {"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true}], "supported_currencies": ["USD", "GBP", "EUR", "AUD"], "supported_countries": ["US"], "mode": "card", "supported_features": {"key": true, "key1": false}, "required_checkout_fields": [{"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}], "configuration": {"approval_ui_target": "any", "approval_ui_height": "100px", "approval_ui_width": "100px", "cart_items_limit": 100, "cart_items_required": true, "cart_items_should_match_amount": true}}
+          application/json: {"id": "adyen-ideal", "type": "payment-service-definition", "display_name": "iDEAL", "method": "multibanco", "fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "boolean", "secret": true}], "reporting_fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true}, {"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true}], "supported_currencies": ["USD", "GBP", "EUR", "AUD"], "supported_countries": ["US"], "mode": "card", "supported_features": {"key": true, "key1": false}, "required_checkout_fields": [{"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}], "configuration": {"approval_ui_target": "any", "approval_ui_height": "100px", "approval_ui_width": "100px", "cart_items_limit": 100, "cart_items_required": true, "cart_items_should_match_amount": true}, "supported_integration_clients": ["redirect"]}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4371,3 +4371,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->integrationClient` **Added**\n  *  `response.sessionToken` **Added**\n* `sdk->transactions->get()`:  `response.sessionToken` **Added**\n* `sdk->transactions->update()`:  `response.sessionToken` **Added**\n* `sdk->transactions->capture()`:  `response.[transaction]->sessionToken` **Added**\n* `sdk->transactions->void()`:  `response.[transaction]->sessionToken` **Added**\n* `sdk->transactions->cancel()`:  `response.transaction->sessionToken` **Added**\n* `sdk->transactions->sync()`:  `response.sessionToken` **Added**\n* `sdk->payment-service-definitions->list()`:  `response.items->[]->supportedIntegrationClients` **Added**\n* `sdk->payment-service-definitions->get()`:  `response.supportedIntegrationClients` **Added**\n"
