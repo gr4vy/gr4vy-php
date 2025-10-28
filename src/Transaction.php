@@ -514,6 +514,15 @@ class Transaction
     public ?int $installmentCount = null;
 
     /**
+     * A session token that can be used to fetch session data for direct client integrations.
+     *
+     * @var ?string $sessionToken
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('session_token')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $sessionToken = null;
+
+    /**
      * The sales tax amount for this transaction, represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`
      *
      * @var ?int $taxAmount
@@ -654,6 +663,7 @@ class Transaction
      * @param  ?Recipient  $recipient
      * @param  ?string  $merchantAdviceCode
      * @param  ?int  $installmentCount
+     * @param  ?string  $sessionToken
      * @param  ?int  $taxAmount
      * @param  ?string  $merchantTaxId
      * @param  ?string  $customerReferenceNumber
@@ -663,7 +673,7 @@ class Transaction
      * @param  ?int  $shippingAmount
      * @phpstan-pure
      */
-    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, string $paymentSource, bool $merchantInitiated, bool $isSubsequentPayment, string $intentOutcome, bool $multiTender, bool $accountFundingTransaction, ?array $additionalIdentifiers = null, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?Airline $airline = null, ?string $authResponseCode = null, ?string $avsResponseCode = null, ?string $cvvResponseCode = null, ?string $antiFraudDecision = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $schemeTransactionId = null, ?TransactionThreeDSecureSummary $threeDSecure = null, ?string $paymentServiceTransactionId = null, ?array $metadata = null, ?\DateTime $authorizedAt = null, ?\DateTime $capturedAt = null, ?\DateTime $voidedAt = null, ?\DateTime $canceledAt = null, ?\DateTime $approvalExpiresAt = null, ?\DateTime $buyerApprovalTimedoutAt = null, ?Recipient $recipient = null, ?string $merchantAdviceCode = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?bool $pendingReview = false, ?string $type = 'transaction')
+    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, string $paymentSource, bool $merchantInitiated, bool $isSubsequentPayment, string $intentOutcome, bool $multiTender, bool $accountFundingTransaction, ?array $additionalIdentifiers = null, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?Airline $airline = null, ?string $authResponseCode = null, ?string $avsResponseCode = null, ?string $cvvResponseCode = null, ?string $antiFraudDecision = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $schemeTransactionId = null, ?TransactionThreeDSecureSummary $threeDSecure = null, ?string $paymentServiceTransactionId = null, ?array $metadata = null, ?\DateTime $authorizedAt = null, ?\DateTime $capturedAt = null, ?\DateTime $voidedAt = null, ?\DateTime $canceledAt = null, ?\DateTime $approvalExpiresAt = null, ?\DateTime $buyerApprovalTimedoutAt = null, ?Recipient $recipient = null, ?string $merchantAdviceCode = null, ?int $installmentCount = null, ?string $sessionToken = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?bool $pendingReview = false, ?string $type = 'transaction')
     {
         $this->id = $id;
         $this->reconciliationId = $reconciliationId;
@@ -722,6 +732,7 @@ class Transaction
         $this->recipient = $recipient;
         $this->merchantAdviceCode = $merchantAdviceCode;
         $this->installmentCount = $installmentCount;
+        $this->sessionToken = $sessionToken;
         $this->taxAmount = $taxAmount;
         $this->merchantTaxId = $merchantTaxId;
         $this->customerReferenceNumber = $customerReferenceNumber;

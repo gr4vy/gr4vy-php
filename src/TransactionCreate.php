@@ -299,6 +299,15 @@ class TransactionCreate
     public ?int $shippingAmount = null;
 
     /**
+     * Defines the client where the session for this transaction is going to be used. Please refer to the connections documentation for more guidance.
+     *
+     * @var ?string $integrationClient
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('integration_client')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $integrationClient = null;
+
+    /**
      *  Whether or not to also try and store the payment method with us so that it can be used again for future use. This is only supported for payment methods that support this feature. There are also a few restrictions on how the flag may be set:
      *
      *
@@ -411,9 +420,10 @@ class TransactionCreate
      * @param  ?string  $supplierOrderNumber
      * @param  ?int  $dutyAmount
      * @param  ?int  $shippingAmount
+     * @param  ?string  $integrationClient
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyerInput $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
+    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyerInput $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $integrationClient = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
     {
         $this->amount = $amount;
         $this->currency = $currency;
@@ -446,6 +456,7 @@ class TransactionCreate
         $this->supplierOrderNumber = $supplierOrderNumber;
         $this->dutyAmount = $dutyAmount;
         $this->shippingAmount = $shippingAmount;
+        $this->integrationClient = $integrationClient;
         $this->store = $store;
         $this->isSubsequentPayment = $isSubsequentPayment;
         $this->merchantInitiated = $merchantInitiated;
