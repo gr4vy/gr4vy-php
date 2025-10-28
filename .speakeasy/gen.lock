@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 513edc8b44ab669c59b1cfdd8709585b
+  docChecksum: 3caab25d2a058e3150dee3f3cd6a5fc5
   docVersion: 1.0.0
-  speakeasyVersion: 1.640.0
-  generationVersion: 2.730.5
-  releaseVersion: 1.2.2
-  configChecksum: e33f77f396b14a618bfc44eb65c57deb
+  speakeasyVersion: 1.642.0
+  generationVersion: 2.731.4
+  releaseVersion: 1.2.3
+  configChecksum: dd6997c0172e89781aa1132c3c0d0638
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -344,6 +344,9 @@ generatedFiles:
   - docs/PayoutSummaries.md
   - docs/PayoutSummary.md
   - docs/PaypalOptions.md
+  - docs/PaypalShippingOptions.md
+  - docs/PaypalShippingOptionsItem.md
+  - docs/PaypalShippingOptionsItemAmount.md
   - docs/PowertranzOptions.md
   - docs/Recipient.md
   - docs/RedirectPaymentMethodCreate.md
@@ -843,6 +846,9 @@ generatedFiles:
   - src/PayoutSummary.php
   - src/Payouts.php
   - src/PaypalOptions.php
+  - src/PaypalShippingOptions.php
+  - src/PaypalShippingOptionsItem.php
+  - src/PaypalShippingOptionsItemAmount.php
   - src/PowertranzOptions.php
   - src/Recipient.php
   - src/RedirectPaymentMethodCreate.php
@@ -4371,4 +4377,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->integrationClient` **Added**\n  *  `response.sessionToken` **Added**\n* `sdk->transactions->get()`:  `response.sessionToken` **Added**\n* `sdk->transactions->update()`:  `response.sessionToken` **Added**\n* `sdk->transactions->capture()`:  `response.[transaction]->sessionToken` **Added**\n* `sdk->transactions->void()`:  `response.[transaction]->sessionToken` **Added**\n* `sdk->transactions->cancel()`:  `response.transaction->sessionToken` **Added**\n* `sdk->transactions->sync()`:  `response.sessionToken` **Added**\n* `sdk->payment-service-definitions->list()`:  `response.items->[]->supportedIntegrationClients` **Added**\n* `sdk->payment-service-definitions->get()`:  `response.supportedIntegrationClients` **Added**\n"
+releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->paypal-paypal->shipping` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->paypal-paypal->shipping` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->paypal-paypal->shipping` **Added**\n"

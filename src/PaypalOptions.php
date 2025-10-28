@@ -22,11 +22,23 @@ class PaypalOptions
     public ?array $additionalData = null;
 
     /**
+     * Shipping information to be passed to the PayPal API.
+     *
+     * @var ?PaypalShippingOptions $shipping
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('shipping')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaypalShippingOptions|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?PaypalShippingOptions $shipping = null;
+
+    /**
      * @param  ?array<array<string, string>>  $additionalData
+     * @param  ?PaypalShippingOptions  $shipping
      * @phpstan-pure
      */
-    public function __construct(?array $additionalData = null)
+    public function __construct(?array $additionalData = null, ?PaypalShippingOptions $shipping = null)
     {
         $this->additionalData = $additionalData;
+        $this->shipping = $shipping;
     }
 }
