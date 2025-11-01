@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class TransactionCapture
+class TransactionCaptureOutput
 {
     /**
      *
@@ -21,11 +21,11 @@ class TransactionCapture
     /**
      * A full transaction resource.
      *
-     * @var Transaction $transaction
+     * @var TransactionOutput $transaction
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('transaction')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Transaction')]
-    public Transaction $transaction;
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionOutput')]
+    public TransactionOutput $transaction;
 
     /**
      * The standardized error code set by Gr4vy.
@@ -62,14 +62,14 @@ class TransactionCapture
 
     /**
      * @param  string  $status
-     * @param  Transaction  $transaction
+     * @param  TransactionOutput  $transaction
      * @param  ?string  $type
      * @param  ?string  $code
      * @param  ?string  $rawResponseCode
      * @param  ?string  $rawResponseDescription
      * @phpstan-pure
      */
-    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $type = 'transaction-capture')
+    public function __construct(string $status, TransactionOutput $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $type = 'transaction-capture')
     {
         $this->status = $status;
         $this->transaction = $transaction;

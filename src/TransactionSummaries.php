@@ -14,10 +14,10 @@ class TransactionSummaries
     /**
      * A list of items returned for this request.
      *
-     * @var array<TransactionSummary> $items
+     * @var array<TransactionSummaryOutput> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\TransactionSummary>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\TransactionSummaryOutput>')]
     public array $items;
 
     /**
@@ -48,7 +48,7 @@ class TransactionSummaries
     public ?int $limit = null;
 
     /**
-     * @param  array<TransactionSummary>  $items
+     * @param  array<TransactionSummaryOutput>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

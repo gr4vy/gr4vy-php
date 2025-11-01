@@ -52,6 +52,7 @@ class CheckoutSessionCreate
     public ?Airline $airline = null;
 
     /**
+     * The time in seconds when this checkout session expires.
      *
      * @var ?float $expiresIn
      */

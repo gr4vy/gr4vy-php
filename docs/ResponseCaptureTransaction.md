@@ -5,21 +5,21 @@ Successful Response
 
 ## Supported Types
 
-### `Gr4vy\Transaction`
+### `Gr4vy\TransactionOutput`
 
 ```php
 /**
-* @var Transaction
+* @var TransactionOutput
 */
-Gr4vy\Transaction $value = /* values here */
+Gr4vy\TransactionOutput $value = /* values here */
 ```
 
-### `Gr4vy\TransactionCapture`
+### `Gr4vy\TransactionCaptureOutput`
 
 ```php
 /**
-* @var TransactionCapture
+* @var TransactionCaptureOutput
 */
-Gr4vy\TransactionCapture $value = /* values here */
+Gr4vy\TransactionCaptureOutput $value = /* values here */
 ```
 
