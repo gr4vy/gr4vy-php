@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-/** TransactionSummary - A transaction, summarised */
-class TransactionSummary
+/** TransactionSummaryOutput - A transaction, summarised */
+class TransactionSummaryOutput
 {
     /**
      * The ID for the transaction.
@@ -169,12 +169,12 @@ class TransactionSummary
     /**
      * The payment method used for this transaction.
      *
-     * @var ?TransactionPaymentMethod $paymentMethod
+     * @var ?TransactionPaymentMethodOutput $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentMethod|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentMethodOutput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?TransactionPaymentMethod $paymentMethod = null;
+    public ?TransactionPaymentMethodOutput $paymentMethod = null;
 
     /**
      * The method used for the transaction.
@@ -216,12 +216,12 @@ class TransactionSummary
     /**
      * The buyer used for this transaction.
      *
-     * @var ?TransactionBuyer $buyer
+     * @var ?TransactionBuyerOutput $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyer|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyerOutput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?TransactionBuyer $buyer = null;
+    public ?TransactionBuyerOutput $buyer = null;
 
     /**
      * This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
@@ -310,12 +310,12 @@ class TransactionSummary
      * @param  ?string  $settledCurrency
      * @param  ?string  $country
      * @param  ?string  $externalIdentifier
-     * @param  ?TransactionPaymentMethod  $paymentMethod
+     * @param  ?TransactionPaymentMethodOutput  $paymentMethod
      * @param  ?string  $method
      * @param  ?string  $instrumentType
      * @param  ?string  $errorCode
      * @param  ?TransactionPaymentService  $paymentService
-     * @param  ?TransactionBuyer  $buyer
+     * @param  ?TransactionBuyerOutput  $buyer
      * @param  ?string  $rawResponseCode
      * @param  ?string  $rawResponseDescription
      * @param  ?ShippingDetails  $shippingDetails
@@ -323,7 +323,7 @@ class TransactionSummary
      * @param  ?GiftCardService  $giftCardService
      * @phpstan-pure
      */
-    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?bool $pendingReview = false, ?string $type = 'transaction')
+    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethodOutput $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyerOutput $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?bool $pendingReview = false, ?string $type = 'transaction')
     {
         $this->id = $id;
         $this->reconciliationId = $reconciliationId;

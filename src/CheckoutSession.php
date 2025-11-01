@@ -70,12 +70,12 @@ class CheckoutSession
     /**
      * Information about the payment method stored on the checkout session.
      *
-     * @var ?CheckoutSessionPaymentMethod $paymentMethod
+     * @var ?CheckoutSessionPaymentMethodOutput $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutSessionPaymentMethod|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutSessionPaymentMethodOutput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CheckoutSessionPaymentMethod $paymentMethod = null;
+    public ?CheckoutSessionPaymentMethodOutput $paymentMethod = null;
 
     /**
      * Always `checkout-session`
@@ -94,10 +94,10 @@ class CheckoutSession
      * @param  ?array<string, string>  $metadata
      * @param  ?GuestBuyerOutput  $buyer
      * @param  ?Airline  $airline
-     * @param  ?CheckoutSessionPaymentMethod  $paymentMethod
+     * @param  ?CheckoutSessionPaymentMethodOutput  $paymentMethod
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $expiresAt, ?array $cartItems = null, ?array $metadata = null, ?GuestBuyerOutput $buyer = null, ?Airline $airline = null, ?CheckoutSessionPaymentMethod $paymentMethod = null, ?string $type = 'checkout-session')
+    public function __construct(string $id, \DateTime $expiresAt, ?array $cartItems = null, ?array $metadata = null, ?GuestBuyerOutput $buyer = null, ?Airline $airline = null, ?CheckoutSessionPaymentMethodOutput $paymentMethod = null, ?string $type = 'checkout-session')
     {
         $this->id = $id;
         $this->expiresAt = $expiresAt;

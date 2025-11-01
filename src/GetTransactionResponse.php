@@ -35,22 +35,22 @@ class GetTransactionResponse
     /**
      * Successful Response
      *
-     * @var ?Transaction $transaction
+     * @var ?TransactionOutput $transactionOutput
      */
-    public ?Transaction $transaction = null;
+    public ?TransactionOutput $transactionOutput = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Transaction  $transaction
+     * @param  ?TransactionOutput  $transactionOutput
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Transaction $transaction = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?TransactionOutput $transactionOutput = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->transaction = $transaction;
+        $this->transactionOutput = $transactionOutput;
     }
 }

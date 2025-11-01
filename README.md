@@ -746,8 +746,8 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
-    ->setServer('production')
-    ->setId('<id>')
+    ->setServer('sandbox')
+    ->setId('example')
     ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
