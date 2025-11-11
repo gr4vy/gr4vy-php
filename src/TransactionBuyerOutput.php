@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class TransactionBuyer
+class TransactionBuyerOutput
 {
     /**
      * The ID for the buyer.

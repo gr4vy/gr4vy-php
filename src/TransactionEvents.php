@@ -14,10 +14,10 @@ class TransactionEvents
     /**
      * A list of items returned for this request.
      *
-     * @var array<TransactionEvent> $items
+     * @var array<TransactionEventOutput> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\TransactionEvent>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\TransactionEventOutput>')]
     public array $items;
 
     /**
@@ -48,7 +48,7 @@ class TransactionEvents
     public ?int $limit = null;
 
     /**
-     * @param  array<TransactionEvent>  $items
+     * @param  array<TransactionEventOutput>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class TransactionEvent
+class TransactionEventOutput
 {
     /**
      * The ID for the event.

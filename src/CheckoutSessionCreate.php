@@ -52,6 +52,34 @@ class CheckoutSessionCreate
     public ?Airline $airline = null;
 
     /**
+     * The total amount for this transaction.
+     *
+     * @var ?int $amount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $amount = null;
+
+    /**
+     * The currency code for this transaction.
+     *
+     * @var ?string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $currency = null;
+
+    /**
+     * The unique identifier of an existing payment service. When provided, the created transaction will be processed by the given payment service and any routing rules will be skipped.
+     *
+     * @var ?string $paymentServiceId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_service_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $paymentServiceId = null;
+
+    /**
+     * The time in seconds when this checkout session expires.
      *
      * @var ?float $expiresIn
      */
@@ -65,14 +93,20 @@ class CheckoutSessionCreate
      * @param  ?array<string, string>  $metadata
      * @param  ?GuestBuyerInput  $buyer
      * @param  ?Airline  $airline
+     * @param  ?int  $amount
+     * @param  ?string  $currency
+     * @param  ?string  $paymentServiceId
      * @phpstan-pure
      */
-    public function __construct(?array $cartItems = null, ?array $metadata = null, ?GuestBuyerInput $buyer = null, ?Airline $airline = null, ?float $expiresIn = 3600)
+    public function __construct(?array $cartItems = null, ?array $metadata = null, ?GuestBuyerInput $buyer = null, ?Airline $airline = null, ?int $amount = null, ?string $currency = null, ?string $paymentServiceId = null, ?float $expiresIn = 3600)
     {
         $this->cartItems = $cartItems;
         $this->metadata = $metadata;
         $this->buyer = $buyer;
         $this->airline = $airline;
+        $this->amount = $amount;
+        $this->currency = $currency;
+        $this->paymentServiceId = $paymentServiceId;
         $this->expiresIn = $expiresIn;
     }
 }

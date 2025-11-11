@@ -68,14 +68,41 @@ class CheckoutSession
     public ?Airline $airline = null;
 
     /**
+     * The total amount for this transaction.
+     *
+     * @var ?int $amount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $amount = null;
+
+    /**
+     * The currency code for this transaction.
+     *
+     * @var ?string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $currency = null;
+
+    /**
+     * The unique identifier of an existing payment service. When provided, the created transaction will be processed by the given payment service and any routing rules will be skipped.
+     *
+     * @var ?string $paymentServiceId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_service_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $paymentServiceId = null;
+
+    /**
      * Information about the payment method stored on the checkout session.
      *
-     * @var ?CheckoutSessionPaymentMethod $paymentMethod
+     * @var ?CheckoutSessionPaymentMethodOutput $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutSessionPaymentMethod|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutSessionPaymentMethodOutput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CheckoutSessionPaymentMethod $paymentMethod = null;
+    public ?CheckoutSessionPaymentMethodOutput $paymentMethod = null;
 
     /**
      * Always `checkout-session`
@@ -94,10 +121,13 @@ class CheckoutSession
      * @param  ?array<string, string>  $metadata
      * @param  ?GuestBuyerOutput  $buyer
      * @param  ?Airline  $airline
-     * @param  ?CheckoutSessionPaymentMethod  $paymentMethod
+     * @param  ?int  $amount
+     * @param  ?string  $currency
+     * @param  ?string  $paymentServiceId
+     * @param  ?CheckoutSessionPaymentMethodOutput  $paymentMethod
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $expiresAt, ?array $cartItems = null, ?array $metadata = null, ?GuestBuyerOutput $buyer = null, ?Airline $airline = null, ?CheckoutSessionPaymentMethod $paymentMethod = null, ?string $type = 'checkout-session')
+    public function __construct(string $id, \DateTime $expiresAt, ?array $cartItems = null, ?array $metadata = null, ?GuestBuyerOutput $buyer = null, ?Airline $airline = null, ?int $amount = null, ?string $currency = null, ?string $paymentServiceId = null, ?CheckoutSessionPaymentMethodOutput $paymentMethod = null, ?string $type = 'checkout-session')
     {
         $this->id = $id;
         $this->expiresAt = $expiresAt;
@@ -105,6 +135,9 @@ class CheckoutSession
         $this->metadata = $metadata;
         $this->buyer = $buyer;
         $this->airline = $airline;
+        $this->amount = $amount;
+        $this->currency = $currency;
+        $this->paymentServiceId = $paymentServiceId;
         $this->paymentMethod = $paymentMethod;
         $this->type = $type;
     }
