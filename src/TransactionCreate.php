@@ -56,12 +56,12 @@ class TransactionCreate
     /**
      * The optional payment method to use for this transaction. This field is required if no `gift_cards` have been added.
      *
-     * @var CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod
+     * @var CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardWithUrlPaymentMethodCreate|\Gr4vy\RedirectPaymentMethodCreate|\Gr4vy\TokenPaymentMethodCreate|\Gr4vy\ApplePayPaymentMethodCreate|\Gr4vy\ClickToPayPaymentMethodCreate|\Gr4vy\ClickToPayFPANPaymentMethodCreate|\Gr4vy\GooglePayPaymentMethodCreate|\Gr4vy\GooglePayFPANPaymentMethodCreate|\Gr4vy\NetworkTokenPaymentMethodCreate|\Gr4vy\CheckoutSessionWithUrlPaymentMethodCreate|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardWithUrlPaymentMethodCreate|\Gr4vy\RedirectPaymentMethodCreate|\Gr4vy\TokenPaymentMethodCreate|\Gr4vy\ApplePayPaymentMethodCreate|\Gr4vy\ClickToPayPaymentMethodCreate|\Gr4vy\ClickToPayFPANPaymentMethodCreate|\Gr4vy\GooglePayPaymentMethodCreate|\Gr4vy\GooglePayFPANPaymentMethodCreate|\Gr4vy\NetworkTokenPaymentMethodCreate|\Gr4vy\PlaidPaymentMethodCreate|\Gr4vy\CheckoutSessionWithUrlPaymentMethodCreate|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null;
+    public CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null;
 
     /**
      * Guest buyer details provided inline rather than creating a buyer resource beforehand and using the `buyer_id` or `buyer_external_identifier` keys. No buyer resource will be created on Gr4vy when used.
@@ -254,6 +254,15 @@ class TransactionCreate
     public ?string $merchantTaxId = null;
 
     /**
+     * Invoice number or Purchase Order number.
+     *
+     * @var ?string $purchaseOrderNumber
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('purchase_order_number')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $purchaseOrderNumber = null;
+
+    /**
      * Customer code or reference.
      *
      * @var ?string $customerReferenceNumber
@@ -394,7 +403,7 @@ class TransactionCreate
      * @param  ?bool  $accountFundingTransaction
      * @param  ?bool  $allowPartialAuthorization
      * @param  ?string  $country
-     * @param  CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null  $paymentMethod
+     * @param  CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null  $paymentMethod
      * @param  ?GuestBuyerInput  $buyer
      * @param  ?string  $buyerId
      * @param  ?string  $buyerExternalIdentifier
@@ -415,6 +424,7 @@ class TransactionCreate
      * @param  ?int  $installmentCount
      * @param  ?int  $taxAmount
      * @param  ?string  $merchantTaxId
+     * @param  ?string  $purchaseOrderNumber
      * @param  ?string  $customerReferenceNumber
      * @param  ?bool  $amountIncludesTax
      * @param  ?string  $supplierOrderNumber
@@ -423,7 +433,7 @@ class TransactionCreate
      * @param  ?string  $integrationClient
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyerInput $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $integrationClient = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
+    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyerInput $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $purchaseOrderNumber = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $integrationClient = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
     {
         $this->amount = $amount;
         $this->currency = $currency;
@@ -451,6 +461,7 @@ class TransactionCreate
         $this->installmentCount = $installmentCount;
         $this->taxAmount = $taxAmount;
         $this->merchantTaxId = $merchantTaxId;
+        $this->purchaseOrderNumber = $purchaseOrderNumber;
         $this->customerReferenceNumber = $customerReferenceNumber;
         $this->amountIncludesTax = $amountIncludesTax;
         $this->supplierOrderNumber = $supplierOrderNumber;

@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-/** Transaction - A full transaction resource. */
-class Transaction
+/** TransactionOutput - A full transaction resource. */
+class TransactionOutput
 {
     /**
      * The ID for the transaction.
@@ -226,12 +226,12 @@ class Transaction
     /**
      * The payment method used for this transaction.
      *
-     * @var ?TransactionPaymentMethod $paymentMethod
+     * @var ?TransactionPaymentMethodOutput $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentMethod|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentMethodOutput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?TransactionPaymentMethod $paymentMethod = null;
+    public ?TransactionPaymentMethodOutput $paymentMethod = null;
 
     /**
      * The method used for the transaction.
@@ -273,12 +273,12 @@ class Transaction
     /**
      * The buyer used for this transaction.
      *
-     * @var ?TransactionBuyer $buyer
+     * @var ?TransactionBuyerOutput $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyer|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyerOutput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?TransactionBuyer $buyer = null;
+    public ?TransactionBuyerOutput $buyer = null;
 
     /**
      * This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
@@ -405,12 +405,12 @@ class Transaction
     /**
      * The 3-D Secure data that was sent to the payment service for the transaction.
      *
-     * @var ?TransactionThreeDSecureSummary $threeDSecure
+     * @var ?TransactionThreeDSecureSummaryOutput $threeDSecure
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('three_d_secure')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionThreeDSecureSummary|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionThreeDSecureSummaryOutput|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?TransactionThreeDSecureSummary $threeDSecure = null;
+    public ?TransactionThreeDSecureSummaryOutput $threeDSecure = null;
 
     /**
      * The payment service's unique ID for the transaction.
@@ -541,6 +541,15 @@ class Transaction
     public ?string $merchantTaxId = null;
 
     /**
+     * Invoice number or Purchase Order number.
+     *
+     * @var ?string $purchaseOrderNumber
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('purchase_order_number')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $purchaseOrderNumber = null;
+
+    /**
      * Customer code or reference.
      *
      * @var ?string $customerReferenceNumber
@@ -632,12 +641,12 @@ class Transaction
      * @param  ?string  $settledCurrency
      * @param  ?string  $country
      * @param  ?string  $externalIdentifier
-     * @param  ?TransactionPaymentMethod  $paymentMethod
+     * @param  ?TransactionPaymentMethodOutput  $paymentMethod
      * @param  ?string  $method
      * @param  ?string  $instrumentType
      * @param  ?string  $errorCode
      * @param  ?TransactionPaymentService  $paymentService
-     * @param  ?TransactionBuyer  $buyer
+     * @param  ?TransactionBuyerOutput  $buyer
      * @param  ?string  $rawResponseCode
      * @param  ?string  $rawResponseDescription
      * @param  ?ShippingDetails  $shippingDetails
@@ -651,7 +660,7 @@ class Transaction
      * @param  ?array<CartItem>  $cartItems
      * @param  ?StatementDescriptor  $statementDescriptor
      * @param  ?string  $schemeTransactionId
-     * @param  ?TransactionThreeDSecureSummary  $threeDSecure
+     * @param  ?TransactionThreeDSecureSummaryOutput  $threeDSecure
      * @param  ?string  $paymentServiceTransactionId
      * @param  ?array<string, string>  $metadata
      * @param  ?\DateTime  $authorizedAt
@@ -666,6 +675,7 @@ class Transaction
      * @param  ?string  $sessionToken
      * @param  ?int  $taxAmount
      * @param  ?string  $merchantTaxId
+     * @param  ?string  $purchaseOrderNumber
      * @param  ?string  $customerReferenceNumber
      * @param  ?bool  $amountIncludesTax
      * @param  ?string  $supplierOrderNumber
@@ -673,7 +683,7 @@ class Transaction
      * @param  ?int  $shippingAmount
      * @phpstan-pure
      */
-    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, string $paymentSource, bool $merchantInitiated, bool $isSubsequentPayment, string $intentOutcome, bool $multiTender, bool $accountFundingTransaction, ?array $additionalIdentifiers = null, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?Airline $airline = null, ?string $authResponseCode = null, ?string $avsResponseCode = null, ?string $cvvResponseCode = null, ?string $antiFraudDecision = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $schemeTransactionId = null, ?TransactionThreeDSecureSummary $threeDSecure = null, ?string $paymentServiceTransactionId = null, ?array $metadata = null, ?\DateTime $authorizedAt = null, ?\DateTime $capturedAt = null, ?\DateTime $voidedAt = null, ?\DateTime $canceledAt = null, ?\DateTime $approvalExpiresAt = null, ?\DateTime $buyerApprovalTimedoutAt = null, ?Recipient $recipient = null, ?string $merchantAdviceCode = null, ?int $installmentCount = null, ?string $sessionToken = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?bool $pendingReview = false, ?string $type = 'transaction')
+    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, string $paymentSource, bool $merchantInitiated, bool $isSubsequentPayment, string $intentOutcome, bool $multiTender, bool $accountFundingTransaction, ?array $additionalIdentifiers = null, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethodOutput $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyerOutput $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?Airline $airline = null, ?string $authResponseCode = null, ?string $avsResponseCode = null, ?string $cvvResponseCode = null, ?string $antiFraudDecision = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $schemeTransactionId = null, ?TransactionThreeDSecureSummaryOutput $threeDSecure = null, ?string $paymentServiceTransactionId = null, ?array $metadata = null, ?\DateTime $authorizedAt = null, ?\DateTime $capturedAt = null, ?\DateTime $voidedAt = null, ?\DateTime $canceledAt = null, ?\DateTime $approvalExpiresAt = null, ?\DateTime $buyerApprovalTimedoutAt = null, ?Recipient $recipient = null, ?string $merchantAdviceCode = null, ?int $installmentCount = null, ?string $sessionToken = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $purchaseOrderNumber = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?bool $pendingReview = false, ?string $type = 'transaction')
     {
         $this->id = $id;
         $this->reconciliationId = $reconciliationId;
@@ -735,6 +745,7 @@ class Transaction
         $this->sessionToken = $sessionToken;
         $this->taxAmount = $taxAmount;
         $this->merchantTaxId = $merchantTaxId;
+        $this->purchaseOrderNumber = $purchaseOrderNumber;
         $this->customerReferenceNumber = $customerReferenceNumber;
         $this->amountIncludesTax = $amountIncludesTax;
         $this->supplierOrderNumber = $supplierOrderNumber;
