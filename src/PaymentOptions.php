@@ -14,14 +14,14 @@ class PaymentOptions
     /**
      * A list of items returned for this request.
      *
-     * @var array<PaymentOption> $items
+     * @var array<PaymentOptionOutput> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\PaymentOption>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\PaymentOptionOutput>')]
     public array $items;
 
     /**
-     * @param  array<PaymentOption>  $items
+     * @param  array<PaymentOptionOutput>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

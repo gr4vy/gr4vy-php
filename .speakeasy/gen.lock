@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 3caab25d2a058e3150dee3f3cd6a5fc5
+  docChecksum: d516fb71ac2f2ae0dd9663e6dd157c1a
   docVersion: 1.0.0
-  speakeasyVersion: 1.642.0
-  generationVersion: 2.731.4
-  releaseVersion: 1.2.3
-  configChecksum: dd6997c0172e89781aa1132c3c0d0638
+  speakeasyVersion: 1.658.2
+  generationVersion: 2.755.9
+  releaseVersion: 1.3.0
+  configChecksum: c655b1d59f0e7b3c2c672e3daaf98746
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 features:
   php:
     constsAndDefaults: 0.2.0
-    core: 3.9.0
+    core: 3.9.4
     flattening: 2.81.1
     globalSecurity: 2.81.9
     globalSecurityFlattening: 0.1.2
-    globalServerURLs: 2.82.2
+    globalServerURLs: 2.83.0
     globals: 2.82.2
     groups: 2.81.3
     ignores: 2.81.1
@@ -59,7 +59,7 @@ generatedFiles:
   - docs/ApplePayPaymentMethodCreate.md
   - docs/ApplePaySessionRequest.md
   - docs/AuditLogEntries.md
-  - docs/AuditLogEntry.md
+  - docs/AuditLogEntryOutput.md
   - docs/AuditLogEntryResource.md
   - docs/AuditLogEntryUser.md
   - docs/BillingDetailsInput.md
@@ -84,9 +84,9 @@ generatedFiles:
   - docs/CheckoutPayoutOptions.md
   - docs/CheckoutSession.md
   - docs/CheckoutSessionCreate.md
-  - docs/CheckoutSessionPaymentMethod.md
   - docs/CheckoutSessionPaymentMethodCreate.md
   - docs/CheckoutSessionPaymentMethodDetails.md
+  - docs/CheckoutSessionPaymentMethodOutput.md
   - docs/CheckoutSessionWithUrlPaymentMethodCreate.md
   - docs/ClickToPayFPANPaymentMethodCreate.md
   - docs/ClickToPayPaymentMethodCreate.md
@@ -302,6 +302,7 @@ generatedFiles:
   - docs/MerchantProfileSchemeSummary.md
   - docs/MockCardMerchantAdviceCodeOptions.md
   - docs/MockCardOptions.md
+  - docs/MonatoSpeiOptions.md
   - docs/NetworkToken.md
   - docs/NetworkTokenCreate.md
   - docs/NetworkTokenPaymentMethodCreate.md
@@ -318,11 +319,11 @@ generatedFiles:
   - docs/PaymentMethodDetailsCard.md
   - docs/PaymentMethodStoredCard.md
   - docs/PaymentMethodSummaries.md
-  - docs/PaymentMethodSummary.md
+  - docs/PaymentMethodSummaryOutput.md
   - docs/PaymentMethods.md
-  - docs/PaymentOption.md
   - docs/PaymentOptionContext.md
   - docs/PaymentOptionContextApprovalUI.md
+  - docs/PaymentOptionOutput.md
   - docs/PaymentOptionRequest.md
   - docs/PaymentOptions.md
   - docs/PaymentService.md
@@ -347,6 +348,7 @@ generatedFiles:
   - docs/PaypalShippingOptions.md
   - docs/PaypalShippingOptionsItem.md
   - docs/PaypalShippingOptionsItemAmount.md
+  - docs/PlaidPaymentMethodCreate.md
   - docs/PowertranzOptions.md
   - docs/Recipient.md
   - docs/RedirectPaymentMethodCreate.md
@@ -397,27 +399,27 @@ generatedFiles:
   - docs/ThreeDSecureV2.md
   - docs/Token.md
   - docs/TokenPaymentMethodCreate.md
-  - docs/Transaction.md
-  - docs/TransactionBuyer.md
+  - docs/TransactionBuyerOutput.md
   - docs/TransactionCancel.md
-  - docs/TransactionCapture.md
   - docs/TransactionCaptureCreate.md
+  - docs/TransactionCaptureOutput.md
   - docs/TransactionConnectionOptions.md
   - docs/TransactionCreate.md
   - docs/TransactionCreatePaymentMethod.md
-  - docs/TransactionEvent.md
+  - docs/TransactionEventOutput.md
   - docs/TransactionEvents.md
   - docs/TransactionGiftCard.md
-  - docs/TransactionPaymentMethod.md
+  - docs/TransactionOutput.md
+  - docs/TransactionPaymentMethodOutput.md
   - docs/TransactionPaymentService.md
   - docs/TransactionRefundAllCreate.md
   - docs/TransactionRefundCreate.md
   - docs/TransactionRetriesReportSpec.md
   - docs/TransactionSummaries.md
-  - docs/TransactionSummary.md
-  - docs/TransactionThreeDSecureSummary.md
+  - docs/TransactionSummaryOutput.md
+  - docs/TransactionThreeDSecureSummaryOutput.md
   - docs/TransactionUpdate.md
-  - docs/TransactionVoid.md
+  - docs/TransactionVoidOutput.md
   - docs/TransactionsReportSpec.md
   - docs/TravelHubCustomData.md
   - docs/TravelhubOptions.md
@@ -528,7 +530,7 @@ generatedFiles:
   - src/ApplePayPaymentMethodCreate.php
   - src/ApplePaySessionRequest.php
   - src/AuditLogEntries.php
-  - src/AuditLogEntry.php
+  - src/AuditLogEntryOutput.php
   - src/AuditLogEntryResource.php
   - src/AuditLogEntryUser.php
   - src/AuditLogs.php
@@ -559,9 +561,9 @@ generatedFiles:
   - src/CheckoutPayoutOptions.php
   - src/CheckoutSession.php
   - src/CheckoutSessionCreate.php
-  - src/CheckoutSessionPaymentMethod.php
   - src/CheckoutSessionPaymentMethodCreate.php
   - src/CheckoutSessionPaymentMethodDetails.php
+  - src/CheckoutSessionPaymentMethodOutput.php
   - src/CheckoutSessionWithUrlPaymentMethodCreate.php
   - src/CheckoutSessions.php
   - src/ClickToPayFPANPaymentMethodCreate.php
@@ -796,6 +798,7 @@ generatedFiles:
   - src/MerchantProfileSchemeSummary.php
   - src/MockCardMerchantAdviceCodeOptions.php
   - src/MockCardOptions.php
+  - src/MonatoSpeiOptions.php
   - src/NetworkToken.php
   - src/NetworkTokenCreate.php
   - src/NetworkTokenPaymentMethodCreate.php
@@ -814,14 +817,14 @@ generatedFiles:
   - src/PaymentMethodDetailsCard.php
   - src/PaymentMethodStoredCard.php
   - src/PaymentMethodSummaries.php
-  - src/PaymentMethodSummary.php
+  - src/PaymentMethodSummaryOutput.php
   - src/PaymentMethods.php
   - src/PaymentMethodsNetworkTokens.php
   - src/PaymentMethodsPaymentServiceTokens.php
   - src/PaymentMethodsSDK.php
-  - src/PaymentOption.php
   - src/PaymentOptionContext.php
   - src/PaymentOptionContextApprovalUI.php
+  - src/PaymentOptionOutput.php
   - src/PaymentOptionRequest.php
   - src/PaymentOptions.php
   - src/PaymentOptionsSDK.php
@@ -849,6 +852,7 @@ generatedFiles:
   - src/PaypalShippingOptions.php
   - src/PaypalShippingOptionsItem.php
   - src/PaypalShippingOptionsItemAmount.php
+  - src/PlaidPaymentMethodCreate.php
   - src/PowertranzOptions.php
   - src/Recipient.php
   - src/RedirectPaymentMethodCreate.php
@@ -898,26 +902,26 @@ generatedFiles:
   - src/ThreeDSecureError.php
   - src/ThreeDSecureV2.php
   - src/TokenPaymentMethodCreate.php
-  - src/Transaction.php
-  - src/TransactionBuyer.php
+  - src/TransactionBuyerOutput.php
   - src/TransactionCancel.php
-  - src/TransactionCapture.php
   - src/TransactionCaptureCreate.php
+  - src/TransactionCaptureOutput.php
   - src/TransactionConnectionOptions.php
   - src/TransactionCreate.php
-  - src/TransactionEvent.php
+  - src/TransactionEventOutput.php
   - src/TransactionEvents.php
   - src/TransactionGiftCard.php
-  - src/TransactionPaymentMethod.php
+  - src/TransactionOutput.php
+  - src/TransactionPaymentMethodOutput.php
   - src/TransactionPaymentService.php
   - src/TransactionRefundAllCreate.php
   - src/TransactionRefundCreate.php
   - src/TransactionRetriesReportSpec.php
   - src/TransactionSummaries.php
-  - src/TransactionSummary.php
-  - src/TransactionThreeDSecureSummary.php
+  - src/TransactionSummaryOutput.php
+  - src/TransactionThreeDSecureSummaryOutput.php
   - src/TransactionUpdate.php
-  - src/TransactionVoid.php
+  - src/TransactionVoidOutput.php
   - src/Transactions.php
   - src/TransactionsRefunds.php
   - src/TransactionsReportSpec.php
@@ -4377,4 +4381,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->paypal-paypal->shipping` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->paypal-paypal->shipping` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->paypal-paypal->shipping` **Added**\n"
+releaseNotes: "## Php SDK Changes Detected:\n* `sdk->payment-methods->create()`: \n  *  `requestBody->[plaidPaymentMethodCreate]` **Added**\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate` **Changed**\n  *  `response` **Changed**\n* `sdk->transactions->get()`:  `response` **Changed**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions` **Changed**\n  *  `response` **Changed**\n* `sdk->transactions->capture()`:  `response` **Changed**\n* `sdk->transactions->void()`:  `response` **Changed**\n* `sdk->transactions->cancel()`:  `response.transaction` **Changed**\n* `sdk->transactions->sync()`:  `response` **Changed**\n* `sdk->payment-options->list()`: \n  *  `request.paymentOptionRequest->cartItems->[]->upc` **Added**\n* `sdk->checkout-sessions->create()`: \n  *  `request.checkoutSessionCreate` **Changed**\n  *  `response` **Changed**\n* `sdk->checkout-sessions->get()`:  `response` **Changed**\n* `sdk->checkout-sessions->update()`: \n  *  `request.checkoutSessionCreate` **Changed**\n  *  `response` **Changed**\n* `sdk->payment-links->list()`:  `response.items->[]->cartItems->[]->upc` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate` **Changed**\n  *  `response.cartItems->[]->upc` **Added**\n* `sdk->payment-links->get()`:  `response.cartItems->[]->upc` **Added**\n"

@@ -14,14 +14,14 @@ class PaymentMethodSummaries
     /**
      * A list of items returned for this request.
      *
-     * @var array<PaymentMethodSummary> $items
+     * @var array<PaymentMethodSummaryOutput> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\PaymentMethodSummary>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\PaymentMethodSummaryOutput>')]
     public array $items;
 
     /**
-     * @param  array<PaymentMethodSummary>  $items
+     * @param  array<PaymentMethodSummaryOutput>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

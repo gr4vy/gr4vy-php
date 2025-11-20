@@ -86,6 +86,15 @@ Gr4vy\GooglePayFPANPaymentMethodCreate $value = /* values here */
 Gr4vy\NetworkTokenPaymentMethodCreate $value = /* values here */
 ```
 
+### `Gr4vy\PlaidPaymentMethodCreate`
+
+```php
+/**
+* @var PlaidPaymentMethodCreate
+*/
+Gr4vy\PlaidPaymentMethodCreate $value = /* values here */
+```
+
 ### `Gr4vy\CheckoutSessionWithUrlPaymentMethodCreate`
 
 ```php

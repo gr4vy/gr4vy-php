@@ -13,10 +13,10 @@ class CreatePaymentMethodRequest
 {
     /**
      *
-     * @var CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate $requestBody
+     * @var CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate $requestBody
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate $requestBody;
+    public CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate $requestBody;
 
     /**
      * The ID of the merchant account to use for this request.
@@ -27,11 +27,11 @@ class CreatePaymentMethodRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate  $requestBody
+     * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate  $requestBody
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate $requestBody, ?string $merchantAccountId = null)
+    public function __construct(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate $requestBody, ?string $merchantAccountId = null)
     {
         $this->requestBody = $requestBody;
         $this->merchantAccountId = $merchantAccountId;

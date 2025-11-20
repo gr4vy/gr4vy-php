@@ -56,12 +56,12 @@ class PaymentMethodsSDK
      *
      * Store a new payment method.
      *
-     * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate  $requestBody
+     * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate  $requestBody
      * @param  ?string  $merchantAccountId
      * @return CreatePaymentMethodResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate $requestBody, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodResponse
+    public function create(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate $requestBody, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodResponse
     {
         $request = new CreatePaymentMethodRequest(
             requestBody: $requestBody,

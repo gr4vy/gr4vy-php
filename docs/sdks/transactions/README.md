@@ -188,7 +188,7 @@ $response = $sdk->transactions->create(
 
 );
 
-if ($response->transaction !== null) {
+if ($response->transactionOutput !== null) {
     // handle response
 }
 ```
@@ -251,7 +251,7 @@ $response = $sdk->transactions->get(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591'
 );
 
-if ($response->transaction !== null) {
+if ($response->transactionOutput !== null) {
     // handle response
 }
 ```
@@ -314,7 +314,7 @@ $response = $sdk->transactions->update(
 
 );
 
-if ($response->transaction !== null) {
+if ($response->transactionOutput !== null) {
     // handle response
 }
 ```
@@ -564,7 +564,7 @@ $response = $sdk->transactions->sync(
     transactionId: '2ee546e0-3b11-478e-afec-fdb362611e22'
 );
 
-if ($response->transaction !== null) {
+if ($response->transactionOutput !== null) {
     // handle response
 }
 ```

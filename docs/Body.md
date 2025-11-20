@@ -30,3 +30,12 @@ Gr4vy\RedirectPaymentMethodCreate $value = /* values here */
 Gr4vy\CheckoutSessionPaymentMethodCreate $value = /* values here */
 ```
 
+### `Gr4vy\PlaidPaymentMethodCreate`
+
+```php
+/**
+* @var PlaidPaymentMethodCreate
+*/
+Gr4vy\PlaidPaymentMethodCreate $value = /* values here */
+```
+

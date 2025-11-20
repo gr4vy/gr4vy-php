@@ -72,6 +72,15 @@ class CartItem
     public ?string $sku = null;
 
     /**
+     * The UPC for the item.
+     *
+     * @var ?string $upc
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('upc')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $upc = null;
+
+    /**
      * The product URL for the item.
      *
      * @var ?string $productUrl
@@ -179,6 +188,7 @@ class CartItem
      * @param  ?int  $taxAmount
      * @param  ?string  $externalIdentifier
      * @param  ?string  $sku
+     * @param  ?string  $upc
      * @param  ?string  $productUrl
      * @param  ?string  $imageUrl
      * @param  ?array<string>  $categories
@@ -192,7 +202,7 @@ class CartItem
      * @param  ?int  $shippingAmount
      * @phpstan-pure
      */
-    public function __construct(string $name, int $quantity, int $unitAmount, ?int $discountAmount = null, ?int $taxAmount = null, ?string $externalIdentifier = null, ?string $sku = null, ?string $productUrl = null, ?string $imageUrl = null, ?array $categories = null, ?string $productType = null, ?string $sellerCountry = null, ?bool $taxExempt = null, ?string $unitOfMeasure = null, ?string $commodityCode = null, ?string $description = null, ?int $dutyAmount = null, ?int $shippingAmount = null)
+    public function __construct(string $name, int $quantity, int $unitAmount, ?int $discountAmount = null, ?int $taxAmount = null, ?string $externalIdentifier = null, ?string $sku = null, ?string $upc = null, ?string $productUrl = null, ?string $imageUrl = null, ?array $categories = null, ?string $productType = null, ?string $sellerCountry = null, ?bool $taxExempt = null, ?string $unitOfMeasure = null, ?string $commodityCode = null, ?string $description = null, ?int $dutyAmount = null, ?int $shippingAmount = null)
     {
         $this->name = $name;
         $this->quantity = $quantity;
@@ -201,6 +211,7 @@ class CartItem
         $this->taxAmount = $taxAmount;
         $this->externalIdentifier = $externalIdentifier;
         $this->sku = $sku;
+        $this->upc = $upc;
         $this->productUrl = $productUrl;
         $this->imageUrl = $imageUrl;
         $this->categories = $categories;

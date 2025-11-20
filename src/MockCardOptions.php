@@ -22,11 +22,22 @@ class MockCardOptions
     public ?MockCardMerchantAdviceCodeOptions $merchantAdviceCode = null;
 
     /**
+     * When set to true, prevents retries on failed transactions.
+     *
+     * @var ?bool $skipRetry
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('skip_retry')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $skipRetry = null;
+
+    /**
      * @param  ?MockCardMerchantAdviceCodeOptions  $merchantAdviceCode
+     * @param  ?bool  $skipRetry
      * @phpstan-pure
      */
-    public function __construct(?MockCardMerchantAdviceCodeOptions $merchantAdviceCode = null)
+    public function __construct(?MockCardMerchantAdviceCodeOptions $merchantAdviceCode = null, ?bool $skipRetry = null)
     {
         $this->merchantAdviceCode = $merchantAdviceCode;
+        $this->skipRetry = $skipRetry;
     }
 }
