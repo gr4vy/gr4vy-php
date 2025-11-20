@@ -10,9 +10,9 @@ use Gr4vy\PaymentServiceCreate;
 use Gr4vy\TransactionCreate;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Utils;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\Psr7\Utils;
 
 final class CheckoutSessionsTest extends TestCase
 {
@@ -46,7 +46,7 @@ final class CheckoutSessionsTest extends TestCase
                         }
 
                         // 3. Add a random property to the decoded data.
-                        $randomKey = 'unexpected_prop_' . bin2hex(random_bytes(4));
+                        $randomKey = 'unexpected_prop_'.bin2hex(random_bytes(4));
                         $data[$randomKey] = 'this is an injected test value';
                         // echo "Intercepted response and added key: " . $randomKey . PHP_EOL;
 
@@ -146,7 +146,7 @@ final class CheckoutSessionsTest extends TestCase
         // Create a transaction using the checkout session
         $transactionCreate = new TransactionCreate(amount: 1299, currency: 'USD', paymentMethod: new CheckoutSessionWithUrlPaymentMethodCreate(id: $checkoutSession->id));
         $response = self::$sdk->transactions->create($transactionCreate);
-        $transaction = $response->transaction;
+        $transaction = $response->transactionOutput;
 
         $this->assertNotNull($transaction->id);
         $this->assertEquals('authorization_succeeded', $transaction->status);
@@ -207,8 +207,8 @@ final class CheckoutSessionsTest extends TestCase
         $transactionCreate = new TransactionCreate(amount: 1299, currency: 'USD', paymentMethod: new CheckoutSessionWithUrlPaymentMethodCreate(id: $checkoutSession->id));
         $response = self::$sdk->transactions->create($transactionCreate);
 
-        $this->assertNotNull($response->transaction->id);
-        $this->assertEquals('authorization_succeeded', $response->transaction->status);
-        $this->assertEquals(1299, $response->transaction->amount);
+        $this->assertNotNull($response->transactionOutput->id);
+        $this->assertEquals('authorization_succeeded', $response->transactionOutput->status);
+        $this->assertEquals(1299, $response->transactionOutput->amount);
     }
 }
