@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: d516fb71ac2f2ae0dd9663e6dd157c1a
+  docChecksum: c3d5397011bc0a32b77a45df03f23a0e
   docVersion: 1.0.0
-  speakeasyVersion: 1.658.2
-  generationVersion: 2.755.9
-  releaseVersion: 1.3.0
-  configChecksum: c655b1d59f0e7b3c2c672e3daaf98746
+  speakeasyVersion: 1.660.0
+  generationVersion: 2.760.2
+  releaseVersion: 1.3.1
+  configChecksum: 656dfe5939be86fa3541aefb3862cd56
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -308,6 +308,7 @@ generatedFiles:
   - docs/NetworkTokenPaymentMethodCreate.md
   - docs/NetworkTokens.md
   - docs/NuveiAirlineDataOptions.md
+  - docs/NuveiIDealOptions.md
   - docs/NuveiOptions.md
   - docs/NuveiPSEOptions.md
   - docs/OxxoOptions.md
@@ -805,6 +806,7 @@ generatedFiles:
   - src/NetworkTokens.php
   - src/NetworkTokensCryptogram.php
   - src/NuveiAirlineDataOptions.php
+  - src/NuveiIDealOptions.php
   - src/NuveiOptions.php
   - src/NuveiPSEOptions.php
   - src/OxxoOptions.php
@@ -4381,4 +4383,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes Detected:\n* `sdk->payment-methods->create()`: \n  *  `requestBody->[plaidPaymentMethodCreate]` **Added**\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate` **Changed**\n  *  `response` **Changed**\n* `sdk->transactions->get()`:  `response` **Changed**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions` **Changed**\n  *  `response` **Changed**\n* `sdk->transactions->capture()`:  `response` **Changed**\n* `sdk->transactions->void()`:  `response` **Changed**\n* `sdk->transactions->cancel()`:  `response.transaction` **Changed**\n* `sdk->transactions->sync()`:  `response` **Changed**\n* `sdk->payment-options->list()`: \n  *  `request.paymentOptionRequest->cartItems->[]->upc` **Added**\n* `sdk->checkout-sessions->create()`: \n  *  `request.checkoutSessionCreate` **Changed**\n  *  `response` **Changed**\n* `sdk->checkout-sessions->get()`:  `response` **Changed**\n* `sdk->checkout-sessions->update()`: \n  *  `request.checkoutSessionCreate` **Changed**\n  *  `response` **Changed**\n* `sdk->payment-links->list()`:  `response.items->[]->cartItems->[]->upc` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate` **Changed**\n  *  `response.cartItems->[]->upc` **Added**\n* `sdk->payment-links->get()`:  `response.cartItems->[]->upc` **Added**\n"
+releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->nuvei-ideal` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->nuvei-ideal` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->nuvei-ideal` **Added**\n"
