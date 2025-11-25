@@ -40,15 +40,26 @@ class CybersourceOptions
     public ?string $shipToMethod = null;
 
     /**
+     * Brief description of the order or any comment you wish to add to the order.
+     *
+     * @var ?string $comments
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('comments')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $comments = null;
+
+    /**
      * @param  ?string  $metaKeyMerchantId
      * @param  ?array<string, string>  $merchantDefinedInformation
      * @param  ?string  $shipToMethod
+     * @param  ?string  $comments
      * @phpstan-pure
      */
-    public function __construct(?string $metaKeyMerchantId = null, ?array $merchantDefinedInformation = null, ?string $shipToMethod = null)
+    public function __construct(?string $metaKeyMerchantId = null, ?array $merchantDefinedInformation = null, ?string $shipToMethod = null, ?string $comments = null)
     {
         $this->metaKeyMerchantId = $metaKeyMerchantId;
         $this->merchantDefinedInformation = $merchantDefinedInformation;
         $this->shipToMethod = $shipToMethod;
+        $this->comments = $comments;
     }
 }
