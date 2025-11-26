@@ -9,17 +9,8 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class TransactionBuyerOutput
+class GuestBuyer
 {
-    /**
-     * The ID for the buyer.
-     *
-     * @var ?string $id
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $id = null;
-
     /**
      * The display name for the buyer.
      *
@@ -41,15 +32,15 @@ class TransactionBuyerOutput
     /**
      * The billing name, address, email, and other fields for this buyer.
      *
-     * @var ?BillingDetailsOutput $billingDetails
+     * @var ?BillingDetails $billingDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_details')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BillingDetailsOutput|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BillingDetails|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?BillingDetailsOutput $billingDetails = null;
+    public ?BillingDetails $billingDetails = null;
 
     /**
-     * The buyer account number.
+     * The buyer account number
      *
      * @var ?string $accountNumber
      */
@@ -58,30 +49,29 @@ class TransactionBuyerOutput
     public ?string $accountNumber = null;
 
     /**
-     * Always `buyer`.
+     * The optional shipping details for this buyer.
      *
-     * @var ?string $type
+     * @var ?ShippingDetailsCreate $shippingDetails
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('shipping_details')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ShippingDetailsCreate|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $type = null;
+    public ?ShippingDetailsCreate $shippingDetails = null;
 
     /**
-     * @param  ?string  $type
-     * @param  ?string  $id
      * @param  ?string  $displayName
      * @param  ?string  $externalIdentifier
-     * @param  ?BillingDetailsOutput  $billingDetails
+     * @param  ?BillingDetails  $billingDetails
      * @param  ?string  $accountNumber
+     * @param  ?ShippingDetailsCreate  $shippingDetails
      * @phpstan-pure
      */
-    public function __construct(?string $id = null, ?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetailsOutput $billingDetails = null, ?string $accountNumber = null, ?string $type = 'buyer')
+    public function __construct(?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?string $accountNumber = null, ?ShippingDetailsCreate $shippingDetails = null)
     {
-        $this->id = $id;
         $this->displayName = $displayName;
         $this->externalIdentifier = $externalIdentifier;
         $this->billingDetails = $billingDetails;
         $this->accountNumber = $accountNumber;
-        $this->type = $type;
+        $this->shippingDetails = $shippingDetails;
     }
 }

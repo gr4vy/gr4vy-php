@@ -33,12 +33,12 @@ class BuyerCreate
     /**
      * The billing name, address, email, and other fields for this buyer.
      *
-     * @var ?BillingDetailsInput $billingDetails
+     * @var ?BillingDetails $billingDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_details')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BillingDetailsInput|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BillingDetails|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?BillingDetailsInput $billingDetails = null;
+    public ?BillingDetails $billingDetails = null;
 
     /**
      * The buyer account number
@@ -52,11 +52,11 @@ class BuyerCreate
     /**
      * @param  ?string  $displayName
      * @param  ?string  $externalIdentifier
-     * @param  ?BillingDetailsInput  $billingDetails
+     * @param  ?BillingDetails  $billingDetails
      * @param  ?string  $accountNumber
      * @phpstan-pure
      */
-    public function __construct(?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetailsInput $billingDetails = null, ?string $accountNumber = null)
+    public function __construct(?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?string $accountNumber = null)
     {
         $this->displayName = $displayName;
         $this->externalIdentifier = $externalIdentifier;

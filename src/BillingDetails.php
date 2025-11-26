@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class BillingDetailsOutput
+class BillingDetails
 {
     /**
      * The first name(s) or given name for the buyer.

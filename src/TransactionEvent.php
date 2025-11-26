@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class TransactionEventOutput
+class TransactionEvent
 {
     /**
      * The ID for the event.
@@ -36,13 +36,12 @@ class TransactionEventOutput
     public \DateTime $createdAt;
 
     /**
-     * $context
      *
-     * @var array<string, mixed> $context
+     * @var TransactionEventContext $context
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('context')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>')]
-    public array $context;
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionEventContext')]
+    public TransactionEventContext $context;
 
     /**
      * Always `transaction-event`.
@@ -57,11 +56,11 @@ class TransactionEventOutput
      * @param  string  $id
      * @param  string  $name
      * @param  \DateTime  $createdAt
-     * @param  array<string, mixed>  $context
+     * @param  TransactionEventContext  $context
      * @param  ?string  $type
      * @phpstan-pure
      */
-    public function __construct(string $id, string $name, \DateTime $createdAt, array $context, ?string $type = 'transaction-event')
+    public function __construct(string $id, string $name, \DateTime $createdAt, TransactionEventContext $context, ?string $type = 'transaction-event')
     {
         $this->id = $id;
         $this->name = $name;

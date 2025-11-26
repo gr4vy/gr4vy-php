@@ -80,12 +80,12 @@ class PayoutCreate
     /**
      * Inline buyer details for the payout. Use this instead of the `buyer_id` or `buyer_external_identifier`.
      *
-     * @var ?GuestBuyerInput $buyer
+     * @var ?GuestBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyerInput|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyer|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?GuestBuyerInput $buyer = null;
+    public ?GuestBuyer $buyer = null;
 
     /**
      * The `external_identifier` of a stored buyer to use for this payout. Use this instead of the `buyer_id` or `buyer`.
@@ -124,13 +124,13 @@ class PayoutCreate
      * @param  ?string  $category
      * @param  ?string  $externalIdentifier
      * @param  ?string  $buyerId
-     * @param  ?GuestBuyerInput  $buyer
+     * @param  ?GuestBuyer  $buyer
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?PayoutMerchant  $merchant
      * @param  ?PayoutConnectionOptions  $connectionOptions
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $currency, string $paymentServiceId, PaymentMethodCard|PaymentMethodStoredCard $paymentMethod, ?string $category = null, ?string $externalIdentifier = null, ?string $buyerId = null, ?GuestBuyerInput $buyer = null, ?string $buyerExternalIdentifier = null, ?PayoutMerchant $merchant = null, ?PayoutConnectionOptions $connectionOptions = null)
+    public function __construct(int $amount, string $currency, string $paymentServiceId, PaymentMethodCard|PaymentMethodStoredCard $paymentMethod, ?string $category = null, ?string $externalIdentifier = null, ?string $buyerId = null, ?GuestBuyer $buyer = null, ?string $buyerExternalIdentifier = null, ?PayoutMerchant $merchant = null, ?PayoutConnectionOptions $connectionOptions = null)
     {
         $this->amount = $amount;
         $this->currency = $currency;

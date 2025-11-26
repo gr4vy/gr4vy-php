@@ -65,12 +65,12 @@ class Buyer
     /**
      * The billing name, address, email, and other fields for this buyer.
      *
-     * @var ?BillingDetailsOutput $billingDetails
+     * @var ?BillingDetails $billingDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_details')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BillingDetailsOutput|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BillingDetails|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?BillingDetailsOutput $billingDetails = null;
+    public ?BillingDetails $billingDetails = null;
 
     /**
      * The buyer account number
@@ -98,11 +98,11 @@ class Buyer
      * @param  ?string  $id
      * @param  ?string  $displayName
      * @param  ?string  $externalIdentifier
-     * @param  ?BillingDetailsOutput  $billingDetails
+     * @param  ?BillingDetails  $billingDetails
      * @param  ?string  $accountNumber
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId, \DateTime $createdAt, \DateTime $updatedAt, ?string $id = null, ?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetailsOutput $billingDetails = null, ?string $accountNumber = null, ?string $type = 'buyer')
+    public function __construct(string $merchantAccountId, \DateTime $createdAt, \DateTime $updatedAt, ?string $id = null, ?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?string $accountNumber = null, ?string $type = 'buyer')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->createdAt = $createdAt;

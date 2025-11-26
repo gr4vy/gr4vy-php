@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class TransactionThreeDSecureSummaryOutput
+class TransactionThreeDSecureSummary
 {
     /**
      * The version of 3DS used for this transaction.

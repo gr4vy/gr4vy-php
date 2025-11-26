@@ -1,4 +1,4 @@
-# TransactionEventOutput
+# TransactionEvent
 
 
 ## Fields
@@ -9,4 +9,4 @@
 | `id`                                                          | *string*                                                      | :heavy_check_mark:                                            | The ID for the event.                                         | f133a3b7-e67e-4d83-bcd3-3e438fedf348                          |
 | `name`                                                        | *string*                                                      | :heavy_check_mark:                                            | The specific event name.                                      | transaction-api-request                                       |
 | `createdAt`                                                   | [\DateTime](https://www.php.net/manual/en/class.datetime.php) | :heavy_check_mark:                                            | The date this event was created at.                           | 2013-07-16T19:23:00.000+00:00                                 |
-| `context`                                                     | array<string, *mixed*>                                        | :heavy_check_mark:                                            | N/A                                                           |                                                               |
+| `context`                                                     | [TransactionEventContext](./TransactionEventContext.md)       | :heavy_check_mark:                                            | N/A                                                           |                                                               |
