@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: a240839e3f0eebfe8c1af416f07748d6
+  docChecksum: 95edc2594618bce65f5df9316266857e
   docVersion: 1.0.0
   speakeasyVersion: 1.662.0
   generationVersion: 2.763.3
-  releaseVersion: 1.5.0
-  configChecksum: d7e89c14410d8a46316d093a72b31434
+  releaseVersion: 1.5.1
+  configChecksum: 2a7a47820be3c58cce0ddd54d5de548b
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -4379,6 +4379,3 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes Detected:
-  * `sdk->transactions->events->list()`:  `response.items->[]->context` **Changed** **Breaking** :warning:
