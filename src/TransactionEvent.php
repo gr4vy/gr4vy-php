@@ -36,12 +36,13 @@ class TransactionEvent
     public \DateTime $createdAt;
 
     /**
+     * $context
      *
-     * @var TransactionEventContext $context
+     * @var array<string, mixed> $context
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('context')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionEventContext')]
-    public TransactionEventContext $context;
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>')]
+    public array $context;
 
     /**
      * Always `transaction-event`.
@@ -56,11 +57,11 @@ class TransactionEvent
      * @param  string  $id
      * @param  string  $name
      * @param  \DateTime  $createdAt
-     * @param  TransactionEventContext  $context
+     * @param  array<string, mixed>  $context
      * @param  ?string  $type
      * @phpstan-pure
      */
-    public function __construct(string $id, string $name, \DateTime $createdAt, TransactionEventContext $context, ?string $type = 'transaction-event')
+    public function __construct(string $id, string $name, \DateTime $createdAt, array $context, ?string $type = 'transaction-event')
     {
         $this->id = $id;
         $this->name = $name;
