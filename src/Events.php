@@ -57,7 +57,7 @@ class Events
      * @return ListTransactionEventsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(string $transactionId, ?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionEventsResponse
+    private function listIndividual(string $transactionId, ?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionEventsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -132,6 +132,28 @@ class Events
                     contentType: $contentType,
                     rawResponse: $httpResponse,
                     transactionEvents: $obj);
+                $sdk = $this;
+
+                $response->next = function () use ($sdk, $responseData, $transactionId, $limit, $merchantAccountId): ?ListTransactionEventsResponse {
+                    $jsonObject = new \JsonPath\JsonObject($responseData);
+                    $nextCursor = $jsonObject->get('$.next_cursor');
+                    if ($nextCursor == null) {
+                        return null;
+                    } else {
+                        $nextCursor = $nextCursor[0];
+                        if ($nextCursor == null || (is_string($nextCursor) && trim($nextCursor) === '')) {
+                            return null;
+                        }
+                    }
+
+                    return $sdk->listIndividual(
+                        transactionId: $transactionId,
+                        cursor: $nextCursor,
+                        limit: $limit,
+                        merchantAccountId: $merchantAccountId,
+                    );
+                };
+
 
                 return $response;
             } else {
@@ -275,6 +297,26 @@ class Events
             throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
             throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        }
+    }
+    /**
+     * List transaction events
+     *
+     * Retrieve a paginated list of events related to processing a transaction, including status changes, API requests, and webhook delivery attempts. Events are listed in chronological order, with the most recent events first.
+     *
+     * @param  string  $transactionId
+     * @param  ?string  $cursor
+     * @param  ?int  $limit
+     * @param  ?string  $merchantAccountId
+     * @return \Generator<ListTransactionEventsResponse>
+     * @throws \Gr4vy\errors\APIException
+     */
+    public function list(string $transactionId, ?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator
+    {
+        $res = $this->listIndividual($transactionId, $cursor, $limit, $merchantAccountId, $options);
+        while ($res !== null) {
+            yield $res;
+            $res = $res->next($res);
         }
     }
 

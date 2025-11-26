@@ -30,15 +30,18 @@ $sdk = Gr4vy\SDK::builder()
 
 
 
-$response = $sdk->transactions->events->list(
+$responses = $sdk->transactions->events->list(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
     cursor: 'ZXhhbXBsZTE',
     limit: 100
 
 );
 
-if ($response->transactionEvents !== null) {
-    // handle response
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
 }
 ```
 

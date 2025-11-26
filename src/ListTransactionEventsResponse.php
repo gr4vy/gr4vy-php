@@ -40,6 +40,10 @@ class ListTransactionEventsResponse
     public ?TransactionEvents $transactionEvents = null;
 
     /**
+     * @var \Closure(string): ?ListTransactionEventsResponse $next
+     */
+    public \Closure $next;
+    /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
@@ -52,5 +56,18 @@ class ListTransactionEventsResponse
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
         $this->transactionEvents = $transactionEvents;
+    }
+    /**
+     * @param  string  $name
+     * @param  array<mixed>  $args
+     * @return ?ListTransactionEventsResponse
+     */
+    public function __call($name, $args): ?ListTransactionEventsResponse
+    {
+        if ($name === 'next') {
+            return call_user_func_array($this->next, $args);
+        }
+
+        return null;
     }
 }
