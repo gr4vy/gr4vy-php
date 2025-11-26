@@ -34,12 +34,12 @@ class CheckoutSessionCreate
     /**
      * Provide buyer details for the transaction. No buyer resource will be created on Gr4vy when used.
      *
-     * @var ?GuestBuyerInput $buyer
+     * @var ?GuestBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyerInput|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyer|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?GuestBuyerInput $buyer = null;
+    public ?GuestBuyer $buyer = null;
 
     /**
      * The airline addendum data which describes the airline booking associated with this transaction.
@@ -91,14 +91,14 @@ class CheckoutSessionCreate
      * @param  ?float  $expiresIn
      * @param  ?array<CartItem>  $cartItems
      * @param  ?array<string, string>  $metadata
-     * @param  ?GuestBuyerInput  $buyer
+     * @param  ?GuestBuyer  $buyer
      * @param  ?Airline  $airline
      * @param  ?int  $amount
      * @param  ?string  $currency
      * @param  ?string  $paymentServiceId
      * @phpstan-pure
      */
-    public function __construct(?array $cartItems = null, ?array $metadata = null, ?GuestBuyerInput $buyer = null, ?Airline $airline = null, ?int $amount = null, ?string $currency = null, ?string $paymentServiceId = null, ?float $expiresIn = 3600)
+    public function __construct(?array $cartItems = null, ?array $metadata = null, ?GuestBuyer $buyer = null, ?Airline $airline = null, ?int $amount = null, ?string $currency = null, ?string $paymentServiceId = null, ?float $expiresIn = 3600)
     {
         $this->cartItems = $cartItems;
         $this->metadata = $metadata;

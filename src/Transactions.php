@@ -315,7 +315,7 @@ class Transactions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\TransactionOutput|\Gr4vy\TransactionCaptureOutput', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Transaction|\Gr4vy\TransactionCapture', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new CaptureTransactionResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
@@ -526,12 +526,12 @@ class Transactions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\TransactionOutput', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Transaction', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new CreateTransactionResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    transactionOutput: $obj);
+                    transaction: $obj);
 
                 return $response;
             } else {
@@ -752,12 +752,12 @@ class Transactions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\TransactionOutput', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Transaction', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new GetTransactionResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    transactionOutput: $obj);
+                    transaction: $obj);
 
                 return $response;
             } else {
@@ -1260,12 +1260,12 @@ class Transactions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\TransactionOutput', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Transaction', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new SyncTransactionResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    transactionOutput: $obj);
+                    transaction: $obj);
 
                 return $response;
             } else {
@@ -1469,12 +1469,12 @@ class Transactions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\TransactionOutput', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Transaction', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new UpdateTransactionResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    transactionOutput: $obj);
+                    transaction: $obj);
 
                 return $response;
             } else {
@@ -1673,7 +1673,7 @@ class Transactions
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\TransactionOutput|\Gr4vy\TransactionVoidOutput', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Transaction|\Gr4vy\TransactionVoid', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 $response = new VoidTransactionResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,

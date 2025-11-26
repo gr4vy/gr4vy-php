@@ -76,10 +76,10 @@ $checkoutSessionCreate = new Gr4vy\CheckoutSessionCreate(
         'cohort' => 'cohort-a',
         'order_id' => 'order-12345',
     ],
-    buyer: new Gr4vy\GuestBuyerInput(
+    buyer: new Gr4vy\GuestBuyer(
         displayName: 'John Doe',
         externalIdentifier: 'buyer-12345',
-        billingDetails: new Gr4vy\BillingDetailsInput(
+        billingDetails: new Gr4vy\BillingDetails(
             firstName: 'John',
             lastName: 'Doe',
             emailAddress: 'john@example.com',

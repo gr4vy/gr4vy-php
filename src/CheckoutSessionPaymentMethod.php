@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class CheckoutSessionPaymentMethodOutput
+class CheckoutSessionPaymentMethod
 {
     /**
      * The ID of the payment method.

@@ -9,13 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-/**
- * PaymentMethodSummaryOutput - Payment Method
- *
- *
- * A summary of a payment method.
- */
-class PaymentMethodSummaryOutput
+class TransactionPaymentMethod
 {
     /**
      *
@@ -23,46 +17,6 @@ class PaymentMethodSummaryOutput
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('method')]
     public string $method;
-
-    /**
-     * The ID for the payment method.
-     *
-     * @var string $id
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
-    public string $id;
-
-    /**
-     * The ID of the merchant account this buyer belongs to.
-     *
-     * @var string $merchantAccountId
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('merchant_account_id')]
-    public string $merchantAccountId;
-
-    /**
-     * The number of times this payment method has been used in transactions for client initiated transactions.
-     *
-     * @var int $citUsageCount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('cit_usage_count')]
-    public int $citUsageCount;
-
-    /**
-     * Whether this card has a pending replacement that hasn't been applied yet.
-     *
-     * @var bool $hasReplacement
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('has_replacement')]
-    public bool $hasReplacement;
-
-    /**
-     * The number of times this payment method has been used in transactions.
-     *
-     * @var int $usageCount
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('usage_count')]
-    public int $usageCount;
 
     /**
      * The optional URL that the buyer needs to be redirected to to further authorize their payment.
@@ -156,32 +110,40 @@ class PaymentMethodSummaryOutput
     public ?string $scheme = null;
 
     /**
-     * Additional schemes of the card besides the primary scheme. Only applies to card payment methods.
+     * The ID of the payment method.
      *
-     * @var ?array<string> $additionalSchemes
+     * @var ?string $id
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('additional_schemes')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?array $additionalSchemes = null;
+    public ?string $id = null;
 
     /**
-     * The timestamp when this payment method was last used in a transaction for client initiated transactions.
+     * The browser target that an approval URL must be opened in. If any or null, then there is no specific requirement.
      *
-     * @var ?\DateTime $citLastUsedAt
+     * @var ?string $approvalTarget
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('cit_last_used_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('approval_target')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?\DateTime $citLastUsedAt = null;
+    public ?string $approvalTarget = null;
 
     /**
-     * The timestamp when this payment method was last used in a transaction.
+     * An external identifier that can be used to match the payment method against your own records.
      *
-     * @var ?\DateTime $lastUsedAt
+     * @var ?string $externalIdentifier
      */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('last_used_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_identifier')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?\DateTime $lastUsedAt = null;
+    public ?string $externalIdentifier = null;
+
+    /**
+     * The payment account reference (PAR) returned by the card scheme. This is a unique reference to the underlying account that has been used to fund this payment method.
+     *
+     * @var ?string $paymentAccountReference
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_account_reference')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $paymentAccountReference = null;
 
     /**
      * Always `payment-method`.
@@ -194,11 +156,6 @@ class PaymentMethodSummaryOutput
 
     /**
      * @param  string  $method
-     * @param  string  $id
-     * @param  string  $merchantAccountId
-     * @param  int  $citUsageCount
-     * @param  bool  $hasReplacement
-     * @param  int  $usageCount
      * @param  ?string  $type
      * @param  ?string  $approvalUrl
      * @param  ?string  $country
@@ -210,19 +167,15 @@ class PaymentMethodSummaryOutput
      * @param  ?\DateTime  $lastReplacedAt
      * @param  ?string  $mode
      * @param  ?string  $scheme
-     * @param  ?array<string>  $additionalSchemes
-     * @param  ?\DateTime  $citLastUsedAt
-     * @param  ?\DateTime  $lastUsedAt
+     * @param  ?string  $id
+     * @param  ?string  $approvalTarget
+     * @param  ?string  $externalIdentifier
+     * @param  ?string  $paymentAccountReference
      * @phpstan-pure
      */
-    public function __construct(string $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?array $additionalSchemes = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?string $type = 'payment-method')
+    public function __construct(string $method, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?string $id = null, ?string $approvalTarget = null, ?string $externalIdentifier = null, ?string $paymentAccountReference = null, ?string $type = 'payment-method')
     {
         $this->method = $method;
-        $this->id = $id;
-        $this->merchantAccountId = $merchantAccountId;
-        $this->citUsageCount = $citUsageCount;
-        $this->hasReplacement = $hasReplacement;
-        $this->usageCount = $usageCount;
         $this->approvalUrl = $approvalUrl;
         $this->country = $country;
         $this->currency = $currency;
@@ -233,9 +186,10 @@ class PaymentMethodSummaryOutput
         $this->lastReplacedAt = $lastReplacedAt;
         $this->mode = $mode;
         $this->scheme = $scheme;
-        $this->additionalSchemes = $additionalSchemes;
-        $this->citLastUsedAt = $citLastUsedAt;
-        $this->lastUsedAt = $lastUsedAt;
+        $this->id = $id;
+        $this->approvalTarget = $approvalTarget;
+        $this->externalIdentifier = $externalIdentifier;
+        $this->paymentAccountReference = $paymentAccountReference;
         $this->type = $type;
     }
 }

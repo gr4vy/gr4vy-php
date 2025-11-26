@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class TransactionVoidOutput
+class TransactionVoid
 {
     /**
      *
@@ -21,11 +21,11 @@ class TransactionVoidOutput
     /**
      * A full transaction resource.
      *
-     * @var TransactionOutput $transaction
+     * @var Transaction $transaction
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('transaction')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionOutput')]
-    public TransactionOutput $transaction;
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Transaction')]
+    public Transaction $transaction;
 
     /**
      * The standardized error code set by Gr4vy.
@@ -62,14 +62,14 @@ class TransactionVoidOutput
 
     /**
      * @param  string  $status
-     * @param  TransactionOutput  $transaction
+     * @param  Transaction  $transaction
      * @param  ?string  $type
      * @param  ?string  $code
      * @param  ?string  $rawResponseCode
      * @param  ?string  $rawResponseDescription
      * @phpstan-pure
      */
-    public function __construct(string $status, TransactionOutput $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $type = 'transaction-void')
+    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $type = 'transaction-void')
     {
         $this->status = $status;
         $this->transaction = $transaction;

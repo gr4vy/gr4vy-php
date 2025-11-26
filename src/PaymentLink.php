@@ -220,12 +220,12 @@ class PaymentLink
     /**
      * The buyer associated with the payment link.
      *
-     * @var ?TransactionBuyerOutput $buyer
+     * @var ?TransactionBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyerOutput|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyer|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?TransactionBuyerOutput $buyer = null;
+    public ?TransactionBuyer $buyer = null;
 
     /**
      * The shipping details for the payment link.
@@ -282,12 +282,12 @@ class PaymentLink
      * @param  ?string  $merchantFaviconUrl
      * @param  ?string  $returnUrl
      * @param  ?array<string, mixed>  $metadata
-     * @param  ?TransactionBuyerOutput  $buyer
+     * @param  ?TransactionBuyer  $buyer
      * @param  ?ShippingDetails  $shippingDetails
      * @param  ?array<string, array<string, mixed>>  $connectionOptions
      * @phpstan-pure
      */
-    public function __construct(string $id, string $url, int $amount, string $country, string $currency, string $intent, string $paymentSource, \DateTime $createdAt, \DateTime $updatedAt, string $status, ?array $cartItems = null, ?\DateTime $expiresAt = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $metadata = null, ?TransactionBuyerOutput $buyer = null, ?ShippingDetails $shippingDetails = null, ?array $connectionOptions = null, ?string $type = 'payment-link')
+    public function __construct(string $id, string $url, int $amount, string $country, string $currency, string $intent, string $paymentSource, \DateTime $createdAt, \DateTime $updatedAt, string $status, ?array $cartItems = null, ?\DateTime $expiresAt = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $metadata = null, ?TransactionBuyer $buyer = null, ?ShippingDetails $shippingDetails = null, ?array $connectionOptions = null, ?string $type = 'payment-link')
     {
         $this->id = $id;
         $this->url = $url;

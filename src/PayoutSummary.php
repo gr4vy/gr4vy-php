@@ -43,11 +43,11 @@ class PayoutSummary
 
     /**
      *
-     * @var TransactionPaymentMethodOutput $paymentMethod
+     * @var TransactionPaymentMethod $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentMethodOutput')]
-    public TransactionPaymentMethodOutput $paymentMethod;
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentMethod')]
+    public TransactionPaymentMethod $paymentMethod;
 
     /**
      *
@@ -84,12 +84,12 @@ class PayoutSummary
     /**
      * The buyer used for this payout.
      *
-     * @var ?TransactionBuyerOutput $buyer
+     * @var ?TransactionBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyerOutput|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyer|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?TransactionBuyerOutput $buyer = null;
+    public ?TransactionBuyer $buyer = null;
 
     /**
      * The type of payout to process.
@@ -150,13 +150,13 @@ class PayoutSummary
      * @param  int  $amount
      * @param  \DateTime  $createdAt
      * @param  string  $currency
-     * @param  TransactionPaymentMethodOutput  $paymentMethod
+     * @param  TransactionPaymentMethod  $paymentMethod
      * @param  PayoutPaymentService  $paymentService
      * @param  string  $status
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type
      * @param  ?string  $id
-     * @param  ?TransactionBuyerOutput  $buyer
+     * @param  ?TransactionBuyer  $buyer
      * @param  ?string  $category
      * @param  ?string  $externalIdentifier
      * @param  ?PayoutMerchantSummary  $merchant
@@ -164,7 +164,7 @@ class PayoutSummary
      * @param  ?string  $paymentServicePayoutId
      * @phpstan-pure
      */
-    public function __construct(int $amount, \DateTime $createdAt, string $currency, TransactionPaymentMethodOutput $paymentMethod, PayoutPaymentService $paymentService, string $status, \DateTime $updatedAt, ?string $id = null, ?TransactionBuyerOutput $buyer = null, ?string $category = null, ?string $externalIdentifier = null, ?PayoutMerchantSummary $merchant = null, ?string $merchantAccountId = null, ?string $paymentServicePayoutId = null, ?string $type = 'payout')
+    public function __construct(int $amount, \DateTime $createdAt, string $currency, TransactionPaymentMethod $paymentMethod, PayoutPaymentService $paymentService, string $status, \DateTime $updatedAt, ?string $id = null, ?TransactionBuyer $buyer = null, ?string $category = null, ?string $externalIdentifier = null, ?PayoutMerchantSummary $merchant = null, ?string $merchantAccountId = null, ?string $paymentServicePayoutId = null, ?string $type = 'payout')
     {
         $this->amount = $amount;
         $this->createdAt = $createdAt;

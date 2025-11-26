@@ -35,18 +35,18 @@ class CaptureTransactionResponse
     /**
      * Successful Response
      *
-     * @var TransactionOutput|TransactionCaptureOutput|null $responseCaptureTransaction
+     * @var Transaction|TransactionCapture|null $responseCaptureTransaction
      */
-    public TransactionOutput|TransactionCaptureOutput|null $responseCaptureTransaction = null;
+    public Transaction|TransactionCapture|null $responseCaptureTransaction = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  TransactionOutput|TransactionCaptureOutput|null  $responseCaptureTransaction
+     * @param  Transaction|TransactionCapture|null  $responseCaptureTransaction
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, TransactionOutput|TransactionCaptureOutput|null $responseCaptureTransaction = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Transaction|TransactionCapture|null $responseCaptureTransaction = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

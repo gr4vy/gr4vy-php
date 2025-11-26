@@ -50,12 +50,12 @@ class CheckoutSession
     /**
      * Provide buyer details for the transaction. No buyer resource will be created on Gr4vy when used.
      *
-     * @var ?GuestBuyerOutput $buyer
+     * @var ?GuestBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyerOutput|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyer|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?GuestBuyerOutput $buyer = null;
+    public ?GuestBuyer $buyer = null;
 
     /**
      * The airline addendum data which describes the airline booking associated with this transaction.
@@ -97,12 +97,12 @@ class CheckoutSession
     /**
      * Information about the payment method stored on the checkout session.
      *
-     * @var ?CheckoutSessionPaymentMethodOutput $paymentMethod
+     * @var ?CheckoutSessionPaymentMethod $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutSessionPaymentMethodOutput|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutSessionPaymentMethod|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?CheckoutSessionPaymentMethodOutput $paymentMethod = null;
+    public ?CheckoutSessionPaymentMethod $paymentMethod = null;
 
     /**
      * Always `checkout-session`
@@ -119,15 +119,15 @@ class CheckoutSession
      * @param  ?string  $type
      * @param  ?array<CartItem>  $cartItems
      * @param  ?array<string, string>  $metadata
-     * @param  ?GuestBuyerOutput  $buyer
+     * @param  ?GuestBuyer  $buyer
      * @param  ?Airline  $airline
      * @param  ?int  $amount
      * @param  ?string  $currency
      * @param  ?string  $paymentServiceId
-     * @param  ?CheckoutSessionPaymentMethodOutput  $paymentMethod
+     * @param  ?CheckoutSessionPaymentMethod  $paymentMethod
      * @phpstan-pure
      */
-    public function __construct(string $id, \DateTime $expiresAt, ?array $cartItems = null, ?array $metadata = null, ?GuestBuyerOutput $buyer = null, ?Airline $airline = null, ?int $amount = null, ?string $currency = null, ?string $paymentServiceId = null, ?CheckoutSessionPaymentMethodOutput $paymentMethod = null, ?string $type = 'checkout-session')
+    public function __construct(string $id, \DateTime $expiresAt, ?array $cartItems = null, ?array $metadata = null, ?GuestBuyer $buyer = null, ?Airline $airline = null, ?int $amount = null, ?string $currency = null, ?string $paymentServiceId = null, ?CheckoutSessionPaymentMethod $paymentMethod = null, ?string $type = 'checkout-session')
     {
         $this->id = $id;
         $this->expiresAt = $expiresAt;

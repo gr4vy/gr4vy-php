@@ -1,17 +1,18 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: a1e6e500816ed6d07074f7b1687e8820
+  docChecksum: f83c7dc2ed6c679ec3d14685ec58576f
   docVersion: 1.0.0
-  speakeasyVersion: 1.661.1
-  generationVersion: 2.763.2
-  releaseVersion: 1.3.2
-  configChecksum: 87811b814b3e1d39d69cadf2b9162b02
+  speakeasyVersion: 1.661.4
+  generationVersion: 2.763.3
+  releaseVersion: 1.4.0
+  configChecksum: fdee60de187db55cb12a64ffa0cf47d0
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 features:
   php:
+    additionalProperties: 0.1.0
     constsAndDefaults: 0.2.0
     core: 3.9.5
     flattening: 2.81.1
@@ -59,11 +60,10 @@ generatedFiles:
   - docs/ApplePayPaymentMethodCreate.md
   - docs/ApplePaySessionRequest.md
   - docs/AuditLogEntries.md
-  - docs/AuditLogEntryOutput.md
+  - docs/AuditLogEntry.md
   - docs/AuditLogEntryResource.md
   - docs/AuditLogEntryUser.md
-  - docs/BillingDetailsInput.md
-  - docs/BillingDetailsOutput.md
+  - docs/BillingDetails.md
   - docs/Body.md
   - docs/BraintreeDynamicDataFieldsOptions.md
   - docs/BraintreeOptions.md
@@ -84,9 +84,9 @@ generatedFiles:
   - docs/CheckoutPayoutOptions.md
   - docs/CheckoutSession.md
   - docs/CheckoutSessionCreate.md
+  - docs/CheckoutSessionPaymentMethod.md
   - docs/CheckoutSessionPaymentMethodCreate.md
   - docs/CheckoutSessionPaymentMethodDetails.md
-  - docs/CheckoutSessionPaymentMethodOutput.md
   - docs/CheckoutSessionWithUrlPaymentMethodCreate.md
   - docs/ClickToPayFPANPaymentMethodCreate.md
   - docs/ClickToPayPaymentMethodCreate.md
@@ -238,8 +238,7 @@ generatedFiles:
   - docs/GooglePayPaymentOptionContext.md
   - docs/GooglePaySession.md
   - docs/GooglePaySessionRequest.md
-  - docs/GuestBuyerInput.md
-  - docs/GuestBuyerOutput.md
+  - docs/GuestBuyer.md
   - docs/Item.md
   - docs/LatitudeOptions.md
   - docs/ListAllReportExecutionsRequest.md
@@ -320,11 +319,11 @@ generatedFiles:
   - docs/PaymentMethodDetailsCard.md
   - docs/PaymentMethodStoredCard.md
   - docs/PaymentMethodSummaries.md
-  - docs/PaymentMethodSummaryOutput.md
+  - docs/PaymentMethodSummary.md
   - docs/PaymentMethods.md
+  - docs/PaymentOption.md
   - docs/PaymentOptionContext.md
   - docs/PaymentOptionContextApprovalUI.md
-  - docs/PaymentOptionOutput.md
   - docs/PaymentOptionRequest.md
   - docs/PaymentOptions.md
   - docs/PaymentService.md
@@ -400,27 +399,28 @@ generatedFiles:
   - docs/ThreeDSecureV2.md
   - docs/Token.md
   - docs/TokenPaymentMethodCreate.md
-  - docs/TransactionBuyerOutput.md
+  - docs/Transaction.md
+  - docs/TransactionBuyer.md
   - docs/TransactionCancel.md
+  - docs/TransactionCapture.md
   - docs/TransactionCaptureCreate.md
-  - docs/TransactionCaptureOutput.md
   - docs/TransactionConnectionOptions.md
   - docs/TransactionCreate.md
   - docs/TransactionCreatePaymentMethod.md
-  - docs/TransactionEventOutput.md
+  - docs/TransactionEvent.md
+  - docs/TransactionEventContext.md
   - docs/TransactionEvents.md
   - docs/TransactionGiftCard.md
-  - docs/TransactionOutput.md
-  - docs/TransactionPaymentMethodOutput.md
+  - docs/TransactionPaymentMethod.md
   - docs/TransactionPaymentService.md
   - docs/TransactionRefundAllCreate.md
   - docs/TransactionRefundCreate.md
   - docs/TransactionRetriesReportSpec.md
   - docs/TransactionSummaries.md
-  - docs/TransactionSummaryOutput.md
-  - docs/TransactionThreeDSecureSummaryOutput.md
+  - docs/TransactionSummary.md
+  - docs/TransactionThreeDSecureSummary.md
   - docs/TransactionUpdate.md
-  - docs/TransactionVoidOutput.md
+  - docs/TransactionVoid.md
   - docs/TransactionsReportSpec.md
   - docs/TravelHubCustomData.md
   - docs/TravelhubOptions.md
@@ -531,13 +531,12 @@ generatedFiles:
   - src/ApplePayPaymentMethodCreate.php
   - src/ApplePaySessionRequest.php
   - src/AuditLogEntries.php
-  - src/AuditLogEntryOutput.php
+  - src/AuditLogEntry.php
   - src/AuditLogEntryResource.php
   - src/AuditLogEntryUser.php
   - src/AuditLogs.php
   - src/Balances.php
-  - src/BillingDetailsInput.php
-  - src/BillingDetailsOutput.php
+  - src/BillingDetails.php
   - src/BraintreeDynamicDataFieldsOptions.php
   - src/BraintreeOptions.php
   - src/BrowserInfo.php
@@ -562,9 +561,9 @@ generatedFiles:
   - src/CheckoutPayoutOptions.php
   - src/CheckoutSession.php
   - src/CheckoutSessionCreate.php
+  - src/CheckoutSessionPaymentMethod.php
   - src/CheckoutSessionPaymentMethodCreate.php
   - src/CheckoutSessionPaymentMethodDetails.php
-  - src/CheckoutSessionPaymentMethodOutput.php
   - src/CheckoutSessionWithUrlPaymentMethodCreate.php
   - src/CheckoutSessions.php
   - src/ClickToPayFPANPaymentMethodCreate.php
@@ -720,8 +719,7 @@ generatedFiles:
   - src/GooglePayPaymentOptionContext.php
   - src/GooglePaySession.php
   - src/GooglePaySessionRequest.php
-  - src/GuestBuyerInput.php
-  - src/GuestBuyerOutput.php
+  - src/GuestBuyer.php
   - src/Hooks/AfterErrorContext.php
   - src/Hooks/AfterErrorHook.php
   - src/Hooks/AfterSuccessContext.php
@@ -819,14 +817,14 @@ generatedFiles:
   - src/PaymentMethodDetailsCard.php
   - src/PaymentMethodStoredCard.php
   - src/PaymentMethodSummaries.php
-  - src/PaymentMethodSummaryOutput.php
+  - src/PaymentMethodSummary.php
   - src/PaymentMethods.php
   - src/PaymentMethodsNetworkTokens.php
   - src/PaymentMethodsPaymentServiceTokens.php
   - src/PaymentMethodsSDK.php
+  - src/PaymentOption.php
   - src/PaymentOptionContext.php
   - src/PaymentOptionContextApprovalUI.php
-  - src/PaymentOptionOutput.php
   - src/PaymentOptionRequest.php
   - src/PaymentOptions.php
   - src/PaymentOptionsSDK.php
@@ -904,26 +902,27 @@ generatedFiles:
   - src/ThreeDSecureError.php
   - src/ThreeDSecureV2.php
   - src/TokenPaymentMethodCreate.php
-  - src/TransactionBuyerOutput.php
+  - src/Transaction.php
+  - src/TransactionBuyer.php
   - src/TransactionCancel.php
+  - src/TransactionCapture.php
   - src/TransactionCaptureCreate.php
-  - src/TransactionCaptureOutput.php
   - src/TransactionConnectionOptions.php
   - src/TransactionCreate.php
-  - src/TransactionEventOutput.php
+  - src/TransactionEvent.php
+  - src/TransactionEventContext.php
   - src/TransactionEvents.php
   - src/TransactionGiftCard.php
-  - src/TransactionOutput.php
-  - src/TransactionPaymentMethodOutput.php
+  - src/TransactionPaymentMethod.php
   - src/TransactionPaymentService.php
   - src/TransactionRefundAllCreate.php
   - src/TransactionRefundCreate.php
   - src/TransactionRetriesReportSpec.php
   - src/TransactionSummaries.php
-  - src/TransactionSummaryOutput.php
-  - src/TransactionThreeDSecureSummaryOutput.php
+  - src/TransactionSummary.php
+  - src/TransactionThreeDSecureSummary.php
   - src/TransactionUpdate.php
-  - src/TransactionVoidOutput.php
+  - src/TransactionVoid.php
   - src/Transactions.php
   - src/TransactionsRefunds.php
   - src/TransactionsReportSpec.php
@@ -3833,7 +3832,7 @@ examples:
           application_name: "core-api"
       responses:
         "200":
-          application/json: {"items": [{"type": "transaction-event", "id": "f133a3b7-e67e-4d83-bcd3-3e438fedf348", "name": "transaction-api-request", "created_at": "2013-07-16T19:23:00.000+00:00", "context": {}}], "limit": 20}
+          application/json: {"items": [{"type": "transaction-event", "id": "f133a3b7-e67e-4d83-bcd3-3e438fedf348", "name": "transaction-api-request", "created_at": "2013-07-16T19:23:00.000+00:00", "context": {"transaction_id": "<id>", "created_at": "1713124938909"}}], "limit": 20}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4383,4 +4382,8 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes Detected:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->cybersource-card->comments` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->cybersource-card->comments` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->cybersource-card->comments` **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes Detected:
+  * `sdk->transactions->events->list()`:  `response.items->[]->context` **Changed** **Breaking** :warning:
+  * `sdk->transactions->capture()`:  `response` **Changed**
+  * `sdk->transactions->void()`:  `response` **Changed**
