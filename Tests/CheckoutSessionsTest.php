@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Gr4vy;
 use Gr4vy\Auth;
 use Gr4vy\CheckoutSessionWithUrlPaymentMethodCreate;
 use Gr4vy\MerchantAccountCreate;
@@ -146,7 +145,7 @@ final class CheckoutSessionsTest extends TestCase
         // Create a transaction using the checkout session
         $transactionCreate = new TransactionCreate(amount: 1299, currency: 'USD', paymentMethod: new CheckoutSessionWithUrlPaymentMethodCreate(id: $checkoutSession->id));
         $response = self::$sdk->transactions->create($transactionCreate);
-        $transaction = $response->transactionOutput;
+        $transaction = $response->transaction;
 
         $this->assertNotNull($transaction->id);
         $this->assertEquals('authorization_succeeded', $transaction->status);
@@ -207,8 +206,8 @@ final class CheckoutSessionsTest extends TestCase
         $transactionCreate = new TransactionCreate(amount: 1299, currency: 'USD', paymentMethod: new CheckoutSessionWithUrlPaymentMethodCreate(id: $checkoutSession->id));
         $response = self::$sdk->transactions->create($transactionCreate);
 
-        $this->assertNotNull($response->transactionOutput->id);
-        $this->assertEquals('authorization_succeeded', $response->transactionOutput->status);
-        $this->assertEquals(1299, $response->transactionOutput->amount);
+        $this->assertNotNull($response->transaction->id);
+        $this->assertEquals('authorization_succeeded', $response->transaction->status);
+        $this->assertEquals(1299, $response->transaction->amount);
     }
 }
