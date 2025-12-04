@@ -26,7 +26,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 php:
-  version: 1.5.1
+  version: 1.5.2
   additionalDependencies:
     autoload: {}
     autoload-dev: {}
@@ -54,6 +54,7 @@ php:
     svcName: openapi
   maxMethodParams: 4
   methodArguments: infer-optional-args
+  multipartArrayFormat: legacy
   namespace: Gr4vy
   outputModelSuffix: output
   packageName: gr4vy/gr4vy-php

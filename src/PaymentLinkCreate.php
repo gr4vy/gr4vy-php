@@ -202,11 +202,30 @@ class PaymentLinkCreate
     public ?array $metadata = null;
 
     /**
+     * The ID of the buyer to associate the payment method with. Note: When `buyer_id` is provided, the payment link should be treated as a secret as it will allow the user to manage payment methods for the associated buyer.
+     *
+     * @var ?string $buyerId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('buyer_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $buyerId = null;
+
+    /**
+     * Whether to store the payment method for future use.
+     *
+     * @var ?bool $store
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('store')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $store = null;
+
+    /**
      * @param  int  $amount
      * @param  string  $country
      * @param  string  $currency
      * @param  ?string  $intent
      * @param  ?string  $paymentSource
+     * @param  ?bool  $store
      * @param  ?GuestBuyer  $buyer
      * @param  ?\DateTime  $expiresAt
      * @param  ?TransactionConnectionOptions  $connectionOptions
@@ -223,9 +242,10 @@ class PaymentLinkCreate
      * @param  ?string  $returnUrl
      * @param  ?array<CartItem>  $cartItems
      * @param  ?array<string, mixed>  $metadata
+     * @param  ?string  $buyerId
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $country, string $currency, ?string $intent = null, ?string $paymentSource = null, ?GuestBuyer $buyer = null, ?\DateTime $expiresAt = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $cartItems = null, ?array $metadata = null)
+    public function __construct(int $amount, string $country, string $currency, ?string $intent = null, ?string $paymentSource = null, ?GuestBuyer $buyer = null, ?\DateTime $expiresAt = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $cartItems = null, ?array $metadata = null, ?string $buyerId = null, ?bool $store = false)
     {
         $this->amount = $amount;
         $this->country = $country;
@@ -248,5 +268,7 @@ class PaymentLinkCreate
         $this->returnUrl = $returnUrl;
         $this->cartItems = $cartItems;
         $this->metadata = $metadata;
+        $this->buyerId = $buyerId;
+        $this->store = $store;
     }
 }

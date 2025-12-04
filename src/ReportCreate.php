@@ -41,7 +41,7 @@ class ReportCreate
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('spec')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionsReportSpec|\Gr4vy\TransactionRetriesReportSpec|\Gr4vy\DetailedSettlementReportSpec|\Gr4vy\AccountsReceivablesReportSpec')]
-    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'model', map: ['TransactionsReportSpec' => '\Gr4vy\TransactionsReportSpec', 'TransactionRetriesReportSpec' => '\Gr4vy\TransactionRetriesReportSpec', 'DetailedSettlementReportSpec' => '\Gr4vy\DetailedSettlementReportSpec', 'AccountsReceivablesReportSpec' => '\Gr4vy\AccountsReceivablesReportSpec'])]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'model', map: ['accounts_receivables' => '\Gr4vy\AccountsReceivablesReportSpec', 'detailed_settlement' => '\Gr4vy\DetailedSettlementReportSpec', 'transaction_retries' => '\Gr4vy\TransactionRetriesReportSpec', 'transactions' => '\Gr4vy\TransactionsReportSpec'])]
     public TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec|AccountsReceivablesReportSpec $spec;
 
     /**

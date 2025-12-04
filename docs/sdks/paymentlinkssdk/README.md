@@ -35,6 +35,7 @@ $paymentLinkCreate = new Gr4vy\PaymentLinkCreate(
     amount: 1299,
     country: 'DE',
     currency: 'EUR',
+    store: true,
 );
 
 $response = $sdk->paymentLinks->create(

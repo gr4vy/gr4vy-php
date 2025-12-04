@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 95edc2594618bce65f5df9316266857e
+  docChecksum: 0498326a850bac610ea77e9001944b68
   docVersion: 1.0.0
-  speakeasyVersion: 1.662.0
-  generationVersion: 2.763.3
-  releaseVersion: 1.5.1
-  configChecksum: 2a7a47820be3c58cce0ddd54d5de548b
+  speakeasyVersion: 1.668.0
+  generationVersion: 2.770.0
+  releaseVersion: 1.5.2
+  configChecksum: 1c33dae29602777835c2c40d588c8a07
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
@@ -28,7 +28,7 @@ features:
     responseFormat: 0.1.0
     retries: 0.1.1
     serverIDs: 2.81.1
-    unions: 0.1.5
+    unions: 0.1.6
 generatedFiles:
   - .gitattributes
   - USAGE.md
@@ -4117,10 +4117,10 @@ examples:
   add_payment_link:
     speakeasy-default-add-payment-link:
       requestBody:
-        application/json: {"amount": 1299, "country": "DE", "currency": "EUR"}
+        application/json: {"amount": 1299, "country": "DE", "currency": "EUR", "store": true}
       responses:
         "201":
-          application/json: {"id": "a1b2c3d4-5678-90ab-cdef-1234567890ab", "type": "payment-link", "url": "https://example.com/link/a1b2c3d4-5678-90ab-cdef-1234567890ab", "amount": 1299, "country": "DE", "currency": "EUR", "intent": "<value>", "cart_items": [{"name": "Widget", "quantity": 2, "unit_amount": 1299}], "payment_source": "ecommerce", "created_at": "2024-05-30T12:34:56.000Z", "updated_at": "2024-05-30T13:00:00.000Z", "status": "<value>"}
+          application/json: {"id": "a1b2c3d4-5678-90ab-cdef-1234567890ab", "type": "payment-link", "url": "https://example.com/link/a1b2c3d4-5678-90ab-cdef-1234567890ab", "amount": 1299, "country": "DE", "currency": "EUR", "intent": "<value>", "cart_items": [{"name": "Widget", "quantity": 2, "unit_amount": 1299}], "payment_source": "ecommerce", "created_at": "2024-05-30T12:34:56.000Z", "updated_at": "2024-05-30T13:00:00.000Z", "status": "<value>", "store": false}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4214,7 +4214,7 @@ examples:
           payment_link_id: "a1b2c3d4-5678-90ab-cdef-1234567890ab"
       responses:
         "200":
-          application/json: {"id": "a1b2c3d4-5678-90ab-cdef-1234567890ab", "type": "payment-link", "url": "https://example.com/link/a1b2c3d4-5678-90ab-cdef-1234567890ab", "amount": 1299, "country": "DE", "currency": "EUR", "intent": "<value>", "cart_items": [{"name": "Widget", "quantity": 2, "unit_amount": 1299}], "payment_source": "ecommerce", "created_at": "2024-05-30T12:34:56.000Z", "updated_at": "2024-05-30T13:00:00.000Z", "status": "<value>"}
+          application/json: {"id": "a1b2c3d4-5678-90ab-cdef-1234567890ab", "type": "payment-link", "url": "https://example.com/link/a1b2c3d4-5678-90ab-cdef-1234567890ab", "amount": 1299, "country": "DE", "currency": "EUR", "intent": "<value>", "cart_items": [{"name": "Widget", "quantity": 2, "unit_amount": 1299}], "payment_source": "ecommerce", "created_at": "2024-05-30T12:34:56.000Z", "updated_at": "2024-05-30T13:00:00.000Z", "status": "<value>", "store": false}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4379,3 +4379,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->payment-links->list()`:  `response.items->[]` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate` **Changed**\n  *  `response` **Changed**\n* `sdk->payment-links->get()`:  `response` **Changed**\n"
