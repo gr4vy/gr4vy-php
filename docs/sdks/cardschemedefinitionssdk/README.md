@@ -1,5 +1,4 @@
-# CardSchemeDefinitionsSDK
-(*cardSchemeDefinitions*)
+# CardSchemeDefinitions
 
 ## Overview
 

@@ -1,5 +1,4 @@
-# PaymentServicesSDK
-(*paymentServices*)
+# PaymentServices
 
 ## Overview
 
