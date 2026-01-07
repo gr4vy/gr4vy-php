@@ -19,6 +19,8 @@ class Transactions
     private SDKConfiguration $sdkConfiguration;
     public TransactionsRefunds $refunds;
 
+    public Actions $actions;
+
     public Events $events;
 
     public TransactionsSettlements $settlements;
@@ -30,6 +32,7 @@ class Transactions
     {
         $this->sdkConfiguration = $sdkConfig;
         $this->refunds = new TransactionsRefunds($this->sdkConfiguration);
+        $this->actions = new Actions($this->sdkConfiguration);
         $this->events = new Events($this->sdkConfiguration);
         $this->settlements = new TransactionsSettlements($this->sdkConfiguration);
     }
