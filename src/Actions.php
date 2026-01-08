@@ -46,9 +46,9 @@ class Actions
     }
 
     /**
-     * Get Flow actions for transaction
+     * List transaction Flow rules
      *
-     * Retrieve the list of Flow actions that have been triggered for a transaction.
+     * Retrieve the list of Flow rule actions that have been triggered for a transaction.
      *
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId

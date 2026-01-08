@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: e7882dd8869f79c086f107c4a91c4041
+  docChecksum: 7592f493b2973b755a59fb68720a66e2
   docVersion: 1.0.0
   speakeasyVersion: 1.682.0
   generationVersion: 2.791.1
-  releaseVersion: 1.5.7
-  configChecksum: bc5bd50215985b08648738069176b441
+  releaseVersion: 1.5.8
+  configChecksum: 935bda432b74a076794a6cf4f33dc201
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 88f919a3-44a1-41f5-bd2c-565eb57b9d92
-  pristine_commit_hash: ab410af2f5c6fd6873e2040e82c1330a887155f5
-  pristine_tree_hash: 45163a8d5a1babd561d191ac3df7fd6b101a0af1
+  generation_id: 59c482a6-de52-48bf-8908-b8b6b74d9b6b
+  pristine_commit_hash: 83f0aaf896a7cca012c03f2ec5a5742c4e20e03f
+  pristine_tree_hash: b6840d629c7e2a384dc2a52dbd42598d9821d682
 features:
   php:
     constsAndDefaults: 0.2.0
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:119d02c1317fe35145e1b8a71a608a4a26a9276a
-    pristine_git_object: 30b029446ba395fcbfd424279215e39426c3f3fe
+    last_write_checksum: sha1:d78a7fc25c6bf1db66aa92e1388e3c7e4c62a125
+    pristine_git_object: 0ce6ef110fbe1e87dd9636a5437497056f784f61
   docs/AccountUpdaterInquirySummary.md:
     id: 58cff5faa9e6
     last_write_checksum: sha1:0d6ca1aacf9690bfbfe59fac9f1c2caeb9f46be6
@@ -1796,8 +1796,8 @@ trackedFiles:
     pristine_git_object: 5220c8009676a5d702816428ae5db5b5f2b01968
   docs/sdks/actions/README.md:
     id: e229cf99e666
-    last_write_checksum: sha1:13914515ed7a90a6ae4ab1f737835bae88312c6b
-    pristine_git_object: 001bbc46d6b35a34c38e2b9bca73dcb941ecafbc
+    last_write_checksum: sha1:e4b25cd36845a0cdd8053fdf612e0c30c95cfbf7
+    pristine_git_object: 0d4b8602c9aa69ade89d9ca5e275becebada21e0
   docs/sdks/all/README.md:
     id: 936653be5c4b
     last_write_checksum: sha1:7e356992c4c2a93ed031e2aeecd5c97aa7b68ffe
@@ -1968,8 +1968,8 @@ trackedFiles:
     pristine_git_object: 0dc650553614a520a9f9b6cd12e9f7eeb8d9b661
   src/Actions.php:
     id: 590076d9904e
-    last_write_checksum: sha1:06847f753521571352af8c4775c1d0ab5cbea957
-    pristine_git_object: 39d2f7dad03ce2dc62a93de0d157dea086d14917
+    last_write_checksum: sha1:bfcde02113c5dc910ff1f384bf494a309781e1cf
+    pristine_git_object: 35051f737e0b9d8952bf1e4a329d1c2b766cca86
   src/AddBuyerRequest.php:
     id: 61dd0ebcdff5
     last_write_checksum: sha1:2508c4d7470384e0efdfd304e4c2636156a3b9c6
@@ -3468,8 +3468,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:29da0a1836ecf3a954c04c664a3e730ae5f49560
-    pristine_git_object: ee3dc085183d5fa9fd00fd1512435c50739215a1
+    last_write_checksum: sha1:2aee6a2e8f4103d3b9061d5402ded45dbbf947b5
+    pristine_git_object: b26bb14e9e454eac10d6b0012b0cb15661435cfa
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -7424,9 +7424,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes:
-  * `sdk->transactions->actions->list()`: **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
