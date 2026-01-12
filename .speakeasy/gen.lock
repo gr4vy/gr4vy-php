@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 7592f493b2973b755a59fb68720a66e2
+  docChecksum: 8064730f6947570a940f42ac052a3a04
   docVersion: 1.0.0
-  speakeasyVersion: 1.682.0
-  generationVersion: 2.791.1
-  releaseVersion: 1.5.8
-  configChecksum: 935bda432b74a076794a6cf4f33dc201
+  speakeasyVersion: 1.684.0
+  generationVersion: 2.793.0
+  releaseVersion: 1.5.9
+  configChecksum: da629dcd5fd41909058ac7be4994b25d
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 59c482a6-de52-48bf-8908-b8b6b74d9b6b
-  pristine_commit_hash: 83f0aaf896a7cca012c03f2ec5a5742c4e20e03f
-  pristine_tree_hash: b6840d629c7e2a384dc2a52dbd42598d9821d682
+  generation_id: 4ef54539-e031-4b3a-a8aa-e1755770bb88
+  pristine_commit_hash: e3df3bee075064fb534a99c0328a8b68e4a8d59b
+  pristine_tree_hash: c5caec10a29fdffe5e948e6710d0d3d83a1c2619
 features:
   php:
     constsAndDefaults: 0.2.0
-    core: 3.9.7
+    core: 3.9.8
     flattening: 2.81.1
     globalSecurity: 2.81.9
     globalSecurityFlattening: 0.1.2
@@ -3468,8 +3468,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:2aee6a2e8f4103d3b9061d5402ded45dbbf947b5
-    pristine_git_object: b26bb14e9e454eac10d6b0012b0cb15661435cfa
+    last_write_checksum: sha1:ce741879a04086e3c151beabd6e68feeb780b359
+    pristine_git_object: 6e308f1df47ddffcaed5911c95ada82c978a6875
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -3820,8 +3820,8 @@ trackedFiles:
     pristine_git_object: a82f5b0e7e30bcbc5adadddccdfa060ed2b68489
   src/Utils/RequestBodies.php:
     id: 30dc93a697d3
-    last_write_checksum: sha1:83f9a9b634fbab34f1cc0a7622222865f1cd1efe
-    pristine_git_object: b372ed3011abf535da749f6a720efc56aac134c2
+    last_write_checksum: sha1:aadb28a9aec2ceca513997c687710d6db5b1b5d0
+    pristine_git_object: f074e1ca1a1ff8a65038a70e4cd8ee36a68019aa
   src/Utils/RequestMetadata.php:
     id: 63c8deb4cf4a
     last_write_checksum: sha1:757e00021b31c451a5038e675c92c4f409b759c3
