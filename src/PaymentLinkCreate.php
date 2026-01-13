@@ -211,6 +211,15 @@ class PaymentLinkCreate
     public ?string $buyerId = null;
 
     /**
+     * The number of installments a buyer is required to make.
+     *
+     * @var ?int $installmentCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('installment_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $installmentCount = null;
+
+    /**
      * Whether to store the payment method for future use.
      *
      * @var ?bool $store
@@ -243,9 +252,10 @@ class PaymentLinkCreate
      * @param  ?array<CartItem>  $cartItems
      * @param  ?array<string, mixed>  $metadata
      * @param  ?string  $buyerId
+     * @param  ?int  $installmentCount
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $country, string $currency, ?string $intent = null, ?string $paymentSource = null, ?GuestBuyer $buyer = null, ?\DateTime $expiresAt = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $cartItems = null, ?array $metadata = null, ?string $buyerId = null, ?bool $store = false)
+    public function __construct(int $amount, string $country, string $currency, ?string $intent = null, ?string $paymentSource = null, ?GuestBuyer $buyer = null, ?\DateTime $expiresAt = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $cartItems = null, ?array $metadata = null, ?string $buyerId = null, ?int $installmentCount = null, ?bool $store = false)
     {
         $this->amount = $amount;
         $this->country = $country;
@@ -269,6 +279,7 @@ class PaymentLinkCreate
         $this->cartItems = $cartItems;
         $this->metadata = $metadata;
         $this->buyerId = $buyerId;
+        $this->installmentCount = $installmentCount;
         $this->store = $store;
     }
 }
