@@ -59,19 +59,30 @@ class TransactionThreeDSecureSummary
     public ?ThreeDSecureError $errorData = null;
 
     /**
+     * The amount used for 3DS authentication.
+     *
+     * @var ?int $amount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $amount = null;
+
+    /**
      * @param  ?string  $version
      * @param  ?string  $status
      * @param  ?string  $method
      * @param  ThreeDSecureDataV1|ThreeDSecureV2|null  $responseData
      * @param  ?ThreeDSecureError  $errorData
+     * @param  ?int  $amount
      * @phpstan-pure
      */
-    public function __construct(?string $version = null, ?string $status = null, ?string $method = null, ThreeDSecureDataV1|ThreeDSecureV2|null $responseData = null, ?ThreeDSecureError $errorData = null)
+    public function __construct(?string $version = null, ?string $status = null, ?string $method = null, ThreeDSecureDataV1|ThreeDSecureV2|null $responseData = null, ?ThreeDSecureError $errorData = null, ?int $amount = null)
     {
         $this->version = $version;
         $this->status = $status;
         $this->method = $method;
         $this->responseData = $responseData;
         $this->errorData = $errorData;
+        $this->amount = $amount;
     }
 }

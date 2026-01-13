@@ -121,6 +121,16 @@ class TransactionCreate
     public ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null;
 
     /**
+     * Optional 3-D Secure values to use during the authentication flow.
+     *
+     * @var ?ThreeDSecure $threeDSecure
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('three_d_secure')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ThreeDSecure|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?ThreeDSecure $threeDSecure = null;
+
+    /**
      * Any additional information about the transaction that you would like to store as key-value pairs. This data is passed to payment service providers that support it.
      *
      * @var ?array<string, string> $metadata
@@ -410,6 +420,7 @@ class TransactionCreate
      * @param  ?array<GiftCardTransactionCreate|GiftCardTokenTransactionCreate>  $giftCards
      * @param  ?string  $externalIdentifier
      * @param  ThreeDSecureDataV1|ThreeDSecureDataV2|null  $threeDSecureData
+     * @param  ?ThreeDSecure  $threeDSecure
      * @param  ?array<string, string>  $metadata
      * @param  ?Airline  $airline
      * @param  ?array<CartItem>  $cartItems
@@ -433,7 +444,7 @@ class TransactionCreate
      * @param  ?string  $integrationClient
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyer $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $purchaseOrderNumber = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $integrationClient = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
+    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyer $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?ThreeDSecure $threeDSecure = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $purchaseOrderNumber = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $integrationClient = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
     {
         $this->amount = $amount;
         $this->currency = $currency;
@@ -447,6 +458,7 @@ class TransactionCreate
         $this->giftCards = $giftCards;
         $this->externalIdentifier = $externalIdentifier;
         $this->threeDSecureData = $threeDSecureData;
+        $this->threeDSecure = $threeDSecure;
         $this->metadata = $metadata;
         $this->airline = $airline;
         $this->cartItems = $cartItems;
