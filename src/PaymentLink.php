@@ -257,6 +257,15 @@ class PaymentLink
     public ?string $buyerId = null;
 
     /**
+     * The number of installments a buyer is required to make.
+     *
+     * @var ?int $installmentCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('installment_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $installmentCount = null;
+
+    /**
      * Whether the payment method was stored.
      *
      * @var ?bool $store
@@ -305,9 +314,10 @@ class PaymentLink
      * @param  ?ShippingDetails  $shippingDetails
      * @param  ?array<string, array<string, mixed>>  $connectionOptions
      * @param  ?string  $buyerId
+     * @param  ?int  $installmentCount
      * @phpstan-pure
      */
-    public function __construct(string $id, string $url, int $amount, string $country, string $currency, string $intent, string $paymentSource, \DateTime $createdAt, \DateTime $updatedAt, string $status, ?array $cartItems = null, ?\DateTime $expiresAt = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $metadata = null, ?TransactionBuyer $buyer = null, ?ShippingDetails $shippingDetails = null, ?array $connectionOptions = null, ?string $buyerId = null, ?bool $store = false, ?string $type = 'payment-link')
+    public function __construct(string $id, string $url, int $amount, string $country, string $currency, string $intent, string $paymentSource, \DateTime $createdAt, \DateTime $updatedAt, string $status, ?array $cartItems = null, ?\DateTime $expiresAt = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $metadata = null, ?TransactionBuyer $buyer = null, ?ShippingDetails $shippingDetails = null, ?array $connectionOptions = null, ?string $buyerId = null, ?int $installmentCount = null, ?bool $store = false, ?string $type = 'payment-link')
     {
         $this->id = $id;
         $this->url = $url;
@@ -337,6 +347,7 @@ class PaymentLink
         $this->shippingDetails = $shippingDetails;
         $this->connectionOptions = $connectionOptions;
         $this->buyerId = $buyerId;
+        $this->installmentCount = $installmentCount;
         $this->store = $store;
         $this->type = $type;
     }
