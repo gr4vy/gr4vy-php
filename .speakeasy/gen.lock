@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 9536b8d5aacb348c00e2c23edb8141f5
+  docChecksum: 5d2b3763bf90301d3d14d4a013f5b7fc
   docVersion: 1.0.0
   speakeasyVersion: 1.685.0
   generationVersion: 2.794.1
-  releaseVersion: 1.5.11
-  configChecksum: 656dc0fe3aadc1803e51d89f1eb268e7
+  releaseVersion: 1.5.12
+  configChecksum: 475d60fc3ce3ea2a547be126bab3887a
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 659a0aa3-f731-4cb2-a339-4d9fae93b46b
-  pristine_commit_hash: 5ac82a65fcb3efae31162be2e4b39c71719a4628
-  pristine_tree_hash: bb3bd2bd17cc21962483c7f50d0821605a7d5eab
+  generation_id: 53389d00-e53b-4149-bbe1-ed79775a4dfc
+  pristine_commit_hash: f03324e681db840d364eeab3a01372ccbb7c3737
+  pristine_tree_hash: 068a85a8823dcd5bbd9d3c023527796809d700b6
 features:
   php:
     constsAndDefaults: 0.2.0
@@ -1524,8 +1524,8 @@ trackedFiles:
     pristine_git_object: f5eff2065ff5b033830cdc31a332c834465f7468
   docs/Transaction.md:
     id: 330d2d285174
-    last_write_checksum: sha1:9a6a83080cc77684cfb0cb627aaeaec1de7d6226
-    pristine_git_object: 12391be58dc6e62963b1767032a4facd7d9b27d7
+    last_write_checksum: sha1:380ae606dd5132b1f15944528f6332e28bc64da0
+    pristine_git_object: 1823f1cf1c2990d5df4d7e5ad445929434da875e
   docs/TransactionAction.md:
     id: 2900fcefc2cd
     last_write_checksum: sha1:75294119db6fdf846f306463ac6fcee0535fefcf
@@ -3472,8 +3472,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:7fb0f7e0bab84add4f610c56c9159984c43e6628
-    pristine_git_object: fbed68ca0a7647fe144fd4d8f4bdb508a56824c2
+    last_write_checksum: sha1:fdd298994afb2fdcb39b071031833c6ef7e03ad3
+    pristine_git_object: a7e7e7a9b6a7d7d762526fafc905facf68617523
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -3564,8 +3564,8 @@ trackedFiles:
     pristine_git_object: 87472a3a99856749f4e8a6ae5d181f2dca025c32
   src/Transaction.php:
     id: fcc0c127e296
-    last_write_checksum: sha1:d3ef07b554ebcef1172983bbda06729c23a9e467
-    pristine_git_object: aeab61d49aa119687d692bd7a3c255ca7990c370
+    last_write_checksum: sha1:380b222f9770e814302051df2fbb12e6a8778428
+    pristine_git_object: 676a5f02ae9614a414aa86b4194b25941d07c45e
   src/TransactionAction.php:
     id: a289b757a573
     last_write_checksum: sha1:55405df12c5c7241c39747b7dda9eba2ced6871e
@@ -7432,7 +7432,15 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->threeDSecure` **Added**\n  *  `response.threeDSecure->amount` **Added**\n* `sdk->transactions->get()`:  `response.threeDSecure->amount` **Added**\n* `sdk->transactions->update()`:  `response.threeDSecure->amount` **Added**\n* `sdk->transactions->capture()`:  `response.[transaction]->threeDSecure->amount` **Added**\n* `sdk->transactions->void()`:  `response.[transaction]->threeDSecure->amount` **Added**\n* `sdk->transactions->cancel()`:  `response.transaction->threeDSecure->amount` **Added**\n* `sdk->transactions->sync()`:  `response.threeDSecure->amount` **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->transactions->create()`:  `response.isoResponseCode` **Added**
+  * `sdk->transactions->get()`:  `response.isoResponseCode` **Added**
+  * `sdk->transactions->update()`:  `response.isoResponseCode` **Added**
+  * `sdk->transactions->capture()`:  `response.[transaction]->isoResponseCode` **Added**
+  * `sdk->transactions->void()`:  `response.[transaction]->isoResponseCode` **Added**
+  * `sdk->transactions->cancel()`:  `response.transaction->isoResponseCode` **Added**
+  * `sdk->transactions->sync()`:  `response.isoResponseCode` **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
