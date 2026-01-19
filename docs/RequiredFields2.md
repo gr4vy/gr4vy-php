@@ -16,7 +16,7 @@ bool $value = /* values here */
 
 ```php
 /**
-* @var array<string, mixed>
+* @var array<string, bool|mixed>
 */
 array $value = /* values here */
 ```
