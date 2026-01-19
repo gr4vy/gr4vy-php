@@ -37,7 +37,7 @@ class PaymentOptionContext
     /**
      * $requiredFields
      *
-     * @var ?array<string, bool|array<string, mixed>> $requiredFields
+     * @var ?array<string, bool|array<string, bool|mixed>> $requiredFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('required_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string, bool|array<string, mixed>>|null')]
@@ -48,7 +48,7 @@ class PaymentOptionContext
      * @param  bool  $redirectRequiresPopup
      * @param  bool  $requiresTokenizedRedirectPopup
      * @param  ?PaymentOptionContextApprovalUI  $approvalUi
-     * @param  ?array<string, bool|array<string, mixed>>  $requiredFields
+     * @param  ?array<string, bool|array<string, bool|mixed>>  $requiredFields
      * @phpstan-pure
      */
     public function __construct(bool $redirectRequiresPopup, bool $requiresTokenizedRedirectPopup, ?PaymentOptionContextApprovalUI $approvalUi = null, ?array $requiredFields = null)
