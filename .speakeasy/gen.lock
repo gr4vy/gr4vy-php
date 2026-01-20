@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: cb9de68d03de729010f5480fc8b0c92c
+  docChecksum: 6b97236cbc665275dc5b73175768cca7
   docVersion: 1.0.0
-  speakeasyVersion: 1.688.0
-  generationVersion: 2.796.4
-  releaseVersion: 1.5.13
-  configChecksum: f92d0bd43741c314f9d60a3cbcdf98bb
+  speakeasyVersion: 1.690.0
+  generationVersion: 2.797.1
+  releaseVersion: 1.5.14
+  configChecksum: 812f1bf2844248201a1071b8a109f070
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 514614b0-3572-4a8b-8db2-db47eb323417
-  pristine_commit_hash: 3c1ce3c2748ab4468286a192a760c9672f6bfd2d
-  pristine_tree_hash: 084035a8669f1aebfb4debea0d4f63abdd607c0d
+  generation_id: 7f82e990-ada3-46ec-9d36-54b108825715
+  pristine_commit_hash: 9c3046756daa32e74d065c315bf7618fcee80772
+  pristine_tree_hash: 1c560bde20402b39df68cb83c30440c0abd2971a
 features:
   php:
     constsAndDefaults: 0.2.0
@@ -3564,8 +3564,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:b90455644140ac878b8e09aabf90eabdd9c2a153
-    pristine_git_object: 3dfd93fe12e91c4ac8bf8cbeed1b7013207527fd
+    last_write_checksum: sha1:7af5a0998ff193144142c2a2d7f877c12fbe3673
+    pristine_git_object: 61972877978f5ad6d134604f97643cacaf9e4770
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -7695,12 +7695,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes:
-  * `sdk->three-ds-scenarios->create()`: **Added**
-  * `sdk->three-ds-scenarios->list()`: **Added**
-  * `sdk->three-ds-scenarios->update()`: **Added**
-  * `sdk->three-ds-scenarios->delete()`: **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
