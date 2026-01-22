@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 111e3b0edfcd944c6aa24ab620172542
+  docChecksum: 51f084589acf8f6d14cb927af32143d2
   docVersion: 1.0.0
-  speakeasyVersion: 1.692.0
-  generationVersion: 2.797.1
-  releaseVersion: 1.5.15
-  configChecksum: d19bfbe72510323ebaac427cbbebc108
+  speakeasyVersion: 1.693.0
+  generationVersion: 2.798.0
+  releaseVersion: 1.5.16
+  configChecksum: b16bb91d31b197f0d7cf162f4e0b3003
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 35aed9a8-58fe-4090-b4b9-1aac499361f1
-  pristine_commit_hash: 9115d853e2dbd7bdc7c5d88f267a8a703abd52fc
-  pristine_tree_hash: faae8fd007df37dde1fe1c4cf9965173919b4d9f
+  generation_id: 71d02aef-01ad-40ed-8574-4c5f1967c02c
+  pristine_commit_hash: 741311c888106c2ce369885dfa74c014582a0b7b
+  pristine_tree_hash: fa6bb6e33d6a477d4f78756361dfba5583822a3b
 features:
   php:
     constsAndDefaults: 0.2.0
@@ -866,6 +866,10 @@ trackedFiles:
     id: 141bbb43df9d
     last_write_checksum: sha1:19758d594c31c07a6fb3470688d9109837a3aa02
     pristine_git_object: 45643fa0534bc6b5ea6105f89d8db91d419031b4
+  docs/GoCardlessOptions.md:
+    id: d91ceed630b5
+    last_write_checksum: sha1:3b802ab0e6a89300e4bd209fb88238540996aa00
+    pristine_git_object: 221bf8ac867b218e3b5844c44510094334cfce7e
   docs/GooglePayAssuranceDetails.md:
     id: 26f4202a4814
     last_write_checksum: sha1:9e11579209296803e86e40ba433d417a750be4a6
@@ -1608,8 +1612,8 @@ trackedFiles:
     pristine_git_object: dac520fc3d9571a0fcc7b9346bced50f6c2b7a57
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:917fd9ec30c1c35557de53f59d95d607330ae3d9
-    pristine_git_object: ceb2ac780bf66be87403b654c53ceee29f743c9b
+    last_write_checksum: sha1:4c1a3ac9a6f6b6c5aac70b323404ef71808faf66
+    pristine_git_object: cf64f55c6a0959d3b8feb7c45c695fa383713a70
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:aeef9f26e63724561d5b7ed2c6dbff7035549f8c
@@ -2886,6 +2890,10 @@ trackedFiles:
     id: d088f4fe3556
     last_write_checksum: sha1:4da945d4de8647394a244ea0671abd17581b1691
     pristine_git_object: 138c469e225f17bfd59e275d0c7fec5249a00664
+  src/GoCardlessOptions.php:
+    id: a721de46a67c
+    last_write_checksum: sha1:90b1cecf95ed0824ba8cc0ffa7676bfc03bfc6f2
+    pristine_git_object: fca833d25fd9676ded576015698c091d22030df1
   src/GooglePayAssuranceDetails.php:
     id: 24203da3fb2e
     last_write_checksum: sha1:084374a2e4c82de480346c910156fca6eca970f5
@@ -3564,8 +3572,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:e8e472045948a3606243094597425fe9e30ce917
-    pristine_git_object: cc705539c08504ab2dd55b95904532fc93aa9663
+    last_write_checksum: sha1:5322f98aabd711bc96501f875d8f07e33cb7189b
+    pristine_git_object: c805d8cce841660f8be2fb2ab5d0adda380e3be6
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -3720,8 +3728,8 @@ trackedFiles:
     pristine_git_object: bd409f8a7b0eb0de3750f643ce75141bd1f91c0a
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:98f1eb36522a24055f8ccb301e1f25f1fefe7be7
-    pristine_git_object: 799d8d7c092ed9a7d1be5cdea2f9e2187871883d
+    last_write_checksum: sha1:6cbb53ac4912d52a00539d55f9295c5280354318
+    pristine_git_object: 98c4e4f427f527b1f7bb6281ad7ae773cbfef6c5
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:21b51218fc47ff93d4c3dea5aa4d91fb2150a351
@@ -7695,6 +7703,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->gocardless-gocardless` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->gocardless-gocardless` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->gocardless-gocardless` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
