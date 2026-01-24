@@ -95,7 +95,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $paymentServiceTokenCreate = new Gr4vy\PaymentServiceTokenCreate(
     paymentServiceId: 'fffd152a-9532-4087-9a4f-de58754210f0',
-    redirectUrl: 'https://dual-futon.biz',
+    redirectUrl: 'https://example.com/callback',
 );
 
 $response = $sdk->paymentMethods->paymentServiceTokens->create(
