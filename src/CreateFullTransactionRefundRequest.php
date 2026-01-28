@@ -28,6 +28,14 @@ class CreateFullTransactionRefundRequest
     public ?string $merchantAccountId = null;
 
     /**
+     * A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.
+     *
+     * @var ?string $idempotencyKey
+     */
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=idempotency-key')]
+    public ?string $idempotencyKey = null;
+
+    /**
      *
      * @var ?TransactionRefundAllCreate $transactionRefundAllCreate
      */
@@ -37,13 +45,15 @@ class CreateFullTransactionRefundRequest
     /**
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
+     * @param  ?string  $idempotencyKey
      * @param  ?TransactionRefundAllCreate  $transactionRefundAllCreate
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, ?string $merchantAccountId = null, ?TransactionRefundAllCreate $transactionRefundAllCreate = null)
+    public function __construct(string $transactionId, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?TransactionRefundAllCreate $transactionRefundAllCreate = null)
     {
         $this->transactionId = $transactionId;
         $this->merchantAccountId = $merchantAccountId;
+        $this->idempotencyKey = $idempotencyKey;
         $this->transactionRefundAllCreate = $transactionRefundAllCreate;
     }
 }

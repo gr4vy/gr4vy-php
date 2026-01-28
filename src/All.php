@@ -51,14 +51,16 @@ class All
      * @param  string  $transactionId
      * @param  ?TransactionRefundAllCreate  $transactionRefundAllCreate
      * @param  ?string  $merchantAccountId
+     * @param  ?string  $idempotencyKey
      * @return CreateFullTransactionRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(string $transactionId, ?TransactionRefundAllCreate $transactionRefundAllCreate = null, ?string $merchantAccountId = null, ?Options $options = null): CreateFullTransactionRefundResponse
+    public function create(string $transactionId, ?TransactionRefundAllCreate $transactionRefundAllCreate = null, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?Options $options = null): CreateFullTransactionRefundResponse
     {
         $request = new CreateFullTransactionRefundRequest(
             transactionId: $transactionId,
             merchantAccountId: $merchantAccountId,
+            idempotencyKey: $idempotencyKey,
             transactionRefundAllCreate: $transactionRefundAllCreate,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
