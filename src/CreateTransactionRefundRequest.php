@@ -35,15 +35,25 @@ class CreateTransactionRefundRequest
     public ?string $merchantAccountId = null;
 
     /**
+     * A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.
+     *
+     * @var ?string $idempotencyKey
+     */
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=idempotency-key')]
+    public ?string $idempotencyKey = null;
+
+    /**
      * @param  string  $transactionId
      * @param  TransactionRefundCreate  $transactionRefundCreate
      * @param  ?string  $merchantAccountId
+     * @param  ?string  $idempotencyKey
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, TransactionRefundCreate $transactionRefundCreate, ?string $merchantAccountId = null)
+    public function __construct(string $transactionId, TransactionRefundCreate $transactionRefundCreate, ?string $merchantAccountId = null, ?string $idempotencyKey = null)
     {
         $this->transactionId = $transactionId;
         $this->transactionRefundCreate = $transactionRefundCreate;
         $this->merchantAccountId = $merchantAccountId;
+        $this->idempotencyKey = $idempotencyKey;
     }
 }

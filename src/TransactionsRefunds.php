@@ -56,15 +56,17 @@ class TransactionsRefunds
      * @param  TransactionRefundCreate  $transactionRefundCreate
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
+     * @param  ?string  $idempotencyKey
      * @return CreateTransactionRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(TransactionRefundCreate $transactionRefundCreate, string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): CreateTransactionRefundResponse
+    public function create(TransactionRefundCreate $transactionRefundCreate, string $transactionId, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?Options $options = null): CreateTransactionRefundResponse
     {
         $request = new CreateTransactionRefundRequest(
             transactionId: $transactionId,
             transactionRefundCreate: $transactionRefundCreate,
             merchantAccountId: $merchantAccountId,
+            idempotencyKey: $idempotencyKey,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/refunds', CreateTransactionRefundRequest::class, $request, $this->sdkConfiguration->globals);
