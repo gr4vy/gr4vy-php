@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: aff727b6f9ec1a885e46f7cba39cfa02
+  docChecksum: edea3cf7bcf097e3042596b08cf861d2
   docVersion: 1.0.0
   speakeasyVersion: 1.700.2
   generationVersion: 2.801.2
-  releaseVersion: 1.5.18
-  configChecksum: 2d84ad978a3f9d94d084e8518d4886e9
+  releaseVersion: 1.5.19
+  configChecksum: 4b1e0de559ad44f23b39f517c8ddc786
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 0cde1546-8b86-4ebf-b662-8e48dff44a33
-  pristine_commit_hash: b2da6a1c53138ab5068e9a08e3d004ebfeaf7b31
-  pristine_tree_hash: 59268ae1dd9b6501566fbcea5ce07657fd7b6a5a
+  generation_id: c17d7c8c-ff60-44fc-8d2d-be9cfdb79696
+  pristine_commit_hash: 986483778afa7de7b1d13032317dd6e3ec8a0c42
+  pristine_tree_hash: 4421c548b81da951ff4cc006f169aced2f17ec0e
 features:
   php:
     constsAndDefaults: 0.2.0
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:389a931b964206002ab6fa1c0e3d96052dc92f20
-    pristine_git_object: 86c639d2a57b928d7361b7a4f3b8b53e6b28cb0c
+    last_write_checksum: sha1:d78a7fc25c6bf1db66aa92e1388e3c7e4c62a125
+    pristine_git_object: 0ce6ef110fbe1e87dd9636a5437497056f784f61
   docs/AccountUpdaterInquirySummary.md:
     id: 58cff5faa9e6
     last_write_checksum: sha1:0d6ca1aacf9690bfbfe59fac9f1c2caeb9f46be6
@@ -3572,8 +3572,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:0d39f57f7173e107421c57410c0d4e62aa738323
-    pristine_git_object: 0d610c9384ed8ef9fc73f5dc20a8087e02a7ffad
+    last_write_checksum: sha1:f55cd79a2584749f3ea3715fbd38221b92705862
+    pristine_git_object: b93883a2b822c666c10e692152df539597c4d500
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -7703,10 +7703,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes:
-  * `sdk->transactions->refunds->create()`:  `request.idempotencyKey` **Added**
-  * `sdk->transactions->refunds->all->create()`:  `request.idempotencyKey` **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
