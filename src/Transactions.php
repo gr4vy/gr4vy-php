@@ -1632,15 +1632,17 @@ class Transactions
      * @param  string  $transactionId
      * @param  ?array<string>  $prefer
      * @param  ?string  $merchantAccountId
+     * @param  ?string  $idempotencyKey
      * @return VoidTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function void(string $transactionId, ?array $prefer = null, ?string $merchantAccountId = null, ?Options $options = null): VoidTransactionResponse
+    public function void(string $transactionId, ?array $prefer = null, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?Options $options = null): VoidTransactionResponse
     {
         $request = new VoidTransactionRequest(
             transactionId: $transactionId,
             prefer: $prefer,
             merchantAccountId: $merchantAccountId,
+            idempotencyKey: $idempotencyKey,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/void', VoidTransactionRequest::class, $request, $this->sdkConfiguration->globals);
@@ -1681,7 +1683,7 @@ class Transactions
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    responseVoidTransaction: $obj);
+                    response200VoidTransaction: $obj);
 
                 return $response;
             } else {

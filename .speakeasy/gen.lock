@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: edea3cf7bcf097e3042596b08cf861d2
+  docChecksum: 69b0ed6cfe567d204d09c4c46f755af4
   docVersion: 1.0.0
   speakeasyVersion: 1.700.2
   generationVersion: 2.801.2
-  releaseVersion: 1.5.19
-  configChecksum: 4b1e0de559ad44f23b39f517c8ddc786
+  releaseVersion: 1.5.20
+  configChecksum: 7b27fab99077f921903f1f30cf7832e0
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: c17d7c8c-ff60-44fc-8d2d-be9cfdb79696
-  pristine_commit_hash: 986483778afa7de7b1d13032317dd6e3ec8a0c42
-  pristine_tree_hash: 4421c548b81da951ff4cc006f169aced2f17ec0e
+  generation_id: a678df4d-19ec-4dfa-8556-a59fcf039001
+  pristine_commit_hash: b0ebddfc3289fbc2ca936ebfa80af4d0e41adb0e
+  pristine_tree_hash: 4374f7e1411c5c14f72bbfa7caead0e1e0b6e8e0
 features:
   php:
     constsAndDefaults: 0.2.0
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:d78a7fc25c6bf1db66aa92e1388e3c7e4c62a125
-    pristine_git_object: 0ce6ef110fbe1e87dd9636a5437497056f784f61
+    last_write_checksum: sha1:119d02c1317fe35145e1b8a71a608a4a26a9276a
+    pristine_git_object: 30b029446ba395fcbfd424279215e39426c3f3fe
   docs/AccountUpdaterInquirySummary.md:
     id: 58cff5faa9e6
     last_write_checksum: sha1:0d6ca1aacf9690bfbfe59fac9f1c2caeb9f46be6
@@ -1434,6 +1434,10 @@ trackedFiles:
     id: f83055f54c5c
     last_write_checksum: sha1:954b6152a651913280189e7ebc4f5ef0645ccc60
     pristine_git_object: 9a1d553caa46815545544917fe5ad3b4e14e4cb0
+  docs/Response200VoidTransaction.md:
+    id: ee6f77c73438
+    last_write_checksum: sha1:72a1c66744b6257f2d8e74ae40266812f6e272af
+    pristine_git_object: 79cd898b5d19200d376962a4f2f0fe685bb4dec8
   docs/ResponseCaptureTransaction.md:
     id: 37beef563721
     last_write_checksum: sha1:af7a813ef6d195600cd14b4be291f1e73858ccec
@@ -1442,10 +1446,6 @@ trackedFiles:
     id: aa62f1509baa
     last_write_checksum: sha1:61cdd0e17bb01c6be312612f59e6bbe45f78ebc2
     pristine_git_object: 1ecb53ccaaab31c3b6f1ec4245a77a987bc6fbac
-  docs/ResponseVoidTransaction.md:
-    id: 36e19b5a817c
-    last_write_checksum: sha1:6b7414bd214f8eb6947ce01529aa36e2aea6e72c
-    pristine_git_object: b4b6a8d2ab6681a44eb76d1f23f8921ae8ec81c5
   docs/ResumePaymentMethodNetworkTokenRequest.md:
     id: 6d6ce9254081
     last_write_checksum: sha1:3df23430830764954c5483a6c26dcf4a0894e482
@@ -1788,12 +1788,12 @@ trackedFiles:
     pristine_git_object: 4d3dac0d003dcdccfec443ee61b979539c79d51d
   docs/VoidTransactionRequest.md:
     id: 942240b03007
-    last_write_checksum: sha1:d8c7dcce27eb2708f24eee5d55e7b52bc2cd22c4
-    pristine_git_object: 0fc79dd0e9a1553da6ae55fc41fe1c18149765e2
+    last_write_checksum: sha1:257e7f3e700f56e885912249da5aca51a4ad5052
+    pristine_git_object: 9213d53265a1836566c50e092bba1a458e6ecf31
   docs/VoidTransactionResponse.md:
     id: 43dad24874f8
-    last_write_checksum: sha1:2b0c825fcb6944897343c5cb2aa6ef3ca2f85e07
-    pristine_git_object: 773ef8d67a36202841d5dbe759d1ad1225520093
+    last_write_checksum: sha1:2dfe08baea9ffe039a46899ce83eea99ac9f9ee6
+    pristine_git_object: 33263922c01f18dea300e7eb61831cb1c83319a0
   docs/VoidableField.md:
     id: a12b45791f40
     last_write_checksum: sha1:7148976daf787db72c208b3dafaa29c41ac22c03
@@ -1992,8 +1992,8 @@ trackedFiles:
     pristine_git_object: 697763f1a2b845ad27b134c875f1fa90e0681b31
   docs/sdks/transactions/README.md:
     id: 85592abe3c6b
-    last_write_checksum: sha1:c40664aa66ed1426240ee7ec7651ba9170938765
-    pristine_git_object: 637e4c945ca98c838f3110c0fbe343c05ae0968d
+    last_write_checksum: sha1:d6db1b9eacb87a39825dd61aeb2e65b277406f34
+    pristine_git_object: 7edd45bd64d6e39e68ebfd3cc482e8cb2b712e24
   docs/sdks/transactionsrefunds/README.md:
     id: c6a0400f5020
     last_write_checksum: sha1:b0923f82152dd7a17004510da92f112808458f74
@@ -3572,8 +3572,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:f55cd79a2584749f3ea3715fbd38221b92705862
-    pristine_git_object: b93883a2b822c666c10e692152df539597c4d500
+    last_write_checksum: sha1:4abde642e38a7db0a3506405d4fd62f310e0541f
+    pristine_git_object: 9afbdc76001dae552921d3c56a33aea83a1e7662
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -3788,8 +3788,8 @@ trackedFiles:
     pristine_git_object: 243b3c722c8ae49bb456d59ced264297b5cb553e
   src/Transactions.php:
     id: fb7274f4b525
-    last_write_checksum: sha1:7cb49f0f2d0d1e9bc7f665f1e4fd178ee105093c
-    pristine_git_object: 6b7f36b5e09bc6510c2ccd4dfeb60b49abacbfed
+    last_write_checksum: sha1:d59f42bdfdf36106eea1c383481070c0669a0b7e
+    pristine_git_object: 85bbb0a1c72f1b30dee8d3de8fe46328906a0518
   src/TransactionsRefunds.php:
     id: b5ef579db238
     last_write_checksum: sha1:85d4bdf6eb8820eb9ecb186633dcf68119d948a5
@@ -4052,12 +4052,12 @@ trackedFiles:
     pristine_git_object: b8b17ba21492a7874b4651dc4ac2eed7a4ff13ab
   src/VoidTransactionRequest.php:
     id: 9853c366e109
-    last_write_checksum: sha1:ba7ee192172c640f7c45de327c5907c62791d5a3
-    pristine_git_object: 46eb57b47dd4173be1959efdc77ec9419b337892
+    last_write_checksum: sha1:28db200760109129699bdacd951920be589bb03e
+    pristine_git_object: c25307d110e99c846dcee1066401f51d49163816
   src/VoidTransactionResponse.php:
     id: 00bbcb91c933
-    last_write_checksum: sha1:06421dbd0329dbee20df7e6ace7fbad8790a429f
-    pristine_git_object: 45093c801ca749bc72ee0d3766aa182f2a2b3c2a
+    last_write_checksum: sha1:fe8cada093259ff1728e73e367937307fdd6cc4e
+    pristine_git_object: 91506785531334db55ce2e6b1c844c5ca684ebcf
   src/VoidableField.php:
     id: 23b2da15128e
     last_write_checksum: sha1:e1e36c7219e1430babd9f97e3c89f90ab539849c
@@ -7703,6 +7703,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->transactions->void()`:  `request.idempotencyKey` **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
