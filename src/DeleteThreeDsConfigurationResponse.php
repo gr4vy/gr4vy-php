@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class CaptureTransactionResponse
+class DeleteThreeDsConfigurationResponse
 {
     /**
      * HTTP response content type for this operation
@@ -33,24 +33,15 @@ class CaptureTransactionResponse
     public \Psr\Http\Message\ResponseInterface $rawResponse;
 
     /**
-     * Successful Response
-     *
-     * @var Transaction|TransactionCapture|null $response200CaptureTransaction
-     */
-    public Transaction|TransactionCapture|null $response200CaptureTransaction = null;
-
-    /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Transaction|TransactionCapture|null  $response200CaptureTransaction
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Transaction|TransactionCapture|null $response200CaptureTransaction = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->response200CaptureTransaction = $response200CaptureTransaction;
     }
 }

@@ -173,9 +173,9 @@ if ($response->merchantAccount !== null) {
 
 ### Parameters
 
-| Parameter                      | Type                           | Required                       | Description                    | Example                        |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `merchantAccountId`            | *string*                       | :heavy_check_mark:             | The ID of the merchant account | merchant-12345                 |
+| Parameter                       | Type                            | Required                        | Description                     | Example                         |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `merchantAccountId`             | *string*                        | :heavy_check_mark:              | The ID of the merchant account. | merchant-12345                  |
 
 ### Response
 
@@ -239,7 +239,7 @@ if ($response->merchantAccount !== null) {
 
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `merchantAccountId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the merchant account                          | merchant-12345                                          |
+| `merchantAccountId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the merchant account.                         | merchant-12345                                          |
 | `merchantAccountUpdate`                                 | [MerchantAccountUpdate](../../MerchantAccountUpdate.md) | :heavy_check_mark:                                      | N/A                                                     |                                                         |
 
 ### Response

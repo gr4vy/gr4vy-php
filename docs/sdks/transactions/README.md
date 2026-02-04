@@ -369,27 +369,25 @@ $sdk = Gr4vy\SDK::builder()
     )
     ->build();
 
-$transactionCaptureCreate = new Gr4vy\TransactionCaptureCreate();
-
-$response = $sdk->transactions->capture(
+$request = new Gr4vy\CaptureTransactionRequest(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
-    transactionCaptureCreate: $transactionCaptureCreate
-
+    transactionCaptureCreate: new Gr4vy\TransactionCaptureCreate(),
 );
 
-if ($response->responseCaptureTransaction !== null) {
+$response = $sdk->transactions->capture(
+    request: $request
+);
+
+if ($response->response200CaptureTransaction !== null) {
     // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `transactionId`                                               | *string*                                                      | :heavy_check_mark:                                            | The ID of the transaction                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                          |
-| `transactionCaptureCreate`                                    | [TransactionCaptureCreate](../../TransactionCaptureCreate.md) | :heavy_check_mark:                                            | N/A                                                           |                                                               |
-| `prefer`                                                      | array<*string*>                                               | :heavy_minus_sign:                                            | The preferred resource type in the response.                  |                                                               |
-| `merchantAccountId`                                           | *?string*                                                     | :heavy_minus_sign:                                            | The ID of the merchant account to use for this request.       | default                                                       |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `$request`                                                            | [Gr4vy\CaptureTransactionRequest](../../CaptureTransactionRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
 ### Response
 

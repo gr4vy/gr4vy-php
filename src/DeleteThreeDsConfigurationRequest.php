@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 use Gr4vy\Utils\SpeakeasyMetadata;
-class GetMerchantAccountRequest
+class DeleteThreeDsConfigurationRequest
 {
     /**
      * The ID of the merchant account.
@@ -20,11 +20,21 @@ class GetMerchantAccountRequest
     public string $merchantAccountId;
 
     /**
+     * The ID of the 3DS configuration for a merchant account.
+     *
+     * @var string $threeDsConfigurationId
+     */
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=three_ds_configuration_id')]
+    public string $threeDsConfigurationId;
+
+    /**
      * @param  string  $merchantAccountId
+     * @param  string  $threeDsConfigurationId
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId)
+    public function __construct(string $merchantAccountId, string $threeDsConfigurationId)
     {
         $this->merchantAccountId = $merchantAccountId;
+        $this->threeDsConfigurationId = $threeDsConfigurationId;
     }
 }
