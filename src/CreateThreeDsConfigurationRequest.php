@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 use Gr4vy\Utils\SpeakeasyMetadata;
-class UpdateMerchantAccountRequest
+class CreateThreeDsConfigurationRequest
 {
     /**
      * The ID of the merchant account.
@@ -21,19 +21,19 @@ class UpdateMerchantAccountRequest
 
     /**
      *
-     * @var MerchantAccountUpdate $merchantAccountUpdate
+     * @var MerchantAccountThreeDSConfigurationCreate $merchantAccountThreeDSConfigurationCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public MerchantAccountUpdate $merchantAccountUpdate;
+    public MerchantAccountThreeDSConfigurationCreate $merchantAccountThreeDSConfigurationCreate;
 
     /**
      * @param  string  $merchantAccountId
-     * @param  MerchantAccountUpdate  $merchantAccountUpdate
+     * @param  MerchantAccountThreeDSConfigurationCreate  $merchantAccountThreeDSConfigurationCreate
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId, MerchantAccountUpdate $merchantAccountUpdate)
+    public function __construct(string $merchantAccountId, MerchantAccountThreeDSConfigurationCreate $merchantAccountThreeDSConfigurationCreate)
     {
         $this->merchantAccountId = $merchantAccountId;
-        $this->merchantAccountUpdate = $merchantAccountUpdate;
+        $this->merchantAccountThreeDSConfigurationCreate = $merchantAccountThreeDSConfigurationCreate;
     }
 }

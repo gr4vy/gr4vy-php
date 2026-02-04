@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class CaptureTransactionResponse
+class EditThreeDsConfigurationResponse
 {
     /**
      * HTTP response content type for this operation
@@ -35,22 +35,22 @@ class CaptureTransactionResponse
     /**
      * Successful Response
      *
-     * @var Transaction|TransactionCapture|null $response200CaptureTransaction
+     * @var ?MerchantAccountThreeDSConfiguration $merchantAccountThreeDSConfiguration
      */
-    public Transaction|TransactionCapture|null $response200CaptureTransaction = null;
+    public ?MerchantAccountThreeDSConfiguration $merchantAccountThreeDSConfiguration = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Transaction|TransactionCapture|null  $response200CaptureTransaction
+     * @param  ?MerchantAccountThreeDSConfiguration  $merchantAccountThreeDSConfiguration
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Transaction|TransactionCapture|null $response200CaptureTransaction = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?MerchantAccountThreeDSConfiguration $merchantAccountThreeDSConfiguration = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->response200CaptureTransaction = $response200CaptureTransaction;
+        $this->merchantAccountThreeDSConfiguration = $merchantAccountThreeDSConfiguration;
     }
 }

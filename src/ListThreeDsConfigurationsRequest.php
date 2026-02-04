@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 use Gr4vy\Utils\SpeakeasyMetadata;
-class GetMerchantAccountRequest
+class ListThreeDsConfigurationsRequest
 {
     /**
      * The ID of the merchant account.
@@ -20,11 +20,21 @@ class GetMerchantAccountRequest
     public string $merchantAccountId;
 
     /**
+     * ISO 4217 currency code (3 characters) to filter 3DS configurations.
+     *
+     * @var ?string $currency
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=currency')]
+    public ?string $currency = null;
+
+    /**
      * @param  string  $merchantAccountId
+     * @param  ?string  $currency
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId)
+    public function __construct(string $merchantAccountId, ?string $currency = null)
     {
         $this->merchantAccountId = $merchantAccountId;
+        $this->currency = $currency;
     }
 }

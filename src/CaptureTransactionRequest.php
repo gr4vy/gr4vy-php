@@ -43,17 +43,27 @@ class CaptureTransactionRequest
     public ?array $prefer = null;
 
     /**
+     * A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.
+     *
+     * @var ?string $idempotencyKey
+     */
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=idempotency-key')]
+    public ?string $idempotencyKey = null;
+
+    /**
      * @param  string  $transactionId
      * @param  TransactionCaptureCreate  $transactionCaptureCreate
      * @param  ?string  $merchantAccountId
      * @param  ?array<string>  $prefer
+     * @param  ?string  $idempotencyKey
      * @phpstan-pure
      */
-    public function __construct(string $transactionId, TransactionCaptureCreate $transactionCaptureCreate, ?string $merchantAccountId = null, ?array $prefer = null)
+    public function __construct(string $transactionId, TransactionCaptureCreate $transactionCaptureCreate, ?string $merchantAccountId = null, ?array $prefer = null, ?string $idempotencyKey = null)
     {
         $this->transactionId = $transactionId;
         $this->transactionCaptureCreate = $transactionCaptureCreate;
         $this->merchantAccountId = $merchantAccountId;
         $this->prefer = $prefer;
+        $this->idempotencyKey = $idempotencyKey;
     }
 }

@@ -264,21 +264,12 @@ class Transactions
      *
      * Captures a previously authorized transaction. You can capture the full or a partial amount, as long as it does not exceed the authorized amount (unless over-capture is enabled).
      *
-     * @param  TransactionCaptureCreate  $transactionCaptureCreate
-     * @param  string  $transactionId
-     * @param  ?array<string>  $prefer
-     * @param  ?string  $merchantAccountId
+     * @param  CaptureTransactionRequest  $request
      * @return CaptureTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function capture(TransactionCaptureCreate $transactionCaptureCreate, string $transactionId, ?array $prefer = null, ?string $merchantAccountId = null, ?Options $options = null): CaptureTransactionResponse
+    public function capture(CaptureTransactionRequest $request, ?Options $options = null): CaptureTransactionResponse
     {
-        $request = new CaptureTransactionRequest(
-            transactionId: $transactionId,
-            transactionCaptureCreate: $transactionCaptureCreate,
-            prefer: $prefer,
-            merchantAccountId: $merchantAccountId,
-        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/transactions/{transaction_id}/capture', CaptureTransactionRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
@@ -323,7 +314,7 @@ class Transactions
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    responseCaptureTransaction: $obj);
+                    response200CaptureTransaction: $obj);
 
                 return $response;
             } else {
