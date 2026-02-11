@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace Gr4vy\errors;
+namespace Gr4vy\Errors;
 
 use Gr4vy;
 use Gr4vy\Utils;
-class Error401
+class Error429
 {
     /**
      * Always `error`.
@@ -22,7 +22,7 @@ class Error401
     public ?string $type = null;
 
     /**
-     * Always `unauthorized`
+     * Always `too_many_requests`
      *
      * @var ?string $code
      */
@@ -31,7 +31,7 @@ class Error401
     public ?string $code = null;
 
     /**
-     * Always `401`.
+     * Always `429`.
      *
      * @var ?int $status
      */
@@ -66,7 +66,7 @@ class Error401
      * @param  ?array<Gr4vy\ErrorDetail>  $details
      * @phpstan-pure
      */
-    public function __construct(?array $details = null, ?string $code = 'unauthorized', ?int $status = 401, ?string $message = 'No valid API authentication found', ?string $type = 'error')
+    public function __construct(?array $details = null, ?string $code = 'too_many_requests', ?int $status = 429, ?string $message = 'Generic error', ?string $type = 'error')
     {
         $this->type = $type;
         $this->code = $code;
@@ -75,7 +75,7 @@ class Error401
         $this->details = $details;
     }
 
-    public function toException(): Error401Throwable
+    public function toException(): Error429Throwable
     {
         $serializer = Utils\JSON::createSerializer();
         $message = $serializer->serialize($this, 'json');
@@ -85,6 +85,6 @@ class Error401
             $code = -1;
         }
 
-        return new Error401Throwable($message, (int) $code, $this);
+        return new Error429Throwable($message, (int) $code, $this);
     }
 }

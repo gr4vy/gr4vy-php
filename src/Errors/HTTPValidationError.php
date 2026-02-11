@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Gr4vy\errors;
+namespace Gr4vy\Errors;
 
 use Gr4vy;
 use Gr4vy\Utils;

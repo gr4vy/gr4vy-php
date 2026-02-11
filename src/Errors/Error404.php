@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace Gr4vy\errors;
+namespace Gr4vy\Errors;
 
 use Gr4vy;
 use Gr4vy\Utils;
-class Error400
+class Error404
 {
     /**
      * Always `error`.
@@ -22,7 +22,7 @@ class Error400
     public ?string $type = null;
 
     /**
-     * Always `bad_request`
+     * Always `not_found`
      *
      * @var ?string $code
      */
@@ -31,7 +31,7 @@ class Error400
     public ?string $code = null;
 
     /**
-     * Always `400`.
+     * Always `404`.
      *
      * @var ?int $status
      */
@@ -66,7 +66,7 @@ class Error400
      * @param  ?array<Gr4vy\ErrorDetail>  $details
      * @phpstan-pure
      */
-    public function __construct(?array $details = null, ?string $code = 'bad_request', ?int $status = 400, ?string $message = 'Generic error', ?string $type = 'error')
+    public function __construct(?array $details = null, ?string $code = 'not_found', ?int $status = 404, ?string $message = 'The resource could not be found', ?string $type = 'error')
     {
         $this->type = $type;
         $this->code = $code;
@@ -75,7 +75,7 @@ class Error400
         $this->details = $details;
     }
 
-    public function toException(): Error400Throwable
+    public function toException(): Error404Throwable
     {
         $serializer = Utils\JSON::createSerializer();
         $message = $serializer->serialize($this, 'json');
@@ -85,6 +85,6 @@ class Error400
             $code = -1;
         }
 
-        return new Error400Throwable($message, (int) $code, $this);
+        return new Error404Throwable($message, (int) $code, $this);
     }
 }
