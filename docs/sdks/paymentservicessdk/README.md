@@ -65,18 +65,18 @@ foreach ($responses as $response) {
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| errors\Error400            | 400                        | application/json           |
-| errors\Error401            | 401                        | application/json           |
-| errors\Error403            | 403                        | application/json           |
-| errors\Error404            | 404                        | application/json           |
-| errors\Error405            | 405                        | application/json           |
-| errors\Error409            | 409                        | application/json           |
-| errors\HTTPValidationError | 422                        | application/json           |
-| errors\Error425            | 425                        | application/json           |
-| errors\Error429            | 429                        | application/json           |
-| errors\Error500            | 500                        | application/json           |
-| errors\Error502            | 502                        | application/json           |
-| errors\Error504            | 504                        | application/json           |
+| Errors\Error400            | 400                        | application/json           |
+| Errors\Error401            | 401                        | application/json           |
+| Errors\Error403            | 403                        | application/json           |
+| Errors\Error404            | 404                        | application/json           |
+| Errors\Error405            | 405                        | application/json           |
+| Errors\Error409            | 409                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\Error425            | 425                        | application/json           |
+| Errors\Error429            | 429                        | application/json           |
+| Errors\Error500            | 500                        | application/json           |
+| Errors\Error502            | 502                        | application/json           |
+| Errors\Error504            | 504                        | application/json           |
 | errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## create
@@ -151,18 +151,18 @@ if ($response->paymentService !== null) {
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| errors\Error400            | 400                        | application/json           |
-| errors\Error401            | 401                        | application/json           |
-| errors\Error403            | 403                        | application/json           |
-| errors\Error404            | 404                        | application/json           |
-| errors\Error405            | 405                        | application/json           |
-| errors\Error409            | 409                        | application/json           |
-| errors\HTTPValidationError | 422                        | application/json           |
-| errors\Error425            | 425                        | application/json           |
-| errors\Error429            | 429                        | application/json           |
-| errors\Error500            | 500                        | application/json           |
-| errors\Error502            | 502                        | application/json           |
-| errors\Error504            | 504                        | application/json           |
+| Errors\Error400            | 400                        | application/json           |
+| Errors\Error401            | 401                        | application/json           |
+| Errors\Error403            | 403                        | application/json           |
+| Errors\Error404            | 404                        | application/json           |
+| Errors\Error405            | 405                        | application/json           |
+| Errors\Error409            | 409                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\Error425            | 425                        | application/json           |
+| Errors\Error429            | 429                        | application/json           |
+| Errors\Error500            | 500                        | application/json           |
+| Errors\Error502            | 502                        | application/json           |
+| Errors\Error504            | 504                        | application/json           |
 | errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## get
@@ -212,18 +212,18 @@ if ($response->paymentService !== null) {
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| errors\Error400            | 400                        | application/json           |
-| errors\Error401            | 401                        | application/json           |
-| errors\Error403            | 403                        | application/json           |
-| errors\Error404            | 404                        | application/json           |
-| errors\Error405            | 405                        | application/json           |
-| errors\Error409            | 409                        | application/json           |
-| errors\HTTPValidationError | 422                        | application/json           |
-| errors\Error425            | 425                        | application/json           |
-| errors\Error429            | 429                        | application/json           |
-| errors\Error500            | 500                        | application/json           |
-| errors\Error502            | 502                        | application/json           |
-| errors\Error504            | 504                        | application/json           |
+| Errors\Error400            | 400                        | application/json           |
+| Errors\Error401            | 401                        | application/json           |
+| Errors\Error403            | 403                        | application/json           |
+| Errors\Error404            | 404                        | application/json           |
+| Errors\Error405            | 405                        | application/json           |
+| Errors\Error409            | 409                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\Error425            | 425                        | application/json           |
+| Errors\Error429            | 429                        | application/json           |
+| Errors\Error500            | 500                        | application/json           |
+| Errors\Error502            | 502                        | application/json           |
+| Errors\Error504            | 504                        | application/json           |
 | errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## update
@@ -278,18 +278,18 @@ if ($response->paymentService !== null) {
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| errors\Error400            | 400                        | application/json           |
-| errors\Error401            | 401                        | application/json           |
-| errors\Error403            | 403                        | application/json           |
-| errors\Error404            | 404                        | application/json           |
-| errors\Error405            | 405                        | application/json           |
-| errors\Error409            | 409                        | application/json           |
-| errors\HTTPValidationError | 422                        | application/json           |
-| errors\Error425            | 425                        | application/json           |
-| errors\Error429            | 429                        | application/json           |
-| errors\Error500            | 500                        | application/json           |
-| errors\Error502            | 502                        | application/json           |
-| errors\Error504            | 504                        | application/json           |
+| Errors\Error400            | 400                        | application/json           |
+| Errors\Error401            | 401                        | application/json           |
+| Errors\Error403            | 403                        | application/json           |
+| Errors\Error404            | 404                        | application/json           |
+| Errors\Error405            | 405                        | application/json           |
+| Errors\Error409            | 409                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\Error425            | 425                        | application/json           |
+| Errors\Error429            | 429                        | application/json           |
+| Errors\Error500            | 500                        | application/json           |
+| Errors\Error502            | 502                        | application/json           |
+| Errors\Error504            | 504                        | application/json           |
 | errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## delete
@@ -339,18 +339,18 @@ if ($response->statusCode === 200) {
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| errors\Error400            | 400                        | application/json           |
-| errors\Error401            | 401                        | application/json           |
-| errors\Error403            | 403                        | application/json           |
-| errors\Error404            | 404                        | application/json           |
-| errors\Error405            | 405                        | application/json           |
-| errors\Error409            | 409                        | application/json           |
-| errors\HTTPValidationError | 422                        | application/json           |
-| errors\Error425            | 425                        | application/json           |
-| errors\Error429            | 429                        | application/json           |
-| errors\Error500            | 500                        | application/json           |
-| errors\Error502            | 502                        | application/json           |
-| errors\Error504            | 504                        | application/json           |
+| Errors\Error400            | 400                        | application/json           |
+| Errors\Error401            | 401                        | application/json           |
+| Errors\Error403            | 403                        | application/json           |
+| Errors\Error404            | 404                        | application/json           |
+| Errors\Error405            | 405                        | application/json           |
+| Errors\Error409            | 409                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\Error425            | 425                        | application/json           |
+| Errors\Error429            | 429                        | application/json           |
+| Errors\Error500            | 500                        | application/json           |
+| Errors\Error502            | 502                        | application/json           |
+| Errors\Error504            | 504                        | application/json           |
 | errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## verify
@@ -403,18 +403,18 @@ if ($response->any !== null) {
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| errors\Error400            | 400                        | application/json           |
-| errors\Error401            | 401                        | application/json           |
-| errors\Error403            | 403                        | application/json           |
-| errors\Error404            | 404                        | application/json           |
-| errors\Error405            | 405                        | application/json           |
-| errors\Error409            | 409                        | application/json           |
-| errors\HTTPValidationError | 422                        | application/json           |
-| errors\Error425            | 425                        | application/json           |
-| errors\Error429            | 429                        | application/json           |
-| errors\Error500            | 500                        | application/json           |
-| errors\Error502            | 502                        | application/json           |
-| errors\Error504            | 504                        | application/json           |
+| Errors\Error400            | 400                        | application/json           |
+| Errors\Error401            | 401                        | application/json           |
+| Errors\Error403            | 403                        | application/json           |
+| Errors\Error404            | 404                        | application/json           |
+| Errors\Error405            | 405                        | application/json           |
+| Errors\Error409            | 409                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\Error425            | 425                        | application/json           |
+| Errors\Error429            | 429                        | application/json           |
+| Errors\Error500            | 500                        | application/json           |
+| Errors\Error502            | 502                        | application/json           |
+| Errors\Error504            | 504                        | application/json           |
 | errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## session
@@ -469,16 +469,16 @@ if ($response->createSession !== null) {
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| errors\Error400            | 400                        | application/json           |
-| errors\Error401            | 401                        | application/json           |
-| errors\Error403            | 403                        | application/json           |
-| errors\Error404            | 404                        | application/json           |
-| errors\Error405            | 405                        | application/json           |
-| errors\Error409            | 409                        | application/json           |
-| errors\HTTPValidationError | 422                        | application/json           |
-| errors\Error425            | 425                        | application/json           |
-| errors\Error429            | 429                        | application/json           |
-| errors\Error500            | 500                        | application/json           |
-| errors\Error502            | 502                        | application/json           |
-| errors\Error504            | 504                        | application/json           |
+| Errors\Error400            | 400                        | application/json           |
+| Errors\Error401            | 401                        | application/json           |
+| Errors\Error403            | 403                        | application/json           |
+| Errors\Error404            | 404                        | application/json           |
+| Errors\Error405            | 405                        | application/json           |
+| Errors\Error409            | 409                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\Error425            | 425                        | application/json           |
+| Errors\Error429            | 429                        | application/json           |
+| Errors\Error500            | 500                        | application/json           |
+| Errors\Error502            | 502                        | application/json           |
+| Errors\Error504            | 504                        | application/json           |
 | errors\APIException        | 4XX, 5XX                   | \*/\*                      |

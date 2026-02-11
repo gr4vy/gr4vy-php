@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Gr4vy\errors;
+namespace Gr4vy\Errors;
 
 class HTTPValidationErrorThrowable extends \RuntimeException
 {

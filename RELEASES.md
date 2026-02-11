@@ -1099,3 +1099,13 @@ Based on:
 - [php v1.5.24] .
 ### Releases
 - [Composer v1.5.24] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.24 - .
+
+## 2026-02-11 11:42:50
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.710.0 (2.818.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.25] .
+### Releases
+- [Composer v1.5.25] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.25 - .

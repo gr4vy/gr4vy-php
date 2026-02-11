@@ -6,13 +6,13 @@
 
 declare(strict_types=1);
 
-namespace Gr4vy\errors;
+namespace Gr4vy\Errors;
 
-class Error404Throwable extends \RuntimeException
+class Error400Throwable extends \RuntimeException
 {
-    public Error404 $container;
+    public Error400 $container;
 
-    public function __construct(string $message, int $statusCode, Error404 $container)
+    public function __construct(string $message, int $statusCode, Error400 $container)
     {
         parent::__construct($message, $statusCode);
         $this->container = $container;

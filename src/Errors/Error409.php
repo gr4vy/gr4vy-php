@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace Gr4vy\errors;
+namespace Gr4vy\Errors;
 
 use Gr4vy;
 use Gr4vy\Utils;
-class Error500
+class Error409
 {
     /**
      * Always `error`.
@@ -22,7 +22,7 @@ class Error500
     public ?string $type = null;
 
     /**
-     * Always `server_error`
+     * Always `duplicate_record`
      *
      * @var ?string $code
      */
@@ -31,7 +31,7 @@ class Error500
     public ?string $code = null;
 
     /**
-     * Always `500`.
+     * Always `409`.
      *
      * @var ?int $status
      */
@@ -66,7 +66,7 @@ class Error500
      * @param  ?array<Gr4vy\ErrorDetail>  $details
      * @phpstan-pure
      */
-    public function __construct(?array $details = null, ?string $code = 'server_error', ?int $status = 500, ?string $message = 'Request could not be processed', ?string $type = 'error')
+    public function __construct(?array $details = null, ?string $code = 'duplicate_record', ?int $status = 409, ?string $message = 'Generic error', ?string $type = 'error')
     {
         $this->type = $type;
         $this->code = $code;
@@ -75,7 +75,7 @@ class Error500
         $this->details = $details;
     }
 
-    public function toException(): Error500Throwable
+    public function toException(): Error409Throwable
     {
         $serializer = Utils\JSON::createSerializer();
         $message = $serializer->serialize($this, 'json');
@@ -85,6 +85,6 @@ class Error500
             $code = -1;
         }
 
-        return new Error500Throwable($message, (int) $code, $this);
+        return new Error409Throwable($message, (int) $code, $this);
     }
 }

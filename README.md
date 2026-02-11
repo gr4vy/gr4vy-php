@@ -647,18 +647,18 @@ When custom error responses are specified for an operation, the SDK may also thr
 
 | Error Type                 | Status Code | Content Type     |
 | -------------------------- | ----------- | ---------------- |
-| errors\Error400            | 400         | application/json |
-| errors\Error401            | 401         | application/json |
-| errors\Error403            | 403         | application/json |
-| errors\Error404            | 404         | application/json |
-| errors\Error405            | 405         | application/json |
-| errors\Error409            | 409         | application/json |
-| errors\HTTPValidationError | 422         | application/json |
-| errors\Error425            | 425         | application/json |
-| errors\Error429            | 429         | application/json |
-| errors\Error500            | 500         | application/json |
-| errors\Error502            | 502         | application/json |
-| errors\Error504            | 504         | application/json |
+| Errors\Error400            | 400         | application/json |
+| Errors\Error401            | 401         | application/json |
+| Errors\Error403            | 403         | application/json |
+| Errors\Error404            | 404         | application/json |
+| Errors\Error405            | 405         | application/json |
+| Errors\Error409            | 409         | application/json |
+| Errors\HTTPValidationError | 422         | application/json |
+| Errors\Error425            | 425         | application/json |
+| Errors\Error429            | 429         | application/json |
+| Errors\Error500            | 500         | application/json |
+| Errors\Error502            | 502         | application/json |
+| Errors\Error504            | 504         | application/json |
 | errors\APIException        | 4XX, 5XX    | \*/\*            |
 
 ### Example
@@ -669,7 +669,7 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Gr4vy;
-use Gr4vy\errors;
+use Gr4vy\Errors;
 
 $sdk = Gr4vy\SDK::builder()
     ->setMerchantAccountId('default')
@@ -693,40 +693,40 @@ try {
     if ($response->accountUpdaterJob !== null) {
         // handle response
     }
-} catch (errors\Error400Throwable $e) {
+} catch (Errors\Error400Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\Error401Throwable $e) {
+} catch (Errors\Error401Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\Error403Throwable $e) {
+} catch (Errors\Error403Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\Error404Throwable $e) {
+} catch (Errors\Error404Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\Error405Throwable $e) {
+} catch (Errors\Error405Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\Error409Throwable $e) {
+} catch (Errors\Error409Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\HTTPValidationErrorThrowable $e) {
+} catch (Errors\HTTPValidationErrorThrowable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\Error425Throwable $e) {
+} catch (Errors\Error425Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\Error429Throwable $e) {
+} catch (Errors\Error429Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\Error500Throwable $e) {
+} catch (Errors\Error500Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\Error502Throwable $e) {
+} catch (Errors\Error502Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\Error504Throwable $e) {
+} catch (Errors\Error504Throwable $e) {
     // handle $e->$container data
     throw $e;
 } catch (errors\APIException $e) {

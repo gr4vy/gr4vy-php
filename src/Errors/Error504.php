@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-namespace Gr4vy\errors;
+namespace Gr4vy\Errors;
 
 use Gr4vy;
 use Gr4vy\Utils;
-class Error409
+class Error504
 {
     /**
      * Always `error`.
@@ -22,7 +22,7 @@ class Error409
     public ?string $type = null;
 
     /**
-     * Always `duplicate_record`
+     * Always `gateway_timeout`
      *
      * @var ?string $code
      */
@@ -31,7 +31,6 @@ class Error409
     public ?string $code = null;
 
     /**
-     * Always `409`.
      *
      * @var ?int $status
      */
@@ -66,7 +65,7 @@ class Error409
      * @param  ?array<Gr4vy\ErrorDetail>  $details
      * @phpstan-pure
      */
-    public function __construct(?array $details = null, ?string $code = 'duplicate_record', ?int $status = 409, ?string $message = 'Generic error', ?string $type = 'error')
+    public function __construct(?array $details = null, ?string $code = 'gateway_timeout', ?int $status = 504, ?string $message = 'Request could not be processed', ?string $type = 'error')
     {
         $this->type = $type;
         $this->code = $code;
@@ -75,7 +74,7 @@ class Error409
         $this->details = $details;
     }
 
-    public function toException(): Error409Throwable
+    public function toException(): Error504Throwable
     {
         $serializer = Utils\JSON::createSerializer();
         $message = $serializer->serialize($this, 'json');
@@ -85,6 +84,6 @@ class Error409
             $code = -1;
         }
 
-        return new Error409Throwable($message, (int) $code, $this);
+        return new Error504Throwable($message, (int) $code, $this);
     }
 }
