@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 3aa281d954818e1b0fb5b9d5b457dc28
+  docChecksum: 23ce3a1a17ccfb2914cb87af4daf362d
   docVersion: 1.0.0
-  speakeasyVersion: 1.718.0
+  speakeasyVersion: 1.719.0
   generationVersion: 2.824.1
-  releaseVersion: 1.5.26
-  configChecksum: 11c92907dafbe849561d0ff9a49c19ba
+  releaseVersion: 1.5.27
+  configChecksum: 14d780b8ae6bcaf0943967c942ddf284
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 7a55066f-17a1-4e4d-ba75-7e82b3cbeb7c
-  pristine_commit_hash: 130ecb56b220fcfd059a311b0a9d3d54a78fdb68
-  pristine_tree_hash: fb3c9a52a44f8adda609fab455e8fdddcff5cdcf
+  generation_id: 55a62e68-569d-4eea-813b-59ac47f75242
+  pristine_commit_hash: 13fc324db4f70bd3998d9702b1f88fbbc0d403d9
+  pristine_tree_hash: 7a431a362b3e9deb1588847503d905108a8b17cc
 features:
   php:
     constsAndDefaults: 0.2.1
@@ -1278,6 +1278,10 @@ trackedFiles:
     id: a10e5d1fe6e1
     last_write_checksum: sha1:827f3e1f61c9e2969d407676dbc92a78af65f266
     pristine_git_object: a2cd3976edeb169872a784b8b8aa147b20989ab3
+  docs/NuveiKlarnaOptions.md:
+    id: 4cc188d3b902
+    last_write_checksum: sha1:78c9695d41d8072bc01059d3fe22348831c4d957
+    pristine_git_object: 2d7e2d6e2515a8ecfb554fc3879b8a96915aa5a5
   docs/NuveiOptions.md:
     id: 4421cdbb5672
     last_write_checksum: sha1:6b7b61f0dd417e4574e4d544e2e938d14eb7a13a
@@ -1708,8 +1712,8 @@ trackedFiles:
     pristine_git_object: dac520fc3d9571a0fcc7b9346bced50f6c2b7a57
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:4c1a3ac9a6f6b6c5aac70b323404ef71808faf66
-    pristine_git_object: cf64f55c6a0959d3b8feb7c45c695fa383713a70
+    last_write_checksum: sha1:7d56174890b229c7615e3c64429006ea0acb8555
+    pristine_git_object: 1aacfc5e54bb8268848c6ec9389e7a0e3c241ba2
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:0829d4b8e3efd418aa56e216475441d63816358f
@@ -3466,6 +3470,10 @@ trackedFiles:
     id: b95225a4a05e
     last_write_checksum: sha1:01ec168fafdeac784efed1afa2097c35d3dcddb8
     pristine_git_object: 7fa5bf09ab2d21d4dd42610d65801b7575f097d8
+  src/NuveiKlarnaOptions.php:
+    id: 294df3b52461
+    last_write_checksum: sha1:433480a16a83980b7658fab63ab4024d53dd8a5d
+    pristine_git_object: 244951366fa91092151e6adc4874a7caca816d5e
   src/NuveiOptions.php:
     id: aca7a28b59c4
     last_write_checksum: sha1:c137874818776bf8eb3f15483bdc07b3d3cfd0a4
@@ -3768,8 +3776,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:65fb01f608946ee4afa5c6dd9f604708642b0f34
-    pristine_git_object: 5c89cb1ff0dd1e9679d793c1b1fbd47414fd4900
+    last_write_checksum: sha1:27c0ddc09d6ebee5e378bddbb841644dbd4a9937
+    pristine_git_object: 41cb92263eff254ae5a4b6f5ad076651db0d5ce6
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -3928,8 +3936,8 @@ trackedFiles:
     pristine_git_object: bd409f8a7b0eb0de3750f643ce75141bd1f91c0a
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:6cbb53ac4912d52a00539d55f9295c5280354318
-    pristine_git_object: 98c4e4f427f527b1f7bb6281ad7ae773cbfef6c5
+    last_write_checksum: sha1:8f415daa2eada9acb3b635c2cad72519a047e636
+    pristine_git_object: 7255298eaa98291828420c6a996ab5ff230fa1f8
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:21b51218fc47ff93d4c3dea5aa4d91fb2150a351
@@ -7939,6 +7947,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->nuveiKlarna` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->nuveiKlarna` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->nuveiKlarna` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
