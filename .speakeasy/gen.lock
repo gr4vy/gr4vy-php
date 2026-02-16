@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 76fe378d3674313ffd9bf12b2f724487
+  docChecksum: 3aa281d954818e1b0fb5b9d5b457dc28
   docVersion: 1.0.0
-  speakeasyVersion: 1.710.0
-  generationVersion: 2.818.4
-  releaseVersion: 1.5.25
-  configChecksum: 89d5065a2d6aa568c2f6844d07d2c9f3
+  speakeasyVersion: 1.718.0
+  generationVersion: 2.824.1
+  releaseVersion: 1.5.26
+  configChecksum: 11c92907dafbe849561d0ff9a49c19ba
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 57af0fb4-1d08-4104-a229-d3fde768e98f
-  pristine_commit_hash: 0deb0bb885ebc1f51517667ded068df871ee4a72
-  pristine_tree_hash: 8c04e595777dd4531b9d4cbc81e9dc1f197296b1
+  generation_id: 7a55066f-17a1-4e4d-ba75-7e82b3cbeb7c
+  pristine_commit_hash: 130ecb56b220fcfd059a311b0a9d3d54a78fdb68
+  pristine_tree_hash: fb3c9a52a44f8adda609fab455e8fdddcff5cdcf
 features:
   php:
     constsAndDefaults: 0.2.1
@@ -3768,8 +3768,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:e42e6ebc510641d389c771db77df339f883be631
-    pristine_git_object: d236ad9f1c05f82bf8cee66b008c3c42adcc3aa7
+    last_write_checksum: sha1:65fb01f608946ee4afa5c6dd9f604708642b0f34
+    pristine_git_object: 5c89cb1ff0dd1e9679d793c1b1fbd47414fd4900
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
