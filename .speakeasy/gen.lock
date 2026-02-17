@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 3302c47d2ec860cddd278f1a795535a5
+  docChecksum: 668b702fa7aa28a7018158d2bba41912
   docVersion: 1.0.0
-  speakeasyVersion: 1.721.0
-  generationVersion: 2.828.0
-  releaseVersion: 1.5.28
-  configChecksum: 5dba2610ab19ad50653638fe0356e19a
+  speakeasyVersion: 1.721.0-rc.0
+  generationVersion: 2.827.0
+  releaseVersion: 1.5.29
+  configChecksum: be089b734a0b3f75439af480cf716a0b
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 240c4370-e57c-4cf4-bfe1-5f9bba0b7991
-  pristine_commit_hash: a9be39c8d35aafe798e4e6408eea9c22b30c1f99
-  pristine_tree_hash: 9cdeade24df0b67f2f637ee4f063706312e2e426
+  generation_id: 7aa0e543-9ab0-43fd-8d15-4a49a79e1ea1
+  pristine_commit_hash: e4419d73d59556f0dde344172b029659a31c6f9c
+  pristine_tree_hash: 65e0b7ae51901e4efe5d5c2a17199833ce61f5d2
 features:
   php:
     constsAndDefaults: 0.2.1
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:d78a7fc25c6bf1db66aa92e1388e3c7e4c62a125
-    pristine_git_object: 0ce6ef110fbe1e87dd9636a5437497056f784f61
+    last_write_checksum: sha1:389a931b964206002ab6fa1c0e3d96052dc92f20
+    pristine_git_object: 86c639d2a57b928d7361b7a4f3b8b53e6b28cb0c
   docs/AccountUpdaterInquirySummary.md:
     id: 58cff5faa9e6
     last_write_checksum: sha1:0d6ca1aacf9690bfbfe59fac9f1c2caeb9f46be6
@@ -3776,8 +3776,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:a0bf5521beaaf3824d36a89ebc30e76503e486cc
-    pristine_git_object: dfeeaea07c314f1945297a67eba0fe8de0dee3b7
+    last_write_checksum: sha1:dd2a2511d491abd369f2ec017a18b2b345a8cf10
+    pristine_git_object: 6acb3624e8166103a1930b1cb8720ac2f5fb4a39
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
