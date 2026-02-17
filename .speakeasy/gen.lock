@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 23ce3a1a17ccfb2914cb87af4daf362d
+  docChecksum: 3302c47d2ec860cddd278f1a795535a5
   docVersion: 1.0.0
-  speakeasyVersion: 1.719.0
-  generationVersion: 2.824.1
-  releaseVersion: 1.5.27
-  configChecksum: 14d780b8ae6bcaf0943967c942ddf284
+  speakeasyVersion: 1.721.0
+  generationVersion: 2.828.0
+  releaseVersion: 1.5.28
+  configChecksum: 5dba2610ab19ad50653638fe0356e19a
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 55a62e68-569d-4eea-813b-59ac47f75242
-  pristine_commit_hash: 13fc324db4f70bd3998d9702b1f88fbbc0d403d9
-  pristine_tree_hash: 7a431a362b3e9deb1588847503d905108a8b17cc
+  generation_id: 240c4370-e57c-4cf4-bfe1-5f9bba0b7991
+  pristine_commit_hash: a9be39c8d35aafe798e4e6408eea9c22b30c1f99
+  pristine_tree_hash: 9cdeade24df0b67f2f637ee4f063706312e2e426
 features:
   php:
     constsAndDefaults: 0.2.1
@@ -3776,8 +3776,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:27c0ddc09d6ebee5e378bddbb841644dbd4a9937
-    pristine_git_object: 41cb92263eff254ae5a4b6f5ad076651db0d5ce6
+    last_write_checksum: sha1:a0bf5521beaaf3824d36a89ebc30e76503e486cc
+    pristine_git_object: dfeeaea07c314f1945297a67eba0fe8de0dee3b7
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -7947,7 +7947,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->nuveiKlarna` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->nuveiKlarna` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->nuveiKlarna` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
