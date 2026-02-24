@@ -565,7 +565,7 @@ class Payouts
                     payoutSummaries: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $limit, $merchantAccountId): ?ListPayoutsResponse {
+                $response->next = function () use ($sdk, $responseData, $request): ?ListPayoutsResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -579,8 +579,8 @@ class Payouts
 
                     return $sdk->listIndividual(
                         cursor: $nextCursor,
-                        limit: $limit,
-                        merchantAccountId: $merchantAccountId,
+                        limit: $request != null ? $request->limit : null,
+                        merchantAccountId: $request != null ? $request->merchantAccountId : null,
                     );
                 };
 

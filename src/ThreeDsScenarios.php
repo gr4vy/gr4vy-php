@@ -532,7 +532,7 @@ class ThreeDsScenarios
                     threeDSecureScenarios: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $limit, $merchantAccountId): ?GetThreeDsScenarioResponse {
+                $response->next = function () use ($sdk, $responseData, $request): ?GetThreeDsScenarioResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -546,8 +546,8 @@ class ThreeDsScenarios
 
                     return $sdk->listIndividual(
                         cursor: $nextCursor,
-                        limit: $limit,
-                        merchantAccountId: $merchantAccountId,
+                        limit: $request != null ? $request->limit : null,
+                        merchantAccountId: $request != null ? $request->merchantAccountId : null,
                     );
                 };
 

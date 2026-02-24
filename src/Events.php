@@ -134,7 +134,7 @@ class Events
                     transactionEvents: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $transactionId, $limit, $merchantAccountId): ?ListTransactionEventsResponse {
+                $response->next = function () use ($sdk, $responseData, $request): ?ListTransactionEventsResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -147,10 +147,10 @@ class Events
                     }
 
                     return $sdk->listIndividual(
-                        transactionId: $transactionId,
+                        transactionId: $request != null ? $request->transactionId : '',
                         cursor: $nextCursor,
-                        limit: $limit,
-                        merchantAccountId: $merchantAccountId,
+                        limit: $request != null ? $request->limit : null,
+                        merchantAccountId: $request != null ? $request->merchantAccountId : null,
                     );
                 };
 

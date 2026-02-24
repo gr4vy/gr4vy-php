@@ -760,7 +760,7 @@ class PaymentLinksSDK
                     paymentLinks: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $limit, $buyerSearch, $merchantAccountId): ?ListPaymentLinksResponse {
+                $response->next = function () use ($sdk, $responseData, $request): ?ListPaymentLinksResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -774,9 +774,9 @@ class PaymentLinksSDK
 
                     return $sdk->listIndividual(
                         cursor: $nextCursor,
-                        limit: $limit,
-                        buyerSearch: $buyerSearch,
-                        merchantAccountId: $merchantAccountId,
+                        limit: $request != null ? $request->limit : null,
+                        buyerSearch: $request != null ? $request->buyerSearch : null,
+                        merchantAccountId: $request != null ? $request->merchantAccountId : null,
                     );
                 };
 

@@ -549,7 +549,7 @@ class MerchantAccountsSDK
                     merchantAccounts: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $limit, $search): ?ListMerchantAccountsResponse {
+                $response->next = function () use ($sdk, $responseData, $request): ?ListMerchantAccountsResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -563,8 +563,8 @@ class MerchantAccountsSDK
 
                     return $sdk->listIndividual(
                         cursor: $nextCursor,
-                        limit: $limit,
-                        search: $search,
+                        limit: $request != null ? $request->limit : null,
+                        search: $request != null ? $request->search : null,
                     );
                 };
 
