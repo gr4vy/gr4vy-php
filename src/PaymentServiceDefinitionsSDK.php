@@ -549,7 +549,7 @@ class PaymentServiceDefinitionsSDK
                     paymentServiceDefinitions: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $limit): ?ListPaymentServiceDefinitionsResponse {
+                $response->next = function () use ($sdk, $responseData, $request): ?ListPaymentServiceDefinitionsResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -563,7 +563,7 @@ class PaymentServiceDefinitionsSDK
 
                     return $sdk->listIndividual(
                         cursor: $nextCursor,
-                        limit: $limit,
+                        limit: $request != null ? $request->limit : null,
                     );
                 };
 

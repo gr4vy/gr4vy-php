@@ -570,7 +570,7 @@ class Executions
                     reportExecutions: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $reportId, $limit, $merchantAccountId): ?ListReportExecutionsResponse {
+                $response->next = function () use ($sdk, $responseData, $request): ?ListReportExecutionsResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -583,10 +583,10 @@ class Executions
                     }
 
                     return $sdk->listIndividual(
-                        reportId: $reportId,
+                        reportId: $request != null ? $request->reportId : '',
                         cursor: $nextCursor,
-                        limit: $limit,
-                        merchantAccountId: $merchantAccountId,
+                        limit: $request != null ? $request->limit : null,
+                        merchantAccountId: $request != null ? $request->merchantAccountId : null,
                     );
                 };
 
