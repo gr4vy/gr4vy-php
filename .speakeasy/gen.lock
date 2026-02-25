@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: c83837f405f224896edbd3e0b7a2a736
+  docChecksum: e153bd5408089edae253218a821dcb6c
   docVersion: 1.0.0
-  speakeasyVersion: 1.726.0
-  generationVersion: 2.839.0
-  releaseVersion: 1.5.30
-  configChecksum: 5777f619ddf01dfd1b06923d66dae5cf
+  speakeasyVersion: 1.730.0
+  generationVersion: 2.844.2
+  releaseVersion: 1.5.31
+  configChecksum: 40b3fb633a668627ac6fea2227e3ed13
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 9428a612-ce84-42e8-a888-f010e6c8a82b
-  pristine_commit_hash: b45ded4d634aa93b9bfba1ec7a464dd82ec70169
-  pristine_tree_hash: 36de422be537bdb5f0861a32ccb51485aca2fea3
+  generation_id: 822b36ae-d197-4cf4-a14f-8448b4b77d8c
+  pristine_commit_hash: 13444ae89f91f32cd0924080ea0b70bfcd9fc176
+  pristine_tree_hash: 8aaa1495a9f014ccd7ce74fc3d7d5f888d034c7c
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -2684,8 +2684,8 @@ trackedFiles:
     pristine_git_object: aabb5608c9d6a5c1c89bd24989c5d86dce5e6717
   src/DlocalPIXSubscriptionAmountOptions.php:
     id: c7e7e974b3fb
-    last_write_checksum: sha1:76434fd34a930fc819f66c9fbd3ac2214862f1ca
-    pristine_git_object: b877467b522bc9f16ace003cde28b7f0de4d7ec2
+    last_write_checksum: sha1:0d61e7414d69e1aed07b4cca1b241513c582193e
+    pristine_git_object: c079869b13ee839d034dd5a03e78bebde0676bad
   src/DlocalPIXSubscriptionOptions.php:
     id: f45db12eafa1
     last_write_checksum: sha1:29b5de2a9c36d7a4db79b01e4bc253dc4bdbaa2b
@@ -3800,8 +3800,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:daecbf76a79970c689e1afaba9ae62e2acc758c5
-    pristine_git_object: 3ba5a1fb290dc5ca06d8550f86de21428e09b510
+    last_write_checksum: sha1:3b5e5c7c5d1540f3dead0d4d0cec86bd5b5b2edf
+    pristine_git_object: 588e4444f3ce1a93dcaeb80e936bc71a5f8494d1
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -7971,7 +7971,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->dlocalPix` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->dlocalPix` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->dlocalPix` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->dlocalPix->subscription->amount->minValue` **Changed**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->dlocalPix->subscription->amount->minValue` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->dlocalPix->subscription->amount->minValue` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

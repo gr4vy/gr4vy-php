@@ -22,10 +22,10 @@ class DlocalPIXSubscriptionAmountOptions
     /**
      * Minimum payer enrollment limit, not minimum recurring charge amount.
      *
-     * @var string $minValue
+     * @var ?string $minValue
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('min_value')]
-    public string $minValue;
+    public ?string $minValue;
 
     /**
      * Fixed subscription amount in local currency. Required only for fixed amount subscriptions depending on the payment method.
@@ -38,11 +38,11 @@ class DlocalPIXSubscriptionAmountOptions
 
     /**
      * @param  string  $type
-     * @param  string  $minValue
+     * @param  ?string  $minValue
      * @param  ?string  $value
      * @phpstan-pure
      */
-    public function __construct(string $type, string $minValue, ?string $value = null)
+    public function __construct(string $type, ?string $minValue = null, ?string $value = null)
     {
         $this->type = $type;
         $this->minValue = $minValue;
