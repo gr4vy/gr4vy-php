@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 9bdc12406a6c1337055e74ec7ed4521e
+  docChecksum: 3a8473304e3a27a39def20fa7d8d6ad1
   docVersion: 1.0.0
   speakeasyVersion: 1.730.1
   generationVersion: 2.844.3
-  releaseVersion: 1.5.32
-  configChecksum: 2525eec9dd7bf175399ea3bf9b81156b
+  releaseVersion: 1.5.33
+  configChecksum: c48ace1ae68fcba1e0babc9bfc8fed37
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 449ff0a8-8f9c-48b7-b736-75035759f326
-  pristine_commit_hash: b12136dc22af02e1f08a8cabdf244ce6599c23f7
-  pristine_tree_hash: 29de6415f29b8c375022a92aa439ad8f409e0d8a
+  generation_id: 0c49c228-497d-4e06-bc9d-407767027a19
+  pristine_commit_hash: ab9368ec23d5aa7710eaecbcdc2b620a38df7a8d
+  pristine_tree_hash: 7b69c2cfc83d516d3bc6a61b30496065414b5ff6
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:389a931b964206002ab6fa1c0e3d96052dc92f20
-    pristine_git_object: 86c639d2a57b928d7361b7a4f3b8b53e6b28cb0c
+    last_write_checksum: sha1:d78a7fc25c6bf1db66aa92e1388e3c7e4c62a125
+    pristine_git_object: 0ce6ef110fbe1e87dd9636a5437497056f784f61
   docs/AccountUpdaterInquirySummary.md:
     id: 58cff5faa9e6
     last_write_checksum: sha1:0d6ca1aacf9690bfbfe59fac9f1c2caeb9f46be6
@@ -3800,8 +3800,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:0b60362fbe64b514af9773bfb31d4714f50746a8
-    pristine_git_object: 410ac28fb1e7ba63754a5786af9d7d6c0eac8375
+    last_write_checksum: sha1:7bbd35618af24206f97987b0a4188955945b521e
+    pristine_git_object: 1433e40ef57c7b4f365358b8b17faeec3a8d9c5a
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
