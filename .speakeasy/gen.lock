@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: e153bd5408089edae253218a821dcb6c
+  docChecksum: 9bdc12406a6c1337055e74ec7ed4521e
   docVersion: 1.0.0
-  speakeasyVersion: 1.730.0
-  generationVersion: 2.844.2
-  releaseVersion: 1.5.31
-  configChecksum: 40b3fb633a668627ac6fea2227e3ed13
+  speakeasyVersion: 1.730.1
+  generationVersion: 2.844.3
+  releaseVersion: 1.5.32
+  configChecksum: 2525eec9dd7bf175399ea3bf9b81156b
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php
   published: true
 persistentEdits:
-  generation_id: 822b36ae-d197-4cf4-a14f-8448b4b77d8c
-  pristine_commit_hash: 13444ae89f91f32cd0924080ea0b70bfcd9fc176
-  pristine_tree_hash: 8aaa1495a9f014ccd7ce74fc3d7d5f888d034c7c
+  generation_id: 449ff0a8-8f9c-48b7-b736-75035759f326
+  pristine_commit_hash: b12136dc22af02e1f08a8cabdf244ce6599c23f7
+  pristine_tree_hash: 29de6415f29b8c375022a92aa439ad8f409e0d8a
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:119d02c1317fe35145e1b8a71a608a4a26a9276a
-    pristine_git_object: 30b029446ba395fcbfd424279215e39426c3f3fe
+    last_write_checksum: sha1:389a931b964206002ab6fa1c0e3d96052dc92f20
+    pristine_git_object: 86c639d2a57b928d7361b7a4f3b8b53e6b28cb0c
   docs/AccountUpdaterInquirySummary.md:
     id: 58cff5faa9e6
     last_write_checksum: sha1:0d6ca1aacf9690bfbfe59fac9f1c2caeb9f46be6
@@ -3800,8 +3800,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:3b5e5c7c5d1540f3dead0d4d0cec86bd5b5b2edf
-    pristine_git_object: 588e4444f3ce1a93dcaeb80e936bc71a5f8494d1
+    last_write_checksum: sha1:0b60362fbe64b514af9773bfb31d4714f50746a8
+    pristine_git_object: 410ac28fb1e7ba63754a5786af9d7d6c0eac8375
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -7971,7 +7971,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->dlocalPix->subscription->amount->minValue` **Changed**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->dlocalPix->subscription->amount->minValue` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->dlocalPix->subscription->amount->minValue` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
