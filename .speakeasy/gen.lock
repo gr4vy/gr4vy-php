@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: af2e488635ae1946208d8c985918189b
+  docChecksum: 9ad0ee4cb2891f7081e352631b096be7
   docVersion: 1.0.0
-  speakeasyVersion: 1.740.0
-  generationVersion: 2.846.4
-  releaseVersion: 1.5.37
-  configChecksum: 06934451aa46b5bc87f8bd11d6c3a7ea
+  speakeasyVersion: 1.750.0
+  generationVersion: 2.856.1
+  releaseVersion: 1.5.38
+  configChecksum: e811ee033aca1f28ff471806e97a33f4
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 9be3f89e-bec8-4aca-8418-405850cbdb43
-  pristine_commit_hash: 4346a8e91121fd1498f3e735a339e890ea2e803a
-  pristine_tree_hash: 3fcfaf205af54aebf0a9d8a9b3873a2e74e3484c
+  generation_id: 3b31a7bb-f100-406b-a799-f635b765a40b
+  pristine_commit_hash: 1d0819d95c4405873eace2c75db11d56089878f1
+  pristine_tree_hash: 737d2c12d444f23232ceea1988faad8dbbdab6a0
 features:
   php:
     constsAndDefaults: 0.2.2
-    core: 3.9.17
+    core: 3.9.18
     flattening: 2.81.1
     globalSecurity: 2.81.10
     globalSecurityFlattening: 0.1.2
@@ -3816,8 +3816,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:10a2a5a60ec476fa425a843dc01a8b91b66cec6a
-    pristine_git_object: ba751f78fefc011eb6e46f3644d501174929e073
+    last_write_checksum: sha1:6435900c7ef735238d40b15d22d150ee6ee288d0
+    pristine_git_object: aa08065d0e9c7b530c72b4288246e22dccb3c230
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -7987,7 +7987,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->riskifiedAntiFraud` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->riskifiedAntiFraud` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->riskifiedAntiFraud` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
