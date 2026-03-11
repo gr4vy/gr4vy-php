@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 82ab5ab9cd4c4924de2c14752c35736a
+  docChecksum: 5b8e49e42fa04e5b97c4fb889ada87da
   docVersion: 1.0.0
-  speakeasyVersion: 1.750.0
-  generationVersion: 2.856.1
-  releaseVersion: 1.5.39
-  configChecksum: 87612381327f78c0bfd391d619b6b7e1
+  speakeasyVersion: 1.751.2
+  generationVersion: 2.859.0
+  releaseVersion: 1.5.40
+  configChecksum: 191eef2474bfed0a3aaf3321c37e43c8
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 091a356f-72b5-4c8b-9b73-ac500591804f
-  pristine_commit_hash: f6b0300740a50a4533f29242643d3f93643f331f
-  pristine_tree_hash: a83b0d0b4027d4c107aab4acd765a59e33e2357d
+  generation_id: f184a65e-5d27-45e0-8b6f-e196fcadc161
+  pristine_commit_hash: 6f393d1d9b435a59e84275edd92d9cedb647e778
+  pristine_tree_hash: a2fdd563e7b87e5bc76c98b3d9dab9b1a5e6a331
 features:
   php:
     constsAndDefaults: 0.2.2
-    core: 3.9.18
+    core: 3.9.20
     flattening: 2.81.1
     globalSecurity: 2.81.10
     globalSecurityFlattening: 0.1.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:d78a7fc25c6bf1db66aa92e1388e3c7e4c62a125
-    pristine_git_object: 0ce6ef110fbe1e87dd9636a5437497056f784f61
+    last_write_checksum: sha1:1478dc64782a152f303b7e72cb56b3cbeea2531f
+    pristine_git_object: 687ca15af55789ad384a2001324e3724b1000832
   docs/AccountUpdaterInquirySummary.md:
     id: 58cff5faa9e6
     last_write_checksum: sha1:0d6ca1aacf9690bfbfe59fac9f1c2caeb9f46be6
@@ -3172,8 +3172,8 @@ trackedFiles:
     pristine_git_object: a3e32c0f237e0222b84b198ab6c06da54050d5ea
   src/Hooks/Hooks.php:
     id: 6cf174b736b4
-    last_write_checksum: sha1:55b7b176cb58c295b1a1b271bc564124f97592d1
-    pristine_git_object: cb9c06a2f845f0f2f8913abf6b6d37f5f687d5a9
+    last_write_checksum: sha1:1e3d56b6d46e2f0e5c0a9786e2a06983035a7f4d
+    pristine_git_object: 24031f35e934e5448522188fde9eb4b11a66a2c9
   src/Hooks/SDKHooks.php:
     id: d31b27b84f0b
     last_write_checksum: sha1:fb128c2ce6bdb082f27c463c63cee824061ca932
@@ -3816,8 +3816,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:c80e07214a20a80fee2c6c874495a8b5895f3aea
-    pristine_git_object: 9cde41a0b773f37b58dfe71b4293939d6e14f534
+    last_write_checksum: sha1:a88d910b92b0cbb345e2544793009745fa02eeae
+    pristine_git_object: e52f4941fdaed5b6bbb09d5256c4092b61c4ba53
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
