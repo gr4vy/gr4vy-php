@@ -13,10 +13,10 @@ class CreatePaymentMethodRequest
 {
     /**
      *
-     * @var CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate $requestBody
+     * @var CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate|ACHBankPaymentMethodCreate|BACSBankPaymentMethodCreate|SEPABankPaymentMethodCreate $requestBody
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate $requestBody;
+    public CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate|ACHBankPaymentMethodCreate|BACSBankPaymentMethodCreate|SEPABankPaymentMethodCreate $requestBody;
 
     /**
      * The ID of the merchant account to use for this request.
@@ -27,11 +27,11 @@ class CreatePaymentMethodRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate  $requestBody
+     * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate|ACHBankPaymentMethodCreate|BACSBankPaymentMethodCreate|SEPABankPaymentMethodCreate  $requestBody
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate $requestBody, ?string $merchantAccountId = null)
+    public function __construct(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate|ACHBankPaymentMethodCreate|BACSBankPaymentMethodCreate|SEPABankPaymentMethodCreate $requestBody, ?string $merchantAccountId = null)
     {
         $this->requestBody = $requestBody;
         $this->merchantAccountId = $merchantAccountId;

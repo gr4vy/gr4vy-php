@@ -39,3 +39,30 @@ Gr4vy\CheckoutSessionPaymentMethodCreate $value = /* values here */
 Gr4vy\PlaidPaymentMethodCreate $value = /* values here */
 ```
 
+### `Gr4vy\ACHBankPaymentMethodCreate`
+
+```php
+/**
+* @var ACHBankPaymentMethodCreate
+*/
+Gr4vy\ACHBankPaymentMethodCreate $value = /* values here */
+```
+
+### `Gr4vy\BACSBankPaymentMethodCreate`
+
+```php
+/**
+* @var BACSBankPaymentMethodCreate
+*/
+Gr4vy\BACSBankPaymentMethodCreate $value = /* values here */
+```
+
+### `Gr4vy\SEPABankPaymentMethodCreate`
+
+```php
+/**
+* @var SEPABankPaymentMethodCreate
+*/
+Gr4vy\SEPABankPaymentMethodCreate $value = /* values here */
+```
+
