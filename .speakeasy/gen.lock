@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 5ba90293287492000709c797cf99696d
+  docChecksum: a3d5c8382937917b21fb106241b328d4
   docVersion: 1.0.0
-  speakeasyVersion: 1.751.3
+  speakeasyVersion: 1.752.0
   generationVersion: 2.859.2
-  releaseVersion: 1.5.41
-  configChecksum: 75fa8a3acae7f24807bc42313f3bf715
+  releaseVersion: 1.5.42
+  configChecksum: e8b7ad9dde50215824253dde6c0b297e
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: ee780c21-2b4b-431d-840e-16e61b94037b
-  pristine_commit_hash: 950f83196de1f77713b8e3daddcf4f577793cf76
-  pristine_tree_hash: e1c507f77ed96be6eacfe448041beaf03581cfe9
+  generation_id: 0492c9c8-d980-42cb-ae61-3ad65599c2a7
+  pristine_commit_hash: c507bfc4357f052e3d4200047fa62c7d77664d89
+  pristine_tree_hash: 4c7c1d7f2f40ada31462c93a15a8161726e141ee
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -46,6 +46,10 @@ trackedFiles:
     id: 3957b91a0d84
     last_write_checksum: sha1:1478dc64782a152f303b7e72cb56b3cbeea2531f
     pristine_git_object: 687ca15af55789ad384a2001324e3724b1000832
+  docs/ACHBankPaymentMethodCreate.md:
+    id: 5b5ed698372f
+    last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
+    pristine_git_object: ff5a9e264c55864f0576e9a812d3db659209a595
   docs/AccountUpdaterInquirySummary.md:
     id: 58cff5faa9e6
     last_write_checksum: sha1:0d6ca1aacf9690bfbfe59fac9f1c2caeb9f46be6
@@ -162,14 +166,22 @@ trackedFiles:
     id: 2b884f77568a
     last_write_checksum: sha1:afbee12f641d2331ef20c8ccd9cb8b6a25c08750
     pristine_git_object: 875d7727aff353da130638d859e88bbeceef2246
+  docs/BACSBankPaymentMethodCreate.md:
+    id: 078dadd79816
+    last_write_checksum: sha1:63063725a5f5553742da3ec84f947017ed56130d
+    pristine_git_object: 5ddcee8bdc66d6da214780afb053d2dc03fd7364
+  docs/BankAccountHolder.md:
+    id: 37077e489eb4
+    last_write_checksum: sha1:b8aba36c18fac38431be3f02e70974843bde4f3d
+    pristine_git_object: b60a0014305e661cc4c9ef3a6ba6145d2a19fc16
   docs/BillingDetails.md:
     id: "210911487873"
     last_write_checksum: sha1:93cd0e6152466d5acb86529133177b39e715975d
     pristine_git_object: 6c275ee36305bb5d8061584ca504ce52f6091d4d
   docs/Body.md:
     id: 565f2d033e82
-    last_write_checksum: sha1:831da9f1d4f899d56f7b200e6294f16a2230679a
-    pristine_git_object: b4a7a5e542d1b98d8f5317f4c6b495f19e279709
+    last_write_checksum: sha1:87a48f1a75c0f5ff6eeca80f138b3e4ffb77d7ff
+    pristine_git_object: d0aba842790ca067e1c5e2d34fda346bb7299df8
   docs/BraintreeDynamicDataFieldsOptions.md:
     id: 4f7ba49cc125
     last_write_checksum: sha1:7da26cc19ba1e025e6f10fde31b616977ff9e047
@@ -376,8 +388,8 @@ trackedFiles:
     pristine_git_object: 5bdd8278fb8513bee0067907b802dcba8aef1d1b
   docs/CreatePaymentMethodRequest.md:
     id: 502e135ddb27
-    last_write_checksum: sha1:4b8fd01fefade0a92852c06ab05539016a43f154
-    pristine_git_object: be6d20aa53da0d1a0d533c24a1641ca75645f358
+    last_write_checksum: sha1:f45f3bd425faeebde6aa7196685f17eafb353816
+    pristine_git_object: 4e2401a7e5ba2e2c937b539afe726a1150454a5a
   docs/CreatePaymentMethodResponse.md:
     id: 7727d35a5df0
     last_write_checksum: sha1:2f6ae59aaaa2d67e41c45d4d8573167c2ac7f44f
@@ -1574,6 +1586,10 @@ trackedFiles:
     id: 2c3daea16602
     last_write_checksum: sha1:22915e13c33fe036592cd39990e43c8bed201ded
     pristine_git_object: b74507a65a5a9a4c605c20e19b1c7bbd41c687f5
+  docs/SEPABankPaymentMethodCreate.md:
+    id: b1ec1d10539d
+    last_write_checksum: sha1:8a4a9a3e9a1451acf6352ac07b401f87a5aba2a3
+    pristine_git_object: ce682fb18f635861055ddb816d0a12ebb0b56934
   docs/Security.md:
     id: 70e8af662682
     last_write_checksum: sha1:aa0182c751204d3c781813431eb4f885eb31a0aa
@@ -2024,8 +2040,8 @@ trackedFiles:
     pristine_git_object: d8498487d49f3b0cb7ec949aae75964e164c7196
   docs/sdks/paymentmethodssdk/README.md:
     id: d1b6df07187c
-    last_write_checksum: sha1:2321f6e1a617453fee3d8a9fd559feda4d7b2431
-    pristine_git_object: 7cbe9d39deb7bc3d5f1350e8aea291b3b6edbf0c
+    last_write_checksum: sha1:3f5c3f9275e23ff80f24a4856ec0ddf5b8301a06
+    pristine_git_object: faae4fd7e0df5a46f49fc6db7fe2e8091936e231
   docs/sdks/paymentoptionssdk/README.md:
     id: 11172237c4a0
     last_write_checksum: sha1:e3b141e9dddf4f82729f87859d2d889f50e67f98
@@ -2094,6 +2110,10 @@ trackedFiles:
     id: 6615ad7e99dd
     last_write_checksum: sha1:2c0586f29783d1cdf80ea09f3ed0f4693329f3e6
     pristine_git_object: 40eb9bfbea10383ae16ce195da9113bb2abfc586
+  src/ACHBankPaymentMethodCreate.php:
+    id: 0d0c5b290e9a
+    last_write_checksum: sha1:e63c547d6fc288d442f072df7add735dd9b672db
+    pristine_git_object: c23d4c15d33f7fb2deaee5363fb029f3236d755f
   src/AccountUpdater.php:
     id: a02c5bfa3125
     last_write_checksum: sha1:7ed1e6fa581f0cb852c8af026bd8d4125ee3993b
@@ -2226,10 +2246,18 @@ trackedFiles:
     id: ce3f56c1728f
     last_write_checksum: sha1:622d4b8dd1d222a59a1b8f2062bcc3a190c66369
     pristine_git_object: b44bbc11d8e2a0326251db47fc542a523e089f10
+  src/BACSBankPaymentMethodCreate.php:
+    id: c25562946f2e
+    last_write_checksum: sha1:3e68533c3a5e9e7dfd5bedbd6744b7fc1511b333
+    pristine_git_object: 4b89073b5285496a0a913b65922c5d41869b0faf
   src/Balances.php:
     id: 86867b9edd7d
     last_write_checksum: sha1:d9307491e07be64949005062ab722cbc95c51b66
     pristine_git_object: 74d6e8cc7516734a6f5635823d5f67af8540eed5
+  src/BankAccountHolder.php:
+    id: f8668ee41491
+    last_write_checksum: sha1:7b1aee4c29157b941591f1d1b711ca1612b10651
+    pristine_git_object: 7ed5a23fb811cf12f24eadd2a122bd69dc5a06f8
   src/BillingDetails.php:
     id: bda4e9330099
     last_write_checksum: sha1:e3fec5306772f9eaef3545c3504df20385867ade
@@ -2460,8 +2488,8 @@ trackedFiles:
     pristine_git_object: fad51feb24badc984de389d1c7fee76e8de58970
   src/CreatePaymentMethodRequest.php:
     id: 60d174eddf76
-    last_write_checksum: sha1:72f86331f013d232c055994e467474e677739673
-    pristine_git_object: 2ddb4fd958af7b55447b165810aba84642d71bde
+    last_write_checksum: sha1:58b1b07487fd1f908b039a3604cc56de14f2cce3
+    pristine_git_object: abcbaa7886567fbfdb4343b876b52b58d6cc3ca3
   src/CreatePaymentMethodResponse.php:
     id: 7d740d8a6340
     last_write_checksum: sha1:c7d61eaab85f2e619b4f73d268698be90c4c474b
@@ -3572,8 +3600,8 @@ trackedFiles:
     pristine_git_object: a1ede609c93e759258638f8ae3c8fb693d5e988b
   src/PaymentMethodsSDK.php:
     id: f337cac363a0
-    last_write_checksum: sha1:dbef972caefd209cfeb9698600bdb5f76fb04a98
-    pristine_git_object: a590d1d996aecee3ade2bbf0f646d5a954306fbe
+    last_write_checksum: sha1:feea25aa76540cbcbcc75a71b7baa44a3fec02dc
+    pristine_git_object: 2ff26ca9a00985943cde92059a2731eb01baad83
   src/PaymentOption.php:
     id: 6deb5864e3a6
     last_write_checksum: sha1:a24a018a8348d392c8de520ca4a5a5bc8ba197cd
@@ -3816,8 +3844,12 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:c18a42c77ce38eddb1a9c4a618e5d88e299441b6
-    pristine_git_object: ed2749c3ee7a7c0d79bcb4015e54ea10cc2c4490
+    last_write_checksum: sha1:7d3b7e5bc5ec72a0f26e83b38ecf71a099fca150
+    pristine_git_object: 083bb59fb664a947d733315e481aeae52294a999
+  src/SEPABankPaymentMethodCreate.php:
+    id: fe251daedf19
+    last_write_checksum: sha1:122a27d29a28dfd26fc8a62133455308aedb195a
+    pristine_git_object: bd66231c428e915aeae2a9480b68c42847ddc6ef
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
@@ -7987,7 +8019,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->adyenPix` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->adyenPix` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->adyenPix` **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->payment-methods->create()`:  `requestBody` **Changed**
 generatedFiles:
   - .gitattributes
   - USAGE.md
