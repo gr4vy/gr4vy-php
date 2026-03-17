@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: a3d5c8382937917b21fb106241b328d4
+  docChecksum: 383b24dbc8c09500584941619675d2d3
   docVersion: 1.0.0
-  speakeasyVersion: 1.752.0
-  generationVersion: 2.859.2
-  releaseVersion: 1.5.42
-  configChecksum: e8b7ad9dde50215824253dde6c0b297e
+  speakeasyVersion: 1.755.1
+  generationVersion: 2.865.2
+  releaseVersion: 1.5.43
+  configChecksum: a439b4a760b244fdb6c8319dbf47ffe1
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 0492c9c8-d980-42cb-ae61-3ad65599c2a7
-  pristine_commit_hash: c507bfc4357f052e3d4200047fa62c7d77664d89
-  pristine_tree_hash: 4c7c1d7f2f40ada31462c93a15a8161726e141ee
+  generation_id: 098abb84-5eec-4ed5-922e-5737ffd2a5c8
+  pristine_commit_hash: 0e9dd15c3d08e5ac56625aea2639501250bd1690
+  pristine_tree_hash: 819e15b38b0538f49d6198f30d822a49f4ed1e56
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1028,8 +1028,8 @@ trackedFiles:
     pristine_git_object: 4d66b7df72ad8c421b3c7fb3b9ecb86579b4e6a6
   docs/ListBuyerPaymentMethodsRequest.md:
     id: ead5172809b3
-    last_write_checksum: sha1:03a9160fa1ace3de1224ebd742b6ea0c9b511ca1
-    pristine_git_object: 1f2dbdfc1d1c0af6ff2b37829374f65f996a4ee1
+    last_write_checksum: sha1:7978585ca49931f79d71e7825ad31e09d778f1b1
+    pristine_git_object: 130378acb69bec6e1df6a0a4176a7edb6d9ee541
   docs/ListBuyerPaymentMethodsResponse.md:
     id: 2488909ed748
     last_write_checksum: sha1:f782dc6a7e49faa4dd7bbe83bda7fc6ecd70d20e
@@ -1618,6 +1618,10 @@ trackedFiles:
     id: bab1fc21ce1e
     last_write_checksum: sha1:9880982de41d3a8bbb4d22177df9d5d5551d665d
     pristine_git_object: bd38d427da75f934c4c209b01a6e6771e61f7620
+  docs/SortBy.md:
+    id: 5a30d5562bbc
+    last_write_checksum: sha1:36472f9d1fd7b367df288e639c922f881f4449d0
+    pristine_git_object: 7a2b6ef3cfdeaa0b727d7caa1c3efc935bcc3388
   docs/Spec.md:
     id: ddff6c01efbe
     last_write_checksum: sha1:5079556c38d9e02f4725111d496923a092188638
@@ -1688,8 +1692,8 @@ trackedFiles:
     pristine_git_object: 236fb760fc0763a7bec931fcde47ed507c484519
   docs/ThreeDSecureScenarioOutcome.md:
     id: 66cb59bb7ef8
-    last_write_checksum: sha1:77afbd2ff44a2ef6702d355a46d5602483f81b04
-    pristine_git_object: bc2e94230cbeccd74f2fd3e1b9b7242365c904bb
+    last_write_checksum: sha1:e545d8ceefe104ece4f1808b7cce41ae4b19bb34
+    pristine_git_object: b59a23bc426ec947c751d830040d927e19da86ea
   docs/ThreeDSecureScenarioOutcomeAuthentication.md:
     id: 4fdfee16dedf
     last_write_checksum: sha1:b8ffb77ceb33759c2794488c9078d81c915c1dc5
@@ -1976,8 +1980,8 @@ trackedFiles:
     pristine_git_object: 4aa76c0d153f8e284a72e7767544a2b8d929868c
   docs/sdks/buyerspaymentmethods/README.md:
     id: 4aff3957cf89
-    last_write_checksum: sha1:7244a2d06e732dd82d6eb3e3b6e2b1307a749394
-    pristine_git_object: 34b669e1d87810fc0e871249a6186e23950f9147
+    last_write_checksum: sha1:b21c3e88230f16625ab32b05eec1682992a83100
+    pristine_git_object: dab44be4419446a103a704fc8a8b19a2f7b47f0b
   docs/sdks/buyerssdk/README.md:
     id: 8921e2d58de1
     last_write_checksum: sha1:44237850571d72e5db71edf8a4880ca975ea7cc6
@@ -2080,8 +2084,8 @@ trackedFiles:
     pristine_git_object: ca07c5170376882aabfa50fe1d7b54f768705dcd
   docs/sdks/threedsscenarios/README.md:
     id: 81ff4c3f8215
-    last_write_checksum: sha1:2f3541836b4c69fe621bb94c3ce55785dff66238
-    pristine_git_object: 29c5b62b138ef00ab9f0c58fe2700d0104e4f0f2
+    last_write_checksum: sha1:9d04eafa861ffdb1826b586b798c9a93d49563df
+    pristine_git_object: 546b771fe67e0e9e9f94d0f2efef514063ca31ba
   docs/sdks/transactions/README.md:
     id: 85592abe3c6b
     last_write_checksum: sha1:b918213b5986dc5dcff93ad82d39f1213b5b57a7
@@ -3252,8 +3256,8 @@ trackedFiles:
     pristine_git_object: cdfabcddbf74412c4dc87241b98c8da63264387e
   src/ListBuyerPaymentMethodsRequest.php:
     id: 5000f3303594
-    last_write_checksum: sha1:aae27e927e93429780562cabfbb4223c15fe7d31
-    pristine_git_object: 25ef6114889155f0ec99a9fba8c5f8461dcfea4d
+    last_write_checksum: sha1:d8cc5ca46930a7e841f3163ab099a7385c445209
+    pristine_git_object: 217b555eaa8ebc1697a04646b20b9296cb2e15fc
   src/ListBuyerPaymentMethodsResponse.php:
     id: 195b19814a09
     last_write_checksum: sha1:5a384a53e7f818f53f8ee2d77465e9284eda733c
@@ -3844,8 +3848,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:7d3b7e5bc5ec72a0f26e83b38ecf71a099fca150
-    pristine_git_object: 083bb59fb664a947d733315e481aeae52294a999
+    last_write_checksum: sha1:bbe50feb5b49f772033c12a3216f602a2d4c6440
+    pristine_git_object: f76545790e1a9f068e77d51e92c88b3cce656afc
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:122a27d29a28dfd26fc8a62133455308aedb195a
@@ -3882,6 +3886,10 @@ trackedFiles:
     id: 4f162fc5f8ed
     last_write_checksum: sha1:5406471c817b7957aa77ee15700155602de355e2
     pristine_git_object: 45111741733fa35763434edde383adcb909cdeb3
+  src/SortBy.php:
+    id: b528910ab465
+    last_write_checksum: sha1:eee38e96a210034dc327ee542baf04f7de0347df
+    pristine_git_object: bb81a7a480b8ca0a807c39943ae4fece3147bebb
   src/StatementDescriptor.php:
     id: 198956fc20da
     last_write_checksum: sha1:62e25dd4560d784ea3444254cbf5dba5467766c0
@@ -3944,8 +3952,8 @@ trackedFiles:
     pristine_git_object: c40544a9d360ef1b807a7d132f9c5757476d6332
   src/ThreeDSecureScenarioOutcome.php:
     id: 0edd47406ffa
-    last_write_checksum: sha1:c3fd59c5f2e562409a4219f99e6a3bf2e8166865
-    pristine_git_object: 3979cc85ca58841ecd7eddd8f4b46b15c996a5a4
+    last_write_checksum: sha1:84100f285d200fd4e55267a9956cb7755f701b0c
+    pristine_git_object: 023940c53ec731cf9efc5a806408c31d02770211
   src/ThreeDSecureScenarioOutcomeAuthentication.php:
     id: daa9a2ed9882
     last_write_checksum: sha1:2144550ee1682d3ceea9dc99fa88c557494a6c8d
@@ -7761,10 +7769,10 @@ examples:
   create_three_ds_scenario:
     speakeasy-default-create-three-ds-scenario:
       requestBody:
-        application/json: {"conditions": {}, "outcome": {"version": "2.2.0", "authentication": {"transaction_status": "Y"}}}
+        application/json: {"conditions": {}, "outcome": {"authentication": {"transaction_status": "Y"}}}
       responses:
         "201":
-          application/json: {"type": "three-d-secure-scenario", "id": "550e8400-e29b-41d4-a716-446655440000", "merchant_account_id": "merchant-account-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "conditions": {}, "outcome": {"version": "2.2.0", "authentication": {"transaction_status": "Y"}}}
+          application/json: {"type": "three-d-secure-scenario", "id": "550e8400-e29b-41d4-a716-446655440000", "merchant_account_id": "merchant-account-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "conditions": {}, "outcome": {"authentication": {"transaction_status": "Y"}}}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -7830,7 +7838,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"type": "three-d-secure-scenario", "id": "550e8400-e29b-41d4-a716-446655440000", "merchant_account_id": "merchant-account-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "conditions": {}, "outcome": {"version": "2.2.0", "authentication": {"transaction_status": "Y"}}}
+          application/json: {"type": "three-d-secure-scenario", "id": "550e8400-e29b-41d4-a716-446655440000", "merchant_account_id": "merchant-account-12345", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "conditions": {}, "outcome": {"authentication": {"transaction_status": "Y"}}}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -8019,9 +8027,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes:
-  * `sdk->payment-methods->create()`:  `requestBody` **Changed**
+releaseNotes: "## Php SDK Changes:\n* `sdk->three-ds-scenarios->create()`: \n  *  `request.threeDSecureScenarioCreate->outcome->version` **Changed**\n  *  `response.outcome->version` **Changed** (Breaking ⚠️)\n* `sdk->three-ds-scenarios->list()`:  `response.items[]->outcome->version` **Changed** (Breaking ⚠️)\n* `sdk->three-ds-scenarios->update()`: \n  *  `request.threeDSecureScenarioUpdate->outcome->version` **Changed**\n  *  `response.outcome->version` **Changed** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

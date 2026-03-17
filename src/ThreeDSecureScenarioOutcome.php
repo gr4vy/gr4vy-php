@@ -12,20 +12,21 @@ namespace Gr4vy;
 class ThreeDSecureScenarioOutcome
 {
     /**
-     * The version of 3DS which will be simulated.
-     *
-     * @var string $version
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('version')]
-    public string $version;
-
-    /**
      *
      * @var ThreeDSecureScenarioOutcomeAuthentication $authentication
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('authentication')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ThreeDSecureScenarioOutcomeAuthentication')]
     public ThreeDSecureScenarioOutcomeAuthentication $authentication;
+
+    /**
+     * The version of 3DS which will be simulated.
+     *
+     * @var ?string $version
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('version')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $version = null;
 
     /**
      * 3DS result value. Required if authentication status is "C".
@@ -38,15 +39,15 @@ class ThreeDSecureScenarioOutcome
     public ?ThreeDSecureScenarioOutcomeResult $result = null;
 
     /**
-     * @param  string  $version
      * @param  ThreeDSecureScenarioOutcomeAuthentication  $authentication
+     * @param  ?string  $version
      * @param  ?ThreeDSecureScenarioOutcomeResult  $result
      * @phpstan-pure
      */
-    public function __construct(string $version, ThreeDSecureScenarioOutcomeAuthentication $authentication, ?ThreeDSecureScenarioOutcomeResult $result = null)
+    public function __construct(ThreeDSecureScenarioOutcomeAuthentication $authentication, ?string $version = null, ?ThreeDSecureScenarioOutcomeResult $result = null)
     {
-        $this->version = $version;
         $this->authentication = $authentication;
+        $this->version = $version;
         $this->result = $result;
     }
 }
