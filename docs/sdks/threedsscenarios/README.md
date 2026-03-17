@@ -33,7 +33,6 @@ $sdk = Gr4vy\SDK::builder()
 $threeDSecureScenarioCreate = new Gr4vy\ThreeDSecureScenarioCreate(
     conditions: new Gr4vy\ThreeDSecureScenarioConditions(),
     outcome: new Gr4vy\ThreeDSecureScenarioOutcome(
-        version: '2.2.0',
         authentication: new Gr4vy\ThreeDSecureScenarioOutcomeAuthentication(
             transactionStatus: 'Y',
         ),
