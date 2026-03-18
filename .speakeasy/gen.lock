@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 383b24dbc8c09500584941619675d2d3
+  docChecksum: 9ede7ba78649e38c4aa85a32e8783fdf
   docVersion: 1.0.0
-  speakeasyVersion: 1.755.1
-  generationVersion: 2.865.2
-  releaseVersion: 1.5.43
-  configChecksum: a439b4a760b244fdb6c8319dbf47ffe1
+  speakeasyVersion: 1.757.1
+  generationVersion: 2.866.2
+  releaseVersion: 1.5.44
+  configChecksum: 73c8600b507a52882f5c358372199262
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 098abb84-5eec-4ed5-922e-5737ffd2a5c8
-  pristine_commit_hash: 0e9dd15c3d08e5ac56625aea2639501250bd1690
-  pristine_tree_hash: 819e15b38b0538f49d6198f30d822a49f4ed1e56
+  generation_id: 2c56a6fe-bb75-4e3c-9e27-3d2bff261f26
+  pristine_commit_hash: 05f3cbed456ddaa33b42e7c55d85fe113f38076f
+  pristine_tree_hash: f3d8691c5abf1d91aa60efb5e1732cff254d6930
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -174,6 +174,10 @@ trackedFiles:
     id: 37077e489eb4
     last_write_checksum: sha1:b8aba36c18fac38431be3f02e70974843bde4f3d
     pristine_git_object: b60a0014305e661cc4c9ef3a6ba6145d2a19fc16
+  docs/BaseBankPaymentMethodCreate.md:
+    id: f366149879a2
+    last_write_checksum: sha1:0094be33ce331d4281ba7c0ea48b0fadd8746627
+    pristine_git_object: b5444a9ad33642a205ea4fd9583366ae4e45ba28
   docs/BillingDetails.md:
     id: "210911487873"
     last_write_checksum: sha1:93cd0e6152466d5acb86529133177b39e715975d
@@ -1756,12 +1760,12 @@ trackedFiles:
     pristine_git_object: b9c6e92c1b19cdbe2825f415c674a4d777f51b6c
   docs/TransactionCreate.md:
     id: 66c310d46bd7
-    last_write_checksum: sha1:0829d4b8e3efd418aa56e216475441d63816358f
-    pristine_git_object: eb0ef859be61c16e9ea85c05858e2f704941548f
+    last_write_checksum: sha1:ff46e72b377357b5e16e5ebbaaf1a185357d9559
+    pristine_git_object: 799c1398b1a7d9e203aa6c8ef3bf810b92bfe6c4
   docs/TransactionCreatePaymentMethod.md:
     id: 69db3a9bdc4d
-    last_write_checksum: sha1:793dff5164602f07e873053dfa8928ba97f55373
-    pristine_git_object: d08852ca4b184e11c4b8c143302466bec579df7d
+    last_write_checksum: sha1:205050516d6469dd3516d71a48317a724e38d265
+    pristine_git_object: 46d9c97a7f16b46bd8b96f2020660f6d6e7dbbd8
   docs/TransactionEvent.md:
     id: 35314a04e235
     last_write_checksum: sha1:d2d3c494b656fb7a0df8ee0e52a130252013e89d
@@ -2262,6 +2266,10 @@ trackedFiles:
     id: f8668ee41491
     last_write_checksum: sha1:7b1aee4c29157b941591f1d1b711ca1612b10651
     pristine_git_object: 7ed5a23fb811cf12f24eadd2a122bd69dc5a06f8
+  src/BaseBankPaymentMethodCreate.php:
+    id: d49d6bcac70a
+    last_write_checksum: sha1:dbe8a8ea408581d514782be35207d1b9c8654438
+    pristine_git_object: 5fad17ed6af410f4bf78a809f3a751f62379ebe5
   src/BillingDetails.php:
     id: bda4e9330099
     last_write_checksum: sha1:e3fec5306772f9eaef3545c3504df20385867ade
@@ -3848,8 +3856,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:bbe50feb5b49f772033c12a3216f602a2d4c6440
-    pristine_git_object: f76545790e1a9f068e77d51e92c88b3cce656afc
+    last_write_checksum: sha1:f3d0d89feae5ad7ac4945ba1b733f99d93374a20
+    pristine_git_object: d187bd0c56794b071e718fa9776572dfc4ad922a
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:122a27d29a28dfd26fc8a62133455308aedb195a
@@ -4020,8 +4028,8 @@ trackedFiles:
     pristine_git_object: 11de782ee802037574b5fec92eb557d221fed831
   src/TransactionCreate.php:
     id: 18627f38c6cb
-    last_write_checksum: sha1:21b51218fc47ff93d4c3dea5aa4d91fb2150a351
-    pristine_git_object: 1ca05ba66e427f5fb3e46cf1664b998134f4d6cb
+    last_write_checksum: sha1:bdc6516405da9531f7a07dead446e89895a4ab12
+    pristine_git_object: 243139c743a1e161dca0e501d88a1ea889a8ab71
   src/TransactionEvent.php:
     id: e8a982614bb6
     last_write_checksum: sha1:272e067dc24d091e242c1cf4116139e61b169c09
@@ -8027,7 +8035,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->three-ds-scenarios->create()`: \n  *  `request.threeDSecureScenarioCreate->outcome->version` **Changed**\n  *  `response.outcome->version` **Changed** (Breaking ⚠️)\n* `sdk->three-ds-scenarios->list()`:  `response.items[]->outcome->version` **Changed** (Breaking ⚠️)\n* `sdk->three-ds-scenarios->update()`: \n  *  `request.threeDSecureScenarioUpdate->outcome->version` **Changed**\n  *  `response.outcome->version` **Changed** (Breaking ⚠️)\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->paymentMethod->union(BaseBankPaymentMethodCreate)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
