@@ -95,6 +95,15 @@ Gr4vy\NetworkTokenPaymentMethodCreate $value = /* values here */
 Gr4vy\PlaidPaymentMethodCreate $value = /* values here */
 ```
 
+### `Gr4vy\BaseBankPaymentMethodCreate`
+
+```php
+/**
+* @var BaseBankPaymentMethodCreate
+*/
+Gr4vy\BaseBankPaymentMethodCreate $value = /* values here */
+```
+
 ### `Gr4vy\CheckoutSessionWithUrlPaymentMethodCreate`
 
 ```php
