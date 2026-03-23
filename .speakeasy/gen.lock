@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 9ede7ba78649e38c4aa85a32e8783fdf
+  docChecksum: 65c44724ff2c9a9651c65f44b7bdd65c
   docVersion: 1.0.0
-  speakeasyVersion: 1.757.1
-  generationVersion: 2.866.2
-  releaseVersion: 1.5.44
-  configChecksum: 73c8600b507a52882f5c358372199262
+  speakeasyVersion: 1.759.1
+  generationVersion: 2.869.10
+  releaseVersion: 1.5.45
+  configChecksum: 57d9cce0256f1bc2b44a56c44c544aec
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 2c56a6fe-bb75-4e3c-9e27-3d2bff261f26
-  pristine_commit_hash: 05f3cbed456ddaa33b42e7c55d85fe113f38076f
-  pristine_tree_hash: f3d8691c5abf1d91aa60efb5e1732cff254d6930
+  generation_id: 4071e15c-1674-4369-bc6c-42be9bd6286f
+  pristine_commit_hash: 1868695cf1e169ccefc42c5f74b2f789dc7abb14
+  pristine_tree_hash: 38b16f23547846a4e60a5914555d83a042a2d558
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:1478dc64782a152f303b7e72cb56b3cbeea2531f
-    pristine_git_object: 687ca15af55789ad384a2001324e3724b1000832
+    last_write_checksum: sha1:f58b6f78bd62d375ecb5dacda78c947237b1638e
+    pristine_git_object: 00da926efc32f1530c8e6f613b7346d5429373f4
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -676,8 +676,8 @@ trackedFiles:
     pristine_git_object: 53f08405774f69920158c3a4cf33fd20c8524c47
   docs/Errors/Error409.md:
     id: "516068558046"
-    last_write_checksum: sha1:f64b74289c28b0b686d3257291d3d0ba5cc0cfe5
-    pristine_git_object: a31c7e605c5a072c6618047059e057168cc53c98
+    last_write_checksum: sha1:ffe928c611a183b1b841836f5ecc4d558b5ef73e
+    pristine_git_object: f56c6a50d87c8f97b01cefaeaba860082d52dde0
   docs/Errors/Error425.md:
     id: ede7146d857e
     last_write_checksum: sha1:6f0c28e984dd7ca37f0eaa9ee6627d9eb8af1994
@@ -2812,8 +2812,8 @@ trackedFiles:
     pristine_git_object: e64ccc4e02fc90c7990f0de7eadac0b8dfeca013
   src/Errors/Error409.php:
     id: 8b05ca26d3f0
-    last_write_checksum: sha1:a17990d5318e5f4344e9fe5995be580cb47d7f29
-    pristine_git_object: b2aca9f9d7fc8e3bf5dc41c213049b2c1f7b1520
+    last_write_checksum: sha1:640ecbb8a311093c412a296074b5f406f87bb370
+    pristine_git_object: 99ca58fb135c013416d1dc87d51b3185b7cbfda9
   src/Errors/Error409Throwable.php:
     id: 0603f1f54f06
     last_write_checksum: sha1:40fb7d0ad65b6ba7d98cc0e9b64db47f64788f82
@@ -3856,8 +3856,8 @@ trackedFiles:
     pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:f3d0d89feae5ad7ac4945ba1b733f99d93374a20
-    pristine_git_object: d187bd0c56794b071e718fa9776572dfc4ad922a
+    last_write_checksum: sha1:2a2a8f950ffb77d49291597dac62048ab543bbed
+    pristine_git_object: d14a9bcebb06f07c06a47891bf737c3da018c743
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:122a27d29a28dfd26fc8a62133455308aedb195a
@@ -8035,7 +8035,110 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->paymentMethod->union(BaseBankPaymentMethodCreate)` **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->account-updater->jobs->create()`:  `error.resourceId` **Added**
+  * `sdk->buyers->list()`:  `error.resourceId` **Added**
+  * `sdk->buyers->create()`:  `error.resourceId` **Added**
+  * `sdk->buyers->get()`:  `error.resourceId` **Added**
+  * `sdk->buyers->update()`:  `error.resourceId` **Added**
+  * `sdk->buyers->delete()`:  `error.resourceId` **Added**
+  * `sdk->buyers->paymentMethods->list()`:  `error.resourceId` **Added**
+  * `sdk->buyers->giftCards->list()`:  `error.resourceId` **Added**
+  * `sdk->buyers->shippingDetails->create()`:  `error.resourceId` **Added**
+  * `sdk->buyers->shippingDetails->list()`:  `error.resourceId` **Added**
+  * `sdk->buyers->shippingDetails->get()`:  `error.resourceId` **Added**
+  * `sdk->buyers->shippingDetails->update()`:  `error.resourceId` **Added**
+  * `sdk->buyers->shippingDetails->delete()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->list()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->create()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->get()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->delete()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->paymentServiceTokens->list()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->paymentServiceTokens->create()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->paymentServiceTokens->delete()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->networkTokens->list()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->networkTokens->create()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->networkTokens->suspend()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->networkTokens->resume()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->networkTokens->delete()`:  `error.resourceId` **Added**
+  * `sdk->payment-methods->networkTokens->cryptogram->create()`:  `error.resourceId` **Added**
+  * `sdk->gift-cards->get()`:  `error.resourceId` **Added**
+  * `sdk->gift-cards->delete()`:  `error.resourceId` **Added**
+  * `sdk->gift-cards->create()`:  `error.resourceId` **Added**
+  * `sdk->gift-cards->list()`:  `error.resourceId` **Added**
+  * `sdk->gift-cards->balances->list()`:  `error.resourceId` **Added**
+  * `sdk->card-scheme-definitions->list()`:  `error.resourceId` **Added**
+  * `sdk->digital-wallets->create()`:  `error.resourceId` **Added**
+  * `sdk->digital-wallets->list()`:  `error.resourceId` **Added**
+  * `sdk->digital-wallets->get()`:  `error.resourceId` **Added**
+  * `sdk->digital-wallets->delete()`:  `error.resourceId` **Added**
+  * `sdk->digital-wallets->update()`:  `error.resourceId` **Added**
+  * `sdk->digital-wallets->sessions->googlePay()`:  `error.resourceId` **Added**
+  * `sdk->digital-wallets->sessions->applePay()`:  `error.resourceId` **Added**
+  * `sdk->digital-wallets->sessions->clickToPay()`:  `error.resourceId` **Added**
+  * `sdk->digital-wallets->domains->create()`:  `error.resourceId` **Added**
+  * `sdk->digital-wallets->domains->delete()`:  `error.resourceId` **Added**
+  * `sdk->transactions->list()`:  `error.resourceId` **Added**
+  * `sdk->transactions->create()`:  `error.resourceId` **Added**
+  * `sdk->transactions->get()`:  `error.resourceId` **Added**
+  * `sdk->transactions->update()`:  `error.resourceId` **Added**
+  * `sdk->transactions->capture()`:  `error.resourceId` **Added**
+  * `sdk->transactions->void()`:  `error.resourceId` **Added**
+  * `sdk->transactions->cancel()`:  `error.resourceId` **Added**
+  * `sdk->transactions->sync()`:  `error.resourceId` **Added**
+  * `sdk->transactions->refunds->list()`:  `error.resourceId` **Added**
+  * `sdk->transactions->refunds->create()`:  `error.resourceId` **Added**
+  * `sdk->transactions->refunds->get()`:  `error.resourceId` **Added**
+  * `sdk->transactions->refunds->all->create()`:  `error.resourceId` **Added**
+  * `sdk->transactions->actions->list()`:  `error.resourceId` **Added**
+  * `sdk->transactions->events->list()`:  `error.resourceId` **Added**
+  * `sdk->transactions->settlements->get()`:  `error.resourceId` **Added**
+  * `sdk->transactions->settlements->list()`:  `error.resourceId` **Added**
+  * `sdk->refunds->get()`:  `error.resourceId` **Added**
+  * `sdk->payment-options->list()`:  `error.resourceId` **Added**
+  * `sdk->payment-service-definitions->list()`:  `error.resourceId` **Added**
+  * `sdk->payment-service-definitions->get()`:  `error.resourceId` **Added**
+  * `sdk->payment-service-definitions->session()`:  `error.resourceId` **Added**
+  * `sdk->payment-services->list()`:  `error.resourceId` **Added**
+  * `sdk->payment-services->create()`:  `error.resourceId` **Added**
+  * `sdk->payment-services->get()`:  `error.resourceId` **Added**
+  * `sdk->payment-services->update()`:  `error.resourceId` **Added**
+  * `sdk->payment-services->delete()`:  `error.resourceId` **Added**
+  * `sdk->payment-services->verify()`:  `error.resourceId` **Added**
+  * `sdk->payment-services->session()`:  `error.resourceId` **Added**
+  * `sdk->audit-logs->list()`:  `error.resourceId` **Added**
+  * `sdk->reports->list()`:  `error.resourceId` **Added**
+  * `sdk->reports->create()`:  `error.resourceId` **Added**
+  * `sdk->reports->get()`:  `error.resourceId` **Added**
+  * `sdk->reports->put()`:  `error.resourceId` **Added**
+  * `sdk->reports->executions->list()`:  `error.resourceId` **Added**
+  * `sdk->reports->executions->url()`:  `error.resourceId` **Added**
+  * `sdk->reports->executions->get()`:  `error.resourceId` **Added**
+  * `sdk->report-executions->list()`:  `error.resourceId` **Added**
+  * `sdk->checkout-sessions->create()`:  `error.resourceId` **Added**
+  * `sdk->checkout-sessions->update()`:  `error.resourceId` **Added**
+  * `sdk->checkout-sessions->get()`:  `error.resourceId` **Added**
+  * `sdk->checkout-sessions->delete()`:  `error.resourceId` **Added**
+  * `sdk->merchant-accounts->list()`:  `error.resourceId` **Added**
+  * `sdk->merchant-accounts->create()`:  `error.resourceId` **Added**
+  * `sdk->merchant-accounts->get()`:  `error.resourceId` **Added**
+  * `sdk->merchant-accounts->update()`:  `error.resourceId` **Added**
+  * `sdk->merchant-accounts->threeDsConfiguration->create()`:  `error.resourceId` **Added**
+  * `sdk->merchant-accounts->threeDsConfiguration->list()`:  `error.resourceId` **Added**
+  * `sdk->merchant-accounts->threeDsConfiguration->update()`:  `error.resourceId` **Added**
+  * `sdk->merchant-accounts->threeDsConfiguration->delete()`:  `error.resourceId` **Added**
+  * `sdk->three-ds-scenarios->create()`:  `error.resourceId` **Added**
+  * `sdk->three-ds-scenarios->list()`:  `error.resourceId` **Added**
+  * `sdk->three-ds-scenarios->update()`:  `error.resourceId` **Added**
+  * `sdk->three-ds-scenarios->delete()`:  `error.resourceId` **Added**
+  * `sdk->payouts->list()`:  `error.resourceId` **Added**
+  * `sdk->payouts->create()`:  `error.resourceId` **Added**
+  * `sdk->payouts->get()`:  `error.resourceId` **Added**
+  * `sdk->payment-links->create()`:  `error.resourceId` **Added**
+  * `sdk->payment-links->list()`:  `error.resourceId` **Added**
+  * `sdk->payment-links->expire()`:  `error.resourceId` **Added**
+  * `sdk->payment-links->get()`:  `error.resourceId` **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
