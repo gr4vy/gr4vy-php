@@ -59,20 +59,31 @@ class Error409
     public ?array $details = null;
 
     /**
+     * The ID of the conflicting resource.
+     *
+     * @var ?string $resourceId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('resource_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $resourceId = null;
+
+    /**
      * @param  ?string  $type
      * @param  ?string  $code
      * @param  ?int  $status
      * @param  ?string  $message
      * @param  ?array<Gr4vy\ErrorDetail>  $details
+     * @param  ?string  $resourceId
      * @phpstan-pure
      */
-    public function __construct(?array $details = null, ?string $code = 'duplicate_record', ?int $status = 409, ?string $message = 'Generic error', ?string $type = 'error')
+    public function __construct(?array $details = null, ?string $resourceId = null, ?string $code = 'duplicate_record', ?int $status = 409, ?string $message = 'Generic error', ?string $type = 'error')
     {
         $this->type = $type;
         $this->code = $code;
         $this->status = $status;
         $this->message = $message;
         $this->details = $details;
+        $this->resourceId = $resourceId;
     }
 
     public function toException(): Error409Throwable
