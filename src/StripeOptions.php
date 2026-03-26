@@ -12,15 +12,6 @@ namespace Gr4vy;
 class StripeOptions
 {
     /**
-     * Passes the `error_on_requires_action` option to the Stripe API. Set to true to fail the payment attempt if it transitions into requires_action. Use this parameter for simpler integrations that don't handle customer actions, such as saving cards without authentication.
-     *
-     * @var ?bool $errorOnRequiresAction
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('error_on_requires_action')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $errorOnRequiresAction = null;
-
-    /**
      * Stripe options to support Stripe Connect
      *
      * @var ?StripeConnectOptions $stripeConnect
@@ -31,13 +22,11 @@ class StripeOptions
     public ?StripeConnectOptions $stripeConnect = null;
 
     /**
-     * @param  ?bool  $errorOnRequiresAction
      * @param  ?StripeConnectOptions  $stripeConnect
      * @phpstan-pure
      */
-    public function __construct(?bool $errorOnRequiresAction = null, ?StripeConnectOptions $stripeConnect = null)
+    public function __construct(?StripeConnectOptions $stripeConnect = null)
     {
-        $this->errorOnRequiresAction = $errorOnRequiresAction;
         $this->stripeConnect = $stripeConnect;
     }
 }
