@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: baa153896a82def5fd3ef280d0fdab10
+  docChecksum: e9e6f332b7da326957db3abcfeeb9803
   docVersion: 1.0.0
   speakeasyVersion: 1.760.0
   generationVersion: 2.873.1
-  releaseVersion: 1.5.48
-  configChecksum: 38780c4b74f529e72e974cdc52d200fc
+  releaseVersion: 1.5.49
+  configChecksum: b1a0d94172ecc9ab64694eb12627b283
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 2546f5a9-5e84-4970-aa15-733d8708fdb3
-  pristine_commit_hash: 16392dbd26550a977041fdef9bf4e992ada53d3f
-  pristine_tree_hash: d93d82c82e76830d645af8198ba1a48ddcbbe519
+  generation_id: d0df6644-f179-461e-9cb5-1e2290c435c1
+  pristine_commit_hash: dd8dcfd193d9511b3c22cc3a19cc339526ef38f3
+  pristine_tree_hash: dd28a9ac680199cd0f82385b433fb0a2c75363bc
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:1478dc64782a152f303b7e72cb56b3cbeea2531f
-    pristine_git_object: 687ca15af55789ad384a2001324e3724b1000832
+    last_write_checksum: sha1:289d1b93c91a1b9873ea877d9225434b1f2303b1
+    pristine_git_object: 7f55ca9bf01d2cbad0bbc2ca9174ecb59182e284
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -3860,8 +3860,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:8cfa8eeabe87571730e1183a2662c4cda3b764a5
-    pristine_git_object: f74bab8610b619bc24bfff39a1e0eee817871ec7
+    last_write_checksum: sha1:e2d31a8d7ad29f4832cccb9d55d4ad44c0fb1e68
+    pristine_git_object: 0e26541bd530c34b459151c9517fc68cf4dcca08
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:122a27d29a28dfd26fc8a62133455308aedb195a
