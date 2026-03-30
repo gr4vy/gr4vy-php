@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 2f30226f1ad61efb70be654b9fdc29cd
+  docChecksum: baa153896a82def5fd3ef280d0fdab10
   docVersion: 1.0.0
-  speakeasyVersion: 1.759.3
-  generationVersion: 2.869.25
-  releaseVersion: 1.5.47
-  configChecksum: 9de016c8fa7dfec296f220bbed630d59
+  speakeasyVersion: 1.760.0
+  generationVersion: 2.873.1
+  releaseVersion: 1.5.48
+  configChecksum: 38780c4b74f529e72e974cdc52d200fc
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 8691267e-a242-4b4a-8ce4-ed5762143d79
-  pristine_commit_hash: f4931c6766685f98d08550d95643d279fe47babb
-  pristine_tree_hash: 3fe0f62e3738ca4875938abbd062285156df152c
+  generation_id: 2546f5a9-5e84-4970-aa15-733d8708fdb3
+  pristine_commit_hash: 16392dbd26550a977041fdef9bf4e992ada53d3f
+  pristine_tree_hash: d93d82c82e76830d645af8198ba1a48ddcbbe519
 features:
   php:
     constsAndDefaults: 0.2.2
-    core: 3.9.20
+    core: 3.9.21
     flattening: 2.81.1
-    globalSecurity: 2.81.10
+    globalSecurity: 2.81.12
     globalSecurityFlattening: 0.1.2
     globalServerURLs: 2.83.1
     globals: 2.82.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:f58b6f78bd62d375ecb5dacda78c947237b1638e
-    pristine_git_object: 00da926efc32f1530c8e6f613b7346d5429373f4
+    last_write_checksum: sha1:1478dc64782a152f303b7e72cb56b3cbeea2531f
+    pristine_git_object: 687ca15af55789ad384a2001324e3724b1000832
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -3856,12 +3856,12 @@ trackedFiles:
     pristine_git_object: ccd6e9f36002cd6e623b551225f44dc03a0fccca
   src/SDKBuilder.php:
     id: 3a8d6469b037
-    last_write_checksum: sha1:a8cf5baf11ea5e701b78427a3cbdd67fe2127834
-    pristine_git_object: fb8e64f1afec3dd30a1c2bf6bb7d815735a56310
+    last_write_checksum: sha1:9acf6a9cd8bde61f8d57ab189067321a860f5610
+    pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:7236427f5470baa0774d01994d6049f40c79b968
-    pristine_git_object: 6bca6d75935a241335aece509a6b2f078c68ce17
+    last_write_checksum: sha1:8cfa8eeabe87571730e1183a2662c4cda3b764a5
+    pristine_git_object: f74bab8610b619bc24bfff39a1e0eee817871ec7
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:122a27d29a28dfd26fc8a62133455308aedb195a
@@ -4312,16 +4312,16 @@ trackedFiles:
     pristine_git_object: dd256cf1ad7e70124dce977a4ef6e2d8e941cef1
   src/Utils/Security.php:
     id: 564a31099977
-    last_write_checksum: sha1:260f11640db2ac75d9069ced076da228b2a7b7b3
-    pristine_git_object: 8e4012ebcbd4ca25ae74e3966c3df90c81409db6
+    last_write_checksum: sha1:f371c076d5339fc64daeed41fa23157ac23bb12c
+    pristine_git_object: 9ff3d5d6d64ecbbb7d7b6f30efe2cb0baa90371c
   src/Utils/SecurityClient.php:
     id: de11afa826f4
     last_write_checksum: sha1:24dedeef0ea18ec8c8e8038900fc28e0ce229ce8
     pristine_git_object: c18ab19a3432b5e29fea9cccc38127fb0b7b5e62
   src/Utils/SecurityMetadata.php:
     id: 55ec148715b3
-    last_write_checksum: sha1:9194c8320ee7a288a2f95db71b93cd8e36e5c2b8
-    pristine_git_object: 817bcbacfd91fca196a57aafb5b400103ba84f72
+    last_write_checksum: sha1:18c3b386b51f7fb2d2a508fa2a33dcc7042201bb
+    pristine_git_object: 2f43824679ba14dcade83706e734ae4343a49024
   src/Utils/ServerDetails.php:
     id: 71ed88cf4f04
     last_write_checksum: sha1:185ebba0ac288ec49a53c15b4e1838b51d44a960
@@ -4336,8 +4336,8 @@ trackedFiles:
     pristine_git_object: d78042881aaed952d320aee4addff18078a2dfa6
   src/Utils/Utils.php:
     id: c902f57e2422
-    last_write_checksum: sha1:600acbf31132c63254f917f15467fba624544065
-    pristine_git_object: d1fe1fe2f18355da97969ff9df484e1ac078e28b
+    last_write_checksum: sha1:8c787c868dd6c4da4adb113971780fdd7c3064c0
+    pristine_git_object: e4458afb00a71d164b2461c67997acb46fe618cb
   src/ValidationError.php:
     id: 7cb14023ab5a
     last_write_checksum: sha1:11a4f31682511970bb2d1c9000ae90c7b34cc8c6
@@ -8043,7 +8043,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions` **Changed**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
