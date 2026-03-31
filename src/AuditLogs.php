@@ -50,8 +50,8 @@ class AuditLogs
      *
      * Returns a list of activity by dashboard users.
      *
-     * @param  ?ListAuditLogsRequest  $request
-     * @return ListAuditLogsResponse
+     * @param  ?\Gr4vy\ListAuditLogsRequest  $request
+     * @return \Gr4vy\ListAuditLogsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?ListAuditLogsRequest $request = null, ?Options $options = null): ListAuditLogsResponse
@@ -299,8 +299,8 @@ class AuditLogs
      *
      * Returns a list of activity by dashboard users.
      *
-     * @param  ?ListAuditLogsRequest  $request
-     * @return \Generator<ListAuditLogsResponse>
+     * @param  ?\Gr4vy\ListAuditLogsRequest  $request
+     * @return \Generator<\Gr4vy\ListAuditLogsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?ListAuditLogsRequest $request = null, ?Options $options = null): \Generator

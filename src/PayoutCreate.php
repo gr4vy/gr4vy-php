@@ -44,7 +44,7 @@ class PayoutCreate
     /**
      * The type of payment method to send funds too.
      *
-     * @var PaymentMethodCard|PaymentMethodStoredCard $paymentMethod
+     * @var \Gr4vy\PaymentMethodCard|\Gr4vy\PaymentMethodStoredCard $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaymentMethodCard|\Gr4vy\PaymentMethodStoredCard')]
@@ -80,7 +80,7 @@ class PayoutCreate
     /**
      * Inline buyer details for the payout. Use this instead of the `buyer_id` or `buyer_external_identifier`.
      *
-     * @var ?GuestBuyer $buyer
+     * @var ?\Gr4vy\GuestBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyer|null')]
@@ -99,7 +99,7 @@ class PayoutCreate
     /**
      * Merchant information for the source of the payout.
      *
-     * @var ?PayoutMerchant $merchant
+     * @var ?\Gr4vy\PayoutMerchant $merchant
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('merchant')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PayoutMerchant|null')]
@@ -109,7 +109,7 @@ class PayoutCreate
     /**
      * Optional fields for processing payouts on specific payment services.
      *
-     * @var ?PayoutConnectionOptions $connectionOptions
+     * @var ?\Gr4vy\PayoutConnectionOptions $connectionOptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('connection_options')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PayoutConnectionOptions|null')]
@@ -120,14 +120,14 @@ class PayoutCreate
      * @param  int  $amount
      * @param  string  $currency
      * @param  string  $paymentServiceId
-     * @param  PaymentMethodCard|PaymentMethodStoredCard  $paymentMethod
+     * @param  \Gr4vy\PaymentMethodCard|\Gr4vy\PaymentMethodStoredCard  $paymentMethod
      * @param  ?string  $category
      * @param  ?string  $externalIdentifier
      * @param  ?string  $buyerId
-     * @param  ?GuestBuyer  $buyer
+     * @param  ?\Gr4vy\GuestBuyer  $buyer
      * @param  ?string  $buyerExternalIdentifier
-     * @param  ?PayoutMerchant  $merchant
-     * @param  ?PayoutConnectionOptions  $connectionOptions
+     * @param  ?\Gr4vy\PayoutMerchant  $merchant
+     * @param  ?\Gr4vy\PayoutConnectionOptions  $connectionOptions
      * @phpstan-pure
      */
     public function __construct(int $amount, string $currency, string $paymentServiceId, PaymentMethodCard|PaymentMethodStoredCard $paymentMethod, ?string $category = null, ?string $externalIdentifier = null, ?string $buyerId = null, ?GuestBuyer $buyer = null, ?string $buyerExternalIdentifier = null, ?PayoutMerchant $merchant = null, ?PayoutConnectionOptions $connectionOptions = null)

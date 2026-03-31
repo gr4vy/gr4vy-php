@@ -29,7 +29,7 @@ class GiftCard
 
     /**
      *
-     * @var GiftCardService $giftCardService
+     * @var \Gr4vy\GiftCardService $giftCardService
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gift_card_service')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GiftCardService')]
@@ -87,7 +87,7 @@ class GiftCard
     /**
      * The buyer for which this gift card is stored.
      *
-     * @var ?Buyer $buyer
+     * @var ?\Gr4vy\Buyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Buyer|null')]
@@ -106,7 +106,7 @@ class GiftCard
     /**
      * @param  string  $id
      * @param  string  $merchantAccountId
-     * @param  GiftCardService  $giftCardService
+     * @param  \Gr4vy\GiftCardService  $giftCardService
      * @param  string  $bin
      * @param  string  $subBin
      * @param  string  $last4
@@ -114,7 +114,7 @@ class GiftCard
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type
      * @param  ?\DateTime  $expirationDate
-     * @param  ?Buyer  $buyer
+     * @param  ?\Gr4vy\Buyer  $buyer
      * @phpstan-pure
      */
     public function __construct(string $id, string $merchantAccountId, GiftCardService $giftCardService, string $bin, string $subBin, string $last4, \DateTime $createdAt, \DateTime $updatedAt, ?\DateTime $expirationDate = null, ?Buyer $buyer = null, ?string $type = 'gift-card')

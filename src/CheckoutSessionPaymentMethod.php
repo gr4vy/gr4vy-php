@@ -23,7 +23,7 @@ class CheckoutSessionPaymentMethod
     /**
      * Details for credit or debit card payment method.
      *
-     * @var ?CheckoutSessionPaymentMethodDetails $details
+     * @var ?\Gr4vy\CheckoutSessionPaymentMethodDetails $details
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutSessionPaymentMethodDetails|null')]
@@ -79,7 +79,7 @@ class CheckoutSessionPaymentMethod
      * @param  ?string  $type
      * @param  ?string  $method
      * @param  ?string  $id
-     * @param  ?CheckoutSessionPaymentMethodDetails  $details
+     * @param  ?\Gr4vy\CheckoutSessionPaymentMethodDetails  $details
      * @param  ?string  $label
      * @param  ?string  $scheme
      * @param  ?string  $fingerprint

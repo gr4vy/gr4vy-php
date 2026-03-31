@@ -50,24 +50,22 @@ class PaymentServicesSDK
      *
      * Configures a new payment service for use by merchants.
      *
-     * @param  PaymentServiceUpdate  $paymentServiceUpdate
-     * @param  string  $paymentServiceId
+     * @param  \Gr4vy\PaymentServiceCreate  $paymentServiceCreate
      * @param  ?string  $merchantAccountId
-     * @return CreatePaymentServiceResponse
+     * @return \Gr4vy\CreatePaymentServiceResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function update(PaymentServiceUpdate $paymentServiceUpdate, string $paymentServiceId, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentServiceResponse
+    public function create(PaymentServiceCreate $paymentServiceCreate, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentServiceResponse
     {
         $request = new CreatePaymentServiceRequest(
-            paymentServiceId: $paymentServiceId,
-            paymentServiceUpdate: $paymentServiceUpdate,
+            paymentServiceCreate: $paymentServiceCreate,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/payment-services/{payment_service_id}', CreatePaymentServiceRequest::class, $request, $this->sdkConfiguration->globals);
+        $url = Utils\Utils::generateUrl($baseUrl, '/payment-services');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, 'paymentServiceUpdate', 'json');
+        $body = Utils\Utils::serializeRequestBody($request, 'paymentServiceCreate', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
@@ -78,7 +76,7 @@ class PaymentServicesSDK
         }
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
-        $httpRequest = new \GuzzleHttp\Psr7\Request('PUT', $url);
+        $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_payment_service', null, $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -96,7 +94,7 @@ class PaymentServicesSDK
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
-        if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
+        if (Utils\Utils::matchStatusCodes($statusCode, ['201'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
@@ -262,7 +260,7 @@ class PaymentServicesSDK
      * @param  array<string, mixed>  $requestBody
      * @param  string  $paymentServiceId
      * @param  ?string  $merchantAccountId
-     * @return CreatePaymentServiceSessionResponse
+     * @return \Gr4vy\CreatePaymentServiceSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function session(array $requestBody, string $paymentServiceId, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentServiceSessionResponse
@@ -470,7 +468,7 @@ class PaymentServicesSDK
      *
      * @param  string  $paymentServiceId
      * @param  ?string  $merchantAccountId
-     * @return DeletePaymentServiceResponse
+     * @return \Gr4vy\DeletePaymentServiceResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $paymentServiceId, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentServiceResponse
@@ -663,7 +661,7 @@ class PaymentServicesSDK
      *
      * @param  string  $paymentServiceId
      * @param  ?string  $merchantAccountId
-     * @return GetPaymentServiceResponse
+     * @return \Gr4vy\GetPaymentServiceResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $paymentServiceId, ?string $merchantAccountId = null, ?Options $options = null): GetPaymentServiceResponse
@@ -887,8 +885,8 @@ class PaymentServicesSDK
      *
      * List the configured payment services.
      *
-     * @param  ?ListPaymentServicesRequest  $request
-     * @return ListPaymentServicesResponse
+     * @param  ?\Gr4vy\ListPaymentServicesRequest  $request
+     * @return \Gr4vy\ListPaymentServicesResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?ListPaymentServicesRequest $request = null, ?Options $options = null): ListPaymentServicesResponse
@@ -1135,8 +1133,8 @@ class PaymentServicesSDK
      *
      * List the configured payment services.
      *
-     * @param  ?ListPaymentServicesRequest  $request
-     * @return \Generator<ListPaymentServicesResponse>
+     * @param  ?\Gr4vy\ListPaymentServicesRequest  $request
+     * @return \Generator<\Gr4vy\ListPaymentServicesResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?ListPaymentServicesRequest $request = null, ?Options $options = null): \Generator
@@ -1153,22 +1151,24 @@ class PaymentServicesSDK
      *
      * Updates the configuration of a payment service.
      *
-     * @param  PaymentServiceCreate  $paymentServiceCreate
+     * @param  \Gr4vy\PaymentServiceUpdate  $paymentServiceUpdate
+     * @param  string  $paymentServiceId
      * @param  ?string  $merchantAccountId
-     * @return UpdatePaymentServiceResponse
+     * @return \Gr4vy\UpdatePaymentServiceResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(PaymentServiceCreate $paymentServiceCreate, ?string $merchantAccountId = null, ?Options $options = null): UpdatePaymentServiceResponse
+    public function update(PaymentServiceUpdate $paymentServiceUpdate, string $paymentServiceId, ?string $merchantAccountId = null, ?Options $options = null): UpdatePaymentServiceResponse
     {
         $request = new UpdatePaymentServiceRequest(
-            paymentServiceCreate: $paymentServiceCreate,
+            paymentServiceId: $paymentServiceId,
+            paymentServiceUpdate: $paymentServiceUpdate,
             merchantAccountId: $merchantAccountId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/payment-services');
+        $url = Utils\Utils::generateUrl($baseUrl, '/payment-services/{payment_service_id}', UpdatePaymentServiceRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, 'paymentServiceCreate', 'json');
+        $body = Utils\Utils::serializeRequestBody($request, 'paymentServiceUpdate', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
@@ -1179,7 +1179,7 @@ class PaymentServicesSDK
         }
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
-        $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
+        $httpRequest = new \GuzzleHttp\Psr7\Request('PUT', $url);
         $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'update_payment_service', null, $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -1197,7 +1197,7 @@ class PaymentServicesSDK
             $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
             $httpResponse = $res;
         }
-        if (Utils\Utils::matchStatusCodes($statusCode, ['201'])) {
+        if (Utils\Utils::matchStatusCodes($statusCode, ['200'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
 
@@ -1360,9 +1360,9 @@ class PaymentServicesSDK
      *
      * Verify the credentials of a configured payment service
      *
-     * @param  VerifyCredentials  $verifyCredentials
+     * @param  \Gr4vy\VerifyCredentials  $verifyCredentials
      * @param  ?string  $merchantAccountId
-     * @return VerifyPaymentServiceCredentialsResponse
+     * @return \Gr4vy\VerifyPaymentServiceCredentialsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function verify(VerifyCredentials $verifyCredentials, ?string $merchantAccountId = null, ?Options $options = null): VerifyPaymentServiceCredentialsResponse

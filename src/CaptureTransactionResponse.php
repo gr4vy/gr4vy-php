@@ -35,7 +35,7 @@ class CaptureTransactionResponse
     /**
      * Successful Response
      *
-     * @var Transaction|TransactionCapture|null $response200CaptureTransaction
+     * @var \Gr4vy\Transaction|\Gr4vy\TransactionCapture|null $response200CaptureTransaction
      */
     public Transaction|TransactionCapture|null $response200CaptureTransaction = null;
 
@@ -43,7 +43,7 @@ class CaptureTransactionResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Transaction|TransactionCapture|null  $response200CaptureTransaction
+     * @param  \Gr4vy\Transaction|\Gr4vy\TransactionCapture|null  $response200CaptureTransaction
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Transaction|TransactionCapture|null $response200CaptureTransaction = null)

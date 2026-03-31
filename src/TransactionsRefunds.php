@@ -53,11 +53,11 @@ class TransactionsRefunds
      *
      * Create a refund for a transaction.
      *
-     * @param  TransactionRefundCreate  $transactionRefundCreate
+     * @param  \Gr4vy\TransactionRefundCreate  $transactionRefundCreate
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
      * @param  ?string  $idempotencyKey
-     * @return CreateTransactionRefundResponse
+     * @return \Gr4vy\CreateTransactionRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(TransactionRefundCreate $transactionRefundCreate, string $transactionId, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?Options $options = null): CreateTransactionRefundResponse
@@ -267,7 +267,7 @@ class TransactionsRefunds
      * @param  string  $transactionId
      * @param  string  $refundId
      * @param  ?string  $merchantAccountId
-     * @return GetTransactionRefundResponse
+     * @return \Gr4vy\GetTransactionRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $transactionId, string $refundId, ?string $merchantAccountId = null, ?Options $options = null): GetTransactionRefundResponse
@@ -494,7 +494,7 @@ class TransactionsRefunds
      *
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
-     * @return ListTransactionRefundsResponse
+     * @return \Gr4vy\ListTransactionRefundsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionRefundsResponse

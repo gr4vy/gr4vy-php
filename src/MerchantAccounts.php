@@ -14,7 +14,7 @@ class MerchantAccounts
     /**
      * A list of items returned for this request.
      *
-     * @var array<MerchantAccount> $items
+     * @var array<\Gr4vy\MerchantAccount> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\MerchantAccount>')]
@@ -48,7 +48,7 @@ class MerchantAccounts
     public ?int $limit = null;
 
     /**
-     * @param  array<MerchantAccount>  $items
+     * @param  array<\Gr4vy\MerchantAccount>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

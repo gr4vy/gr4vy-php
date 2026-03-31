@@ -53,7 +53,7 @@ class BuyersGiftCards
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $buyerId
      * @param  ?string  $merchantAccountId
-     * @return ListBuyerGiftCardsResponse
+     * @return \Gr4vy\ListBuyerGiftCardsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $merchantAccountId = null, ?Options $options = null): ListBuyerGiftCardsResponse

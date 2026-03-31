@@ -59,9 +59,9 @@ class BuyersSDK
      *
      * Create a new buyer record.
      *
-     * @param  BuyerCreate  $buyerCreate
+     * @param  \Gr4vy\BuyerCreate  $buyerCreate
      * @param  ?string  $merchantAccountId
-     * @return AddBuyerResponse
+     * @return \Gr4vy\AddBuyerResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(BuyerCreate $buyerCreate, ?string $merchantAccountId = null, ?Options $options = null): AddBuyerResponse
@@ -268,7 +268,7 @@ class BuyersSDK
      *
      * @param  string  $buyerId
      * @param  ?string  $merchantAccountId
-     * @return DeleteBuyerResponse
+     * @return \Gr4vy\DeleteBuyerResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $buyerId, ?string $merchantAccountId = null, ?Options $options = null): DeleteBuyerResponse
@@ -461,7 +461,7 @@ class BuyersSDK
      *
      * @param  string  $buyerId
      * @param  ?string  $merchantAccountId
-     * @return GetBuyerResponse
+     * @return \Gr4vy\GetBuyerResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $buyerId, ?string $merchantAccountId = null, ?Options $options = null): GetBuyerResponse
@@ -685,8 +685,8 @@ class BuyersSDK
      *
      * List all buyers or search for a specific buyer.
      *
-     * @param  ?ListBuyersRequest  $request
-     * @return ListBuyersResponse
+     * @param  ?\Gr4vy\ListBuyersRequest  $request
+     * @return \Gr4vy\ListBuyersResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?ListBuyersRequest $request = null, ?Options $options = null): ListBuyersResponse
@@ -933,8 +933,8 @@ class BuyersSDK
      *
      * List all buyers or search for a specific buyer.
      *
-     * @param  ?ListBuyersRequest  $request
-     * @return \Generator<ListBuyersResponse>
+     * @param  ?\Gr4vy\ListBuyersRequest  $request
+     * @return \Generator<\Gr4vy\ListBuyersResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?ListBuyersRequest $request = null, ?Options $options = null): \Generator
@@ -951,10 +951,10 @@ class BuyersSDK
      *
      * Updates a buyer record.
      *
-     * @param  BuyerUpdate  $buyerUpdate
+     * @param  \Gr4vy\BuyerUpdate  $buyerUpdate
      * @param  string  $buyerId
      * @param  ?string  $merchantAccountId
-     * @return UpdateBuyerResponse
+     * @return \Gr4vy\UpdateBuyerResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function update(BuyerUpdate $buyerUpdate, string $buyerId, ?string $merchantAccountId = null, ?Options $options = null): UpdateBuyerResponse

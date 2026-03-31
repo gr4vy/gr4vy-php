@@ -29,7 +29,7 @@ class EditThreeDsConfigurationRequest
 
     /**
      *
-     * @var MerchantAccountThreeDSConfigurationUpdate $merchantAccountThreeDSConfigurationUpdate
+     * @var \Gr4vy\MerchantAccountThreeDSConfigurationUpdate $merchantAccountThreeDSConfigurationUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public MerchantAccountThreeDSConfigurationUpdate $merchantAccountThreeDSConfigurationUpdate;
@@ -37,7 +37,7 @@ class EditThreeDsConfigurationRequest
     /**
      * @param  string  $merchantAccountId
      * @param  string  $threeDsConfigurationId
-     * @param  MerchantAccountThreeDSConfigurationUpdate  $merchantAccountThreeDSConfigurationUpdate
+     * @param  \Gr4vy\MerchantAccountThreeDSConfigurationUpdate  $merchantAccountThreeDSConfigurationUpdate
      * @phpstan-pure
      */
     public function __construct(string $merchantAccountId, string $threeDsConfigurationId, MerchantAccountThreeDSConfigurationUpdate $merchantAccountThreeDSConfigurationUpdate)

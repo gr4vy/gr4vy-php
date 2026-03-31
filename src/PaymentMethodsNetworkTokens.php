@@ -53,10 +53,10 @@ class PaymentMethodsNetworkTokens
      *
      * Provision a network token for a payment method.
      *
-     * @param  NetworkTokenCreate  $networkTokenCreate
+     * @param  \Gr4vy\NetworkTokenCreate  $networkTokenCreate
      * @param  string  $paymentMethodId
      * @param  ?string  $merchantAccountId
-     * @return CreatePaymentMethodNetworkTokenResponse
+     * @return \Gr4vy\CreatePaymentMethodNetworkTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(NetworkTokenCreate $networkTokenCreate, string $paymentMethodId, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodNetworkTokenResponse
@@ -265,7 +265,7 @@ class PaymentMethodsNetworkTokens
      * @param  string  $paymentMethodId
      * @param  string  $networkTokenId
      * @param  ?string  $merchantAccountId
-     * @return DeletePaymentMethodNetworkTokenResponse
+     * @return \Gr4vy\DeletePaymentMethodNetworkTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $paymentMethodId, string $networkTokenId, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentMethodNetworkTokenResponse
@@ -459,7 +459,7 @@ class PaymentMethodsNetworkTokens
      *
      * @param  string  $paymentMethodId
      * @param  ?string  $merchantAccountId
-     * @return ListPaymentMethodNetworkTokensResponse
+     * @return \Gr4vy\ListPaymentMethodNetworkTokensResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(string $paymentMethodId, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentMethodNetworkTokensResponse
@@ -686,7 +686,7 @@ class PaymentMethodsNetworkTokens
      * @param  string  $paymentMethodId
      * @param  string  $networkTokenId
      * @param  ?string  $merchantAccountId
-     * @return ResumePaymentMethodNetworkTokenResponse
+     * @return \Gr4vy\ResumePaymentMethodNetworkTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function resume(string $paymentMethodId, string $networkTokenId, ?string $merchantAccountId = null, ?Options $options = null): ResumePaymentMethodNetworkTokenResponse
@@ -890,7 +890,7 @@ class PaymentMethodsNetworkTokens
      * @param  string  $paymentMethodId
      * @param  string  $networkTokenId
      * @param  ?string  $merchantAccountId
-     * @return SuspendPaymentMethodNetworkTokenResponse
+     * @return \Gr4vy\SuspendPaymentMethodNetworkTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function suspend(string $paymentMethodId, string $networkTokenId, ?string $merchantAccountId = null, ?Options $options = null): SuspendPaymentMethodNetworkTokenResponse

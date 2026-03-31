@@ -13,7 +13,7 @@ class AddReportRequest
 {
     /**
      *
-     * @var ReportCreate $reportCreate
+     * @var \Gr4vy\ReportCreate $reportCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public ReportCreate $reportCreate;
@@ -27,7 +27,7 @@ class AddReportRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  ReportCreate  $reportCreate
+     * @param  \Gr4vy\ReportCreate  $reportCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

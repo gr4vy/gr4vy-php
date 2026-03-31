@@ -13,7 +13,7 @@ class CreateGiftCardRequest
 {
     /**
      *
-     * @var GiftCardCreate $giftCardCreate
+     * @var \Gr4vy\GiftCardCreate $giftCardCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public GiftCardCreate $giftCardCreate;
@@ -27,7 +27,7 @@ class CreateGiftCardRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  GiftCardCreate  $giftCardCreate
+     * @param  \Gr4vy\GiftCardCreate  $giftCardCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

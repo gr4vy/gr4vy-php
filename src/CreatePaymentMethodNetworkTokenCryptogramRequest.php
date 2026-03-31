@@ -29,7 +29,7 @@ class CreatePaymentMethodNetworkTokenCryptogramRequest
 
     /**
      *
-     * @var CryptogramCreate $cryptogramCreate
+     * @var \Gr4vy\CryptogramCreate $cryptogramCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public CryptogramCreate $cryptogramCreate;
@@ -45,7 +45,7 @@ class CreatePaymentMethodNetworkTokenCryptogramRequest
     /**
      * @param  string  $paymentMethodId
      * @param  string  $networkTokenId
-     * @param  CryptogramCreate  $cryptogramCreate
+     * @param  \Gr4vy\CryptogramCreate  $cryptogramCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

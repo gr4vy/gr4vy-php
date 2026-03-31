@@ -14,7 +14,7 @@ class DlocalPIXOptions
     /**
      * Passes `subscription` data to the dLocal API for those connectors that need it.
      *
-     * @var ?DlocalPIXSubscriptionOptions $subscription
+     * @var ?\Gr4vy\DlocalPIXSubscriptionOptions $subscription
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('subscription')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DlocalPIXSubscriptionOptions|null')]
@@ -31,7 +31,7 @@ class DlocalPIXOptions
     public ?string $scheduledDate = null;
 
     /**
-     * @param  ?DlocalPIXSubscriptionOptions  $subscription
+     * @param  ?\Gr4vy\DlocalPIXSubscriptionOptions  $subscription
      * @param  ?string  $scheduledDate
      * @phpstan-pure
      */

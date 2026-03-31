@@ -14,14 +14,14 @@ class ShippingDetailsList
     /**
      * A list of items returned for this request.
      *
-     * @var array<ShippingDetails> $items
+     * @var array<\Gr4vy\ShippingDetails> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\ShippingDetails>')]
     public array $items;
 
     /**
-     * @param  array<ShippingDetails>  $items
+     * @param  array<\Gr4vy\ShippingDetails>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

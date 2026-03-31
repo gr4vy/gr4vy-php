@@ -38,7 +38,7 @@ class ListBuyerPaymentMethodsRequest
     /**
      * The field to sort the payment methods by.
      *
-     * @var ?SortBy $sortBy
+     * @var ?\Gr4vy\SortBy $sortBy
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sort_by')]
     public ?SortBy $sortBy = null;
@@ -72,7 +72,7 @@ class ListBuyerPaymentMethodsRequest
      * @param  ?string  $merchantAccountId
      * @param  ?string  $buyerId
      * @param  ?string  $buyerExternalIdentifier
-     * @param  ?SortBy  $sortBy
+     * @param  ?\Gr4vy\SortBy  $sortBy
      * @param  ?string  $country
      * @param  ?string  $currency
      * @phpstan-pure

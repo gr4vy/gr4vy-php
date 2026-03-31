@@ -31,7 +31,7 @@ class Recipient
     /**
      * The recipient of the fund's address.
      *
-     * @var ?Address $address
+     * @var ?\Gr4vy\Address $address
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Address|null')]
@@ -59,7 +59,7 @@ class Recipient
     /**
      * @param  string  $firstName
      * @param  string  $lastName
-     * @param  ?Address  $address
+     * @param  ?\Gr4vy\Address  $address
      * @param  ?string  $accountNumber
      * @param  ?LocalDate  $dateOfBirth
      * @phpstan-pure

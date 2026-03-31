@@ -22,7 +22,7 @@ class VerifyCredentials
     /**
      * The fields and their values, or a set of updated fields to merge with existing values.
      *
-     * @var array<Field> $fields
+     * @var array<\Gr4vy\Field> $fields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Field>')]
@@ -39,7 +39,7 @@ class VerifyCredentials
 
     /**
      * @param  string  $paymentServiceDefinitionId
-     * @param  array<Field>  $fields
+     * @param  array<\Gr4vy\Field>  $fields
      * @param  ?string  $paymentServiceId
      * @phpstan-pure
      */

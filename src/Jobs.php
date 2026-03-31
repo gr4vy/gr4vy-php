@@ -48,9 +48,9 @@ class Jobs
      *
      * Schedule one or more stored cards for an account update.
      *
-     * @param  AccountUpdaterJobCreate  $accountUpdaterJobCreate
+     * @param  \Gr4vy\AccountUpdaterJobCreate  $accountUpdaterJobCreate
      * @param  ?string  $merchantAccountId
-     * @return CreateAccountUpdaterJobResponse
+     * @return \Gr4vy\CreateAccountUpdaterJobResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(AccountUpdaterJobCreate $accountUpdaterJobCreate, ?string $merchantAccountId = null, ?Options $options = null): CreateAccountUpdaterJobResponse

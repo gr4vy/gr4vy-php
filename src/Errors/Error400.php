@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace Gr4vy\Errors;
 
-use Gr4vy;
 use Gr4vy\Utils;
 class Error400
 {
@@ -51,7 +50,7 @@ class Error400
     /**
      * A list of details that further ellaborate on the error.
      *
-     * @var ?array<Gr4vy\ErrorDetail> $details
+     * @var ?array<\Gr4vy\ErrorDetail> $details
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('details')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\ErrorDetail>|null')]
@@ -63,7 +62,7 @@ class Error400
      * @param  ?string  $code
      * @param  ?int  $status
      * @param  ?string  $message
-     * @param  ?array<Gr4vy\ErrorDetail>  $details
+     * @param  ?array<\Gr4vy\ErrorDetail>  $details
      * @phpstan-pure
      */
     public function __construct(?array $details = null, ?string $code = 'bad_request', ?int $status = 400, ?string $message = 'Generic error', ?string $type = 'error')

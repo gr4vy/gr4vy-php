@@ -33,7 +33,7 @@ class BraintreeOptions
     /**
      * Additional dynamic fields to pass to the Braintree API
      *
-     * @var ?BraintreeDynamicDataFieldsOptions $dynamicDataFields
+     * @var ?\Gr4vy\BraintreeDynamicDataFieldsOptions $dynamicDataFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('dynamic_data_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BraintreeDynamicDataFieldsOptions|null')]
@@ -43,7 +43,7 @@ class BraintreeOptions
     /**
      * @param  ?int  $discountAmount
      * @param  ?array<string, string>  $customFields
-     * @param  ?BraintreeDynamicDataFieldsOptions  $dynamicDataFields
+     * @param  ?\Gr4vy\BraintreeDynamicDataFieldsOptions  $dynamicDataFields
      * @phpstan-pure
      */
     public function __construct(?int $discountAmount = null, ?array $customFields = null, ?BraintreeDynamicDataFieldsOptions $dynamicDataFields = null)

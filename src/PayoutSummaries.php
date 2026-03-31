@@ -14,7 +14,7 @@ class PayoutSummaries
     /**
      * A list of items returned for this request.
      *
-     * @var array<PayoutSummary> $items
+     * @var array<\Gr4vy\PayoutSummary> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\PayoutSummary>')]
@@ -48,7 +48,7 @@ class PayoutSummaries
     public ?int $limit = null;
 
     /**
-     * @param  array<PayoutSummary>  $items
+     * @param  array<\Gr4vy\PayoutSummary>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

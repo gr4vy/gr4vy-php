@@ -14,7 +14,7 @@ class WpayPaytoOptions
     /**
      * Options to pass to the `instrument` resource in the Wpay PayTo API.
      *
-     * @var ?WpayPaytoResourceOptions $instrument
+     * @var ?\Gr4vy\WpayPaytoResourceOptions $instrument
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('instrument')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\WpayPaytoResourceOptions|null')]
@@ -24,7 +24,7 @@ class WpayPaytoOptions
     /**
      * Options to pass to the `payment` resource in the Wpay PayTo API.
      *
-     * @var ?WpayPaytoResourceOptions $payment
+     * @var ?\Gr4vy\WpayPaytoResourceOptions $payment
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\WpayPaytoResourceOptions|null')]
@@ -34,7 +34,7 @@ class WpayPaytoOptions
     /**
      * Options to pass to the `refund` resource in the Wpay PayTo API.
      *
-     * @var ?WpayPaytoResourceOptions $refund
+     * @var ?\Gr4vy\WpayPaytoResourceOptions $refund
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('refund')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\WpayPaytoResourceOptions|null')]
@@ -42,9 +42,9 @@ class WpayPaytoOptions
     public ?WpayPaytoResourceOptions $refund = null;
 
     /**
-     * @param  ?WpayPaytoResourceOptions  $instrument
-     * @param  ?WpayPaytoResourceOptions  $payment
-     * @param  ?WpayPaytoResourceOptions  $refund
+     * @param  ?\Gr4vy\WpayPaytoResourceOptions  $instrument
+     * @param  ?\Gr4vy\WpayPaytoResourceOptions  $payment
+     * @param  ?\Gr4vy\WpayPaytoResourceOptions  $refund
      * @phpstan-pure
      */
     public function __construct(?WpayPaytoResourceOptions $instrument = null, ?WpayPaytoResourceOptions $payment = null, ?WpayPaytoResourceOptions $refund = null)

@@ -21,7 +21,7 @@ class CreatePaymentMethodPaymentServiceTokenRequest
 
     /**
      *
-     * @var PaymentServiceTokenCreate $paymentServiceTokenCreate
+     * @var \Gr4vy\PaymentServiceTokenCreate $paymentServiceTokenCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public PaymentServiceTokenCreate $paymentServiceTokenCreate;
@@ -36,7 +36,7 @@ class CreatePaymentMethodPaymentServiceTokenRequest
 
     /**
      * @param  string  $paymentMethodId
-     * @param  PaymentServiceTokenCreate  $paymentServiceTokenCreate
+     * @param  \Gr4vy\PaymentServiceTokenCreate  $paymentServiceTokenCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

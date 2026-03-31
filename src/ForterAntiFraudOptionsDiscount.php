@@ -30,7 +30,7 @@ class ForterAntiFraudOptionsDiscount
     /**
      * Monetary details of the discount amount.
      *
-     * @var ?ForterAntiFraudOptionsDiscountCouponDiscountAmount $couponDiscountAmount
+     * @var ?\Gr4vy\ForterAntiFraudOptionsDiscountCouponDiscountAmount $couponDiscountAmount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('coupon_discount_amount')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ForterAntiFraudOptionsDiscountCouponDiscountAmount|null')]
@@ -49,7 +49,7 @@ class ForterAntiFraudOptionsDiscount
     /**
      * @param  string  $couponCodeUsed
      * @param  string  $discountType
-     * @param  ?ForterAntiFraudOptionsDiscountCouponDiscountAmount  $couponDiscountAmount
+     * @param  ?\Gr4vy\ForterAntiFraudOptionsDiscountCouponDiscountAmount  $couponDiscountAmount
      * @param  ?string  $couponDiscountPercent
      * @phpstan-pure
      */

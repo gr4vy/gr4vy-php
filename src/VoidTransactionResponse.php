@@ -35,7 +35,7 @@ class VoidTransactionResponse
     /**
      * Successful Response
      *
-     * @var Transaction|TransactionVoid|null $response200VoidTransaction
+     * @var \Gr4vy\Transaction|\Gr4vy\TransactionVoid|null $response200VoidTransaction
      */
     public Transaction|TransactionVoid|null $response200VoidTransaction = null;
 
@@ -43,7 +43,7 @@ class VoidTransactionResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  Transaction|TransactionVoid|null  $response200VoidTransaction
+     * @param  \Gr4vy\Transaction|\Gr4vy\TransactionVoid|null  $response200VoidTransaction
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Transaction|TransactionVoid|null $response200VoidTransaction = null)

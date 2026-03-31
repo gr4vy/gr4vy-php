@@ -49,10 +49,10 @@ class All
      * Create a refund for all instruments on a transaction.
      *
      * @param  string  $transactionId
-     * @param  ?TransactionRefundAllCreate  $transactionRefundAllCreate
+     * @param  ?\Gr4vy\TransactionRefundAllCreate  $transactionRefundAllCreate
      * @param  ?string  $merchantAccountId
      * @param  ?string  $idempotencyKey
-     * @return CreateFullTransactionRefundResponse
+     * @return \Gr4vy\CreateFullTransactionRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(string $transactionId, ?TransactionRefundAllCreate $transactionRefundAllCreate = null, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?Options $options = null): CreateFullTransactionRefundResponse

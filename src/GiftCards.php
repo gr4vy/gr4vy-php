@@ -14,7 +14,7 @@ class GiftCards
     /**
      * A list of items returned for this request.
      *
-     * @var array<GiftCard> $items
+     * @var array<\Gr4vy\GiftCard> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\GiftCard>')]
@@ -48,7 +48,7 @@ class GiftCards
     public ?int $limit = null;
 
     /**
-     * @param  array<GiftCard>  $items
+     * @param  array<\Gr4vy\GiftCard>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

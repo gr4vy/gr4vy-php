@@ -35,7 +35,7 @@ class GetTransactionRefundResponse
     /**
      * Successful Response
      *
-     * @var ?Refund $refund
+     * @var ?\Gr4vy\Refund $refund
      */
     public ?Refund $refund = null;
 
@@ -43,7 +43,7 @@ class GetTransactionRefundResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Refund  $refund
+     * @param  ?\Gr4vy\Refund  $refund
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Refund $refund = null)

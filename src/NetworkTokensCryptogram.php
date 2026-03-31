@@ -48,11 +48,11 @@ class NetworkTokensCryptogram
      *
      * Provision a cryptogram for a network token.
      *
-     * @param  CryptogramCreate  $cryptogramCreate
+     * @param  \Gr4vy\CryptogramCreate  $cryptogramCreate
      * @param  string  $paymentMethodId
      * @param  string  $networkTokenId
      * @param  ?string  $merchantAccountId
-     * @return CreatePaymentMethodNetworkTokenCryptogramResponse
+     * @return \Gr4vy\CreatePaymentMethodNetworkTokenCryptogramResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(CryptogramCreate $cryptogramCreate, string $paymentMethodId, string $networkTokenId, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodNetworkTokenCryptogramResponse

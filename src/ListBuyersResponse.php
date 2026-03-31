@@ -35,7 +35,7 @@ class ListBuyersResponse
     /**
      * Successful Response
      *
-     * @var ?Buyers $buyers
+     * @var ?\Gr4vy\Buyers $buyers
      */
     public ?Buyers $buyers = null;
 
@@ -47,7 +47,7 @@ class ListBuyersResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Buyers  $buyers
+     * @param  ?\Gr4vy\Buyers  $buyers
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Buyers $buyers = null)

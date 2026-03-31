@@ -14,7 +14,7 @@ class WpayPaytoResourceOptions
     /**
      * Simulate responses for this resource.
      *
-     * @var ?WpayPaytoSimulationOptions $simulation
+     * @var ?\Gr4vy\WpayPaytoSimulationOptions $simulation
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('simulation')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\WpayPaytoSimulationOptions|null')]
@@ -22,7 +22,7 @@ class WpayPaytoResourceOptions
     public ?WpayPaytoSimulationOptions $simulation = null;
 
     /**
-     * @param  ?WpayPaytoSimulationOptions  $simulation
+     * @param  ?\Gr4vy\WpayPaytoSimulationOptions  $simulation
      * @phpstan-pure
      */
     public function __construct(?WpayPaytoSimulationOptions $simulation = null)

@@ -14,14 +14,14 @@ class GiftCardSummaries
     /**
      * A list of items returned for this request.
      *
-     * @var array<GiftCardSummary> $items
+     * @var array<\Gr4vy\GiftCardSummary> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\GiftCardSummary>')]
     public array $items;
 
     /**
-     * @param  array<GiftCardSummary>  $items
+     * @param  array<\Gr4vy\GiftCardSummary>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

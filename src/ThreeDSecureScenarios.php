@@ -14,7 +14,7 @@ class ThreeDSecureScenarios
     /**
      * A list of items returned for this request.
      *
-     * @var array<ThreeDSecureScenario> $items
+     * @var array<\Gr4vy\ThreeDSecureScenario> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\ThreeDSecureScenario>')]
@@ -48,7 +48,7 @@ class ThreeDSecureScenarios
     public ?int $limit = null;
 
     /**
-     * @param  array<ThreeDSecureScenario>  $items
+     * @param  array<\Gr4vy\ThreeDSecureScenario>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

@@ -137,7 +137,7 @@ class Refund
     /**
      * The user that created this resource
      *
-     * @var ?Creator $creator
+     * @var ?\Gr4vy\Creator $creator
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('creator')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Creator|null')]
@@ -197,7 +197,7 @@ class Refund
      * @param  ?string  $targetId
      * @param  ?string  $externalIdentifier
      * @param  ?string  $transactionExternalIdentifier
-     * @param  ?Creator  $creator
+     * @param  ?\Gr4vy\Creator  $creator
      * @param  ?string  $errorCode
      * @param  ?string  $rawResponseCode
      * @param  ?string  $rawResponseDescription

@@ -50,8 +50,8 @@ class ReportExecutionsSDK
      *
      * List all executed reports that have been generated.
      *
-     * @param  ?ListAllReportExecutionsRequest  $request
-     * @return ListAllReportExecutionsResponse
+     * @param  ?\Gr4vy\ListAllReportExecutionsRequest  $request
+     * @return \Gr4vy\ListAllReportExecutionsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?ListAllReportExecutionsRequest $request = null, ?Options $options = null): ListAllReportExecutionsResponse
@@ -301,8 +301,8 @@ class ReportExecutionsSDK
      *
      * List all executed reports that have been generated.
      *
-     * @param  ?ListAllReportExecutionsRequest  $request
-     * @return \Generator<ListAllReportExecutionsResponse>
+     * @param  ?\Gr4vy\ListAllReportExecutionsRequest  $request
+     * @return \Generator<\Gr4vy\ListAllReportExecutionsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?ListAllReportExecutionsRequest $request = null, ?Options $options = null): \Generator

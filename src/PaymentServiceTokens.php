@@ -14,14 +14,14 @@ class PaymentServiceTokens
     /**
      * A list of items returned for this request.
      *
-     * @var array<PaymentServiceToken> $items
+     * @var array<\Gr4vy\PaymentServiceToken> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\PaymentServiceToken>')]
     public array $items;
 
     /**
-     * @param  array<PaymentServiceToken>  $items
+     * @param  array<\Gr4vy\PaymentServiceToken>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

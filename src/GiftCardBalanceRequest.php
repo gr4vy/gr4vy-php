@@ -14,14 +14,14 @@ class GiftCardBalanceRequest
     /**
      * A list of gift cards to request a balance for.
      *
-     * @var array<GiftCardRequest|GiftCardStoredRequest> $items
+     * @var array<\Gr4vy\GiftCardRequest|\Gr4vy\GiftCardStoredRequest> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\GiftCardRequest|\Gr4vy\GiftCardStoredRequest>')]
     public array $items;
 
     /**
-     * @param  array<GiftCardRequest|GiftCardStoredRequest>  $items
+     * @param  array<\Gr4vy\GiftCardRequest|\Gr4vy\GiftCardStoredRequest>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

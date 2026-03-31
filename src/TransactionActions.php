@@ -14,14 +14,14 @@ class TransactionActions
     /**
      * The list of actions triggered for a transaction.
      *
-     * @var array<TransactionAction> $items
+     * @var array<\Gr4vy\TransactionAction> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\TransactionAction>')]
     public array $items;
 
     /**
-     * @param  array<TransactionAction>  $items
+     * @param  array<\Gr4vy\TransactionAction>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

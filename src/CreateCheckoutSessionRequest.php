@@ -21,14 +21,14 @@ class CreateCheckoutSessionRequest
 
     /**
      *
-     * @var ?CheckoutSessionCreate $checkoutSessionCreate
+     * @var ?\Gr4vy\CheckoutSessionCreate $checkoutSessionCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public ?CheckoutSessionCreate $checkoutSessionCreate = null;
 
     /**
      * @param  ?string  $merchantAccountId
-     * @param  ?CheckoutSessionCreate  $checkoutSessionCreate
+     * @param  ?\Gr4vy\CheckoutSessionCreate  $checkoutSessionCreate
      * @phpstan-pure
      */
     public function __construct(?string $merchantAccountId = null, ?CheckoutSessionCreate $checkoutSessionCreate = null)

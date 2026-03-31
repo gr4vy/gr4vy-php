@@ -41,7 +41,7 @@ class TransactionThreeDSecureSummary
     /**
      * The 3DS data sent to the payment service for this transaction. This will only be populated if external 3DS data was passed in directly as part of the transaction API call, or if our 3DS server returned a status code of `Y` or `A`. In case of a failure to authenticate (status `N`, `R`, or `U`) this field will not be populated. To see full details about the 3DS calls please use our transaction events API.
      *
-     * @var ThreeDSecureDataV1|ThreeDSecureV2|null $responseData
+     * @var \Gr4vy\ThreeDSecureDataV1|\Gr4vy\ThreeDSecureV2|null $responseData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('response_data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ThreeDSecureDataV1|\Gr4vy\ThreeDSecureV2|null')]
@@ -51,7 +51,7 @@ class TransactionThreeDSecureSummary
     /**
      * The error data received from our 3DS server. This will not be populated if the customer failed the authentication with a status code of `N`, `R`, or `U`.  To see full details about the 3DS calls in those situations please use our transaction events API.
      *
-     * @var ?ThreeDSecureError $errorData
+     * @var ?\Gr4vy\ThreeDSecureError $errorData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('error_data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ThreeDSecureError|null')]
@@ -71,8 +71,8 @@ class TransactionThreeDSecureSummary
      * @param  ?string  $version
      * @param  ?string  $status
      * @param  ?string  $method
-     * @param  ThreeDSecureDataV1|ThreeDSecureV2|null  $responseData
-     * @param  ?ThreeDSecureError  $errorData
+     * @param  \Gr4vy\ThreeDSecureDataV1|\Gr4vy\ThreeDSecureV2|null  $responseData
+     * @param  ?\Gr4vy\ThreeDSecureError  $errorData
      * @param  ?int  $amount
      * @phpstan-pure
      */

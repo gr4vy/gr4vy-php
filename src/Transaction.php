@@ -109,7 +109,7 @@ class Transaction
     /**
      * The gift cards redeemed for this transaction.
      *
-     * @var array<GiftCardRedemption> $giftCardRedemptions
+     * @var array<\Gr4vy\GiftCardRedemption> $giftCardRedemptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gift_card_redemptions')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\GiftCardRedemption>')]
@@ -226,7 +226,7 @@ class Transaction
     /**
      * The payment method used for this transaction.
      *
-     * @var ?TransactionPaymentMethod $paymentMethod
+     * @var ?\Gr4vy\TransactionPaymentMethod $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentMethod|null')]
@@ -263,7 +263,7 @@ class Transaction
     /**
      * The payment service used for this transaction.
      *
-     * @var ?TransactionPaymentService $paymentService
+     * @var ?\Gr4vy\TransactionPaymentService $paymentService
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_service')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentService|null')]
@@ -273,7 +273,7 @@ class Transaction
     /**
      * The buyer used for this transaction.
      *
-     * @var ?TransactionBuyer $buyer
+     * @var ?\Gr4vy\TransactionBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyer|null')]
@@ -301,7 +301,7 @@ class Transaction
     /**
      * The shipping details associated with the transaction.
      *
-     * @var ?ShippingDetails $shippingDetails
+     * @var ?\Gr4vy\ShippingDetails $shippingDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('shipping_details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ShippingDetails|null')]
@@ -320,7 +320,7 @@ class Transaction
     /**
      * The gift card service used for this transaction.
      *
-     * @var ?GiftCardService $giftCardService
+     * @var ?\Gr4vy\GiftCardService $giftCardService
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gift_card_service')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GiftCardService|null')]
@@ -330,7 +330,7 @@ class Transaction
     /**
      * Contains information about an airline travel, if applicable.
      *
-     * @var ?Airline $airline
+     * @var ?\Gr4vy\Airline $airline
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('airline')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Airline|null')]
@@ -376,7 +376,7 @@ class Transaction
     /**
      * An array of cart items that represents the line items of a transaction.
      *
-     * @var ?array<CartItem> $cartItems
+     * @var ?array<\Gr4vy\CartItem> $cartItems
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cart_items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CartItem>|null')]
@@ -386,7 +386,7 @@ class Transaction
     /**
      * The statement descriptor is the text to be shown on the buyer's statements.
      *
-     * @var ?StatementDescriptor $statementDescriptor
+     * @var ?\Gr4vy\StatementDescriptor $statementDescriptor
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('statement_descriptor')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\StatementDescriptor|null')]
@@ -405,7 +405,7 @@ class Transaction
     /**
      * The 3-D Secure data that was sent to the payment service for the transaction.
      *
-     * @var ?TransactionThreeDSecureSummary $threeDSecure
+     * @var ?\Gr4vy\TransactionThreeDSecureSummary $threeDSecure
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('three_d_secure')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionThreeDSecureSummary|null')]
@@ -488,7 +488,7 @@ class Transaction
     /**
      * The recipient of any account to account funding. For use with AFTs.
      *
-     * @var ?Recipient $recipient
+     * @var ?\Gr4vy\Recipient $recipient
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recipient')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Recipient|null')]
@@ -634,7 +634,7 @@ class Transaction
      * @param  int  $settledAmount
      * @param  bool  $settled
      * @param  string  $intent
-     * @param  array<GiftCardRedemption>  $giftCardRedemptions
+     * @param  array<\Gr4vy\GiftCardRedemption>  $giftCardRedemptions
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  bool  $disputed
@@ -650,26 +650,26 @@ class Transaction
      * @param  ?string  $settledCurrency
      * @param  ?string  $country
      * @param  ?string  $externalIdentifier
-     * @param  ?TransactionPaymentMethod  $paymentMethod
+     * @param  ?\Gr4vy\TransactionPaymentMethod  $paymentMethod
      * @param  ?string  $method
      * @param  ?string  $instrumentType
      * @param  ?string  $errorCode
-     * @param  ?TransactionPaymentService  $paymentService
-     * @param  ?TransactionBuyer  $buyer
+     * @param  ?\Gr4vy\TransactionPaymentService  $paymentService
+     * @param  ?\Gr4vy\TransactionBuyer  $buyer
      * @param  ?string  $rawResponseCode
      * @param  ?string  $rawResponseDescription
-     * @param  ?ShippingDetails  $shippingDetails
+     * @param  ?\Gr4vy\ShippingDetails  $shippingDetails
      * @param  ?string  $checkoutSessionId
-     * @param  ?GiftCardService  $giftCardService
-     * @param  ?Airline  $airline
+     * @param  ?\Gr4vy\GiftCardService  $giftCardService
+     * @param  ?\Gr4vy\Airline  $airline
      * @param  ?string  $authResponseCode
      * @param  ?string  $avsResponseCode
      * @param  ?string  $cvvResponseCode
      * @param  ?string  $antiFraudDecision
-     * @param  ?array<CartItem>  $cartItems
-     * @param  ?StatementDescriptor  $statementDescriptor
+     * @param  ?array<\Gr4vy\CartItem>  $cartItems
+     * @param  ?\Gr4vy\StatementDescriptor  $statementDescriptor
      * @param  ?string  $schemeTransactionId
-     * @param  ?TransactionThreeDSecureSummary  $threeDSecure
+     * @param  ?\Gr4vy\TransactionThreeDSecureSummary  $threeDSecure
      * @param  ?string  $paymentServiceTransactionId
      * @param  ?array<string, string>  $metadata
      * @param  ?\DateTime  $authorizedAt
@@ -678,7 +678,7 @@ class Transaction
      * @param  ?\DateTime  $canceledAt
      * @param  ?\DateTime  $approvalExpiresAt
      * @param  ?\DateTime  $buyerApprovalTimedoutAt
-     * @param  ?Recipient  $recipient
+     * @param  ?\Gr4vy\Recipient  $recipient
      * @param  ?string  $merchantAdviceCode
      * @param  ?int  $installmentCount
      * @param  ?string  $sessionToken

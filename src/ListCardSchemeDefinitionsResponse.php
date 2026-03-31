@@ -35,7 +35,7 @@ class ListCardSchemeDefinitionsResponse
     /**
      * Successful Response
      *
-     * @var ?CardSchemeDefinitions $cardSchemeDefinitions
+     * @var ?\Gr4vy\CardSchemeDefinitions $cardSchemeDefinitions
      */
     public ?CardSchemeDefinitions $cardSchemeDefinitions = null;
 
@@ -43,7 +43,7 @@ class ListCardSchemeDefinitionsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CardSchemeDefinitions  $cardSchemeDefinitions
+     * @param  ?\Gr4vy\CardSchemeDefinitions  $cardSchemeDefinitions
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CardSchemeDefinitions $cardSchemeDefinitions = null)

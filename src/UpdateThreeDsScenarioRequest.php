@@ -21,7 +21,7 @@ class UpdateThreeDsScenarioRequest
 
     /**
      *
-     * @var ThreeDSecureScenarioUpdate $threeDSecureScenarioUpdate
+     * @var \Gr4vy\ThreeDSecureScenarioUpdate $threeDSecureScenarioUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public ThreeDSecureScenarioUpdate $threeDSecureScenarioUpdate;
@@ -36,7 +36,7 @@ class UpdateThreeDsScenarioRequest
 
     /**
      * @param  string  $threeDsScenarioId
-     * @param  ThreeDSecureScenarioUpdate  $threeDSecureScenarioUpdate
+     * @param  \Gr4vy\ThreeDSecureScenarioUpdate  $threeDSecureScenarioUpdate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

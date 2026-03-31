@@ -13,7 +13,7 @@ class ListGiftCardBalancesRequest
 {
     /**
      *
-     * @var GiftCardBalanceRequest $giftCardBalanceRequest
+     * @var \Gr4vy\GiftCardBalanceRequest $giftCardBalanceRequest
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public GiftCardBalanceRequest $giftCardBalanceRequest;
@@ -27,7 +27,7 @@ class ListGiftCardBalancesRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  GiftCardBalanceRequest  $giftCardBalanceRequest
+     * @param  \Gr4vy\GiftCardBalanceRequest  $giftCardBalanceRequest
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

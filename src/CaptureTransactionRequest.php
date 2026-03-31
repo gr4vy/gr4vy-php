@@ -21,7 +21,7 @@ class CaptureTransactionRequest
 
     /**
      *
-     * @var TransactionCaptureCreate $transactionCaptureCreate
+     * @var \Gr4vy\TransactionCaptureCreate $transactionCaptureCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public TransactionCaptureCreate $transactionCaptureCreate;
@@ -52,7 +52,7 @@ class CaptureTransactionRequest
 
     /**
      * @param  string  $transactionId
-     * @param  TransactionCaptureCreate  $transactionCaptureCreate
+     * @param  \Gr4vy\TransactionCaptureCreate  $transactionCaptureCreate
      * @param  ?string  $merchantAccountId
      * @param  ?array<string>  $prefer
      * @param  ?string  $idempotencyKey

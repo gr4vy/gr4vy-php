@@ -13,7 +13,7 @@ class VerifyPaymentServiceCredentialsRequest
 {
     /**
      *
-     * @var VerifyCredentials $verifyCredentials
+     * @var \Gr4vy\VerifyCredentials $verifyCredentials
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public VerifyCredentials $verifyCredentials;
@@ -27,7 +27,7 @@ class VerifyPaymentServiceCredentialsRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  VerifyCredentials  $verifyCredentials
+     * @param  \Gr4vy\VerifyCredentials  $verifyCredentials
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

@@ -62,7 +62,7 @@ class PayoutMerchant
     /**
      * The address for the merchant.
      *
-     * @var ?Address $address
+     * @var ?\Gr4vy\Address $address
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Address|null')]
@@ -76,7 +76,7 @@ class PayoutMerchant
      * @param  string  $url
      * @param  string  $statementDescriptor
      * @param  string  $merchantCategoryCode
-     * @param  ?Address  $address
+     * @param  ?\Gr4vy\Address  $address
      * @phpstan-pure
      */
     public function __construct(string $name, string $identificationNumber, string $phoneNumber, string $url, string $statementDescriptor, string $merchantCategoryCode, ?Address $address = null)

@@ -35,7 +35,7 @@ class ListTransactionActionsResponse
     /**
      * Successful Response
      *
-     * @var ?TransactionActions $transactionActions
+     * @var ?\Gr4vy\TransactionActions $transactionActions
      */
     public ?TransactionActions $transactionActions = null;
 
@@ -43,7 +43,7 @@ class ListTransactionActionsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?TransactionActions  $transactionActions
+     * @param  ?\Gr4vy\TransactionActions  $transactionActions
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?TransactionActions $transactionActions = null)

@@ -9,7 +9,7 @@ The optional payment method to use for this transaction. This field is required 
 
 ```php
 /**
-* @var CardWithUrlPaymentMethodCreate
+* @var \Gr4vy\CardWithUrlPaymentMethodCreate
 */
 Gr4vy\CardWithUrlPaymentMethodCreate $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Gr4vy\CardWithUrlPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var RedirectPaymentMethodCreate
+* @var \Gr4vy\RedirectPaymentMethodCreate
 */
 Gr4vy\RedirectPaymentMethodCreate $value = /* values here */
 ```
@@ -27,7 +27,7 @@ Gr4vy\RedirectPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var TokenPaymentMethodCreate
+* @var \Gr4vy\TokenPaymentMethodCreate
 */
 Gr4vy\TokenPaymentMethodCreate $value = /* values here */
 ```
@@ -36,7 +36,7 @@ Gr4vy\TokenPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var ApplePayPaymentMethodCreate
+* @var \Gr4vy\ApplePayPaymentMethodCreate
 */
 Gr4vy\ApplePayPaymentMethodCreate $value = /* values here */
 ```
@@ -45,7 +45,7 @@ Gr4vy\ApplePayPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var ClickToPayPaymentMethodCreate
+* @var \Gr4vy\ClickToPayPaymentMethodCreate
 */
 Gr4vy\ClickToPayPaymentMethodCreate $value = /* values here */
 ```
@@ -54,7 +54,7 @@ Gr4vy\ClickToPayPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var ClickToPayFPANPaymentMethodCreate
+* @var \Gr4vy\ClickToPayFPANPaymentMethodCreate
 */
 Gr4vy\ClickToPayFPANPaymentMethodCreate $value = /* values here */
 ```
@@ -63,7 +63,7 @@ Gr4vy\ClickToPayFPANPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var GooglePayPaymentMethodCreate
+* @var \Gr4vy\GooglePayPaymentMethodCreate
 */
 Gr4vy\GooglePayPaymentMethodCreate $value = /* values here */
 ```
@@ -72,7 +72,7 @@ Gr4vy\GooglePayPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var GooglePayFPANPaymentMethodCreate
+* @var \Gr4vy\GooglePayFPANPaymentMethodCreate
 */
 Gr4vy\GooglePayFPANPaymentMethodCreate $value = /* values here */
 ```
@@ -81,7 +81,7 @@ Gr4vy\GooglePayFPANPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var NetworkTokenPaymentMethodCreate
+* @var \Gr4vy\NetworkTokenPaymentMethodCreate
 */
 Gr4vy\NetworkTokenPaymentMethodCreate $value = /* values here */
 ```
@@ -90,7 +90,7 @@ Gr4vy\NetworkTokenPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var PlaidPaymentMethodCreate
+* @var \Gr4vy\PlaidPaymentMethodCreate
 */
 Gr4vy\PlaidPaymentMethodCreate $value = /* values here */
 ```
@@ -99,7 +99,7 @@ Gr4vy\PlaidPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var BaseBankPaymentMethodCreate
+* @var \Gr4vy\BaseBankPaymentMethodCreate
 */
 Gr4vy\BaseBankPaymentMethodCreate $value = /* values here */
 ```
@@ -108,7 +108,7 @@ Gr4vy\BaseBankPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var CheckoutSessionWithUrlPaymentMethodCreate
+* @var \Gr4vy\CheckoutSessionWithUrlPaymentMethodCreate
 */
 Gr4vy\CheckoutSessionWithUrlPaymentMethodCreate $value = /* values here */
 ```

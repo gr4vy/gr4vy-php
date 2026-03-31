@@ -37,7 +37,7 @@ class ReportCreate
     /**
      * The report specification.
      *
-     * @var TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec|AccountsReceivablesReportSpec $spec
+     * @var \Gr4vy\TransactionsReportSpec|\Gr4vy\TransactionRetriesReportSpec|\Gr4vy\DetailedSettlementReportSpec|\Gr4vy\AccountsReceivablesReportSpec $spec
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('spec')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionsReportSpec|\Gr4vy\TransactionRetriesReportSpec|\Gr4vy\DetailedSettlementReportSpec|\Gr4vy\AccountsReceivablesReportSpec')]
@@ -66,7 +66,7 @@ class ReportCreate
      * @param  string  $name
      * @param  string  $schedule
      * @param  bool  $scheduleEnabled
-     * @param  TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec|AccountsReceivablesReportSpec  $spec
+     * @param  \Gr4vy\TransactionsReportSpec|\Gr4vy\TransactionRetriesReportSpec|\Gr4vy\DetailedSettlementReportSpec|\Gr4vy\AccountsReceivablesReportSpec  $spec
      * @param  ?string  $scheduleTimezone
      * @param  ?string  $description
      * @phpstan-pure

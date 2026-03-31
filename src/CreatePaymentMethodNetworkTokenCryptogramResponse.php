@@ -35,7 +35,7 @@ class CreatePaymentMethodNetworkTokenCryptogramResponse
     /**
      * Successful Response
      *
-     * @var ?Cryptogram $cryptogram
+     * @var ?\Gr4vy\Cryptogram $cryptogram
      */
     public ?Cryptogram $cryptogram = null;
 
@@ -43,7 +43,7 @@ class CreatePaymentMethodNetworkTokenCryptogramResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Cryptogram  $cryptogram
+     * @param  ?\Gr4vy\Cryptogram  $cryptogram
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Cryptogram $cryptogram = null)

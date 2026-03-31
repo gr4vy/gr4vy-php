@@ -13,7 +13,7 @@ class CreateTransactionRequest
 {
     /**
      *
-     * @var TransactionCreate $transactionCreate
+     * @var \Gr4vy\TransactionCreate $transactionCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public TransactionCreate $transactionCreate;
@@ -46,7 +46,7 @@ class CreateTransactionRequest
     public ?string $idempotencyKey = null;
 
     /**
-     * @param  TransactionCreate  $transactionCreate
+     * @param  \Gr4vy\TransactionCreate  $transactionCreate
      * @param  ?string  $merchantAccountId
      * @param  ?string  $xForwardedFor
      * @param  ?string  $idempotencyKey

@@ -50,10 +50,10 @@ class BuyersShippingDetails
      *
      * Associate shipping details to a buyer.
      *
-     * @param  ShippingDetailsCreate  $shippingDetailsCreate
+     * @param  \Gr4vy\ShippingDetailsCreate  $shippingDetailsCreate
      * @param  string  $buyerId
      * @param  ?string  $merchantAccountId
-     * @return AddBuyerShippingDetailsResponse
+     * @return \Gr4vy\AddBuyerShippingDetailsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(ShippingDetailsCreate $shippingDetailsCreate, string $buyerId, ?string $merchantAccountId = null, ?Options $options = null): AddBuyerShippingDetailsResponse
@@ -262,7 +262,7 @@ class BuyersShippingDetails
      * @param  string  $buyerId
      * @param  string  $shippingDetailsId
      * @param  ?string  $merchantAccountId
-     * @return DeleteBuyerShippingDetailsResponse
+     * @return \Gr4vy\DeleteBuyerShippingDetailsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $buyerId, string $shippingDetailsId, ?string $merchantAccountId = null, ?Options $options = null): DeleteBuyerShippingDetailsResponse
@@ -457,7 +457,7 @@ class BuyersShippingDetails
      * @param  string  $buyerId
      * @param  string  $shippingDetailsId
      * @param  ?string  $merchantAccountId
-     * @return GetBuyerShippingDetailsResponse
+     * @return \Gr4vy\GetBuyerShippingDetailsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $buyerId, string $shippingDetailsId, ?string $merchantAccountId = null, ?Options $options = null): GetBuyerShippingDetailsResponse
@@ -684,7 +684,7 @@ class BuyersShippingDetails
      *
      * @param  string  $buyerId
      * @param  ?string  $merchantAccountId
-     * @return ListBuyerShippingDetailsResponse
+     * @return \Gr4vy\ListBuyerShippingDetailsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(string $buyerId, ?string $merchantAccountId = null, ?Options $options = null): ListBuyerShippingDetailsResponse
@@ -908,11 +908,11 @@ class BuyersShippingDetails
      *
      * Update the shipping details associated to a specific buyer.
      *
-     * @param  ShippingDetailsUpdate  $shippingDetailsUpdate
+     * @param  \Gr4vy\ShippingDetailsUpdate  $shippingDetailsUpdate
      * @param  string  $buyerId
      * @param  string  $shippingDetailsId
      * @param  ?string  $merchantAccountId
-     * @return UpdateBuyerShippingDetailsResponse
+     * @return \Gr4vy\UpdateBuyerShippingDetailsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function update(ShippingDetailsUpdate $shippingDetailsUpdate, string $buyerId, string $shippingDetailsId, ?string $merchantAccountId = null, ?Options $options = null): UpdateBuyerShippingDetailsResponse

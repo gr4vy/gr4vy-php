@@ -136,7 +136,7 @@ class PaymentService
     /**
      * An object containing a key for each supported card schemes, and for each key an object with the 3DS profile for this service for that scheme.
      *
-     * @var ?array<string, ?MerchantProfileSchemeSummary> $merchantProfile
+     * @var ?array<string, ?\Gr4vy\MerchantProfileSchemeSummary> $merchantProfile
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('merchant_profile')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string, \Gr4vy\MerchantProfileSchemeSummary|null>|null')]
@@ -155,7 +155,7 @@ class PaymentService
     /**
      * The non-secret credential fields that have been configured for this payment service. Any secret fields are omitted.
      *
-     * @var ?array<Field> $fields
+     * @var ?array<\Gr4vy\Field> $fields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Field>|null')]
@@ -165,7 +165,7 @@ class PaymentService
     /**
      * The non-secret reporting fields that have been configured for this payment service. Any secret fields are omitted.
      *
-     * @var ?array<Field> $reportingFields
+     * @var ?array<\Gr4vy\Field> $reportingFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('reporting_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Field>|null')]
@@ -227,10 +227,10 @@ class PaymentService
      * @param  ?string  $status
      * @param  ?bool  $isDeleted
      * @param  ?bool  $threeDSecureEnabled
-     * @param  ?array<string, ?MerchantProfileSchemeSummary>  $merchantProfile
+     * @param  ?array<string, ?\Gr4vy\MerchantProfileSchemeSummary>  $merchantProfile
      * @param  ?string  $webhookUrl
-     * @param  ?array<Field>  $fields
-     * @param  ?array<Field>  $reportingFields
+     * @param  ?array<\Gr4vy\Field>  $fields
+     * @param  ?array<\Gr4vy\Field>  $reportingFields
      * @phpstan-pure
      */
     public function __construct(string $merchantAccountId, string $paymentServiceDefinitionId, string $method, string $displayName, int $position, array $acceptedCurrencies, array $acceptedCountries, bool $paymentMethodTokenizationEnabled, bool $networkTokensEnabled, bool $openLoop, bool $settlementReportingEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?string $status = null, ?bool $threeDSecureEnabled = null, ?array $merchantProfile = null, ?string $webhookUrl = null, ?array $fields = null, ?array $reportingFields = null, ?string $id = 'The ID of the payment service', ?bool $active = true, ?bool $isDeleted = false, ?string $type = 'payment-service')

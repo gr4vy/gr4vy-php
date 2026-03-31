@@ -14,7 +14,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `account-updater` connector, allowing for simulating different account updater responses.
      *
-     * @var ?AccountUpdaterOptions $accountUpdater
+     * @var ?\Gr4vy\AccountUpdaterOptions $accountUpdater
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('account-updater')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AccountUpdaterOptions|null')]
@@ -24,7 +24,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-afterpay` connector.
      *
-     * @var ?AdyenOptions $adyenAfterpay
+     * @var ?\Gr4vy\AdyenOptions $adyenAfterpay
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-afterpay')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenOptions|null')]
@@ -34,7 +34,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-alipay` connector.
      *
-     * @var ?AdyenOptions $adyenAlipay
+     * @var ?\Gr4vy\AdyenOptions $adyenAlipay
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-alipay')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenOptions|null')]
@@ -44,7 +44,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-card` connector.
      *
-     * @var ?AdyenCardOptions $adyenCard
+     * @var ?\Gr4vy\AdyenCardOptions $adyenCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenCardOptions|null')]
@@ -54,7 +54,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-cashapp` connector.
      *
-     * @var ?AdyenOptions $adyenCashapp
+     * @var ?\Gr4vy\AdyenOptions $adyenCashapp
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-cashapp')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenOptions|null')]
@@ -64,7 +64,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-giropay` connector.
      *
-     * @var ?AdyenOptions $adyenGiropay
+     * @var ?\Gr4vy\AdyenOptions $adyenGiropay
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-giropay')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenOptions|null')]
@@ -74,7 +74,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-ideal` connector.
      *
-     * @var ?AdyenOptions $adyenIdeal
+     * @var ?\Gr4vy\AdyenOptions $adyenIdeal
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-ideal')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenOptions|null')]
@@ -84,7 +84,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-pix` connector.
      *
-     * @var ?AdyenOptions $adyenPix
+     * @var ?\Gr4vy\AdyenOptions $adyenPix
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-pix')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenOptions|null')]
@@ -94,7 +94,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-sepa` connector.
      *
-     * @var ?AdyenSepaOptions $adyenSepa
+     * @var ?\Gr4vy\AdyenSepaOptions $adyenSepa
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-sepa')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenSepaOptions|null')]
@@ -104,7 +104,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-sofort` connector.
      *
-     * @var ?AdyenOptions $adyenSofort
+     * @var ?\Gr4vy\AdyenOptions $adyenSofort
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-sofort')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenOptions|null')]
@@ -114,7 +114,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-swish` connector.
      *
-     * @var ?AdyenOptions $adyenSwish
+     * @var ?\Gr4vy\AdyenOptions $adyenSwish
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-swish')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenOptions|null')]
@@ -124,7 +124,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `adyen-vipps` connector.
      *
-     * @var ?AdyenOptions $adyenVipps
+     * @var ?\Gr4vy\AdyenOptions $adyenVipps
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-vipps')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenOptions|null')]
@@ -134,7 +134,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `affirm-affirm` connector.
      *
-     * @var ?AffirmOptions $affirmAffirm
+     * @var ?\Gr4vy\AffirmOptions $affirmAffirm
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('affirm-affirm')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AffirmOptions|null')]
@@ -144,7 +144,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `braintree-card` connector.
      *
-     * @var ?BraintreeOptions $braintreeCard
+     * @var ?\Gr4vy\BraintreeOptions $braintreeCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('braintree-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BraintreeOptions|null')]
@@ -154,7 +154,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `chaseorbital-card` connector.
      *
-     * @var ?ChaseOptions $chaseorbitalCard
+     * @var ?\Gr4vy\ChaseOptions $chaseorbitalCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('chaseorbital-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ChaseOptions|null')]
@@ -164,7 +164,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `cybersource-anti-fraud` connector.
      *
-     * @var ?CybersourceAntiFraudOptions $cybersourceAntiFraud
+     * @var ?\Gr4vy\CybersourceAntiFraudOptions $cybersourceAntiFraud
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cybersource-anti-fraud')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CybersourceAntiFraudOptions|null')]
@@ -174,7 +174,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `cybersource-card` connector.
      *
-     * @var ?CybersourceOptions $cybersourceCard
+     * @var ?\Gr4vy\CybersourceOptions $cybersourceCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cybersource-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CybersourceOptions|null')]
@@ -184,7 +184,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `cybersource-ideal` connector.
      *
-     * @var ?CybersourceOptions $cybersourceIdeal
+     * @var ?\Gr4vy\CybersourceOptions $cybersourceIdeal
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cybersource-ideal')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CybersourceOptions|null')]
@@ -194,7 +194,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `cybersource-kcp` connector.
      *
-     * @var ?CybersourceOptions $cybersourceKcp
+     * @var ?\Gr4vy\CybersourceOptions $cybersourceKcp
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cybersource-kcp')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CybersourceOptions|null')]
@@ -204,7 +204,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `dlocal-nequi` connector.
      *
-     * @var ?DlocalOptions $dlocalNequi
+     * @var ?\Gr4vy\DlocalOptions $dlocalNequi
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('dlocal-nequi')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DlocalOptions|null')]
@@ -214,7 +214,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `dlocal-upi` connector.
      *
-     * @var ?DlocalUPIOptions $dlocalUpi
+     * @var ?\Gr4vy\DlocalUPIOptions $dlocalUpi
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('dlocal-upi')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DlocalUPIOptions|null')]
@@ -224,7 +224,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `dlocal-pix` connector.
      *
-     * @var ?DlocalPIXOptions $dlocalPix
+     * @var ?\Gr4vy\DlocalPIXOptions $dlocalPix
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('dlocal-pix')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DlocalPIXOptions|null')]
@@ -234,7 +234,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `fiserv-card` connector.
      *
-     * @var ?FiservOptions $fiservCard
+     * @var ?\Gr4vy\FiservOptions $fiservCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('fiserv-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\FiservOptions|null')]
@@ -244,7 +244,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `forter-anti-fraud` connector.
      *
-     * @var ?ForterAntiFraudOptions $forterAntiFraud
+     * @var ?\Gr4vy\ForterAntiFraudOptions $forterAntiFraud
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('forter-anti-fraud')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ForterAntiFraudOptions|null')]
@@ -254,7 +254,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `gem-gem` connector.
      *
-     * @var ?LatitudeOptions $gemGem
+     * @var ?\Gr4vy\LatitudeOptions $gemGem
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gem-gem')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\LatitudeOptions|null')]
@@ -264,7 +264,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `gem-gemds` connector.
      *
-     * @var ?LatitudeOptions $gemGemds
+     * @var ?\Gr4vy\LatitudeOptions $gemGemds
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gem-gemds')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\LatitudeOptions|null')]
@@ -274,7 +274,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `givingblock-givingblock` connector.
      *
-     * @var ?GivingBlockOptions $givingblockGivingblock
+     * @var ?\Gr4vy\GivingBlockOptions $givingblockGivingblock
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('givingblock-givingblock')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GivingBlockOptions|null')]
@@ -284,7 +284,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `gocardless-gocardless` connector.
      *
-     * @var ?GoCardlessOptions $gocardlessGocardless
+     * @var ?\Gr4vy\GoCardlessOptions $gocardlessGocardless
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gocardless-gocardless')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GoCardlessOptions|null')]
@@ -294,7 +294,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `latitude-latitude` connector.
      *
-     * @var ?LatitudeOptions $latitudeLatitude
+     * @var ?\Gr4vy\LatitudeOptions $latitudeLatitude
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('latitude-latitude')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\LatitudeOptions|null')]
@@ -304,7 +304,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `latitude-latitudeds` connector.
      *
-     * @var ?LatitudeOptions $latitudeLatitudeds
+     * @var ?\Gr4vy\LatitudeOptions $latitudeLatitudeds
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('latitude-latitudeds')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\LatitudeOptions|null')]
@@ -314,7 +314,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `mattilda-tapi` connector.
      *
-     * @var ?MattildaTapiOptions $mattildaTapi
+     * @var ?\Gr4vy\MattildaTapiOptions $mattildaTapi
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('mattilda-tapi')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\MattildaTapiOptions|null')]
@@ -324,7 +324,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `mattilda-tapifintechs` connector.
      *
-     * @var ?MattildaTapiOptions $mattildaTapifintechs
+     * @var ?\Gr4vy\MattildaTapiOptions $mattildaTapifintechs
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('mattilda-tapifintechs')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\MattildaTapiOptions|null')]
@@ -334,7 +334,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `monato-spei` connector.
      *
-     * @var ?MonatoSpeiOptions $monatoSpei
+     * @var ?\Gr4vy\MonatoSpeiOptions $monatoSpei
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('monato-spei')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\MonatoSpeiOptions|null')]
@@ -344,7 +344,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `mock-card` connector.
      *
-     * @var ?MockCardOptions $mockCard
+     * @var ?\Gr4vy\MockCardOptions $mockCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('mock-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\MockCardOptions|null')]
@@ -354,7 +354,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `nuvei-card` connector.
      *
-     * @var ?NuveiOptions $nuveiCard
+     * @var ?\Gr4vy\NuveiOptions $nuveiCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('nuvei-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\NuveiOptions|null')]
@@ -364,7 +364,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `nuvei-ideal` connector.
      *
-     * @var ?NuveiIDealOptions $nuveiIdeal
+     * @var ?\Gr4vy\NuveiIDealOptions $nuveiIdeal
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('nuvei-ideal')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\NuveiIDealOptions|null')]
@@ -374,7 +374,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `nuvei-klarna` connector.
      *
-     * @var ?NuveiKlarnaOptions $nuveiKlarna
+     * @var ?\Gr4vy\NuveiKlarnaOptions $nuveiKlarna
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('nuvei-klarna')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\NuveiKlarnaOptions|null')]
@@ -384,7 +384,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `nuvei-pse` connector.
      *
-     * @var ?NuveiPSEOptions $nuveiPse
+     * @var ?\Gr4vy\NuveiPSEOptions $nuveiPse
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('nuvei-pse')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\NuveiPSEOptions|null')]
@@ -394,7 +394,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `oxxo-oxxo` connector.
      *
-     * @var ?OxxoOptions $oxxoOxxo
+     * @var ?\Gr4vy\OxxoOptions $oxxoOxxo
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('oxxo-oxxo')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\OxxoOptions|null')]
@@ -404,7 +404,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `paypal-paypal` connector.
      *
-     * @var ?PaypalOptions $paypalPaypal
+     * @var ?\Gr4vy\PaypalOptions $paypalPaypal
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('paypal-paypal')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaypalOptions|null')]
@@ -414,7 +414,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `paypal-paypalpaylater` connector.
      *
-     * @var ?PaypalOptions $paypalPaypalpaylater
+     * @var ?\Gr4vy\PaypalOptions $paypalPaypalpaylater
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('paypal-paypalpaylater')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaypalOptions|null')]
@@ -424,7 +424,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `powertranz-card` connector.
      *
-     * @var ?PowertranzOptions $powertranzCard
+     * @var ?\Gr4vy\PowertranzOptions $powertranzCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('powertranz-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PowertranzOptions|null')]
@@ -434,7 +434,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `riskified-anti-fraud` connector.
      *
-     * @var ?RiskifiedAntiFraudOptions $riskifiedAntiFraud
+     * @var ?\Gr4vy\RiskifiedAntiFraudOptions $riskifiedAntiFraud
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('riskified-anti-fraud')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\RiskifiedAntiFraudOptions|null')]
@@ -444,7 +444,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `stripe-affirm` connector.
      *
-     * @var ?StripeOptions $stripeAffirm
+     * @var ?\Gr4vy\StripeOptions $stripeAffirm
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('stripe-affirm')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\StripeOptions|null')]
@@ -454,7 +454,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `stripe-card` connector.
      *
-     * @var ?StripeCardOptions $stripeCard
+     * @var ?\Gr4vy\StripeCardOptions $stripeCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('stripe-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\StripeCardOptions|null')]
@@ -464,7 +464,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `stripe-klarna` connector.
      *
-     * @var ?StripeOptions $stripeKlarna
+     * @var ?\Gr4vy\StripeOptions $stripeKlarna
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('stripe-klarna')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\StripeOptions|null')]
@@ -474,7 +474,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `travelhub-card` connector.
      *
-     * @var ?TravelhubOptions $travelhubCard
+     * @var ?\Gr4vy\TravelhubOptions $travelhubCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('travelhub-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TravelhubOptions|null')]
@@ -484,7 +484,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `trustly-trustly` connector.
      *
-     * @var ?TrustlyOptions $trustlyTrustly
+     * @var ?\Gr4vy\TrustlyOptions $trustlyTrustly
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('trustly-trustly')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TrustlyOptions|null')]
@@ -494,7 +494,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `wpay-everydaypay` connector.
      *
-     * @var ?WpayEverdaypayOptions $wpayEverydaypay
+     * @var ?\Gr4vy\WpayEverdaypayOptions $wpayEverydaypay
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('wpay-everydaypay')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\WpayEverdaypayOptions|null')]
@@ -504,7 +504,7 @@ class TransactionConnectionOptions
     /**
      * Custom options to be passed to the `wpay-payto` connector.
      *
-     * @var ?WpayPaytoOptions $wpayPayto
+     * @var ?\Gr4vy\WpayPaytoOptions $wpayPayto
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('wpay-payto')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\WpayPaytoOptions|null')]
@@ -512,56 +512,56 @@ class TransactionConnectionOptions
     public ?WpayPaytoOptions $wpayPayto = null;
 
     /**
-     * @param  ?AccountUpdaterOptions  $accountUpdater
-     * @param  ?AdyenOptions  $adyenAfterpay
-     * @param  ?AdyenOptions  $adyenAlipay
-     * @param  ?AdyenCardOptions  $adyenCard
-     * @param  ?AdyenOptions  $adyenCashapp
-     * @param  ?AdyenOptions  $adyenGiropay
-     * @param  ?AdyenOptions  $adyenIdeal
-     * @param  ?AdyenOptions  $adyenPix
-     * @param  ?AdyenSepaOptions  $adyenSepa
-     * @param  ?AdyenOptions  $adyenSofort
-     * @param  ?AdyenOptions  $adyenSwish
-     * @param  ?AdyenOptions  $adyenVipps
-     * @param  ?AffirmOptions  $affirmAffirm
-     * @param  ?BraintreeOptions  $braintreeCard
-     * @param  ?ChaseOptions  $chaseorbitalCard
-     * @param  ?CybersourceAntiFraudOptions  $cybersourceAntiFraud
-     * @param  ?CybersourceOptions  $cybersourceCard
-     * @param  ?CybersourceOptions  $cybersourceIdeal
-     * @param  ?CybersourceOptions  $cybersourceKcp
-     * @param  ?DlocalOptions  $dlocalNequi
-     * @param  ?DlocalUPIOptions  $dlocalUpi
-     * @param  ?DlocalPIXOptions  $dlocalPix
-     * @param  ?FiservOptions  $fiservCard
-     * @param  ?ForterAntiFraudOptions  $forterAntiFraud
-     * @param  ?LatitudeOptions  $gemGem
-     * @param  ?LatitudeOptions  $gemGemds
-     * @param  ?GivingBlockOptions  $givingblockGivingblock
-     * @param  ?GoCardlessOptions  $gocardlessGocardless
-     * @param  ?LatitudeOptions  $latitudeLatitude
-     * @param  ?LatitudeOptions  $latitudeLatitudeds
-     * @param  ?MattildaTapiOptions  $mattildaTapi
-     * @param  ?MattildaTapiOptions  $mattildaTapifintechs
-     * @param  ?MonatoSpeiOptions  $monatoSpei
-     * @param  ?MockCardOptions  $mockCard
-     * @param  ?NuveiOptions  $nuveiCard
-     * @param  ?NuveiIDealOptions  $nuveiIdeal
-     * @param  ?NuveiKlarnaOptions  $nuveiKlarna
-     * @param  ?NuveiPSEOptions  $nuveiPse
-     * @param  ?OxxoOptions  $oxxoOxxo
-     * @param  ?PaypalOptions  $paypalPaypal
-     * @param  ?PaypalOptions  $paypalPaypalpaylater
-     * @param  ?PowertranzOptions  $powertranzCard
-     * @param  ?RiskifiedAntiFraudOptions  $riskifiedAntiFraud
-     * @param  ?StripeOptions  $stripeAffirm
-     * @param  ?StripeCardOptions  $stripeCard
-     * @param  ?StripeOptions  $stripeKlarna
-     * @param  ?TravelhubOptions  $travelhubCard
-     * @param  ?TrustlyOptions  $trustlyTrustly
-     * @param  ?WpayEverdaypayOptions  $wpayEverydaypay
-     * @param  ?WpayPaytoOptions  $wpayPayto
+     * @param  ?\Gr4vy\AccountUpdaterOptions  $accountUpdater
+     * @param  ?\Gr4vy\AdyenOptions  $adyenAfterpay
+     * @param  ?\Gr4vy\AdyenOptions  $adyenAlipay
+     * @param  ?\Gr4vy\AdyenCardOptions  $adyenCard
+     * @param  ?\Gr4vy\AdyenOptions  $adyenCashapp
+     * @param  ?\Gr4vy\AdyenOptions  $adyenGiropay
+     * @param  ?\Gr4vy\AdyenOptions  $adyenIdeal
+     * @param  ?\Gr4vy\AdyenOptions  $adyenPix
+     * @param  ?\Gr4vy\AdyenSepaOptions  $adyenSepa
+     * @param  ?\Gr4vy\AdyenOptions  $adyenSofort
+     * @param  ?\Gr4vy\AdyenOptions  $adyenSwish
+     * @param  ?\Gr4vy\AdyenOptions  $adyenVipps
+     * @param  ?\Gr4vy\AffirmOptions  $affirmAffirm
+     * @param  ?\Gr4vy\BraintreeOptions  $braintreeCard
+     * @param  ?\Gr4vy\ChaseOptions  $chaseorbitalCard
+     * @param  ?\Gr4vy\CybersourceAntiFraudOptions  $cybersourceAntiFraud
+     * @param  ?\Gr4vy\CybersourceOptions  $cybersourceCard
+     * @param  ?\Gr4vy\CybersourceOptions  $cybersourceIdeal
+     * @param  ?\Gr4vy\CybersourceOptions  $cybersourceKcp
+     * @param  ?\Gr4vy\DlocalOptions  $dlocalNequi
+     * @param  ?\Gr4vy\DlocalUPIOptions  $dlocalUpi
+     * @param  ?\Gr4vy\DlocalPIXOptions  $dlocalPix
+     * @param  ?\Gr4vy\FiservOptions  $fiservCard
+     * @param  ?\Gr4vy\ForterAntiFraudOptions  $forterAntiFraud
+     * @param  ?\Gr4vy\LatitudeOptions  $gemGem
+     * @param  ?\Gr4vy\LatitudeOptions  $gemGemds
+     * @param  ?\Gr4vy\GivingBlockOptions  $givingblockGivingblock
+     * @param  ?\Gr4vy\GoCardlessOptions  $gocardlessGocardless
+     * @param  ?\Gr4vy\LatitudeOptions  $latitudeLatitude
+     * @param  ?\Gr4vy\LatitudeOptions  $latitudeLatitudeds
+     * @param  ?\Gr4vy\MattildaTapiOptions  $mattildaTapi
+     * @param  ?\Gr4vy\MattildaTapiOptions  $mattildaTapifintechs
+     * @param  ?\Gr4vy\MonatoSpeiOptions  $monatoSpei
+     * @param  ?\Gr4vy\MockCardOptions  $mockCard
+     * @param  ?\Gr4vy\NuveiOptions  $nuveiCard
+     * @param  ?\Gr4vy\NuveiIDealOptions  $nuveiIdeal
+     * @param  ?\Gr4vy\NuveiKlarnaOptions  $nuveiKlarna
+     * @param  ?\Gr4vy\NuveiPSEOptions  $nuveiPse
+     * @param  ?\Gr4vy\OxxoOptions  $oxxoOxxo
+     * @param  ?\Gr4vy\PaypalOptions  $paypalPaypal
+     * @param  ?\Gr4vy\PaypalOptions  $paypalPaypalpaylater
+     * @param  ?\Gr4vy\PowertranzOptions  $powertranzCard
+     * @param  ?\Gr4vy\RiskifiedAntiFraudOptions  $riskifiedAntiFraud
+     * @param  ?\Gr4vy\StripeOptions  $stripeAffirm
+     * @param  ?\Gr4vy\StripeCardOptions  $stripeCard
+     * @param  ?\Gr4vy\StripeOptions  $stripeKlarna
+     * @param  ?\Gr4vy\TravelhubOptions  $travelhubCard
+     * @param  ?\Gr4vy\TrustlyOptions  $trustlyTrustly
+     * @param  ?\Gr4vy\WpayEverdaypayOptions  $wpayEverydaypay
+     * @param  ?\Gr4vy\WpayPaytoOptions  $wpayPayto
      * @phpstan-pure
      */
     public function __construct(?AccountUpdaterOptions $accountUpdater = null, ?AdyenOptions $adyenAfterpay = null, ?AdyenOptions $adyenAlipay = null, ?AdyenCardOptions $adyenCard = null, ?AdyenOptions $adyenCashapp = null, ?AdyenOptions $adyenGiropay = null, ?AdyenOptions $adyenIdeal = null, ?AdyenOptions $adyenPix = null, ?AdyenSepaOptions $adyenSepa = null, ?AdyenOptions $adyenSofort = null, ?AdyenOptions $adyenSwish = null, ?AdyenOptions $adyenVipps = null, ?AffirmOptions $affirmAffirm = null, ?BraintreeOptions $braintreeCard = null, ?ChaseOptions $chaseorbitalCard = null, ?CybersourceAntiFraudOptions $cybersourceAntiFraud = null, ?CybersourceOptions $cybersourceCard = null, ?CybersourceOptions $cybersourceIdeal = null, ?CybersourceOptions $cybersourceKcp = null, ?DlocalOptions $dlocalNequi = null, ?DlocalUPIOptions $dlocalUpi = null, ?DlocalPIXOptions $dlocalPix = null, ?FiservOptions $fiservCard = null, ?ForterAntiFraudOptions $forterAntiFraud = null, ?LatitudeOptions $gemGem = null, ?LatitudeOptions $gemGemds = null, ?GivingBlockOptions $givingblockGivingblock = null, ?GoCardlessOptions $gocardlessGocardless = null, ?LatitudeOptions $latitudeLatitude = null, ?LatitudeOptions $latitudeLatitudeds = null, ?MattildaTapiOptions $mattildaTapi = null, ?MattildaTapiOptions $mattildaTapifintechs = null, ?MonatoSpeiOptions $monatoSpei = null, ?MockCardOptions $mockCard = null, ?NuveiOptions $nuveiCard = null, ?NuveiIDealOptions $nuveiIdeal = null, ?NuveiKlarnaOptions $nuveiKlarna = null, ?NuveiPSEOptions $nuveiPse = null, ?OxxoOptions $oxxoOxxo = null, ?PaypalOptions $paypalPaypal = null, ?PaypalOptions $paypalPaypalpaylater = null, ?PowertranzOptions $powertranzCard = null, ?RiskifiedAntiFraudOptions $riskifiedAntiFraud = null, ?StripeOptions $stripeAffirm = null, ?StripeCardOptions $stripeCard = null, ?StripeOptions $stripeKlarna = null, ?TravelhubOptions $travelhubCard = null, ?TrustlyOptions $trustlyTrustly = null, ?WpayEverdaypayOptions $wpayEverydaypay = null, ?WpayPaytoOptions $wpayPayto = null)

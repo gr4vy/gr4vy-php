@@ -64,7 +64,7 @@ class Transactions
      *
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
-     * @return CancelTransactionResponse
+     * @return \Gr4vy\CancelTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function cancel(string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): CancelTransactionResponse
@@ -264,8 +264,8 @@ class Transactions
      *
      * Captures a previously authorized transaction. You can capture the full or a partial amount, as long as it does not exceed the authorized amount (unless over-capture is enabled).
      *
-     * @param  CaptureTransactionRequest  $request
-     * @return CaptureTransactionResponse
+     * @param  \Gr4vy\CaptureTransactionRequest  $request
+     * @return \Gr4vy\CaptureTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function capture(CaptureTransactionRequest $request, ?Options $options = null): CaptureTransactionResponse
@@ -466,11 +466,11 @@ class Transactions
      *
      * Create a new transaction using a supported payment method. If additional buyer authorization is required, an approval URL will be returned. Duplicated gift card numbers are not supported.
      *
-     * @param  TransactionCreate  $transactionCreate
+     * @param  \Gr4vy\TransactionCreate  $transactionCreate
      * @param  ?string  $merchantAccountId
      * @param  ?string  $idempotencyKey
      * @param  ?string  $xForwardedFor
-     * @return CreateTransactionResponse
+     * @return \Gr4vy\CreateTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(TransactionCreate $transactionCreate, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?string $xForwardedFor = null, ?Options $options = null): CreateTransactionResponse
@@ -679,7 +679,7 @@ class Transactions
      *
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
-     * @return GetTransactionResponse
+     * @return \Gr4vy\GetTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): GetTransactionResponse
@@ -903,8 +903,8 @@ class Transactions
      *
      * Returns a paginated list of transactions for the merchant account, sorted by most recently updated. You can filter, sort, and search transactions using query parameters.
      *
-     * @param  ?ListTransactionsRequest  $request
-     * @return ListTransactionsResponse
+     * @param  ?\Gr4vy\ListTransactionsRequest  $request
+     * @return \Gr4vy\ListTransactionsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?ListTransactionsRequest $request = null, ?Options $options = null): ListTransactionsResponse
@@ -1191,8 +1191,8 @@ class Transactions
      *
      * Returns a paginated list of transactions for the merchant account, sorted by most recently updated. You can filter, sort, and search transactions using query parameters.
      *
-     * @param  ?ListTransactionsRequest  $request
-     * @return \Generator<ListTransactionsResponse>
+     * @param  ?\Gr4vy\ListTransactionsRequest  $request
+     * @return \Generator<\Gr4vy\ListTransactionsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?ListTransactionsRequest $request = null, ?Options $options = null): \Generator
@@ -1211,7 +1211,7 @@ class Transactions
      *
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
-     * @return SyncTransactionResponse
+     * @return \Gr4vy\SyncTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function sync(string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): SyncTransactionResponse
@@ -1411,10 +1411,10 @@ class Transactions
      *
      * Manually updates a transaction.
      *
-     * @param  TransactionUpdate  $transactionUpdate
+     * @param  \Gr4vy\TransactionUpdate  $transactionUpdate
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
-     * @return UpdateTransactionResponse
+     * @return \Gr4vy\UpdateTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function update(TransactionUpdate $transactionUpdate, string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): UpdateTransactionResponse
@@ -1624,7 +1624,7 @@ class Transactions
      * @param  ?array<string>  $prefer
      * @param  ?string  $merchantAccountId
      * @param  ?string  $idempotencyKey
-     * @return VoidTransactionResponse
+     * @return \Gr4vy\VoidTransactionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function void(string $transactionId, ?array $prefer = null, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?Options $options = null): VoidTransactionResponse

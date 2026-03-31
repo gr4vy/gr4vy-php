@@ -14,7 +14,7 @@ class FiservOptions
     /**
      * Passes installment data to the Fiserv API. This is now also a dedicated feature on the Gr4vy API.
      *
-     * @var ?FiservInstallmentOptions $installmentOptions
+     * @var ?\Gr4vy\FiservInstallmentOptions $installmentOptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('installmentOptions')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\FiservInstallmentOptions|null')]
@@ -22,7 +22,7 @@ class FiservOptions
     public ?FiservInstallmentOptions $installmentOptions = null;
 
     /**
-     * @param  ?FiservInstallmentOptions  $installmentOptions
+     * @param  ?\Gr4vy\FiservInstallmentOptions  $installmentOptions
      * @phpstan-pure
      */
     public function __construct(?FiservInstallmentOptions $installmentOptions = null)

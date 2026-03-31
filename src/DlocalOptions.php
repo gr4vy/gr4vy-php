@@ -14,7 +14,7 @@ class DlocalOptions
     /**
      * Passes `wallet` data to the dLocal API for those connectors that need it.
      *
-     * @var ?DlocalWalletOptions $wallet
+     * @var ?\Gr4vy\DlocalWalletOptions $wallet
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('wallet')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DlocalWalletOptions|null')]
@@ -22,7 +22,7 @@ class DlocalOptions
     public ?DlocalWalletOptions $wallet = null;
 
     /**
-     * @param  ?DlocalWalletOptions  $wallet
+     * @param  ?\Gr4vy\DlocalWalletOptions  $wallet
      * @phpstan-pure
      */
     public function __construct(?DlocalWalletOptions $wallet = null)

@@ -56,9 +56,9 @@ class PaymentMethodsSDK
      *
      * Store a new payment method.
      *
-     * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate|ACHBankPaymentMethodCreate|BACSBankPaymentMethodCreate|SEPABankPaymentMethodCreate  $requestBody
+     * @param  \Gr4vy\CardPaymentMethodCreate|\Gr4vy\RedirectPaymentMethodCreate|\Gr4vy\CheckoutSessionPaymentMethodCreate|\Gr4vy\PlaidPaymentMethodCreate|\Gr4vy\ACHBankPaymentMethodCreate|\Gr4vy\BACSBankPaymentMethodCreate|\Gr4vy\SEPABankPaymentMethodCreate  $requestBody
      * @param  ?string  $merchantAccountId
-     * @return CreatePaymentMethodResponse
+     * @return \Gr4vy\CreatePaymentMethodResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate|ACHBankPaymentMethodCreate|BACSBankPaymentMethodCreate|SEPABankPaymentMethodCreate $requestBody, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodResponse
@@ -265,7 +265,7 @@ class PaymentMethodsSDK
      *
      * @param  string  $paymentMethodId
      * @param  ?string  $merchantAccountId
-     * @return DeletePaymentMethodResponse
+     * @return \Gr4vy\DeletePaymentMethodResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $paymentMethodId, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentMethodResponse
@@ -458,7 +458,7 @@ class PaymentMethodsSDK
      *
      * @param  string  $paymentMethodId
      * @param  ?string  $merchantAccountId
-     * @return GetPaymentMethodResponse
+     * @return \Gr4vy\GetPaymentMethodResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $paymentMethodId, ?string $merchantAccountId = null, ?Options $options = null): GetPaymentMethodResponse
@@ -682,8 +682,8 @@ class PaymentMethodsSDK
      *
      * List all stored payment method.
      *
-     * @param  ?ListPaymentMethodsRequest  $request
-     * @return ListPaymentMethodsResponse
+     * @param  ?\Gr4vy\ListPaymentMethodsRequest  $request
+     * @return \Gr4vy\ListPaymentMethodsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?ListPaymentMethodsRequest $request = null, ?Options $options = null): ListPaymentMethodsResponse
@@ -932,8 +932,8 @@ class PaymentMethodsSDK
      *
      * List all stored payment method.
      *
-     * @param  ?ListPaymentMethodsRequest  $request
-     * @return \Generator<ListPaymentMethodsResponse>
+     * @param  ?\Gr4vy\ListPaymentMethodsRequest  $request
+     * @return \Generator<\Gr4vy\ListPaymentMethodsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?ListPaymentMethodsRequest $request = null, ?Options $options = null): \Generator

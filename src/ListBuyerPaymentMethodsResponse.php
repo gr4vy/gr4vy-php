@@ -35,7 +35,7 @@ class ListBuyerPaymentMethodsResponse
     /**
      * Successful Response
      *
-     * @var ?PaymentMethodSummaries $paymentMethodSummaries
+     * @var ?\Gr4vy\PaymentMethodSummaries $paymentMethodSummaries
      */
     public ?PaymentMethodSummaries $paymentMethodSummaries = null;
 
@@ -43,7 +43,7 @@ class ListBuyerPaymentMethodsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?PaymentMethodSummaries  $paymentMethodSummaries
+     * @param  ?\Gr4vy\PaymentMethodSummaries  $paymentMethodSummaries
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PaymentMethodSummaries $paymentMethodSummaries = null)

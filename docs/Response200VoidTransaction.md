@@ -9,7 +9,7 @@ Successful Response
 
 ```php
 /**
-* @var Transaction
+* @var \Gr4vy\Transaction
 */
 Gr4vy\Transaction $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Gr4vy\Transaction $value = /* values here */
 
 ```php
 /**
-* @var TransactionVoid
+* @var \Gr4vy\TransactionVoid
 */
 Gr4vy\TransactionVoid $value = /* values here */
 ```

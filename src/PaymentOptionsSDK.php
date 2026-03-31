@@ -48,9 +48,9 @@ class PaymentOptionsSDK
      *
      * List the payment options available at checkout. filtering by country, currency, and additional fields passed to Flow rules.
      *
-     * @param  PaymentOptionRequest  $paymentOptionRequest
+     * @param  \Gr4vy\PaymentOptionRequest  $paymentOptionRequest
      * @param  ?string  $merchantAccountId
-     * @return ListPaymentOptionsResponse
+     * @return \Gr4vy\ListPaymentOptionsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(PaymentOptionRequest $paymentOptionRequest, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentOptionsResponse

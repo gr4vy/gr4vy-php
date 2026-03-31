@@ -35,7 +35,7 @@ class CreatePaymentMethodPaymentServiceTokenResponse
     /**
      * Successful Response
      *
-     * @var ?PaymentServiceToken $paymentServiceToken
+     * @var ?\Gr4vy\PaymentServiceToken $paymentServiceToken
      */
     public ?PaymentServiceToken $paymentServiceToken = null;
 
@@ -43,7 +43,7 @@ class CreatePaymentMethodPaymentServiceTokenResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?PaymentServiceToken  $paymentServiceToken
+     * @param  ?\Gr4vy\PaymentServiceToken  $paymentServiceToken
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PaymentServiceToken $paymentServiceToken = null)

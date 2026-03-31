@@ -19,7 +19,7 @@ class BACSBankPaymentMethodCreate
 {
     /**
      *
-     * @var BankAccountHolder $accountHolder
+     * @var \Gr4vy\BankAccountHolder $accountHolder
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('account_holder')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BankAccountHolder')]
@@ -87,7 +87,7 @@ class BACSBankPaymentMethodCreate
     public ?string $scheme = null;
 
     /**
-     * @param  BankAccountHolder  $accountHolder
+     * @param  \Gr4vy\BankAccountHolder  $accountHolder
      * @param  string  $accountNumber
      * @param  string  $routingNumber
      * @param  ?string  $method

@@ -56,7 +56,7 @@ class TransactionCreate
     /**
      * The optional payment method to use for this transaction. This field is required if no `gift_cards` have been added.
      *
-     * @var CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|BaseBankPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod
+     * @var \Gr4vy\CardWithUrlPaymentMethodCreate|\Gr4vy\RedirectPaymentMethodCreate|\Gr4vy\TokenPaymentMethodCreate|\Gr4vy\ApplePayPaymentMethodCreate|\Gr4vy\ClickToPayPaymentMethodCreate|\Gr4vy\ClickToPayFPANPaymentMethodCreate|\Gr4vy\GooglePayPaymentMethodCreate|\Gr4vy\GooglePayFPANPaymentMethodCreate|\Gr4vy\NetworkTokenPaymentMethodCreate|\Gr4vy\PlaidPaymentMethodCreate|\Gr4vy\BaseBankPaymentMethodCreate|\Gr4vy\CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CardWithUrlPaymentMethodCreate|\Gr4vy\RedirectPaymentMethodCreate|\Gr4vy\TokenPaymentMethodCreate|\Gr4vy\ApplePayPaymentMethodCreate|\Gr4vy\ClickToPayPaymentMethodCreate|\Gr4vy\ClickToPayFPANPaymentMethodCreate|\Gr4vy\GooglePayPaymentMethodCreate|\Gr4vy\GooglePayFPANPaymentMethodCreate|\Gr4vy\NetworkTokenPaymentMethodCreate|\Gr4vy\PlaidPaymentMethodCreate|\Gr4vy\BaseBankPaymentMethodCreate|\Gr4vy\CheckoutSessionWithUrlPaymentMethodCreate|null')]
@@ -66,7 +66,7 @@ class TransactionCreate
     /**
      * Guest buyer details provided inline rather than creating a buyer resource beforehand and using the `buyer_id` or `buyer_external_identifier` keys. No buyer resource will be created on Gr4vy when used.
      *
-     * @var ?GuestBuyer $buyer
+     * @var ?\Gr4vy\GuestBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyer|null')]
@@ -94,7 +94,7 @@ class TransactionCreate
     /**
      * The optional gift card(s) to use for this transaction. At least one gift card is required if no other `payment_method` has been added. By default, only a maximum limit of 10 gift cards may be used in a single transaction. Please contact our team to change this limit.
      *
-     * @var ?array<GiftCardTransactionCreate|GiftCardTokenTransactionCreate> $giftCards
+     * @var ?array<\Gr4vy\GiftCardTransactionCreate|\Gr4vy\GiftCardTokenTransactionCreate> $giftCards
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gift_cards')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\GiftCardTransactionCreate|\Gr4vy\GiftCardTokenTransactionCreate>|null')]
@@ -113,7 +113,7 @@ class TransactionCreate
     /**
      * Pass through 3-D Secure data to support external 3-D Secure authorisation. If using an external 3-D Secure provider, you should not pass a `redirect_url` in the `payment_method` object for a transaction.
      *
-     * @var ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData
+     * @var \Gr4vy\ThreeDSecureDataV1|\Gr4vy\ThreeDSecureDataV2|null $threeDSecureData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('three_d_secure_data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ThreeDSecureDataV1|\Gr4vy\ThreeDSecureDataV2|null')]
@@ -123,7 +123,7 @@ class TransactionCreate
     /**
      * Optional 3-D Secure values to use during the authentication flow.
      *
-     * @var ?ThreeDSecure $threeDSecure
+     * @var ?\Gr4vy\ThreeDSecure $threeDSecure
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('three_d_secure')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ThreeDSecure|null')]
@@ -143,7 +143,7 @@ class TransactionCreate
     /**
      * The airline addendum data which describes the airline booking associated with this transaction.
      *
-     * @var ?Airline $airline
+     * @var ?\Gr4vy\Airline $airline
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('airline')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Airline|null')]
@@ -153,7 +153,7 @@ class TransactionCreate
     /**
      * An array of cart items that represents the line items of a transaction.
      *
-     * @var ?array<CartItem> $cartItems
+     * @var ?array<\Gr4vy\CartItem> $cartItems
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cart_items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CartItem>|null')]
@@ -163,7 +163,7 @@ class TransactionCreate
     /**
      * Details about the payment and the merchant which may end up on the (bank) statement for the payment.
      *
-     * @var ?StatementDescriptor $statementDescriptor
+     * @var ?\Gr4vy\StatementDescriptor $statementDescriptor
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('statement_descriptor')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\StatementDescriptor|null')]
@@ -182,7 +182,7 @@ class TransactionCreate
     /**
      * Information about the browser used by the buyer. This can be used by anti-fraud services.
      *
-     * @var ?BrowserInfo $browserInfo
+     * @var ?\Gr4vy\BrowserInfo $browserInfo
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('browser_info')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BrowserInfo|null')]
@@ -201,7 +201,7 @@ class TransactionCreate
     /**
      * Allows for passing optional configuration per connection to take advantage of connection specific features. When provided, the data is only passed to the target connection type to prevent sharing configuration across connections. Please note that each of the keys this object are in kebab-case, for example `cybersource-anti-fraud` as they represent the ID of the connector. All the other keys will be snake case, for example `merchant_defined_data` or camel case to match an external API that the connector uses.
      *
-     * @var ?TransactionConnectionOptions $connectionOptions
+     * @var ?\Gr4vy\TransactionConnectionOptions $connectionOptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('connection_options')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionConnectionOptions|null')]
@@ -229,7 +229,7 @@ class TransactionCreate
     /**
      * The recipient of any account to account funding. For use with AFTs.
      *
-     * @var ?Recipient $recipient
+     * @var ?\Gr4vy\Recipient $recipient
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recipient')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Recipient|null')]
@@ -413,25 +413,25 @@ class TransactionCreate
      * @param  ?bool  $accountFundingTransaction
      * @param  ?bool  $allowPartialAuthorization
      * @param  ?string  $country
-     * @param  CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|BaseBankPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null  $paymentMethod
-     * @param  ?GuestBuyer  $buyer
+     * @param  \Gr4vy\CardWithUrlPaymentMethodCreate|\Gr4vy\RedirectPaymentMethodCreate|\Gr4vy\TokenPaymentMethodCreate|\Gr4vy\ApplePayPaymentMethodCreate|\Gr4vy\ClickToPayPaymentMethodCreate|\Gr4vy\ClickToPayFPANPaymentMethodCreate|\Gr4vy\GooglePayPaymentMethodCreate|\Gr4vy\GooglePayFPANPaymentMethodCreate|\Gr4vy\NetworkTokenPaymentMethodCreate|\Gr4vy\PlaidPaymentMethodCreate|\Gr4vy\BaseBankPaymentMethodCreate|\Gr4vy\CheckoutSessionWithUrlPaymentMethodCreate|null  $paymentMethod
+     * @param  ?\Gr4vy\GuestBuyer  $buyer
      * @param  ?string  $buyerId
      * @param  ?string  $buyerExternalIdentifier
-     * @param  ?array<GiftCardTransactionCreate|GiftCardTokenTransactionCreate>  $giftCards
+     * @param  ?array<\Gr4vy\GiftCardTransactionCreate|\Gr4vy\GiftCardTokenTransactionCreate>  $giftCards
      * @param  ?string  $externalIdentifier
-     * @param  ThreeDSecureDataV1|ThreeDSecureDataV2|null  $threeDSecureData
-     * @param  ?ThreeDSecure  $threeDSecure
+     * @param  \Gr4vy\ThreeDSecureDataV1|\Gr4vy\ThreeDSecureDataV2|null  $threeDSecureData
+     * @param  ?\Gr4vy\ThreeDSecure  $threeDSecure
      * @param  ?array<string, string>  $metadata
-     * @param  ?Airline  $airline
-     * @param  ?array<CartItem>  $cartItems
-     * @param  ?StatementDescriptor  $statementDescriptor
+     * @param  ?\Gr4vy\Airline  $airline
+     * @param  ?array<\Gr4vy\CartItem>  $cartItems
+     * @param  ?\Gr4vy\StatementDescriptor  $statementDescriptor
      * @param  ?string  $previousSchemeTransactionId
-     * @param  ?BrowserInfo  $browserInfo
+     * @param  ?\Gr4vy\BrowserInfo  $browserInfo
      * @param  ?string  $shippingDetailsId
-     * @param  ?TransactionConnectionOptions  $connectionOptions
+     * @param  ?\Gr4vy\TransactionConnectionOptions  $connectionOptions
      * @param  ?string  $antiFraudFingerprint
      * @param  ?string  $paymentServiceId
-     * @param  ?Recipient  $recipient
+     * @param  ?\Gr4vy\Recipient  $recipient
      * @param  ?int  $installmentCount
      * @param  ?int  $taxAmount
      * @param  ?string  $merchantTaxId

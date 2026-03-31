@@ -14,7 +14,7 @@ class PaymentServiceDefinitions
     /**
      * A list of items returned for this request.
      *
-     * @var array<PaymentServiceDefinition> $items
+     * @var array<\Gr4vy\PaymentServiceDefinition> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\PaymentServiceDefinition>')]
@@ -48,7 +48,7 @@ class PaymentServiceDefinitions
     public ?int $limit = null;
 
     /**
-     * @param  array<PaymentServiceDefinition>  $items
+     * @param  array<\Gr4vy\PaymentServiceDefinition>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

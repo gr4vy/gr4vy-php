@@ -87,7 +87,7 @@ class GooglePayPaymentMethodCreate
     /**
      * The assurance details provided by Google Pay
      *
-     * @var ?GooglePayAssuranceDetails $assuranceDetails
+     * @var ?\Gr4vy\GooglePayAssuranceDetails $assuranceDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('assurance_details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GooglePayAssuranceDetails|null')]
@@ -112,7 +112,7 @@ class GooglePayPaymentMethodCreate
      * @param  ?string  $cardSuffix
      * @param  ?string  $cardScheme
      * @param  ?string  $cardType
-     * @param  ?GooglePayAssuranceDetails  $assuranceDetails
+     * @param  ?\Gr4vy\GooglePayAssuranceDetails  $assuranceDetails
      * @phpstan-pure
      */
     public function __construct(string|array $token, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $cardholderName = null, ?string $redirectUrl = null, ?string $cardSuffix = null, ?string $cardScheme = null, ?string $cardType = null, ?GooglePayAssuranceDetails $assuranceDetails = null, string $method = 'googlepay')

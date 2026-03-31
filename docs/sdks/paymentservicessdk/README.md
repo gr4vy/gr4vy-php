@@ -5,9 +5,9 @@
 ### Available Operations
 
 * [list](#list) - List payment services
-* [create](#create) - Update a configured payment service
+* [create](#create) - Configure a payment service
 * [get](#get) - Get payment service
-* [update](#update) - Configure a payment service
+* [update](#update) - Update a configured payment service
 * [delete](#delete) - Delete a configured payment service
 * [verify](#verify) - Verify payment service credentials
 * [session](#session) - Create a session for a payment service definition
@@ -81,11 +81,11 @@ foreach ($responses as $response) {
 
 ## create
 
-Updates the configuration of a payment service.
+Configures a new payment service for use by merchants.
 
 ### Example Usage
 
-<!-- UsageSnippet language="php" operationID="update_payment_service" method="post" path="/payment-services" -->
+<!-- UsageSnippet language="php" operationID="create_payment_service" method="post" path="/payment-services" -->
 ```php
 declare(strict_types=1);
 
@@ -104,10 +104,6 @@ $paymentServiceCreate = new Gr4vy\PaymentServiceCreate(
     displayName: 'Stripe',
     paymentServiceDefinitionId: 'stripe-card',
     fields: [
-        new Gr4vy\Field(
-            key: 'api_key',
-            value: 'key-12345',
-        ),
         new Gr4vy\Field(
             key: 'api_key',
             value: 'key-12345',
@@ -145,7 +141,7 @@ if ($response->paymentService !== null) {
 
 ### Response
 
-**[?UpdatePaymentServiceResponse](../../UpdatePaymentServiceResponse.md)**
+**[?CreatePaymentServiceResponse](../../CreatePaymentServiceResponse.md)**
 
 ### Errors
 
@@ -228,11 +224,11 @@ if ($response->paymentService !== null) {
 
 ## update
 
-Configures a new payment service for use by merchants.
+Updates the configuration of a payment service.
 
 ### Example Usage
 
-<!-- UsageSnippet language="php" operationID="create_payment_service" method="put" path="/payment-services/{payment_service_id}" -->
+<!-- UsageSnippet language="php" operationID="update_payment_service" method="put" path="/payment-services/{payment_service_id}" -->
 ```php
 declare(strict_types=1);
 
@@ -272,7 +268,7 @@ if ($response->paymentService !== null) {
 
 ### Response
 
-**[?CreatePaymentServiceResponse](../../CreatePaymentServiceResponse.md)**
+**[?UpdatePaymentServiceResponse](../../UpdatePaymentServiceResponse.md)**
 
 ### Errors
 

@@ -109,7 +109,7 @@ class TransactionSummary
     /**
      * The gift cards redeemed for this transaction.
      *
-     * @var array<GiftCardRedemption> $giftCardRedemptions
+     * @var array<\Gr4vy\GiftCardRedemption> $giftCardRedemptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gift_card_redemptions')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\GiftCardRedemption>')]
@@ -169,7 +169,7 @@ class TransactionSummary
     /**
      * The payment method used for this transaction.
      *
-     * @var ?TransactionPaymentMethod $paymentMethod
+     * @var ?\Gr4vy\TransactionPaymentMethod $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentMethod|null')]
@@ -206,7 +206,7 @@ class TransactionSummary
     /**
      * The payment service used for this transaction.
      *
-     * @var ?TransactionPaymentService $paymentService
+     * @var ?\Gr4vy\TransactionPaymentService $paymentService
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_service')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentService|null')]
@@ -216,7 +216,7 @@ class TransactionSummary
     /**
      * The buyer used for this transaction.
      *
-     * @var ?TransactionBuyer $buyer
+     * @var ?\Gr4vy\TransactionBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyer|null')]
@@ -244,7 +244,7 @@ class TransactionSummary
     /**
      * The shipping details associated with the transaction.
      *
-     * @var ?ShippingDetails $shippingDetails
+     * @var ?\Gr4vy\ShippingDetails $shippingDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('shipping_details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ShippingDetails|null')]
@@ -263,7 +263,7 @@ class TransactionSummary
     /**
      * The gift card service used for this transaction.
      *
-     * @var ?GiftCardService $giftCardService
+     * @var ?\Gr4vy\GiftCardService $giftCardService
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gift_card_service')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GiftCardService|null')]
@@ -301,7 +301,7 @@ class TransactionSummary
      * @param  int  $settledAmount
      * @param  bool  $settled
      * @param  string  $intent
-     * @param  array<GiftCardRedemption>  $giftCardRedemptions
+     * @param  array<\Gr4vy\GiftCardRedemption>  $giftCardRedemptions
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  bool  $disputed
@@ -310,17 +310,17 @@ class TransactionSummary
      * @param  ?string  $settledCurrency
      * @param  ?string  $country
      * @param  ?string  $externalIdentifier
-     * @param  ?TransactionPaymentMethod  $paymentMethod
+     * @param  ?\Gr4vy\TransactionPaymentMethod  $paymentMethod
      * @param  ?string  $method
      * @param  ?string  $instrumentType
      * @param  ?string  $errorCode
-     * @param  ?TransactionPaymentService  $paymentService
-     * @param  ?TransactionBuyer  $buyer
+     * @param  ?\Gr4vy\TransactionPaymentService  $paymentService
+     * @param  ?\Gr4vy\TransactionBuyer  $buyer
      * @param  ?string  $rawResponseCode
      * @param  ?string  $rawResponseDescription
-     * @param  ?ShippingDetails  $shippingDetails
+     * @param  ?\Gr4vy\ShippingDetails  $shippingDetails
      * @param  ?string  $checkoutSessionId
-     * @param  ?GiftCardService  $giftCardService
+     * @param  ?\Gr4vy\GiftCardService  $giftCardService
      * @phpstan-pure
      */
     public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?bool $pendingReview = false, ?string $type = 'transaction')

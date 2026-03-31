@@ -35,7 +35,7 @@ class GetThreeDsScenarioResponse
     /**
      * Successful Response
      *
-     * @var ?ThreeDSecureScenarios $threeDSecureScenarios
+     * @var ?\Gr4vy\ThreeDSecureScenarios $threeDSecureScenarios
      */
     public ?ThreeDSecureScenarios $threeDSecureScenarios = null;
 
@@ -47,7 +47,7 @@ class GetThreeDsScenarioResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?ThreeDSecureScenarios  $threeDSecureScenarios
+     * @param  ?\Gr4vy\ThreeDSecureScenarios  $threeDSecureScenarios
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ThreeDSecureScenarios $threeDSecureScenarios = null)

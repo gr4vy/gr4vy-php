@@ -50,9 +50,9 @@ class ThreeDsScenarios
      *
      * Create a new 3DS scenario for a merchant account. Only available in sandbox environments.
      *
-     * @param  ThreeDSecureScenarioCreate  $threeDSecureScenarioCreate
+     * @param  \Gr4vy\ThreeDSecureScenarioCreate  $threeDSecureScenarioCreate
      * @param  ?string  $merchantAccountId
-     * @return CreateThreeDsScenarioResponse
+     * @return \Gr4vy\CreateThreeDsScenarioResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(ThreeDSecureScenarioCreate $threeDSecureScenarioCreate, ?string $merchantAccountId = null, ?Options $options = null): CreateThreeDsScenarioResponse
@@ -259,7 +259,7 @@ class ThreeDsScenarios
      *
      * @param  string  $threeDsScenarioId
      * @param  ?string  $merchantAccountId
-     * @return DeleteThreeDsScenarioResponse
+     * @return \Gr4vy\DeleteThreeDsScenarioResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $threeDsScenarioId, ?string $merchantAccountId = null, ?Options $options = null): DeleteThreeDsScenarioResponse
@@ -453,7 +453,7 @@ class ThreeDsScenarios
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
-     * @return GetThreeDsScenarioResponse
+     * @return \Gr4vy\GetThreeDsScenarioResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): GetThreeDsScenarioResponse
@@ -704,7 +704,7 @@ class ThreeDsScenarios
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
-     * @return \Generator<GetThreeDsScenarioResponse>
+     * @return \Generator<\Gr4vy\GetThreeDsScenarioResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator
@@ -721,10 +721,10 @@ class ThreeDsScenarios
      *
      * Update a 3DS scenario. Only available in sandbox environments.
      *
-     * @param  ThreeDSecureScenarioUpdate  $threeDSecureScenarioUpdate
+     * @param  \Gr4vy\ThreeDSecureScenarioUpdate  $threeDSecureScenarioUpdate
      * @param  string  $threeDsScenarioId
      * @param  ?string  $merchantAccountId
-     * @return UpdateThreeDsScenarioResponse
+     * @return \Gr4vy\UpdateThreeDsScenarioResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function update(ThreeDSecureScenarioUpdate $threeDSecureScenarioUpdate, string $threeDsScenarioId, ?string $merchantAccountId = null, ?Options $options = null): UpdateThreeDsScenarioResponse

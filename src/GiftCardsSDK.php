@@ -53,9 +53,9 @@ class GiftCardsSDK
      *
      * Store a new gift card in the vault.
      *
-     * @param  GiftCardCreate  $giftCardCreate
+     * @param  \Gr4vy\GiftCardCreate  $giftCardCreate
      * @param  ?string  $merchantAccountId
-     * @return CreateGiftCardResponse
+     * @return \Gr4vy\CreateGiftCardResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(GiftCardCreate $giftCardCreate, ?string $merchantAccountId = null, ?Options $options = null): CreateGiftCardResponse
@@ -262,7 +262,7 @@ class GiftCardsSDK
      *
      * @param  string  $giftCardId
      * @param  ?string  $merchantAccountId
-     * @return DeleteGiftCardResponse
+     * @return \Gr4vy\DeleteGiftCardResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $giftCardId, ?string $merchantAccountId = null, ?Options $options = null): DeleteGiftCardResponse
@@ -455,7 +455,7 @@ class GiftCardsSDK
      *
      * @param  string  $giftCardId
      * @param  ?string  $merchantAccountId
-     * @return GetGiftCardResponse
+     * @return \Gr4vy\GetGiftCardResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $giftCardId, ?string $merchantAccountId = null, ?Options $options = null): GetGiftCardResponse
@@ -679,8 +679,8 @@ class GiftCardsSDK
      *
      * Browser all gift cards.
      *
-     * @param  ?ListGiftCardsRequest  $request
-     * @return ListGiftCardsResponse
+     * @param  ?\Gr4vy\ListGiftCardsRequest  $request
+     * @return \Gr4vy\ListGiftCardsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?ListGiftCardsRequest $request = null, ?Options $options = null): ListGiftCardsResponse
@@ -927,8 +927,8 @@ class GiftCardsSDK
      *
      * Browser all gift cards.
      *
-     * @param  ?ListGiftCardsRequest  $request
-     * @return \Generator<ListGiftCardsResponse>
+     * @param  ?\Gr4vy\ListGiftCardsRequest  $request
+     * @return \Generator<\Gr4vy\ListGiftCardsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?ListGiftCardsRequest $request = null, ?Options $options = null): \Generator

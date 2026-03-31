@@ -13,7 +13,7 @@ class CreateApplePayDigitalWalletSessionRequest
 {
     /**
      *
-     * @var ApplePaySessionRequest $applePaySessionRequest
+     * @var \Gr4vy\ApplePaySessionRequest $applePaySessionRequest
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public ApplePaySessionRequest $applePaySessionRequest;
@@ -27,7 +27,7 @@ class CreateApplePayDigitalWalletSessionRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  ApplePaySessionRequest  $applePaySessionRequest
+     * @param  \Gr4vy\ApplePaySessionRequest  $applePaySessionRequest
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

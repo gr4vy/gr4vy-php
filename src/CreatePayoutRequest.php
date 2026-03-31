@@ -13,7 +13,7 @@ class CreatePayoutRequest
 {
     /**
      *
-     * @var PayoutCreate $payoutCreate
+     * @var \Gr4vy\PayoutCreate $payoutCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public PayoutCreate $payoutCreate;
@@ -27,7 +27,7 @@ class CreatePayoutRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  PayoutCreate  $payoutCreate
+     * @param  \Gr4vy\PayoutCreate  $payoutCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

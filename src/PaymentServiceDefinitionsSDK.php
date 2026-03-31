@@ -52,7 +52,7 @@ class PaymentServiceDefinitionsSDK
      *
      * @param  array<string, mixed>  $requestBody
      * @param  string  $paymentServiceDefinitionId
-     * @return CreatePaymentServiceDefinitionSessionResponse
+     * @return \Gr4vy\CreatePaymentServiceDefinitionSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function session(array $requestBody, string $paymentServiceDefinitionId, ?Options $options = null): CreatePaymentServiceDefinitionSessionResponse
@@ -254,7 +254,7 @@ class PaymentServiceDefinitionsSDK
      * Get the definition of a payment service that can be configured.
      *
      * @param  string  $paymentServiceDefinitionId
-     * @return GetPaymentServiceDefinitionResponse
+     * @return \Gr4vy\GetPaymentServiceDefinitionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $paymentServiceDefinitionId, ?Options $options = null): GetPaymentServiceDefinitionResponse
@@ -475,7 +475,7 @@ class PaymentServiceDefinitionsSDK
      *
      * @param  ?string  $cursor
      * @param  ?int  $limit
-     * @return ListPaymentServiceDefinitionsResponse
+     * @return \Gr4vy\ListPaymentServiceDefinitionsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?string $cursor = null, ?int $limit = null, ?Options $options = null): ListPaymentServiceDefinitionsResponse
@@ -719,7 +719,7 @@ class PaymentServiceDefinitionsSDK
      *
      * @param  ?string  $cursor
      * @param  ?int  $limit
-     * @return \Generator<ListPaymentServiceDefinitionsResponse>
+     * @return \Generator<\Gr4vy\ListPaymentServiceDefinitionsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?string $cursor = null, ?int $limit = null, ?Options $options = null): \Generator

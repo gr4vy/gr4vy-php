@@ -56,9 +56,9 @@ class DigitalWalletsSDK
      *
      * Register a digital wallet like Apple Pay, Google Pay, or Click to Pay.
      *
-     * @param  DigitalWalletCreate  $digitalWalletCreate
+     * @param  \Gr4vy\DigitalWalletCreate  $digitalWalletCreate
      * @param  ?string  $merchantAccountId
-     * @return ConfigureDigitalWalletResponse
+     * @return \Gr4vy\ConfigureDigitalWalletResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(DigitalWalletCreate $digitalWalletCreate, ?string $merchantAccountId = null, ?Options $options = null): ConfigureDigitalWalletResponse
@@ -265,7 +265,7 @@ class DigitalWalletsSDK
      *
      * @param  string  $digitalWalletId
      * @param  ?string  $merchantAccountId
-     * @return DeleteDigitalWalletResponse
+     * @return \Gr4vy\DeleteDigitalWalletResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $digitalWalletId, ?string $merchantAccountId = null, ?Options $options = null): DeleteDigitalWalletResponse
@@ -458,7 +458,7 @@ class DigitalWalletsSDK
      *
      * @param  string  $digitalWalletId
      * @param  ?string  $merchantAccountId
-     * @return GetDigitalWalletResponse
+     * @return \Gr4vy\GetDigitalWalletResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $digitalWalletId, ?string $merchantAccountId = null, ?Options $options = null): GetDigitalWalletResponse
@@ -683,7 +683,7 @@ class DigitalWalletsSDK
      * List configured digital wallets.
      *
      * @param  ?string  $merchantAccountId
-     * @return ListDigitalWalletsResponse
+     * @return \Gr4vy\ListDigitalWalletsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?string $merchantAccountId = null, ?Options $options = null): ListDigitalWalletsResponse
@@ -906,10 +906,10 @@ class DigitalWalletsSDK
      *
      * Update a digital wallet.
      *
-     * @param  DigitalWalletUpdate  $digitalWalletUpdate
+     * @param  \Gr4vy\DigitalWalletUpdate  $digitalWalletUpdate
      * @param  string  $digitalWalletId
      * @param  ?string  $merchantAccountId
-     * @return UpdateDigitalWalletResponse
+     * @return \Gr4vy\UpdateDigitalWalletResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function update(DigitalWalletUpdate $digitalWalletUpdate, string $digitalWalletId, ?string $merchantAccountId = null, ?Options $options = null): UpdateDigitalWalletResponse

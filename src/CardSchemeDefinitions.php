@@ -14,14 +14,14 @@ class CardSchemeDefinitions
     /**
      * A list of items returned for this request.
      *
-     * @var array<CardSchemeDefinition> $items
+     * @var array<\Gr4vy\CardSchemeDefinition> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CardSchemeDefinition>')]
     public array $items;
 
     /**
-     * @param  array<CardSchemeDefinition>  $items
+     * @param  array<\Gr4vy\CardSchemeDefinition>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

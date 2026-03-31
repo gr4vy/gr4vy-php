@@ -15,13 +15,13 @@
     "brick/date-time": ">=0.7.0",
     "phpdocumentor/type-resolver": ">=1.8",
     "brick/math": ">=0.12.1",
+    "lcobucci/jwt": "^5.5.0",
     "paragonie/sodium_compat_ext_sodium": ">= 1",
-    "ramsey/uuid": "^4.7.6",
-    "lcobucci/jwt": "^5.5.0"
+    "ramsey/uuid": "^4.7.6"
   },
   "require-dev": {
-    "laravel/pint": "1.21.2",
-    "phpstan/phpstan": ">=2.1.0",
+    "laravel/pint": "1.29.0",
+    "phpstan/phpstan": "2.1.44",
     "phpunit/phpunit": ">=10",
     "roave/security-advisories": "dev-latest"
   },

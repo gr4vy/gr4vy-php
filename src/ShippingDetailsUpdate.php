@@ -50,7 +50,7 @@ class ShippingDetailsUpdate
     /**
      * The billing address for the buyer.
      *
-     * @var ?Address $address
+     * @var ?\Gr4vy\Address $address
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Address|null')]
@@ -62,7 +62,7 @@ class ShippingDetailsUpdate
      * @param  ?string  $lastName
      * @param  ?string  $emailAddress
      * @param  ?string  $phoneNumber
-     * @param  ?Address  $address
+     * @param  ?\Gr4vy\Address  $address
      * @phpstan-pure
      */
     public function __construct(?string $firstName = null, ?string $lastName = null, ?string $emailAddress = null, ?string $phoneNumber = null, ?Address $address = null)

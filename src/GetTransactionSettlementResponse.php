@@ -35,7 +35,7 @@ class GetTransactionSettlementResponse
     /**
      * Successful Response
      *
-     * @var ?Settlement $settlement
+     * @var ?\Gr4vy\Settlement $settlement
      */
     public ?Settlement $settlement = null;
 
@@ -43,7 +43,7 @@ class GetTransactionSettlementResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?Settlement  $settlement
+     * @param  ?\Gr4vy\Settlement  $settlement
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Settlement $settlement = null)

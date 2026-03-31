@@ -43,7 +43,7 @@ class PayoutSummary
 
     /**
      *
-     * @var TransactionPaymentMethod $paymentMethod
+     * @var \Gr4vy\TransactionPaymentMethod $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionPaymentMethod')]
@@ -51,7 +51,7 @@ class PayoutSummary
 
     /**
      *
-     * @var PayoutPaymentService $paymentService
+     * @var \Gr4vy\PayoutPaymentService $paymentService
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_service')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PayoutPaymentService')]
@@ -84,7 +84,7 @@ class PayoutSummary
     /**
      * The buyer used for this payout.
      *
-     * @var ?TransactionBuyer $buyer
+     * @var ?\Gr4vy\TransactionBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyer|null')]
@@ -112,7 +112,7 @@ class PayoutSummary
     /**
      * The merchant details associated to this payout.
      *
-     * @var ?PayoutMerchantSummary $merchant
+     * @var ?\Gr4vy\PayoutMerchantSummary $merchant
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('merchant')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PayoutMerchantSummary|null')]
@@ -150,16 +150,16 @@ class PayoutSummary
      * @param  int  $amount
      * @param  \DateTime  $createdAt
      * @param  string  $currency
-     * @param  TransactionPaymentMethod  $paymentMethod
-     * @param  PayoutPaymentService  $paymentService
+     * @param  \Gr4vy\TransactionPaymentMethod  $paymentMethod
+     * @param  \Gr4vy\PayoutPaymentService  $paymentService
      * @param  string  $status
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type
      * @param  ?string  $id
-     * @param  ?TransactionBuyer  $buyer
+     * @param  ?\Gr4vy\TransactionBuyer  $buyer
      * @param  ?string  $category
      * @param  ?string  $externalIdentifier
-     * @param  ?PayoutMerchantSummary  $merchant
+     * @param  ?\Gr4vy\PayoutMerchantSummary  $merchant
      * @param  ?string  $merchantAccountId
      * @param  ?string  $paymentServicePayoutId
      * @phpstan-pure

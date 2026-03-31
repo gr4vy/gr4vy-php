@@ -13,7 +13,7 @@ class CreateGooglePayDigitalWalletSessionRequest
 {
     /**
      *
-     * @var GooglePaySessionRequest $googlePaySessionRequest
+     * @var \Gr4vy\GooglePaySessionRequest $googlePaySessionRequest
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public GooglePaySessionRequest $googlePaySessionRequest;
@@ -27,7 +27,7 @@ class CreateGooglePayDigitalWalletSessionRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  GooglePaySessionRequest  $googlePaySessionRequest
+     * @param  \Gr4vy\GooglePaySessionRequest  $googlePaySessionRequest
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

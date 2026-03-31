@@ -23,7 +23,7 @@ class NuveiOptions
     /**
      * Provides additional airline data for Nuvei payments.
      *
-     * @var ?NuveiAirlineDataOptions $airlineData
+     * @var ?\Gr4vy\NuveiAirlineDataOptions $airlineData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('airlineData')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\NuveiAirlineDataOptions|null')]
@@ -32,7 +32,7 @@ class NuveiOptions
 
     /**
      * @param  ?string  $customData
-     * @param  ?NuveiAirlineDataOptions  $airlineData
+     * @param  ?\Gr4vy\NuveiAirlineDataOptions  $airlineData
      * @phpstan-pure
      */
     public function __construct(?string $customData = null, ?NuveiAirlineDataOptions $airlineData = null)

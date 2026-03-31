@@ -14,7 +14,7 @@ class MockCardOptions
     /**
      * Allows for mocking the merchant advice code.
      *
-     * @var ?MockCardMerchantAdviceCodeOptions $merchantAdviceCode
+     * @var ?\Gr4vy\MockCardMerchantAdviceCodeOptions $merchantAdviceCode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('merchant_advice_code')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\MockCardMerchantAdviceCodeOptions|null')]
@@ -31,7 +31,7 @@ class MockCardOptions
     public ?bool $skipRetry = null;
 
     /**
-     * @param  ?MockCardMerchantAdviceCodeOptions  $merchantAdviceCode
+     * @param  ?\Gr4vy\MockCardMerchantAdviceCodeOptions  $merchantAdviceCode
      * @param  ?bool  $skipRetry
      * @phpstan-pure
      */

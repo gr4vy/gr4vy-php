@@ -35,7 +35,7 @@ class ListPayoutsResponse
     /**
      * Successful Response
      *
-     * @var ?PayoutSummaries $payoutSummaries
+     * @var ?\Gr4vy\PayoutSummaries $payoutSummaries
      */
     public ?PayoutSummaries $payoutSummaries = null;
 
@@ -47,7 +47,7 @@ class ListPayoutsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?PayoutSummaries  $payoutSummaries
+     * @param  ?\Gr4vy\PayoutSummaries  $payoutSummaries
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PayoutSummaries $payoutSummaries = null)

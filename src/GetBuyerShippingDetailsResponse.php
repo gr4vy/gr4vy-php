@@ -35,7 +35,7 @@ class GetBuyerShippingDetailsResponse
     /**
      * Successful Response
      *
-     * @var ?ShippingDetails $shippingDetails
+     * @var ?\Gr4vy\ShippingDetails $shippingDetails
      */
     public ?ShippingDetails $shippingDetails = null;
 
@@ -43,7 +43,7 @@ class GetBuyerShippingDetailsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?ShippingDetails  $shippingDetails
+     * @param  ?\Gr4vy\ShippingDetails  $shippingDetails
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ShippingDetails $shippingDetails = null)

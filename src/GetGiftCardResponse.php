@@ -35,7 +35,7 @@ class GetGiftCardResponse
     /**
      * Successful Response
      *
-     * @var ?GiftCard $giftCard
+     * @var ?\Gr4vy\GiftCard $giftCard
      */
     public ?GiftCard $giftCard = null;
 
@@ -43,7 +43,7 @@ class GetGiftCardResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?GiftCard  $giftCard
+     * @param  ?\Gr4vy\GiftCard  $giftCard
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?GiftCard $giftCard = null)

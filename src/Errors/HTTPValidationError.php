@@ -8,14 +8,13 @@ declare(strict_types=1);
 
 namespace Gr4vy\Errors;
 
-use Gr4vy;
 use Gr4vy\Utils;
 class HTTPValidationError
 {
     /**
      * $detail
      *
-     * @var ?array<Gr4vy\ValidationError> $detail
+     * @var ?array<\Gr4vy\ValidationError> $detail
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('detail')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\ValidationError>|null')]
@@ -23,7 +22,7 @@ class HTTPValidationError
     public ?array $detail = null;
 
     /**
-     * @param  ?array<Gr4vy\ValidationError>  $detail
+     * @param  ?array<\Gr4vy\ValidationError>  $detail
      * @phpstan-pure
      */
     public function __construct(?array $detail = null)

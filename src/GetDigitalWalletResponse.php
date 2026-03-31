@@ -35,7 +35,7 @@ class GetDigitalWalletResponse
     /**
      * Successful Response
      *
-     * @var ?DigitalWallet $digitalWallet
+     * @var ?\Gr4vy\DigitalWallet $digitalWallet
      */
     public ?DigitalWallet $digitalWallet = null;
 
@@ -43,7 +43,7 @@ class GetDigitalWalletResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?DigitalWallet  $digitalWallet
+     * @param  ?\Gr4vy\DigitalWallet  $digitalWallet
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?DigitalWallet $digitalWallet = null)

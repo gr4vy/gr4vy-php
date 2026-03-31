@@ -21,7 +21,7 @@ class TransactionVoid
     /**
      * A full transaction resource.
      *
-     * @var Transaction $transaction
+     * @var \Gr4vy\Transaction $transaction
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('transaction')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Transaction')]
@@ -62,7 +62,7 @@ class TransactionVoid
 
     /**
      * @param  string  $status
-     * @param  Transaction  $transaction
+     * @param  \Gr4vy\Transaction  $transaction
      * @param  ?string  $type
      * @param  ?string  $code
      * @param  ?string  $rawResponseCode

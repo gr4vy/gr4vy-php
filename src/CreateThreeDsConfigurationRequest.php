@@ -21,14 +21,14 @@ class CreateThreeDsConfigurationRequest
 
     /**
      *
-     * @var MerchantAccountThreeDSConfigurationCreate $merchantAccountThreeDSConfigurationCreate
+     * @var \Gr4vy\MerchantAccountThreeDSConfigurationCreate $merchantAccountThreeDSConfigurationCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public MerchantAccountThreeDSConfigurationCreate $merchantAccountThreeDSConfigurationCreate;
 
     /**
      * @param  string  $merchantAccountId
-     * @param  MerchantAccountThreeDSConfigurationCreate  $merchantAccountThreeDSConfigurationCreate
+     * @param  \Gr4vy\MerchantAccountThreeDSConfigurationCreate  $merchantAccountThreeDSConfigurationCreate
      * @phpstan-pure
      */
     public function __construct(string $merchantAccountId, MerchantAccountThreeDSConfigurationCreate $merchantAccountThreeDSConfigurationCreate)

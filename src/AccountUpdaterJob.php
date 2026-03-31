@@ -30,7 +30,7 @@ class AccountUpdaterJob
     /**
      * A list of the payment methods that have been scheduled for an update.
      *
-     * @var array<AccountUpdaterInquirySummary> $inquiries
+     * @var array<\Gr4vy\AccountUpdaterInquirySummary> $inquiries
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('inquiries')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\AccountUpdaterInquirySummary>')]
@@ -64,7 +64,7 @@ class AccountUpdaterJob
     /**
      * @param  string  $id
      * @param  string  $merchantAccountId
-     * @param  array<AccountUpdaterInquirySummary>  $inquiries
+     * @param  array<\Gr4vy\AccountUpdaterInquirySummary>  $inquiries
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type

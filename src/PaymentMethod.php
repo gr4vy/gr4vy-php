@@ -117,7 +117,7 @@ class PaymentMethod
     /**
      * Details for credit or debit card payment method.
      *
-     * @var ?PaymentMethodDetailsCard $details
+     * @var ?\Gr4vy\PaymentMethodDetailsCard $details
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaymentMethodDetailsCard|null')]
@@ -209,7 +209,7 @@ class PaymentMethod
     /**
      * The optional buyer for which this payment method has been stored.
      *
-     * @var ?Buyer $buyer
+     * @var ?\Gr4vy\Buyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Buyer|null')]
@@ -248,7 +248,7 @@ class PaymentMethod
      * @param  ?string  $approvalUrl
      * @param  ?string  $country
      * @param  ?string  $currency
-     * @param  ?PaymentMethodDetailsCard  $details
+     * @param  ?\Gr4vy\PaymentMethodDetailsCard  $details
      * @param  ?string  $expirationDate
      * @param  ?string  $fingerprint
      * @param  ?string  $label
@@ -258,7 +258,7 @@ class PaymentMethod
      * @param  ?array<string>  $additionalSchemes
      * @param  ?\DateTime  $citLastUsedAt
      * @param  ?\DateTime  $lastUsedAt
-     * @param  ?Buyer  $buyer
+     * @param  ?\Gr4vy\Buyer  $buyer
      * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */

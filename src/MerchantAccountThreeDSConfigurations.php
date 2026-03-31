@@ -14,14 +14,14 @@ class MerchantAccountThreeDSConfigurations
     /**
      * A list of items returned for this request.
      *
-     * @var array<MerchantAccountThreeDSConfiguration> $items
+     * @var array<\Gr4vy\MerchantAccountThreeDSConfiguration> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\MerchantAccountThreeDSConfiguration>')]
     public array $items;
 
     /**
-     * @param  array<MerchantAccountThreeDSConfiguration>  $items
+     * @param  array<\Gr4vy\MerchantAccountThreeDSConfiguration>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

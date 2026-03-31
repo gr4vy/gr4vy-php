@@ -37,7 +37,7 @@ class CreateReportExecutionUrlRequest
 
     /**
      *
-     * @var ?ReportExecutionUrlGenerate $reportExecutionUrlGenerate
+     * @var ?\Gr4vy\ReportExecutionUrlGenerate $reportExecutionUrlGenerate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public ?ReportExecutionUrlGenerate $reportExecutionUrlGenerate = null;
@@ -46,7 +46,7 @@ class CreateReportExecutionUrlRequest
      * @param  string  $reportId
      * @param  string  $reportExecutionId
      * @param  ?string  $merchantAccountId
-     * @param  ?ReportExecutionUrlGenerate  $reportExecutionUrlGenerate
+     * @param  ?\Gr4vy\ReportExecutionUrlGenerate  $reportExecutionUrlGenerate
      * @phpstan-pure
      */
     public function __construct(string $reportId, string $reportExecutionId, ?string $merchantAccountId = null, ?ReportExecutionUrlGenerate $reportExecutionUrlGenerate = null)

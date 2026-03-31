@@ -92,7 +92,7 @@ class PaymentLink
     /**
      * The cart items for the payment link.
      *
-     * @var ?array<CartItem> $cartItems
+     * @var ?array<\Gr4vy\CartItem> $cartItems
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cart_items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CartItem>|null')]
@@ -119,7 +119,7 @@ class PaymentLink
     /**
      * The statement descriptor for the payment link.
      *
-     * @var ?StatementDescriptor $statementDescriptor
+     * @var ?\Gr4vy\StatementDescriptor $statementDescriptor
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('statement_descriptor')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\StatementDescriptor|null')]
@@ -220,7 +220,7 @@ class PaymentLink
     /**
      * The buyer associated with the payment link.
      *
-     * @var ?TransactionBuyer $buyer
+     * @var ?\Gr4vy\TransactionBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionBuyer|null')]
@@ -230,7 +230,7 @@ class PaymentLink
     /**
      * The shipping details for the payment link.
      *
-     * @var ?ShippingDetails $shippingDetails
+     * @var ?\Gr4vy\ShippingDetails $shippingDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('shipping_details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ShippingDetails|null')]
@@ -295,11 +295,11 @@ class PaymentLink
      * @param  \DateTime  $updatedAt
      * @param  string  $status
      * @param  ?string  $type
-     * @param  ?array<CartItem>  $cartItems
+     * @param  ?array<\Gr4vy\CartItem>  $cartItems
      * @param  ?bool  $store
      * @param  ?\DateTime  $expiresAt
      * @param  ?string  $externalIdentifier
-     * @param  ?StatementDescriptor  $statementDescriptor
+     * @param  ?\Gr4vy\StatementDescriptor  $statementDescriptor
      * @param  ?string  $locale
      * @param  ?string  $merchantName
      * @param  ?string  $merchantUrl
@@ -310,8 +310,8 @@ class PaymentLink
      * @param  ?string  $merchantFaviconUrl
      * @param  ?string  $returnUrl
      * @param  ?array<string, mixed>  $metadata
-     * @param  ?TransactionBuyer  $buyer
-     * @param  ?ShippingDetails  $shippingDetails
+     * @param  ?\Gr4vy\TransactionBuyer  $buyer
+     * @param  ?\Gr4vy\ShippingDetails  $shippingDetails
      * @param  ?array<string, array<string, mixed>>  $connectionOptions
      * @param  ?string  $buyerId
      * @param  ?int  $installmentCount

@@ -9,7 +9,7 @@ The type of payment method to send funds too.
 
 ```php
 /**
-* @var PaymentMethodCard
+* @var \Gr4vy\PaymentMethodCard
 */
 Gr4vy\PaymentMethodCard $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Gr4vy\PaymentMethodCard $value = /* values here */
 
 ```php
 /**
-* @var PaymentMethodStoredCard
+* @var \Gr4vy\PaymentMethodStoredCard
 */
 Gr4vy\PaymentMethodStoredCard $value = /* values here */
 ```

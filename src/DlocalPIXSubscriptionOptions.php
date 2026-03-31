@@ -22,7 +22,7 @@ class DlocalPIXSubscriptionOptions
     /**
      * Passes `subscription.amount` to the dLocal API for those connectors that need it.
      *
-     * @var ?DlocalPIXSubscriptionAmountOptions $amount
+     * @var ?\Gr4vy\DlocalPIXSubscriptionAmountOptions $amount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DlocalPIXSubscriptionAmountOptions|null')]
@@ -49,7 +49,7 @@ class DlocalPIXSubscriptionOptions
 
     /**
      * @param  string  $frequency
-     * @param  ?DlocalPIXSubscriptionAmountOptions  $amount
+     * @param  ?\Gr4vy\DlocalPIXSubscriptionAmountOptions  $amount
      * @param  ?string  $startDate
      * @param  ?string  $endDate
      * @phpstan-pure

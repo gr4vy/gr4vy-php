@@ -31,7 +31,7 @@ class PaymentServiceCreate
     /**
      * The non-secret credential fields that have been configured for this payment service. Any secret fields are omitted.
      *
-     * @var array<Field> $fields
+     * @var array<\Gr4vy\Field> $fields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Field>')]
@@ -58,7 +58,7 @@ class PaymentServiceCreate
     /**
      * The non-secret reporting fields that have been configured for this payment service. Any secret fields are omitted.
      *
-     * @var ?array<Field> $reportingFields
+     * @var ?array<\Gr4vy\Field> $reportingFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('reporting_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Field>|null')]
@@ -86,7 +86,7 @@ class PaymentServiceCreate
     /**
      * An object containing a key for each supported card schemes, and for each key an object with the 3DS profile for this service for that scheme.
      *
-     * @var ?array<string, ?MerchantProfileScheme> $merchantProfile
+     * @var ?array<string, ?\Gr4vy\MerchantProfileScheme> $merchantProfile
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('merchant_profile')]
     #[\Speakeasy\Serializer\Annotation\Type('array<string, \Gr4vy\MerchantProfileScheme|null>|null')]
@@ -141,15 +141,15 @@ class PaymentServiceCreate
     /**
      * @param  string  $displayName
      * @param  string  $paymentServiceDefinitionId
-     * @param  array<Field>  $fields
+     * @param  array<\Gr4vy\Field>  $fields
      * @param  array<string>  $acceptedCurrencies
      * @param  array<string>  $acceptedCountries
      * @param  ?bool  $threeDSecureEnabled
      * @param  ?bool  $settlementReportingEnabled
-     * @param  ?array<Field>  $reportingFields
+     * @param  ?array<\Gr4vy\Field>  $reportingFields
      * @param  ?int  $position
      * @param  ?bool  $active
-     * @param  ?array<string, ?MerchantProfileScheme>  $merchantProfile
+     * @param  ?array<string, ?\Gr4vy\MerchantProfileScheme>  $merchantProfile
      * @param  ?bool  $paymentMethodTokenizationEnabled
      * @param  ?bool  $networkTokensEnabled
      * @param  ?bool  $openLoop

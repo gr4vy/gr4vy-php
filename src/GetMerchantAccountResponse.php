@@ -35,7 +35,7 @@ class GetMerchantAccountResponse
     /**
      * Successful Response
      *
-     * @var ?MerchantAccount $merchantAccount
+     * @var ?\Gr4vy\MerchantAccount $merchantAccount
      */
     public ?MerchantAccount $merchantAccount = null;
 
@@ -43,7 +43,7 @@ class GetMerchantAccountResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?MerchantAccount  $merchantAccount
+     * @param  ?\Gr4vy\MerchantAccount  $merchantAccount
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?MerchantAccount $merchantAccount = null)

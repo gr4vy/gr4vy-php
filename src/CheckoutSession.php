@@ -30,7 +30,7 @@ class CheckoutSession
     /**
      * An array of cart items that represents the line items of a transaction.
      *
-     * @var ?array<CartItem> $cartItems
+     * @var ?array<\Gr4vy\CartItem> $cartItems
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cart_items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CartItem>|null')]
@@ -50,7 +50,7 @@ class CheckoutSession
     /**
      * Provide buyer details for the transaction. No buyer resource will be created on Gr4vy when used.
      *
-     * @var ?GuestBuyer $buyer
+     * @var ?\Gr4vy\GuestBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyer|null')]
@@ -60,7 +60,7 @@ class CheckoutSession
     /**
      * The airline addendum data which describes the airline booking associated with this transaction.
      *
-     * @var ?Airline $airline
+     * @var ?\Gr4vy\Airline $airline
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('airline')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Airline|null')]
@@ -97,7 +97,7 @@ class CheckoutSession
     /**
      * Information about the payment method stored on the checkout session.
      *
-     * @var ?CheckoutSessionPaymentMethod $paymentMethod
+     * @var ?\Gr4vy\CheckoutSessionPaymentMethod $paymentMethod
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('payment_method')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutSessionPaymentMethod|null')]
@@ -117,14 +117,14 @@ class CheckoutSession
      * @param  string  $id
      * @param  \DateTime  $expiresAt
      * @param  ?string  $type
-     * @param  ?array<CartItem>  $cartItems
+     * @param  ?array<\Gr4vy\CartItem>  $cartItems
      * @param  ?array<string, string>  $metadata
-     * @param  ?GuestBuyer  $buyer
-     * @param  ?Airline  $airline
+     * @param  ?\Gr4vy\GuestBuyer  $buyer
+     * @param  ?\Gr4vy\Airline  $airline
      * @param  ?int  $amount
      * @param  ?string  $currency
      * @param  ?string  $paymentServiceId
-     * @param  ?CheckoutSessionPaymentMethod  $paymentMethod
+     * @param  ?\Gr4vy\CheckoutSessionPaymentMethod  $paymentMethod
      * @phpstan-pure
      */
     public function __construct(string $id, \DateTime $expiresAt, ?array $cartItems = null, ?array $metadata = null, ?GuestBuyer $buyer = null, ?Airline $airline = null, ?int $amount = null, ?string $currency = null, ?string $paymentServiceId = null, ?CheckoutSessionPaymentMethod $paymentMethod = null, ?string $type = 'checkout-session')

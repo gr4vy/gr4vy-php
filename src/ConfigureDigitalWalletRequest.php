@@ -13,7 +13,7 @@ class ConfigureDigitalWalletRequest
 {
     /**
      *
-     * @var DigitalWalletCreate $digitalWalletCreate
+     * @var \Gr4vy\DigitalWalletCreate $digitalWalletCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public DigitalWalletCreate $digitalWalletCreate;
@@ -27,7 +27,7 @@ class ConfigureDigitalWalletRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  DigitalWalletCreate  $digitalWalletCreate
+     * @param  \Gr4vy\DigitalWalletCreate  $digitalWalletCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

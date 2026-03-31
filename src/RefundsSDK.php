@@ -52,7 +52,7 @@ class RefundsSDK
      *
      * @param  string  $refundId
      * @param  ?string  $merchantAccountId
-     * @return GetRefundResponse
+     * @return \Gr4vy\GetRefundResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $refundId, ?string $merchantAccountId = null, ?Options $options = null): GetRefundResponse
