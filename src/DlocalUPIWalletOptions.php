@@ -59,7 +59,7 @@ class DlocalUPIWalletOptions
     /**
      * Passes `wallet.recurring_info` to the dLocal API for those connectors that need it.
      *
-     * @var ?DlocalUPIRecurringInfoOptions $recurringInfo
+     * @var ?\Gr4vy\DlocalUPIRecurringInfoOptions $recurringInfo
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('recurring_info')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DlocalUPIRecurringInfoOptions|null')]
@@ -72,7 +72,7 @@ class DlocalUPIWalletOptions
      * @param  ?string  $token
      * @param  ?string  $username
      * @param  ?bool  $verify
-     * @param  ?DlocalUPIRecurringInfoOptions  $recurringInfo
+     * @param  ?\Gr4vy\DlocalUPIRecurringInfoOptions  $recurringInfo
      * @phpstan-pure
      */
     public function __construct(?string $name = null, ?string $email = null, ?string $token = null, ?string $username = null, ?bool $verify = null, ?DlocalUPIRecurringInfoOptions $recurringInfo = null)

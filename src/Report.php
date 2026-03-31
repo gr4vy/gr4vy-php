@@ -76,7 +76,7 @@ class Report
 
     /**
      *
-     * @var ReportSpec $spec
+     * @var \Gr4vy\ReportSpec $spec
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('spec')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ReportSpec')]
@@ -130,7 +130,7 @@ class Report
     /**
      * The latest execution summary for the report.
      *
-     * @var ?ReportExecutionSummary $latestExecution
+     * @var ?\Gr4vy\ReportExecutionSummary $latestExecution
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('latest_execution')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ReportExecutionSummary|null')]
@@ -155,14 +155,14 @@ class Report
      * @param  string  $schedule
      * @param  bool  $scheduleEnabled
      * @param  string  $scheduleTimezone
-     * @param  ReportSpec  $spec
+     * @param  \Gr4vy\ReportSpec  $spec
      * @param  ?string  $type
      * @param  ?string  $creatorId
      * @param  ?string  $creatorDisplayName
      * @param  ?string  $creatorType
      * @param  ?\DateTime  $nextExecutionAt
      * @param  ?string  $description
-     * @param  ?ReportExecutionSummary  $latestExecution
+     * @param  ?\Gr4vy\ReportExecutionSummary  $latestExecution
      * @phpstan-pure
      */
     public function __construct(string $id, string $merchantAccountId, string $name, \DateTime $createdAt, \DateTime $updatedAt, string $schedule, bool $scheduleEnabled, string $scheduleTimezone, ReportSpec $spec, ?string $creatorId = null, ?string $creatorDisplayName = null, ?string $creatorType = null, ?\DateTime $nextExecutionAt = null, ?string $description = null, ?ReportExecutionSummary $latestExecution = null, ?string $type = 'report')

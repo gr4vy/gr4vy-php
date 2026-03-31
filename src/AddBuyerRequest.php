@@ -13,7 +13,7 @@ class AddBuyerRequest
 {
     /**
      *
-     * @var BuyerCreate $buyerCreate
+     * @var \Gr4vy\BuyerCreate $buyerCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public BuyerCreate $buyerCreate;
@@ -27,7 +27,7 @@ class AddBuyerRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  BuyerCreate  $buyerCreate
+     * @param  \Gr4vy\BuyerCreate  $buyerCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

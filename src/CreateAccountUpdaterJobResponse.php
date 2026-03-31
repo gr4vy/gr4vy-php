@@ -35,7 +35,7 @@ class CreateAccountUpdaterJobResponse
     /**
      * A scheduled account updater job when one or more payment methods were scheduled for update.
      *
-     * @var ?AccountUpdaterJob $accountUpdaterJob
+     * @var ?\Gr4vy\AccountUpdaterJob $accountUpdaterJob
      */
     public ?AccountUpdaterJob $accountUpdaterJob = null;
 
@@ -43,7 +43,7 @@ class CreateAccountUpdaterJobResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?AccountUpdaterJob  $accountUpdaterJob
+     * @param  ?\Gr4vy\AccountUpdaterJob  $accountUpdaterJob
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?AccountUpdaterJob $accountUpdaterJob = null)

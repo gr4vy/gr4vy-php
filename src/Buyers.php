@@ -14,7 +14,7 @@ class Buyers
     /**
      * A list of items returned for this request.
      *
-     * @var array<Buyer> $items
+     * @var array<\Gr4vy\Buyer> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Buyer>')]
@@ -48,7 +48,7 @@ class Buyers
     public ?int $limit = null;
 
     /**
-     * @param  array<Buyer>  $items
+     * @param  array<\Gr4vy\Buyer>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

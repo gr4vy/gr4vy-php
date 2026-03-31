@@ -14,7 +14,7 @@ class StripeCardOptions
     /**
      * Stripe options to support Stripe Connect
      *
-     * @var ?StripeConnectOptions $stripeConnect
+     * @var ?\Gr4vy\StripeConnectOptions $stripeConnect
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('stripe_connect')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\StripeConnectOptions|null')]
@@ -31,7 +31,7 @@ class StripeCardOptions
     public ?bool $errorOnRequiresAction = null;
 
     /**
-     * @param  ?StripeConnectOptions  $stripeConnect
+     * @param  ?\Gr4vy\StripeConnectOptions  $stripeConnect
      * @param  ?bool  $errorOnRequiresAction
      * @phpstan-pure
      */

@@ -44,7 +44,7 @@ class GiftCardRedemption
 
     /**
      *
-     * @var TransactionGiftCard $giftCard
+     * @var \Gr4vy\TransactionGiftCard $giftCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('gift_card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionGiftCard')]
@@ -100,7 +100,7 @@ class GiftCardRedemption
      * @param  string  $status
      * @param  int  $amount
      * @param  int  $refundedAmount
-     * @param  TransactionGiftCard  $giftCard
+     * @param  \Gr4vy\TransactionGiftCard  $giftCard
      * @param  ?string  $type
      * @param  ?string  $giftCardServiceRedemptionId
      * @param  ?string  $errorCode

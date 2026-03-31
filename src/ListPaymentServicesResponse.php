@@ -35,7 +35,7 @@ class ListPaymentServicesResponse
     /**
      * Successful Response
      *
-     * @var ?PaymentServices $paymentServices
+     * @var ?\Gr4vy\PaymentServices $paymentServices
      */
     public ?PaymentServices $paymentServices = null;
 
@@ -47,7 +47,7 @@ class ListPaymentServicesResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?PaymentServices  $paymentServices
+     * @param  ?\Gr4vy\PaymentServices  $paymentServices
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PaymentServices $paymentServices = null)

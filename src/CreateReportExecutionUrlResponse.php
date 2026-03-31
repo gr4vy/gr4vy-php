@@ -35,7 +35,7 @@ class CreateReportExecutionUrlResponse
     /**
      * Successful Response
      *
-     * @var ?ReportExecutionUrl $reportExecutionUrl
+     * @var ?\Gr4vy\ReportExecutionUrl $reportExecutionUrl
      */
     public ?ReportExecutionUrl $reportExecutionUrl = null;
 
@@ -43,7 +43,7 @@ class CreateReportExecutionUrlResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?ReportExecutionUrl  $reportExecutionUrl
+     * @param  ?\Gr4vy\ReportExecutionUrl  $reportExecutionUrl
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ReportExecutionUrl $reportExecutionUrl = null)

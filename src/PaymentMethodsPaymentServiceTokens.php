@@ -50,10 +50,10 @@ class PaymentMethodsPaymentServiceTokens
      *
      * Create a gateway tokens for a payment method.
      *
-     * @param  PaymentServiceTokenCreate  $paymentServiceTokenCreate
+     * @param  \Gr4vy\PaymentServiceTokenCreate  $paymentServiceTokenCreate
      * @param  string  $paymentMethodId
      * @param  ?string  $merchantAccountId
-     * @return CreatePaymentMethodPaymentServiceTokenResponse
+     * @return \Gr4vy\CreatePaymentMethodPaymentServiceTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(PaymentServiceTokenCreate $paymentServiceTokenCreate, string $paymentMethodId, ?string $merchantAccountId = null, ?Options $options = null): CreatePaymentMethodPaymentServiceTokenResponse
@@ -262,7 +262,7 @@ class PaymentMethodsPaymentServiceTokens
      * @param  string  $paymentMethodId
      * @param  string  $paymentServiceTokenId
      * @param  ?string  $merchantAccountId
-     * @return DeletePaymentMethodPaymentServiceTokenResponse
+     * @return \Gr4vy\DeletePaymentMethodPaymentServiceTokenResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $paymentMethodId, string $paymentServiceTokenId, ?string $merchantAccountId = null, ?Options $options = null): DeletePaymentMethodPaymentServiceTokenResponse
@@ -457,7 +457,7 @@ class PaymentMethodsPaymentServiceTokens
      * @param  string  $paymentMethodId
      * @param  ?string  $paymentServiceId
      * @param  ?string  $merchantAccountId
-     * @return ListPaymentMethodPaymentServiceTokensResponse
+     * @return \Gr4vy\ListPaymentMethodPaymentServiceTokensResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(string $paymentMethodId, ?string $paymentServiceId = null, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentMethodPaymentServiceTokensResponse

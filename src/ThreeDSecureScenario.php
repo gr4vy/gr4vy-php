@@ -45,7 +45,7 @@ class ThreeDSecureScenario
 
     /**
      *
-     * @var ThreeDSecureScenarioConditions $conditions
+     * @var \Gr4vy\ThreeDSecureScenarioConditions $conditions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('conditions')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ThreeDSecureScenarioConditions')]
@@ -53,7 +53,7 @@ class ThreeDSecureScenario
 
     /**
      *
-     * @var ThreeDSecureScenarioOutcome $outcome
+     * @var \Gr4vy\ThreeDSecureScenarioOutcome $outcome
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('outcome')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ThreeDSecureScenarioOutcome')]
@@ -73,8 +73,8 @@ class ThreeDSecureScenario
      * @param  string  $merchantAccountId
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
-     * @param  ThreeDSecureScenarioConditions  $conditions
-     * @param  ThreeDSecureScenarioOutcome  $outcome
+     * @param  \Gr4vy\ThreeDSecureScenarioConditions  $conditions
+     * @param  \Gr4vy\ThreeDSecureScenarioOutcome  $outcome
      * @param  ?string  $type
      * @phpstan-pure
      */

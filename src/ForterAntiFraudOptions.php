@@ -41,7 +41,7 @@ class ForterAntiFraudOptions
     /**
      * A list of cart items details to pass to the Forter API.
      *
-     * @var ?array<ForterAntiFraudOptionsCartItem> $cartItems
+     * @var ?array<\Gr4vy\ForterAntiFraudOptionsCartItem> $cartItems
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cart_items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\ForterAntiFraudOptionsCartItem>|null')]
@@ -51,7 +51,7 @@ class ForterAntiFraudOptions
     /**
      * Information about the discount applied to this order.
      *
-     * @var ?ForterAntiFraudOptionsDiscount $totalDiscount
+     * @var ?\Gr4vy\ForterAntiFraudOptionsDiscount $totalDiscount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('total_discount')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ForterAntiFraudOptionsDiscount|null')]
@@ -62,8 +62,8 @@ class ForterAntiFraudOptions
      * @param  ?string  $deliveryType
      * @param  ?string  $deliveryMethod
      * @param  ?bool  $isGuestBuyer
-     * @param  ?array<ForterAntiFraudOptionsCartItem>  $cartItems
-     * @param  ?ForterAntiFraudOptionsDiscount  $totalDiscount
+     * @param  ?array<\Gr4vy\ForterAntiFraudOptionsCartItem>  $cartItems
+     * @param  ?\Gr4vy\ForterAntiFraudOptionsDiscount  $totalDiscount
      * @phpstan-pure
      */
     public function __construct(?string $deliveryType = null, ?string $deliveryMethod = null, ?bool $isGuestBuyer = null, ?array $cartItems = null, ?ForterAntiFraudOptionsDiscount $totalDiscount = null)

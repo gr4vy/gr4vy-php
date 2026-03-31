@@ -14,7 +14,7 @@ class PaypalShippingOptions
     /**
      * Shipping options that the payee or merchant offers to the payer to ship or pick up their items.
      *
-     * @var ?array<PaypalShippingOptionsItem> $options
+     * @var ?array<\Gr4vy\PaypalShippingOptionsItem> $options
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('options')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\PaypalShippingOptionsItem>|null')]
@@ -22,7 +22,7 @@ class PaypalShippingOptions
     public ?array $options = null;
 
     /**
-     * @param  ?array<PaypalShippingOptionsItem>  $options
+     * @param  ?array<\Gr4vy\PaypalShippingOptionsItem>  $options
      * @phpstan-pure
      */
     public function __construct(?array $options = null)

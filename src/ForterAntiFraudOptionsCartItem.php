@@ -14,7 +14,7 @@ class ForterAntiFraudOptionsCartItem
     /**
      * Basic information about the cart item.
      *
-     * @var ?ForterAntiFraudOptionsCartItemBasicItemData $basicItemData
+     * @var ?\Gr4vy\ForterAntiFraudOptionsCartItemBasicItemData $basicItemData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('basic_item_data')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ForterAntiFraudOptionsCartItemBasicItemData|null')]
@@ -24,7 +24,7 @@ class ForterAntiFraudOptionsCartItem
     /**
      * Details about how the item will be delivered.
      *
-     * @var ?ForterAntiFraudOptionsCartItemDeliveryDetails $deliveryDetails
+     * @var ?\Gr4vy\ForterAntiFraudOptionsCartItemDeliveryDetails $deliveryDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('delivery_details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ForterAntiFraudOptionsCartItemDeliveryDetails|null')]
@@ -34,7 +34,7 @@ class ForterAntiFraudOptionsCartItem
     /**
      * List of beneficiaries who will receive this item.
      *
-     * @var ?array<ForterAntiFraudOptionsCartItemBeneficiary> $beneficiaries
+     * @var ?array<\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiary> $beneficiaries
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('beneficiaries')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiary>|null')]
@@ -42,9 +42,9 @@ class ForterAntiFraudOptionsCartItem
     public ?array $beneficiaries = null;
 
     /**
-     * @param  ?ForterAntiFraudOptionsCartItemBasicItemData  $basicItemData
-     * @param  ?ForterAntiFraudOptionsCartItemDeliveryDetails  $deliveryDetails
-     * @param  ?array<ForterAntiFraudOptionsCartItemBeneficiary>  $beneficiaries
+     * @param  ?\Gr4vy\ForterAntiFraudOptionsCartItemBasicItemData  $basicItemData
+     * @param  ?\Gr4vy\ForterAntiFraudOptionsCartItemDeliveryDetails  $deliveryDetails
+     * @param  ?array<\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiary>  $beneficiaries
      * @phpstan-pure
      */
     public function __construct(?ForterAntiFraudOptionsCartItemBasicItemData $basicItemData = null, ?ForterAntiFraudOptionsCartItemDeliveryDetails $deliveryDetails = null, ?array $beneficiaries = null)

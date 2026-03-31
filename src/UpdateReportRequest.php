@@ -21,7 +21,7 @@ class UpdateReportRequest
 
     /**
      *
-     * @var ReportUpdate $reportUpdate
+     * @var \Gr4vy\ReportUpdate $reportUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public ReportUpdate $reportUpdate;
@@ -36,7 +36,7 @@ class UpdateReportRequest
 
     /**
      * @param  string  $reportId
-     * @param  ReportUpdate  $reportUpdate
+     * @param  \Gr4vy\ReportUpdate  $reportUpdate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

@@ -50,8 +50,8 @@ class BuyersPaymentMethods
      *
      * List all the stored payment methods for a specific buyer.
      *
-     * @param  ?ListBuyerPaymentMethodsRequest  $request
-     * @return ListBuyerPaymentMethodsResponse
+     * @param  ?\Gr4vy\ListBuyerPaymentMethodsRequest  $request
+     * @return \Gr4vy\ListBuyerPaymentMethodsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?ListBuyerPaymentMethodsRequest $request = null, ?Options $options = null): ListBuyerPaymentMethodsResponse

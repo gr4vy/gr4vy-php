@@ -50,7 +50,7 @@ class BillingDetails
     /**
      * The billing address for the buyer.
      *
-     * @var ?Address $address
+     * @var ?\Gr4vy\Address $address
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Address|null')]
@@ -60,7 +60,7 @@ class BillingDetails
     /**
      * The tax ID information associated with the billing details.
      *
-     * @var ?TaxId $taxId
+     * @var ?\Gr4vy\TaxId $taxId
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TaxId|null')]
@@ -72,8 +72,8 @@ class BillingDetails
      * @param  ?string  $lastName
      * @param  ?string  $emailAddress
      * @param  ?string  $phoneNumber
-     * @param  ?Address  $address
-     * @param  ?TaxId  $taxId
+     * @param  ?\Gr4vy\Address  $address
+     * @param  ?\Gr4vy\TaxId  $taxId
      * @phpstan-pure
      */
     public function __construct(?string $firstName = null, ?string $lastName = null, ?string $emailAddress = null, ?string $phoneNumber = null, ?Address $address = null, ?TaxId $taxId = null)

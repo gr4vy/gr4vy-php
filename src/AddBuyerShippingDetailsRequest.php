@@ -21,7 +21,7 @@ class AddBuyerShippingDetailsRequest
 
     /**
      *
-     * @var ShippingDetailsCreate $shippingDetailsCreate
+     * @var \Gr4vy\ShippingDetailsCreate $shippingDetailsCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public ShippingDetailsCreate $shippingDetailsCreate;
@@ -36,7 +36,7 @@ class AddBuyerShippingDetailsRequest
 
     /**
      * @param  string  $buyerId
-     * @param  ShippingDetailsCreate  $shippingDetailsCreate
+     * @param  \Gr4vy\ShippingDetailsCreate  $shippingDetailsCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

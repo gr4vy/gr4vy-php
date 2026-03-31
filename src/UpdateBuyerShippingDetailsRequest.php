@@ -29,7 +29,7 @@ class UpdateBuyerShippingDetailsRequest
 
     /**
      *
-     * @var ShippingDetailsUpdate $shippingDetailsUpdate
+     * @var \Gr4vy\ShippingDetailsUpdate $shippingDetailsUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public ShippingDetailsUpdate $shippingDetailsUpdate;
@@ -45,7 +45,7 @@ class UpdateBuyerShippingDetailsRequest
     /**
      * @param  string  $buyerId
      * @param  string  $shippingDetailsId
-     * @param  ShippingDetailsUpdate  $shippingDetailsUpdate
+     * @param  \Gr4vy\ShippingDetailsUpdate  $shippingDetailsUpdate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

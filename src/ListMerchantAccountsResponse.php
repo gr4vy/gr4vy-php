@@ -35,7 +35,7 @@ class ListMerchantAccountsResponse
     /**
      * Successful Response
      *
-     * @var ?MerchantAccounts $merchantAccounts
+     * @var ?\Gr4vy\MerchantAccounts $merchantAccounts
      */
     public ?MerchantAccounts $merchantAccounts = null;
 
@@ -47,7 +47,7 @@ class ListMerchantAccountsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?MerchantAccounts  $merchantAccounts
+     * @param  ?\Gr4vy\MerchantAccounts  $merchantAccounts
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?MerchantAccounts $merchantAccounts = null)

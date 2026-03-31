@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace Gr4vy\Errors;
 
-use Gr4vy;
 use Gr4vy\Utils;
 class Error404
 {
@@ -51,7 +50,7 @@ class Error404
     /**
      * A list of details that further ellaborate on the error.
      *
-     * @var ?array<Gr4vy\ErrorDetail> $details
+     * @var ?array<\Gr4vy\ErrorDetail> $details
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('details')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\ErrorDetail>|null')]
@@ -63,7 +62,7 @@ class Error404
      * @param  ?string  $code
      * @param  ?int  $status
      * @param  ?string  $message
-     * @param  ?array<Gr4vy\ErrorDetail>  $details
+     * @param  ?array<\Gr4vy\ErrorDetail>  $details
      * @phpstan-pure
      */
     public function __construct(?array $details = null, ?string $code = 'not_found', ?int $status = 404, ?string $message = 'The resource could not be found', ?string $type = 'error')

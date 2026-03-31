@@ -14,14 +14,14 @@ class DigitalWallets
     /**
      * A list of items returned for this request.
      *
-     * @var array<DigitalWallet> $items
+     * @var array<\Gr4vy\DigitalWallet> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\DigitalWallet>')]
     public array $items;
 
     /**
-     * @param  array<DigitalWallet>  $items
+     * @param  array<\Gr4vy\DigitalWallet>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

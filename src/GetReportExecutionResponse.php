@@ -35,7 +35,7 @@ class GetReportExecutionResponse
     /**
      * Successful Response
      *
-     * @var ?ReportExecution $reportExecution
+     * @var ?\Gr4vy\ReportExecution $reportExecution
      */
     public ?ReportExecution $reportExecution = null;
 
@@ -43,7 +43,7 @@ class GetReportExecutionResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?ReportExecution  $reportExecution
+     * @param  ?\Gr4vy\ReportExecution  $reportExecution
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ReportExecution $reportExecution = null)

@@ -35,7 +35,7 @@ class ListPaymentMethodNetworkTokensResponse
     /**
      * Successful Response
      *
-     * @var ?NetworkTokens $networkTokens
+     * @var ?\Gr4vy\NetworkTokens $networkTokens
      */
     public ?NetworkTokens $networkTokens = null;
 
@@ -43,7 +43,7 @@ class ListPaymentMethodNetworkTokensResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?NetworkTokens  $networkTokens
+     * @param  ?\Gr4vy\NetworkTokens  $networkTokens
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?NetworkTokens $networkTokens = null)

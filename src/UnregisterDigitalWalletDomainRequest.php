@@ -20,7 +20,7 @@ class UnregisterDigitalWalletDomainRequest
 
     /**
      *
-     * @var DigitalWalletDomain $digitalWalletDomain
+     * @var \Gr4vy\DigitalWalletDomain $digitalWalletDomain
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public DigitalWalletDomain $digitalWalletDomain;
@@ -35,7 +35,7 @@ class UnregisterDigitalWalletDomainRequest
 
     /**
      * @param  string  $digitalWalletId
-     * @param  DigitalWalletDomain  $digitalWalletDomain
+     * @param  \Gr4vy\DigitalWalletDomain  $digitalWalletDomain
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

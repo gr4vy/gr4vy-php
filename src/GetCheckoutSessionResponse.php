@@ -35,7 +35,7 @@ class GetCheckoutSessionResponse
     /**
      * Successful Response
      *
-     * @var ?CheckoutSession $checkoutSession
+     * @var ?\Gr4vy\CheckoutSession $checkoutSession
      */
     public ?CheckoutSession $checkoutSession = null;
 
@@ -43,7 +43,7 @@ class GetCheckoutSessionResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CheckoutSession  $checkoutSession
+     * @param  ?\Gr4vy\CheckoutSession  $checkoutSession
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CheckoutSession $checkoutSession = null)

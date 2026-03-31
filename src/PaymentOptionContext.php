@@ -27,7 +27,7 @@ class PaymentOptionContext
 
     /**
      *
-     * @var ?PaymentOptionContextApprovalUI $approvalUi
+     * @var ?\Gr4vy\PaymentOptionContextApprovalUI $approvalUi
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('approval_ui')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaymentOptionContextApprovalUI|null')]
@@ -47,7 +47,7 @@ class PaymentOptionContext
     /**
      * @param  bool  $redirectRequiresPopup
      * @param  bool  $requiresTokenizedRedirectPopup
-     * @param  ?PaymentOptionContextApprovalUI  $approvalUi
+     * @param  ?\Gr4vy\PaymentOptionContextApprovalUI  $approvalUi
      * @param  ?array<string, bool|array<string, bool|mixed>>  $requiredFields
      * @phpstan-pure
      */

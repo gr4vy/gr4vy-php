@@ -9,7 +9,7 @@ The 3DS data sent to the payment service for this transaction. This will only be
 
 ```php
 /**
-* @var ThreeDSecureDataV1
+* @var \Gr4vy\ThreeDSecureDataV1
 */
 Gr4vy\ThreeDSecureDataV1 $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Gr4vy\ThreeDSecureDataV1 $value = /* values here */
 
 ```php
 /**
-* @var ThreeDSecureV2
+* @var \Gr4vy\ThreeDSecureV2
 */
 Gr4vy\ThreeDSecureV2 $value = /* values here */
 ```

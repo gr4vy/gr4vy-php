@@ -13,7 +13,7 @@ class CreatePaymentMethodRequest
 {
     /**
      *
-     * @var CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate|ACHBankPaymentMethodCreate|BACSBankPaymentMethodCreate|SEPABankPaymentMethodCreate $requestBody
+     * @var \Gr4vy\CardPaymentMethodCreate|\Gr4vy\RedirectPaymentMethodCreate|\Gr4vy\CheckoutSessionPaymentMethodCreate|\Gr4vy\PlaidPaymentMethodCreate|\Gr4vy\ACHBankPaymentMethodCreate|\Gr4vy\BACSBankPaymentMethodCreate|\Gr4vy\SEPABankPaymentMethodCreate $requestBody
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate|ACHBankPaymentMethodCreate|BACSBankPaymentMethodCreate|SEPABankPaymentMethodCreate $requestBody;
@@ -27,7 +27,7 @@ class CreatePaymentMethodRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  CardPaymentMethodCreate|RedirectPaymentMethodCreate|CheckoutSessionPaymentMethodCreate|PlaidPaymentMethodCreate|ACHBankPaymentMethodCreate|BACSBankPaymentMethodCreate|SEPABankPaymentMethodCreate  $requestBody
+     * @param  \Gr4vy\CardPaymentMethodCreate|\Gr4vy\RedirectPaymentMethodCreate|\Gr4vy\CheckoutSessionPaymentMethodCreate|\Gr4vy\PlaidPaymentMethodCreate|\Gr4vy\ACHBankPaymentMethodCreate|\Gr4vy\BACSBankPaymentMethodCreate|\Gr4vy\SEPABankPaymentMethodCreate  $requestBody
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

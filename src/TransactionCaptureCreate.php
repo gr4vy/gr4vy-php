@@ -24,7 +24,7 @@ class TransactionCaptureCreate
     /**
      * The airline data to submit to the payment service during the capture call.
      *
-     * @var ?Airline $airline
+     * @var ?\Gr4vy\Airline $airline
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('airline')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Airline|null')]
@@ -33,7 +33,7 @@ class TransactionCaptureCreate
 
     /**
      * @param  ?int  $amount
-     * @param  ?Airline  $airline
+     * @param  ?\Gr4vy\Airline  $airline
      * @phpstan-pure
      */
     public function __construct(?int $amount = null, ?Airline $airline = null)

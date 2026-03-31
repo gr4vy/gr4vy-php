@@ -21,7 +21,7 @@ class UpdateBuyerRequest
 
     /**
      *
-     * @var BuyerUpdate $buyerUpdate
+     * @var \Gr4vy\BuyerUpdate $buyerUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public BuyerUpdate $buyerUpdate;
@@ -36,7 +36,7 @@ class UpdateBuyerRequest
 
     /**
      * @param  string  $buyerId
-     * @param  BuyerUpdate  $buyerUpdate
+     * @param  \Gr4vy\BuyerUpdate  $buyerUpdate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

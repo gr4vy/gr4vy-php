@@ -21,14 +21,14 @@ class UpdateMerchantAccountRequest
 
     /**
      *
-     * @var MerchantAccountUpdate $merchantAccountUpdate
+     * @var \Gr4vy\MerchantAccountUpdate $merchantAccountUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public MerchantAccountUpdate $merchantAccountUpdate;
 
     /**
      * @param  string  $merchantAccountId
-     * @param  MerchantAccountUpdate  $merchantAccountUpdate
+     * @param  \Gr4vy\MerchantAccountUpdate  $merchantAccountUpdate
      * @phpstan-pure
      */
     public function __construct(string $merchantAccountId, MerchantAccountUpdate $merchantAccountUpdate)

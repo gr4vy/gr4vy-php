@@ -35,7 +35,7 @@ class CreateGooglePayDigitalWalletSessionResponse
     /**
      * Successful Response
      *
-     * @var ?GooglePaySession $googlePaySession
+     * @var ?\Gr4vy\GooglePaySession $googlePaySession
      */
     public ?GooglePaySession $googlePaySession = null;
 
@@ -43,7 +43,7 @@ class CreateGooglePayDigitalWalletSessionResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?GooglePaySession  $googlePaySession
+     * @param  ?\Gr4vy\GooglePaySession  $googlePaySession
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?GooglePaySession $googlePaySession = null)

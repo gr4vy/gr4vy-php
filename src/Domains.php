@@ -48,10 +48,10 @@ class Domains
      *
      * Register a digital wallet domain (Apple Pay only).
      *
-     * @param  DigitalWalletDomain  $digitalWalletDomain
+     * @param  \Gr4vy\DigitalWalletDomain  $digitalWalletDomain
      * @param  string  $digitalWalletId
      * @param  ?string  $merchantAccountId
-     * @return RegisterDigitalWalletDomainResponse
+     * @return \Gr4vy\RegisterDigitalWalletDomainResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(DigitalWalletDomain $digitalWalletDomain, string $digitalWalletId, ?string $merchantAccountId = null, ?Options $options = null): RegisterDigitalWalletDomainResponse
@@ -257,10 +257,10 @@ class Domains
      *
      * Remove a digital wallet domain (Apple Pay only).
      *
-     * @param  DigitalWalletDomain  $digitalWalletDomain
+     * @param  \Gr4vy\DigitalWalletDomain  $digitalWalletDomain
      * @param  string  $digitalWalletId
      * @param  ?string  $merchantAccountId
-     * @return UnregisterDigitalWalletDomainResponse
+     * @return \Gr4vy\UnregisterDigitalWalletDomainResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(DigitalWalletDomain $digitalWalletDomain, string $digitalWalletId, ?string $merchantAccountId = null, ?Options $options = null): UnregisterDigitalWalletDomainResponse

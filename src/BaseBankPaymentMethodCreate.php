@@ -14,7 +14,7 @@ class BaseBankPaymentMethodCreate
 {
     /**
      *
-     * @var BankAccountHolder $accountHolder
+     * @var \Gr4vy\BankAccountHolder $accountHolder
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('account_holder')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BankAccountHolder')]
@@ -57,7 +57,7 @@ class BaseBankPaymentMethodCreate
     public ?string $method = null;
 
     /**
-     * @param  BankAccountHolder  $accountHolder
+     * @param  \Gr4vy\BankAccountHolder  $accountHolder
      * @param  ?string  $method
      * @param  ?string  $buyerId
      * @param  ?string  $buyerExternalIdentifier

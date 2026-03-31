@@ -53,9 +53,9 @@ class ReportsSDK
      *
      * Create a new report.
      *
-     * @param  ReportCreate  $reportCreate
+     * @param  \Gr4vy\ReportCreate  $reportCreate
      * @param  ?string  $merchantAccountId
-     * @return AddReportResponse
+     * @return \Gr4vy\AddReportResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(ReportCreate $reportCreate, ?string $merchantAccountId = null, ?Options $options = null): AddReportResponse
@@ -262,7 +262,7 @@ class ReportsSDK
      *
      * @param  string  $reportId
      * @param  ?string  $merchantAccountId
-     * @return GetReportResponse
+     * @return \Gr4vy\GetReportResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $reportId, ?string $merchantAccountId = null, ?Options $options = null): GetReportResponse
@@ -486,8 +486,8 @@ class ReportsSDK
      *
      * List all configured reports that can be generated.
      *
-     * @param  ?ListReportsRequest  $request
-     * @return ListReportsResponse
+     * @param  ?\Gr4vy\ListReportsRequest  $request
+     * @return \Gr4vy\ListReportsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?ListReportsRequest $request = null, ?Options $options = null): ListReportsResponse
@@ -735,8 +735,8 @@ class ReportsSDK
      *
      * List all configured reports that can be generated.
      *
-     * @param  ?ListReportsRequest  $request
-     * @return \Generator<ListReportsResponse>
+     * @param  ?\Gr4vy\ListReportsRequest  $request
+     * @return \Generator<\Gr4vy\ListReportsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?ListReportsRequest $request = null, ?Options $options = null): \Generator
@@ -753,10 +753,10 @@ class ReportsSDK
      *
      * Updates the configuration of a report.
      *
-     * @param  ReportUpdate  $reportUpdate
+     * @param  \Gr4vy\ReportUpdate  $reportUpdate
      * @param  string  $reportId
      * @param  ?string  $merchantAccountId
-     * @return UpdateReportResponse
+     * @return \Gr4vy\UpdateReportResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function put(ReportUpdate $reportUpdate, string $reportId, ?string $merchantAccountId = null, ?Options $options = null): UpdateReportResponse

@@ -55,7 +55,7 @@ class PaymentLinkCreate
     /**
      * The guest buyer for the payment link.
      *
-     * @var ?GuestBuyer $buyer
+     * @var ?\Gr4vy\GuestBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyer|null')]
@@ -74,7 +74,7 @@ class PaymentLinkCreate
     /**
      * Connection options for the payment link.
      *
-     * @var ?TransactionConnectionOptions $connectionOptions
+     * @var ?\Gr4vy\TransactionConnectionOptions $connectionOptions
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('connection_options')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionConnectionOptions|null')]
@@ -93,7 +93,7 @@ class PaymentLinkCreate
     /**
      * The statement descriptor for the payment link.
      *
-     * @var ?StatementDescriptor $statementDescriptor
+     * @var ?\Gr4vy\StatementDescriptor $statementDescriptor
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('statement_descriptor')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\StatementDescriptor|null')]
@@ -184,7 +184,7 @@ class PaymentLinkCreate
     /**
      * The cart items for the payment link.
      *
-     * @var ?array<CartItem> $cartItems
+     * @var ?array<\Gr4vy\CartItem> $cartItems
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cart_items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CartItem>|null')]
@@ -235,11 +235,11 @@ class PaymentLinkCreate
      * @param  ?string  $intent
      * @param  ?string  $paymentSource
      * @param  ?bool  $store
-     * @param  ?GuestBuyer  $buyer
+     * @param  ?\Gr4vy\GuestBuyer  $buyer
      * @param  ?\DateTime  $expiresAt
-     * @param  ?TransactionConnectionOptions  $connectionOptions
+     * @param  ?\Gr4vy\TransactionConnectionOptions  $connectionOptions
      * @param  ?string  $externalIdentifier
-     * @param  ?StatementDescriptor  $statementDescriptor
+     * @param  ?\Gr4vy\StatementDescriptor  $statementDescriptor
      * @param  ?string  $locale
      * @param  ?string  $merchantName
      * @param  ?string  $merchantUrl
@@ -249,7 +249,7 @@ class PaymentLinkCreate
      * @param  ?string  $merchantTermsAndConditionsUrl
      * @param  ?string  $merchantFaviconUrl
      * @param  ?string  $returnUrl
-     * @param  ?array<CartItem>  $cartItems
+     * @param  ?array<\Gr4vy\CartItem>  $cartItems
      * @param  ?array<string, mixed>  $metadata
      * @param  ?string  $buyerId
      * @param  ?int  $installmentCount

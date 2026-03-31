@@ -53,7 +53,7 @@ class TransactionsSettlements
      * @param  string  $transactionId
      * @param  string  $settlementId
      * @param  ?string  $merchantAccountId
-     * @return GetTransactionSettlementResponse
+     * @return \Gr4vy\GetTransactionSettlementResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $transactionId, string $settlementId, ?string $merchantAccountId = null, ?Options $options = null): GetTransactionSettlementResponse
@@ -280,7 +280,7 @@ class TransactionsSettlements
      *
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
-     * @return ListTransactionSettlementsResponse
+     * @return \Gr4vy\ListTransactionSettlementsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionSettlementsResponse

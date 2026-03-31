@@ -44,7 +44,7 @@ class ReportExecutionSummary
 
     /**
      *
-     * @var ReportExecutionContext $context
+     * @var \Gr4vy\ReportExecutionContext $context
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('context')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ReportExecutionContext')]
@@ -64,7 +64,7 @@ class ReportExecutionSummary
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  string  $status
-     * @param  ReportExecutionContext  $context
+     * @param  \Gr4vy\ReportExecutionContext  $context
      * @param  ?string  $type
      * @phpstan-pure
      */

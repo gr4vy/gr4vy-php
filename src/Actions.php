@@ -52,7 +52,7 @@ class Actions
      *
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
-     * @return ListTransactionActionsResponse
+     * @return \Gr4vy\ListTransactionActionsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(string $transactionId, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionActionsResponse

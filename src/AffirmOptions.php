@@ -24,7 +24,7 @@ class AffirmOptions
     /**
      * Passes itinerary data to the Affirm API.
      *
-     * @var ?AffirmItineraryOptions $itinerary
+     * @var ?\Gr4vy\AffirmItineraryOptions $itinerary
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('itinerary')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AffirmItineraryOptions|null')]
@@ -33,7 +33,7 @@ class AffirmOptions
 
     /**
      * @param  ?array<string, array<string, mixed>>  $discounts
-     * @param  ?AffirmItineraryOptions  $itinerary
+     * @param  ?\Gr4vy\AffirmItineraryOptions  $itinerary
      * @phpstan-pure
      */
     public function __construct(?array $discounts = null, ?AffirmItineraryOptions $itinerary = null)

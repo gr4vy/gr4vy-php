@@ -52,9 +52,9 @@ class Executions
      *
      * @param  string  $reportId
      * @param  string  $reportExecutionId
-     * @param  ?ReportExecutionUrlGenerate  $reportExecutionUrlGenerate
+     * @param  ?\Gr4vy\ReportExecutionUrlGenerate  $reportExecutionUrlGenerate
      * @param  ?string  $merchantAccountId
-     * @return CreateReportExecutionUrlResponse
+     * @return \Gr4vy\CreateReportExecutionUrlResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function url(string $reportId, string $reportExecutionId, ?ReportExecutionUrlGenerate $reportExecutionUrlGenerate = null, ?string $merchantAccountId = null, ?Options $options = null): CreateReportExecutionUrlResponse
@@ -262,7 +262,7 @@ class Executions
      *
      * @param  string  $reportExecutionId
      * @param  ?string  $merchantAccountId
-     * @return GetReportExecutionResponse
+     * @return \Gr4vy\GetReportExecutionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $reportExecutionId, ?string $merchantAccountId = null, ?Options $options = null): GetReportExecutionResponse
@@ -490,7 +490,7 @@ class Executions
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
-     * @return ListReportExecutionsResponse
+     * @return \Gr4vy\ListReportExecutionsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(string $reportId, ?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListReportExecutionsResponse
@@ -744,7 +744,7 @@ class Executions
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
-     * @return \Generator<ListReportExecutionsResponse>
+     * @return \Generator<\Gr4vy\ListReportExecutionsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(string $reportId, ?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator

@@ -14,14 +14,14 @@ class NetworkTokens
     /**
      * A list of items returned for this request.
      *
-     * @var array<NetworkToken> $items
+     * @var array<\Gr4vy\NetworkToken> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\NetworkToken>')]
     public array $items;
 
     /**
-     * @param  array<NetworkToken>  $items
+     * @param  array<\Gr4vy\NetworkToken>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

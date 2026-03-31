@@ -37,7 +37,7 @@ class CreateFullTransactionRefundRequest
 
     /**
      *
-     * @var ?TransactionRefundAllCreate $transactionRefundAllCreate
+     * @var ?\Gr4vy\TransactionRefundAllCreate $transactionRefundAllCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public ?TransactionRefundAllCreate $transactionRefundAllCreate = null;
@@ -46,7 +46,7 @@ class CreateFullTransactionRefundRequest
      * @param  string  $transactionId
      * @param  ?string  $merchantAccountId
      * @param  ?string  $idempotencyKey
-     * @param  ?TransactionRefundAllCreate  $transactionRefundAllCreate
+     * @param  ?\Gr4vy\TransactionRefundAllCreate  $transactionRefundAllCreate
      * @phpstan-pure
      */
     public function __construct(string $transactionId, ?string $merchantAccountId = null, ?string $idempotencyKey = null, ?TransactionRefundAllCreate $transactionRefundAllCreate = null)

@@ -48,7 +48,7 @@ class TransactionPaymentMethod
     /**
      * Details for credit or debit card payment method.
      *
-     * @var ?PaymentMethodDetailsCard $details
+     * @var ?\Gr4vy\PaymentMethodDetailsCard $details
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaymentMethodDetailsCard|null')]
@@ -160,7 +160,7 @@ class TransactionPaymentMethod
      * @param  ?string  $approvalUrl
      * @param  ?string  $country
      * @param  ?string  $currency
-     * @param  ?PaymentMethodDetailsCard  $details
+     * @param  ?\Gr4vy\PaymentMethodDetailsCard  $details
      * @param  ?string  $expirationDate
      * @param  ?string  $fingerprint
      * @param  ?string  $label

@@ -35,7 +35,7 @@ class CreateThreeDsConfigurationResponse
     /**
      * Successful Response
      *
-     * @var ?MerchantAccountThreeDSConfiguration $merchantAccountThreeDSConfiguration
+     * @var ?\Gr4vy\MerchantAccountThreeDSConfiguration $merchantAccountThreeDSConfiguration
      */
     public ?MerchantAccountThreeDSConfiguration $merchantAccountThreeDSConfiguration = null;
 
@@ -43,7 +43,7 @@ class CreateThreeDsConfigurationResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?MerchantAccountThreeDSConfiguration  $merchantAccountThreeDSConfiguration
+     * @param  ?\Gr4vy\MerchantAccountThreeDSConfiguration  $merchantAccountThreeDSConfiguration
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?MerchantAccountThreeDSConfiguration $merchantAccountThreeDSConfiguration = null)

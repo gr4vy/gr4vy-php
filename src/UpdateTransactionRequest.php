@@ -21,7 +21,7 @@ class UpdateTransactionRequest
 
     /**
      *
-     * @var TransactionUpdate $transactionUpdate
+     * @var \Gr4vy\TransactionUpdate $transactionUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public TransactionUpdate $transactionUpdate;
@@ -36,7 +36,7 @@ class UpdateTransactionRequest
 
     /**
      * @param  string  $transactionId
-     * @param  TransactionUpdate  $transactionUpdate
+     * @param  \Gr4vy\TransactionUpdate  $transactionUpdate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

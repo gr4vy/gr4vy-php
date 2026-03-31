@@ -35,7 +35,7 @@ class GetPayoutResponse
     /**
      * Successful Response
      *
-     * @var ?PayoutSummary $payoutSummary
+     * @var ?\Gr4vy\PayoutSummary $payoutSummary
      */
     public ?PayoutSummary $payoutSummary = null;
 
@@ -43,7 +43,7 @@ class GetPayoutResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?PayoutSummary  $payoutSummary
+     * @param  ?\Gr4vy\PayoutSummary  $payoutSummary
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PayoutSummary $payoutSummary = null)

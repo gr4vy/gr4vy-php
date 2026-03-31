@@ -35,7 +35,7 @@ class ListAuditLogsResponse
     /**
      * Successful Response
      *
-     * @var ?AuditLogEntries $auditLogEntries
+     * @var ?\Gr4vy\AuditLogEntries $auditLogEntries
      */
     public ?AuditLogEntries $auditLogEntries = null;
 
@@ -47,7 +47,7 @@ class ListAuditLogsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?AuditLogEntries  $auditLogEntries
+     * @param  ?\Gr4vy\AuditLogEntries  $auditLogEntries
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?AuditLogEntries $auditLogEntries = null)

@@ -12,11 +12,19 @@ use Gr4vy\Utils\SpeakeasyMetadata;
 class UpdatePaymentServiceRequest
 {
     /**
+     * the ID of the payment service
      *
-     * @var PaymentServiceCreate $paymentServiceCreate
+     * @var string $paymentServiceId
+     */
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=payment_service_id')]
+    public string $paymentServiceId;
+
+    /**
+     *
+     * @var \Gr4vy\PaymentServiceUpdate $paymentServiceUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
-    public PaymentServiceCreate $paymentServiceCreate;
+    public PaymentServiceUpdate $paymentServiceUpdate;
 
     /**
      * The ID of the merchant account to use for this request.
@@ -27,13 +35,15 @@ class UpdatePaymentServiceRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  PaymentServiceCreate  $paymentServiceCreate
+     * @param  string  $paymentServiceId
+     * @param  \Gr4vy\PaymentServiceUpdate  $paymentServiceUpdate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */
-    public function __construct(PaymentServiceCreate $paymentServiceCreate, ?string $merchantAccountId = null)
+    public function __construct(string $paymentServiceId, PaymentServiceUpdate $paymentServiceUpdate, ?string $merchantAccountId = null)
     {
-        $this->paymentServiceCreate = $paymentServiceCreate;
+        $this->paymentServiceId = $paymentServiceId;
+        $this->paymentServiceUpdate = $paymentServiceUpdate;
         $this->merchantAccountId = $merchantAccountId;
     }
 }

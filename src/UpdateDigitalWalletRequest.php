@@ -21,7 +21,7 @@ class UpdateDigitalWalletRequest
 
     /**
      *
-     * @var DigitalWalletUpdate $digitalWalletUpdate
+     * @var \Gr4vy\DigitalWalletUpdate $digitalWalletUpdate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public DigitalWalletUpdate $digitalWalletUpdate;
@@ -36,7 +36,7 @@ class UpdateDigitalWalletRequest
 
     /**
      * @param  string  $digitalWalletId
-     * @param  DigitalWalletUpdate  $digitalWalletUpdate
+     * @param  \Gr4vy\DigitalWalletUpdate  $digitalWalletUpdate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

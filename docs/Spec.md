@@ -9,7 +9,7 @@ The report specification.
 
 ```php
 /**
-* @var AccountsReceivablesReportSpec
+* @var \Gr4vy\AccountsReceivablesReportSpec
 */
 Gr4vy\AccountsReceivablesReportSpec $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Gr4vy\AccountsReceivablesReportSpec $value = /* values here */
 
 ```php
 /**
-* @var DetailedSettlementReportSpec
+* @var \Gr4vy\DetailedSettlementReportSpec
 */
 Gr4vy\DetailedSettlementReportSpec $value = /* values here */
 ```
@@ -27,7 +27,7 @@ Gr4vy\DetailedSettlementReportSpec $value = /* values here */
 
 ```php
 /**
-* @var TransactionRetriesReportSpec
+* @var \Gr4vy\TransactionRetriesReportSpec
 */
 Gr4vy\TransactionRetriesReportSpec $value = /* values here */
 ```
@@ -36,7 +36,7 @@ Gr4vy\TransactionRetriesReportSpec $value = /* values here */
 
 ```php
 /**
-* @var TransactionsReportSpec
+* @var \Gr4vy\TransactionsReportSpec
 */
 Gr4vy\TransactionsReportSpec $value = /* values here */
 ```

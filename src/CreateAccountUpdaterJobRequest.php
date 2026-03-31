@@ -13,7 +13,7 @@ class CreateAccountUpdaterJobRequest
 {
     /**
      *
-     * @var AccountUpdaterJobCreate $accountUpdaterJobCreate
+     * @var \Gr4vy\AccountUpdaterJobCreate $accountUpdaterJobCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public AccountUpdaterJobCreate $accountUpdaterJobCreate;
@@ -27,7 +27,7 @@ class CreateAccountUpdaterJobRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  AccountUpdaterJobCreate  $accountUpdaterJobCreate
+     * @param  \Gr4vy\AccountUpdaterJobCreate  $accountUpdaterJobCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

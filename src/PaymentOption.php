@@ -57,7 +57,7 @@ class PaymentOption
 
     /**
      *
-     * @var WalletPaymentOptionContext|GooglePayPaymentOptionContext|PaymentOptionContext|null $context
+     * @var \Gr4vy\WalletPaymentOptionContext|\Gr4vy\GooglePayPaymentOptionContext|\Gr4vy\PaymentOptionContext|null $context
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('context')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\WalletPaymentOptionContext|\Gr4vy\GooglePayPaymentOptionContext|\Gr4vy\PaymentOptionContext|null')]
@@ -80,7 +80,7 @@ class PaymentOption
      * @param  ?string  $type
      * @param  ?string  $iconUrl
      * @param  ?string  $label
-     * @param  WalletPaymentOptionContext|GooglePayPaymentOptionContext|PaymentOptionContext|null  $context
+     * @param  \Gr4vy\WalletPaymentOptionContext|\Gr4vy\GooglePayPaymentOptionContext|\Gr4vy\PaymentOptionContext|null  $context
      * @phpstan-pure
      */
     public function __construct(string $method, string $mode, bool $canStorePaymentMethod, bool $canDelayCapture, ?string $iconUrl = null, ?string $label = null, WalletPaymentOptionContext|GooglePayPaymentOptionContext|PaymentOptionContext|null $context = null, ?string $type = 'payment-option')

@@ -13,7 +13,7 @@ class ForterAntiFraudOptionsCartItemBeneficiary
 {
     /**
      *
-     * @var ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails $personalDetails
+     * @var \Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails $personalDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('personal_details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails')]
@@ -22,7 +22,7 @@ class ForterAntiFraudOptionsCartItemBeneficiary
     /**
      * Address information of the beneficiary.
      *
-     * @var ?ForterAntiFraudOptionsCartItemBeneficiaryAddress $address
+     * @var ?\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryAddress $address
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryAddress|null')]
@@ -32,7 +32,7 @@ class ForterAntiFraudOptionsCartItemBeneficiary
     /**
      * Phone numbers associated with the beneficiary.
      *
-     * @var ?array<ForterAntiFraudOptionsCartItemBeneficiaryPhone> $phone
+     * @var ?array<\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryPhone> $phone
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('phone')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryPhone>|null')]
@@ -42,7 +42,7 @@ class ForterAntiFraudOptionsCartItemBeneficiary
     /**
      * Comments related to the beneficiary.
      *
-     * @var ?ForterAntiFraudOptionsCartItemBeneficiaryComments $comments
+     * @var ?\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryComments $comments
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('comments')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryComments|null')]
@@ -50,10 +50,10 @@ class ForterAntiFraudOptionsCartItemBeneficiary
     public ?ForterAntiFraudOptionsCartItemBeneficiaryComments $comments = null;
 
     /**
-     * @param  ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails  $personalDetails
-     * @param  ?ForterAntiFraudOptionsCartItemBeneficiaryAddress  $address
-     * @param  ?array<ForterAntiFraudOptionsCartItemBeneficiaryPhone>  $phone
-     * @param  ?ForterAntiFraudOptionsCartItemBeneficiaryComments  $comments
+     * @param  \Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails  $personalDetails
+     * @param  ?\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryAddress  $address
+     * @param  ?array<\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryPhone>  $phone
+     * @param  ?\Gr4vy\ForterAntiFraudOptionsCartItemBeneficiaryComments  $comments
      * @phpstan-pure
      */
     public function __construct(ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails $personalDetails, ?ForterAntiFraudOptionsCartItemBeneficiaryAddress $address = null, ?array $phone = null, ?ForterAntiFraudOptionsCartItemBeneficiaryComments $comments = null)

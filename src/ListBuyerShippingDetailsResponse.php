@@ -35,7 +35,7 @@ class ListBuyerShippingDetailsResponse
     /**
      * Successful Response
      *
-     * @var ?ShippingDetailsList $shippingDetailsList
+     * @var ?\Gr4vy\ShippingDetailsList $shippingDetailsList
      */
     public ?ShippingDetailsList $shippingDetailsList = null;
 
@@ -43,7 +43,7 @@ class ListBuyerShippingDetailsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?ShippingDetailsList  $shippingDetailsList
+     * @param  ?\Gr4vy\ShippingDetailsList  $shippingDetailsList
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ShippingDetailsList $shippingDetailsList = null)

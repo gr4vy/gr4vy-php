@@ -13,7 +13,7 @@ class CreateThreeDsScenarioRequest
 {
     /**
      *
-     * @var ThreeDSecureScenarioCreate $threeDSecureScenarioCreate
+     * @var \Gr4vy\ThreeDSecureScenarioCreate $threeDSecureScenarioCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public ThreeDSecureScenarioCreate $threeDSecureScenarioCreate;
@@ -27,7 +27,7 @@ class CreateThreeDsScenarioRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  ThreeDSecureScenarioCreate  $threeDSecureScenarioCreate
+     * @param  \Gr4vy\ThreeDSecureScenarioCreate  $threeDSecureScenarioCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

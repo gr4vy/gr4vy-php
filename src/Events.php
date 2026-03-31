@@ -54,7 +54,7 @@ class Events
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
-     * @return ListTransactionEventsResponse
+     * @return \Gr4vy\ListTransactionEventsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(string $transactionId, ?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListTransactionEventsResponse
@@ -308,7 +308,7 @@ class Events
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
-     * @return \Generator<ListTransactionEventsResponse>
+     * @return \Generator<\Gr4vy\ListTransactionEventsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(string $transactionId, ?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator

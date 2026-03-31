@@ -50,9 +50,9 @@ class PaymentLinksSDK
      *
      * Create a new payment link.
      *
-     * @param  PaymentLinkCreate  $paymentLinkCreate
+     * @param  \Gr4vy\PaymentLinkCreate  $paymentLinkCreate
      * @param  ?string  $merchantAccountId
-     * @return AddPaymentLinkResponse
+     * @return \Gr4vy\AddPaymentLinkResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(PaymentLinkCreate $paymentLinkCreate, ?string $merchantAccountId = null, ?Options $options = null): AddPaymentLinkResponse
@@ -259,7 +259,7 @@ class PaymentLinksSDK
      *
      * @param  string  $paymentLinkId
      * @param  ?string  $merchantAccountId
-     * @return ExpirePaymentLinkResponse
+     * @return \Gr4vy\ExpirePaymentLinkResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function expire(string $paymentLinkId, ?string $merchantAccountId = null, ?Options $options = null): ExpirePaymentLinkResponse
@@ -452,7 +452,7 @@ class PaymentLinksSDK
      *
      * @param  string  $paymentLinkId
      * @param  ?string  $merchantAccountId
-     * @return GetPaymentLinkResponse
+     * @return \Gr4vy\GetPaymentLinkResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $paymentLinkId, ?string $merchantAccountId = null, ?Options $options = null): GetPaymentLinkResponse
@@ -680,7 +680,7 @@ class PaymentLinksSDK
      * @param  ?int  $limit
      * @param  ?array<string>  $buyerSearch
      * @param  ?string  $merchantAccountId
-     * @return ListPaymentLinksResponse
+     * @return \Gr4vy\ListPaymentLinksResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?string $cursor = null, ?int $limit = null, ?array $buyerSearch = null, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentLinksResponse
@@ -934,7 +934,7 @@ class PaymentLinksSDK
      * @param  ?int  $limit
      * @param  ?array<string>  $buyerSearch
      * @param  ?string  $merchantAccountId
-     * @return \Generator<ListPaymentLinksResponse>
+     * @return \Generator<\Gr4vy\ListPaymentLinksResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?string $cursor = null, ?int $limit = null, ?array $buyerSearch = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator

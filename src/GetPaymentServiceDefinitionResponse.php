@@ -35,7 +35,7 @@ class GetPaymentServiceDefinitionResponse
     /**
      * Successful Response
      *
-     * @var ?PaymentServiceDefinition $paymentServiceDefinition
+     * @var ?\Gr4vy\PaymentServiceDefinition $paymentServiceDefinition
      */
     public ?PaymentServiceDefinition $paymentServiceDefinition = null;
 
@@ -43,7 +43,7 @@ class GetPaymentServiceDefinitionResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?PaymentServiceDefinition  $paymentServiceDefinition
+     * @param  ?\Gr4vy\PaymentServiceDefinition  $paymentServiceDefinition
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PaymentServiceDefinition $paymentServiceDefinition = null)

@@ -51,7 +51,7 @@ class PaymentOptionRequest
     /**
      * The cart items used to evaluate checkout rules, and which are used to help determine the right payment options to display.
      *
-     * @var ?array<CartItem> $cartItems
+     * @var ?array<\Gr4vy\CartItem> $cartItems
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cart_items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CartItem>|null')]
@@ -73,7 +73,7 @@ class PaymentOptionRequest
      * @param  ?string  $country
      * @param  ?string  $currency
      * @param  ?int  $amount
-     * @param  ?array<CartItem>  $cartItems
+     * @param  ?array<\Gr4vy\CartItem>  $cartItems
      * @phpstan-pure
      */
     public function __construct(?array $metadata = null, ?string $country = null, ?string $currency = null, ?int $amount = null, ?array $cartItems = null, ?string $locale = 'en')

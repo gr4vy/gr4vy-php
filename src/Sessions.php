@@ -48,9 +48,9 @@ class Sessions
      *
      * Create a session for use with Apple Pay.
      *
-     * @param  ApplePaySessionRequest  $applePaySessionRequest
+     * @param  \Gr4vy\ApplePaySessionRequest  $applePaySessionRequest
      * @param  ?string  $merchantAccountId
-     * @return CreateApplePayDigitalWalletSessionResponse
+     * @return \Gr4vy\CreateApplePayDigitalWalletSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function applePay(ApplePaySessionRequest $applePaySessionRequest, ?string $merchantAccountId = null, ?Options $options = null): CreateApplePayDigitalWalletSessionResponse
@@ -255,8 +255,8 @@ class Sessions
      *
      * Create a session for use with Click to Pay.
      *
-     * @param  ClickToPaySessionRequest  $request
-     * @return CreateClickToPayDigitalWalletSessionResponse
+     * @param  \Gr4vy\ClickToPaySessionRequest  $request
+     * @return \Gr4vy\CreateClickToPayDigitalWalletSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function clickToPay(ClickToPaySessionRequest $request, ?Options $options = null): CreateClickToPayDigitalWalletSessionResponse
@@ -453,9 +453,9 @@ class Sessions
      *
      * Create a session for use with Google Pay.
      *
-     * @param  GooglePaySessionRequest  $googlePaySessionRequest
+     * @param  \Gr4vy\GooglePaySessionRequest  $googlePaySessionRequest
      * @param  ?string  $merchantAccountId
-     * @return CreateGooglePayDigitalWalletSessionResponse
+     * @return \Gr4vy\CreateGooglePayDigitalWalletSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function googlePay(GooglePaySessionRequest $googlePaySessionRequest, ?string $merchantAccountId = null, ?Options $options = null): CreateGooglePayDigitalWalletSessionResponse

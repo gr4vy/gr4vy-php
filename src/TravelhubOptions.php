@@ -14,7 +14,7 @@ class TravelhubOptions
     /**
      * A list of `customData` to pass to the TravelHub API.
      *
-     * @var ?array<TravelHubCustomData> $customData
+     * @var ?array<\Gr4vy\TravelHubCustomData> $customData
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('customData')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\TravelHubCustomData>|null')]
@@ -31,7 +31,7 @@ class TravelhubOptions
     public ?string $companyName = null;
 
     /**
-     * @param  ?array<TravelHubCustomData>  $customData
+     * @param  ?array<\Gr4vy\TravelHubCustomData>  $customData
      * @param  ?string  $companyName
      * @phpstan-pure
      */

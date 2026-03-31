@@ -47,7 +47,7 @@ class PaypalShippingOptionsItem
     /**
      * The shipping cost for the selected option.
      *
-     * @var ?PaypalShippingOptionsItemAmount $amount
+     * @var ?\Gr4vy\PaypalShippingOptionsItemAmount $amount
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaypalShippingOptionsItemAmount|null')]
@@ -59,7 +59,7 @@ class PaypalShippingOptionsItem
      * @param  string  $label
      * @param  bool  $selected
      * @param  ?string  $type
-     * @param  ?PaypalShippingOptionsItemAmount  $amount
+     * @param  ?\Gr4vy\PaypalShippingOptionsItemAmount  $amount
      * @phpstan-pure
      */
     public function __construct(string $id, string $label, bool $selected, ?string $type = null, ?PaypalShippingOptionsItemAmount $amount = null)

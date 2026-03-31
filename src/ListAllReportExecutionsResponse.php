@@ -35,7 +35,7 @@ class ListAllReportExecutionsResponse
     /**
      * Successful Response
      *
-     * @var ?ReportExecutions $reportExecutions
+     * @var ?\Gr4vy\ReportExecutions $reportExecutions
      */
     public ?ReportExecutions $reportExecutions = null;
 
@@ -47,7 +47,7 @@ class ListAllReportExecutionsResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?ReportExecutions  $reportExecutions
+     * @param  ?\Gr4vy\ReportExecutions  $reportExecutions
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ReportExecutions $reportExecutions = null)

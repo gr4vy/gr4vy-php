@@ -65,7 +65,7 @@ class Buyer
     /**
      * The billing name, address, email, and other fields for this buyer.
      *
-     * @var ?BillingDetails $billingDetails
+     * @var ?\Gr4vy\BillingDetails $billingDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BillingDetails|null')]
@@ -98,7 +98,7 @@ class Buyer
      * @param  ?string  $id
      * @param  ?string  $displayName
      * @param  ?string  $externalIdentifier
-     * @param  ?BillingDetails  $billingDetails
+     * @param  ?\Gr4vy\BillingDetails  $billingDetails
      * @param  ?string  $accountNumber
      * @phpstan-pure
      */

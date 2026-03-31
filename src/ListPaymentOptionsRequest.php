@@ -13,7 +13,7 @@ class ListPaymentOptionsRequest
 {
     /**
      *
-     * @var PaymentOptionRequest $paymentOptionRequest
+     * @var \Gr4vy\PaymentOptionRequest $paymentOptionRequest
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public PaymentOptionRequest $paymentOptionRequest;
@@ -27,7 +27,7 @@ class ListPaymentOptionsRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  PaymentOptionRequest  $paymentOptionRequest
+     * @param  \Gr4vy\PaymentOptionRequest  $paymentOptionRequest
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

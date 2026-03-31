@@ -9,7 +9,7 @@ Pass through 3-D Secure data to support external 3-D Secure authorisation. If us
 
 ```php
 /**
-* @var ThreeDSecureDataV1
+* @var \Gr4vy\ThreeDSecureDataV1
 */
 Gr4vy\ThreeDSecureDataV1 $value = /* values here */
 ```
@@ -18,7 +18,7 @@ Gr4vy\ThreeDSecureDataV1 $value = /* values here */
 
 ```php
 /**
-* @var ThreeDSecureDataV2
+* @var \Gr4vy\ThreeDSecureDataV2
 */
 Gr4vy\ThreeDSecureDataV2 $value = /* values here */
 ```

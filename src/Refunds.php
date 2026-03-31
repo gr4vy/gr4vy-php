@@ -14,7 +14,7 @@ class Refunds
     /**
      * A list of items returned for this request.
      *
-     * @var array<Refund> $items
+     * @var array<\Gr4vy\Refund> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Refund>')]
@@ -48,7 +48,7 @@ class Refunds
     public ?int $limit = null;
 
     /**
-     * @param  array<Refund>  $items
+     * @param  array<\Gr4vy\Refund>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

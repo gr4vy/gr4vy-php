@@ -50,9 +50,9 @@ class ThreeDsConfiguration
      *
      * Create a new 3DS configuration for a merchant account.
      *
-     * @param  MerchantAccountThreeDSConfigurationCreate  $merchantAccountThreeDSConfigurationCreate
+     * @param  \Gr4vy\MerchantAccountThreeDSConfigurationCreate  $merchantAccountThreeDSConfigurationCreate
      * @param  string  $merchantAccountId
-     * @return CreateThreeDsConfigurationResponse
+     * @return \Gr4vy\CreateThreeDsConfigurationResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(MerchantAccountThreeDSConfigurationCreate $merchantAccountThreeDSConfigurationCreate, string $merchantAccountId, ?Options $options = null): CreateThreeDsConfigurationResponse
@@ -255,7 +255,7 @@ class ThreeDsConfiguration
      *
      * @param  string  $merchantAccountId
      * @param  string  $threeDsConfigurationId
-     * @return DeleteThreeDsConfigurationResponse
+     * @return \Gr4vy\DeleteThreeDsConfigurationResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $merchantAccountId, string $threeDsConfigurationId, ?Options $options = null): DeleteThreeDsConfigurationResponse
@@ -442,10 +442,10 @@ class ThreeDsConfiguration
      *
      * Update the 3DS configuration for a merchant account.
      *
-     * @param  MerchantAccountThreeDSConfigurationUpdate  $merchantAccountThreeDSConfigurationUpdate
+     * @param  \Gr4vy\MerchantAccountThreeDSConfigurationUpdate  $merchantAccountThreeDSConfigurationUpdate
      * @param  string  $merchantAccountId
      * @param  string  $threeDsConfigurationId
-     * @return EditThreeDsConfigurationResponse
+     * @return \Gr4vy\EditThreeDsConfigurationResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function update(MerchantAccountThreeDSConfigurationUpdate $merchantAccountThreeDSConfigurationUpdate, string $merchantAccountId, string $threeDsConfigurationId, ?Options $options = null): EditThreeDsConfigurationResponse
@@ -649,7 +649,7 @@ class ThreeDsConfiguration
      *
      * @param  string  $merchantAccountId
      * @param  ?string  $currency
-     * @return ListThreeDsConfigurationsResponse
+     * @return \Gr4vy\ListThreeDsConfigurationsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(string $merchantAccountId, ?string $currency = null, ?Options $options = null): ListThreeDsConfigurationsResponse

@@ -48,9 +48,9 @@ class Balances
      *
      * Fetch the balances for one or more gift cards.
      *
-     * @param  GiftCardBalanceRequest  $giftCardBalanceRequest
+     * @param  \Gr4vy\GiftCardBalanceRequest  $giftCardBalanceRequest
      * @param  ?string  $merchantAccountId
-     * @return ListGiftCardBalancesResponse
+     * @return \Gr4vy\ListGiftCardBalancesResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(GiftCardBalanceRequest $giftCardBalanceRequest, ?string $merchantAccountId = null, ?Options $options = null): ListGiftCardBalancesResponse

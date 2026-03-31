@@ -37,7 +37,7 @@ class PaymentServiceDefinition
     /**
      * A list of credentials and related fields which can be configured for this service.
      *
-     * @var array<DefinitionField> $fields
+     * @var array<\Gr4vy\DefinitionField> $fields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\DefinitionField>')]
@@ -46,7 +46,7 @@ class PaymentServiceDefinition
     /**
      * A list of reporting fields which can be configured for this service.
      *
-     * @var array<DefinitionField> $reportingFields
+     * @var array<\Gr4vy\DefinitionField> $reportingFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('reporting_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\DefinitionField>')]
@@ -89,7 +89,7 @@ class PaymentServiceDefinition
     /**
      * A list of condition that define when some fields must be provided with a transaction request.
      *
-     * @var array<RequiredCheckoutFields> $requiredCheckoutFields
+     * @var array<\Gr4vy\RequiredCheckoutFields> $requiredCheckoutFields
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('required_checkout_fields')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\RequiredCheckoutFields>')]
@@ -97,7 +97,7 @@ class PaymentServiceDefinition
 
     /**
      *
-     * @var PaymentServiceConfiguration $configuration
+     * @var \Gr4vy\PaymentServiceConfiguration $configuration
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('configuration')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaymentServiceConfiguration')]
@@ -134,14 +134,14 @@ class PaymentServiceDefinition
      * @param  string  $id
      * @param  string  $displayName
      * @param  string  $method
-     * @param  array<DefinitionField>  $fields
-     * @param  array<DefinitionField>  $reportingFields
+     * @param  array<\Gr4vy\DefinitionField>  $fields
+     * @param  array<\Gr4vy\DefinitionField>  $reportingFields
      * @param  array<string>  $supportedCurrencies
      * @param  array<string>  $supportedCountries
      * @param  string  $mode
      * @param  array<string, bool>  $supportedFeatures
-     * @param  array<RequiredCheckoutFields>  $requiredCheckoutFields
-     * @param  PaymentServiceConfiguration  $configuration
+     * @param  array<\Gr4vy\RequiredCheckoutFields>  $requiredCheckoutFields
+     * @param  \Gr4vy\PaymentServiceConfiguration  $configuration
      * @param  ?string  $type
      * @param  ?array<string>  $supportedIntegrationClients
      * @param  ?string  $iconUrl

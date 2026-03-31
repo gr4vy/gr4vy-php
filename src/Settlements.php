@@ -15,14 +15,14 @@ class Settlements
     /**
      * The list of settlement objects.
      *
-     * @var array<Settlement> $items
+     * @var array<\Gr4vy\Settlement> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Settlement>')]
     public array $items;
 
     /**
-     * @param  array<Settlement>  $items
+     * @param  array<\Gr4vy\Settlement>  $items
      * @phpstan-pure
      */
     public function __construct(array $items)

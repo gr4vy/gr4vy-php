@@ -14,7 +14,7 @@ class StripeOptions
     /**
      * Stripe options to support Stripe Connect
      *
-     * @var ?StripeConnectOptions $stripeConnect
+     * @var ?\Gr4vy\StripeConnectOptions $stripeConnect
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('stripe_connect')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\StripeConnectOptions|null')]
@@ -22,7 +22,7 @@ class StripeOptions
     public ?StripeConnectOptions $stripeConnect = null;
 
     /**
-     * @param  ?StripeConnectOptions  $stripeConnect
+     * @param  ?\Gr4vy\StripeConnectOptions  $stripeConnect
      * @phpstan-pure
      */
     public function __construct(?StripeConnectOptions $stripeConnect = null)

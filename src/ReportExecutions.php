@@ -14,7 +14,7 @@ class ReportExecutions
     /**
      * A list of items returned for this request.
      *
-     * @var array<ReportExecution> $items
+     * @var array<\Gr4vy\ReportExecution> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\ReportExecution>')]
@@ -48,7 +48,7 @@ class ReportExecutions
     public ?int $limit = null;
 
     /**
-     * @param  array<ReportExecution>  $items
+     * @param  array<\Gr4vy\ReportExecution>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

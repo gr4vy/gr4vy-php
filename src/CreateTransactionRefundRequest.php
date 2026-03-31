@@ -21,7 +21,7 @@ class CreateTransactionRefundRequest
 
     /**
      *
-     * @var TransactionRefundCreate $transactionRefundCreate
+     * @var \Gr4vy\TransactionRefundCreate $transactionRefundCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public TransactionRefundCreate $transactionRefundCreate;
@@ -44,7 +44,7 @@ class CreateTransactionRefundRequest
 
     /**
      * @param  string  $transactionId
-     * @param  TransactionRefundCreate  $transactionRefundCreate
+     * @param  \Gr4vy\TransactionRefundCreate  $transactionRefundCreate
      * @param  ?string  $merchantAccountId
      * @param  ?string  $idempotencyKey
      * @phpstan-pure

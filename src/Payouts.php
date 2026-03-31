@@ -50,9 +50,9 @@ class Payouts
      *
      * Creates a new payout.
      *
-     * @param  PayoutCreate  $payoutCreate
+     * @param  \Gr4vy\PayoutCreate  $payoutCreate
      * @param  ?string  $merchantAccountId
-     * @return CreatePayoutResponse
+     * @return \Gr4vy\CreatePayoutResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(PayoutCreate $payoutCreate, ?string $merchantAccountId = null, ?Options $options = null): CreatePayoutResponse
@@ -259,7 +259,7 @@ class Payouts
      *
      * @param  string  $payoutId
      * @param  ?string  $merchantAccountId
-     * @return GetPayoutResponse
+     * @return \Gr4vy\GetPayoutResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $payoutId, ?string $merchantAccountId = null, ?Options $options = null): GetPayoutResponse
@@ -486,7 +486,7 @@ class Payouts
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
-     * @return ListPayoutsResponse
+     * @return \Gr4vy\ListPayoutsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListPayoutsResponse
@@ -737,7 +737,7 @@ class Payouts
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
-     * @return \Generator<ListPayoutsResponse>
+     * @return \Generator<\Gr4vy\ListPayoutsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator

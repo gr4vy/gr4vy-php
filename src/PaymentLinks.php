@@ -14,7 +14,7 @@ class PaymentLinks
     /**
      * A list of items returned for this request.
      *
-     * @var array<PaymentLink> $items
+     * @var array<\Gr4vy\PaymentLink> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\PaymentLink>')]
@@ -48,7 +48,7 @@ class PaymentLinks
     public ?int $limit = null;
 
     /**
-     * @param  array<PaymentLink>  $items
+     * @param  array<\Gr4vy\PaymentLink>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

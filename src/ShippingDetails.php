@@ -50,7 +50,7 @@ class ShippingDetails
     /**
      * The billing address for the buyer.
      *
-     * @var ?Address $address
+     * @var ?\Gr4vy\Address $address
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('address')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Address|null')]
@@ -90,7 +90,7 @@ class ShippingDetails
      * @param  ?string  $lastName
      * @param  ?string  $emailAddress
      * @param  ?string  $phoneNumber
-     * @param  ?Address  $address
+     * @param  ?\Gr4vy\Address  $address
      * @param  ?string  $id
      * @param  ?string  $buyerId
      * @phpstan-pure

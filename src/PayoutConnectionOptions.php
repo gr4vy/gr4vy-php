@@ -14,7 +14,7 @@ class PayoutConnectionOptions
     /**
      * Custom options for `checkout-card` payment service.
      *
-     * @var ?CheckoutPayoutOptions $checkoutCard
+     * @var ?\Gr4vy\CheckoutPayoutOptions $checkoutCard
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('checkout-card')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\CheckoutPayoutOptions|null')]
@@ -22,7 +22,7 @@ class PayoutConnectionOptions
     public ?CheckoutPayoutOptions $checkoutCard = null;
 
     /**
-     * @param  ?CheckoutPayoutOptions  $checkoutCard
+     * @param  ?\Gr4vy\CheckoutPayoutOptions  $checkoutCard
      * @phpstan-pure
      */
     public function __construct(?CheckoutPayoutOptions $checkoutCard = null)

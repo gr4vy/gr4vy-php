@@ -35,7 +35,7 @@ class CancelTransactionResponse
     /**
      * Successful Response
      *
-     * @var ?TransactionCancel $transactionCancel
+     * @var ?\Gr4vy\TransactionCancel $transactionCancel
      */
     public ?TransactionCancel $transactionCancel = null;
 
@@ -43,7 +43,7 @@ class CancelTransactionResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?TransactionCancel  $transactionCancel
+     * @param  ?\Gr4vy\TransactionCancel  $transactionCancel
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?TransactionCancel $transactionCancel = null)

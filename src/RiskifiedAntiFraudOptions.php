@@ -14,7 +14,7 @@ class RiskifiedAntiFraudOptions
     /**
      * A list of line items details to override when passing to the Riskified API.
      *
-     * @var ?array<RiskifiedAntiFraudOptionsLineItem> $lineItems
+     * @var ?array<\Gr4vy\RiskifiedAntiFraudOptionsLineItem> $lineItems
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('line_items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\RiskifiedAntiFraudOptionsLineItem>|null')]
@@ -22,7 +22,7 @@ class RiskifiedAntiFraudOptions
     public ?array $lineItems = null;
 
     /**
-     * @param  ?array<RiskifiedAntiFraudOptionsLineItem>  $lineItems
+     * @param  ?array<\Gr4vy\RiskifiedAntiFraudOptionsLineItem>  $lineItems
      * @phpstan-pure
      */
     public function __construct(?array $lineItems = null)

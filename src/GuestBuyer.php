@@ -32,7 +32,7 @@ class GuestBuyer
     /**
      * The billing name, address, email, and other fields for this buyer.
      *
-     * @var ?BillingDetails $billingDetails
+     * @var ?\Gr4vy\BillingDetails $billingDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BillingDetails|null')]
@@ -51,7 +51,7 @@ class GuestBuyer
     /**
      * The optional shipping details for this buyer.
      *
-     * @var ?ShippingDetailsCreate $shippingDetails
+     * @var ?\Gr4vy\ShippingDetailsCreate $shippingDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('shipping_details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ShippingDetailsCreate|null')]
@@ -61,9 +61,9 @@ class GuestBuyer
     /**
      * @param  ?string  $displayName
      * @param  ?string  $externalIdentifier
-     * @param  ?BillingDetails  $billingDetails
+     * @param  ?\Gr4vy\BillingDetails  $billingDetails
      * @param  ?string  $accountNumber
-     * @param  ?ShippingDetailsCreate  $shippingDetails
+     * @param  ?\Gr4vy\ShippingDetailsCreate  $shippingDetails
      * @phpstan-pure
      */
     public function __construct(?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?string $accountNumber = null, ?ShippingDetailsCreate $shippingDetails = null)

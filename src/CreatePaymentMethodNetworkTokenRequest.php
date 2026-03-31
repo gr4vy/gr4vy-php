@@ -21,7 +21,7 @@ class CreatePaymentMethodNetworkTokenRequest
 
     /**
      *
-     * @var NetworkTokenCreate $networkTokenCreate
+     * @var \Gr4vy\NetworkTokenCreate $networkTokenCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public NetworkTokenCreate $networkTokenCreate;
@@ -36,7 +36,7 @@ class CreatePaymentMethodNetworkTokenRequest
 
     /**
      * @param  string  $paymentMethodId
-     * @param  NetworkTokenCreate  $networkTokenCreate
+     * @param  \Gr4vy\NetworkTokenCreate  $networkTokenCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

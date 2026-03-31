@@ -51,7 +51,7 @@ class CardSchemeDefinitionsSDK
      * Fetch a list of the definitions of each card scheme.
      *
      * @param  ?string  $merchantAccountId
-     * @return ListCardSchemeDefinitionsResponse
+     * @return \Gr4vy\ListCardSchemeDefinitionsResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?string $merchantAccountId = null, ?Options $options = null): ListCardSchemeDefinitionsResponse

@@ -35,7 +35,7 @@ class ListPaymentLinksResponse
     /**
      * Successful Response
      *
-     * @var ?PaymentLinks $paymentLinks
+     * @var ?\Gr4vy\PaymentLinks $paymentLinks
      */
     public ?PaymentLinks $paymentLinks = null;
 
@@ -47,7 +47,7 @@ class ListPaymentLinksResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?PaymentLinks  $paymentLinks
+     * @param  ?\Gr4vy\PaymentLinks  $paymentLinks
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?PaymentLinks $paymentLinks = null)

@@ -14,7 +14,7 @@ class AuditLogEntries
     /**
      * A list of items returned for this request.
      *
-     * @var array<AuditLogEntry> $items
+     * @var array<\Gr4vy\AuditLogEntry> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\AuditLogEntry>')]
@@ -48,7 +48,7 @@ class AuditLogEntries
     public ?int $limit = null;
 
     /**
-     * @param  array<AuditLogEntry>  $items
+     * @param  array<\Gr4vy\AuditLogEntry>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

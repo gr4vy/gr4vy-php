@@ -35,7 +35,7 @@ class CreatePaymentServiceDefinitionSessionResponse
     /**
      * Successful Response
      *
-     * @var ?CreateSession $createSession
+     * @var ?\Gr4vy\CreateSession $createSession
      */
     public ?CreateSession $createSession = null;
 
@@ -43,7 +43,7 @@ class CreatePaymentServiceDefinitionSessionResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?CreateSession  $createSession
+     * @param  ?\Gr4vy\CreateSession  $createSession
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CreateSession $createSession = null)

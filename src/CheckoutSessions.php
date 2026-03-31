@@ -50,9 +50,9 @@ class CheckoutSessions
      *
      * Create a new checkout session.
      *
-     * @param  ?CheckoutSessionCreate  $checkoutSessionCreate
+     * @param  ?\Gr4vy\CheckoutSessionCreate  $checkoutSessionCreate
      * @param  ?string  $merchantAccountId
-     * @return CreateCheckoutSessionResponse
+     * @return \Gr4vy\CreateCheckoutSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(?CheckoutSessionCreate $checkoutSessionCreate = null, ?string $merchantAccountId = null, ?Options $options = null): CreateCheckoutSessionResponse
@@ -258,7 +258,7 @@ class CheckoutSessions
      *
      * @param  string  $sessionId
      * @param  ?string  $merchantAccountId
-     * @return DeleteCheckoutSessionResponse
+     * @return \Gr4vy\DeleteCheckoutSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function delete(string $sessionId, ?string $merchantAccountId = null, ?Options $options = null): DeleteCheckoutSessionResponse
@@ -451,7 +451,7 @@ class CheckoutSessions
      *
      * @param  string  $sessionId
      * @param  ?string  $merchantAccountId
-     * @return GetCheckoutSessionResponse
+     * @return \Gr4vy\GetCheckoutSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $sessionId, ?string $merchantAccountId = null, ?Options $options = null): GetCheckoutSessionResponse
@@ -664,10 +664,10 @@ class CheckoutSessions
      *
      * Update the information stored on a checkout session.
      *
-     * @param  CheckoutSessionCreate  $checkoutSessionCreate
+     * @param  \Gr4vy\CheckoutSessionCreate  $checkoutSessionCreate
      * @param  string  $sessionId
      * @param  ?string  $merchantAccountId
-     * @return UpdateCheckoutSessionResponse
+     * @return \Gr4vy\UpdateCheckoutSessionResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function update(CheckoutSessionCreate $checkoutSessionCreate, string $sessionId, ?string $merchantAccountId = null, ?Options $options = null): UpdateCheckoutSessionResponse

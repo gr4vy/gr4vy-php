@@ -21,7 +21,7 @@ class UpdateCheckoutSessionRequest
 
     /**
      *
-     * @var CheckoutSessionCreate $checkoutSessionCreate
+     * @var \Gr4vy\CheckoutSessionCreate $checkoutSessionCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public CheckoutSessionCreate $checkoutSessionCreate;
@@ -36,7 +36,7 @@ class UpdateCheckoutSessionRequest
 
     /**
      * @param  string  $sessionId
-     * @param  CheckoutSessionCreate  $checkoutSessionCreate
+     * @param  \Gr4vy\CheckoutSessionCreate  $checkoutSessionCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

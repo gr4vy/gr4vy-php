@@ -42,7 +42,7 @@ class BuyerUpdate
     /**
      * The billing name, address, email, and other fields for this buyer.
      *
-     * @var ?BillingDetails $billingDetails
+     * @var ?\Gr4vy\BillingDetails $billingDetails
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('billing_details')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BillingDetails|null')]
@@ -53,7 +53,7 @@ class BuyerUpdate
      * @param  ?string  $displayName
      * @param  ?string  $externalIdentifier
      * @param  ?string  $accountNumber
-     * @param  ?BillingDetails  $billingDetails
+     * @param  ?\Gr4vy\BillingDetails  $billingDetails
      * @phpstan-pure
      */
     public function __construct(?string $displayName = null, ?string $externalIdentifier = null, ?string $accountNumber = null, ?BillingDetails $billingDetails = null)

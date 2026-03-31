@@ -35,7 +35,7 @@ class CreateClickToPayDigitalWalletSessionResponse
     /**
      * Successful Response
      *
-     * @var ?ClickToPaySession $clickToPaySession
+     * @var ?\Gr4vy\ClickToPaySession $clickToPaySession
      */
     public ?ClickToPaySession $clickToPaySession = null;
 
@@ -43,7 +43,7 @@ class CreateClickToPayDigitalWalletSessionResponse
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?ClickToPaySession  $clickToPaySession
+     * @param  ?\Gr4vy\ClickToPaySession  $clickToPaySession
      * @phpstan-pure
      */
     public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ClickToPaySession $clickToPaySession = null)

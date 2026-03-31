@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var GiftCardRequest
+* @var \Gr4vy\GiftCardRequest
 */
 Gr4vy\GiftCardRequest $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Gr4vy\GiftCardRequest $value = /* values here */
 
 ```php
 /**
-* @var GiftCardStoredRequest
+* @var \Gr4vy\GiftCardStoredRequest
 */
 Gr4vy\GiftCardStoredRequest $value = /* values here */
 ```

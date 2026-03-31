@@ -14,7 +14,7 @@ class CheckoutSessionCreate
     /**
      * An array of cart items that represents the line items of a transaction.
      *
-     * @var ?array<CartItem> $cartItems
+     * @var ?array<\Gr4vy\CartItem> $cartItems
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('cart_items')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CartItem>|null')]
@@ -34,7 +34,7 @@ class CheckoutSessionCreate
     /**
      * Provide buyer details for the transaction. No buyer resource will be created on Gr4vy when used.
      *
-     * @var ?GuestBuyer $buyer
+     * @var ?\Gr4vy\GuestBuyer $buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('buyer')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\GuestBuyer|null')]
@@ -44,7 +44,7 @@ class CheckoutSessionCreate
     /**
      * The airline addendum data which describes the airline booking associated with this transaction.
      *
-     * @var ?Airline $airline
+     * @var ?\Gr4vy\Airline $airline
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('airline')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Airline|null')]
@@ -89,10 +89,10 @@ class CheckoutSessionCreate
 
     /**
      * @param  ?float  $expiresIn
-     * @param  ?array<CartItem>  $cartItems
+     * @param  ?array<\Gr4vy\CartItem>  $cartItems
      * @param  ?array<string, string>  $metadata
-     * @param  ?GuestBuyer  $buyer
-     * @param  ?Airline  $airline
+     * @param  ?\Gr4vy\GuestBuyer  $buyer
+     * @param  ?\Gr4vy\Airline  $airline
      * @param  ?int  $amount
      * @param  ?string  $currency
      * @param  ?string  $paymentServiceId

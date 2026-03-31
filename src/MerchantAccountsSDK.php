@@ -53,8 +53,8 @@ class MerchantAccountsSDK
      *
      * Create a new merchant account in an instance.
      *
-     * @param  MerchantAccountCreate  $request
-     * @return CreateMerchantAccountResponse
+     * @param  \Gr4vy\MerchantAccountCreate  $request
+     * @return \Gr4vy\CreateMerchantAccountResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function create(MerchantAccountCreate $request, ?Options $options = null): CreateMerchantAccountResponse
@@ -252,7 +252,7 @@ class MerchantAccountsSDK
      * Get info about a merchant account in an instance.
      *
      * @param  string  $merchantAccountId
-     * @return GetMerchantAccountResponse
+     * @return \Gr4vy\GetMerchantAccountResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function get(string $merchantAccountId, ?Options $options = null): GetMerchantAccountResponse
@@ -474,7 +474,7 @@ class MerchantAccountsSDK
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $search
-     * @return ListMerchantAccountsResponse
+     * @return \Gr4vy\ListMerchantAccountsResponse
      * @throws \Gr4vy\errors\APIException
      */
     private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $search = null, ?Options $options = null): ListMerchantAccountsResponse
@@ -721,7 +721,7 @@ class MerchantAccountsSDK
      * @param  ?string  $cursor
      * @param  ?int  $limit
      * @param  ?string  $search
-     * @return \Generator<ListMerchantAccountsResponse>
+     * @return \Generator<\Gr4vy\ListMerchantAccountsResponse>
      * @throws \Gr4vy\errors\APIException
      */
     public function list(?string $cursor = null, ?int $limit = null, ?string $search = null, ?Options $options = null): \Generator
@@ -738,9 +738,9 @@ class MerchantAccountsSDK
      *
      * Update info for a merchant account in an instance.
      *
-     * @param  MerchantAccountUpdate  $merchantAccountUpdate
+     * @param  \Gr4vy\MerchantAccountUpdate  $merchantAccountUpdate
      * @param  string  $merchantAccountId
-     * @return UpdateMerchantAccountResponse
+     * @return \Gr4vy\UpdateMerchantAccountResponse
      * @throws \Gr4vy\errors\APIException
      */
     public function update(MerchantAccountUpdate $merchantAccountUpdate, string $merchantAccountId, ?Options $options = null): UpdateMerchantAccountResponse

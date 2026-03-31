@@ -87,7 +87,7 @@ class Airline
     /**
      * An array of separate trip segments. Each leg contains detailed itinerary information.
      *
-     * @var ?array<AirlineLeg> $legs
+     * @var ?array<\Gr4vy\AirlineLeg> $legs
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('legs')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\AirlineLeg>|null')]
@@ -106,7 +106,7 @@ class Airline
     /**
      * An array of the travelling passengers.
      *
-     * @var ?array<AirlinePassenger> $passengers
+     * @var ?array<\Gr4vy\AirlinePassenger> $passengers
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('passengers')]
     #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\AirlinePassenger>|null')]
@@ -194,9 +194,9 @@ class Airline
      * @param  ?string  $issuingCarrierName
      * @param  ?string  $issuingIataDesignator
      * @param  ?string  $issuingIcaoCode
-     * @param  ?array<AirlineLeg>  $legs
+     * @param  ?array<\Gr4vy\AirlineLeg>  $legs
      * @param  ?string  $passengerNameRecord
-     * @param  ?array<AirlinePassenger>  $passengers
+     * @param  ?array<\Gr4vy\AirlinePassenger>  $passengers
      * @param  ?string  $reservationSystem
      * @param  ?bool  $restrictedTicket
      * @param  ?string  $ticketDeliveryMethod

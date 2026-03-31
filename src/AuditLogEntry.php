@@ -13,7 +13,7 @@ class AuditLogEntry
 {
     /**
      *
-     * @var AuditLogEntryResource $resource
+     * @var \Gr4vy\AuditLogEntryResource $resource
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('resource')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AuditLogEntryResource')]
@@ -28,7 +28,7 @@ class AuditLogEntry
 
     /**
      *
-     * @var AuditLogEntryUser $user
+     * @var \Gr4vy\AuditLogEntryUser $user
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('user')]
     #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AuditLogEntryUser')]
@@ -70,9 +70,9 @@ class AuditLogEntry
     public ?string $type = null;
 
     /**
-     * @param  AuditLogEntryResource  $resource
+     * @param  \Gr4vy\AuditLogEntryResource  $resource
      * @param  string  $action
-     * @param  AuditLogEntryUser  $user
+     * @param  \Gr4vy\AuditLogEntryUser  $user
      * @param  \DateTime  $timestamp
      * @param  ?string  $type
      * @param  ?string  $id

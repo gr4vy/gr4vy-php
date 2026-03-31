@@ -13,7 +13,7 @@ class AddPaymentLinkRequest
 {
     /**
      *
-     * @var PaymentLinkCreate $paymentLinkCreate
+     * @var \Gr4vy\PaymentLinkCreate $paymentLinkCreate
      */
     #[SpeakeasyMetadata('request:mediaType=application/json')]
     public PaymentLinkCreate $paymentLinkCreate;
@@ -27,7 +27,7 @@ class AddPaymentLinkRequest
     public ?string $merchantAccountId = null;
 
     /**
-     * @param  PaymentLinkCreate  $paymentLinkCreate
+     * @param  \Gr4vy\PaymentLinkCreate  $paymentLinkCreate
      * @param  ?string  $merchantAccountId
      * @phpstan-pure
      */

@@ -7,7 +7,7 @@
 
 ```php
 /**
-* @var CardPaymentMethodCreate
+* @var \Gr4vy\CardPaymentMethodCreate
 */
 Gr4vy\CardPaymentMethodCreate $value = /* values here */
 ```
@@ -16,7 +16,7 @@ Gr4vy\CardPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var RedirectPaymentMethodCreate
+* @var \Gr4vy\RedirectPaymentMethodCreate
 */
 Gr4vy\RedirectPaymentMethodCreate $value = /* values here */
 ```
@@ -25,7 +25,7 @@ Gr4vy\RedirectPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var CheckoutSessionPaymentMethodCreate
+* @var \Gr4vy\CheckoutSessionPaymentMethodCreate
 */
 Gr4vy\CheckoutSessionPaymentMethodCreate $value = /* values here */
 ```
@@ -34,7 +34,7 @@ Gr4vy\CheckoutSessionPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var PlaidPaymentMethodCreate
+* @var \Gr4vy\PlaidPaymentMethodCreate
 */
 Gr4vy\PlaidPaymentMethodCreate $value = /* values here */
 ```
@@ -43,7 +43,7 @@ Gr4vy\PlaidPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var ACHBankPaymentMethodCreate
+* @var \Gr4vy\ACHBankPaymentMethodCreate
 */
 Gr4vy\ACHBankPaymentMethodCreate $value = /* values here */
 ```
@@ -52,7 +52,7 @@ Gr4vy\ACHBankPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var BACSBankPaymentMethodCreate
+* @var \Gr4vy\BACSBankPaymentMethodCreate
 */
 Gr4vy\BACSBankPaymentMethodCreate $value = /* values here */
 ```
@@ -61,7 +61,7 @@ Gr4vy\BACSBankPaymentMethodCreate $value = /* values here */
 
 ```php
 /**
-* @var SEPABankPaymentMethodCreate
+* @var \Gr4vy\SEPABankPaymentMethodCreate
 */
 Gr4vy\SEPABankPaymentMethodCreate $value = /* values here */
 ```
