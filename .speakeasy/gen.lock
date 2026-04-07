@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: b77655a925f194555732882de757436b
+  docChecksum: e6fc59f0c4b9ef7c030b70e647ad71e7
   docVersion: 1.0.0
-  speakeasyVersion: 1.761.0
-  generationVersion: 2.879.1
-  releaseVersion: 1.5.52
-  configChecksum: 0ebe2bd53f07634e4341baba25d639ea
+  speakeasyVersion: 1.761.1
+  generationVersion: 2.879.6
+  releaseVersion: 1.5.53
+  configChecksum: a71d934781032521272b87464f54cd3f
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 803ecb4b-f9f9-432e-96ce-c121caf766aa
-  pristine_commit_hash: 2a7c0d46ead4ee22c6896ffaf6b924bdd912c0e8
-  pristine_tree_hash: d55b3451a5714bc422052927843e531edccc9561
+  generation_id: 30f80737-4454-475f-b6f9-ceab8315e1ca
+  pristine_commit_hash: 6f302d75cfe2c18da7e597c81c026b828047c0b3
+  pristine_tree_hash: ac75e777f934dc86813dc29e2069075ecb9b6a72
 features:
   php:
     constsAndDefaults: 0.2.2
     core: 3.9.22
-    flattening: 2.81.1
+    flattening: 2.81.2
     globalSecurity: 2.81.12
     globalSecurityFlattening: 0.1.2
     globalServerURLs: 2.83.1
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:1cc59650db7648b7369780b19aa3235352681730
-    pristine_git_object: c13f8900860900ef3bee3687dfb4a579cc5bf763
+    last_write_checksum: sha1:64cb59e1960b7ba8d25e3ef553ff23ffbaf998da
+    pristine_git_object: 8901d29a797b231f7d440afbf20fef84e06f7133
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -1760,8 +1760,8 @@ trackedFiles:
     pristine_git_object: dac520fc3d9571a0fcc7b9346bced50f6c2b7a57
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:e25388e4f4b79ca75f9c75a7a9aef1fc5c9f8c61
-    pristine_git_object: a7ae2bf859585700087c6365ba3bc2ff3cb938db
+    last_write_checksum: sha1:5be872f3662f391fe8e6c9c349f1f44cd36cf02a
+    pristine_git_object: d83e1fe171d02796e45d284eb049ce55accc1e67
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:aa5e1a35a7f2220a3b1d00df8eba7a0eba69d025
@@ -3860,8 +3860,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:7303ee45c36679050dcf36121db503dca0fa9db0
-    pristine_git_object: 0879d907726ee7fc7683f94ee382034cb7ccfb5f
+    last_write_checksum: sha1:2fe1c068056a2c307784a9d1cc63ccf0496f07d1
+    pristine_git_object: 7f0a6c8a217130f121a1c04b3a31536a0894de06
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4032,8 +4032,8 @@ trackedFiles:
     pristine_git_object: dae72fba4b2dd186ceff236f7dc954b7ffaa06e2
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:142a287ceecf7f132faece2c9c9b2d2b18c88386
-    pristine_git_object: 4e9d7a77f81f5cd3ca651be20b44d85510b7cd1e
+    last_write_checksum: sha1:f1678586e9db283535131b12b74dee03c363fe40
+    pristine_git_object: 4040704eee8009096056e75ab2af019aedfe94d6
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:b13e0ecbfab076e99f690c66fb58eba3cd171a55
@@ -8049,6 +8049,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->mockdsCard` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->mockdsCard` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->mockdsCard` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
