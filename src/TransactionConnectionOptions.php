@@ -82,6 +82,16 @@ class TransactionConnectionOptions
     public ?AdyenOptions $adyenIdeal = null;
 
     /**
+     * Custom options to be passed to the `adyen-paypay` connector.
+     *
+     * @var ?\Gr4vy\AdyenOptions $adyenPaypay
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('adyen-paypay')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\AdyenOptions|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?AdyenOptions $adyenPaypay = null;
+
+    /**
      * Custom options to be passed to the `adyen-pix` connector.
      *
      * @var ?\Gr4vy\AdyenOptions $adyenPix
@@ -529,6 +539,7 @@ class TransactionConnectionOptions
      * @param  ?\Gr4vy\AdyenOptions  $adyenCashapp
      * @param  ?\Gr4vy\AdyenOptions  $adyenGiropay
      * @param  ?\Gr4vy\AdyenOptions  $adyenIdeal
+     * @param  ?\Gr4vy\AdyenOptions  $adyenPaypay
      * @param  ?\Gr4vy\AdyenOptions  $adyenPix
      * @param  ?\Gr4vy\AdyenSepaOptions  $adyenSepa
      * @param  ?\Gr4vy\AdyenOptions  $adyenSofort
@@ -575,7 +586,7 @@ class TransactionConnectionOptions
      * @param  ?\Gr4vy\WpayPaytoOptions  $wpayPayto
      * @phpstan-pure
      */
-    public function __construct(?AccountUpdaterOptions $accountUpdater = null, ?AdyenOptions $adyenAfterpay = null, ?AdyenOptions $adyenAlipay = null, ?AdyenCardOptions $adyenCard = null, ?AdyenOptions $adyenCashapp = null, ?AdyenOptions $adyenGiropay = null, ?AdyenOptions $adyenIdeal = null, ?AdyenOptions $adyenPix = null, ?AdyenSepaOptions $adyenSepa = null, ?AdyenOptions $adyenSofort = null, ?AdyenOptions $adyenSwish = null, ?AdyenOptions $adyenVipps = null, ?AffirmOptions $affirmAffirm = null, ?BraintreeOptions $braintreeCard = null, ?ChaseOptions $chaseorbitalCard = null, ?CybersourceAntiFraudOptions $cybersourceAntiFraud = null, ?CybersourceOptions $cybersourceCard = null, ?CybersourceOptions $cybersourceIdeal = null, ?CybersourceOptions $cybersourceKcp = null, ?DlocalOptions $dlocalNequi = null, ?DlocalUPIOptions $dlocalUpi = null, ?DlocalPIXOptions $dlocalPix = null, ?FiservOptions $fiservCard = null, ?ForterAntiFraudOptions $forterAntiFraud = null, ?LatitudeOptions $gemGem = null, ?LatitudeOptions $gemGemds = null, ?GivingBlockOptions $givingblockGivingblock = null, ?GoCardlessOptions $gocardlessGocardless = null, ?LatitudeOptions $latitudeLatitude = null, ?LatitudeOptions $latitudeLatitudeds = null, ?MattildaTapiOptions $mattildaTapi = null, ?MattildaTapiOptions $mattildaTapifintechs = null, ?MonatoSpeiOptions $monatoSpei = null, ?MockCardOptions $mockCard = null, ?MockCardOptions $mockdsCard = null, ?NuveiOptions $nuveiCard = null, ?NuveiIDealOptions $nuveiIdeal = null, ?NuveiKlarnaOptions $nuveiKlarna = null, ?NuveiPSEOptions $nuveiPse = null, ?OxxoOptions $oxxoOxxo = null, ?PaypalOptions $paypalPaypal = null, ?PaypalOptions $paypalPaypalpaylater = null, ?PowertranzOptions $powertranzCard = null, ?RiskifiedAntiFraudOptions $riskifiedAntiFraud = null, ?StripeOptions $stripeAffirm = null, ?StripeCardOptions $stripeCard = null, ?StripeOptions $stripeKlarna = null, ?TravelhubOptions $travelhubCard = null, ?TrustlyOptions $trustlyTrustly = null, ?WpayEverdaypayOptions $wpayEverydaypay = null, ?WpayPaytoOptions $wpayPayto = null)
+    public function __construct(?AccountUpdaterOptions $accountUpdater = null, ?AdyenOptions $adyenAfterpay = null, ?AdyenOptions $adyenAlipay = null, ?AdyenCardOptions $adyenCard = null, ?AdyenOptions $adyenCashapp = null, ?AdyenOptions $adyenGiropay = null, ?AdyenOptions $adyenIdeal = null, ?AdyenOptions $adyenPaypay = null, ?AdyenOptions $adyenPix = null, ?AdyenSepaOptions $adyenSepa = null, ?AdyenOptions $adyenSofort = null, ?AdyenOptions $adyenSwish = null, ?AdyenOptions $adyenVipps = null, ?AffirmOptions $affirmAffirm = null, ?BraintreeOptions $braintreeCard = null, ?ChaseOptions $chaseorbitalCard = null, ?CybersourceAntiFraudOptions $cybersourceAntiFraud = null, ?CybersourceOptions $cybersourceCard = null, ?CybersourceOptions $cybersourceIdeal = null, ?CybersourceOptions $cybersourceKcp = null, ?DlocalOptions $dlocalNequi = null, ?DlocalUPIOptions $dlocalUpi = null, ?DlocalPIXOptions $dlocalPix = null, ?FiservOptions $fiservCard = null, ?ForterAntiFraudOptions $forterAntiFraud = null, ?LatitudeOptions $gemGem = null, ?LatitudeOptions $gemGemds = null, ?GivingBlockOptions $givingblockGivingblock = null, ?GoCardlessOptions $gocardlessGocardless = null, ?LatitudeOptions $latitudeLatitude = null, ?LatitudeOptions $latitudeLatitudeds = null, ?MattildaTapiOptions $mattildaTapi = null, ?MattildaTapiOptions $mattildaTapifintechs = null, ?MonatoSpeiOptions $monatoSpei = null, ?MockCardOptions $mockCard = null, ?MockCardOptions $mockdsCard = null, ?NuveiOptions $nuveiCard = null, ?NuveiIDealOptions $nuveiIdeal = null, ?NuveiKlarnaOptions $nuveiKlarna = null, ?NuveiPSEOptions $nuveiPse = null, ?OxxoOptions $oxxoOxxo = null, ?PaypalOptions $paypalPaypal = null, ?PaypalOptions $paypalPaypalpaylater = null, ?PowertranzOptions $powertranzCard = null, ?RiskifiedAntiFraudOptions $riskifiedAntiFraud = null, ?StripeOptions $stripeAffirm = null, ?StripeCardOptions $stripeCard = null, ?StripeOptions $stripeKlarna = null, ?TravelhubOptions $travelhubCard = null, ?TrustlyOptions $trustlyTrustly = null, ?WpayEverdaypayOptions $wpayEverydaypay = null, ?WpayPaytoOptions $wpayPayto = null)
     {
         $this->accountUpdater = $accountUpdater;
         $this->adyenAfterpay = $adyenAfterpay;
@@ -584,6 +595,7 @@ class TransactionConnectionOptions
         $this->adyenCashapp = $adyenCashapp;
         $this->adyenGiropay = $adyenGiropay;
         $this->adyenIdeal = $adyenIdeal;
+        $this->adyenPaypay = $adyenPaypay;
         $this->adyenPix = $adyenPix;
         $this->adyenSepa = $adyenSepa;
         $this->adyenSofort = $adyenSofort;
