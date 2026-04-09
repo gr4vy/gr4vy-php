@@ -76,6 +76,22 @@ class GiftCard
     public \DateTime $updatedAt;
 
     /**
+     * The number of times this gift card has been used in transactions.
+     *
+     * @var int $usageCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('usage_count')]
+    public int $usageCount;
+
+    /**
+     * The number of times this gift card has been used in transactions for client initiated transactions.
+     *
+     * @var int $citUsageCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cit_usage_count')]
+    public int $citUsageCount;
+
+    /**
      *  The date and time when this gift card expires. This is a full date/time and may be more accurate than the actual expiry date received by the gift card service.
      *
      * @var ?\DateTime $expirationDate
@@ -95,6 +111,24 @@ class GiftCard
     public ?Buyer $buyer = null;
 
     /**
+     * The timestamp when this gift card was last used in a transaction.
+     *
+     * @var ?\DateTime $lastUsedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_used_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?\DateTime $lastUsedAt = null;
+
+    /**
+     * The timestamp when this gift card was last used in a transaction for client initiated transactions.
+     *
+     * @var ?\DateTime $citLastUsedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cit_last_used_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?\DateTime $citLastUsedAt = null;
+
+    /**
      * Always `gift-card`.
      *
      * @var ?string $type
@@ -112,12 +146,16 @@ class GiftCard
      * @param  string  $last4
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
+     * @param  int  $usageCount
+     * @param  int  $citUsageCount
      * @param  ?string  $type
      * @param  ?\DateTime  $expirationDate
      * @param  ?\Gr4vy\Buyer  $buyer
+     * @param  ?\DateTime  $lastUsedAt
+     * @param  ?\DateTime  $citLastUsedAt
      * @phpstan-pure
      */
-    public function __construct(string $id, string $merchantAccountId, GiftCardService $giftCardService, string $bin, string $subBin, string $last4, \DateTime $createdAt, \DateTime $updatedAt, ?\DateTime $expirationDate = null, ?Buyer $buyer = null, ?string $type = 'gift-card')
+    public function __construct(string $id, string $merchantAccountId, GiftCardService $giftCardService, string $bin, string $subBin, string $last4, \DateTime $createdAt, \DateTime $updatedAt, int $usageCount, int $citUsageCount, ?\DateTime $expirationDate = null, ?Buyer $buyer = null, ?\DateTime $lastUsedAt = null, ?\DateTime $citLastUsedAt = null, ?string $type = 'gift-card')
     {
         $this->id = $id;
         $this->merchantAccountId = $merchantAccountId;
@@ -127,8 +165,12 @@ class GiftCard
         $this->last4 = $last4;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
+        $this->usageCount = $usageCount;
+        $this->citUsageCount = $citUsageCount;
         $this->expirationDate = $expirationDate;
         $this->buyer = $buyer;
+        $this->lastUsedAt = $lastUsedAt;
+        $this->citLastUsedAt = $citLastUsedAt;
         $this->type = $type;
     }
 }
