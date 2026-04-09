@@ -44,6 +44,22 @@ class GiftCardSummary
     public string $last4;
 
     /**
+     * The number of times this gift card has been used in transactions.
+     *
+     * @var int $usageCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('usage_count')]
+    public int $usageCount;
+
+    /**
+     * The number of times this gift card has been used in transactions for client initiated transactions.
+     *
+     * @var int $citUsageCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cit_usage_count')]
+    public int $citUsageCount;
+
+    /**
      * The ID for the gift card.
      *
      * @var ?string $id
@@ -107,6 +123,24 @@ class GiftCardSummary
     public ?string $balanceRawErrorMessage = null;
 
     /**
+     * The timestamp when this gift card was last used in a transaction.
+     *
+     * @var ?\DateTime $lastUsedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_used_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?\DateTime $lastUsedAt = null;
+
+    /**
+     * The timestamp when this gift card was last used in a transaction for client initiated transactions.
+     *
+     * @var ?\DateTime $citLastUsedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cit_last_used_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?\DateTime $citLastUsedAt = null;
+
+    /**
      * Always `gift-card`.
      *
      * @var ?string $type
@@ -120,6 +154,8 @@ class GiftCardSummary
      * @param  string  $bin
      * @param  string  $subBin
      * @param  string  $last4
+     * @param  int  $usageCount
+     * @param  int  $citUsageCount
      * @param  ?string  $type
      * @param  ?string  $id
      * @param  ?string  $currency
@@ -128,14 +164,18 @@ class GiftCardSummary
      * @param  ?string  $balanceErrorCode
      * @param  ?string  $balanceRawErrorCode
      * @param  ?string  $balanceRawErrorMessage
+     * @param  ?\DateTime  $lastUsedAt
+     * @param  ?\DateTime  $citLastUsedAt
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId, string $bin, string $subBin, string $last4, ?string $id = null, ?string $currency = null, ?\DateTime $expirationDate = null, ?int $balance = null, ?string $balanceErrorCode = null, ?string $balanceRawErrorCode = null, ?string $balanceRawErrorMessage = null, ?string $type = 'gift-card')
+    public function __construct(string $merchantAccountId, string $bin, string $subBin, string $last4, int $usageCount, int $citUsageCount, ?string $id = null, ?string $currency = null, ?\DateTime $expirationDate = null, ?int $balance = null, ?string $balanceErrorCode = null, ?string $balanceRawErrorCode = null, ?string $balanceRawErrorMessage = null, ?\DateTime $lastUsedAt = null, ?\DateTime $citLastUsedAt = null, ?string $type = 'gift-card')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->bin = $bin;
         $this->subBin = $subBin;
         $this->last4 = $last4;
+        $this->usageCount = $usageCount;
+        $this->citUsageCount = $citUsageCount;
         $this->id = $id;
         $this->currency = $currency;
         $this->expirationDate = $expirationDate;
@@ -143,6 +183,8 @@ class GiftCardSummary
         $this->balanceErrorCode = $balanceErrorCode;
         $this->balanceRawErrorCode = $balanceRawErrorCode;
         $this->balanceRawErrorMessage = $balanceRawErrorMessage;
+        $this->lastUsedAt = $lastUsedAt;
+        $this->citLastUsedAt = $citLastUsedAt;
         $this->type = $type;
     }
 }
