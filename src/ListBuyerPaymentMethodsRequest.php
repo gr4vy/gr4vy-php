@@ -38,10 +38,10 @@ class ListBuyerPaymentMethodsRequest
     /**
      * The field to sort the payment methods by.
      *
-     * @var ?\Gr4vy\SortBy $sortBy
+     * @var ?\Gr4vy\ListBuyerPaymentMethodsSortBy $sortBy
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sort_by')]
-    public ?SortBy $sortBy = null;
+    public ?ListBuyerPaymentMethodsSortBy $sortBy = null;
 
     /**
      * The country code to filter payment methods by. This only applies to payment methods with a `country` value.
@@ -72,12 +72,12 @@ class ListBuyerPaymentMethodsRequest
      * @param  ?string  $merchantAccountId
      * @param  ?string  $buyerId
      * @param  ?string  $buyerExternalIdentifier
-     * @param  ?\Gr4vy\SortBy  $sortBy
+     * @param  ?\Gr4vy\ListBuyerPaymentMethodsSortBy  $sortBy
      * @param  ?string  $country
      * @param  ?string  $currency
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?SortBy $sortBy = null, ?string $country = null, ?string $currency = null, ?string $orderBy = 'desc')
+    public function __construct(?string $merchantAccountId = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?ListBuyerPaymentMethodsSortBy $sortBy = null, ?string $country = null, ?string $currency = null, ?string $orderBy = 'desc')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->buyerId = $buyerId;

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 33781e9be5d1bcbbab67a2e0944f0444
+  docChecksum: dc4b1598968ffd0b43de16bc4bea5280
   docVersion: 1.0.0
-  speakeasyVersion: 1.761.1
-  generationVersion: 2.879.6
-  releaseVersion: 1.5.58
-  configChecksum: 951e970cda3bf398f1816ea02605ca92
+  speakeasyVersion: 1.761.5
+  generationVersion: 2.879.13
+  releaseVersion: 1.5.59
+  configChecksum: d985ee065835ffa04c74bb71f06fd8fb
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 00927391-cb36-499e-b96e-710054a32deb
-  pristine_commit_hash: 1a277dfc372b2a11cb72c803ad6578aca53168d3
-  pristine_tree_hash: e9eb8273b81091d8733b322797473376f1cd3e55
+  generation_id: 2bec28c1-d870-4976-8083-f87317638fb2
+  pristine_commit_hash: f71268fd72f0a8b781c4c0964feed887a20c91fd
+  pristine_tree_hash: fb72f006dbac03c556fc472d1421609aeebcc064
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:1cc59650db7648b7369780b19aa3235352681730
-    pristine_git_object: c13f8900860900ef3bee3687dfb4a579cc5bf763
+    last_write_checksum: sha1:db07568630b87f79f1bda4786fb2ea77d5b92186
+    pristine_git_object: aaee2d26625b101f21f524d4d24426215166cd33
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -1024,20 +1024,28 @@ trackedFiles:
     pristine_git_object: a9940b3890b3b6233389fea9384e443ff9a55a16
   docs/ListBuyerGiftCardsRequest.md:
     id: 87a9fbeb527a
-    last_write_checksum: sha1:90e14d729f579c54522f1ffdf5c2eacca4503070
-    pristine_git_object: 40fb40a7777306465637b9e9b51c109315b0c973
+    last_write_checksum: sha1:83190bbef178abc765c4f47df06eca652d5ce0ed
+    pristine_git_object: 79d8a11cb1e80bb693506153fbde054c59fc64e5
   docs/ListBuyerGiftCardsResponse.md:
     id: 0e03d8713c68
     last_write_checksum: sha1:450237476e27d76467d9a4711290106c0d570605
     pristine_git_object: 4d66b7df72ad8c421b3c7fb3b9ecb86579b4e6a6
+  docs/ListBuyerGiftCardsSortBy.md:
+    id: 356086b419e1
+    last_write_checksum: sha1:89edd5c236a4a12048e468e1663137244030f142
+    pristine_git_object: 29d90c2fbd1cc154864d4073d827f57fa2809ceb
   docs/ListBuyerPaymentMethodsRequest.md:
     id: ead5172809b3
-    last_write_checksum: sha1:7978585ca49931f79d71e7825ad31e09d778f1b1
-    pristine_git_object: 130378acb69bec6e1df6a0a4176a7edb6d9ee541
+    last_write_checksum: sha1:664ecf4b305dfd81ea8a0864da70ac2d29b16efa
+    pristine_git_object: bdcd5a41cd07ec543c2975104e51e03d9f74f807
   docs/ListBuyerPaymentMethodsResponse.md:
     id: 2488909ed748
     last_write_checksum: sha1:f782dc6a7e49faa4dd7bbe83bda7fc6ecd70d20e
     pristine_git_object: ddd67efce1a6dfa00b3d9c5db3e86b3dc97fcebf
+  docs/ListBuyerPaymentMethodsSortBy.md:
+    id: a388c9dbed5d
+    last_write_checksum: sha1:029ad0180dd749e133b7b88a597b3f5427a14c73
+    pristine_git_object: 7aeed7bd6814aca90892934f57f42dce5bb47a98
   docs/ListBuyerShippingDetailsRequest.md:
     id: 16bcf8e4fad3
     last_write_checksum: sha1:f358bfed755fe5472d0aaa91a04f2df4e04850f3
@@ -1622,10 +1630,6 @@ trackedFiles:
     id: bab1fc21ce1e
     last_write_checksum: sha1:9880982de41d3a8bbb4d22177df9d5d5551d665d
     pristine_git_object: bd38d427da75f934c4c209b01a6e6771e61f7620
-  docs/SortBy.md:
-    id: 5a30d5562bbc
-    last_write_checksum: sha1:36472f9d1fd7b367df288e639c922f881f4449d0
-    pristine_git_object: 7a2b6ef3cfdeaa0b727d7caa1c3efc935bcc3388
   docs/Spec.md:
     id: ddff6c01efbe
     last_write_checksum: sha1:f035d278e4844bbbeef3e1598a2990b9bee20094
@@ -1984,12 +1988,12 @@ trackedFiles:
     pristine_git_object: 73a32f4299b0561c4068027cc55ffe7097a8df98
   docs/sdks/buyersgiftcards/README.md:
     id: b24dd6aa2092
-    last_write_checksum: sha1:4498eaf7b352d49d8c20a6428ea29e0959312b60
-    pristine_git_object: 4aa76c0d153f8e284a72e7767544a2b8d929868c
+    last_write_checksum: sha1:693e8524c9d9157c1f6f01b3b3e2af5b2e6510c8
+    pristine_git_object: 6a43cd87d60b5feb04d1beafbf24007993a9dbe7
   docs/sdks/buyerspaymentmethods/README.md:
     id: 4aff3957cf89
-    last_write_checksum: sha1:b21c3e88230f16625ab32b05eec1682992a83100
-    pristine_git_object: dab44be4419446a103a704fc8a8b19a2f7b47f0b
+    last_write_checksum: sha1:386feecde9d8610f972068a1e25cf53c5dd60078
+    pristine_git_object: ed50efb71f535d2c858419998107f6fa9a5049bb
   docs/sdks/buyerssdk/README.md:
     id: 8921e2d58de1
     last_write_checksum: sha1:44237850571d72e5db71edf8a4880ca975ea7cc6
@@ -2308,8 +2312,8 @@ trackedFiles:
     pristine_git_object: 2822a48231e448546f9ccb01f4abe28d5f87053c
   src/BuyersGiftCards.php:
     id: a378cef7de24
-    last_write_checksum: sha1:71c8ed477b986e050d794edb9a7e5188b7a5312d
-    pristine_git_object: b835e47eb696755ecb69a2220274d63c04f6f661
+    last_write_checksum: sha1:9bb238bc31dab118001d6bf50ae8d2ce7dc854b7
+    pristine_git_object: 89ee76d03017b40f59bbca69224c527276886bd3
   src/BuyersPaymentMethods.php:
     id: 76aa0b5d4f3d
     last_write_checksum: sha1:894dafe63d420cb2fcdaf12c712177df42a275c2
@@ -3260,20 +3264,28 @@ trackedFiles:
     pristine_git_object: ace6e871eb1eb64e3578e40eb4d6401659832728
   src/ListBuyerGiftCardsRequest.php:
     id: 9e70466baed2
-    last_write_checksum: sha1:80cd5773ec0ff826fc93fd2e92fbe70508b05dca
-    pristine_git_object: cf312aad59ae5a7d354bf2c2bcb0424f376af7ad
+    last_write_checksum: sha1:a9b4c9b430735fd8fe6d5c64c4cea657e6d3b21e
+    pristine_git_object: 9efd4d14e093144a18b8179baee609150e3e7686
   src/ListBuyerGiftCardsResponse.php:
     id: 38d9a2a1ed0b
     last_write_checksum: sha1:491bc9c0676ab79aac8426288e9e868eeea0fe75
     pristine_git_object: cb74ae5d3e5db531b38a638897b9884246949aea
+  src/ListBuyerGiftCardsSortBy.php:
+    id: 494d4476fa31
+    last_write_checksum: sha1:f6de558916a17b001b6a1ec15ec7d6f561981e5f
+    pristine_git_object: 3dfcd335dcc5f15f62d7ef75c1dae7fe9430ff36
   src/ListBuyerPaymentMethodsRequest.php:
     id: 5000f3303594
-    last_write_checksum: sha1:7aadc3f4833d89216ff0d9eaad06bbade3db9093
-    pristine_git_object: 1f9d92615e830615cda7ac24d8f0c8c0582bfa5a
+    last_write_checksum: sha1:bcbcead86163a9f16578d209e04deaae5ca9f507
+    pristine_git_object: 7b24cdbcc6b24497ec84c497aed730c9f3e7cb6f
   src/ListBuyerPaymentMethodsResponse.php:
     id: 195b19814a09
     last_write_checksum: sha1:2145a561718b87fda1cdd52ec7d994003631f239
     pristine_git_object: fb74bc5fc18bbe0c08fc6979f23ac83891b82c44
+  src/ListBuyerPaymentMethodsSortBy.php:
+    id: 17fee8cba2e0
+    last_write_checksum: sha1:e0b58764e1b8fb593daf2f19a23b3c23f6a2e1ef
+    pristine_git_object: 95e041f6934372970ccbbca27367fd4f10400eca
   src/ListBuyerShippingDetailsRequest.php:
     id: 109d3fc92f1f
     last_write_checksum: sha1:001c1d12b0df4bc31703b6ed108a1589081cd90e
@@ -3860,8 +3872,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:e3e919137a0dec25bbf2a3a802c737b6c6011c55
-    pristine_git_object: b60ff62d5e4bca05e28806ab37277416017a4e17
+    last_write_checksum: sha1:eaee7062a242d3e6ec514848277c488f38cd8265
+    pristine_git_object: 4c9b2e58f8501b149b03c1f193c157579faf0b7c
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -3898,10 +3910,6 @@ trackedFiles:
     id: 4f162fc5f8ed
     last_write_checksum: sha1:2f9f9c1c46c7c29dd89fa4597401b5d4c9602c20
     pristine_git_object: c822d8e961308d69756922a962906f19a42dc8ff
-  src/SortBy.php:
-    id: b528910ab465
-    last_write_checksum: sha1:eee38e96a210034dc327ee542baf04f7de0347df
-    pristine_git_object: bb81a7a480b8ca0a807c39943ae4fece3147bebb
   src/StatementDescriptor.php:
     id: 198956fc20da
     last_write_checksum: sha1:62e25dd4560d784ea3444254cbf5dba5467766c0
@@ -4652,6 +4660,7 @@ examples:
         query:
           timeout_in_seconds: 1
           application_name: "core-api"
+          order_by: "desc"
         header: {}
       responses:
         "200":
@@ -8049,7 +8058,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->buyers->giftCards->list()`:  `response.items[]` **Changed**\n* `sdk->gift-cards->get()`:  `response` **Changed**\n* `sdk->gift-cards->create()`:  `response` **Changed**\n* `sdk->gift-cards->list()`:  `response.items[]` **Changed**\n* `sdk->gift-cards->balances->list()`:  `response.items[]` **Changed**\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->dlocalGcash` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->dlocalGcash` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->dlocalGcash` **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->buyers->giftCards->list()`:  `request` **Changed** (Breaking ⚠️)
 generatedFiles:
   - .gitattributes
   - USAGE.md

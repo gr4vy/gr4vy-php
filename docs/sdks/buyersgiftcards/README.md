@@ -27,10 +27,10 @@ $sdk = Gr4vy\SDK::builder()
     )
     ->build();
 
-
+$request = new Gr4vy\ListBuyerGiftCardsRequest();
 
 $response = $sdk->buyers->giftCards->list(
-
+    request: $request
 );
 
 if ($response->giftCardSummaries !== null) {
@@ -40,11 +40,9 @@ if ($response->giftCardSummaries !== null) {
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `buyerExternalIdentifier`                               | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
-| `buyerId`                                               | *?string*                                               | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
-| `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `$request`                                                            | [Gr4vy\ListBuyerGiftCardsRequest](../../ListBuyerGiftCardsRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
 ### Response
 

@@ -30,7 +30,7 @@ $sdk = Gr4vy\SDK::builder()
 $request = new Gr4vy\ListBuyerPaymentMethodsRequest(
     buyerId: 'fe26475d-ec3e-4884-9553-f7356683f7f9',
     buyerExternalIdentifier: 'buyer-12345',
-    sortBy: Gr4vy\SortBy::LastUsedAt,
+    sortBy: Gr4vy\ListBuyerPaymentMethodsSortBy::LastUsedAt,
     country: 'US',
     currency: 'USD',
 );

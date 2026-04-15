@@ -50,13 +50,11 @@ class BuyersGiftCards
      *
      * List all the stored gift cards for a specific buyer.
      *
-     * @param  ?string  $buyerExternalIdentifier
-     * @param  ?string  $buyerId
-     * @param  ?string  $merchantAccountId
+     * @param  ?\Gr4vy\ListBuyerGiftCardsRequest  $request
      * @return \Gr4vy\ListBuyerGiftCardsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $merchantAccountId = null, ?Options $options = null): ListBuyerGiftCardsResponse
+    public function list(?ListBuyerGiftCardsRequest $request = null, ?Options $options = null): ListBuyerGiftCardsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -82,11 +80,6 @@ class BuyersGiftCards
                 '5XX',
             ];
         }
-        $request = new ListBuyerGiftCardsRequest(
-            buyerExternalIdentifier: $buyerExternalIdentifier,
-            buyerId: $buyerId,
-            merchantAccountId: $merchantAccountId,
-        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/buyers/gift-cards');
         $urlOverride = null;
