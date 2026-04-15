@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: dc4b1598968ffd0b43de16bc4bea5280
+  docChecksum: 6c048e5a61d385d8a4dce22525c8c6b6
   docVersion: 1.0.0
   speakeasyVersion: 1.761.5
   generationVersion: 2.879.13
-  releaseVersion: 1.5.59
-  configChecksum: d985ee065835ffa04c74bb71f06fd8fb
+  releaseVersion: 1.5.60
+  configChecksum: 89ec7d751ad8b2f097ee3113185bdb3f
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 2bec28c1-d870-4976-8083-f87317638fb2
-  pristine_commit_hash: f71268fd72f0a8b781c4c0964feed887a20c91fd
-  pristine_tree_hash: fb72f006dbac03c556fc472d1421609aeebcc064
+  generation_id: 780b1aa4-f25f-4e3a-80a7-834cb38e7efb
+  pristine_commit_hash: 7beaf80e8cf7476542d725aba786983f83faf67b
+  pristine_tree_hash: 4fc08a1ba45b9398c515a3298256bd838fc9ede6
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:db07568630b87f79f1bda4786fb2ea77d5b92186
-    pristine_git_object: aaee2d26625b101f21f524d4d24426215166cd33
+    last_write_checksum: sha1:1cc59650db7648b7369780b19aa3235352681730
+    pristine_git_object: c13f8900860900ef3bee3687dfb4a579cc5bf763
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -3872,8 +3872,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:eaee7062a242d3e6ec514848277c488f38cd8265
-    pristine_git_object: 4c9b2e58f8501b149b03c1f193c157579faf0b7c
+    last_write_checksum: sha1:f6083f8dad1061e9e9f32a8a52b041681bc9771f
+    pristine_git_object: fe6691120c92855ac8baef490bc86cb036188fc4
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8058,9 +8058,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes:
-  * `sdk->buyers->giftCards->list()`:  `request` **Changed** (Breaking ⚠️)
 generatedFiles:
   - .gitattributes
   - USAGE.md
