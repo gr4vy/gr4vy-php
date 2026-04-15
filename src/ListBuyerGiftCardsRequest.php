@@ -34,15 +34,35 @@ class ListBuyerGiftCardsRequest
     public ?string $buyerId = null;
 
     /**
+     * The field to sort the gift cards by.
+     *
+     * @var ?\Gr4vy\ListBuyerGiftCardsSortBy $sortBy
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sort_by')]
+    public ?ListBuyerGiftCardsSortBy $sortBy = null;
+
+    /**
+     * The direction to sort the gift cards in.
+     *
+     * @var ?string $orderBy
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=order_by')]
+    public ?string $orderBy = null;
+
+    /**
+     * @param  ?string  $orderBy
      * @param  ?string  $merchantAccountId
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $buyerId
+     * @param  ?\Gr4vy\ListBuyerGiftCardsSortBy  $sortBy
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null)
+    public function __construct(?string $merchantAccountId = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?ListBuyerGiftCardsSortBy $sortBy = null, ?string $orderBy = 'desc')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->buyerExternalIdentifier = $buyerExternalIdentifier;
         $this->buyerId = $buyerId;
+        $this->sortBy = $sortBy;
+        $this->orderBy = $orderBy;
     }
 }

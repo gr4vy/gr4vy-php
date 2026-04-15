@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-/** The field to sort the payment methods by. */
-enum SortBy: string
+/** The field to sort the gift cards by. */
+enum ListBuyerGiftCardsSortBy: string
 {
     case LastUsedAt = 'last_used_at';
     case UsageCount = 'usage_count';

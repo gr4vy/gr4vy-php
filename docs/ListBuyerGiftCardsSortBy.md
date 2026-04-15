@@ -1,6 +1,6 @@
-# SortBy
+# ListBuyerGiftCardsSortBy
 
-The field to sort the payment methods by.
+The field to sort the gift cards by.
 
 
 ## Values
