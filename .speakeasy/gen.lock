@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 6c048e5a61d385d8a4dce22525c8c6b6
+  docChecksum: 581a01cee6ed4cc9f830984556c18299
   docVersion: 1.0.0
-  speakeasyVersion: 1.761.5
+  speakeasyVersion: 1.761.6
   generationVersion: 2.879.13
-  releaseVersion: 1.5.60
-  configChecksum: 89ec7d751ad8b2f097ee3113185bdb3f
+  releaseVersion: 1.5.61
+  configChecksum: 5eb6d29859b0eab281f6c96f62c9d1d0
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 780b1aa4-f25f-4e3a-80a7-834cb38e7efb
-  pristine_commit_hash: 7beaf80e8cf7476542d725aba786983f83faf67b
-  pristine_tree_hash: 4fc08a1ba45b9398c515a3298256bd838fc9ede6
+  generation_id: 3db6cc23-8e3c-4c8f-9798-a397ac646634
+  pristine_commit_hash: 5166fe52ea9ce8dd91e5e142f04847ad48208e71
+  pristine_tree_hash: bdcfe52bd3999ffca44d56bf0311d55ef2bb9529
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:1cc59650db7648b7369780b19aa3235352681730
-    pristine_git_object: c13f8900860900ef3bee3687dfb4a579cc5bf763
+    last_write_checksum: sha1:64cb59e1960b7ba8d25e3ef553ff23ffbaf998da
+    pristine_git_object: 8901d29a797b231f7d440afbf20fef84e06f7133
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -1344,8 +1344,8 @@ trackedFiles:
     pristine_git_object: 70d826c515d0ee6187c304e0da13cea1853c3df0
   docs/PaymentMethod.md:
     id: ddd63fd7658b
-    last_write_checksum: sha1:d82b3a06bafefba7b6a74802b038d8c4f4ee0355
-    pristine_git_object: 31095005e1c5f84f312f425b29aa6c6567ab55b4
+    last_write_checksum: sha1:11b09879265d11d462e73821d2ff0962f6ef0385
+    pristine_git_object: 31930069170b16c9beb06164499215f6c4f6dfff
   docs/PaymentMethodCard.md:
     id: 4c01279f6d86
     last_write_checksum: sha1:6dd8c9784cbd20a142c1d546ae90cc9b8f13722c
@@ -1364,8 +1364,8 @@ trackedFiles:
     pristine_git_object: be19040745fc930b342358ffce6c762039e60987
   docs/PaymentMethodSummary.md:
     id: 3a92bc7098b4
-    last_write_checksum: sha1:c55d400ef9fe811591d81b760e4db2a20f01dade
-    pristine_git_object: f19939597f14efc7281d73a3254f7429e21f5b15
+    last_write_checksum: sha1:50a0a6008d4038a1c6416b9710b17c0d591355e2
+    pristine_git_object: 73d16b349a4ac184d7a585f4562b59b2d96ab2b3
   docs/PaymentMethods.md:
     id: 14633ae68096
     last_write_checksum: sha1:564270e2827e6301193064ff508076afbb1b3afe
@@ -3592,8 +3592,8 @@ trackedFiles:
     pristine_git_object: 8f0db948578453754693cc802be7748bd456874c
   src/PaymentMethod.php:
     id: f90a26fc0230
-    last_write_checksum: sha1:6e93a8ff9a120cfd5c28ae8d05fa6aa14db565f1
-    pristine_git_object: 3cbaa88b54d53c2ba8f04369b7f88e76920793b5
+    last_write_checksum: sha1:67ec861e6d4cd439d180967f364f12a3263954d3
+    pristine_git_object: 47e0d23ae7188229318b579b4a1c2c4c76781d7b
   src/PaymentMethodCard.php:
     id: f10aa3723593
     last_write_checksum: sha1:cbf586ddfb2798a6a4b7d98bdca5a6fc1f353944
@@ -3612,8 +3612,8 @@ trackedFiles:
     pristine_git_object: 36814cdc188a8447c3d62c49ff27ce66672c3754
   src/PaymentMethodSummary.php:
     id: f29ca42a549b
-    last_write_checksum: sha1:b909e9a1da31e1703c76fed2bcae1cd0de20a4a4
-    pristine_git_object: 5c3d35f0508887207050dbc7e829b8eb87826441
+    last_write_checksum: sha1:3cca414b222641f97d54ffe484309a7d62a8c441
+    pristine_git_object: 64502fdf996a892f2757cba1e38b4aaa2e921317
   src/PaymentMethods.php:
     id: 1927abc4f8e2
     last_write_checksum: sha1:e9747539641ac381f040d2feed4c2c5499f8368f
@@ -3872,8 +3872,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:f6083f8dad1061e9e9f32a8a52b041681bc9771f
-    pristine_git_object: fe6691120c92855ac8baef490bc86cb036188fc4
+    last_write_checksum: sha1:e8389344755c297b445284c278b712e6c64cebea
+    pristine_git_object: 19f43d61fe750879e48d5ab3d64092b478dbd79d
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4629,7 +4629,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"items": [{"type": "payment-method", "method": "multibanco", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100}]}
+          application/json: {"items": [{"type": "payment-method", "method": "multibanco", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "scheme_transaction_id": "123456789012345", "scheme_transaction_id_scheme": "visa"}]}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4887,7 +4887,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"items": [{"type": "payment-method", "method": "laybuy", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "status": "buyer_approval_required", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
+          application/json: {"items": [{"type": "payment-method", "method": "laybuy", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "scheme_transaction_id": "123456789012345", "scheme_transaction_id_scheme": "visa", "status": "buyer_approval_required", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4923,7 +4923,7 @@ examples:
         application/json: {"method": "checkout-session", "id": "4137b1cf-39ac-42a8-bad6-1c680d5dab6b"}
       responses:
         "201":
-          application/json: {"type": "payment-method", "method": "alipay", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "status": "paused", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "payment-method", "method": "alipay", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "scheme_transaction_id": "123456789012345", "scheme_transaction_id_scheme": "visa", "status": "paused", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4958,7 +4958,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"type": "payment-method", "method": "efecty", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "status": "processing", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "payment-method", "method": "efecty", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "scheme_transaction_id": "123456789012345", "scheme_transaction_id_scheme": "visa", "status": "processing", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -8058,6 +8058,12 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->buyers->paymentMethods->list()`:  `response.items[]` **Changed**
+  * `sdk->payment-methods->list()`:  `response.items[]` **Changed**
+  * `sdk->payment-methods->create()`:  `response` **Changed**
+  * `sdk->payment-methods->get()`:  `response` **Changed**
 generatedFiles:
   - .gitattributes
   - USAGE.md
