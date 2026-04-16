@@ -65,6 +65,22 @@ class PaymentMethodSummary
     public int $usageCount;
 
     /**
+     * The scheme transaction identifier stored against this payment method.
+     *
+     * @var ?string $schemeTransactionId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('scheme_transaction_id')]
+    public ?string $schemeTransactionId;
+
+    /**
+     * The scheme associated with scheme_transaction_id. Only applies to card payments.
+     *
+     * @var ?string $schemeTransactionIdScheme
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('scheme_transaction_id_scheme')]
+    public ?string $schemeTransactionIdScheme;
+
+    /**
      * The optional URL that the buyer needs to be redirected to to further authorize their payment.
      *
      * @var ?string $approvalUrl
@@ -200,6 +216,8 @@ class PaymentMethodSummary
      * @param  bool  $hasReplacement
      * @param  int  $usageCount
      * @param  ?string  $type
+     * @param  ?string  $schemeTransactionId
+     * @param  ?string  $schemeTransactionIdScheme
      * @param  ?string  $approvalUrl
      * @param  ?string  $country
      * @param  ?string  $currency
@@ -215,7 +233,7 @@ class PaymentMethodSummary
      * @param  ?\DateTime  $lastUsedAt
      * @phpstan-pure
      */
-    public function __construct(string $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?array $additionalSchemes = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?string $type = 'payment-method')
+    public function __construct(string $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?array $additionalSchemes = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?string $type = 'payment-method')
     {
         $this->method = $method;
         $this->id = $id;
@@ -223,6 +241,8 @@ class PaymentMethodSummary
         $this->citUsageCount = $citUsageCount;
         $this->hasReplacement = $hasReplacement;
         $this->usageCount = $usageCount;
+        $this->schemeTransactionId = $schemeTransactionId;
+        $this->schemeTransactionIdScheme = $schemeTransactionIdScheme;
         $this->approvalUrl = $approvalUrl;
         $this->country = $country;
         $this->currency = $currency;
