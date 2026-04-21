@@ -7,6 +7,7 @@
 * [list](#list) - List all payment methods
 * [create](#create) - Create payment method
 * [get](#get) - Get payment method
+* [update](#update) - Update payment method
 * [delete](#delete) - Delete payment method
 
 ## list
@@ -182,6 +183,70 @@ if ($response->paymentMethod !== null) {
 ### Response
 
 **[?GetPaymentMethodResponse](../../GetPaymentMethodResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\Error400            | 400                        | application/json           |
+| Errors\Error401            | 401                        | application/json           |
+| Errors\Error403            | 403                        | application/json           |
+| Errors\Error404            | 404                        | application/json           |
+| Errors\Error405            | 405                        | application/json           |
+| Errors\Error409            | 409                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\Error425            | 425                        | application/json           |
+| Errors\Error429            | 429                        | application/json           |
+| Errors\Error500            | 500                        | application/json           |
+| Errors\Error502            | 502                        | application/json           |
+| Errors\Error504            | 504                        | application/json           |
+| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## update
+
+Update the details of a stored payment method.
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="update_payment_method" method="put" path="/payment-methods/{payment_method_id}" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Gr4vy;
+
+$sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$paymentMethodUpdate = new Gr4vy\PaymentMethodUpdate();
+
+$response = $sdk->paymentMethods->update(
+    paymentMethodId: 'ef9496d8-53a5-4aad-8ca2-00eb68334389',
+    paymentMethodUpdate: $paymentMethodUpdate
+
+);
+
+if ($response->paymentMethod !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `paymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
+| `paymentMethodUpdate`                                   | [PaymentMethodUpdate](../../PaymentMethodUpdate.md)     | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `merchantAccountId`                                     | *?string*                                               | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
+
+### Response
+
+**[?UpdatePaymentMethodResponse](../../UpdatePaymentMethodResponse.md)**
 
 ### Errors
 

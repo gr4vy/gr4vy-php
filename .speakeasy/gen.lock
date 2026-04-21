@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: b8088beba14e2f0159e6da4c81d984d1
+  docChecksum: 0ca58cd6bd7d1888708c87d43eaa02f4
   docVersion: 1.0.0
-  speakeasyVersion: 1.761.8
-  generationVersion: 2.881.2
-  releaseVersion: 1.5.62
-  configChecksum: e173ed8ba002753c8e027be4ab66c754
+  speakeasyVersion: 1.761.9
+  generationVersion: 2.881.4
+  releaseVersion: 1.5.63
+  configChecksum: d0e0b7edab4c69bd65b7329d5539ead8
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 69bb1362-e4f7-49cc-8082-53b6f5b8025a
-  pristine_commit_hash: 658e5849de0eb9b154cd3086e823dcd4def8055a
-  pristine_tree_hash: d982df5e2699744187e3e1fdcb6677fd8953b463
+  generation_id: 7d7cb6fb-f9d9-4b59-8c1d-73035a7e16de
+  pristine_commit_hash: d6920c93e5ee2d16d0ed925269d73f2573a7df59
+  pristine_tree_hash: 5f2fa4b5930d608a11a7ee556a3841e67094c981
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:1cc59650db7648b7369780b19aa3235352681730
-    pristine_git_object: c13f8900860900ef3bee3687dfb4a579cc5bf763
+    last_write_checksum: sha1:c917456dcdd2070b44e18dd99838e9053efd792e
+    pristine_git_object: f60a9de5e44f2158325158682183f11b1ce2c1ad
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -1370,6 +1370,10 @@ trackedFiles:
     id: 3a92bc7098b4
     last_write_checksum: sha1:50a0a6008d4038a1c6416b9710b17c0d591355e2
     pristine_git_object: 73d16b349a4ac184d7a585f4562b59b2d96ab2b3
+  docs/PaymentMethodUpdate.md:
+    id: 8257b04856d1
+    last_write_checksum: sha1:41a287dc8286c42406d326e8a36d9a07535ea6bb
+    pristine_git_object: 4008f954b3621c02fd616076e4b16a66f389a1dc
   docs/PaymentMethods.md:
     id: 14633ae68096
     last_write_checksum: sha1:564270e2827e6301193064ff508076afbb1b3afe
@@ -1894,6 +1898,14 @@ trackedFiles:
     id: f65b362b1026
     last_write_checksum: sha1:5931458bb382e95b27867274df2eb5a1cd9f496a
     pristine_git_object: 8d1027e865fc9cebbdcd3db6b8ab9be1c0574602
+  docs/UpdatePaymentMethodRequest.md:
+    id: 7383847e380e
+    last_write_checksum: sha1:f2dc98135156a0ede1ae305d74d73b6c8f0e1537
+    pristine_git_object: 9ef58f8bbf468c38e6aed8cb6646e1567f00014b
+  docs/UpdatePaymentMethodResponse.md:
+    id: 9f2a73cf79a9
+    last_write_checksum: sha1:c6538fae40c53e6c1b0a3eab79ed5025f9f3eedb
+    pristine_git_object: 0a1203d5606277c124fc2755e4b2847d51590813
   docs/UpdatePaymentServiceRequest.md:
     id: 5a9662763cb5
     last_write_checksum: sha1:85fb69350c945946119ccb20cf637e569f7dbfdc
@@ -2060,8 +2072,8 @@ trackedFiles:
     pristine_git_object: d8498487d49f3b0cb7ec949aae75964e164c7196
   docs/sdks/paymentmethodssdk/README.md:
     id: d1b6df07187c
-    last_write_checksum: sha1:3f5c3f9275e23ff80f24a4856ec0ddf5b8301a06
-    pristine_git_object: faae4fd7e0df5a46f49fc6db7fe2e8091936e231
+    last_write_checksum: sha1:ba8397336b32abc93e9ff34e04b695303e667851
+    pristine_git_object: 0acc7c7d297e37aca760902e8177dfb723008141
   docs/sdks/paymentoptionssdk/README.md:
     id: 11172237c4a0
     last_write_checksum: sha1:e3b141e9dddf4f82729f87859d2d889f50e67f98
@@ -3622,6 +3634,10 @@ trackedFiles:
     id: f29ca42a549b
     last_write_checksum: sha1:3cca414b222641f97d54ffe484309a7d62a8c441
     pristine_git_object: 64502fdf996a892f2757cba1e38b4aaa2e921317
+  src/PaymentMethodUpdate.php:
+    id: 3d37a083e7fb
+    last_write_checksum: sha1:c5a5224351d1dd99d746b76e0a0cb21ae213542a
+    pristine_git_object: b8d604e7943fd7434f1f82953ec4cc0f72b23a06
   src/PaymentMethods.php:
     id: 1927abc4f8e2
     last_write_checksum: sha1:e9747539641ac381f040d2feed4c2c5499f8368f
@@ -3636,8 +3652,8 @@ trackedFiles:
     pristine_git_object: 74fc4804115d6b0b71dd5496a498e5f49201826d
   src/PaymentMethodsSDK.php:
     id: f337cac363a0
-    last_write_checksum: sha1:0583eb4940863677989f29af42b248fcd8065629
-    pristine_git_object: 372cf51ad3399a839978f56be21fd7b5b563987d
+    last_write_checksum: sha1:474bd26d34b9a3880d96bac5829ed6d6db696731
+    pristine_git_object: f305ddcb905c764049e3a26e931a516ece3a9748
   src/PaymentOption.php:
     id: 6deb5864e3a6
     last_write_checksum: sha1:7eb8131aca743bb947023a42b12a440ac0e6e840
@@ -3880,8 +3896,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:8e4f102c987108f7728a0b3b124e5247eab03f37
-    pristine_git_object: 2b06b010986c8af969a3a81ad77910a9ef1e2e95
+    last_write_checksum: sha1:1c625020f0c2d0a444121755c9d48031dc018b33
+    pristine_git_object: 717d95749d1c8e0a7ccbea5bcb620f0942510e64
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4182,6 +4198,14 @@ trackedFiles:
     id: 7dce5439fcfb
     last_write_checksum: sha1:4f2d228a98566c5b3929c4c16a10e75eb6947686
     pristine_git_object: 1230d53ad25aa3d16ea4487ca989ec4631eb278c
+  src/UpdatePaymentMethodRequest.php:
+    id: 6d5647422ff0
+    last_write_checksum: sha1:755ce4ca16666cdb576283b27552bc993e3b284b
+    pristine_git_object: d2ab807a11a9f469a175d929eb621b626cf15ad8
+  src/UpdatePaymentMethodResponse.php:
+    id: aa7a26238f16
+    last_write_checksum: sha1:48328a7f36b2a5b7df9183aa00ad9d2252a94e59
+    pristine_git_object: 4850ccc90b85875c9dd6e4122038d85ac590e9dc
   src/UpdatePaymentServiceRequest.php:
     id: 159f50e02510
     last_write_checksum: sha1:42e3801a3b83e5bb97896e579f3aeb2a07d4c0de
@@ -8064,9 +8088,45 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  update_payment_method:
+    speakeasy-default-update-payment-method:
+      parameters:
+        path:
+          payment_method_id: "ef9496d8-53a5-4aad-8ca2-00eb68334389"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"type": "payment-method", "method": "<value>", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "scheme_transaction_id": "123456789012345", "scheme_transaction_id_scheme": "visa", "status": "<value>", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->ecommpayCard` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->ecommpayCard` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->ecommpayCard` **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->payment-methods->update()`: **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
