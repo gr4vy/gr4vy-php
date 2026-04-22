@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 0ca58cd6bd7d1888708c87d43eaa02f4
+  docChecksum: 475ae0efa0e6afa331e1c982ecf0df00
   docVersion: 1.0.0
   speakeasyVersion: 1.761.9
   generationVersion: 2.881.4
-  releaseVersion: 1.5.63
-  configChecksum: d0e0b7edab4c69bd65b7329d5539ead8
+  releaseVersion: 1.5.64
+  configChecksum: 8b6b55f3a846575e787ce8b101da4b50
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 7d7cb6fb-f9d9-4b59-8c1d-73035a7e16de
-  pristine_commit_hash: d6920c93e5ee2d16d0ed925269d73f2573a7df59
-  pristine_tree_hash: 5f2fa4b5930d608a11a7ee556a3841e67094c981
+  generation_id: 56f674c6-4652-4b5b-abca-b49dd86a42c7
+  pristine_commit_hash: 8a4b5a3a9eb9871dedf78488e6a119afdca2cf55
+  pristine_tree_hash: c156c3c20288212564b678a7aeb019b73487217e
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1372,8 +1372,8 @@ trackedFiles:
     pristine_git_object: 73d16b349a4ac184d7a585f4562b59b2d96ab2b3
   docs/PaymentMethodUpdate.md:
     id: 8257b04856d1
-    last_write_checksum: sha1:41a287dc8286c42406d326e8a36d9a07535ea6bb
-    pristine_git_object: 4008f954b3621c02fd616076e4b16a66f389a1dc
+    last_write_checksum: sha1:a1b690f860fe3c5c205ed6780e9c337772e620ee
+    pristine_git_object: c50b8e1c07cf400bef0a80e1251276d343c57933
   docs/PaymentMethods.md:
     id: 14633ae68096
     last_write_checksum: sha1:564270e2827e6301193064ff508076afbb1b3afe
@@ -3636,8 +3636,8 @@ trackedFiles:
     pristine_git_object: 64502fdf996a892f2757cba1e38b4aaa2e921317
   src/PaymentMethodUpdate.php:
     id: 3d37a083e7fb
-    last_write_checksum: sha1:c5a5224351d1dd99d746b76e0a0cb21ae213542a
-    pristine_git_object: b8d604e7943fd7434f1f82953ec4cc0f72b23a06
+    last_write_checksum: sha1:44c3f20f4f6bad00d22e67918898560e816f27a2
+    pristine_git_object: 630d2c1d0649f84775f3a8f066623f0e8bcb32f9
   src/PaymentMethods.php:
     id: 1927abc4f8e2
     last_write_checksum: sha1:e9747539641ac381f040d2feed4c2c5499f8368f
@@ -3896,8 +3896,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:1c625020f0c2d0a444121755c9d48031dc018b33
-    pristine_git_object: 717d95749d1c8e0a7ccbea5bcb620f0942510e64
+    last_write_checksum: sha1:349918a48b530e30c636311cbe833c5663391fb5
+    pristine_git_object: 4c8f69940637a38cf31954c545d28fdb1f07907f
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8124,9 +8124,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes:
-  * `sdk->payment-methods->update()`: **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
