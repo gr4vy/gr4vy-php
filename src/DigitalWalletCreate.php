@@ -68,6 +68,33 @@ class DigitalWalletCreate
     public ?string $merchantCountryCode = null;
 
     /**
+     *
+     * @var ?string $merchantCategoryCode
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('merchant_category_code')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $merchantCategoryCode = null;
+
+    /**
+     *
+     * @var ?\Gr4vy\DigitalWalletAddress $address
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('address')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DigitalWalletAddress|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?DigitalWalletAddress $address = null;
+
+    /**
+     * $extraConfiguration
+     *
+     * @var ?array<string, mixed> $extraConfiguration
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('extra_configuration')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $extraConfiguration = null;
+
+    /**
      * @param  string  $provider
      * @param  string  $merchantName
      * @param  bool  $acceptTermsAndConditions
@@ -75,9 +102,12 @@ class DigitalWalletCreate
      * @param  ?string  $merchantDisplayName
      * @param  ?string  $merchantUrl
      * @param  ?string  $merchantCountryCode
+     * @param  ?string  $merchantCategoryCode
+     * @param  ?\Gr4vy\DigitalWalletAddress  $address
+     * @param  ?array<string, mixed>  $extraConfiguration
      * @phpstan-pure
      */
-    public function __construct(string $provider, string $merchantName, bool $acceptTermsAndConditions, ?array $domainNames = null, ?string $merchantDisplayName = null, ?string $merchantUrl = null, ?string $merchantCountryCode = null)
+    public function __construct(string $provider, string $merchantName, bool $acceptTermsAndConditions, ?array $domainNames = null, ?string $merchantDisplayName = null, ?string $merchantUrl = null, ?string $merchantCountryCode = null, ?string $merchantCategoryCode = null, ?DigitalWalletAddress $address = null, ?array $extraConfiguration = null)
     {
         $this->provider = $provider;
         $this->merchantName = $merchantName;
@@ -86,5 +116,8 @@ class DigitalWalletCreate
         $this->merchantDisplayName = $merchantDisplayName;
         $this->merchantUrl = $merchantUrl;
         $this->merchantCountryCode = $merchantCountryCode;
+        $this->merchantCategoryCode = $merchantCategoryCode;
+        $this->address = $address;
+        $this->extraConfiguration = $extraConfiguration;
     }
 }

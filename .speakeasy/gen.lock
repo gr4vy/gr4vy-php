@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 475ae0efa0e6afa331e1c982ecf0df00
+  docChecksum: 323c928101ba66b9eb7e070f2ab218ac
   docVersion: 1.0.0
   speakeasyVersion: 1.761.9
   generationVersion: 2.881.4
-  releaseVersion: 1.5.64
-  configChecksum: 8b6b55f3a846575e787ce8b101da4b50
+  releaseVersion: 1.5.65
+  configChecksum: d0b7c231640afd8600bb7c6fff559ecc
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 56f674c6-4652-4b5b-abca-b49dd86a42c7
-  pristine_commit_hash: 8a4b5a3a9eb9871dedf78488e6a119afdca2cf55
-  pristine_tree_hash: c156c3c20288212564b678a7aeb019b73487217e
+  generation_id: 4e37df41-cfe9-495a-a03a-2c0de556f452
+  pristine_commit_hash: 7662f051452b99efff8bdfb880c27d37a6a702b5
+  pristine_tree_hash: 997948c534d70ab769c33eccdc97aa058dc81e6c
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -592,20 +592,24 @@ trackedFiles:
     pristine_git_object: df97f3d98e49b4c7c462772cc5f6601633b2ad43
   docs/DigitalWallet.md:
     id: d5c25dfd82fd
-    last_write_checksum: sha1:3ae49012850b860a6e8771925e59ca69d7b97b53
-    pristine_git_object: 6ecdb25bd07e81afcd44d148c3adcdd1ae9e9aa1
+    last_write_checksum: sha1:efbca22044ac861ec7655646187f47e16cbfade1
+    pristine_git_object: b534ded20c04ed380ed663036e086726f443551e
+  docs/DigitalWalletAddress.md:
+    id: 2618f9b0eed3
+    last_write_checksum: sha1:6614afb5017b495bc19328380b9fc623ac3303d4
+    pristine_git_object: c669a759ff9945b7ced4252b62b0660abe265f49
   docs/DigitalWalletCreate.md:
     id: f941fa72937b
-    last_write_checksum: sha1:f5fc3ea4ec09bbcde81424926aa53c38a6c8a82c
-    pristine_git_object: ea43f8567f43e383261c70803484d2260eae626f
+    last_write_checksum: sha1:d2b7e22913b0e1665c37c5c5f78e71de0123d3da
+    pristine_git_object: 4594c49ebd10f9eeb45a77d77c70701bd1f5a4c9
   docs/DigitalWalletDomain.md:
     id: 2f5a4f7d7a1a
     last_write_checksum: sha1:fbb4a3dfda44db484db34048e5dee32bb8176f18
     pristine_git_object: c05878f35a7ffb91dcfb39af62cc0fb7592e61ef
   docs/DigitalWalletUpdate.md:
     id: 513682b461ea
-    last_write_checksum: sha1:5b587dbe048548dc3a7494f6a7a8533942c78bb3
-    pristine_git_object: 34b594db9d6f47c357005f145961b148151aac0a
+    last_write_checksum: sha1:8f1e48ef800a14ec42c2c990561690d5a27c5699
+    pristine_git_object: add98cfee2f158b39cc5813dab402260ba839c8b
   docs/DigitalWallets.md:
     id: 3115e9e6d800
     last_write_checksum: sha1:2c80fd26ce724356203525068df0a1f3ccd95ea1
@@ -2724,20 +2728,24 @@ trackedFiles:
     pristine_git_object: f2180f3c4c1bb31a289e6ff314cb3ea734ae8c2e
   src/DigitalWallet.php:
     id: 8b3c9a68eb69
-    last_write_checksum: sha1:50ca0e2aebdde791b9251bc384c59f27e5689cf5
-    pristine_git_object: 5c7e09bf49810dc079f7cac05f1b84be2565c075
+    last_write_checksum: sha1:6769e421122e02fc064dc294a64b5d50a6fdc2d3
+    pristine_git_object: 38c8f6a78eda7e4c27a53818902f687dbc0cbe05
+  src/DigitalWalletAddress.php:
+    id: 5f20dc3a00e7
+    last_write_checksum: sha1:65afe50b3f5cd644798605e54d01956e17b1293c
+    pristine_git_object: 0c71203fc93b1bb5caa3dc969867bbafaa6406cf
   src/DigitalWalletCreate.php:
     id: 72a03ed6bfcd
-    last_write_checksum: sha1:c0a41f2df9fc29d2992162528bb7a40b74ba9d8f
-    pristine_git_object: 4c9dcc22ec9fa66f742318de099be4d78da5701f
+    last_write_checksum: sha1:3f520e31a32e95af29121f68c4496ac0f9780453
+    pristine_git_object: b96a00590398f8cc999f1ac1bb3c1c6762383495
   src/DigitalWalletDomain.php:
     id: ddd2deea0c53
     last_write_checksum: sha1:53406349c15dc9b4c25144357faf80f3bfbd3ff5
     pristine_git_object: 67982597c8aeef2330094b6ff765a91e8cc257e7
   src/DigitalWalletUpdate.php:
     id: 7f643f97a76f
-    last_write_checksum: sha1:c7cd32d457ee10d8507cbab6c0424e4c9b3b6b82
-    pristine_git_object: 618dd4f8d2baa4aa5b2e9b3cb0fbe7481811afc4
+    last_write_checksum: sha1:f2005d056a79dbc598ea210fb07f92e94a0ab2cc
+    pristine_git_object: c514b4e81851a1e74d7919b4473ab76f6d5433a1
   src/DigitalWallets.php:
     id: f669604a3b01
     last_write_checksum: sha1:2f643e31fb903904a3b679c03d7549a6fc5745bd
@@ -3896,8 +3904,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:349918a48b530e30c636311cbe833c5663391fb5
-    pristine_git_object: 4c8f69940637a38cf31954c545d28fdb1f07907f
+    last_write_checksum: sha1:2991279eceabc22b53aaac281f3b8bb6a47343e8
+    pristine_git_object: cb40dbe0e502beb17f24433a3573df2cb9a1f72a
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8124,6 +8132,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->digital-wallets->create()`: \n  *  `request.digitalWalletCreate` **Changed**\n  *  `response` **Changed**\n* `sdk->digital-wallets->list()`:  `response.items[]` **Changed**\n* `sdk->digital-wallets->get()`:  `response` **Changed**\n* `sdk->digital-wallets->update()`: \n  *  `request.digitalWalletUpdate` **Changed**\n  *  `response` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
