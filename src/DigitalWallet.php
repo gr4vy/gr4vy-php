@@ -106,12 +106,12 @@ class DigitalWallet
     /**
      * The merchant address associated with the digital wallet.
      *
-     * @var ?\Gr4vy\DigitalWalletAddress $address
+     * @var ?\Gr4vy\ApiTypesDigitalWalletAddress $address
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('address')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\DigitalWalletAddress|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ApiTypesDigitalWalletAddress|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?DigitalWalletAddress $address = null;
+    public ?ApiTypesDigitalWalletAddress $address = null;
 
     /**
      * Provider-specific configuration. Currently only used by Paze.
@@ -185,12 +185,12 @@ class DigitalWallet
      * @param  ?string  $merchantUrl
      * @param  ?string  $merchantCountryCode
      * @param  ?string  $merchantCategoryCode
-     * @param  ?\Gr4vy\DigitalWalletAddress  $address
+     * @param  ?\Gr4vy\ApiTypesDigitalWalletAddress  $address
      * @param  ?array<string, mixed>  $extraConfiguration
      * @param  ?array<string, mixed>  $fields
      * @phpstan-pure
      */
-    public function __construct(string $id, string $merchantAccountId, string $provider, string $merchantName, array $domainNames, \DateTime $createdAt, \DateTime $updatedAt, ?string $merchantDisplayName = null, ?string $merchantUrl = null, ?string $merchantCountryCode = null, ?string $merchantCategoryCode = null, ?DigitalWalletAddress $address = null, ?array $extraConfiguration = null, ?array $fields = null, ?int $activeCertificateCount = 0, ?int $pendingCertificateCount = 0, ?int $expiredCertificateCount = 0, ?string $type = 'digital-wallet')
+    public function __construct(string $id, string $merchantAccountId, string $provider, string $merchantName, array $domainNames, \DateTime $createdAt, \DateTime $updatedAt, ?string $merchantDisplayName = null, ?string $merchantUrl = null, ?string $merchantCountryCode = null, ?string $merchantCategoryCode = null, ?ApiTypesDigitalWalletAddress $address = null, ?array $extraConfiguration = null, ?array $fields = null, ?int $activeCertificateCount = 0, ?int $pendingCertificateCount = 0, ?int $expiredCertificateCount = 0, ?string $type = 'digital-wallet')
     {
         $this->id = $id;
         $this->merchantAccountId = $merchantAccountId;
