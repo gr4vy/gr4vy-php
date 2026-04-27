@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 323c928101ba66b9eb7e070f2ab218ac
+  docChecksum: ae781a476f484566dc15691906a68d57
   docVersion: 1.0.0
   speakeasyVersion: 1.761.9
   generationVersion: 2.881.4
-  releaseVersion: 1.5.65
-  configChecksum: d0b7c231640afd8600bb7c6fff559ecc
+  releaseVersion: 1.5.66
+  configChecksum: 0881b5a914a52dfd544c9828a3527d8b
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 4e37df41-cfe9-495a-a03a-2c0de556f452
-  pristine_commit_hash: 7662f051452b99efff8bdfb880c27d37a6a702b5
-  pristine_tree_hash: 997948c534d70ab769c33eccdc97aa058dc81e6c
+  generation_id: c27e0e05-8f51-4e6e-9ad8-400b4208188d
+  pristine_commit_hash: 0f6cc336c065a4c431067dbebe27c1427d6b6aab
+  pristine_tree_hash: 43bc3d65400e5f573327f0cfa46dcb1e990485e8
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -114,6 +114,18 @@ trackedFiles:
     id: 2e5ffd7c96fa
     last_write_checksum: sha1:dd6f58f22540272b0810ad973425a86b6b698f68
     pristine_git_object: 2c5cfb737818c5ca5ce2df2ef4abbeb33b48b72a
+  docs/AdyenPixOptions.md:
+    id: f70d239335d2
+    last_write_checksum: sha1:45672f34f32b9dc2197fa39dd9f3ba8987c49c35
+    pristine_git_object: 0fc342ce77744bb122b0e16bc640be7cfa4073e1
+  docs/AdyenPixRecurringAmount.md:
+    id: d748bed6f621
+    last_write_checksum: sha1:f4c4535fee84d4ff1a986861234a70e7ea855958
+    pristine_git_object: f64fef15dcc1abd0975ae3f1cfa9b8db19748f51
+  docs/AdyenPixRecurringOptions.md:
+    id: f328605cea30
+    last_write_checksum: sha1:bd2c8e84d9c9ade074c676d285269c58367aebcf
+    pristine_git_object: 75aabfd4c016b13f6289f0eb7d9ad8d44c12c58a
   docs/AdyenSepaOptions.md:
     id: 74041db8620f
     last_write_checksum: sha1:1fd4d8bbc06ed2a5f662a66779eaa52063d2908e
@@ -142,6 +154,10 @@ trackedFiles:
     id: 403ccc7eb6f1
     last_write_checksum: sha1:de22d638118f425cf2a3710e2e14c838e9fdf832
     pristine_git_object: 1e7c52320164c55a819819a4480185e36c05b75e
+  docs/ApiTypesDigitalWalletAddress.md:
+    id: 0f3a1930a08c
+    last_write_checksum: sha1:1e895aa9ff9afbcf902833b2e44c3a38dcf4e4d2
+    pristine_git_object: 1f1ae3bcc1623f4a1ed2617fd02cd3f6a73cee24
   docs/ApplePayPaymentMethodCreate.md:
     id: de55b194a645
     last_write_checksum: sha1:fcf86c859308d87c02af1ec26cfbee3a030bc1dd
@@ -592,8 +608,8 @@ trackedFiles:
     pristine_git_object: df97f3d98e49b4c7c462772cc5f6601633b2ad43
   docs/DigitalWallet.md:
     id: d5c25dfd82fd
-    last_write_checksum: sha1:efbca22044ac861ec7655646187f47e16cbfade1
-    pristine_git_object: b534ded20c04ed380ed663036e086726f443551e
+    last_write_checksum: sha1:e00ebe4f3ae878566c869b4c8641729ec001d109
+    pristine_git_object: fea06ad657bef8e1a54185120869c79d43921430
   docs/DigitalWalletAddress.md:
     id: 2618f9b0eed3
     last_write_checksum: sha1:6614afb5017b495bc19328380b9fc623ac3303d4
@@ -1776,8 +1792,8 @@ trackedFiles:
     pristine_git_object: dac520fc3d9571a0fcc7b9346bced50f6c2b7a57
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:dc701764e99a8d6ce3b47680d9716eb011874689
-    pristine_git_object: 9f533617ffe228f80519db9de881ec2b15ee9b70
+    last_write_checksum: sha1:63bdc747b0c477b67331ba018b924a1ffffbcd3b
+    pristine_git_object: c83ac79cd27f87806d83565a288df8162daf630a
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:5ac70062b4633ab43eefcf0642b646cdf3585c56
@@ -2222,6 +2238,18 @@ trackedFiles:
     id: baf3b789f974
     last_write_checksum: sha1:87b7561284d8aa4d6e674a0acd508ece34856091
     pristine_git_object: 9989aa6c637e543ed771bbd05d4f76757c137565
+  src/AdyenPixOptions.php:
+    id: 9fb59192c520
+    last_write_checksum: sha1:205e65f9c2d948e1307fb4f8f8a8765988de7ba3
+    pristine_git_object: 8f8f6e53c1014c990a8ee7d414d2152940c224cf
+  src/AdyenPixRecurringAmount.php:
+    id: 4823585a35d9
+    last_write_checksum: sha1:3a91732b8f130ab3ef3a123ff43d859fc545e66e
+    pristine_git_object: aaa0ecf108c5a58dba61fd95d830f645c8463b10
+  src/AdyenPixRecurringOptions.php:
+    id: 35d76a183882
+    last_write_checksum: sha1:c7b410c72154da2bdc4150d2d10d627f40a4bff1
+    pristine_git_object: a6131f8c1c25f54e61c502c8b8d3c7f57d841428
   src/AdyenSepaOptions.php:
     id: 268c04cf37a4
     last_write_checksum: sha1:055e7ee63d0b49676345c78ad2cda70b430ea501
@@ -2254,6 +2282,10 @@ trackedFiles:
     id: 021643fb2e5c
     last_write_checksum: sha1:40d72806164c9387b34b628be13be920f211c142
     pristine_git_object: 8ea37e5a3e51a6e765e7e2d1953892c981e06a7a
+  src/ApiTypesDigitalWalletAddress.php:
+    id: a691fe301667
+    last_write_checksum: sha1:7d25c1e8a08559578f90310c9febf5b47aefda25
+    pristine_git_object: ae29ea49a2f905b95b65034a0ee3c5efd902f371
   src/ApplePayPaymentMethodCreate.php:
     id: c1b28374ae43
     last_write_checksum: sha1:024499222c8ea082b9121afc95a17b66c11dff02
@@ -2728,8 +2760,8 @@ trackedFiles:
     pristine_git_object: f2180f3c4c1bb31a289e6ff314cb3ea734ae8c2e
   src/DigitalWallet.php:
     id: 8b3c9a68eb69
-    last_write_checksum: sha1:6769e421122e02fc064dc294a64b5d50a6fdc2d3
-    pristine_git_object: 38c8f6a78eda7e4c27a53818902f687dbc0cbe05
+    last_write_checksum: sha1:f900e0512f7ed9c4c85f732fa7cdcc77e698b507
+    pristine_git_object: 42ce920d12b6b8c41fc3d521950180637914aff1
   src/DigitalWalletAddress.php:
     id: 5f20dc3a00e7
     last_write_checksum: sha1:65afe50b3f5cd644798605e54d01956e17b1293c
@@ -3904,8 +3936,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:2991279eceabc22b53aaac281f3b8bb6a47343e8
-    pristine_git_object: cb40dbe0e502beb17f24433a3573df2cb9a1f72a
+    last_write_checksum: sha1:ab3c1a6f1e8005e68b72611f96acb3cc2f4e87af
+    pristine_git_object: 3d1aac1627e2a107eee2827ab7d1cd32684d1743
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4072,8 +4104,8 @@ trackedFiles:
     pristine_git_object: dae72fba4b2dd186ceff236f7dc954b7ffaa06e2
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:cd5653f964bc249a102c33f78d874d6df6b19e71
-    pristine_git_object: 9db03bc6b1106cd77999d96e1e601cd908f89924
+    last_write_checksum: sha1:0726fc4b7cb111aef4f9a85cad6fa3dee40d9706
+    pristine_git_object: 509c984528c28b9efc75c4136e730109f8ccbe23
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:e01a95261c8ad8f22bf05174fc906d8a2253d0cc
@@ -8132,7 +8164,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->digital-wallets->create()`: \n  *  `request.digitalWalletCreate` **Changed**\n  *  `response` **Changed**\n* `sdk->digital-wallets->list()`:  `response.items[]` **Changed**\n* `sdk->digital-wallets->get()`:  `response` **Changed**\n* `sdk->digital-wallets->update()`: \n  *  `request.digitalWalletUpdate` **Changed**\n  *  `response` **Changed**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->digital-wallets->create()`:  `response.address->line2` **Changed**\n* `sdk->digital-wallets->list()`:  `response.items[]->address->line2` **Changed**\n* `sdk->digital-wallets->get()`:  `response.address->line2` **Changed**\n* `sdk->digital-wallets->update()`:  `response.address->line2` **Changed**\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->adyenPix->pixRecurring` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->adyenPix->pixRecurring` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->adyenPix->pixRecurring` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
