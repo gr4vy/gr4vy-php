@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: ae781a476f484566dc15691906a68d57
+  docChecksum: 1cf9ea3613882fdfee93d7e297377eb4
   docVersion: 1.0.0
   speakeasyVersion: 1.761.9
   generationVersion: 2.881.4
-  releaseVersion: 1.5.66
-  configChecksum: 0881b5a914a52dfd544c9828a3527d8b
+  releaseVersion: 1.5.67
+  configChecksum: 06db01444b780c8ac5531f843ab4fd09
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: c27e0e05-8f51-4e6e-9ad8-400b4208188d
-  pristine_commit_hash: 0f6cc336c065a4c431067dbebe27c1427d6b6aab
-  pristine_tree_hash: 43bc3d65400e5f573327f0cfa46dcb1e990485e8
+  generation_id: d7904e9b-98a1-4cbd-aab9-7518f3bf44d3
+  pristine_commit_hash: 6b29d2ba77f82aee1657cca67c3473b854a08243
+  pristine_tree_hash: 72961d7e3a5d508d0e855f8141afdb3915183252
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -3936,8 +3936,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:ab3c1a6f1e8005e68b72611f96acb3cc2f4e87af
-    pristine_git_object: 3d1aac1627e2a107eee2827ab7d1cd32684d1743
+    last_write_checksum: sha1:3d18b28dddd84273e8c64e36c1d2b3a6d2ee6e65
+    pristine_git_object: 716e2b88623241486efd56fcddb1e2f942075c8f
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8164,7 +8164,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->digital-wallets->create()`:  `response.address->line2` **Changed**\n* `sdk->digital-wallets->list()`:  `response.items[]->address->line2` **Changed**\n* `sdk->digital-wallets->get()`:  `response.address->line2` **Changed**\n* `sdk->digital-wallets->update()`:  `response.address->line2` **Changed**\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->adyenPix->pixRecurring` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->adyenPix->pixRecurring` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->adyenPix->pixRecurring` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
