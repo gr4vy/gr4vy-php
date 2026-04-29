@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 1cf9ea3613882fdfee93d7e297377eb4
+  docChecksum: 63582704583addc1cb82df6605bbdd19
   docVersion: 1.0.0
   speakeasyVersion: 1.761.9
   generationVersion: 2.881.4
-  releaseVersion: 1.5.67
-  configChecksum: 06db01444b780c8ac5531f843ab4fd09
+  releaseVersion: 1.5.68
+  configChecksum: 485656791b3a205e9979b9694f6220db
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: d7904e9b-98a1-4cbd-aab9-7518f3bf44d3
-  pristine_commit_hash: 6b29d2ba77f82aee1657cca67c3473b854a08243
-  pristine_tree_hash: 72961d7e3a5d508d0e855f8141afdb3915183252
+  generation_id: 9802dfeb-ff5c-49ee-8031-19a8936bf991
+  pristine_commit_hash: 19a92889a381e4ea52c0a475153542644f8f2d4a
+  pristine_tree_hash: bd681db7130fab3e2cd36199cc273e10434d6ef6
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1004,8 +1004,12 @@ trackedFiles:
     pristine_git_object: 66c38b01b8451c74c89594a4529d7f40c7d1c6eb
   docs/GooglePayPaymentMethodCreate.md:
     id: 5af7027066af
-    last_write_checksum: sha1:cdb990a121ae00d1292efbcdab695c85b92ffd89
-    pristine_git_object: 925c41d98daa0241cba8ab4d205cfcf4b1683e75
+    last_write_checksum: sha1:1032eee88818fa0dc53a82f799a329ff17d9affa
+    pristine_git_object: 369b26ed507b440990f7e282b7d54898abbd5615
+  docs/GooglePayPaymentMethodCreateToken.md:
+    id: 9084d718e23e
+    last_write_checksum: sha1:3d5ef2e83b765cb0e311a25b544f969d01996c98
+    pristine_git_object: 4b2f7d634386b48cd64257420d61c08fdf9152a7
   docs/GooglePayPaymentOptionContext.md:
     id: abfd3bc04d82
     last_write_checksum: sha1:fd0980f1da5b11f3b58742da69a1ce641c9e01ec
@@ -1506,6 +1510,14 @@ trackedFiles:
     id: 822d0b6d4f93
     last_write_checksum: sha1:0b8685c2f211f0d6214cbaa1c36312efc4f33a82
     pristine_git_object: bfde618480183059a24a93e730fcf4d65dab51e6
+  docs/PazePaymentMethodCreate.md:
+    id: 1e9a169d6aa8
+    last_write_checksum: sha1:81be28c347fc6f602c738676b53e2bb4c11a2333
+    pristine_git_object: 7b9615998350fc86649972a514de3fc4da6b7bc1
+  docs/PazePaymentMethodCreateToken.md:
+    id: 76ce3f4ba5d7
+    last_write_checksum: sha1:fefab3043e90703c68f0a968c589638afba46f72
+    pristine_git_object: 18b44677322dd2c8db2607a56df2100488726efa
   docs/PlaidPaymentMethodCreate.md:
     id: b19670cec641
     last_write_checksum: sha1:0ee5b5f47d260a507e7ad8a041890ca074272e72
@@ -1754,10 +1766,6 @@ trackedFiles:
     id: 874752a6e036
     last_write_checksum: sha1:bebdb5fe62d76cbc7fddb9b52de30d0ac8969e85
     pristine_git_object: c0061e4462ca6a744098b481c7e2fc4158e69718
-  docs/Token.md:
-    id: b73dab67d289
-    last_write_checksum: sha1:2c465a7d2528c6b9e21968aa0dfc202c10f643ea
-    pristine_git_object: c964d35db7b9cf70d4a35cd63d4c29f6696156bc
   docs/TokenPaymentMethodCreate.md:
     id: 7596be1ed293
     last_write_checksum: sha1:3e8fda411f556c960a73a14314543f24b47aed96
@@ -1796,12 +1804,12 @@ trackedFiles:
     pristine_git_object: c83ac79cd27f87806d83565a288df8162daf630a
   docs/TransactionCreate.md:
     id: 66c310d46bd7
-    last_write_checksum: sha1:5ac70062b4633ab43eefcf0642b646cdf3585c56
-    pristine_git_object: 868bb68f60146c0c12bc6a5ca12a41997e29fa70
+    last_write_checksum: sha1:4a2b4ac39784ce01bc3734e49a141cf635296a74
+    pristine_git_object: 14759310b69a5ed3f0c249145f6a125eac533ac3
   docs/TransactionCreatePaymentMethod.md:
     id: 69db3a9bdc4d
-    last_write_checksum: sha1:da17571d413bf51c5e8ec69ea044f02ac0de543f
-    pristine_git_object: aeefce69a23091dcab5bb8a2cbae718842b11546
+    last_write_checksum: sha1:332890f09eec8825ec087ee29a9b96568c650d07
+    pristine_git_object: 26a3d69d88424a4b18f8d8278e622472ab7d439e
   docs/TransactionEvent.md:
     id: 35314a04e235
     last_write_checksum: sha1:d2d3c494b656fb7a0df8ee0e52a130252013e89d
@@ -3814,6 +3822,10 @@ trackedFiles:
     id: d71f1fc7d2e9
     last_write_checksum: sha1:777a788bab698abfec121a6b0939cab6a3378603
     pristine_git_object: fa36646a98033a6d7e9eaa54c18a52f08658bead
+  src/PazePaymentMethodCreate.php:
+    id: 5559b40b2df0
+    last_write_checksum: sha1:6c94270a7db1701af2863664521e53e305d8dd7e
+    pristine_git_object: a14d4bf3e7d73b1c4614026e6e62b93b29db244c
   src/PlaidPaymentMethodCreate.php:
     id: 53a3c67972e4
     last_write_checksum: sha1:baaae975bdc16ea445e240e927954b84fe7ebce1
@@ -3936,8 +3948,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:3d18b28dddd84273e8c64e36c1d2b3a6d2ee6e65
-    pristine_git_object: 716e2b88623241486efd56fcddb1e2f942075c8f
+    last_write_checksum: sha1:24449bcde10048506db24b9b9947605c59a37da3
+    pristine_git_object: 9d0b181b3c3066ca7f18a105c02b59df7fee66d5
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4108,8 +4120,8 @@ trackedFiles:
     pristine_git_object: 509c984528c28b9efc75c4136e730109f8ccbe23
   src/TransactionCreate.php:
     id: 18627f38c6cb
-    last_write_checksum: sha1:e01a95261c8ad8f22bf05174fc906d8a2253d0cc
-    pristine_git_object: 5a533d42de0f952f71b8619827f68ca84f1613db
+    last_write_checksum: sha1:84f87d9202b7c4b873d14dd514959b1090d1cb71
+    pristine_git_object: dbb46901a6739ea58d0b02ee1b99700c7eaa3b5f
   src/TransactionEvent.php:
     id: e8a982614bb6
     last_write_checksum: sha1:272e067dc24d091e242c1cf4116139e61b169c09
@@ -8164,6 +8176,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->paymentMethod->union(PazePaymentMethodCreate)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

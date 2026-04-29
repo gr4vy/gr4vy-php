@@ -1,6 +1,6 @@
-# Token
+# PazePaymentMethodCreateToken
 
-The opaque token as received from the Google Pay JS library. This format may change between JS library versions.
+The opaque token as received from the Paze complete response.
 
 
 ## Supported Types
