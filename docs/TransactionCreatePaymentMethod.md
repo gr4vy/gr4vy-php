@@ -77,6 +77,15 @@ Gr4vy\GooglePayPaymentMethodCreate $value = /* values here */
 Gr4vy\GooglePayFPANPaymentMethodCreate $value = /* values here */
 ```
 
+### `Gr4vy\PazePaymentMethodCreate`
+
+```php
+/**
+* @var \Gr4vy\PazePaymentMethodCreate
+*/
+Gr4vy\PazePaymentMethodCreate $value = /* values here */
+```
+
 ### `Gr4vy\NetworkTokenPaymentMethodCreate`
 
 ```php
