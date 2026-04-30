@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 26d5d7a0b5301c6c23578a24087001e6
+  docChecksum: b2f1f1a7e1cf8db3eebedf3d555c5ab0
   docVersion: 1.0.0
-  speakeasyVersion: 1.761.9
-  generationVersion: 2.881.4
-  releaseVersion: 1.5.69
-  configChecksum: e0a9f76f84218d1fa5d9656fa698717b
+  speakeasyVersion: 1.761.10
+  generationVersion: 2.881.16
+  releaseVersion: 1.5.70
+  configChecksum: c335fc8cb3b0e0411832ddef09dd060b
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 0ed6c79f-fcd6-42ac-87ec-80818e2f75b2
-  pristine_commit_hash: 6983a1ba4e87b54a6ebce3af702be67b06978a0a
-  pristine_tree_hash: f4dc1e605b7e4d9eea76e4fe9c73bce47498871f
+  generation_id: 4aa9a54a-e06f-444c-a1f2-f7351cd0bf0c
+  pristine_commit_hash: b2ba59bf7805e5a12c845232feee622a352e2b2f
+  pristine_tree_hash: f1ad5d6e29084def053fc9fbf738e8c7df7a4072
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1800,8 +1800,8 @@ trackedFiles:
     pristine_git_object: dac520fc3d9571a0fcc7b9346bced50f6c2b7a57
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:63bdc747b0c477b67331ba018b924a1ffffbcd3b
-    pristine_git_object: c83ac79cd27f87806d83565a288df8162daf630a
+    last_write_checksum: sha1:3beea0ac0b456f3d0f2e682daed99531e8edd6b2
+    pristine_git_object: 625040dc273dceb712729ab3b32350354580715b
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:4a2b4ac39784ce01bc3734e49a141cf635296a74
@@ -3948,8 +3948,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:8f7cda9c05b49d42409e7bcb07a813fd8677c9fc
-    pristine_git_object: 388d6c7eb47cb7af7bd611e470086f9465f41142
+    last_write_checksum: sha1:ca7e8288853138882cbf6c165b3d9c115e4484b2
+    pristine_git_object: 366653b6c7e57c49d4925e69e3738485472a5b28
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4116,8 +4116,8 @@ trackedFiles:
     pristine_git_object: dae72fba4b2dd186ceff236f7dc954b7ffaa06e2
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:0726fc4b7cb111aef4f9a85cad6fa3dee40d9706
-    pristine_git_object: 509c984528c28b9efc75c4136e730109f8ccbe23
+    last_write_checksum: sha1:458a57cf5c62941e4360bb9381b92b0c03cc5059
+    pristine_git_object: 836aaa57732f7ec82b3d21374261916fb7725071
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:84f87d9202b7c4b873d14dd514959b1090d1cb71
@@ -8176,6 +8176,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->adyenGcash` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->adyenGcash` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->adyenGcash` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
