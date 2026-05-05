@@ -15,11 +15,10 @@ class PazePaymentMethodCreate
     /**
      * The opaque token as received from the Paze complete response.
      *
-     * @var string|array<string, mixed> $token
+     * @var string $token
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('token')]
-    #[\Speakeasy\Serializer\Annotation\Type('string|array<string, mixed>')]
-    public string|array $token;
+    public string $token;
 
     /**
      * The external identifier of the buyer to create a payment for.
@@ -94,7 +93,7 @@ class PazePaymentMethodCreate
 
     /**
      * @param  string  $method
-     * @param  string|array<string, mixed>  $token
+     * @param  string  $token
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $buyerId
      * @param  ?string  $cardholderName
@@ -104,7 +103,7 @@ class PazePaymentMethodCreate
      * @param  ?string  $cardType
      * @phpstan-pure
      */
-    public function __construct(string|array $token, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $cardholderName = null, ?string $redirectUrl = null, ?string $cardSuffix = null, ?string $cardScheme = null, ?string $cardType = null, string $method = 'paze')
+    public function __construct(string $token, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $cardholderName = null, ?string $redirectUrl = null, ?string $cardSuffix = null, ?string $cardScheme = null, ?string $cardType = null, string $method = 'paze')
     {
         $this->token = $token;
         $this->buyerExternalIdentifier = $buyerExternalIdentifier;
