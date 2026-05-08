@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 1ef20e0bc72779e53d57f0a18a90212b
+  docChecksum: 9c3d69575a0e22c6038ffba0b05ad868
   docVersion: 1.0.0
-  speakeasyVersion: 1.761.11
-  generationVersion: 2.881.17
-  releaseVersion: 1.5.71
-  configChecksum: 4491e84a47a4b072c3850c5a85b5bf11
+  speakeasyVersion: 1.762.0
+  generationVersion: 2.882.0
+  releaseVersion: 1.5.72
+  configChecksum: 0278c1e6c38604537f7cb2a503cec414
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: c08c0a15-5e41-42e7-9c50-3e2027933bb4
-  pristine_commit_hash: c2c92c387cea2b00a7cb99f6c2fc3f5a5da4979f
-  pristine_tree_hash: 6fe53ae179b71ad15a4e21119ec6f7937f22f473
+  generation_id: f9372800-9b9b-444c-a82a-7ae27cb9e8f3
+  pristine_commit_hash: 8a16a5a6ee3442c248e8f3520b53f033a329c41d
+  pristine_tree_hash: de9ba79bd8c2505f5aab0e8779deec41a9cecca6
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:c917456dcdd2070b44e18dd99838e9053efd792e
-    pristine_git_object: f60a9de5e44f2158325158682183f11b1ce2c1ad
+    last_write_checksum: sha1:70173d0365917431bbf9a943db5fe062d004b30d
+    pristine_git_object: ee9fa616fdd8eba0294eb4d8818f338d0e8f7888
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -3944,8 +3944,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:bdb154569a183ed04a21e76b257f0e8a077644e1
-    pristine_git_object: 96c115c88135676d3a6b183d986ac4ff65c69127
+    last_write_checksum: sha1:4d5e7f8f598c89cae312dcf6d816dc1882a635df
+    pristine_git_object: 87459131ad40ac7de82ded2331c963605d2cac22
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8172,7 +8172,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->paymentMethod->union(PazePaymentMethodCreate)->token` **Changed** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
