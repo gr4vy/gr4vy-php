@@ -70,6 +70,15 @@ class TransactionCapture
     public ?string $paymentServiceCaptureId = null;
 
     /**
+     * The external identifier for the capture.
+     *
+     * @var ?string $externalIdentifier
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_identifier')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalIdentifier = null;
+
+    /**
      * Always `transaction-capture`.
      *
      * @var ?string $type
@@ -87,9 +96,10 @@ class TransactionCapture
      * @param  ?string  $rawResponseDescription
      * @param  ?string  $captureId
      * @param  ?string  $paymentServiceCaptureId
+     * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $captureId = null, ?string $paymentServiceCaptureId = null, ?string $type = 'transaction-capture')
+    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $captureId = null, ?string $paymentServiceCaptureId = null, ?string $externalIdentifier = null, ?string $type = 'transaction-capture')
     {
         $this->status = $status;
         $this->transaction = $transaction;
@@ -98,6 +108,7 @@ class TransactionCapture
         $this->rawResponseDescription = $rawResponseDescription;
         $this->captureId = $captureId;
         $this->paymentServiceCaptureId = $paymentServiceCaptureId;
+        $this->externalIdentifier = $externalIdentifier;
         $this->type = $type;
     }
 }
