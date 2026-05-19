@@ -84,6 +84,15 @@ class PazePaymentMethodCreate
     public ?string $cardType = null;
 
     /**
+     * The signed checkout JWS as received from the Paze checkout response.
+     *
+     * @var ?string $checkoutToken
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checkout_token')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $checkoutToken = null;
+
+    /**
      * Always `paze`
      *
      * @var string $method
@@ -101,9 +110,10 @@ class PazePaymentMethodCreate
      * @param  ?string  $cardSuffix
      * @param  ?string  $cardScheme
      * @param  ?string  $cardType
+     * @param  ?string  $checkoutToken
      * @phpstan-pure
      */
-    public function __construct(string $token, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $cardholderName = null, ?string $redirectUrl = null, ?string $cardSuffix = null, ?string $cardScheme = null, ?string $cardType = null, string $method = 'paze')
+    public function __construct(string $token, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $cardholderName = null, ?string $redirectUrl = null, ?string $cardSuffix = null, ?string $cardScheme = null, ?string $cardType = null, ?string $checkoutToken = null, string $method = 'paze')
     {
         $this->token = $token;
         $this->buyerExternalIdentifier = $buyerExternalIdentifier;
@@ -113,6 +123,7 @@ class PazePaymentMethodCreate
         $this->cardSuffix = $cardSuffix;
         $this->cardScheme = $cardScheme;
         $this->cardType = $cardType;
+        $this->checkoutToken = $checkoutToken;
         $this->method = $method;
     }
 }
