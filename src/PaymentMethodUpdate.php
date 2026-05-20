@@ -40,15 +40,26 @@ class PaymentMethodUpdate
     public ?string $schemeTransactionIdScheme = null;
 
     /**
+     * A transaction link identifier to associate with this payment method.
+     *
+     * @var ?string $transactionLinkId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('transaction_link_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $transactionLinkId = null;
+
+    /**
      * @param  ?string  $expirationDate
      * @param  ?string  $schemeTransactionId
      * @param  ?string  $schemeTransactionIdScheme
+     * @param  ?string  $transactionLinkId
      * @phpstan-pure
      */
-    public function __construct(?string $expirationDate = null, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null)
+    public function __construct(?string $expirationDate = null, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null, ?string $transactionLinkId = null)
     {
         $this->expirationDate = $expirationDate;
         $this->schemeTransactionId = $schemeTransactionId;
         $this->schemeTransactionIdScheme = $schemeTransactionIdScheme;
+        $this->transactionLinkId = $transactionLinkId;
     }
 }
