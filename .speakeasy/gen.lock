@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 400cb9db459ccbf43ba2d40168bf12e0
+  docChecksum: 3848dc20631892b019337763ce2dc50d
   docVersion: 1.0.0
-  speakeasyVersion: 1.763.4
+  speakeasyVersion: 1.763.5
   generationVersion: 2.884.11
-  releaseVersion: 1.5.79
-  configChecksum: df48c3c65c6c35a70f83fb0625ccadc9
+  releaseVersion: 1.5.80
+  configChecksum: ff6f261a5d22e2c5c66e83f10052da8c
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: c3a87c81-6390-4f77-9d56-ad02fecadd3f
-  pristine_commit_hash: 1e5676419e3dbaafa9f3659720026de85824bc3f
-  pristine_tree_hash: a9b3e7daff16c4bd12c046c25e278c7e3ab28733
+  generation_id: 49de61d8-a1fb-4f31-bba8-8682c172a62f
+  pristine_commit_hash: 17e0579309d8ec754d4ab37ee58803eee657b482
+  pristine_tree_hash: 8ee69b09d1eb6e36eb63dff6bf0c780e8a6b7a73
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1376,8 +1376,8 @@ trackedFiles:
     pristine_git_object: 70d826c515d0ee6187c304e0da13cea1853c3df0
   docs/PaymentMethod.md:
     id: ddd63fd7658b
-    last_write_checksum: sha1:11b09879265d11d462e73821d2ff0962f6ef0385
-    pristine_git_object: 31930069170b16c9beb06164499215f6c4f6dfff
+    last_write_checksum: sha1:e168cc6a040866ec29b078602b88ea0523fe8454
+    pristine_git_object: 6dbb8fc42646769745729c79a05d33bca5d4e6dc
   docs/PaymentMethodCard.md:
     id: 4c01279f6d86
     last_write_checksum: sha1:6dd8c9784cbd20a142c1d546ae90cc9b8f13722c
@@ -1396,8 +1396,8 @@ trackedFiles:
     pristine_git_object: be19040745fc930b342358ffce6c762039e60987
   docs/PaymentMethodSummary.md:
     id: 3a92bc7098b4
-    last_write_checksum: sha1:50a0a6008d4038a1c6416b9710b17c0d591355e2
-    pristine_git_object: 73d16b349a4ac184d7a585f4562b59b2d96ab2b3
+    last_write_checksum: sha1:ac11faf2ee149d302dc149667f8d9953b61a5215
+    pristine_git_object: 19a370b2683b26d3cd63377ca2784243e02060e7
   docs/PaymentMethodUpdate.md:
     id: 8257b04856d1
     last_write_checksum: sha1:085efbbd2e6fb95f89518bce07ce313b28e58241
@@ -3688,8 +3688,8 @@ trackedFiles:
     pristine_git_object: 225a37a63e7ca7bd6b19b0bec443b71f82fe9c30
   src/PaymentMethod.php:
     id: f90a26fc0230
-    last_write_checksum: sha1:67ec861e6d4cd439d180967f364f12a3263954d3
-    pristine_git_object: 47e0d23ae7188229318b579b4a1c2c4c76781d7b
+    last_write_checksum: sha1:c72ea1c3a47234df15516be4876a1375ae5b40cd
+    pristine_git_object: a873582e9abacd55e81c54debe53fb304b133591
   src/PaymentMethodCard.php:
     id: f10aa3723593
     last_write_checksum: sha1:cbf586ddfb2798a6a4b7d98bdca5a6fc1f353944
@@ -3708,8 +3708,8 @@ trackedFiles:
     pristine_git_object: 36814cdc188a8447c3d62c49ff27ce66672c3754
   src/PaymentMethodSummary.php:
     id: f29ca42a549b
-    last_write_checksum: sha1:3cca414b222641f97d54ffe484309a7d62a8c441
-    pristine_git_object: 64502fdf996a892f2757cba1e38b4aaa2e921317
+    last_write_checksum: sha1:d22c8c79494dfb19f62bb75f043995bcf68e163b
+    pristine_git_object: bb1385f799b951c33187405273e3984e85578f89
   src/PaymentMethodUpdate.php:
     id: 3d37a083e7fb
     last_write_checksum: sha1:79f18f2dc9076421231ef4d12fbc5c3936b4ebdf
@@ -3988,8 +3988,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:c8a444e5c8228b483a6bc340e13a46b943cc08b5
-    pristine_git_object: 997fbbfc4b97a47c809a3afc4a2673535c10ed34
+    last_write_checksum: sha1:f00cae23e171a0f076ee7e23179cb864cdc9acf1
+    pristine_git_object: 176984eef83e56ed70d3d9f3701aa4eacb0839c3
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8247,7 +8247,13 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->previousTransactionLinkId` **Added**\n  *  `response.transactionLinkId` **Added**\n* `sdk->transactions->get()`:  `response.transactionLinkId` **Added**\n* `sdk->transactions->update()`:  `response.transactionLinkId` **Added**\n* `sdk->transactions->capture()`:  `response.union(Transaction)->transactionLinkId` **Added**\n* `sdk->transactions->void()`:  `response.union(Transaction)->transactionLinkId` **Added**\n* `sdk->transactions->cancel()`:  `response.transaction->transactionLinkId` **Added**\n* `sdk->transactions->sync()`:  `response.transactionLinkId` **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->buyers->paymentMethods->list()`:  `response.items[]->transactionLinkId` **Added**
+  * `sdk->payment-methods->list()`:  `response.items[]->transactionLinkId` **Added**
+  * `sdk->payment-methods->create()`:  `response.transactionLinkId` **Added**
+  * `sdk->payment-methods->get()`:  `response.transactionLinkId` **Added**
+  * `sdk->payment-methods->update()`:  `response.transactionLinkId` **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
