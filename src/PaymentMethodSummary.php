@@ -200,6 +200,15 @@ class PaymentMethodSummary
     public ?\DateTime $lastUsedAt = null;
 
     /**
+     * The transaction link identifier stored against this payment method.
+     *
+     * @var ?string $transactionLinkId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('transaction_link_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $transactionLinkId = null;
+
+    /**
      * Always `payment-method`.
      *
      * @var ?string $type
@@ -231,9 +240,10 @@ class PaymentMethodSummary
      * @param  ?array<string>  $additionalSchemes
      * @param  ?\DateTime  $citLastUsedAt
      * @param  ?\DateTime  $lastUsedAt
+     * @param  ?string  $transactionLinkId
      * @phpstan-pure
      */
-    public function __construct(string $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?array $additionalSchemes = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?string $type = 'payment-method')
+    public function __construct(string $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?array $additionalSchemes = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?string $transactionLinkId = null, ?string $type = 'payment-method')
     {
         $this->method = $method;
         $this->id = $id;
@@ -256,6 +266,7 @@ class PaymentMethodSummary
         $this->additionalSchemes = $additionalSchemes;
         $this->citLastUsedAt = $citLastUsedAt;
         $this->lastUsedAt = $lastUsedAt;
+        $this->transactionLinkId = $transactionLinkId;
         $this->type = $type;
     }
 }
