@@ -180,6 +180,15 @@ class TransactionCreate
     public ?string $previousSchemeTransactionId = null;
 
     /**
+     * A scheme's transaction link identifier to use in connecting a merchant initiated transaction to a previous customer initiated transaction. If not provided, and a qualifying customer initiated transaction has been previously made with the stored payment method, then Gr4vy will populate this value with the identifier returned for that transaction. This field is also know as the Mastercard Transaction Link ID (TLID).
+     *
+     * @var ?string $previousTransactionLinkId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('previous_transaction_link_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $previousTransactionLinkId = null;
+
+    /**
      * Information about the browser used by the buyer. This can be used by anti-fraud services.
      *
      * @var ?\Gr4vy\BrowserInfo $browserInfo
@@ -438,6 +447,7 @@ class TransactionCreate
      * @param  ?array<\Gr4vy\CartItem>  $cartItems
      * @param  ?\Gr4vy\StatementDescriptor  $statementDescriptor
      * @param  ?string  $previousSchemeTransactionId
+     * @param  ?string  $previousTransactionLinkId
      * @param  ?\Gr4vy\BrowserInfo  $browserInfo
      * @param  ?string  $shippingDetailsId
      * @param  ?\Gr4vy\TransactionConnectionOptions  $connectionOptions
@@ -457,7 +467,7 @@ class TransactionCreate
      * @param  ?\DateTime  $approvalExpiresAt
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|PazePaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|BaseBankPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyer $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?ThreeDSecure $threeDSecure = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $purchaseOrderNumber = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $integrationClient = null, ?\DateTime $approvalExpiresAt = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
+    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|PazePaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|BaseBankPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyer $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?ThreeDSecure $threeDSecure = null, ?array $metadata = null, ?Airline $airline = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?string $previousTransactionLinkId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $purchaseOrderNumber = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $integrationClient = null, ?\DateTime $approvalExpiresAt = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
     {
         $this->amount = $amount;
         $this->currency = $currency;
@@ -477,6 +487,7 @@ class TransactionCreate
         $this->cartItems = $cartItems;
         $this->statementDescriptor = $statementDescriptor;
         $this->previousSchemeTransactionId = $previousSchemeTransactionId;
+        $this->previousTransactionLinkId = $previousTransactionLinkId;
         $this->browserInfo = $browserInfo;
         $this->shippingDetailsId = $shippingDetailsId;
         $this->connectionOptions = $connectionOptions;
