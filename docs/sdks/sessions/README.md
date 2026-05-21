@@ -7,6 +7,7 @@
 * [googlePay](#googlepay) - Create a Google Pay session
 * [applePay](#applepay) - Create a Apple Pay session
 * [paze](#paze) - Create a Paze session
+* [pazeMobileSessionReview](#pazemobilesessionreview) - Review a Paze session
 * [clickToPay](#clicktopay) - Create a Click to Pay session
 
 ## googlePay
@@ -178,6 +179,71 @@ if ($response->responseCreatePazeDigitalWalletSession !== null) {
 ### Response
 
 **[?CreatePazeDigitalWalletSessionResponse](../../CreatePazeDigitalWalletSessionResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\Error400            | 400                        | application/json           |
+| Errors\Error401            | 401                        | application/json           |
+| Errors\Error403            | 403                        | application/json           |
+| Errors\Error404            | 404                        | application/json           |
+| Errors\Error405            | 405                        | application/json           |
+| Errors\Error409            | 409                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\Error425            | 425                        | application/json           |
+| Errors\Error429            | 429                        | application/json           |
+| Errors\Error500            | 500                        | application/json           |
+| Errors\Error502            | 502                        | application/json           |
+| Errors\Error504            | 504                        | application/json           |
+| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## pazeMobileSessionReview
+
+Review a Paze checkout session and retrieve the selected card, consumer, and shipping address details.
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="review_paze_mobile_session" method="post" path="/digital-wallets/paze/session/review" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Gr4vy;
+
+$sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$pazeSessionReviewRequest = new Gr4vy\PazeSessionReviewRequest(
+    sessionId: '7c1cba03-d20e-4a3f-9d77-e5dc23a39ac2',
+    code: 'eyJhdWQiOm51bGwsImtpZCI6IjE3...',
+    accessToken: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...',
+);
+
+$response = $sdk->digitalWallets->sessions->pazeMobileSessionReview(
+    pazeSessionReviewRequest: $pazeSessionReviewRequest
+);
+
+if ($response->pazeSessionReview !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `pazeSessionReviewRequest`                                    | [PazeSessionReviewRequest](../../PazeSessionReviewRequest.md) | :heavy_check_mark:                                            | N/A                                                           |                                                               |
+| `merchantAccountId`                                           | *?string*                                                     | :heavy_minus_sign:                                            | The ID of the merchant account to use for this request.       | default                                                       |
+
+### Response
+
+**[?ReviewPazeMobileSessionResponse](../../ReviewPazeMobileSessionResponse.md)**
 
 ### Errors
 
