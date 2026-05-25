@@ -6,6 +6,7 @@
 
 * [googlePay](#googlepay) - Create a Google Pay session
 * [applePay](#applepay) - Create a Apple Pay session
+* [pazeMobileSessionCreate](#pazemobilesessioncreate) - Create a Paze mobile session
 * [paze](#paze) - Create a Paze session
 * [pazeMobileSessionReview](#pazemobilesessionreview) - Review a Paze session
 * [clickToPay](#clicktopay) - Create a Click to Pay session
@@ -118,6 +119,75 @@ if ($response->applePaySession !== null) {
 ### Response
 
 **[?CreateApplePayDigitalWalletSessionResponse](../../CreateApplePayDigitalWalletSessionResponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| Errors\Error400            | 400                        | application/json           |
+| Errors\Error401            | 401                        | application/json           |
+| Errors\Error403            | 403                        | application/json           |
+| Errors\Error404            | 404                        | application/json           |
+| Errors\Error405            | 405                        | application/json           |
+| Errors\Error409            | 409                        | application/json           |
+| Errors\HTTPValidationError | 422                        | application/json           |
+| Errors\Error425            | 425                        | application/json           |
+| Errors\Error429            | 429                        | application/json           |
+| Errors\Error500            | 500                        | application/json           |
+| Errors\Error502            | 502                        | application/json           |
+| Errors\Error504            | 504                        | application/json           |
+| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+
+## pazeMobileSessionCreate
+
+Create a mobile session for use with Paze.
+
+### Example Usage
+
+<!-- UsageSnippet language="php" operationID="create_paze_mobile_session" method="post" path="/digital-wallets/paze/session/create" -->
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Gr4vy;
+
+$sdk = Gr4vy\SDK::builder()
+    ->setMerchantAccountId('default')
+    ->setSecurity(
+        '<YOUR_BEARER_TOKEN_HERE>'
+    )
+    ->build();
+
+$pazeMobileSessionCreateRequest = new Gr4vy\PazeMobileSessionCreateRequest(
+    client: new Gr4vy\PazeClient(
+        id: '0UVAS9Y03YNJ39XXYIN313F4DZNCjIGmqs4Iw32EPnZV0800o',
+    ),
+    sessionId: '24e4dbb9-4f5e-43e8-8375-e9fd45650bc9',
+    accessToken: '<value>',
+    callbackURLScheme: 'Gr4vyCallback',
+    intent: 'EXPRESS_CHECKOUT',
+);
+
+$response = $sdk->digitalWallets->sessions->pazeMobileSessionCreate(
+    pazeMobileSessionCreateRequest: $pazeMobileSessionCreateRequest
+);
+
+if ($response->pazeMobileSessionCreate !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `pazeMobileSessionCreateRequest`                                          | [PazeMobileSessionCreateRequest](../../PazeMobileSessionCreateRequest.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
+| `merchantAccountId`                                                       | *?string*                                                                 | :heavy_minus_sign:                                                        | The ID of the merchant account to use for this request.                   | default                                                                   |
+
+### Response
+
+**[?CreatePazeMobileSessionResponse](../../CreatePazeMobileSessionResponse.md)**
 
 ### Errors
 
