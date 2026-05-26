@@ -52,19 +52,29 @@ class DefinitionField
     public bool $secret;
 
     /**
+     * Defines if this field can be verified through the verify credentials button.
+     *
+     * @var bool $verifiable
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verifiable')]
+    public bool $verifiable;
+
+    /**
      * @param  string  $key
      * @param  string  $displayName
      * @param  bool  $required
      * @param  string  $format
      * @param  bool  $secret
+     * @param  bool  $verifiable
      * @phpstan-pure
      */
-    public function __construct(string $key, string $displayName, bool $required, string $format, bool $secret)
+    public function __construct(string $key, string $displayName, bool $required, string $format, bool $secret, bool $verifiable)
     {
         $this->key = $key;
         $this->displayName = $displayName;
         $this->required = $required;
         $this->format = $format;
         $this->secret = $secret;
+        $this->verifiable = $verifiable;
     }
 }

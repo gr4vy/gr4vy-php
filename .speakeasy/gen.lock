@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 2a8ecbe07e9b9f0aa431323d68f6ee78
+  docChecksum: 04f6e43a793e8964cb588bab11e04d3b
   docVersion: 1.0.0
-  speakeasyVersion: 1.764.1
-  generationVersion: 2.885.1
-  releaseVersion: 1.5.82
-  configChecksum: d3788d66bb46ee8fcb4c68bf01263fb8
+  speakeasyVersion: 1.766.0
+  generationVersion: 2.887.0
+  releaseVersion: 1.5.83
+  configChecksum: 4d5a5c134f6783bc93883678f941ae50
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: a3cca872-c1a7-432e-a080-a764e3cc468b
-  pristine_commit_hash: bd819f1f7c8ed2c619152adb0c9c065d9299dfaa
-  pristine_tree_hash: e5a4086673eb5b17cc2e32c70518dd58ff478b0f
+  generation_id: e8e1b808-5072-4761-a231-86b7d9bc5ba9
+  pristine_commit_hash: bbb17ee3498133798e1b0ad1fae2137370e9e66b
+  pristine_tree_hash: 9aa09c26d6a34b4c4ef2efc1e037b79331dea1ed
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -528,8 +528,8 @@ trackedFiles:
     pristine_git_object: 03b4e08eae22049e43e67a178cb3bd34c640d542
   docs/DefinitionField.md:
     id: 5880fbbceb1e
-    last_write_checksum: sha1:bf456d096b5129506e4ee0a298bf43be13510ce4
-    pristine_git_object: 73bb867838b34d7e77eea79a8f96e865e7507ea9
+    last_write_checksum: sha1:57d6493e28a0c13bd7bdee337e6eeca6bfd2cfde
+    pristine_git_object: b8f2b66157e41cde70d893c91d60ee3724733b84
   docs/DeleteBuyerRequest.md:
     id: 243d1a3037bf
     last_write_checksum: sha1:bb8e2403ae5796ba65bf22e6c812bb8210b414fe
@@ -2784,8 +2784,8 @@ trackedFiles:
     pristine_git_object: b308877acf167a512ccf97d847007bcea7f00a21
   src/DefinitionField.php:
     id: e22609d68eab
-    last_write_checksum: sha1:35fab0ee77e05d76d9821de8cfe57428f7d1b850
-    pristine_git_object: a514874d48e02c36f1dd8b1b0e407bf5c92127a8
+    last_write_checksum: sha1:0ac56b6875f4ccefcecc1ba0ee9cefba29f850ca
+    pristine_git_object: 2c728e0cf0e5af8e00a02ec142a973836e84fcc2
   src/DeleteBuyerRequest.php:
     id: a9f0fb76fc79
     last_write_checksum: sha1:11e12857b22d2f319002b527f11fd0dc8937c04a
@@ -4140,8 +4140,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:5b96f54629e91029b3b56d00e41361a221a83f83
-    pristine_git_object: 6ec7a9dda28ce6d72f3e39b1e2e0ef8861e35e74
+    last_write_checksum: sha1:ca59f4ca26994b730517663e7320c43d6eabac60
+    pristine_git_object: d4f0da4bafaa171473a78c788c1f099d71431191
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -6736,7 +6736,7 @@ examples:
           application_name: "core-api"
       responses:
         "200":
-          application/json: {"id": "adyen-ideal", "type": "payment-service-definition", "display_name": "iDEAL", "method": "multibanco", "fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "boolean", "secret": true}], "reporting_fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true}, {"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true}], "supported_currencies": ["USD", "GBP", "EUR", "AUD"], "supported_countries": ["US"], "mode": "card", "supported_features": {"key": true, "key1": false}, "required_checkout_fields": [{"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}], "configuration": {"approval_ui_target": "any", "approval_ui_height": "100px", "approval_ui_width": "100px", "cart_items_limit": 100, "cart_items_required": true, "cart_items_should_match_amount": true}, "supported_integration_clients": ["redirect"]}
+          application/json: {"id": "adyen-ideal", "type": "payment-service-definition", "display_name": "iDEAL", "method": "multibanco", "fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "boolean", "secret": true, "verifiable": true}], "reporting_fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true, "verifiable": true}, {"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true, "verifiable": true}], "supported_currencies": ["USD", "GBP", "EUR", "AUD"], "supported_countries": ["US"], "mode": "card", "supported_features": {"key": true, "key1": false}, "required_checkout_fields": [{"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}], "configuration": {"approval_ui_target": "any", "approval_ui_height": "100px", "approval_ui_width": "100px", "cart_items_limit": 100, "cart_items_required": true, "cart_items_should_match_amount": true}, "supported_integration_clients": ["redirect"]}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -8463,7 +8463,8 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Php SDK Changes:
-  * `sdk->digital-wallets->sessions->pazeMobileSessionCreate()`: **Added**
+  * `sdk->payment-service-definitions->list()`:  `response.items[]->fields[]->verifiable` **Added**
+  * `sdk->payment-service-definitions->get()`:  `response.fields[]->verifiable` **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
