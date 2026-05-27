@@ -32,13 +32,25 @@ class TransactionCaptureCreate
     public ?Airline $airline = null;
 
     /**
+     * An array of cart items that represents the line items of this capture.
+     *
+     * @var ?array<\Gr4vy\CartItem> $cartItems
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cart_items')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\CartItem>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $cartItems = null;
+
+    /**
      * @param  ?int  $amount
      * @param  ?\Gr4vy\Airline  $airline
+     * @param  ?array<\Gr4vy\CartItem>  $cartItems
      * @phpstan-pure
      */
-    public function __construct(?int $amount = null, ?Airline $airline = null)
+    public function __construct(?int $amount = null, ?Airline $airline = null, ?array $cartItems = null)
     {
         $this->amount = $amount;
         $this->airline = $airline;
+        $this->cartItems = $cartItems;
     }
 }
