@@ -52,22 +52,6 @@ class PazeShippingAddress
     public string $countryCode;
 
     /**
-     * Line 2 of the address.
-     *
-     * @var ?string $line2
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('line2')]
-    public ?string $line2;
-
-    /**
-     * Line 3 of the address.
-     *
-     * @var ?string $line3
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('line3')]
-    public ?string $line3;
-
-    /**
      *
      * @var ?\Gr4vy\PazeDeliveryContactDetails $deliveryContactDetails
      */
@@ -76,25 +60,43 @@ class PazeShippingAddress
     public ?PazeDeliveryContactDetails $deliveryContactDetails;
 
     /**
+     * Line 2 of the address.
+     *
+     * @var ?string $line2
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('line2')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $line2 = null;
+
+    /**
+     * Line 3 of the address.
+     *
+     * @var ?string $line3
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('line3')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $line3 = null;
+
+    /**
      * @param  string  $line1
      * @param  string  $city
      * @param  string  $state
      * @param  string  $zip
      * @param  string  $countryCode
+     * @param  ?\Gr4vy\PazeDeliveryContactDetails  $deliveryContactDetails
      * @param  ?string  $line2
      * @param  ?string  $line3
-     * @param  ?\Gr4vy\PazeDeliveryContactDetails  $deliveryContactDetails
      * @phpstan-pure
      */
-    public function __construct(string $line1, string $city, string $state, string $zip, string $countryCode, ?string $line2 = null, ?string $line3 = null, ?PazeDeliveryContactDetails $deliveryContactDetails = null)
+    public function __construct(string $line1, string $city, string $state, string $zip, string $countryCode, ?PazeDeliveryContactDetails $deliveryContactDetails = null, ?string $line2 = null, ?string $line3 = null)
     {
         $this->line1 = $line1;
         $this->city = $city;
         $this->state = $state;
         $this->zip = $zip;
         $this->countryCode = $countryCode;
+        $this->deliveryContactDetails = $deliveryContactDetails;
         $this->line2 = $line2;
         $this->line3 = $line3;
-        $this->deliveryContactDetails = $deliveryContactDetails;
     }
 }

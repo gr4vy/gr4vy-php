@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class PazeBillingAddress
+class PazeLocationAddress
 {
     /**
      * Line 1 of the address.
@@ -44,6 +44,14 @@ class PazeBillingAddress
     public string $zip;
 
     /**
+     * ISO 3166-1 alpha-2 country code.
+     *
+     * @var string $countryCode
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('countryCode')]
+    public string $countryCode;
+
+    /**
      * Name of the organization or entity at the address.
      *
      * @var ?string $name
@@ -71,34 +79,25 @@ class PazeBillingAddress
     public ?string $line3 = null;
 
     /**
-     * ISO 3166-1 alpha-2 country code.
-     *
-     * @var ?string $countryCode
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('countryCode')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $countryCode = null;
-
-    /**
      * @param  string  $line1
      * @param  string  $city
      * @param  string  $state
      * @param  string  $zip
+     * @param  string  $countryCode
      * @param  ?string  $name
      * @param  ?string  $line2
      * @param  ?string  $line3
-     * @param  ?string  $countryCode
      * @phpstan-pure
      */
-    public function __construct(string $line1, string $city, string $state, string $zip, ?string $name = null, ?string $line2 = null, ?string $line3 = null, ?string $countryCode = null)
+    public function __construct(string $line1, string $city, string $state, string $zip, string $countryCode, ?string $name = null, ?string $line2 = null, ?string $line3 = null)
     {
         $this->line1 = $line1;
         $this->city = $city;
         $this->state = $state;
         $this->zip = $zip;
+        $this->countryCode = $countryCode;
         $this->name = $name;
         $this->line2 = $line2;
         $this->line3 = $line3;
-        $this->countryCode = $countryCode;
     }
 }
