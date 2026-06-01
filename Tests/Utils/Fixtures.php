@@ -25,9 +25,11 @@ final class Fixtures
     private static int $counter = 0;
 
     /**
-     * Collision-free identifier namespaced by a caller-supplied scope (pass the
-     * merchant id) plus a process-wide counter — no wall-clock / RNG so parallel
-     * shards never collide.
+     * Low-collision identifier: a caller-supplied scope (typically the per-class
+     * random merchant id) plus a monotonic per-process counter. The counter makes
+     * ids unique within a run; the scope keeps ids from different merchants/shards
+     * apart. Not a hard guarantee (the merchant id itself is random), but
+     * collisions are vanishingly unlikely.
      */
     public static function uniqueId(string $prefix, string $scope): string
     {
