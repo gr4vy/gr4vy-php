@@ -34,7 +34,10 @@ final class PaymentLinksTest extends MerchantTestCase
         $first = $this->firstOf($sdk->paymentLinks->list());
         $this->assertNotNull($first);
 
-        $expired = $sdk->paymentLinks->expire($link->id)->paymentLink;
-        $this->assertSame($link->id, $expired->id);
+        // expire() may return no body; confirm the call succeeds and the link
+        // is still retrievable afterwards.
+        $sdk->paymentLinks->expire($link->id);
+        $afterExpire = $sdk->paymentLinks->get($link->id)->paymentLink;
+        $this->assertSame($link->id, $afterExpire->id);
     }
 }
