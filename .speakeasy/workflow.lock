@@ -1,9 +1,9 @@
-speakeasyVersion: 1.768.2
+speakeasyVersion: 1.769.1
 sources:
     openapi:
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:b155abafecd0fc0f45454c4ae4813df52a6bcda4e9582deb89d5b2af86212842
-        sourceBlobDigest: sha256:3a2710cb7c96be2bcd77b3fdd3cea6fc5f284cea77db9a07e127efcbea5a8a9d
+        sourceRevisionDigest: sha256:000a043930fa4516309a4422456df4276f6f47c585622153d2fa2fb1d6d9633e
+        sourceBlobDigest: sha256:c7d2324461915ccbade7468b169696ae59d687a3c88b4529da788d1c1baaa229
         tags:
             - latest
             - 1.0.0
@@ -11,10 +11,10 @@ targets:
     php:
         source: openapi
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:b155abafecd0fc0f45454c4ae4813df52a6bcda4e9582deb89d5b2af86212842
-        sourceBlobDigest: sha256:3a2710cb7c96be2bcd77b3fdd3cea6fc5f284cea77db9a07e127efcbea5a8a9d
+        sourceRevisionDigest: sha256:000a043930fa4516309a4422456df4276f6f47c585622153d2fa2fb1d6d9633e
+        sourceBlobDigest: sha256:c7d2324461915ccbade7468b169696ae59d687a3c88b4529da788d1c1baaa229
         codeSamplesNamespace: openapi-php-code-samples
-        codeSamplesRevisionDigest: sha256:dd236519aa01c745d7b489c55d6bc1b41df8fba717cb170ebb7d305e2eb7074f
+        codeSamplesRevisionDigest: sha256:33ef7b8aabc6d02fce029dfdada640be172c74de4d32af9e6a9a2839b2ab29f3
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -32,6 +32,7 @@ workflow:
                 - location: ./.speakeasy/overlays/fix-checkout-session-body.yaml
                 - location: ./.speakeasy/overlays/fix-remove-unwanted-headers.yaml
                 - location: ./.speakeasy/overlays/fix-add-x-forwarded-for-header.yaml
+                - location: ./.speakeasy/overlays/fix-report-spec-union.yaml
             registry:
                 location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi
     targets:
