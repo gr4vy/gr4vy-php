@@ -54,7 +54,13 @@ final class TestEnvironment
         $stack->push(self::trackingMiddleware());
         $stack->push(self::forwardCompatMiddleware());
 
-        return new Client(['handler' => $stack]);
+        // Conservative timeouts so a stalled connection fails the test fast rather
+        // than hanging a shard until the CI job-level timeout kills it.
+        return new Client([
+            'handler' => $stack,
+            'timeout' => 30,
+            'connect_timeout' => 10,
+        ]);
     }
 
     public static function createClient(string $privateKey, ?string $merchantAccountId = null): SDK
@@ -117,7 +123,13 @@ final class TestEnvironment
                         }
                         $body = $response->getBody()->getContents();
                         $data = json_decode($body, true);
-                        if (json_last_error() !== JSON_ERROR_NONE || ! is_array($data)) {
+                        // Only inject into JSON objects. Adding a string key to a
+                        // top-level JSON array (list) would turn it into an object on
+                        // re-encode and break deserialization, so leave lists untouched.
+                        if (json_last_error() !== JSON_ERROR_NONE
+                            || ! is_array($data)
+                            || (array_is_list($data) && $data !== [])
+                        ) {
                             return $response->withBody(Utils::streamFor($body));
                         }
                         $data['unexpected_field_'.bin2hex(random_bytes(4))] = 'this is an injected test value';
