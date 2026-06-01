@@ -41,7 +41,14 @@ jobs:
       - name: Run ${{ matrix.shard }} suite
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: composer test -- --testsuite ${{ matrix.shard }}
+        run: |
+          # Fork PRs don't get repository secrets; the live suite can't run
+          # without the signing key, so skip it there rather than hard-failing.
+          if [ -z "$PRIVATE_KEY" ]; then
+            echo "PRIVATE_KEY not available (likely a fork PR) — skipping live E2E suite."
+            exit 0
+          fi
+          composer test -- --testsuite ${{ matrix.shard }}
 
   # Offline tests (JWT + webhook signing) across the supported PHP versions —
   # fast cross-version sanity that needs no sandbox.
@@ -81,7 +88,7 @@ jobs:
     needs: [e2e, offline]
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       pull-requests: write
     steps:
       - name: All suites passed

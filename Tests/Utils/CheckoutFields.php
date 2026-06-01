@@ -72,6 +72,7 @@ final class CheckoutFields
             [
                 'headers' => ['content-type' => 'application/json'],
                 'timeout' => 10,
+                'connect_timeout' => 10,
                 'json' => $json,
             ]
         );
