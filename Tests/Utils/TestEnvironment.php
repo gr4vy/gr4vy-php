@@ -123,7 +123,8 @@ final class TestEnvironment
                         if ($noInject) {
                             return $response;
                         }
-                        if (strpos($response->getHeaderLine('Content-Type'), 'application/json') === false) {
+                        // Header values are case-insensitive, so match case-insensitively.
+                        if (stripos($response->getHeaderLine('Content-Type'), 'application/json') === false) {
                             return $response;
                         }
                         $body = $response->getBody()->getContents();
@@ -173,7 +174,7 @@ final class TestEnvironment
             if ($file === null) {
                 $dir = __DIR__.'/../../coverage/http';
                 if (! is_dir($dir)) {
-                    @mkdir($dir, 0777, true);
+                    @mkdir($dir, 0775, true);
                 }
                 $file = $dir.'/calls-'.getmypid().'-'.bin2hex(random_bytes(4)).'.jsonl';
             }
