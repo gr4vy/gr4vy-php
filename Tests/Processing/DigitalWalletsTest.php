@@ -10,6 +10,11 @@ use Gr4vy\DigitalWalletCreate;
 use Gr4vy\DigitalWalletDomain;
 use Gr4vy\DigitalWalletUpdate;
 use Gr4vy\GooglePaySessionRequest;
+use Gr4vy\PazeClient;
+use Gr4vy\PazeMobileSessionCreateRequest;
+use Gr4vy\PazeSessionCompleteRequest;
+use Gr4vy\PazeSessionRequest;
+use Gr4vy\PazeSessionReviewRequest;
 use Gr4vy\Tests\Utils\MerchantTestCase;
 use Gr4vy\Tests\Utils\Reach;
 use PHPUnit\Framework\Attributes\Test;
@@ -81,6 +86,44 @@ final class DigitalWalletsTest extends MerchantTestCase
         Reach::reaches(
             fn () => $sdk->digitalWallets->sessions->clickToPay(new ClickToPaySessionRequest(checkoutSessionId: self::MISSING_ID)),
             'digitalWallets.sessions.clickToPay',
+        );
+    }
+
+    #[Test]
+    public function paze_sessions_are_reached(): void
+    {
+        $sdk = $this->sdk();
+
+        Reach::reaches(
+            fn () => $sdk->digitalWallets->sessions->paze(new PazeSessionRequest(domainName: 'example.com')),
+            'digitalWallets.sessions.paze',
+        );
+        Reach::reaches(
+            fn () => $sdk->digitalWallets->sessions->pazeMobileSessionCreate(new PazeMobileSessionCreateRequest(
+                client: new PazeClient(id: 'test'),
+                sessionId: self::MISSING_ID,
+                accessToken: 'token',
+                callbackURLScheme: 'app',
+                intent: 'checkout',
+            )),
+            'digitalWallets.sessions.pazeMobileSessionCreate',
+        );
+        Reach::reaches(
+            fn () => $sdk->digitalWallets->sessions->pazeMobileSessionReview(new PazeSessionReviewRequest(
+                sessionId: self::MISSING_ID,
+                code: 'code',
+                accessToken: 'token',
+            )),
+            'digitalWallets.sessions.pazeMobileSessionReview',
+        );
+        Reach::reaches(
+            fn () => $sdk->digitalWallets->sessions->pazeMobileSessionComplete(new PazeSessionCompleteRequest(
+                sessionId: self::MISSING_ID,
+                code: 'code',
+                accessToken: 'token',
+                transactionType: 'purchase',
+            )),
+            'digitalWallets.sessions.pazeMobileSessionComplete',
         );
     }
 }

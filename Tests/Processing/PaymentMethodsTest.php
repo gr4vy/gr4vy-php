@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Gr4vy\Tests\Processing;
 
+use Gr4vy\CryptogramCreate;
 use Gr4vy\ListPaymentMethodsRequest;
 use Gr4vy\NetworkTokenCreate;
 use Gr4vy\PaymentMethodUpdate;
@@ -77,6 +78,14 @@ final class PaymentMethodsTest extends MerchantTestCase
         Reach::reaches(
             fn () => $sdk->paymentMethods->networkTokens->delete($pm->id, self::MISSING_ID),
             'paymentMethods.networkTokens.delete',
+        );
+        Reach::reaches(
+            fn () => $sdk->paymentMethods->networkTokens->cryptogram->create(
+                new CryptogramCreate(merchantInitiated: false),
+                $pm->id,
+                self::MISSING_ID,
+            ),
+            'paymentMethods.networkTokens.cryptogram.create',
         );
     }
 
