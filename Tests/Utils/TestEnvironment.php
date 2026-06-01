@@ -25,7 +25,7 @@ use Psr\Http\Message\ResponseInterface;
  *       tolerates forward-compatible payloads (disable with GR4VY_NO_INJECT), and
  *   (b) when GR4VY_TRACK_HTTP is set, records the method + path of every outgoing
  *       request to coverage/http/*.jsonl so the endpoint-coverage report can
- *       measure reach from real HTTP calls (see scripts/endpoint-coverage.mjs).
+ *       measure reach from real HTTP calls (see scripts/endpoint-coverage.php).
  */
 final class TestEnvironment
 {
