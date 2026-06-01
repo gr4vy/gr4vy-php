@@ -25,7 +25,9 @@ final class Gen
     public static function seed(): void
     {
         if (! self::$seeded) {
-            $seed = (int) (getenv('FC_SEED') ?: 1337);
+            // Don't use `?:` — it would treat a valid FC_SEED=0 as falsey.
+            $env = getenv('FC_SEED');
+            $seed = ($env === false || $env === '') ? 1337 : (int) $env;
             mt_srand($seed);
             self::$seeded = true;
         }
