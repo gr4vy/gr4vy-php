@@ -33,7 +33,9 @@ php:
   version: 1.5.71
   additionalDependencies:
     autoload: {}
-    autoload-dev: {}
+    autoload-dev:
+      psr-4:
+        Gr4vy\Tests\: Tests/
     require:
       lcobucci/jwt: ^5.5.0
       paragonie/sodium_compat_ext_sodium: '>= 1'

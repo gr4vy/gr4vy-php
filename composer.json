@@ -6,6 +6,11 @@
       "Gr4vy\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Gr4vy\\Tests\\": "Tests/"
+    }
+  },
   "license": "MIT",
   "require": {
     "php": ">=8.2",
