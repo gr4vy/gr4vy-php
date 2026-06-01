@@ -1,9 +1,0 @@
-# TransactionsReportSpec
-
-
-## Fields
-
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `model`                                                                    | *?string*                                                                  | :heavy_minus_sign:                                                         | The report model type.                                                     | transactions                                                               |
-| `params`                                                                   | array<string, *mixed*>                                                     | :heavy_check_mark:                                                         | The parameters for the transactions report model.                          | {<br/>"fields": [<br/>"id",<br/>"status"<br/>],<br/>"filters": {<br/>"status": [<br/>"succeeded"<br/>]<br/>}<br/>} |
