@@ -29,11 +29,11 @@ composer install
 # Everything (offline unit tests + live E2E)
 composer test
 
-# A single shard / suite
-composer test -- --testsuite flows
-composer test -- --testsuite processing
-composer test -- --testsuite backoffice
-composer test -- --testsuite offline
+# A single shard (just pass the directory — PHPUnit runs that path)
+composer test -- Tests/Flows
+composer test -- Tests/Processing
+composer test -- Tests/Backoffice
+composer test -- Tests/AuthTest.php Tests/WebhooksTest.php   # offline
 
 # A single test class or method
 composer test -- --filter TransactionLifecycleTest
@@ -65,8 +65,10 @@ Tests/
 
 Each E2E test **class** provisions its own merchant account (random id) with a
 `mock-card` payment service in `setUpBeforeClass()`, so classes share no state and
-the suite is safe to shard. The four PHPUnit `<testsuite>`s in `phpunit.xml`
-double as **CI shards** (`--testsuite flows|processing|backoffice|offline`).
+the suite is safe to shard. CI shards by **directory** — each job runs one of
+`Tests/Flows`, `Tests/Processing`, `Tests/Backoffice` (and the offline pair) as a
+positional PHPUnit path. The shard map lives in `.github/workflows/ci.yaml`, not
+in `phpunit.xml` (which Speakeasy regenerates), so regeneration can't break it.
 
 ### The mock-card connector ("test mode")
 
