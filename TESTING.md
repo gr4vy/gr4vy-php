@@ -96,7 +96,7 @@ stays hermetic.
 ## Endpoint-reach coverage
 
 When `GR4VY_TRACK_HTTP=1` is set, the test HTTP client logs the method + path of
-every request to `coverage/http/*.jsonl`. `scripts/endpoint-coverage.mjs` builds
+every request to `coverage/http/*.jsonl`. `scripts/endpoint-coverage.php` builds
 the operation catalogue from the generated `src/*.php` classes and reports how
 many operations were reached by a **real HTTP request** — newly generated (but
 untested) endpoints show up as "not reached". CI runs this once, un-sharded, and
@@ -110,7 +110,7 @@ matters locally.)
 ```sh
 rm -rf coverage/http            # drop stale logs from previous runs
 GR4VY_TRACK_HTTP=1 composer test
-node scripts/endpoint-coverage.mjs
+php scripts/endpoint-coverage.php
 ```
 
 ## CI
