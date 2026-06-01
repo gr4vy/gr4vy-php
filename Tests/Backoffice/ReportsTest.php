@@ -79,7 +79,7 @@ final class ReportsTest extends MerchantTestCase
         $sdk = $this->sdk();
         $report = $sdk->reports->create(new ReportCreate(
             name: Fixtures::uniqueId('report', $this->merchantAccountId()),
-            schedule: '0 0 * * *',
+            schedule: 'daily',
             scheduleEnabled: false,
             spec: new Spec(
                 model: 'transactions',
