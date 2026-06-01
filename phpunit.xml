@@ -4,9 +4,21 @@
          bootstrap="vendor/autoload.php"
          colors="true"
 >
+    <!-- Suites double as CI shards (run one with the testsuite flag, e.g.
+         "flows"). With no testsuite flag, every suite runs (full local suite). -->
     <testsuites>
-        <testsuite name="Test Suite">
-            <directory suffix="Test.php">./Tests</directory>
+        <testsuite name="flows">
+            <directory suffix="Test.php">./Tests/Flows</directory>
+        </testsuite>
+        <testsuite name="processing">
+            <directory suffix="Test.php">./Tests/Processing</directory>
+        </testsuite>
+        <testsuite name="backoffice">
+            <directory suffix="Test.php">./Tests/Backoffice</directory>
+        </testsuite>
+        <testsuite name="offline">
+            <file>./Tests/AuthTest.php</file>
+            <file>./Tests/WebhooksTest.php</file>
         </testsuite>
     </testsuites>
     <source>

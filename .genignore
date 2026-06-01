@@ -1,0 +1,5 @@
+# Hand-maintained files Speakeasy must not overwrite on regeneration.
+# phpunit.xml defines our CI shard testsuites (flows/processing/backoffice/
+# offline); the generated default collapses them into one suite and breaks the
+# sharded CI jobs. See TESTING.md.
+phpunit.xml
