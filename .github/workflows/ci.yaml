@@ -12,8 +12,10 @@ on:
     - cron: 30 8 * * 1-5
 
 jobs:
-  # E2E suites, sharded by test-suite so wall-clock stays low. Each shard
+  # E2E suites, sharded by directory so wall-clock stays low. Each shard
   # provisions its own merchant accounts, so they are fully independent.
+  # The shard map lives here (not in phpunit.xml, which Speakeasy regenerates)
+  # — a positional path makes PHPUnit run just that directory.
   e2e:
     name: e2e (${{ matrix.shard }})
     runs-on: ubuntu-latest
@@ -21,10 +23,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard:
-          - flows
-          - processing
-          - backoffice
+        include:
+          - { shard: flows, path: Tests/Flows }
+          - { shard: processing, path: Tests/Processing }
+          - { shard: backoffice, path: Tests/Backoffice }
 
     steps:
       - name: Check out the repo
@@ -54,7 +56,7 @@ jobs:
             echo "::error::PRIVATE_KEY is not set on a trusted ref — failing instead of silently skipping the live suite."
             exit 1
           fi
-          composer test -- --testsuite ${{ matrix.shard }}
+          composer test -- ${{ matrix.path }}
 
   # Offline tests (JWT + webhook signing) across the supported PHP versions —
   # fast cross-version sanity that needs no sandbox.
@@ -85,7 +87,7 @@ jobs:
       - name: Run offline suite
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: composer test -- --testsuite offline
+        run: composer test -- Tests/AuthTest.php Tests/WebhooksTest.php
 
   # Single stable required check. Branch rulesets should require THIS context
   # (not the per-shard matrix jobs, whose names change when shards are added).
