@@ -8,10 +8,10 @@ use Gr4vy\ListAllReportExecutionsRequest;
 use Gr4vy\ListReportsRequest;
 use Gr4vy\ReportCreate;
 use Gr4vy\ReportUpdate;
+use Gr4vy\Spec;
 use Gr4vy\Tests\Utils\Fixtures;
 use Gr4vy\Tests\Utils\MerchantTestCase;
 use Gr4vy\Tests\Utils\Reach;
-use Gr4vy\TransactionsReportSpec;
 use PHPUnit\Framework\Attributes\Test;
 
 /**
@@ -73,25 +73,23 @@ final class ReportsTest extends MerchantTestCase
     #[Test]
     public function create_is_reached(): void
     {
+        // The fix-report-spec-union overlay flattens ReportCreate.spec to a plain
+        // {model, params} object, so the request body now serializes and POST
+        // /reports reaches a 2xx (it previously tripped the UnionHandler bug).
         $sdk = $this->sdk();
-        try {
-            $report = $sdk->reports->create(new ReportCreate(
-                name: Fixtures::uniqueId('report', $this->merchantAccountId()),
-                schedule: '0 0 * * *',
-                scheduleEnabled: false,
-                spec: new TransactionsReportSpec(params: []),
-            ))->report;
-            $this->assertNotNull($report->id);
-        } catch (\Throwable $e) {
-            if (Reach::isSdkSerializationBug($e)) {
-                $this->markTestSkipped(
-                    'POST /reports is blocked by a gr4vy-php SDK bug: UnionHandler cannot '
-                    .'serialize the ReportCreate.spec union request body '
-                    .'(src/Utils/UnionHandler.php). The fix-report-spec-union overlay flattens '
-                    .'spec to a plain object; once the SDK regenerates with it, this reaches 2xx.'
-                );
-            }
-            throw $e;
-        }
+        $report = $sdk->reports->create(new ReportCreate(
+            name: Fixtures::uniqueId('report', $this->merchantAccountId()),
+            schedule: '0 0 * * *',
+            scheduleEnabled: false,
+            spec: new Spec(
+                model: 'transactions',
+                params: [
+                    'fields' => ['id', 'status'],
+                    'filters' => ['status' => ['capture_succeeded']],
+                    'sort' => [['field' => 'created_at', 'order' => 'desc']],
+                ],
+            ),
+        ))->report;
+        $this->assertNotNull($report->id);
     }
 }
