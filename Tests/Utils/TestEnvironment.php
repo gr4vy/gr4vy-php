@@ -40,7 +40,12 @@ final class TestEnvironment
         }
         $pem = __DIR__.'/../../private_key.pem';
         if (file_exists($pem)) {
-            return (string) file_get_contents($pem);
+            $contents = file_get_contents($pem);
+            if ($contents === false || $contents === '') {
+                throw new \RuntimeException("Failed to read the signing key from {$pem}.");
+            }
+
+            return $contents;
         }
         throw new \RuntimeException(
             'No signing key found: set PRIVATE_KEY or place private_key.pem in the repo root.'
@@ -122,14 +127,15 @@ final class TestEnvironment
                             return $response;
                         }
                         $body = $response->getBody()->getContents();
-                        $data = json_decode($body, true);
-                        // Only inject into JSON objects. Adding a string key to a
+                        // Only inject into JSON *objects*. Adding a string key to a
                         // top-level JSON array (list) would turn it into an object on
-                        // re-encode and break deserialization, so leave lists untouched.
-                        if (json_last_error() !== JSON_ERROR_NONE
-                            || ! is_array($data)
-                            || (array_is_list($data) && $data !== [])
-                        ) {
+                        // re-encode and break deserialization. Decide from the raw body:
+                        // json_decode('{}') and json_decode('[]') both yield [], so the
+                        // decoded value alone can't distinguish an empty object from an
+                        // empty list — the leading token can.
+                        $isJsonObject = ltrim($body) !== '' && ltrim($body)[0] === '{';
+                        $data = json_decode($body, true);
+                        if (json_last_error() !== JSON_ERROR_NONE || ! is_array($data) || ! $isJsonObject) {
                             return $response->withBody(Utils::streamFor($body));
                         }
                         $data['unexpected_field_'.bin2hex(random_bytes(4))] = 'this is an injected test value';
