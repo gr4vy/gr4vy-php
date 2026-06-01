@@ -163,11 +163,19 @@ final class TestEnvironment
 
         return function (callable $handler) use ($track) {
             return function (RequestInterface $request, array $options) use ($handler, $track) {
-                if ($track) {
-                    self::recordHttpCall($request);
+                $promise = $handler($request, $options);
+                if (! $track) {
+                    return $promise;
                 }
 
-                return $handler($request, $options);
+                // Record only after the handler resolves with a response, so a
+                // request that never completes an HTTP exchange (DNS/TCP/TLS
+                // failure → rejected promise) is not counted as "reached".
+                return $promise->then(function (ResponseInterface $response) use ($request) {
+                    self::recordHttpCall($request);
+
+                    return $response;
+                });
             };
         };
     }

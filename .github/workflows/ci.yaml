@@ -41,12 +41,18 @@ jobs:
       - name: Run ${{ matrix.shard }} suite
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          IS_FORK_PR: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
         run: |
-          # Fork PRs don't get repository secrets; the live suite can't run
-          # without the signing key, so skip it there rather than hard-failing.
+          # Fork PRs don't get repository secrets, so skip the live suite there.
+          # On trusted refs (same-repo PRs / main) a missing key is a real problem —
+          # fail loudly rather than letting ci-complete go green without coverage.
           if [ -z "$PRIVATE_KEY" ]; then
-            echo "PRIVATE_KEY not available (likely a fork PR) — skipping live E2E suite."
-            exit 0
+            if [ "$IS_FORK_PR" = "true" ]; then
+              echo "Fork PR without secrets — skipping live E2E suite."
+              exit 0
+            fi
+            echo "::error::PRIVATE_KEY is not set on a trusted ref — failing instead of silently skipping the live suite."
+            exit 1
           fi
           composer test -- --testsuite ${{ matrix.shard }}
 
