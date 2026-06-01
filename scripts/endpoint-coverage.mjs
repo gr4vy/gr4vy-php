@@ -118,9 +118,16 @@ if (httpTracked && missed.length) {
   lines.push("✅ Every endpoint operation was reached by a real request.");
 }
 lines.push("");
+// Relative links in PR comments resolve against the PR URL (e.g. /pull/123) and
+// 404, so build an absolute blob URL from the CI env when available.
+const repo = process.env.GITHUB_REPOSITORY;
+const ref = process.env.GITHUB_SHA || "main";
+const testingLink = repo
+  ? `[TESTING.md](https://github.com/${repo}/blob/${ref}/TESTING.md)`
+  : "TESTING.md";
 lines.push(
   "<sub>Endpoint reach is measured from HTTP requests actually sent by the suite " +
-    "(see Tests/Utils/TestEnvironment.php). See [TESTING.md](../TESTING.md).</sub>"
+    `(see Tests/Utils/TestEnvironment.php). See ${testingLink}.</sub>`
 );
 
 const markdown = lines.join("\n");
