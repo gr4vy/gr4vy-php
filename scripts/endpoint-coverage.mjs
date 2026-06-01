@@ -104,11 +104,14 @@ if (!httpTracked) {
 const reachPct = opCatalogue.length
   ? ((reached.size / opCatalogue.length) * 100).toFixed(1)
   : "0.0";
+// When tracking was off we have no real reach data — render n/a rather than a
+// misleading 0 / N (0.0%) that reads like a genuine result.
+const reachValue = httpTracked
+  ? `${reached.size} / ${opCatalogue.length} (${reachPct}%)`
+  : `n/a — tracking disabled (${opCatalogue.length} operations in catalogue)`;
 lines.push("| Metric | Value |");
 lines.push("| --- | --- |");
-lines.push(
-  `| **Endpoints reached (HTTP)** | ${reached.size} / ${opCatalogue.length} (${reachPct}%) |`
-);
+lines.push(`| **Endpoints reached (HTTP)** | ${reachValue} |`);
 lines.push("");
 if (httpTracked && missed.length) {
   lines.push(
