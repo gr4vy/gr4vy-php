@@ -17,3 +17,5 @@ composer.phar
 *.pem
 *.key
 .DS_Store
+# E2E endpoint-coverage artefacts (HTTP-call logs + generated report)
+/coverage/

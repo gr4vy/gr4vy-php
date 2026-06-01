@@ -17,6 +17,12 @@ If you encounter any bugs or have suggestions for improvements, please open an i
 
 We will review and triage issues as quickly as possible. Our goal is to address bugs and incorporate improvements in the upstream source code. Fixes will be included in the next generation of the generated code.
 
+## Testing
+
+The hand-maintained E2E test suite under `Tests/` is **not** generated and may be
+edited directly. See [TESTING.md](TESTING.md) for how to run it, how the CI shards
+work, and how endpoint-reach coverage is reported.
+
 ## Contact
 
 If you have any questions or need further assistance, please feel free to reach out by opening an issue.

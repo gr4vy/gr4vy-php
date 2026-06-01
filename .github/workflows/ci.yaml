@@ -12,21 +12,63 @@ on:
     - cron: 30 8 * * 1-5
 
 jobs:
-  test:
+  # E2E suites, sharded by test-suite so wall-clock stays low. Each shard
+  # provisions its own merchant accounts, so they are fully independent.
+  e2e:
+    name: e2e (${{ matrix.shard }})
     runs-on: ubuntu-latest
-
-    timeout-minutes: 3
+    timeout-minutes: 10
     strategy:
+      fail-fast: false
+      matrix:
+        shard:
+          - flows
+          - processing
+          - backoffice
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+
+      - name: Use PHP 8.3
+        uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2
+        with:
+          php-version: "8.3"
+
+      - name: Install dependencies
+        uses: "ramsey/composer-install@a8d0d959dab41457692a5e2041bd9b757a119e3f" # v3
+
+      - name: Run ${{ matrix.shard }} suite
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          IS_FORK_PR: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+        run: |
+          # Fork PRs don't get repository secrets, so skip the live suite there.
+          # On trusted refs (same-repo PRs / main) a missing key is a real problem —
+          # fail loudly rather than letting ci-complete go green without coverage.
+          if [ -z "$PRIVATE_KEY" ]; then
+            if [ "$IS_FORK_PR" = "true" ]; then
+              echo "Fork PR without secrets — skipping live E2E suite."
+              exit 0
+            fi
+            echo "::error::PRIVATE_KEY is not set on a trusted ref — failing instead of silently skipping the live suite."
+            exit 1
+          fi
+          composer test -- --testsuite ${{ matrix.shard }}
+
+  # Offline tests (JWT + webhook signing) across the supported PHP versions —
+  # fast cross-version sanity that needs no sandbox.
+  offline:
+    name: offline (php ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
       matrix:
         php:
-          - 8.1
-          - 8.2
-          - 8.3
-          - 8.4
-
-    permissions:
-      contents: write
-      pull-requests: write
+          - "8.2"
+          - "8.3"
+          - "8.4"
 
     steps:
       - name: Check out the repo
@@ -35,24 +77,77 @@ jobs:
       - name: Use PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: ${{ matrix.php }}
 
       - name: Install dependencies
         uses: "ramsey/composer-install@a8d0d959dab41457692a5e2041bd9b757a119e3f" # v3
 
-      - name: Run tests
+      - name: Run offline suite
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: |
-          composer test
+        run: composer test -- --testsuite offline
 
-      - uses: hmarr/auto-approve-action@8f929096a962e83ccdfa8afcf855f39f12d4dac7 # v4
+  # Single stable required check. Branch rulesets should require THIS context
+  # (not the per-shard matrix jobs, whose names change when shards are added).
+  ci-complete:
+    name: ci-complete
+    needs: [e2e, offline]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: All suites passed
+        run: echo "All E2E shards and offline suites passed."
+
+      - name: Auto-approve SDK-regen PRs
+        uses: hmarr/auto-approve-action@8f929096a962e83ccdfa8afcf855f39f12d4dac7 # v4
         if: "github.event.pull_request.user.login == 'github-actions[bot]'"
         with:
           github-token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
 
+  # Endpoint-reach report posted as a sticky PR comment. NOT a merge dependency
+  # (it must never block auto-merge). Same-repo PRs only (needs the secret).
+  coverage:
+    name: coverage
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+
+      - name: Use PHP 8.3
+        uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2
+        with:
+          php-version: "8.3"
+
+      - name: Install dependencies
+        uses: "ramsey/composer-install@a8d0d959dab41457692a5e2041bd9b757a119e3f" # v3
+
+      - name: Run full suite with HTTP tracking
+        continue-on-error: true
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          GR4VY_TRACK_HTTP: "1"
+        run: composer test
+
+      - name: Build endpoint-coverage report
+        run: php scripts/endpoint-coverage.php
+
+      - name: Post coverage comment
+        uses: marocchino/sticky-pull-request-comment@773744901bac0e8cbb5a0dc842800d45e9b2b405 # v2.9.4
+        with:
+          header: endpoint-coverage
+          path: coverage/endpoint-coverage.md
+
   merge:
-    needs: test
+    needs: ci-complete
     runs-on: ubuntu-latest
 
     permissions:
@@ -76,7 +171,7 @@ jobs:
           UPDATE_METHOD: rebase
 
   notify:
-    needs: test
+    needs: [e2e, offline]
     runs-on: ubuntu-latest
     if: ${{ contains(needs.*.result, 'failure') }}
     steps:
@@ -84,7 +179,7 @@ jobs:
         uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2
         if: github.ref == 'refs/heads/main' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'github-actions[bot]')
         env:
-            SLACK_USERNAME: PHP SDK 
+            SLACK_USERNAME: PHP SDK
             SLACK_TITLE: PHP SDK
             SLACK_WEBHOOK: ${{ secrets.SLACK_SDK_WEBHOOK_URL }}
             SLACK_CHANNEL: sdk-updates
