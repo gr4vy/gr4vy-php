@@ -141,10 +141,15 @@ final class TestEnvironment
                         }
                         $data['unexpected_field_'.bin2hex(random_bytes(4))] = 'this is an injected test value';
                         $modified = json_encode($data);
+                        // Instrumentation must never crash a test: if re-encoding fails
+                        // (e.g. invalid UTF-8), pass the original body through untouched.
+                        if ($modified === false) {
+                            return $response->withBody(Utils::streamFor($body));
+                        }
 
                         return $response
                             ->withBody(Utils::streamFor($modified))
-                            ->withHeader('Content-Length', (string) strlen((string) $modified));
+                            ->withHeader('Content-Length', (string) strlen($modified));
                     }
                 );
             };

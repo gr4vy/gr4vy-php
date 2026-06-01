@@ -30,6 +30,9 @@ const seen = new Set();
 for (const file of readdirSync(SDK_DIR).filter((f) => f.endsWith(".php"))) {
   const src = readFileSync(join(SDK_DIR, file), "utf8");
   let m;
+  // Reset the global regex's lastIndex per file so matches in later files are
+  // never skipped (a break out of the loop would otherwise leave it non-zero).
+  TEMPLATE_RE.lastIndex = 0;
   while ((m = TEMPLATE_RE.exec(src)) !== null) {
     const template = m[1];
     if (!template || !template.startsWith("/")) continue;
