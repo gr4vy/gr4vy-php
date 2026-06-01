@@ -102,7 +102,13 @@ many operations were reached by a **real HTTP request** — newly generated (but
 untested) endpoints show up as "not reached". CI runs this once, un-sharded, and
 posts the result as a sticky PR comment. It is a **report, not a merge gate**.
 
+The script reads **every** `coverage/http/*.jsonl` it finds, so clear the
+directory first when running locally — otherwise stale logs from a previous run
+inflate the reported reach. (CI starts from a clean checkout, so this only
+matters locally.)
+
 ```sh
+rm -rf coverage/http            # drop stale logs from previous runs
 GR4VY_TRACK_HTTP=1 composer test
 node scripts/endpoint-coverage.mjs
 ```
