@@ -52,6 +52,33 @@ class TransactionCapture
     public ?string $rawResponseDescription;
 
     /**
+     * The ID of the capture resource created for this capture.
+     *
+     * @var ?string $captureId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('capture_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $captureId = null;
+
+    /**
+     * The payment service's unique ID for the capture.
+     *
+     * @var ?string $paymentServiceCaptureId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_service_capture_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $paymentServiceCaptureId = null;
+
+    /**
+     * The external identifier for the capture.
+     *
+     * @var ?string $externalIdentifier
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_identifier')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalIdentifier = null;
+
+    /**
      * Always `transaction-capture`.
      *
      * @var ?string $type
@@ -67,15 +94,21 @@ class TransactionCapture
      * @param  ?string  $code
      * @param  ?string  $rawResponseCode
      * @param  ?string  $rawResponseDescription
+     * @param  ?string  $captureId
+     * @param  ?string  $paymentServiceCaptureId
+     * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $type = 'transaction-capture')
+    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $captureId = null, ?string $paymentServiceCaptureId = null, ?string $externalIdentifier = null, ?string $type = 'transaction-capture')
     {
         $this->status = $status;
         $this->transaction = $transaction;
         $this->code = $code;
         $this->rawResponseCode = $rawResponseCode;
         $this->rawResponseDescription = $rawResponseDescription;
+        $this->captureId = $captureId;
+        $this->paymentServiceCaptureId = $paymentServiceCaptureId;
+        $this->externalIdentifier = $externalIdentifier;
         $this->type = $type;
     }
 }

@@ -1569,3 +1569,153 @@ Based on:
 - [php v1.5.71] .
 ### Releases
 - [Composer v1.5.71] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.71 - .
+
+## 2026-05-08 00:50:15
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.762.0 (2.882.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.72] .
+### Releases
+- [Composer v1.5.72] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.72 - .
+
+## 2026-05-13 08:36:05
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.762.0 (2.882.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.73] .
+### Releases
+- [Composer v1.5.73] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.73 - .
+
+## 2026-05-18 10:37:21
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.763.1 (2.884.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.74] .
+### Releases
+- [Composer v1.5.74] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.74 - .
+
+## 2026-05-19 14:59:37
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.763.1 (2.884.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.75] .
+### Releases
+- [Composer v1.5.75] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.75 - .
+
+## 2026-05-19 18:18:41
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.763.2 (2.884.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.76] .
+### Releases
+- [Composer v1.5.76] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.76 - .
+
+## 2026-05-20 08:29:12
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.763.3 (2.884.7) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.77] .
+### Releases
+- [Composer v1.5.77] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.77 - .
+
+## 2026-05-20 09:50:06
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.763.3 (2.884.7) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.78] .
+### Releases
+- [Composer v1.5.78] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.78 - .
+
+## 2026-05-21 08:17:31
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.763.4 (2.884.11) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.79] .
+### Releases
+- [Composer v1.5.79] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.79 - .
+
+## 2026-05-21 12:23:23
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.763.5 (2.884.11) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.80] .
+### Releases
+- [Composer v1.5.80] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.80 - .
+
+## 2026-05-21 13:51:33
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.763.5 (2.884.11) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.81] .
+### Releases
+- [Composer v1.5.81] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.81 - .
+
+## 2026-05-25 07:24:51
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.764.1 (2.885.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.82] .
+### Releases
+- [Composer v1.5.82] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.82 - .
+
+## 2026-05-26 14:16:14
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.766.0 (2.887.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.83] .
+### Releases
+- [Composer v1.5.83] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.83 - .
+
+## 2026-05-27 09:16:07
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.767.0 (2.888.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.84] .
+### Releases
+- [Composer v1.5.84] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.84 - .
+
+## 2026-05-27 15:33:45
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.768.0 (2.889.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.85] .
+### Releases
+- [Composer v1.5.85] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.85 - .
+
+## 2026-05-28 12:34:00
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.768.2 (2.889.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [php v1.5.86] .
+### Releases
+- [Composer v1.5.86] https://packagist.org/packages/gr4vy/gr4vy-php#v1.5.86 - .

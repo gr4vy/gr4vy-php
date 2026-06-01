@@ -223,6 +223,15 @@ class PaymentMethod
     public ?\DateTime $lastUsedAt = null;
 
     /**
+     * The transaction link identifier stored against this payment method.
+     *
+     * @var ?string $transactionLinkId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('transaction_link_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $transactionLinkId = null;
+
+    /**
      * The optional buyer for which this payment method has been stored.
      *
      * @var ?\Gr4vy\Buyer $buyer
@@ -276,11 +285,12 @@ class PaymentMethod
      * @param  ?array<string>  $additionalSchemes
      * @param  ?\DateTime  $citLastUsedAt
      * @param  ?\DateTime  $lastUsedAt
+     * @param  ?string  $transactionLinkId
      * @param  ?\Gr4vy\Buyer  $buyer
      * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(string $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, string $status, \DateTime $createdAt, \DateTime $updatedAt, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?array $additionalSchemes = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?Buyer $buyer = null, ?string $externalIdentifier = null, ?string $type = 'payment-method')
+    public function __construct(string $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, string $status, \DateTime $createdAt, \DateTime $updatedAt, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?array $additionalSchemes = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?string $transactionLinkId = null, ?Buyer $buyer = null, ?string $externalIdentifier = null, ?string $type = 'payment-method')
     {
         $this->method = $method;
         $this->id = $id;
@@ -306,6 +316,7 @@ class PaymentMethod
         $this->additionalSchemes = $additionalSchemes;
         $this->citLastUsedAt = $citLastUsedAt;
         $this->lastUsedAt = $lastUsedAt;
+        $this->transactionLinkId = $transactionLinkId;
         $this->buyer = $buyer;
         $this->externalIdentifier = $externalIdentifier;
         $this->type = $type;
