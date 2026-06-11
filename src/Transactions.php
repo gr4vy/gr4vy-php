@@ -25,6 +25,8 @@ class Transactions
 
     public TransactionsSettlements $settlements;
 
+    public Captures $captures;
+
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
@@ -35,6 +37,7 @@ class Transactions
         $this->actions = new Actions($this->sdkConfiguration);
         $this->events = new Events($this->sdkConfiguration);
         $this->settlements = new TransactionsSettlements($this->sdkConfiguration);
+        $this->captures = new Captures($this->sdkConfiguration);
     }
     /**
      * @param  string  $baseUrl
