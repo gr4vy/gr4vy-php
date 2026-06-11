@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: fbdea662f5fa03d569ef6969b018aa01
+  docChecksum: 0ec5608e48bcf9d7213ed79cc33a12bc
   docVersion: 1.0.0
-  speakeasyVersion: 1.773.1
-  generationVersion: 2.897.1
-  releaseVersion: 1.5.91
-  configChecksum: 3e6dc8896b841b35764d7887672b6bfb
+  speakeasyVersion: 1.776.0
+  generationVersion: 2.900.1
+  releaseVersion: 1.5.92
+  configChecksum: 96ac42a229f7b0b8f5dcb35cd2ed5ce6
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 9ec5e832-f400-49f4-87f9-2fd0962e77e6
-  pristine_commit_hash: 68d833ebe942e451e5bacfc128e88bcfcb27aff2
-  pristine_tree_hash: a72c1888d41129c4e46f850cb9ff3e3120bed1a8
+  generation_id: fe4dae2d-b837-4345-8ddc-124c574660f3
+  pristine_commit_hash: 3cc016dcff96a0baab7366e954fb6349cf254883
+  pristine_tree_hash: 1977ba7d92982922a523d9fccd720c16cccb328d
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -234,6 +234,14 @@ trackedFiles:
     id: 27de02956f67
     last_write_checksum: sha1:7928fae8099c48665590da2e40fb438a204365b1
     pristine_git_object: ffdce7d92eeeedaa2664acfc217356d084ef38aa
+  docs/Capture.md:
+    id: be3c381b0016
+    last_write_checksum: sha1:bc6ef0d9d2b6806a8509e978c897510d5a8c6ddc
+    pristine_git_object: e30dd2d1ba711712eb96601e9daac6a029e0ff50
+  docs/CaptureCollection.md:
+    id: a2fb516ed9f3
+    last_write_checksum: sha1:e65d05bae5aee8b1cdbafb9f1a1379805ccd8ef7
+    pristine_git_object: b41abee4d9a833549c7ee8cdf31477e01010f640
   docs/CaptureTransactionRequest.md:
     id: 78c20b13f5a6
     last_write_checksum: sha1:033f64a18827321f9e081b17ebd069266a5949c2
@@ -926,6 +934,14 @@ trackedFiles:
     id: 3cd0d4920653
     last_write_checksum: sha1:2604b4fb8d6c94a5d51853f112bf412385d9c825
     pristine_git_object: 3f966cba3c5a72601ef053980da151833ff980f6
+  docs/GetTransactionCaptureRequest.md:
+    id: 09482bf9006c
+    last_write_checksum: sha1:50d6b3ffa8b4a9726742494fbddd49683f32f96c
+    pristine_git_object: 4e9b298653b9753ca2ee29ccf7edbd5c509e6985
+  docs/GetTransactionCaptureResponse.md:
+    id: 6fd6bb58e952
+    last_write_checksum: sha1:fafe3d1cc5c1aea70ff5d17ce628ba34803d9e4d
+    pristine_git_object: 7518109de4518213426fdf4a985f31b8d373bf41
   docs/GetTransactionRefundRequest.md:
     id: 437bbed9eeaa
     last_write_checksum: sha1:891cf197864fa82811ffb2cc0919c4d0f4082398
@@ -1238,6 +1254,14 @@ trackedFiles:
     id: f97152cb9a76
     last_write_checksum: sha1:6541e46d04ca83d20e1797b5af95fa035a4336c5
     pristine_git_object: 08a810ea8c514502621762858c2ca64b4ea7cdea
+  docs/ListTransactionCapturesRequest.md:
+    id: dfaaffcf658e
+    last_write_checksum: sha1:5b87c275e254525996f3e05c4497321a67a0ee0a
+    pristine_git_object: 0537e83e6253204e6600d383c836393f9ebcff8b
+  docs/ListTransactionCapturesResponse.md:
+    id: 58d83c4bdd39
+    last_write_checksum: sha1:ef609327b594557efe0ee3bca23f6a685625d400
+    pristine_git_object: 730ba2ef4102bbe0485c7860ec799dafd1ed7f47
   docs/ListTransactionEventsRequest.md:
     id: ee1e4edf1013
     last_write_checksum: sha1:0d031dc7981bcedc6852d71a78b652dbf6ea3053
@@ -1920,8 +1944,8 @@ trackedFiles:
     pristine_git_object: b1ddde4d4b001114a632a931420b7b77d6386df3
   docs/TransactionCaptureCreate.md:
     id: ef613c25ba2c
-    last_write_checksum: sha1:c68a436699a8b52fe40b36f488a513c190e00a0e
-    pristine_git_object: 3e2e84e45d8e5417620eca85c30a25db20ed5ec7
+    last_write_checksum: sha1:1d2ed3daec8876dcf522c76f21297b77225d2bf0
+    pristine_git_object: 978a9b3f3cfb8986e4c333c3b8be8644cb73c685
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
     last_write_checksum: sha1:8256fadbe339ccca54f428ffa784859daf2fa207
@@ -2162,6 +2186,10 @@ trackedFiles:
     id: fef1582ba23d
     last_write_checksum: sha1:f2b5328f5129941ea7ce78a233bb8a140777ceb1
     pristine_git_object: 5953e80ca07f07ae3019d188d8a27eee2bc70b86
+  docs/sdks/captures/README.md:
+    id: 7598191d8c6a
+    last_write_checksum: sha1:4851d3157402c540c9f1ceb8b5a7cb8ed9c4a0c9
+    pristine_git_object: ee7f19dd1e234eeccdcd8d8a1c16ee78bc6575e5
   docs/sdks/cardschemedefinitionssdk/README.md:
     id: 5df8fd7b1813
     last_write_checksum: sha1:ae3b65d0cd3fdcd713557de7815559b5248e3bc7
@@ -2506,6 +2534,14 @@ trackedFiles:
     id: 63b152cfb28d
     last_write_checksum: sha1:95a066bf380bb2f53a38189410e64bec4d19f2de
     pristine_git_object: 7a8650cd49d57a1a7d5d8920a642957acbfe5fe4
+  src/Capture.php:
+    id: aab100d9bb3a
+    last_write_checksum: sha1:4cf2c01d76e3dd09d38c96602011a964d9449725
+    pristine_git_object: 89e92f2cdf12357385e4edaa97ab27b1010e0c2e
+  src/CaptureCollection.php:
+    id: db7906839937
+    last_write_checksum: sha1:0a14aa7f938f83cfbec42d83f70d857a4371287a
+    pristine_git_object: 8b709f761dfa56010f6f13a55c692622976a1bbd
   src/CaptureTransactionRequest.php:
     id: a914ce9bb206
     last_write_checksum: sha1:89423748129040b0afb4d7fcd09a8b6aaed762e6
@@ -2514,6 +2550,10 @@ trackedFiles:
     id: f9f4a92c35ca
     last_write_checksum: sha1:b9c661b6a178d92c6943dcb189cf05e1745c5d00
     pristine_git_object: 552866350acdbaa2627b5773e3e360a1f47a3958
+  src/Captures.php:
+    id: 2e810b4d317e
+    last_write_checksum: sha1:33bf3397d7dfb5fbc8bcf2efdfb1ed1a7c28924e
+    pristine_git_object: a6afc4fd2407a6a23438beb55f7a97320d9d4165
   src/CardPaymentMethodCreate.php:
     id: 821d3d9cf846
     last_write_checksum: sha1:9f085b31ff3fca0f7ac0b87d1c57868748fb9d32
@@ -3266,6 +3306,14 @@ trackedFiles:
     id: 3f082d882679
     last_write_checksum: sha1:c8581a2ebdeca3e0600c59dd66d58c05fa0b022a
     pristine_git_object: 87c54a94733f1bf02a3bd2e300c2e161e6081700
+  src/GetTransactionCaptureRequest.php:
+    id: c6f993661001
+    last_write_checksum: sha1:6a4c1041877c9d1b74466037e4ca1779b60e6fbf
+    pristine_git_object: a1dd6d52362be93b3624b56104930fc10e8881a7
+  src/GetTransactionCaptureResponse.php:
+    id: fdc57584eda8
+    last_write_checksum: sha1:10052847493a638602b78fe24149faa173d1cb55
+    pristine_git_object: ffde3c9d0d657d6cb9574c6faf9c5ec152ff0713
   src/GetTransactionRefundRequest.php:
     id: 97823e6c0384
     last_write_checksum: sha1:b8537a55f03ee42c7cc968a92471fdd091967118
@@ -3638,6 +3686,14 @@ trackedFiles:
     id: e8b0cde87058
     last_write_checksum: sha1:3fb1e4aa0b1a891244a3c9e65ede93e01af2744b
     pristine_git_object: ea3178205b38f92cbd88f501347bd0c7c208cb22
+  src/ListTransactionCapturesRequest.php:
+    id: 47e3a63141eb
+    last_write_checksum: sha1:1f1dea846059b1617fc7d8b4cf90c91db05e1ebe
+    pristine_git_object: 74410857131ff2b525599a04407bffe129429bb3
+  src/ListTransactionCapturesResponse.php:
+    id: 958edeb7e535
+    last_write_checksum: sha1:0a1fd40aa467a37efbe9e9494e465fdb68709c4b
+    pristine_git_object: 8f59d479b959ef6fdf1b40e7dc315b5f177c221e
   src/ListTransactionEventsRequest.php:
     id: 4fad760b48ca
     last_write_checksum: sha1:b8f50fae86de5f77a9786ca139d5068a9b6dc1c5
@@ -4188,8 +4244,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:d0ac773e7bada3fd91c41d168b09418183d54876
-    pristine_git_object: cd515af79be6a57bba25adae948a65e089c8750f
+    last_write_checksum: sha1:a5f1d6da8c2aab48e53cb12e1494521240934ba8
+    pristine_git_object: c0c8d0f6bf476ef46633126bfef11896db3c6489
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4356,8 +4412,8 @@ trackedFiles:
     pristine_git_object: 21a7d9e559a5c2fa38a338f449b1a75a5548e686
   src/TransactionCaptureCreate.php:
     id: b0e5720e1aa2
-    last_write_checksum: sha1:796656624858747f50dbe89334a72f8d4f5b4609
-    pristine_git_object: 9b83e536dfe01fb6ea93a323f2bda63043eb7f12
+    last_write_checksum: sha1:7565f69c805ffa3b58fd597ee2fd4eb9d44adb84
+    pristine_git_object: b9f4c22472b4281ad77d4b4a0d000ca35521bdf6
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
     last_write_checksum: sha1:0cdd929e2e342e0e3c426d1851bd3c71916922f3
@@ -4416,8 +4472,8 @@ trackedFiles:
     pristine_git_object: bd086edee3a243fcc0a286bb8d2dd244e1724cba
   src/Transactions.php:
     id: fb7274f4b525
-    last_write_checksum: sha1:74c2743b9825360e5c8eab44761c76ba6dd39526
-    pristine_git_object: fae1c47a593385da6c38d726092764f8bd784fd2
+    last_write_checksum: sha1:ca8d8f4ab821dbc4d38e925464ee2d4c3b2f8a20
+    pristine_git_object: 4d56d07fd6cbbaaebd5d331dc9bf869df7b38249
   src/TransactionsRefunds.php:
     id: b5ef579db238
     last_write_checksum: sha1:25f739a09b21e7ea1177fbde4c431bab8292058e
@@ -6388,7 +6444,7 @@ examples:
           application_name: "core-api"
         header: {}
       requestBody:
-        application/json: {}
+        application/json: {"final": true}
       responses:
         "200":
           application/json: {"type": "transaction-capture", "status": "authorization_voided", "code": "service_error", "raw_response_code": "E104", "raw_response_description": "Internal error", "transaction": {"type": "transaction", "id": "7099948d-7286-47e4-aad8-b68f7eb44591", "reconciliation_id": "default", "merchant_account_id": "default", "currency": "EUR", "amount": 1299, "status": "<value>", "authorized_amount": 1299, "captured_amount": 1299, "refunded_amount": 1299, "settled_amount": 1100, "settled": true, "intent": "<value>", "pending_review": false, "gift_card_redemptions": [], "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "disputed": true, "payment_source": "<value>", "merchant_initiated": true, "is_subsequent_payment": false, "intent_outcome": "<value>", "multi_tender": true, "account_funding_transaction": true}}
@@ -8534,9 +8590,74 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  list_transaction_captures:
+    speakeasy-default-list-transaction-captures:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+      responses:
+        "200":
+          application/json: {"items": [], "limit": 20}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  get_transaction_capture:
+    speakeasy-default-get-transaction-capture:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+          capture_id: "b1e2c3d4-5678-1234-9abc-1234567890ab"
+      responses:
+        "200":
+          application/json: {"type": "capture", "id": "b1e2c3d4-5678-1234-9abc-1234567890ab", "merchant_account_id": "default", "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591", "currency": "USD", "amount": 1299, "status": "<value>", "final": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->adyenPaybybank` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->adyenPaybybank` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->adyenPaybybank` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->captures->list()`: **Added**\n* `sdk->transactions->captures->get()`: **Added**\n* `sdk->transactions->capture()`: \n  *  `request->transactionCaptureCreate` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

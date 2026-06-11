@@ -42,15 +42,37 @@ class TransactionCaptureCreate
     public ?array $cartItems = null;
 
     /**
+     * An external identifier that can be used to match the capture against your own records.
+     *
+     * @var ?string $externalIdentifier
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_identifier')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalIdentifier = null;
+
+    /**
+     * Whether this is marked as the final capture for the associated transaction. Must be `true` or omitted when multi-capture is not enabled; a value of `false` is only valid when multi-capture is available on the connection.
+     *
+     * @var ?bool $final
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('final')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $final = null;
+
+    /**
+     * @param  ?bool  $final
      * @param  ?int  $amount
      * @param  ?\Gr4vy\Airline  $airline
      * @param  ?array<\Gr4vy\CartItem>  $cartItems
+     * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(?int $amount = null, ?Airline $airline = null, ?array $cartItems = null)
+    public function __construct(?int $amount = null, ?Airline $airline = null, ?array $cartItems = null, ?string $externalIdentifier = null, ?bool $final = true)
     {
         $this->amount = $amount;
         $this->airline = $airline;
         $this->cartItems = $cartItems;
+        $this->externalIdentifier = $externalIdentifier;
+        $this->final = $final;
     }
 }

@@ -437,6 +437,11 @@ if ($response->accountUpdaterJob !== null) {
 
 * [list](docs/sdks/actions/README.md#list) - List transaction Flow rules
 
+#### [Transactions.Captures](docs/sdks/captures/README.md)
+
+* [list](docs/sdks/captures/README.md#list) - List transaction captures
+* [get](docs/sdks/captures/README.md#get) - Get transaction capture
+
 #### [Transactions.Events](docs/sdks/events/README.md)
 
 * [list](docs/sdks/events/README.md#list) - List transaction events
