@@ -225,6 +225,34 @@ class Auth
     }
 
     /**
+     * Creates a checkout session and returns an Embed token with its ID pinned.
+     *
+     * This is a convenience wrapper around getEmbedToken for the common Embed flow
+     * where every transaction should be tied to a checkout session. It uses the
+     * provided (already authenticated) SDK client to create the checkout session,
+     * then signs an Embed token that pins the resulting checkout_session_id.
+     *
+     * @param  SDK  $client  An authenticated Gr4vy SDK client.
+     * @param  non-empty-string  $privateKey  The private key to sign the JWT.
+     * @param  array<string,mixed>|null  $embedParams  Optional embed parameters.
+     * @param  ?CheckoutSessionCreate  $checkoutSession  Optional checkout session body to seed cart items, metadata, and so on.
+     * @param  string|null  $merchantAccountId  Optional merchant account ID override.
+     * @param  string  $expiresIn  The expiration time (default "+1 hour").
+     * @return string The generated embed JWT token.
+     */
+    public static function getEmbedTokenWithCheckoutSession(SDK $client, string $privateKey, ?array $embedParams = null, ?CheckoutSessionCreate $checkoutSession = null, ?string $merchantAccountId = null, string $expiresIn = '+1 hour'): string
+    {
+        $response = $client->checkoutSessions->create(checkoutSessionCreate: $checkoutSession, merchantAccountId: $merchantAccountId);
+
+        $checkoutSessionId = $response->checkoutSession?->id;
+        if (empty($checkoutSessionId)) {
+            throw new \RuntimeException('Checkout session was created without an ID.');
+        }
+
+        return self::getEmbedToken(privateKey: $privateKey, expiresIn: $expiresIn, checkoutSessionId: $checkoutSessionId, embedParams: $embedParams);
+    }
+
+    /**
      * Calculates the key ID (kid) for a given private key.
      *
      * @param  non-empty-string  $privateKey  The private key.

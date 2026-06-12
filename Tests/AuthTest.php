@@ -3,7 +3,11 @@
 declare(strict_types=1);
 
 use Gr4vy\Auth;
+use Gr4vy\CheckoutSession;
+use Gr4vy\CheckoutSessions;
+use Gr4vy\CreateCheckoutSessionResponse;
 use Gr4vy\JWTScope;
+use Gr4vy\SDK;
 use PHPUnit\Framework\TestCase;
 
 final class AuthTest extends TestCase
@@ -128,6 +132,54 @@ EOD;
         $decoded = $this->decodeJwt($token);
 
         $this->assertEquals($this->checkoutSessionId, $decoded['payload']['checkout_session_id']);
+    }
+
+    public function test_get_embed_token_with_checkout_session_pins_created_id(): void
+    {
+        $session = $this->createMock(CheckoutSession::class);
+        $session->id = $this->checkoutSessionId;
+
+        $response = $this->createMock(CreateCheckoutSessionResponse::class);
+        $response->checkoutSession = $session;
+
+        $checkoutSessions = $this->createMock(CheckoutSessions::class);
+        $checkoutSessions->expects($this->once())
+            ->method('create')
+            ->willReturn($response);
+
+        $client = $this->createMock(SDK::class);
+        $client->checkoutSessions = $checkoutSessions;
+
+        $token = Auth::getEmbedTokenWithCheckoutSession(
+            $client,
+            $this->privateKey,
+            $this->embedParams
+        );
+
+        $decoded = $this->decodeJwt($token);
+
+        $this->assertEquals(['embed'], $decoded['payload']['scopes']);
+        $this->assertEquals($this->checkoutSessionId, $decoded['payload']['checkout_session_id']);
+        $this->assertEquals($this->embedParams, $decoded['payload']['embed']);
+    }
+
+    public function test_get_embed_token_with_checkout_session_throws_on_missing_id(): void
+    {
+        $response = $this->createMock(CreateCheckoutSessionResponse::class);
+        $response->checkoutSession = null;
+
+        $checkoutSessions = $this->createMock(CheckoutSessions::class);
+        $checkoutSessions->expects($this->once())
+            ->method('create')
+            ->willReturn($response);
+
+        $client = $this->createMock(SDK::class);
+        $client->checkoutSessions = $checkoutSessions;
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessageMatches('/without an ID/');
+
+        Auth::getEmbedTokenWithCheckoutSession($client, $this->privateKey);
     }
 
     public function test_update_token_resigns_with_new_expiration(): void
