@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Gr4vy\Tests\Flows;
 
+use Gr4vy\CaptureCollection;
 use Gr4vy\CaptureTransactionRequest;
 use Gr4vy\Tests\Utils\CheckoutFields;
 use Gr4vy\Tests\Utils\MerchantTestCase;
@@ -74,6 +75,36 @@ final class TransactionLifecycleTest extends MerchantTestCase
             description: 'transaction voided',
         );
         $this->assertStringContainsString('void', $voided->status);
+    }
+
+    #[Test]
+    public function capture_list_and_get(): void
+    {
+        $sdk = $this->sdk();
+
+        $txn = CheckoutFields::authorize($sdk, amount: 4500, currency: 'USD');
+        $this->assertSame('authorization_succeeded', $txn->status);
+
+        $sdk->transactions->capture(new CaptureTransactionRequest(
+            transactionId: $txn->id,
+            transactionCaptureCreate: new TransactionCaptureCreate(amount: 4500),
+        ));
+
+        // Captures are eventually consistent; poll until one appears.
+        $collection = Poll::until(
+            fn () => $sdk->transactions->captures->list($txn->id)->captureCollection,
+            fn (?CaptureCollection $c) => $c !== null && count($c->items) >= 1,
+            description: 'capture to appear',
+        );
+        $this->assertNotNull($collection);
+        $this->assertGreaterThanOrEqual(1, count($collection->items));
+
+        $captureId = $collection->items[0]->id;
+        $this->assertNotEmpty($captureId);
+
+        $fetched = $sdk->transactions->captures->get($txn->id, $captureId)->capture;
+        $this->assertNotNull($fetched);
+        $this->assertSame($captureId, $fetched->id);
     }
 
     #[Test]
