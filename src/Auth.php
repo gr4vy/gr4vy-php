@@ -245,6 +245,9 @@ class Auth
         $response = $client->checkoutSessions->create(checkoutSessionCreate: $checkoutSession, merchantAccountId: $merchantAccountId);
 
         $checkoutSessionId = $response->checkoutSession?->id;
+        if (empty($checkoutSessionId)) {
+            throw new \RuntimeException('Checkout session was created without an ID.');
+        }
 
         return self::getEmbedToken(privateKey: $privateKey, expiresIn: $expiresIn, checkoutSessionId: $checkoutSessionId, embedParams: $embedParams);
     }

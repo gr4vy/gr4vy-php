@@ -163,6 +163,25 @@ EOD;
         $this->assertEquals($this->embedParams, $decoded['payload']['embed']);
     }
 
+    public function test_get_embed_token_with_checkout_session_throws_on_missing_id(): void
+    {
+        $response = $this->createMock(CreateCheckoutSessionResponse::class);
+        $response->checkoutSession = null;
+
+        $checkoutSessions = $this->createMock(CheckoutSessions::class);
+        $checkoutSessions->expects($this->once())
+            ->method('create')
+            ->willReturn($response);
+
+        $client = $this->createMock(SDK::class);
+        $client->checkoutSessions = $checkoutSessions;
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessageMatches('/without an ID/');
+
+        Auth::getEmbedTokenWithCheckoutSession($client, $this->privateKey);
+    }
+
     public function test_update_token_resigns_with_new_expiration(): void
     {
         $originalToken = Auth::getToken($this->privateKey, [JWTScope::READ_ALL], '+1 minute');
