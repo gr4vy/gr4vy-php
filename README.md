@@ -151,14 +151,14 @@ For Embed, it is recommended to attach a checkout session to every transaction. 
 returns an Embed token with the resulting `checkout_session_id` already pinned, in a single call.
 
 ```php
-use Gr4vy;
 use Gr4vy\Auth;
+use Gr4vy\SDK;
 
 // Loaded the key from a file, env variable,
 // or anywhere else
 $privateKey = "...";
 
-$sdk = Gr4vy\SDK::builder()
+$sdk = SDK::builder()
     ->setId('example')
     ->setServer('sandbox')
     ->setSecuritySource(Auth::withToken($privateKey))
