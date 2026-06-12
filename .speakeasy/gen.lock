@@ -3,17 +3,17 @@ id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
   docChecksum: 79fbe33195250dda7fb5a1162082934a
   docVersion: 1.0.0
-  speakeasyVersion: 1.777.1
-  generationVersion: 2.903.2
-  releaseVersion: 1.5.93
-  configChecksum: d1cc61b68431d39066a1dd3ad364cd48
+  speakeasyVersion: 1.778.0
+  generationVersion: 2.904.2
+  releaseVersion: 1.5.94
+  configChecksum: 687de5d0b9c74e1b0ccfe2c076d7cc22
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 824a8640-ddf4-469d-9006-6f1b6d029c79
-  pristine_commit_hash: 6a132ff2ec4fd8e02abacd64ac52674caacb8c34
-  pristine_tree_hash: b3b69ca2c0c9cef71a861e5a6a342660f7664935
+  generation_id: 4c84945f-8126-4d4a-94b6-204da9faf12f
+  pristine_commit_hash: 5923323ed68abae7ca3c2ddb8a95d9c963a0fbcd
+  pristine_tree_hash: 1e3b718a13f8e89e284d0c140177951ff244f50b
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:423880fb6e8fb082c3cdb3719c06b3d763bac1ef
-    pristine_git_object: 03ce83c8bf0d041aa7f770b458da07136c6acd26
+    last_write_checksum: sha1:afecb0f5b790e638e6fe0b6853cfe2616806589b
+    pristine_git_object: 2c169264a3d964bf7b53e4249c4786efb383226f
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -4244,8 +4244,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:98ad46c44ecea3d58e71301284e7c116615b1e1a
-    pristine_git_object: 945f9d7ebaca3e7f9845619d9ca9f14c4f71234e
+    last_write_checksum: sha1:3a82cbfa7d6c09e7042a73118a2386c7da3b1ab6
+    pristine_git_object: 9fdb487874d67479e7f57ac0bb37d95425c8be06
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
