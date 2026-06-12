@@ -144,6 +144,41 @@ $token = $token = Auth::getEmbedToken(
 > **Note:** This will only create a token once. Use `Auth::withToken` with our SDK to dynamically generate a token
 > for every request.
 
+### Attaching a checkout session automatically
+
+For Embed, it is recommended to attach a checkout session to every transaction. The
+`Auth::getEmbedTokenWithCheckoutSession` helper creates a checkout session using your SDK client and
+returns an Embed token with the resulting `checkout_session_id` already pinned, in a single call.
+
+```php
+use Gr4vy;
+use Gr4vy\Auth;
+
+// Loaded the key from a file, env variable,
+// or anywhere else
+$privateKey = "...";
+
+$sdk = Gr4vy\SDK::builder()
+    ->setId('example')
+    ->setServer('sandbox')
+    ->setSecuritySource(Auth::withToken($privateKey))
+    ->setMerchantAccountId('default')
+    ->build();
+
+$token = Auth::getEmbedTokenWithCheckoutSession(
+    client: $sdk,
+    privateKey: $privateKey,
+    embedParams: [
+        "amount" => 1299,
+        "currency" => "AUD",
+    ],
+);
+```
+
+You can optionally pass a `checkoutSession` body (a `CheckoutSessionCreate`) to seed the session
+(for example with cart items or metadata), and a `merchantAccountId` to override the client's
+configured merchant account.
+
 ## Merchant account ID selection
 
 Depending on the key used, you might need to explicitly define a merchant account ID to use. In our API, 
