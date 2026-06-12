@@ -126,14 +126,14 @@ $sdk = Gr4vy\SDK::builder()
     ->setMerchantAccountId('default')
     ->build();
 
-$response = $sdk->checkout_sessions.create();
+$response = $sdk->checkoutSessions->create();
 
 $embedParams = [
     "amount" => 1299,
     "currency" => "AUD",
 ];
 
-$token = $token = Auth::getEmbedToken(
+$token = Auth::getEmbedToken(
     privateKey: $privateKey,
     expiresIn: '+1 hour',
     checkoutSessionId: $response->checkoutSession->id,
