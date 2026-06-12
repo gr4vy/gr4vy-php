@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 0ec5608e48bcf9d7213ed79cc33a12bc
+  docChecksum: 79fbe33195250dda7fb5a1162082934a
   docVersion: 1.0.0
-  speakeasyVersion: 1.776.0
-  generationVersion: 2.900.1
-  releaseVersion: 1.5.92
-  configChecksum: 96ac42a229f7b0b8f5dcb35cd2ed5ce6
+  speakeasyVersion: 1.777.1
+  generationVersion: 2.903.2
+  releaseVersion: 1.5.93
+  configChecksum: d1cc61b68431d39066a1dd3ad364cd48
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: fe4dae2d-b837-4345-8ddc-124c574660f3
-  pristine_commit_hash: 3cc016dcff96a0baab7366e954fb6349cf254883
-  pristine_tree_hash: 1977ba7d92982922a523d9fccd720c16cccb328d
+  generation_id: 824a8640-ddf4-469d-9006-6f1b6d029c79
+  pristine_commit_hash: 6a132ff2ec4fd8e02abacd64ac52674caacb8c34
+  pristine_tree_hash: b3b69ca2c0c9cef71a861e5a6a342660f7664935
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:afecb0f5b790e638e6fe0b6853cfe2616806589b
-    pristine_git_object: 2c169264a3d964bf7b53e4249c4786efb383226f
+    last_write_checksum: sha1:423880fb6e8fb082c3cdb3719c06b3d763bac1ef
+    pristine_git_object: 03ce83c8bf0d041aa7f770b458da07136c6acd26
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -1388,8 +1388,8 @@ trackedFiles:
     pristine_git_object: 0165ed5c5ab95484ccc107b709ea844843c82717
   docs/NuveiPSEOptions.md:
     id: 5dceea84fad3
-    last_write_checksum: sha1:99855b22cff5f9f3a2a387ef5f17692912526995
-    pristine_git_object: 727f9442a4c102017248ea1c28dfd7ef3b188ce8
+    last_write_checksum: sha1:ac03e8ec7a648cae182393c8c8f96548dd0198a0
+    pristine_git_object: c311d3af84037f4dd554cb4629990241c3a7870a
   docs/OxxoOptions.md:
     id: 9f3d700d0c0a
     last_write_checksum: sha1:1cf0ed8df372b9762c82eb855c5a9397c4d340c0
@@ -3824,8 +3824,8 @@ trackedFiles:
     pristine_git_object: 7789de0ca3fbdc3e80d052d3c9b2c0da7abd2266
   src/NuveiPSEOptions.php:
     id: 2c7d086e171f
-    last_write_checksum: sha1:37ef00e7e95810ab5d69cca76c1cfc9e66decbb9
-    pristine_git_object: fbdbff9d5be0c03516cd9072d7f08e47f88ad2d8
+    last_write_checksum: sha1:43ffd0aff929df92d821c86c90ae34637d4a5dbe
+    pristine_git_object: d4177eb2a7874304d134cf17202e1d50477f3096
   src/OxxoOptions.php:
     id: f1186dccb941
     last_write_checksum: sha1:144fff562d7966538584f44c90db51d48cf4af9d
@@ -4244,8 +4244,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:a5f1d6da8c2aab48e53cb12e1494521240934ba8
-    pristine_git_object: c0c8d0f6bf476ef46633126bfef11896db3c6489
+    last_write_checksum: sha1:98ad46c44ecea3d58e71301284e7c116615b1e1a
+    pristine_git_object: 945f9d7ebaca3e7f9845619d9ca9f14c4f71234e
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8657,7 +8657,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->captures->list()`: **Added**\n* `sdk->transactions->captures->get()`: **Added**\n* `sdk->transactions->capture()`: \n  *  `request->transactionCaptureCreate` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

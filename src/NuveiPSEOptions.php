@@ -21,7 +21,7 @@ class NuveiPSEOptions
     public ?string $userType = null;
 
     /**
-     * Customer’s document type
+     * Customer's document type
      *
      * @var ?string $userFisNumber
      */
@@ -30,7 +30,7 @@ class NuveiPSEOptions
     public ?string $userFisNumber = null;
 
     /**
-     * Customer’s document number
+     * Customer's document number
      *
      * @var ?string $fiscalNumber
      */
