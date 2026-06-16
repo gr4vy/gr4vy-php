@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 9e825724ca82e4728eadb1a7f716a2e2
+  docChecksum: d6b5d16c513595b7040428b95f0cacd6
   docVersion: 1.0.0
-  speakeasyVersion: 1.778.0
-  generationVersion: 2.904.2
-  releaseVersion: 1.5.95
-  configChecksum: c4fc1f03518eab4778c6c916fcb3e2da
+  speakeasyVersion: 1.780.0
+  generationVersion: 2.906.0
+  releaseVersion: 1.5.96
+  configChecksum: 7ea5a76b2a62770daf5ef42630ccc5a7
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 4c2bb494-0e4a-4ea7-ad6a-1d33d1db0432
-  pristine_commit_hash: f7202eeac141a1a3d1bf499bbb6686d34a62713d
-  pristine_tree_hash: 1bac0c02a8b7d847eea76dab2453808269e9a731
+  generation_id: d0e7e174-b724-4bf0-b735-c7e39f8fdb2b
+  pristine_commit_hash: d682ea020e83ecfcece14d104c688ff341ab3744
+  pristine_tree_hash: c0f221f70c0e070afa0d0a6c67780f617a087aad
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -30,7 +30,7 @@ features:
     nullables: 1.0.1
     pagination: 0.1.5
     responseFormat: 0.1.0
-    retries: 0.1.1
+    retries: 0.1.2
     serverIDs: 2.81.1
     unions: 0.1.8
 trackedFiles:
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:423880fb6e8fb082c3cdb3719c06b3d763bac1ef
-    pristine_git_object: 03ce83c8bf0d041aa7f770b458da07136c6acd26
+    last_write_checksum: sha1:afecb0f5b790e638e6fe0b6853cfe2616806589b
+    pristine_git_object: 2c169264a3d964bf7b53e4249c4786efb383226f
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -104,8 +104,8 @@ trackedFiles:
     pristine_git_object: 1c2385a6b549813ddd7f781b3ad4f6632a50653e
   docs/AdyenCardOptions.md:
     id: 931e11923e1e
-    last_write_checksum: sha1:b2cc0fbec2e42be88a3d77f449a17fe64751fce5
-    pristine_git_object: a4b999604cefb035d1d5f57728a68705211dee5d
+    last_write_checksum: sha1:75c6a46e41e74199013450e2fcde31ac294bceea
+    pristine_git_object: 47680ee21e07adadf6c38bbc5eee3b24ab145caa
   docs/AdyenOptions.md:
     id: 2e5ffd7c96fa
     last_write_checksum: sha1:dd6f58f22540272b0810ad973425a86b6b698f68
@@ -2380,8 +2380,8 @@ trackedFiles:
     pristine_git_object: c8339e62b3f07c230cc66c9fbad368ce08251dad
   src/AdyenCardOptions.php:
     id: 3c25d6f61eb6
-    last_write_checksum: sha1:cb32e354655089920afbc8e4254052a0ee08c7bf
-    pristine_git_object: f5eb4ef1d6ff106de3682cf28d400f8efa844c5c
+    last_write_checksum: sha1:bc233a7a0a2ebed569074dc52e3e6edc54f02d5d
+    pristine_git_object: b35e8eb2d4fdf576d80f0c361f56c2a6db356cc8
   src/AdyenOptions.php:
     id: baf3b789f974
     last_write_checksum: sha1:87b7561284d8aa4d6e674a0acd508ece34856091
@@ -4244,8 +4244,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:2b3a85e92fbc3191f0d70c098ec515104bd89e6f
-    pristine_git_object: 36906a39aee5fe5d708f477543d59e6405db0e00
+    last_write_checksum: sha1:90858f972e08fbce3ccfa772b06d14aa690a75dc
+    pristine_git_object: 32b29a2d68029ff1598c2afd6f06a7af0996b59b
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4688,8 +4688,8 @@ trackedFiles:
     pristine_git_object: 8b7f8f20e1f36908b98acb3d4cd77f3cda9d8a24
   src/Utils/Retry/RetryUtils.php:
     id: 28597380e832
-    last_write_checksum: sha1:99654027726a8fa24af6c4a42664b23558dcbae0
-    pristine_git_object: bae4cd131a779c89847a03625c3f2afb8d02551b
+    last_write_checksum: sha1:095d7203b00162ac2720c3c1fbb68e5e56f351fa
+    pristine_git_object: 2e1d5a6c95b61591c3cc582af834ee8725d349ed
   src/Utils/Retry/TemporaryError.php:
     id: d58c3851b91f
     last_write_checksum: sha1:fa676b64516f0800820c0ee8e500b4e8778fa440
@@ -8657,7 +8657,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->adyenCashappafterpay` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->adyenCashappafterpay` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->adyenCashappafterpay` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->adyenCard` **Changed**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->adyenCard` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->adyenCard` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
