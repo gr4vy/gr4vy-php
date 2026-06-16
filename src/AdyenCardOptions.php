@@ -68,15 +68,68 @@ class AdyenCardOptions
     public ?AdyenSplitsOptions $splits = null;
 
     /**
+     * Passes `merchantRiskIndicator` data to Adyen.
+     *
+     * @var ?array<string, mixed> $merchantRiskIndicator
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('merchantRiskIndicator')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $merchantRiskIndicator = null;
+
+    /**
+     * Passes `accountInfo` data to Adyen.
+     *
+     * @var ?array<string, mixed> $accountInfo
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('accountInfo')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $accountInfo = null;
+
+    /**
+     * Passes `riskData.customFields` to Adyen.
+     *
+     * @var ?array<string, mixed> $riskData
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('riskData')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, mixed>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $riskData = null;
+
+    /**
+     * Passes `threeDS2RequestData.threeDSRequestorChallengeInd` to Adyen.
+     *
+     * @var ?string $threeDSRequestorChallengeInd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('threeDSRequestorChallengeInd')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $threeDSRequestorChallengeInd = null;
+
+    /**
+     * Passes `authenticationData.attemptAuthentication` to Adyen.
+     *
+     * @var ?string $attemptAuthentication
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attemptAuthentication')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $attemptAuthentication = null;
+
+    /**
      * @param  ?bool  $autoRescue
      * @param  ?int  $maxDaysToRescue
      * @param  ?array<string, string>  $additionalData
      * @param  ?string  $autoRescueScenario
      * @param  ?string  $windowOrigin
      * @param  ?\Gr4vy\AdyenSplitsOptions  $splits
+     * @param  ?array<string, mixed>  $merchantRiskIndicator
+     * @param  ?array<string, mixed>  $accountInfo
+     * @param  ?array<string, mixed>  $riskData
+     * @param  ?string  $threeDSRequestorChallengeInd
+     * @param  ?string  $attemptAuthentication
      * @phpstan-pure
      */
-    public function __construct(?bool $autoRescue = null, ?int $maxDaysToRescue = null, ?array $additionalData = null, ?string $autoRescueScenario = null, ?string $windowOrigin = null, ?AdyenSplitsOptions $splits = null)
+    public function __construct(?bool $autoRescue = null, ?int $maxDaysToRescue = null, ?array $additionalData = null, ?string $autoRescueScenario = null, ?string $windowOrigin = null, ?AdyenSplitsOptions $splits = null, ?array $merchantRiskIndicator = null, ?array $accountInfo = null, ?array $riskData = null, ?string $threeDSRequestorChallengeInd = null, ?string $attemptAuthentication = null)
     {
         $this->autoRescue = $autoRescue;
         $this->maxDaysToRescue = $maxDaysToRescue;
@@ -84,5 +137,10 @@ class AdyenCardOptions
         $this->autoRescueScenario = $autoRescueScenario;
         $this->windowOrigin = $windowOrigin;
         $this->splits = $splits;
+        $this->merchantRiskIndicator = $merchantRiskIndicator;
+        $this->accountInfo = $accountInfo;
+        $this->riskData = $riskData;
+        $this->threeDSRequestorChallengeInd = $threeDSRequestorChallengeInd;
+        $this->attemptAuthentication = $attemptAuthentication;
     }
 }
