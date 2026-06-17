@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: d6b5d16c513595b7040428b95f0cacd6
+  docChecksum: 9f127ba3b783058889aeab1fb4189d07
   docVersion: 1.0.0
-  speakeasyVersion: 1.780.0
-  generationVersion: 2.906.0
-  releaseVersion: 1.5.96
-  configChecksum: 7ea5a76b2a62770daf5ef42630ccc5a7
+  speakeasyVersion: 1.781.0
+  generationVersion: 2.907.0
+  releaseVersion: 1.5.97
+  configChecksum: c80b90c7bfd13281e456b86a78bdbd0e
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: d0e7e174-b724-4bf0-b735-c7e39f8fdb2b
-  pristine_commit_hash: d682ea020e83ecfcece14d104c688ff341ab3744
-  pristine_tree_hash: c0f221f70c0e070afa0d0a6c67780f617a087aad
+  generation_id: 0f933534-5230-4d54-ae59-b6d6c845db76
+  pristine_commit_hash: 1a2e79c44fd5946d9fe9821531f054134da197d8
+  pristine_tree_hash: e892cedb793769ae7eeeb77759e96ba5270d7157
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -4244,8 +4244,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:90858f972e08fbce3ccfa772b06d14aa690a75dc
-    pristine_git_object: 32b29a2d68029ff1598c2afd6f06a7af0996b59b
+    last_write_checksum: sha1:38af1f61d288b38204417a27b9089b6480b910b5
+    pristine_git_object: 1e4c27b474def1ff176c9571df2316bdd17b98c0
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8657,7 +8657,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->adyenCard` **Changed**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->adyenCard` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->adyenCard` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
