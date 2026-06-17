@@ -12,6 +12,16 @@ namespace Gr4vy;
 class PaypalOptions
 {
     /**
+     * Configuration for server-side callbacks during the PayPal checkout flow.
+     *
+     * @var ?\Gr4vy\PaypalOrderUpdateCallbackConfig $orderUpdateCallbackConfig
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('order_update_callback_config')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\PaypalOrderUpdateCallbackConfig|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?PaypalOrderUpdateCallbackConfig $orderUpdateCallbackConfig = null;
+
+    /**
      * Additional Set Transaction Context Values (STC) to be sent to PayPal as part of the transaction.
      *
      * @var ?array<array<string, string>> $additionalData
@@ -32,12 +42,14 @@ class PaypalOptions
     public ?PaypalShippingOptions $shipping = null;
 
     /**
+     * @param  ?\Gr4vy\PaypalOrderUpdateCallbackConfig  $orderUpdateCallbackConfig
      * @param  ?array<array<string, string>>  $additionalData
      * @param  ?\Gr4vy\PaypalShippingOptions  $shipping
      * @phpstan-pure
      */
-    public function __construct(?array $additionalData = null, ?PaypalShippingOptions $shipping = null)
+    public function __construct(?PaypalOrderUpdateCallbackConfig $orderUpdateCallbackConfig = null, ?array $additionalData = null, ?PaypalShippingOptions $shipping = null)
     {
+        $this->orderUpdateCallbackConfig = $orderUpdateCallbackConfig;
         $this->additionalData = $additionalData;
         $this->shipping = $shipping;
     }
