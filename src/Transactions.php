@@ -1043,6 +1043,7 @@ class Transactions
                             merchantInitiated: $request != null ? $request->merchantInitiated : null,
                             used3ds: $request != null ? $request->used3ds : null,
                             disputed: $request != null ? $request->disputed : null,
+                            reauthorizedFromTransactionId: $request != null ? $request->reauthorizedFromTransactionId : null,
                             buyerSearch: $request != null ? $request->buyerSearch : null,
                             merchantAccountId: $request != null ? $request->merchantAccountId : null,
                         ),
