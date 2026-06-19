@@ -42,15 +42,70 @@ class PaypalOptions
     public ?PaypalShippingOptions $shipping = null;
 
     /**
+     * Customizes the PayPal Checkout button text. Use `PAY_NOW` to show a pay now button, or `CONTINUE` to show a continue button for deferred payments.
+     *
+     * @var ?string $userAction
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_action')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $userAction = null;
+
+    /**
+     * Controls the shipping address display in the PayPal Checkout flow. Use `GET_FROM_FILE` to use the shipping address from the PayPal account, `NO_SHIPPING` to hide shipping address fields, or `SET_PROVIDED_ADDRESS` to use the shipping address provided in the request.
+     *
+     * @var ?string $shippingPreference
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('shipping_preference')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $shippingPreference = null;
+
+    /**
+     * The merchant brand name that appears in the PayPal Checkout flow. Maximum 127 characters.
+     *
+     * @var ?string $brandName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('brand_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $brandName = null;
+
+    /**
+     * The type of landing page to display on the PayPal Checkout. Use `LOGIN` to show the PayPal login page, `GUEST_CHECKOUT` to show the guest checkout page, or `NO_PREFERENCE` to let PayPal decide.
+     *
+     * @var ?string $landingPage
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('landing_page')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $landingPage = null;
+
+    /**
+     * The BCP 47 locale used to localize the PayPal Checkout page. For example, `en-US` or `fr-FR`.
+     *
+     * @var ?string $locale
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('locale')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $locale = null;
+
+    /**
      * @param  ?\Gr4vy\PaypalOrderUpdateCallbackConfig  $orderUpdateCallbackConfig
      * @param  ?array<array<string, string>>  $additionalData
      * @param  ?\Gr4vy\PaypalShippingOptions  $shipping
+     * @param  ?string  $userAction
+     * @param  ?string  $shippingPreference
+     * @param  ?string  $brandName
+     * @param  ?string  $landingPage
+     * @param  ?string  $locale
      * @phpstan-pure
      */
-    public function __construct(?PaypalOrderUpdateCallbackConfig $orderUpdateCallbackConfig = null, ?array $additionalData = null, ?PaypalShippingOptions $shipping = null)
+    public function __construct(?PaypalOrderUpdateCallbackConfig $orderUpdateCallbackConfig = null, ?array $additionalData = null, ?PaypalShippingOptions $shipping = null, ?string $userAction = null, ?string $shippingPreference = null, ?string $brandName = null, ?string $landingPage = null, ?string $locale = null)
     {
         $this->orderUpdateCallbackConfig = $orderUpdateCallbackConfig;
         $this->additionalData = $additionalData;
         $this->shipping = $shipping;
+        $this->userAction = $userAction;
+        $this->shippingPreference = $shippingPreference;
+        $this->brandName = $brandName;
+        $this->landingPage = $landingPage;
+        $this->locale = $locale;
     }
 }
