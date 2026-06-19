@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 9e32b90ab0f15474ed2662ef4dd8c7e6
+  docChecksum: b8208c3d301fa77cc83a9e1557e551ea
   docVersion: 1.0.0
   speakeasyVersion: 1.784.0
   generationVersion: 2.911.0
-  releaseVersion: 1.5.101
-  configChecksum: bdd15fb4a17fe7608f7e7f7bacbd0606
+  releaseVersion: 1.5.102
+  configChecksum: 294335a5ddbba0e060964062034b3947
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: d15a8e49-8392-4515-9f51-15ce5f265ce4
-  pristine_commit_hash: 6c980196dc435d11a48a43719a42e7092adbc1cd
-  pristine_tree_hash: 47fe734b2e42b3ac93b06e38ea4748338000aa66
+  generation_id: 51f00cb2-6982-4b27-a749-daf186b4b64b
+  pristine_commit_hash: bee129854c2f14ac72f3c1ecadc53196b85f7bf0
+  pristine_tree_hash: 8664649dd5332a37638f40ca9276384bde8a4d1d
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:afecb0f5b790e638e6fe0b6853cfe2616806589b
-    pristine_git_object: 2c169264a3d964bf7b53e4249c4786efb383226f
+    last_write_checksum: sha1:0b3234d0c9581af31019443104fae273fb5a6012
+    pristine_git_object: 1d8b33ba16b0f73af5d9b014960ca3cb797a47cc
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -1952,8 +1952,8 @@ trackedFiles:
     pristine_git_object: 978a9b3f3cfb8986e4c333c3b8be8644cb73c685
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:347801f6af542707dbe5566a3765ed4bf5484aa4
-    pristine_git_object: daf513d78111980fb0848247db158b10611e9ba7
+    last_write_checksum: sha1:f89d9486d6883257b7aab8bad1cdc282df49e011
+    pristine_git_object: 9a54565225f8eaf59ea40a3aead625090a2901f5
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:3575250c5732b734aeb1ddc7d2048a98b7569c47
@@ -4252,8 +4252,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:0b3c278edbf24ff872f4291200cac0d2946673e6
-    pristine_git_object: a9479629bbcac8103fc1e77b2db3a41b813fee2c
+    last_write_checksum: sha1:196ab39362a1da294b83144acd6785297cdee310
+    pristine_git_object: 3ffb09ebd185340983989a4fcf3a9199b926f573
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4424,8 +4424,8 @@ trackedFiles:
     pristine_git_object: b9f4c22472b4281ad77d4b4a0d000ca35521bdf6
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:c1f7c7d2a22267087b506bfc075b8c360e4edeee
-    pristine_git_object: c23c657cf17ac42f3a0faa2b6ebb4b8fb6cea4d7
+    last_write_checksum: sha1:dc0f412a4410e74c96a1eadbc82685b8c06629db
+    pristine_git_object: c1aec4da6c75f0438558031e03594243999281b9
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:baafab6c743b037318d7a1a7cc1a86f493f43a0e
@@ -8665,7 +8665,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->stripeOnelink` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->stripeOnelink` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->stripeOnelink` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->stripeStripe` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->stripeStripe` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->stripeStripe` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
