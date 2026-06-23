@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: b8208c3d301fa77cc83a9e1557e551ea
+  docChecksum: 30fa48796544a7b52e90527ff2f0f808
   docVersion: 1.0.0
-  speakeasyVersion: 1.784.0
-  generationVersion: 2.911.0
-  releaseVersion: 1.5.102
-  configChecksum: 294335a5ddbba0e060964062034b3947
+  speakeasyVersion: 1.784.1
+  generationVersion: 2.911.3
+  releaseVersion: 1.5.103
+  configChecksum: a9f996ce393e193b8d36d4a373b198f3
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 51f00cb2-6982-4b27-a749-daf186b4b64b
-  pristine_commit_hash: bee129854c2f14ac72f3c1ecadc53196b85f7bf0
-  pristine_tree_hash: 8664649dd5332a37638f40ca9276384bde8a4d1d
+  generation_id: 9b8465f4-775b-4d75-ad5c-f8e16a63650a
+  pristine_commit_hash: a0fe0c4a71adfbd39a2ec18c59f1d42be8c0ceb3
+  pristine_tree_hash: bb2e1e247808c9dc9b9ef9e1d5920709a5efd32e
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:0b3234d0c9581af31019443104fae273fb5a6012
-    pristine_git_object: 1d8b33ba16b0f73af5d9b014960ca3cb797a47cc
+    last_write_checksum: sha1:afecb0f5b790e638e6fe0b6853cfe2616806589b
+    pristine_git_object: 2c169264a3d964bf7b53e4249c4786efb383226f
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -1304,12 +1304,12 @@ trackedFiles:
     pristine_git_object: 77f7052dd456ac2f5431e6c4ce0ea03bedb8d095
   docs/MerchantAccount.md:
     id: adf45086084e
-    last_write_checksum: sha1:eb363d337d899c437ff1e711d1a7c887a0964893
-    pristine_git_object: a5bd3b66c88c2d2eab950b5fe6d2e4083d444b4f
+    last_write_checksum: sha1:05c261ca1cac7a4e2bb44e50259fe7e70c09d701
+    pristine_git_object: 8d30168a40e0c7a8603e450cdda301088e27ad35
   docs/MerchantAccountCreate.md:
     id: ff87c07ae1ea
-    last_write_checksum: sha1:86a922df159c95785eaccc2f638ce26d30731d2e
-    pristine_git_object: b420ef0d914809b64a6875762362b127aeb34825
+    last_write_checksum: sha1:72d354fc874a1c56c8459fa57c27af05307181a1
+    pristine_git_object: cc34d41f7848e3efceb9a567f4727021eac30d80
   docs/MerchantAccountThreeDSConfiguration.md:
     id: 6ffe51e31427
     last_write_checksum: sha1:1fea7acb4c0eb691c16881220c9a56a1c9222027
@@ -1328,8 +1328,8 @@ trackedFiles:
     pristine_git_object: 461dfca2ad3292525a5f1b44991227d51e894633
   docs/MerchantAccountUpdate.md:
     id: fa847253338a
-    last_write_checksum: sha1:275ae2b04aa5504b5b81cf14c84c784c0acfb294
-    pristine_git_object: 6c0d0512cd2635de5344f825eaefb399e05ccff0
+    last_write_checksum: sha1:e7406608e583f794d6c571c1fbb7d8c9b71b2847
+    pristine_git_object: 1845cab3c768539638975dabe1b0a4d6be3100a6
   docs/MerchantAccounts.md:
     id: 8d22a6c8da0c
     last_write_checksum: sha1:da4984ff5f99256e4b7b7d09625946e8b238e5b5
@@ -1828,8 +1828,8 @@ trackedFiles:
     pristine_git_object: 66b7e042b7d3ea286507e6e9a0c6d2f31a85c928
   docs/StripeCardOptions.md:
     id: 5ecc51b39d38
-    last_write_checksum: sha1:35bdd88f9159643342630c331c7381992aa085d0
-    pristine_git_object: 5885db7a658a1b64b8feabe42813a4b25bea1a58
+    last_write_checksum: sha1:4fe087c41c150539905918482dffcc172e9fd985
+    pristine_git_object: 1645f1c571815b3c5be0e8f93df062f39407c2a9
   docs/StripeConnectOptions.md:
     id: 1382ac8d7860
     last_write_checksum: sha1:196c86240071b71cb230f19dfb5fd3aec0ccca18
@@ -3736,12 +3736,12 @@ trackedFiles:
     pristine_git_object: ad3b5312dffa2f6a3b53687888a219db6dc9fb6e
   src/MerchantAccount.php:
     id: 532fc8c26448
-    last_write_checksum: sha1:33ab9684410ddf79b6f172e8f4e3c60dc58cbce1
-    pristine_git_object: 234bdc02a5be3b2d8b60bc9628734e79353d7ade
+    last_write_checksum: sha1:727e1792d50fa6beb39dda55612a4ef26e607783
+    pristine_git_object: e98d774d94df682e663ba7cad7efda72ec900b3e
   src/MerchantAccountCreate.php:
     id: 6c03209a17ba
-    last_write_checksum: sha1:fd8e80bdced3e76c8962ae99d6e6fffe267e6a01
-    pristine_git_object: 13fe659d8f83b153a80675440399f91897654a65
+    last_write_checksum: sha1:b41f7dbea66aa8d14439edd3f2b67eeefac81b05
+    pristine_git_object: 652894f885f9d949a1b9fd7550f4a70d2d448b38
   src/MerchantAccountThreeDSConfiguration.php:
     id: cb00381d8884
     last_write_checksum: sha1:391c04ba0045e32025e4422ba8fc58612bd0edde
@@ -3760,8 +3760,8 @@ trackedFiles:
     pristine_git_object: 2c44b026cbac9d8749f2878cefea3ed6a0c1319d
   src/MerchantAccountUpdate.php:
     id: 1610e568c790
-    last_write_checksum: sha1:551512404ce398553a3b74d166d96c69221f94fa
-    pristine_git_object: be8bd40298c7029f568bf1e753a93b696fb494cd
+    last_write_checksum: sha1:c61ed67728a07fbc0fd1d4225dc6bb642cc77d00
+    pristine_git_object: 2b5fc6ffc80133a33d8c2c028045de423e8ac099
   src/MerchantAccounts.php:
     id: c5489acdd20e
     last_write_checksum: sha1:b5e67d6153817717e2e5195836ab10df735a1321
@@ -4252,8 +4252,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:196ab39362a1da294b83144acd6785297cdee310
-    pristine_git_object: 3ffb09ebd185340983989a4fcf3a9199b926f573
+    last_write_checksum: sha1:10f53763399bb88f5110075768b1e3c0e7008a8a
+    pristine_git_object: 8623e78c2493618a6ea01a1b95c98b3016a9a794
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4300,8 +4300,8 @@ trackedFiles:
     pristine_git_object: 3ed768f5667ad6762a1c7017fb8fe7a2b4509781
   src/StripeCardOptions.php:
     id: 2b3c2e60d900
-    last_write_checksum: sha1:b925d73a7cf303bc35b54c2e1354e732b40babbb
-    pristine_git_object: 792719f04d33c52f14701350932e6ba6f3d52e19
+    last_write_checksum: sha1:2a55c8d73161deba7e140ec89f7ad99f194ed159
+    pristine_git_object: 7d94203e280ea3498550e6550f18e903cbebb223
   src/StripeConnectOptions.php:
     id: 72618a5cbc4e
     last_write_checksum: sha1:338aef125508876f9d723e06b580b536939ae6f6
@@ -8665,7 +8665,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->stripeStripe` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->stripeStripe` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->stripeStripe` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->stripeCard->customerId` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->stripeCard->customerId` **Added**\n* `sdk->merchant-accounts->list()`:  `response.items[]` **Changed**\n* `sdk->merchant-accounts->create()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n* `sdk->merchant-accounts->get()`:  `response` **Changed**\n* `sdk->merchant-accounts->update()`: \n  *  `request.merchantAccountUpdate` **Changed**\n  *  `response` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->stripeCard->customerId` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

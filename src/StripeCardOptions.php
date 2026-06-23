@@ -22,6 +22,15 @@ class StripeCardOptions
     public ?StripeConnectOptions $stripeConnect = null;
 
     /**
+     * A Stripe customer ID (`cus_xxx`) to associate with the PaymentIntent for network token transactions. When provided, Stripe Radar can access the customer's payment history, dispute rate, and account age to improve risk scoring for returning customers.
+     *
+     * @var ?string $customerId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $customerId = null;
+
+    /**
      * Passes the `error_on_requires_action` option to the Stripe API. Set to true to fail the payment attempt if it transitions into requires_action. Use this parameter for simpler integrations that don't handle customer actions, such as saving cards without authentication.
      *
      * @var ?bool $errorOnRequiresAction
@@ -32,12 +41,14 @@ class StripeCardOptions
 
     /**
      * @param  ?\Gr4vy\StripeConnectOptions  $stripeConnect
+     * @param  ?string  $customerId
      * @param  ?bool  $errorOnRequiresAction
      * @phpstan-pure
      */
-    public function __construct(?StripeConnectOptions $stripeConnect = null, ?bool $errorOnRequiresAction = null)
+    public function __construct(?StripeConnectOptions $stripeConnect = null, ?string $customerId = null, ?bool $errorOnRequiresAction = null)
     {
         $this->stripeConnect = $stripeConnect;
+        $this->customerId = $customerId;
         $this->errorOnRequiresAction = $errorOnRequiresAction;
     }
 }
