@@ -148,6 +148,24 @@ class MerchantAccountUpdate
     public ?string $mastercardNetworkTokensAppId = null;
 
     /**
+     * Requestor ID provided for Discover after onboarding to use Network Tokens.
+     *
+     * @var ?string $discoverNetworkTokensRequestorId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discover_network_tokens_requestor_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $discoverNetworkTokensRequestorId = null;
+
+    /**
+     * Application ID provided for Discover after onboarding to use Network Tokens.
+     *
+     * @var ?string $discoverNetworkTokensAppId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discover_network_tokens_app_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $discoverNetworkTokensAppId = null;
+
+    /**
      * The display name for the merchant account.
      *
      * @var ?string $displayName
@@ -192,10 +210,12 @@ class MerchantAccountUpdate
      * @param  ?string  $amexNetworkTokensAppId
      * @param  ?string  $mastercardNetworkTokensRequestorId
      * @param  ?string  $mastercardNetworkTokensAppId
+     * @param  ?string  $discoverNetworkTokensRequestorId
+     * @param  ?string  $discoverNetworkTokensAppId
      * @param  ?string  $displayName
      * @phpstan-pure
      */
-    public function __construct(?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $displayName = null, ?bool $accountUpdaterEnabled = false, ?bool $asyncNetworkTokensEnabled = false)
+    public function __construct(?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $discoverNetworkTokensRequestorId = null, ?string $discoverNetworkTokensAppId = null, ?string $displayName = null, ?bool $accountUpdaterEnabled = false, ?bool $asyncNetworkTokensEnabled = false)
     {
         $this->accountUpdaterRequestEncryptionKey = $accountUpdaterRequestEncryptionKey;
         $this->accountUpdaterRequestEncryptionKeyId = $accountUpdaterRequestEncryptionKeyId;
@@ -212,6 +232,8 @@ class MerchantAccountUpdate
         $this->amexNetworkTokensAppId = $amexNetworkTokensAppId;
         $this->mastercardNetworkTokensRequestorId = $mastercardNetworkTokensRequestorId;
         $this->mastercardNetworkTokensAppId = $mastercardNetworkTokensAppId;
+        $this->discoverNetworkTokensRequestorId = $discoverNetworkTokensRequestorId;
+        $this->discoverNetworkTokensAppId = $discoverNetworkTokensAppId;
         $this->displayName = $displayName;
         $this->accountUpdaterEnabled = $accountUpdaterEnabled;
         $this->asyncNetworkTokensEnabled = $asyncNetworkTokensEnabled;

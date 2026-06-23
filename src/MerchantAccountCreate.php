@@ -164,6 +164,24 @@ class MerchantAccountCreate
     public ?string $mastercardNetworkTokensAppId = null;
 
     /**
+     * Requestor ID provided for Discover after onboarding to use Network Tokens.
+     *
+     * @var ?string $discoverNetworkTokensRequestorId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discover_network_tokens_requestor_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $discoverNetworkTokensRequestorId = null;
+
+    /**
+     * Application ID provided for Discover after onboarding to use Network Tokens.
+     *
+     * @var ?string $discoverNetworkTokensAppId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discover_network_tokens_app_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $discoverNetworkTokensAppId = null;
+
+    /**
      * Whether the Real-Time Account Updater service is enabled for this merchant account. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `false`, the Account Updater service doesn't get called if a payment fails with expired or invalid card details. If the field is set to `true`, the service is called. Please note that for this to work the other `account_updater_* fields` must be set as well.
      *
      * @var ?bool $accountUpdaterEnabled
@@ -201,9 +219,11 @@ class MerchantAccountCreate
      * @param  ?string  $amexNetworkTokensAppId
      * @param  ?string  $mastercardNetworkTokensRequestorId
      * @param  ?string  $mastercardNetworkTokensAppId
+     * @param  ?string  $discoverNetworkTokensRequestorId
+     * @param  ?string  $discoverNetworkTokensAppId
      * @phpstan-pure
      */
-    public function __construct(string $id, string $displayName, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?bool $accountUpdaterEnabled = false, ?bool $asyncNetworkTokensEnabled = false)
+    public function __construct(string $id, string $displayName, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $discoverNetworkTokensRequestorId = null, ?string $discoverNetworkTokensAppId = null, ?bool $accountUpdaterEnabled = false, ?bool $asyncNetworkTokensEnabled = false)
     {
         $this->id = $id;
         $this->displayName = $displayName;
@@ -222,6 +242,8 @@ class MerchantAccountCreate
         $this->amexNetworkTokensAppId = $amexNetworkTokensAppId;
         $this->mastercardNetworkTokensRequestorId = $mastercardNetworkTokensRequestorId;
         $this->mastercardNetworkTokensAppId = $mastercardNetworkTokensAppId;
+        $this->discoverNetworkTokensRequestorId = $discoverNetworkTokensRequestorId;
+        $this->discoverNetworkTokensAppId = $discoverNetworkTokensAppId;
         $this->accountUpdaterEnabled = $accountUpdaterEnabled;
         $this->asyncNetworkTokensEnabled = $asyncNetworkTokensEnabled;
     }
