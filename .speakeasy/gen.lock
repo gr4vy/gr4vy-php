@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 30fa48796544a7b52e90527ff2f0f808
+  docChecksum: 56983983b63f84cbfb065c2af2a7d57d
   docVersion: 1.0.0
-  speakeasyVersion: 1.784.1
-  generationVersion: 2.911.3
-  releaseVersion: 1.5.103
-  configChecksum: a9f996ce393e193b8d36d4a373b198f3
+  speakeasyVersion: 1.785.0
+  generationVersion: 2.912.1
+  releaseVersion: 1.5.104
+  configChecksum: 12f424386b5ace4fd9015a818c32a01f
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 9b8465f4-775b-4d75-ad5c-f8e16a63650a
-  pristine_commit_hash: a0fe0c4a71adfbd39a2ec18c59f1d42be8c0ceb3
-  pristine_tree_hash: bb2e1e247808c9dc9b9ef9e1d5920709a5efd32e
+  generation_id: 1ec404ad-c53a-40e3-b6bb-05c86961eb66
+  pristine_commit_hash: 810ba538d940a42966be9bfa53b3a0182664fbf7
+  pristine_tree_hash: e15d21f16e9d666a13c7600948c16d5c2dba482c
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1216,8 +1216,8 @@ trackedFiles:
     pristine_git_object: 23ffcd0c56381175cf6050bd7c819aa411ac7ab3
   docs/ListPayoutsRequest.md:
     id: c5433034a357
-    last_write_checksum: sha1:52a4ef040b1292b21f127ce46a9976e1351a3c36
-    pristine_git_object: 40fe34816d6574ef40e8d4801d3d8e30ae3a0d3f
+    last_write_checksum: sha1:029704b5fb89514a5c9cc54ed0454499fdc26e4d
+    pristine_git_object: 786bfd60446c05be1f81e4799f6d96a7eb45128d
   docs/ListPayoutsResponse.md:
     id: 54e1db490442
     last_write_checksum: sha1:2b369e0a0ff50094104d2d7ae86886f41581cdb2
@@ -2264,8 +2264,8 @@ trackedFiles:
     pristine_git_object: df99d3f387b373f56ebd1a7d3fd1306fbd16307f
   docs/sdks/payouts/README.md:
     id: 184ed4a74471
-    last_write_checksum: sha1:bdb77137776c3953381a8ce6c98728e02e3b39c9
-    pristine_git_object: b8f9f11ca24184e92daf1e166a2622669763f65f
+    last_write_checksum: sha1:9d237d11e537220c020de435de165131ff612e13
+    pristine_git_object: 8222f6a19ffd66eebee155b1561a193620f93da8
   docs/sdks/refundssdk/README.md:
     id: a95d23651926
     last_write_checksum: sha1:6e08ba72a88613b0802c9c036f98b4718066f874
@@ -3652,8 +3652,8 @@ trackedFiles:
     pristine_git_object: 9602756b756ffb582330447d218c7f81ee14d66e
   src/ListPayoutsRequest.php:
     id: 7b36a0061526
-    last_write_checksum: sha1:f6e467edb554c26b91e3953fc66db45d6ee36048
-    pristine_git_object: 90c71effd8d6a247a53137e14856d8ac42e9301d
+    last_write_checksum: sha1:be8ae55da07b864b4d40e04b6acd8c573315d1f6
+    pristine_git_object: 12ba8f29ac2ed2b43ade76eda1593206e781dd2b
   src/ListPayoutsResponse.php:
     id: 070b2e986245
     last_write_checksum: sha1:04b204b6610f80ce179e5e877a2296b882e60245
@@ -3996,8 +3996,8 @@ trackedFiles:
     pristine_git_object: 27e04728c126041710c3e5e5233182e3776f2d19
   src/Payouts.php:
     id: f9c31976b5a0
-    last_write_checksum: sha1:5212affa3fc8f01cae1a42d89994003e4d8063c4
-    pristine_git_object: 1ec4df8232603ae2841a10807ef2c80d4d7aaa36
+    last_write_checksum: sha1:afd493da39b39d4e34cc605bee82b628d91da6e0
+    pristine_git_object: 2436471b7a54242bd3c4daeac895056c09794175
   src/PaypalOptions.php:
     id: 20ea2e5d2109
     last_write_checksum: sha1:557689e2155a27d430887f0efd2856a8df45ca87
@@ -4252,8 +4252,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:10f53763399bb88f5110075768b1e3c0e7008a8a
-    pristine_git_object: 8623e78c2493618a6ea01a1b95c98b3016a9a794
+    last_write_checksum: sha1:c8831d07e1206805a945a8e264cc8c702e2dcad9
+    pristine_git_object: e2fed1781e8e2dae0095cff9e2244332dba4c084
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8665,7 +8665,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->stripeCard->customerId` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->stripeCard->customerId` **Added**\n* `sdk->merchant-accounts->list()`:  `response.items[]` **Changed**\n* `sdk->merchant-accounts->create()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n* `sdk->merchant-accounts->get()`:  `response` **Changed**\n* `sdk->merchant-accounts->update()`: \n  *  `request.merchantAccountUpdate` **Changed**\n  *  `response` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->stripeCard->customerId` **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->payouts->list()`:  `request` **Changed** (Breaking ⚠️)
 generatedFiles:
   - .gitattributes
   - USAGE.md

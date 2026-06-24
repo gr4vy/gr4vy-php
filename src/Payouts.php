@@ -485,13 +485,11 @@ class Payouts
      *
      * Returns a list of payouts made.
      *
-     * @param  ?string  $cursor
-     * @param  ?int  $limit
-     * @param  ?string  $merchantAccountId
+     * @param  ?\Gr4vy\ListPayoutsRequest  $request
      * @return \Gr4vy\ListPayoutsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): ListPayoutsResponse
+    private function listIndividual(?ListPayoutsRequest $request = null, ?Options $options = null): ListPayoutsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -517,11 +515,6 @@ class Payouts
                 '5XX',
             ];
         }
-        $request = new ListPayoutsRequest(
-            cursor: $cursor,
-            limit: $limit,
-            merchantAccountId: $merchantAccountId,
-        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/payouts');
         $urlOverride = null;
@@ -581,9 +574,18 @@ class Payouts
                     }
 
                     return $sdk->listIndividual(
-                        cursor: $nextCursor,
-                        limit: $request != null ? $request->limit : null,
-                        merchantAccountId: $request != null ? $request->merchantAccountId : null,
+                        request: new ListPayoutsRequest(
+                            cursor: $nextCursor,
+                            limit: $request != null ? $request->limit : null,
+                            createdAtLte: $request != null ? $request->createdAtLte : null,
+                            createdAtGte: $request != null ? $request->createdAtGte : null,
+                            updatedAtLte: $request != null ? $request->updatedAtLte : null,
+                            updatedAtGte: $request != null ? $request->updatedAtGte : null,
+                            externalIdentifier: $request != null ? $request->externalIdentifier : null,
+                            paymentServicePayoutId: $request != null ? $request->paymentServicePayoutId : null,
+                            status: $request != null ? $request->status : null,
+                            merchantAccountId: $request != null ? $request->merchantAccountId : null,
+                        ),
                     );
                 };
 
@@ -737,15 +739,13 @@ class Payouts
      *
      * Returns a list of payouts made.
      *
-     * @param  ?string  $cursor
-     * @param  ?int  $limit
-     * @param  ?string  $merchantAccountId
+     * @param  ?\Gr4vy\ListPayoutsRequest  $request
      * @return \Generator<\Gr4vy\ListPayoutsResponse>
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?string $cursor = null, ?int $limit = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator
+    public function list(?ListPayoutsRequest $request = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($cursor, $limit, $merchantAccountId, $options);
+        $res = $this->listIndividual($request, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
