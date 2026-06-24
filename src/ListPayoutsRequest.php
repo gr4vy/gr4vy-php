@@ -28,6 +28,62 @@ class ListPayoutsRequest
     public ?string $cursor = null;
 
     /**
+     * Filters the results to only payouts created before this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+     *
+     * @var ?\DateTime $createdAtLte
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=created_at_lte,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $createdAtLte = null;
+
+    /**
+     * Filters the results to only payouts created after this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+     *
+     * @var ?\DateTime $createdAtGte
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=created_at_gte,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $createdAtGte = null;
+
+    /**
+     * Filters the results to only payouts updated before this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+     *
+     * @var ?\DateTime $updatedAtLte
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=updated_at_lte,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $updatedAtLte = null;
+
+    /**
+     * Filters the results to only payouts updated after this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+     *
+     * @var ?\DateTime $updatedAtGte
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=updated_at_gte,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $updatedAtGte = null;
+
+    /**
+     * Filters the results to only the payouts that have an `external_identifier` that exactly matches this value.
+     *
+     * @var ?string $externalIdentifier
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=external_identifier')]
+    public ?string $externalIdentifier = null;
+
+    /**
+     * Filters the results to only the payouts that have a `payment_service_payout_id` that exactly matches this value.
+     *
+     * @var ?string $paymentServicePayoutId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=payment_service_payout_id')]
+    public ?string $paymentServicePayoutId = null;
+
+    /**
+     * Filters the results to only the payouts that have a `status` that matches with any of the provided status values.
+     *
+     * @var ?array<string> $status
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=status')]
+    public ?array $status = null;
+
+    /**
      * The maximum number of items that are at returned.
      *
      * @var ?int $limit
@@ -39,12 +95,26 @@ class ListPayoutsRequest
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
      * @param  ?string  $cursor
+     * @param  ?\DateTime  $createdAtLte
+     * @param  ?\DateTime  $createdAtGte
+     * @param  ?\DateTime  $updatedAtLte
+     * @param  ?\DateTime  $updatedAtGte
+     * @param  ?string  $externalIdentifier
+     * @param  ?string  $paymentServicePayoutId
+     * @param  ?array<string>  $status
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?\DateTime $createdAtLte = null, ?\DateTime $createdAtGte = null, ?\DateTime $updatedAtLte = null, ?\DateTime $updatedAtGte = null, ?string $externalIdentifier = null, ?string $paymentServicePayoutId = null, ?array $status = null, ?int $limit = 20)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->cursor = $cursor;
+        $this->createdAtLte = $createdAtLte;
+        $this->createdAtGte = $createdAtGte;
+        $this->updatedAtLte = $updatedAtLte;
+        $this->updatedAtGte = $updatedAtGte;
+        $this->externalIdentifier = $externalIdentifier;
+        $this->paymentServicePayoutId = $paymentServicePayoutId;
+        $this->status = $status;
         $this->limit = $limit;
     }
 }
