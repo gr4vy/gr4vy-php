@@ -1032,6 +1032,7 @@ class Transactions
                             hasRefunds: $request != null ? $request->hasRefunds : null,
                             pendingReview: $request != null ? $request->pendingReview : null,
                             checkoutSessionId: $request != null ? $request->checkoutSessionId : null,
+                            paymentLinkId: $request != null ? $request->paymentLinkId : null,
                             reconciliationId: $request != null ? $request->reconciliationId : null,
                             hasGiftCardRedemptions: $request != null ? $request->hasGiftCardRedemptions : null,
                             giftCardId: $request != null ? $request->giftCardId : null,

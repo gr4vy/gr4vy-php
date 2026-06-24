@@ -679,14 +679,11 @@ class PaymentLinksSDK
      *
      * List all created payment links.
      *
-     * @param  ?string  $cursor
-     * @param  ?int  $limit
-     * @param  ?array<string>  $buyerSearch
-     * @param  ?string  $merchantAccountId
+     * @param  ?\Gr4vy\ListPaymentLinksRequest  $request
      * @return \Gr4vy\ListPaymentLinksResponse
      * @throws \Gr4vy\errors\APIException
      */
-    private function listIndividual(?string $cursor = null, ?int $limit = null, ?array $buyerSearch = null, ?string $merchantAccountId = null, ?Options $options = null): ListPaymentLinksResponse
+    private function listIndividual(?ListPaymentLinksRequest $request = null, ?Options $options = null): ListPaymentLinksResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -712,12 +709,6 @@ class PaymentLinksSDK
                 '5XX',
             ];
         }
-        $request = new ListPaymentLinksRequest(
-            cursor: $cursor,
-            limit: $limit,
-            buyerSearch: $buyerSearch,
-            merchantAccountId: $merchantAccountId,
-        );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/payment-links');
         $urlOverride = null;
@@ -777,10 +768,21 @@ class PaymentLinksSDK
                     }
 
                     return $sdk->listIndividual(
-                        cursor: $nextCursor,
-                        limit: $request != null ? $request->limit : null,
-                        buyerSearch: $request != null ? $request->buyerSearch : null,
-                        merchantAccountId: $request != null ? $request->merchantAccountId : null,
+                        request: new ListPaymentLinksRequest(
+                            cursor: $nextCursor,
+                            limit: $request != null ? $request->limit : null,
+                            createdAtLte: $request != null ? $request->createdAtLte : null,
+                            createdAtGte: $request != null ? $request->createdAtGte : null,
+                            updatedAtLte: $request != null ? $request->updatedAtLte : null,
+                            updatedAtGte: $request != null ? $request->updatedAtGte : null,
+                            currency: $request != null ? $request->currency : null,
+                            amountEq: $request != null ? $request->amountEq : null,
+                            amountGte: $request != null ? $request->amountGte : null,
+                            amountLte: $request != null ? $request->amountLte : null,
+                            status: $request != null ? $request->status : null,
+                            buyerSearch: $request != null ? $request->buyerSearch : null,
+                            merchantAccountId: $request != null ? $request->merchantAccountId : null,
+                        ),
                     );
                 };
 
@@ -934,16 +936,13 @@ class PaymentLinksSDK
      *
      * List all created payment links.
      *
-     * @param  ?string  $cursor
-     * @param  ?int  $limit
-     * @param  ?array<string>  $buyerSearch
-     * @param  ?string  $merchantAccountId
+     * @param  ?\Gr4vy\ListPaymentLinksRequest  $request
      * @return \Generator<\Gr4vy\ListPaymentLinksResponse>
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?string $cursor = null, ?int $limit = null, ?array $buyerSearch = null, ?string $merchantAccountId = null, ?Options $options = null): \Generator
+    public function list(?ListPaymentLinksRequest $request = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($cursor, $limit, $buyerSearch, $merchantAccountId, $options);
+        $res = $this->listIndividual($request, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);

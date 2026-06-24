@@ -28,6 +28,78 @@ class ListPaymentLinksRequest
     public ?string $cursor = null;
 
     /**
+     * Filters the results to only payment links created before this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+     *
+     * @var ?\DateTime $createdAtLte
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=created_at_lte,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $createdAtLte = null;
+
+    /**
+     * Filters the results to only payment links created after this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+     *
+     * @var ?\DateTime $createdAtGte
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=created_at_gte,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $createdAtGte = null;
+
+    /**
+     * Filters the results to only payment links updated before this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+     *
+     * @var ?\DateTime $updatedAtLte
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=updated_at_lte,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $updatedAtLte = null;
+
+    /**
+     * Filters the results to only payment links updated after this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+     *
+     * @var ?\DateTime $updatedAtGte
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=updated_at_gte,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public ?\DateTime $updatedAtGte = null;
+
+    /**
+     * Filters for payment links that have matching `currency` values. The `currency` values provided must be formatted as 3-letter ISO currency codes.
+     *
+     * @var ?array<string> $currency
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=currency')]
+    public ?array $currency = null;
+
+    /**
+     * Filters for payment links that have an `amount` equal to this value.
+     *
+     * @var ?int $amountEq
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=amount_eq')]
+    public ?int $amountEq = null;
+
+    /**
+     * Filters for payment links that have an `amount` greater than or equal to this value.
+     *
+     * @var ?int $amountGte
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=amount_gte')]
+    public ?int $amountGte = null;
+
+    /**
+     * Filters for payment links that have an `amount` less than or equal to this value.
+     *
+     * @var ?int $amountLte
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=amount_lte')]
+    public ?int $amountLte = null;
+
+    /**
+     * Filters the results to only the payment links that have a `status` that matches with any of the provided status values.
+     *
+     * @var ?array<string> $status
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=status')]
+    public ?array $status = null;
+
+    /**
      * Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.
      *
      * @var ?array<string> $buyerSearch
@@ -47,13 +119,31 @@ class ListPaymentLinksRequest
      * @param  ?int  $limit
      * @param  ?string  $merchantAccountId
      * @param  ?string  $cursor
+     * @param  ?\DateTime  $createdAtLte
+     * @param  ?\DateTime  $createdAtGte
+     * @param  ?\DateTime  $updatedAtLte
+     * @param  ?\DateTime  $updatedAtGte
+     * @param  ?array<string>  $currency
+     * @param  ?int  $amountEq
+     * @param  ?int  $amountGte
+     * @param  ?int  $amountLte
+     * @param  ?array<string>  $status
      * @param  ?array<string>  $buyerSearch
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?array $buyerSearch = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?\DateTime $createdAtLte = null, ?\DateTime $createdAtGte = null, ?\DateTime $updatedAtLte = null, ?\DateTime $updatedAtGte = null, ?array $currency = null, ?int $amountEq = null, ?int $amountGte = null, ?int $amountLte = null, ?array $status = null, ?array $buyerSearch = null, ?int $limit = 20)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->cursor = $cursor;
+        $this->createdAtLte = $createdAtLte;
+        $this->createdAtGte = $createdAtGte;
+        $this->updatedAtLte = $updatedAtLte;
+        $this->updatedAtGte = $updatedAtGte;
+        $this->currency = $currency;
+        $this->amountEq = $amountEq;
+        $this->amountGte = $amountGte;
+        $this->amountLte = $amountLte;
+        $this->status = $status;
         $this->buyerSearch = $buyerSearch;
         $this->limit = $limit;
     }
