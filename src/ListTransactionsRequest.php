@@ -257,6 +257,14 @@ class ListTransactionsRequest
     public ?string $checkoutSessionId = null;
 
     /**
+     * Filters for transactions where the `payment_link_id` matches the provided value.
+     *
+     * @var ?string $paymentLinkId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=payment_link_id')]
+    public ?string $paymentLinkId = null;
+
+    /**
      * Filters for transactions where the `reconciliation_id` matches the provided value.
      *
      * @var ?string $reconciliationId
@@ -402,6 +410,7 @@ class ListTransactionsRequest
      * @param  ?bool  $hasRefunds
      * @param  ?bool  $pendingReview
      * @param  ?string  $checkoutSessionId
+     * @param  ?string  $paymentLinkId
      * @param  ?string  $reconciliationId
      * @param  ?bool  $hasGiftCardRedemptions
      * @param  ?string  $giftCardId
@@ -417,7 +426,7 @@ class ListTransactionsRequest
      * @param  ?array<string>  $buyerSearch
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?\DateTime $createdAtLte = null, ?\DateTime $createdAtGte = null, ?\DateTime $updatedAtLte = null, ?\DateTime $updatedAtGte = null, ?string $search = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $buyerEmailAddress = null, ?string $ipAddress = null, ?array $status = null, ?string $id = null, ?string $paymentServiceTransactionId = null, ?string $externalIdentifier = null, ?array $metadata = null, ?int $amountEq = null, ?int $amountLte = null, ?int $amountGte = null, ?array $currency = null, ?array $country = null, ?array $paymentServiceId = null, ?string $paymentMethodId = null, ?string $paymentMethodLabel = null, ?array $paymentMethodScheme = null, ?string $paymentMethodCountry = null, ?string $paymentMethodFingerprint = null, ?array $method = null, ?array $errorCode = null, ?bool $hasRefunds = null, ?bool $pendingReview = null, ?string $checkoutSessionId = null, ?string $reconciliationId = null, ?bool $hasGiftCardRedemptions = null, ?string $giftCardId = null, ?string $giftCardLast4 = null, ?bool $hasSettlements = null, ?string $paymentMethodBin = null, ?array $paymentSource = null, ?bool $isSubsequentPayment = null, ?bool $merchantInitiated = null, ?bool $used3ds = null, ?bool $disputed = null, ?string $reauthorizedFromTransactionId = null, ?array $buyerSearch = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $cursor = null, ?\DateTime $createdAtLte = null, ?\DateTime $createdAtGte = null, ?\DateTime $updatedAtLte = null, ?\DateTime $updatedAtGte = null, ?string $search = null, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $buyerEmailAddress = null, ?string $ipAddress = null, ?array $status = null, ?string $id = null, ?string $paymentServiceTransactionId = null, ?string $externalIdentifier = null, ?array $metadata = null, ?int $amountEq = null, ?int $amountLte = null, ?int $amountGte = null, ?array $currency = null, ?array $country = null, ?array $paymentServiceId = null, ?string $paymentMethodId = null, ?string $paymentMethodLabel = null, ?array $paymentMethodScheme = null, ?string $paymentMethodCountry = null, ?string $paymentMethodFingerprint = null, ?array $method = null, ?array $errorCode = null, ?bool $hasRefunds = null, ?bool $pendingReview = null, ?string $checkoutSessionId = null, ?string $paymentLinkId = null, ?string $reconciliationId = null, ?bool $hasGiftCardRedemptions = null, ?string $giftCardId = null, ?string $giftCardLast4 = null, ?bool $hasSettlements = null, ?string $paymentMethodBin = null, ?array $paymentSource = null, ?bool $isSubsequentPayment = null, ?bool $merchantInitiated = null, ?bool $used3ds = null, ?bool $disputed = null, ?string $reauthorizedFromTransactionId = null, ?array $buyerSearch = null, ?int $limit = 20)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->cursor = $cursor;
@@ -451,6 +460,7 @@ class ListTransactionsRequest
         $this->hasRefunds = $hasRefunds;
         $this->pendingReview = $pendingReview;
         $this->checkoutSessionId = $checkoutSessionId;
+        $this->paymentLinkId = $paymentLinkId;
         $this->reconciliationId = $reconciliationId;
         $this->hasGiftCardRedemptions = $hasGiftCardRedemptions;
         $this->giftCardId = $giftCardId;

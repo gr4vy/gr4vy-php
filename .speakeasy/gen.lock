@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 56983983b63f84cbfb065c2af2a7d57d
+  docChecksum: 6d0794825c20eb008155c22ee31cb59a
   docVersion: 1.0.0
   speakeasyVersion: 1.785.0
   generationVersion: 2.912.1
-  releaseVersion: 1.5.104
-  configChecksum: 12f424386b5ace4fd9015a818c32a01f
+  releaseVersion: 1.5.105
+  configChecksum: abcba00350194a09485eeba43e324cb6
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 1ec404ad-c53a-40e3-b6bb-05c86961eb66
-  pristine_commit_hash: 810ba538d940a42966be9bfa53b3a0182664fbf7
-  pristine_tree_hash: e15d21f16e9d666a13c7600948c16d5c2dba482c
+  generation_id: e7ba7cc2-9e40-4ec0-896f-e259ce1301ff
+  pristine_commit_hash: 37e00040e8211a0ecff98cf8a942a6e745ad1c2a
+  pristine_tree_hash: c971d11eebded5f75eedf14711c8a01c76fafad2
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1160,8 +1160,8 @@ trackedFiles:
     pristine_git_object: 146020509abdf7c118b3167e4c6cbd660a8e40c1
   docs/ListPaymentLinksRequest.md:
     id: 27b178a724f1
-    last_write_checksum: sha1:a69c72ddca3923b053e496e12626a61d726bc2b7
-    pristine_git_object: a65594b9e43a72d4f3e9c2090f7203ad18a453f0
+    last_write_checksum: sha1:0505ca831b91e2d6a2ec452f92230613f04c27a3
+    pristine_git_object: 500706ed6cb0625f72f83eb368fe3e4845909436
   docs/ListPaymentLinksResponse.md:
     id: a27f04e5f294
     last_write_checksum: sha1:d134dbfdf3416177d65453af6b987e7b63d5c9f6
@@ -1288,8 +1288,8 @@ trackedFiles:
     pristine_git_object: 435e20ecd12e579ee7d2f4cf4a8bf026078f42f6
   docs/ListTransactionsRequest.md:
     id: 1632f9925045
-    last_write_checksum: sha1:ebf5f366fe458554d1704a280d87a2d11c7a9b3d
-    pristine_git_object: e9d5bd0b154f0d36fb0a04d9fce47f3d8a394705
+    last_write_checksum: sha1:21d7a55cd0a5ed530d592d803fbad54427e30f1a
+    pristine_git_object: 75bc847945e31ede0ac061295c2cdf572e7c063c
   docs/ListTransactionsResponse.md:
     id: 6e881c224fa6
     last_write_checksum: sha1:749d87500a0a818b9948731450da223541a28dd6
@@ -2236,8 +2236,8 @@ trackedFiles:
     pristine_git_object: ff21eeacb019bb8ae95134180c5f4a67e1180aee
   docs/sdks/paymentlinkssdk/README.md:
     id: 443d95cf5bd0
-    last_write_checksum: sha1:d3082ed2a57f6af7fa2ea1f8d75147630d5378c1
-    pristine_git_object: 46bebb79b212f446409d1cba38723f194102c021
+    last_write_checksum: sha1:0426aef90737b7258b559cb5979f0bccc2bf444a
+    pristine_git_object: 7c19bf14f4813dd78036ccf5050010b96c380b27
   docs/sdks/paymentmethodsnetworktokens/README.md:
     id: badc1bd37263
     last_write_checksum: sha1:81a4b42c46d81af03b5170c883d710a8a6bf1909
@@ -3596,8 +3596,8 @@ trackedFiles:
     pristine_git_object: e5124e9b7eeca2b12af4a99ad7f3f67cb0811141
   src/ListPaymentLinksRequest.php:
     id: 9e2ebce3addd
-    last_write_checksum: sha1:a939971d18e3d7b9026a65efd9f8c831f6186eed
-    pristine_git_object: aa8fe65737205cbc52b37bc573a1c1a749bdf32e
+    last_write_checksum: sha1:ea247f567b2c8185071a48fc42f6437865ac7c11
+    pristine_git_object: e96ff9270689e88b27ce62ac6a89e5534f670dd6
   src/ListPaymentLinksResponse.php:
     id: 2243400391a6
     last_write_checksum: sha1:98131e13f336594eb7293ed5dff8f5dbfa874c09
@@ -3724,8 +3724,8 @@ trackedFiles:
     pristine_git_object: f761167be61945a3355a71f958461994fa3aee6b
   src/ListTransactionsRequest.php:
     id: 50d97b08c50d
-    last_write_checksum: sha1:c09985a451d0e390f1b25711c66e7072157a7be7
-    pristine_git_object: d60e0b38544978d41c15fbcd033ce370d76fd40e
+    last_write_checksum: sha1:1ee0f7564f6e60614a2de36e31ef3e7dca7747d1
+    pristine_git_object: 19c08c868d75778cab72732c820cb43a15adf7ca
   src/ListTransactionsResponse.php:
     id: 639a046c6494
     last_write_checksum: sha1:2105300622c98f8c87a3b21e79b3794c814651c9
@@ -3848,8 +3848,8 @@ trackedFiles:
     pristine_git_object: 936f15ab8703b6bba9022492e0d78790666350d7
   src/PaymentLinksSDK.php:
     id: b18475407bf9
-    last_write_checksum: sha1:9f5aef1b5fd3e37dce3ec92f1c8d08d5539627cd
-    pristine_git_object: 225a37a63e7ca7bd6b19b0bec443b71f82fe9c30
+    last_write_checksum: sha1:bf44a7a7967049fc73bf968e2387efe7ca89edbf
+    pristine_git_object: a621b4ce3c0b8a4dfa3b9369f265c208d969c90c
   src/PaymentMethod.php:
     id: f90a26fc0230
     last_write_checksum: sha1:c72ea1c3a47234df15516be4876a1375ae5b40cd
@@ -4252,8 +4252,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:c8831d07e1206805a945a8e264cc8c702e2dcad9
-    pristine_git_object: e2fed1781e8e2dae0095cff9e2244332dba4c084
+    last_write_checksum: sha1:007109dfdf5c1759423ed806577716d103ac00ef
+    pristine_git_object: 85fca1746f5f7970cda85e77dcd273f1c59da494
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4480,8 +4480,8 @@ trackedFiles:
     pristine_git_object: bd086edee3a243fcc0a286bb8d2dd244e1724cba
   src/Transactions.php:
     id: fb7274f4b525
-    last_write_checksum: sha1:ddec1b5c198f90fc1ca7de15b43f901371769fb9
-    pristine_git_object: 03e5a3eab7d9e53051162634b9b972d781d6d594
+    last_write_checksum: sha1:1192130321a7318d7524695bb926645ec3bc3154
+    pristine_git_object: 64d1d73d6717ccba4a3517feec79d0094947f851
   src/TransactionsRefunds.php:
     id: b5ef579db238
     last_write_checksum: sha1:25f739a09b21e7ea1177fbde4c431bab8292058e
@@ -8665,9 +8665,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes:
-  * `sdk->payouts->list()`:  `request` **Changed** (Breaking ⚠️)
+releaseNotes: "## Php SDK Changes:\n* `sdk->payment-links->list()`:  `request` **Changed** (Breaking ⚠️)\n* `sdk->transactions->list()`: \n  *  `request->paymentLinkId` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

@@ -96,10 +96,10 @@ $sdk = Gr4vy\SDK::builder()
     )
     ->build();
 
-
+$request = new Gr4vy\ListPaymentLinksRequest();
 
 $responses = $sdk->paymentLinks->list(
-    limit: 20
+    request: $request
 );
 
 
@@ -112,12 +112,9 @@ foreach ($responses as $response) {
 
 ### Parameters
 
-| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     | Example                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `cursor`                                                                                                                        | *?string*                                                                                                                       | :heavy_minus_sign:                                                                                                              | A pointer to the page of results to return.                                                                                     | ZXhhbXBsZTE                                                                                                                     |
-| `limit`                                                                                                                         | *?int*                                                                                                                          | :heavy_minus_sign:                                                                                                              | The maximum number of items that are returned.                                                                                  | 20                                                                                                                              |
-| `buyerSearch`                                                                                                                   | array<*string*>                                                                                                                 | :heavy_minus_sign:                                                                                                              | Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values. | [<br/>"John",<br/>"London"<br/>]                                                                                                |
-| `merchantAccountId`                                                                                                             | *?string*                                                                                                                       | :heavy_minus_sign:                                                                                                              | The ID of the merchant account to use for this request.                                                                         | default                                                                                                                         |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `$request`                                                        | [Gr4vy\ListPaymentLinksRequest](../../ListPaymentLinksRequest.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
 ### Response
 
