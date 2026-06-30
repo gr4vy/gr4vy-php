@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 6d0794825c20eb008155c22ee31cb59a
+  docChecksum: 41c45ad568dabe328816f86d95c90154
   docVersion: 1.0.0
-  speakeasyVersion: 1.785.0
-  generationVersion: 2.912.1
-  releaseVersion: 1.5.105
-  configChecksum: abcba00350194a09485eeba43e324cb6
+  speakeasyVersion: 1.786.1
+  generationVersion: 2.913.3
+  releaseVersion: 1.5.106
+  configChecksum: 14e96259f533fbaa7d96e5f3c5c3951c
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: e7ba7cc2-9e40-4ec0-896f-e259ce1301ff
-  pristine_commit_hash: 37e00040e8211a0ecff98cf8a942a6e745ad1c2a
-  pristine_tree_hash: c971d11eebded5f75eedf14711c8a01c76fafad2
+  generation_id: d74b932e-aaa0-4cde-a9cb-e83a77c60dda
+  pristine_commit_hash: e211b8564476698bd9e749bea66628c4b6899952
+  pristine_tree_hash: 4171ebbbc7abdc9751132fef9f4686cd2e2aaeb1
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -4252,8 +4252,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:007109dfdf5c1759423ed806577716d103ac00ef
-    pristine_git_object: 85fca1746f5f7970cda85e77dcd273f1c59da494
+    last_write_checksum: sha1:ef659891623b19af04554fa54f7b04ea7b8a6dd7
+    pristine_git_object: 1fcf4fcc3048bad3111a309b512625c1afee1839
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8665,7 +8665,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->payment-links->list()`:  `request` **Changed** (Breaking ⚠️)\n* `sdk->transactions->list()`: \n  *  `request->paymentLinkId` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
