@@ -90,6 +90,14 @@ class Refund
     public \DateTime $updatedAt;
 
     /**
+     * Indicates whether this refund has been settled.
+     *
+     * @var bool $settled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('settled')]
+    public bool $settled;
+
+    /**
      * The payment service's unique ID for the refund.
      *
      * @var ?string $paymentServiceRefundId
@@ -172,6 +180,24 @@ class Refund
     public ?string $rawResponseDescription = null;
 
     /**
+     * The ISO 4217 currency code of this refund's settlement.
+     *
+     * @var ?string $settledCurrency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('settled_currency')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $settledCurrency = null;
+
+    /**
+     * The net amount settled for this refund, in the smallest currency unit (for example, cents or pence).
+     *
+     * @var ?int $settledAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('settled_amount')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $settledAmount = null;
+
+    /**
      * Always `refund`.
      *
      * @var ?string $type
@@ -191,7 +217,9 @@ class Refund
      * @param  string  $transactionReconciliationId
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
+     * @param  bool  $settled
      * @param  ?string  $type
+     * @param  ?int  $settledAmount
      * @param  ?string  $paymentServiceRefundId
      * @param  ?string  $reason
      * @param  ?string  $targetId
@@ -201,9 +229,10 @@ class Refund
      * @param  ?string  $errorCode
      * @param  ?string  $rawResponseCode
      * @param  ?string  $rawResponseDescription
+     * @param  ?string  $settledCurrency
      * @phpstan-pure
      */
-    public function __construct(string $id, string $transactionId, string $status, string $currency, int $amount, string $targetType, string $reconciliationId, string $transactionReconciliationId, \DateTime $createdAt, \DateTime $updatedAt, ?string $paymentServiceRefundId = null, ?string $reason = null, ?string $targetId = null, ?string $externalIdentifier = null, ?string $transactionExternalIdentifier = null, ?Creator $creator = null, ?string $errorCode = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $type = 'refund')
+    public function __construct(string $id, string $transactionId, string $status, string $currency, int $amount, string $targetType, string $reconciliationId, string $transactionReconciliationId, \DateTime $createdAt, \DateTime $updatedAt, bool $settled, ?string $paymentServiceRefundId = null, ?string $reason = null, ?string $targetId = null, ?string $externalIdentifier = null, ?string $transactionExternalIdentifier = null, ?Creator $creator = null, ?string $errorCode = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $settledCurrency = null, ?int $settledAmount = 0, ?string $type = 'refund')
     {
         $this->id = $id;
         $this->transactionId = $transactionId;
@@ -215,6 +244,7 @@ class Refund
         $this->transactionReconciliationId = $transactionReconciliationId;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
+        $this->settled = $settled;
         $this->paymentServiceRefundId = $paymentServiceRefundId;
         $this->reason = $reason;
         $this->targetId = $targetId;
@@ -224,6 +254,8 @@ class Refund
         $this->errorCode = $errorCode;
         $this->rawResponseCode = $rawResponseCode;
         $this->rawResponseDescription = $rawResponseDescription;
+        $this->settledCurrency = $settledCurrency;
+        $this->settledAmount = $settledAmount;
         $this->type = $type;
     }
 }
