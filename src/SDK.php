@@ -24,6 +24,8 @@ class SDK
 
     public AccountUpdater $accountUpdater;
 
+    public ApiKeyPairs $apiKeyPairs;
+
     public BuyersSDK $buyers;
 
     public PaymentMethodsSDK $paymentMethods;
@@ -77,6 +79,7 @@ class SDK
         public SDKConfiguration $sdkConfiguration,
     ) {
         $this->accountUpdater = new AccountUpdater($this->sdkConfiguration);
+        $this->apiKeyPairs = new ApiKeyPairs($this->sdkConfiguration);
         $this->buyers = new BuyersSDK($this->sdkConfiguration);
         $this->paymentMethods = new PaymentMethodsSDK($this->sdkConfiguration);
         $this->giftCards = new GiftCardsSDK($this->sdkConfiguration);

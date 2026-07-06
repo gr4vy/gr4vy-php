@@ -145,12 +145,12 @@ class Refund
     /**
      * The user that created this resource
      *
-     * @var ?\Gr4vy\Creator $creator
+     * @var ?\Gr4vy\ApiCommonSchemasCreator $creator
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('creator')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Creator|null')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ApiCommonSchemasCreator|null')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?Creator $creator = null;
+    public ?ApiCommonSchemasCreator $creator = null;
 
     /**
      * The standardized error code set by Gr4vy.
@@ -225,14 +225,14 @@ class Refund
      * @param  ?string  $targetId
      * @param  ?string  $externalIdentifier
      * @param  ?string  $transactionExternalIdentifier
-     * @param  ?\Gr4vy\Creator  $creator
+     * @param  ?\Gr4vy\ApiCommonSchemasCreator  $creator
      * @param  ?string  $errorCode
      * @param  ?string  $rawResponseCode
      * @param  ?string  $rawResponseDescription
      * @param  ?string  $settledCurrency
      * @phpstan-pure
      */
-    public function __construct(string $id, string $transactionId, string $status, string $currency, int $amount, string $targetType, string $reconciliationId, string $transactionReconciliationId, \DateTime $createdAt, \DateTime $updatedAt, bool $settled, ?string $paymentServiceRefundId = null, ?string $reason = null, ?string $targetId = null, ?string $externalIdentifier = null, ?string $transactionExternalIdentifier = null, ?Creator $creator = null, ?string $errorCode = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $settledCurrency = null, ?int $settledAmount = 0, ?string $type = 'refund')
+    public function __construct(string $id, string $transactionId, string $status, string $currency, int $amount, string $targetType, string $reconciliationId, string $transactionReconciliationId, \DateTime $createdAt, \DateTime $updatedAt, bool $settled, ?string $paymentServiceRefundId = null, ?string $reason = null, ?string $targetId = null, ?string $externalIdentifier = null, ?string $transactionExternalIdentifier = null, ?ApiCommonSchemasCreator $creator = null, ?string $errorCode = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $settledCurrency = null, ?int $settledAmount = 0, ?string $type = 'refund')
     {
         $this->id = $id;
         $this->transactionId = $transactionId;
