@@ -283,6 +283,14 @@ if ($response->accountUpdaterJob !== null) {
 
 * [create](docs/sdks/jobs/README.md#create) - Create account updater job
 
+### [ApiKeyPairs](docs/sdks/apikeypairs/README.md)
+
+* [list](docs/sdks/apikeypairs/README.md#list) - List all API key pairs
+* [create](docs/sdks/apikeypairs/README.md#create) - Create an API key pair
+* [get](docs/sdks/apikeypairs/README.md#get) - Get an API key pair
+* [update](docs/sdks/apikeypairs/README.md#update) - Update an API key pair
+* [delete](docs/sdks/apikeypairs/README.md#delete) - Delete an API key pair
+
 ### [AuditLogs](docs/sdks/auditlogs/README.md)
 
 * [list](docs/sdks/auditlogs/README.md#list) - List audit log entries
@@ -537,7 +545,7 @@ $response = $sdk->merchantAccounts->get(
     merchantAccountId: 'merchant-12345'
 );
 
-if ($response->merchantAccount !== null) {
+if ($response->apiRoutersMerchantAccountsSchemasMerchantAccount !== null) {
     // handle response
 }
 ```
@@ -558,20 +566,15 @@ require 'vendor/autoload.php';
 use Gr4vy;
 
 $sdk = Gr4vy\SDK::builder()
-    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest(
-    cursor: 'ZXhhbXBsZTE',
-    search: 'John',
-    externalIdentifier: 'buyer-12345',
-);
 
-$responses = $sdk->buyers->list(
-    request: $request
+
+$responses = $sdk->apiKeyPairs->list(
+    limit: 20
 );
 
 
@@ -598,20 +601,15 @@ use Gr4vy;
 use Gr4vy\Utils\Retry;
 
 $sdk = Gr4vy\SDK::builder()
-    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest(
-    cursor: 'ZXhhbXBsZTE',
-    search: 'John',
-    externalIdentifier: 'buyer-12345',
-);
 
-$responses = $sdk->buyers->list(
-    request: $request,
+
+$responses = $sdk->apiKeyPairs->list(
+    limit: 20,
     options: Utils\Options->builder()->setRetryConfig(
         new Retry\RetryConfigBackoff(
             initialInterval: 1,
@@ -620,6 +618,7 @@ $responses = $sdk->buyers->list(
             maxElapsedTime:  100,
             retryConnectionErrors: false,
         ))->build()
+
 );
 
 
@@ -649,20 +648,15 @@ $sdk = Gr4vy\SDK::builder()
             retryConnectionErrors: false,
         )
   )
-    ->setMerchantAccountId('default')
     ->setSecurity(
         '<YOUR_BEARER_TOKEN_HERE>'
     )
     ->build();
 
-$request = new Gr4vy\ListBuyersRequest(
-    cursor: 'ZXhhbXBsZTE',
-    search: 'John',
-    externalIdentifier: 'buyer-12345',
-);
 
-$responses = $sdk->buyers->list(
-    request: $request
+
+$responses = $sdk->apiKeyPairs->list(
+    limit: 20
 );
 
 

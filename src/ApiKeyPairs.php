@@ -14,18 +14,15 @@ use Gr4vy\Utils\Retry;
 use Gr4vy\Utils\Retry\RetryUtils;
 use Speakeasy\Serializer\DeserializationContext;
 
-class MerchantAccountsSDK
+class ApiKeyPairs
 {
     private SDKConfiguration $sdkConfiguration;
-    public ThreeDsConfiguration $threeDsConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
     public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
-        $this->threeDsConfiguration = new ThreeDsConfiguration($this->sdkConfiguration);
     }
     /**
      * @param  string  $baseUrl
@@ -49,18 +46,18 @@ class MerchantAccountsSDK
     }
 
     /**
-     * Create a merchant account
+     * Create an API key pair
      *
-     * Create a new merchant account in an instance.
+     * Create a new API key pair.
      *
-     * @param  \Gr4vy\MerchantAccountCreate  $request
-     * @return \Gr4vy\CreateMerchantAccountResponse
+     * @param  \Gr4vy\APIKeyPairCreate  $request
+     * @return \Gr4vy\CreateApiKeyPairResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function create(MerchantAccountCreate $request, ?Options $options = null): CreateMerchantAccountResponse
+    public function create(APIKeyPairCreate $request, ?Options $options = null): CreateApiKeyPairResponse
     {
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/merchant-accounts');
+        $url = Utils\Utils::generateUrl($baseUrl, '/api-key-pairs');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
@@ -71,7 +68,7 @@ class MerchantAccountsSDK
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_merchant_account', null, $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'create_api_key_pair', null, $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -95,12 +92,12 @@ class MerchantAccountsSDK
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new CreateMerchantAccountResponse(
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\APIKeyPair', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new CreateApiKeyPairResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    apiRoutersMerchantAccountsSchemasMerchantAccount: $obj);
+                    apiKeyPair: $obj);
 
                 return $response;
             } else {
@@ -248,15 +245,203 @@ class MerchantAccountsSDK
     }
 
     /**
-     * Get a merchant account
+     * Delete an API key pair
      *
-     * Get info about a merchant account in an instance.
+     * Permanently removes an API key pair.
      *
-     * @param  string  $merchantAccountId
-     * @return \Gr4vy\GetMerchantAccountResponse
+     * @param  string  $apiKeyPairId
+     * @return \Gr4vy\DeleteApiKeyPairResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function get(string $merchantAccountId, ?Options $options = null): GetMerchantAccountResponse
+    public function delete(string $apiKeyPairId, ?Options $options = null): DeleteApiKeyPairResponse
+    {
+        $request = new DeleteApiKeyPairRequest(
+            apiKeyPairId: $apiKeyPairId,
+        );
+        $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
+        $url = Utils\Utils::generateUrl($baseUrl, '/api-key-pairs/{api_key_pair_id}', DeleteApiKeyPairRequest::class, $request, $this->sdkConfiguration->globals);
+        $urlOverride = null;
+        $httpOptions = ['http_errors' => false];
+        $httpOptions['headers']['Accept'] = 'application/json';
+        $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpRequest = new \GuzzleHttp\Psr7\Request('DELETE', $url);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'delete_api_key_pair', null, $this->sdkConfiguration->securitySource);
+        $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
+        $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
+        $httpRequest = Utils\Utils::removeHeaders($httpRequest);
+        try {
+            $httpResponse = $this->sdkConfiguration->client->send($httpRequest, $httpOptions);
+        } catch (\GuzzleHttp\Exception\GuzzleException $error) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), null, $error);
+            $httpResponse = $res;
+        }
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        if (Utils\Utils::matchStatusCodes($httpResponse->getStatusCode(), ['4XX', '5XX'])) {
+            $res = $this->sdkConfiguration->hooks->afterError(new Hooks\AfterErrorContext($hookContext), $httpResponse, null);
+            $httpResponse = $res;
+        }
+
+        $statusCode = $httpResponse->getStatusCode();
+        if (Utils\Utils::matchStatusCodes($statusCode, ['204'])) {
+            $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+            return new DeleteApiKeyPairResponse(
+                statusCode: $statusCode,
+                contentType: $contentType,
+                rawResponse: $httpResponse
+            );
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['400'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error400', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['401'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error401', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error403', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error404', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['405'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error405', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['409'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error409', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['425'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error425', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['429'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error429', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['500'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error500', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['502'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error502', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['504'])) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $httpResponse = $this->sdkConfiguration->hooks->afterSuccess(new Hooks\AfterSuccessContext($hookContext), $httpResponse);
+
+                $serializer = Utils\JSON::createSerializer();
+                $responseData = (string) $httpResponse->getBody();
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error504', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                throw $obj->toException();
+            } else {
+                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            }
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
+            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
+            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        } else {
+            throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+        }
+    }
+
+    /**
+     * Get an API key pair
+     *
+     * Fetches an API key pair by its ID.
+     *
+     * @param  string  $apiKeyPairId
+     * @return \Gr4vy\GetApiKeyPairResponse
+     * @throws \Gr4vy\errors\APIException
+     */
+    public function get(string $apiKeyPairId, ?Options $options = null): GetApiKeyPairResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -282,17 +467,17 @@ class MerchantAccountsSDK
                 '5XX',
             ];
         }
-        $request = new GetMerchantAccountRequest(
-            merchantAccountId: $merchantAccountId,
+        $request = new GetApiKeyPairRequest(
+            apiKeyPairId: $apiKeyPairId,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/merchant-accounts/{merchant_account_id}', GetMerchantAccountRequest::class, $request, $this->sdkConfiguration->globals);
+        $url = Utils\Utils::generateUrl($baseUrl, '/api-key-pairs/{api_key_pair_id}', GetApiKeyPairRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_merchant_account', null, $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'get_api_key_pair', null, $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -316,12 +501,12 @@ class MerchantAccountsSDK
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new GetMerchantAccountResponse(
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\APIKeyPair', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new GetApiKeyPairResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    apiRoutersMerchantAccountsSchemasMerchantAccount: $obj);
+                    apiKeyPair: $obj);
 
                 return $response;
             } else {
@@ -469,17 +654,16 @@ class MerchantAccountsSDK
     }
 
     /**
-     * List all merchant accounts
+     * List all API key pairs
      *
-     * List all merchant accounts in an instance.
+     * List all API key pairs.
      *
      * @param  ?string  $cursor
      * @param  ?int  $limit
-     * @param  ?string  $search
-     * @return \Gr4vy\ListMerchantAccountsResponse
+     * @return \Gr4vy\ListApiKeyPairsResponse
      * @throws \Gr4vy\errors\APIException
      */
-    private function listIndividual(?string $cursor = null, ?int $limit = null, ?string $search = null, ?Options $options = null): ListMerchantAccountsResponse
+    private function listIndividual(?string $cursor = null, ?int $limit = null, ?Options $options = null): ListApiKeyPairsResponse
     {
         $retryConfig = null;
         if ($options) {
@@ -505,21 +689,20 @@ class MerchantAccountsSDK
                 '5XX',
             ];
         }
-        $request = new ListMerchantAccountsRequest(
+        $request = new ListApiKeyPairsRequest(
             cursor: $cursor,
             limit: $limit,
-            search: $search,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/merchant-accounts');
+        $url = Utils\Utils::generateUrl($baseUrl, '/api-key-pairs');
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
 
-        $qp = Utils\Utils::getQueryParams(ListMerchantAccountsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
+        $qp = Utils\Utils::getQueryParams(ListApiKeyPairsRequest::class, $request, $urlOverride, $this->sdkConfiguration->globals);
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'list_merchant_accounts', null, $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'list_api_key_pairs', null, $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions['query'] = Utils\QueryParameters::standardizeQueryParams($httpRequest, $qp);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
@@ -544,15 +727,15 @@ class MerchantAccountsSDK
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\MerchantAccounts', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new ListMerchantAccountsResponse(
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\CollectionAPIKeyPair', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new ListApiKeyPairsResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    merchantAccounts: $obj);
+                    collectionAPIKeyPair: $obj);
                 $sdk = $this;
 
-                $response->next = function () use ($sdk, $responseData, $request): ?ListMerchantAccountsResponse {
+                $response->next = function () use ($sdk, $responseData, $request): ?ListApiKeyPairsResponse {
                     $jsonObject = new \JsonPath\JsonObject($responseData);
                     $nextCursor = $jsonObject->get('$.next_cursor');
                     if ($nextCursor == null) {
@@ -567,7 +750,6 @@ class MerchantAccountsSDK
                     return $sdk->listIndividual(
                         cursor: $nextCursor,
                         limit: $request != null ? $request->limit : null,
-                        search: $request != null ? $request->search : null,
                     );
                 };
 
@@ -717,19 +899,18 @@ class MerchantAccountsSDK
         }
     }
     /**
-     * List all merchant accounts
+     * List all API key pairs
      *
-     * List all merchant accounts in an instance.
+     * List all API key pairs.
      *
      * @param  ?string  $cursor
      * @param  ?int  $limit
-     * @param  ?string  $search
-     * @return \Generator<\Gr4vy\ListMerchantAccountsResponse>
+     * @return \Generator<\Gr4vy\ListApiKeyPairsResponse>
      * @throws \Gr4vy\errors\APIException
      */
-    public function list(?string $cursor = null, ?int $limit = null, ?string $search = null, ?Options $options = null): \Generator
+    public function list(?string $cursor = null, ?int $limit = null, ?Options $options = null): \Generator
     {
-        $res = $this->listIndividual($cursor, $limit, $search, $options);
+        $res = $this->listIndividual($cursor, $limit, $options);
         while ($res !== null) {
             yield $res;
             $res = $res->next($res);
@@ -737,26 +918,26 @@ class MerchantAccountsSDK
     }
 
     /**
-     * Update a merchant account
+     * Update an API key pair
      *
-     * Update info for a merchant account in an instance.
+     * Updates an API key pair.
      *
-     * @param  \Gr4vy\MerchantAccountUpdate  $merchantAccountUpdate
-     * @param  string  $merchantAccountId
-     * @return \Gr4vy\UpdateMerchantAccountResponse
+     * @param  \Gr4vy\APIKeyPairUpdate  $apiKeyPairUpdate
+     * @param  string  $apiKeyPairId
+     * @return \Gr4vy\UpdateApiKeyPairResponse
      * @throws \Gr4vy\errors\APIException
      */
-    public function update(MerchantAccountUpdate $merchantAccountUpdate, string $merchantAccountId, ?Options $options = null): UpdateMerchantAccountResponse
+    public function update(APIKeyPairUpdate $apiKeyPairUpdate, string $apiKeyPairId, ?Options $options = null): UpdateApiKeyPairResponse
     {
-        $request = new UpdateMerchantAccountRequest(
-            merchantAccountId: $merchantAccountId,
-            merchantAccountUpdate: $merchantAccountUpdate,
+        $request = new UpdateApiKeyPairRequest(
+            apiKeyPairId: $apiKeyPairId,
+            apiKeyPairUpdate: $apiKeyPairUpdate,
         );
         $baseUrl = $this->sdkConfiguration->getTemplatedServerUrl();
-        $url = Utils\Utils::generateUrl($baseUrl, '/merchant-accounts/{merchant_account_id}', UpdateMerchantAccountRequest::class, $request, $this->sdkConfiguration->globals);
+        $url = Utils\Utils::generateUrl($baseUrl, '/api-key-pairs/{api_key_pair_id}', UpdateApiKeyPairRequest::class, $request, $this->sdkConfiguration->globals);
         $urlOverride = null;
         $httpOptions = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, 'merchantAccountUpdate', 'json');
+        $body = Utils\Utils::serializeRequestBody($request, 'apiKeyPairUpdate', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
@@ -764,7 +945,7 @@ class MerchantAccountsSDK
         $httpOptions['headers']['Accept'] = 'application/json';
         $httpOptions['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('PUT', $url);
-        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'update_merchant_account', null, $this->sdkConfiguration->securitySource);
+        $hookContext = new HookContext($this->sdkConfiguration, $baseUrl, 'update_api_key_pair', null, $this->sdkConfiguration->securitySource);
         $httpRequest = $this->sdkConfiguration->hooks->beforeRequest(new Hooks\BeforeRequestContext($hookContext), $httpRequest);
         $httpOptions = Utils\Utils::convertHeadersToOptions($httpRequest, $httpOptions);
         $httpRequest = Utils\Utils::removeHeaders($httpRequest);
@@ -788,12 +969,12 @@ class MerchantAccountsSDK
 
                 $serializer = Utils\JSON::createSerializer();
                 $responseData = (string) $httpResponse->getBody();
-                $obj = $serializer->deserialize($responseData, '\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
-                $response = new UpdateMerchantAccountResponse(
+                $obj = $serializer->deserialize($responseData, '\Gr4vy\APIKeyPair', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $response = new UpdateApiKeyPairResponse(
                     statusCode: $statusCode,
                     contentType: $contentType,
                     rawResponse: $httpResponse,
-                    apiRoutersMerchantAccountsSchemasMerchantAccount: $obj);
+                    apiKeyPair: $obj);
 
                 return $response;
             } else {

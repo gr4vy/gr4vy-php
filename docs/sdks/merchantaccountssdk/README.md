@@ -107,7 +107,7 @@ $response = $sdk->merchantAccounts->create(
     request: $request
 );
 
-if ($response->merchantAccount !== null) {
+if ($response->apiRoutersMerchantAccountsSchemasMerchantAccount !== null) {
     // handle response
 }
 ```
@@ -166,7 +166,7 @@ $response = $sdk->merchantAccounts->get(
     merchantAccountId: 'merchant-12345'
 );
 
-if ($response->merchantAccount !== null) {
+if ($response->apiRoutersMerchantAccountsSchemasMerchantAccount !== null) {
     // handle response
 }
 ```
@@ -230,7 +230,7 @@ $response = $sdk->merchantAccounts->update(
 
 );
 
-if ($response->merchantAccount !== null) {
+if ($response->apiRoutersMerchantAccountsSchemasMerchantAccount !== null) {
     // handle response
 }
 ```

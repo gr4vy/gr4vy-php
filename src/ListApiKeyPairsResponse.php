@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class CreateMerchantAccountResponse
+class ListApiKeyPairsResponse
 {
     /**
      * HTTP response content type for this operation
@@ -35,22 +35,39 @@ class CreateMerchantAccountResponse
     /**
      * Successful Response
      *
-     * @var ?\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount $apiRoutersMerchantAccountsSchemasMerchantAccount
+     * @var ?\Gr4vy\CollectionAPIKeyPair $collectionAPIKeyPair
      */
-    public ?ApiRoutersMerchantAccountsSchemasMerchantAccount $apiRoutersMerchantAccountsSchemasMerchantAccount = null;
+    public ?CollectionAPIKeyPair $collectionAPIKeyPair = null;
 
+    /**
+     * @var \Closure(string): ?ListApiKeyPairsResponse $next
+     */
+    public \Closure $next;
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount  $apiRoutersMerchantAccountsSchemasMerchantAccount
+     * @param  ?\Gr4vy\CollectionAPIKeyPair  $collectionAPIKeyPair
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ApiRoutersMerchantAccountsSchemasMerchantAccount $apiRoutersMerchantAccountsSchemasMerchantAccount = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?CollectionAPIKeyPair $collectionAPIKeyPair = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->apiRoutersMerchantAccountsSchemasMerchantAccount = $apiRoutersMerchantAccountsSchemasMerchantAccount;
+        $this->collectionAPIKeyPair = $collectionAPIKeyPair;
+    }
+    /**
+     * @param  string  $name
+     * @param  array<mixed>  $args
+     * @return ?ListApiKeyPairsResponse
+     */
+    public function __call($name, $args): ?ListApiKeyPairsResponse
+    {
+        if ($name === 'next') {
+            return call_user_func_array($this->next, $args);
+        }
+
+        return null;
     }
 }

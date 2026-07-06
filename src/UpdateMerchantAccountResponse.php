@@ -35,22 +35,22 @@ class UpdateMerchantAccountResponse
     /**
      * Successful Response
      *
-     * @var ?\Gr4vy\MerchantAccount $merchantAccount
+     * @var ?\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount $apiRoutersMerchantAccountsSchemasMerchantAccount
      */
-    public ?MerchantAccount $merchantAccount = null;
+    public ?ApiRoutersMerchantAccountsSchemasMerchantAccount $apiRoutersMerchantAccountsSchemasMerchantAccount = null;
 
     /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?\Gr4vy\MerchantAccount  $merchantAccount
+     * @param  ?\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount  $apiRoutersMerchantAccountsSchemasMerchantAccount
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?MerchantAccount $merchantAccount = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ApiRoutersMerchantAccountsSchemasMerchantAccount $apiRoutersMerchantAccountsSchemasMerchantAccount = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->merchantAccount = $merchantAccount;
+        $this->apiRoutersMerchantAccountsSchemasMerchantAccount = $apiRoutersMerchantAccountsSchemasMerchantAccount;
     }
 }

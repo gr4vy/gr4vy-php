@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class MerchantAccount
+class ApiRoutersMerchantAccountsSchemasMerchantAccount
 {
     /**
      * The ID for the merchant account.

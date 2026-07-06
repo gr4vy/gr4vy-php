@@ -9,15 +9,15 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class MerchantAccounts
+class CollectionAPIKeyPair
 {
     /**
      * A list of items returned for this request.
      *
-     * @var array<\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount> $items
+     * @var array<\Gr4vy\APIKeyPair> $items
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('items')]
-    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount>')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\APIKeyPair>')]
     public array $items;
 
     /**
@@ -48,7 +48,7 @@ class MerchantAccounts
     public ?int $limit = null;
 
     /**
-     * @param  array<\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount>  $items
+     * @param  array<\Gr4vy\APIKeyPair>  $items
      * @param  ?int  $limit
      * @param  ?string  $nextCursor
      * @param  ?string  $previousCursor

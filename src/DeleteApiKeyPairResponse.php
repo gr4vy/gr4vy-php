@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
-class CreateMerchantAccountResponse
+class DeleteApiKeyPairResponse
 {
     /**
      * HTTP response content type for this operation
@@ -33,24 +33,15 @@ class CreateMerchantAccountResponse
     public \Psr\Http\Message\ResponseInterface $rawResponse;
 
     /**
-     * Successful Response
-     *
-     * @var ?\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount $apiRoutersMerchantAccountsSchemasMerchantAccount
-     */
-    public ?ApiRoutersMerchantAccountsSchemasMerchantAccount $apiRoutersMerchantAccountsSchemasMerchantAccount = null;
-
-    /**
      * @param  string  $contentType
      * @param  int  $statusCode
      * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
-     * @param  ?\Gr4vy\ApiRoutersMerchantAccountsSchemasMerchantAccount  $apiRoutersMerchantAccountsSchemasMerchantAccount
      * @phpstan-pure
      */
-    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?ApiRoutersMerchantAccountsSchemasMerchantAccount $apiRoutersMerchantAccountsSchemasMerchantAccount = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;
         $this->rawResponse = $rawResponse;
-        $this->apiRoutersMerchantAccountsSchemasMerchantAccount = $apiRoutersMerchantAccountsSchemasMerchantAccount;
     }
 }
