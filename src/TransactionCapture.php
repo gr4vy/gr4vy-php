@@ -79,6 +79,26 @@ class TransactionCapture
     public ?string $externalIdentifier = null;
 
     /**
+     * The billing details associated with the capture.
+     *
+     * @var ?\Gr4vy\BillingDetails $billingDetails
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_details')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\BillingDetails|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?BillingDetails $billingDetails = null;
+
+    /**
+     * The shipping details associated with the catpure.
+     *
+     * @var ?\Gr4vy\ShippingDetails $shippingDetails
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('shipping_details')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ShippingDetails|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?ShippingDetails $shippingDetails = null;
+
+    /**
      * Always `transaction-capture`.
      *
      * @var ?string $type
@@ -97,9 +117,11 @@ class TransactionCapture
      * @param  ?string  $captureId
      * @param  ?string  $paymentServiceCaptureId
      * @param  ?string  $externalIdentifier
+     * @param  ?\Gr4vy\BillingDetails  $billingDetails
+     * @param  ?\Gr4vy\ShippingDetails  $shippingDetails
      * @phpstan-pure
      */
-    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $captureId = null, ?string $paymentServiceCaptureId = null, ?string $externalIdentifier = null, ?string $type = 'transaction-capture')
+    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $captureId = null, ?string $paymentServiceCaptureId = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?ShippingDetails $shippingDetails = null, ?string $type = 'transaction-capture')
     {
         $this->status = $status;
         $this->transaction = $transaction;
@@ -109,6 +131,8 @@ class TransactionCapture
         $this->captureId = $captureId;
         $this->paymentServiceCaptureId = $paymentServiceCaptureId;
         $this->externalIdentifier = $externalIdentifier;
+        $this->billingDetails = $billingDetails;
+        $this->shippingDetails = $shippingDetails;
         $this->type = $type;
     }
 }
