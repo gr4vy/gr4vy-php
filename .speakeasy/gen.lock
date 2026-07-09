@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: a43c46f9a5fbba50adf80021c2517076
+  docChecksum: 8144521ebecfc42654f68cdbfac33e0c
   docVersion: 1.0.0
   speakeasyVersion: 1.789.0
   generationVersion: 2.916.2
-  releaseVersion: 1.5.111
-  configChecksum: a526a738f0dfe15ee7a7e0dfe431f755
+  releaseVersion: 1.5.112
+  configChecksum: c104157a6e024cf14fc4a4fa7594cfe9
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 4600ae1e-d645-4436-bb9e-8ad796e1cd2c
-  pristine_commit_hash: 26469f195e25995d2f51f220ede75bc7f2a4c713
-  pristine_tree_hash: f6d9bdd64ad47112707ef7551b78213450aad903
+  generation_id: d6db785f-4649-4e52-b557-4fd44a971a37
+  pristine_commit_hash: 653e553abf22f144e4b82abc5254886c7f1a17c9
+  pristine_tree_hash: f29cfd3512a3508e714f413779a588f71c08e537
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1098,6 +1098,14 @@ trackedFiles:
     id: 45bd5eff7207
     last_write_checksum: sha1:164ef0a3bb85c691e6dbb2626f6e462288733f05
     pristine_git_object: f371ba0d991fb9656df2e44d4dfd1252873fb1d6
+  docs/KlarnaOptions.md:
+    id: 12e02a303f23
+    last_write_checksum: sha1:751f8b6e2cd96dca33dde42135f6873a844b04ea
+    pristine_git_object: e17082d5a4e10854573d0c7d462ce58882b11293
+  docs/KlarnaSubscriptionOptions.md:
+    id: ce52576d8e17
+    last_write_checksum: sha1:dee5b0753275fa3df2952023a894c47769ec1d17
+    pristine_git_object: 350d9d3f3fc7cde99cdb17266a11ae7a03543b98
   docs/LatitudeOptions.md:
     id: 44eae27a59d2
     last_write_checksum: sha1:688ca328ca6e3dab4772055b9b021e92d5d3e193
@@ -2012,8 +2020,8 @@ trackedFiles:
     pristine_git_object: 083d8a31649d024de649f3819c144ca05d14915d
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:f89d9486d6883257b7aab8bad1cdc282df49e011
-    pristine_git_object: 9a54565225f8eaf59ea40a3aead625090a2901f5
+    last_write_checksum: sha1:29657842c12094ec98e645d0d718b3e10025e707
+    pristine_git_object: f4124028c4af73de03eea9c9ada1a092e4408b21
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:3575250c5732b734aeb1ddc7d2048a98b7569c47
@@ -3610,6 +3618,14 @@ trackedFiles:
     id: 2b01b1620bfb
     last_write_checksum: sha1:8a954f90d746e936f954f96e37fe889905475eb4
     pristine_git_object: 91e5f8dca76a97cfbf156db21b4198db68727ea0
+  src/KlarnaOptions.php:
+    id: b6c5c8fe7ed7
+    last_write_checksum: sha1:fa8b113343d0297d1934c4fed211ff41e883efa7
+    pristine_git_object: 339068abe4786b4beff33f6ee6218cd36074be01
+  src/KlarnaSubscriptionOptions.php:
+    id: 471189c8ee9e
+    last_write_checksum: sha1:9bbd043df743e47292a2a80c88398316bc47b7b5
+    pristine_git_object: 44844336af5e98657e1da19a18592fad2779a3ba
   src/LatitudeOptions.php:
     id: d602277b0bf3
     last_write_checksum: sha1:5e22b30376d79bb0b307803650c00e98f9bf0e86
@@ -4388,8 +4404,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:d15f9a45efa04706e49ed68ca54c6645a676e3af
-    pristine_git_object: 7f4c377d59405710e5cea177cd411ecebd396f6d
+    last_write_checksum: sha1:b757230528a12d63e4e61103a75dbf2449218c54
+    pristine_git_object: c14cdefc6fb33f16f492b5c92ea9a083ea9cdb4b
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4560,8 +4576,8 @@ trackedFiles:
     pristine_git_object: be2c01ac536e76e0293495ce27bb7515e020df0b
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:dc0f412a4410e74c96a1eadbc82685b8c06629db
-    pristine_git_object: c1aec4da6c75f0438558031e03594243999281b9
+    last_write_checksum: sha1:7854464c41fc3f263bce9f8dae03ebc7605495d9
+    pristine_git_object: 273b9003225a96df1d6b9269529e7ffd745350c7
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:baafab6c743b037318d7a1a7cc1a86f493f43a0e
@@ -8968,6 +8984,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->klarnaKlarna` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->klarnaKlarna` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->klarnaKlarna` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
