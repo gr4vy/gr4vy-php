@@ -80,6 +80,15 @@ class MerchantAccount
     public ?array $loonAcceptedSchemes = null;
 
     /**
+     * Merchant account ID provided by Pagos to identify this merchant account on the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
+     *
+     * @var ?string $loonMerchantAccountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('loon_merchant_account_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $loonMerchantAccountId = null;
+
+    /**
      * The public key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
      *
      * @var ?string $accountUpdaterRequestEncryptionKey
@@ -234,6 +243,7 @@ class MerchantAccount
      * @param  ?string  $loonClientKey
      * @param  ?string  $loonSecretKey
      * @param  ?array<string>  $loonAcceptedSchemes
+     * @param  ?string  $loonMerchantAccountId
      * @param  ?string  $accountUpdaterRequestEncryptionKey
      * @param  ?string  $accountUpdaterRequestEncryptionKeyId
      * @param  ?string  $accountUpdaterResponseDecryptionKey
@@ -250,7 +260,7 @@ class MerchantAccount
      * @param  ?string  $discoverNetworkTokensAppId
      * @phpstan-pure
      */
-    public function __construct(string $id, string $displayName, bool $accountUpdaterEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $discoverNetworkTokensRequestorId = null, ?string $discoverNetworkTokensAppId = null, ?bool $asyncNetworkTokensEnabled = false, ?string $type = 'merchant-account')
+    public function __construct(string $id, string $displayName, bool $accountUpdaterEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $loonMerchantAccountId = null, ?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $discoverNetworkTokensRequestorId = null, ?string $discoverNetworkTokensAppId = null, ?bool $asyncNetworkTokensEnabled = false, ?string $type = 'merchant-account')
     {
         $this->id = $id;
         $this->displayName = $displayName;
@@ -260,6 +270,7 @@ class MerchantAccount
         $this->loonClientKey = $loonClientKey;
         $this->loonSecretKey = $loonSecretKey;
         $this->loonAcceptedSchemes = $loonAcceptedSchemes;
+        $this->loonMerchantAccountId = $loonMerchantAccountId;
         $this->accountUpdaterRequestEncryptionKey = $accountUpdaterRequestEncryptionKey;
         $this->accountUpdaterRequestEncryptionKeyId = $accountUpdaterRequestEncryptionKeyId;
         $this->accountUpdaterResponseDecryptionKey = $accountUpdaterResponseDecryptionKey;
