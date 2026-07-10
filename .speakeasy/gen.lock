@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 8144521ebecfc42654f68cdbfac33e0c
+  docChecksum: a6d3d4ce27cd949ffc1a729d54087ba8
   docVersion: 1.0.0
-  speakeasyVersion: 1.789.0
-  generationVersion: 2.916.2
-  releaseVersion: 1.5.112
-  configChecksum: c104157a6e024cf14fc4a4fa7594cfe9
+  speakeasyVersion: 1.789.1
+  generationVersion: 2.916.4
+  releaseVersion: 1.5.113
+  configChecksum: e4c784abd47d51a4b207691c19dc9d2a
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: d6db785f-4649-4e52-b557-4fd44a971a37
-  pristine_commit_hash: 653e553abf22f144e4b82abc5254886c7f1a17c9
-  pristine_tree_hash: f29cfd3512a3508e714f413779a588f71c08e537
+  generation_id: eb98b5b1-bdfa-4d9a-9089-cbacea5e2a70
+  pristine_commit_hash: 0fe3cd880ed748f7586bb16071be58e1eba584b9
+  pristine_tree_hash: 8fcbbe851d82dc15b3294431902975d89deffcdc
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1360,12 +1360,12 @@ trackedFiles:
     pristine_git_object: 77f7052dd456ac2f5431e6c4ce0ea03bedb8d095
   docs/MerchantAccount.md:
     id: adf45086084e
-    last_write_checksum: sha1:05c261ca1cac7a4e2bb44e50259fe7e70c09d701
-    pristine_git_object: 8d30168a40e0c7a8603e450cdda301088e27ad35
+    last_write_checksum: sha1:7019cbaf32c56acaa327b6a3d7eb92f17afb0a04
+    pristine_git_object: 1da10e930af43674dc0894c9576ad9d15c31eb67
   docs/MerchantAccountCreate.md:
     id: ff87c07ae1ea
-    last_write_checksum: sha1:72d354fc874a1c56c8459fa57c27af05307181a1
-    pristine_git_object: cc34d41f7848e3efceb9a567f4727021eac30d80
+    last_write_checksum: sha1:b6fdf6d86c31d2357d5fddf63a038a90576e9f94
+    pristine_git_object: 7786d78e0fe84b123d52be423ca3f9df55a279c2
   docs/MerchantAccountSummary.md:
     id: 0307c7bca748
     last_write_checksum: sha1:77abcbbee0dffc23e2d78bed168a41c493260390
@@ -1388,8 +1388,8 @@ trackedFiles:
     pristine_git_object: 461dfca2ad3292525a5f1b44991227d51e894633
   docs/MerchantAccountUpdate.md:
     id: fa847253338a
-    last_write_checksum: sha1:e7406608e583f794d6c571c1fbb7d8c9b71b2847
-    pristine_git_object: 1845cab3c768539638975dabe1b0a4d6be3100a6
+    last_write_checksum: sha1:530f8269143c6a4fa02051abb71afeef527470be
+    pristine_git_object: d9d9a03e534a46631d5791b90da485c1a77a920a
   docs/MerchantAccounts.md:
     id: 8d22a6c8da0c
     last_write_checksum: sha1:da4984ff5f99256e4b7b7d09625946e8b238e5b5
@@ -3876,12 +3876,12 @@ trackedFiles:
     pristine_git_object: ad3b5312dffa2f6a3b53687888a219db6dc9fb6e
   src/MerchantAccount.php:
     id: 532fc8c26448
-    last_write_checksum: sha1:727e1792d50fa6beb39dda55612a4ef26e607783
-    pristine_git_object: e98d774d94df682e663ba7cad7efda72ec900b3e
+    last_write_checksum: sha1:b7bd9dcf4f21a1e4ffba6dd463f7f8210a8722da
+    pristine_git_object: 7b89dd9df7e6dddfdc77ef2be3e17b1380214101
   src/MerchantAccountCreate.php:
     id: 6c03209a17ba
-    last_write_checksum: sha1:b41f7dbea66aa8d14439edd3f2b67eeefac81b05
-    pristine_git_object: 652894f885f9d949a1b9fd7550f4a70d2d448b38
+    last_write_checksum: sha1:bf99e8c002d5764142745249e9a357455800d165
+    pristine_git_object: b29dbfc1f57807d24135b20c7f2cfd2808f30d88
   src/MerchantAccountSummary.php:
     id: 7449cdf1c359
     last_write_checksum: sha1:5a662a24a95bfd9ec445fd73c36f3cc73862160a
@@ -3904,8 +3904,8 @@ trackedFiles:
     pristine_git_object: 2c44b026cbac9d8749f2878cefea3ed6a0c1319d
   src/MerchantAccountUpdate.php:
     id: 1610e568c790
-    last_write_checksum: sha1:c61ed67728a07fbc0fd1d4225dc6bb642cc77d00
-    pristine_git_object: 2b5fc6ffc80133a33d8c2c028045de423e8ac099
+    last_write_checksum: sha1:8927189a983023a687ad8d27e08d6b921b5d4d04
+    pristine_git_object: ef5b974cf9eb88c992064e5d95f7d3f1386e5342
   src/MerchantAccounts.php:
     id: c5489acdd20e
     last_write_checksum: sha1:b5e67d6153817717e2e5195836ab10df735a1321
@@ -4404,8 +4404,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:b757230528a12d63e4e61103a75dbf2449218c54
-    pristine_git_object: c14cdefc6fb33f16f492b5c92ea9a083ea9cdb4b
+    last_write_checksum: sha1:92a99b8a2ea397f66fce79398bfd61f06728fddb
+    pristine_git_object: f502a9593ff896238d6f8fe20febecb982baaa3e
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -8984,7 +8984,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->klarnaKlarna` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->klarnaKlarna` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->klarnaKlarna` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->merchant-accounts->list()`:  `response.items[]->loonMerchantAccountId` **Added**\n* `sdk->merchant-accounts->create()`: \n  *  `request->loonMerchantAccountId` **Added**\n  *  `response.loonMerchantAccountId` **Added**\n* `sdk->merchant-accounts->get()`:  `response.loonMerchantAccountId` **Added**\n* `sdk->merchant-accounts->update()`: \n  *  `request.merchantAccountUpdate->loonMerchantAccountId` **Added**\n  *  `response.loonMerchantAccountId` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

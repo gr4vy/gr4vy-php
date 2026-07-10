@@ -94,6 +94,15 @@ class MerchantAccountUpdate
     public ?array $loonAcceptedSchemes = null;
 
     /**
+     * Merchant account ID provided by Pagos to identify this merchant account on the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
+     *
+     * @var ?string $loonMerchantAccountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('loon_merchant_account_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $loonMerchantAccountId = null;
+
+    /**
      * Requestor ID provided for Visa after onboarding to use Network Tokens.
      *
      * @var ?string $visaNetworkTokensRequestorId
@@ -204,6 +213,7 @@ class MerchantAccountUpdate
      * @param  ?string  $loonClientKey
      * @param  ?string  $loonSecretKey
      * @param  ?array<string>  $loonAcceptedSchemes
+     * @param  ?string  $loonMerchantAccountId
      * @param  ?string  $visaNetworkTokensRequestorId
      * @param  ?string  $visaNetworkTokensAppId
      * @param  ?string  $amexNetworkTokensRequestorId
@@ -215,7 +225,7 @@ class MerchantAccountUpdate
      * @param  ?string  $displayName
      * @phpstan-pure
      */
-    public function __construct(?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $discoverNetworkTokensRequestorId = null, ?string $discoverNetworkTokensAppId = null, ?string $displayName = null, ?bool $accountUpdaterEnabled = false, ?bool $asyncNetworkTokensEnabled = false)
+    public function __construct(?string $accountUpdaterRequestEncryptionKey = null, ?string $accountUpdaterRequestEncryptionKeyId = null, ?string $accountUpdaterResponseDecryptionKey = null, ?string $accountUpdaterResponseDecryptionKeyId = null, ?int $overCaptureAmount = null, ?int $overCapturePercentage = null, ?string $loonClientKey = null, ?string $loonSecretKey = null, ?array $loonAcceptedSchemes = null, ?string $loonMerchantAccountId = null, ?string $visaNetworkTokensRequestorId = null, ?string $visaNetworkTokensAppId = null, ?string $amexNetworkTokensRequestorId = null, ?string $amexNetworkTokensAppId = null, ?string $mastercardNetworkTokensRequestorId = null, ?string $mastercardNetworkTokensAppId = null, ?string $discoverNetworkTokensRequestorId = null, ?string $discoverNetworkTokensAppId = null, ?string $displayName = null, ?bool $accountUpdaterEnabled = false, ?bool $asyncNetworkTokensEnabled = false)
     {
         $this->accountUpdaterRequestEncryptionKey = $accountUpdaterRequestEncryptionKey;
         $this->accountUpdaterRequestEncryptionKeyId = $accountUpdaterRequestEncryptionKeyId;
@@ -226,6 +236,7 @@ class MerchantAccountUpdate
         $this->loonClientKey = $loonClientKey;
         $this->loonSecretKey = $loonSecretKey;
         $this->loonAcceptedSchemes = $loonAcceptedSchemes;
+        $this->loonMerchantAccountId = $loonMerchantAccountId;
         $this->visaNetworkTokensRequestorId = $visaNetworkTokensRequestorId;
         $this->visaNetworkTokensAppId = $visaNetworkTokensAppId;
         $this->amexNetworkTokensRequestorId = $amexNetworkTokensRequestorId;
