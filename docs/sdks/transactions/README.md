@@ -371,7 +371,9 @@ $sdk = Gr4vy\SDK::builder()
 
 $request = new Gr4vy\CaptureTransactionRequest(
     transactionId: '7099948d-7286-47e4-aad8-b68f7eb44591',
-    transactionCaptureCreate: new Gr4vy\TransactionCaptureCreate(),
+    transactionCaptureCreate: new Gr4vy\TransactionCaptureCreate(
+        reauthorizeIfAuthorizationExpired: true,
+    ),
 );
 
 $response = $sdk->transactions->capture(

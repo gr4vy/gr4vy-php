@@ -51,15 +51,6 @@ class TransactionCaptureCreate
     public ?string $externalIdentifier = null;
 
     /**
-     * Whether this capture request should re-authorize the transaction if it has expired.
-     *
-     * @var ?bool $reauthorizeIfAuthorizationExpired
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('reauthorize_if_authorization_expired')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?bool $reauthorizeIfAuthorizationExpired = null;
-
-    /**
      * Whether this is marked as the final capture for the associated transaction. Must be `true` or omitted when multi-capture is not enabled; a value of `false` is only valid when multi-capture is available on the connection.
      *
      * @var ?bool $final
@@ -69,21 +60,30 @@ class TransactionCaptureCreate
     public ?bool $final = null;
 
     /**
+     * Whether this capture request should re-authorize the transaction if it has expired.
+     *
+     * @var ?bool $reauthorizeIfAuthorizationExpired
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reauthorize_if_authorization_expired')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $reauthorizeIfAuthorizationExpired = null;
+
+    /**
      * @param  ?bool  $final
+     * @param  ?bool  $reauthorizeIfAuthorizationExpired
      * @param  ?int  $amount
      * @param  ?\Gr4vy\Airline  $airline
      * @param  ?array<\Gr4vy\CartItem>  $cartItems
      * @param  ?string  $externalIdentifier
-     * @param  ?bool  $reauthorizeIfAuthorizationExpired
      * @phpstan-pure
      */
-    public function __construct(?int $amount = null, ?Airline $airline = null, ?array $cartItems = null, ?string $externalIdentifier = null, ?bool $reauthorizeIfAuthorizationExpired = null, ?bool $final = true)
+    public function __construct(?int $amount = null, ?Airline $airline = null, ?array $cartItems = null, ?string $externalIdentifier = null, ?bool $final = true, ?bool $reauthorizeIfAuthorizationExpired = false)
     {
         $this->amount = $amount;
         $this->airline = $airline;
         $this->cartItems = $cartItems;
         $this->externalIdentifier = $externalIdentifier;
-        $this->reauthorizeIfAuthorizationExpired = $reauthorizeIfAuthorizationExpired;
         $this->final = $final;
+        $this->reauthorizeIfAuthorizationExpired = $reauthorizeIfAuthorizationExpired;
     }
 }
