@@ -489,6 +489,11 @@ if ($response->accountUpdaterJob !== null) {
 
 * [list](docs/sdks/events/README.md#list) - List transaction events
 
+#### [Transactions.RefundSettlements](docs/sdks/transactionsrefundsettlements/README.md)
+
+* [get](docs/sdks/transactionsrefundsettlements/README.md#get) - Get transaction refund settlement
+* [list](docs/sdks/transactionsrefundsettlements/README.md#list) - List transaction refund settlements
+
 #### [Transactions.Refunds](docs/sdks/transactionsrefunds/README.md)
 
 * [list](docs/sdks/transactionsrefunds/README.md#list) - List transaction refunds

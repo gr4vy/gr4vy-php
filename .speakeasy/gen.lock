@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 0b8ef521247cedc94016b9dd9220d51e
+  docChecksum: dca582c356138aceb28ccd41b14f675d
   docVersion: 1.0.0
-  speakeasyVersion: 1.790.0
-  generationVersion: 2.917.0
-  releaseVersion: 1.5.114
-  configChecksum: 9a790c5580f6b58468a07cb5987df340
+  speakeasyVersion: 1.790.1
+  generationVersion: 2.918.1
+  releaseVersion: 1.5.115
+  configChecksum: d535356adb6470d295994ed24a8fe7cf
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 8d35a2b6-8933-4f1c-b182-5dacc7050b1c
-  pristine_commit_hash: a75f446aa8a95eddfbe226bef912c5acb32b8404
-  pristine_tree_hash: 9cd634112510cf1543e59716d9816ba99af4fa9d
+  generation_id: 2a2e516c-424a-452b-8c0e-46d7ac1a816b
+  pristine_commit_hash: 1fadbf89a05f81ce0aac1b400189711c1b427d05
+  pristine_tree_hash: 05ada1755289168028828c42f670e5cf86ecd52e
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:5d144eedc8f1f0b2fc187b1c231f02921f7a0360
-    pristine_git_object: c44355225f10e2a610661ae3311be5d854756cb3
+    last_write_checksum: sha1:e2117333ca78a5cffa238852b324777ccf90cfc5
+    pristine_git_object: 38f6c8e2ba9481a45165bd0b4e5aa9e3374381d7
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -990,6 +990,14 @@ trackedFiles:
     id: df6b32b064cd
     last_write_checksum: sha1:11b6391e28b21825ad2301acc4cf1ff990ceeff0
     pristine_git_object: ac341e5bf297b41c837d64f5cde4920d556f3e3f
+  docs/GetTransactionRefundSettlementRequest.md:
+    id: 49e52bbeda18
+    last_write_checksum: sha1:47607fde26580a085fdff43b531e3f499fba4dc5
+    pristine_git_object: c90662633d76543deefdd755e1096657c19de505
+  docs/GetTransactionRefundSettlementResponse.md:
+    id: a5ba87e93249
+    last_write_checksum: sha1:1eb7e59adf5289af4cb2ededaa300c5edfe610ce
+    pristine_git_object: 45270cfca0866d81ac358259c4354fa7bd23f2b6
   docs/GetTransactionRequest.md:
     id: d56748b16732
     last_write_checksum: sha1:374a0c5a27ce49ed1228ae3319ec14865a5e0885
@@ -1326,6 +1334,14 @@ trackedFiles:
     id: 67d78d17df77
     last_write_checksum: sha1:3e41a414f8289f84f727711aba5247677fade756
     pristine_git_object: 125832f8a2780f7542032d8e3e5965917cc79382
+  docs/ListTransactionRefundSettlementsRequest.md:
+    id: 83200b4792e8
+    last_write_checksum: sha1:588b5a346f3bdf96ffec58a0e8615647999d3fe9
+    pristine_git_object: ea918daf63c13430ceb6289bc8528ac583968397
+  docs/ListTransactionRefundSettlementsResponse.md:
+    id: bb9d8b85bdcf
+    last_write_checksum: sha1:d8708f52357b270e126b767078b84b4cbae2c611
+    pristine_git_object: 45bfc56811b23914b49351c3c9102a3660e2d3cb
   docs/ListTransactionRefundsRequest.md:
     id: 3a29266f365d
     last_write_checksum: sha1:69ff7a2cf6fa9b9f6d44e9f869a3747f52cdf6bd
@@ -1738,6 +1754,14 @@ trackedFiles:
     id: 5a2878a5f598
     last_write_checksum: sha1:96139441718ecc655515a3263fecca42ce0a474c
     pristine_git_object: f1f3aad087ea08b70d36866641cfda9ed94217d2
+  docs/RefundSettlement.md:
+    id: 5d49399022a5
+    last_write_checksum: sha1:fdebb9c44035357ee78d0faee46eeef018f5e991
+    pristine_git_object: 1ffba6f130aad875db712cf0d572a59c84faa08d
+  docs/RefundSettlements.md:
+    id: a23dcd387103
+    last_write_checksum: sha1:e6090430f9d5c4a9857d4342ba5f93c9e9fbfa53
+    pristine_git_object: dad92ec48375e4f1325fff05f1200a45fc27ec91
   docs/Refunds.md:
     id: 7479866cad8a
     last_write_checksum: sha1:4192797b80cb43c47d02375aed95fa0e10f6008e
@@ -2378,6 +2402,10 @@ trackedFiles:
     id: c6a0400f5020
     last_write_checksum: sha1:e09ffde4e5a59c44a3e100ffa5737974ed107160
     pristine_git_object: 080be46fafc804a0bedcdc899af5559d5992e5a8
+  docs/sdks/transactionsrefundsettlements/README.md:
+    id: 260e2694a8e7
+    last_write_checksum: sha1:39a95d5a394e6c09bcd2cf39c04db72f41131b59
+    pristine_git_object: 7f14cc2c4a22da5adb7c14c43dc811f2b1783b22
   docs/sdks/transactionssettlements/README.md:
     id: d6fcf995b933
     last_write_checksum: sha1:40f39fc7cc7f01052916a797718916bd32466127
@@ -3450,6 +3478,14 @@ trackedFiles:
     id: 39173c3e8601
     last_write_checksum: sha1:6ec5f0c7ad2af81f43cf71ec4c8d91853f8f155c
     pristine_git_object: f91027e51f7ac514aa49013709023774c3077a17
+  src/GetTransactionRefundSettlementRequest.php:
+    id: cea4aacd173e
+    last_write_checksum: sha1:3b08de9e3f982f7b8beb0ab7ccb4001ebb9f77c1
+    pristine_git_object: 9fb9079cf7a15bbb6e3a394a62fdc954f2396744
+  src/GetTransactionRefundSettlementResponse.php:
+    id: 33b9c9f74d96
+    last_write_checksum: sha1:4d5673c301d85524a50c0241b22b1c381553d5d9
+    pristine_git_object: 667b577dec5519610b932242a1ed77e01fd8def4
   src/GetTransactionRequest.php:
     id: 9af4ed665b3a
     last_write_checksum: sha1:41fc6ebac24b32b69463d8bb260aa25501f3e078
@@ -3846,6 +3882,14 @@ trackedFiles:
     id: 272a390068e5
     last_write_checksum: sha1:733c726fe2a9467f6c314466f717442951f658be
     pristine_git_object: 5b69414884f0303c38c6d6d3ffd45a9901783ce9
+  src/ListTransactionRefundSettlementsRequest.php:
+    id: 4673f00c05c3
+    last_write_checksum: sha1:7f84e151afef3357cc0a0282bce7df5f2c2d66e1
+    pristine_git_object: 0ac168e2db7f7001b189553b8e3be2bbb8020f10
+  src/ListTransactionRefundSettlementsResponse.php:
+    id: c506d1125e50
+    last_write_checksum: sha1:7c15aac60eafcba0bea72fd85e3d954c0500c037
+    pristine_git_object: a184bf522e384819413d7fd9d3f95c0d630a9ad4
   src/ListTransactionRefundsRequest.php:
     id: 59c9baf759d3
     last_write_checksum: sha1:9838d75bd896d98b1fa940c91ea3c8cd1eed673e
@@ -4290,6 +4334,14 @@ trackedFiles:
     id: 0b8779a8e3ee
     last_write_checksum: sha1:e23be98ffd08f3ec785bb6b5b0883015efeea0cc
     pristine_git_object: def87a283484035cc71c3760dbcf9a3491071538
+  src/RefundSettlement.php:
+    id: 0408311013a8
+    last_write_checksum: sha1:4d9dd70e3d867fac96ffcd4760bf33ad06f51a54
+    pristine_git_object: 9d41716dc6585c461a7d106b3fb620916777302f
+  src/RefundSettlements.php:
+    id: 24b1accf439c
+    last_write_checksum: sha1:8e94e8944f04c22b3c0b7061788ff6250611cd80
+    pristine_git_object: 5e98d6f7c4a6f5901367871b3667cf8bc409d52f
   src/Refunds.php:
     id: 621a14ef2613
     last_write_checksum: sha1:9d2bcebc149a16dab700a8bce623c43271ae4fef
@@ -4404,8 +4456,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:b979449c7bc8856ed42df28fb3956049ee814401
-    pristine_git_object: b291fc7cc786fb5610cf2bcfb8f29f7cfbc17938
+    last_write_checksum: sha1:0f044b0eaac02f3ec614fab678d83afee1313c8f
+    pristine_git_object: 3cab4ae992dc28d21ccd81cd2a74966c40ec8c84
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4632,8 +4684,12 @@ trackedFiles:
     pristine_git_object: bd086edee3a243fcc0a286bb8d2dd244e1724cba
   src/Transactions.php:
     id: fb7274f4b525
-    last_write_checksum: sha1:1192130321a7318d7524695bb926645ec3bc3154
-    pristine_git_object: 64d1d73d6717ccba4a3517feec79d0094947f851
+    last_write_checksum: sha1:da2961c6e8df644ea2986399d6adab0ffc0625da
+    pristine_git_object: e18d257ffead23d4b6a88fc08804f501bb157cc1
+  src/TransactionsRefundSettlements.php:
+    id: 1f4522fc8e31
+    last_write_checksum: sha1:3ab4605e8a5c4a06a3d3d988d3f5a071f7fe6f2c
+    pristine_git_object: c22b3f8829076786984b07949274cc918ed2dd60
   src/TransactionsRefunds.php:
     id: b5ef579db238
     last_write_checksum: sha1:25f739a09b21e7ea1177fbde4c431bab8292058e
@@ -8982,9 +9038,77 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  get_transaction_refund_settlement:
+    speakeasy-default-get-transaction-refund-settlement:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+          settlement_id: "b1e2c3d4-5678-1234-9abc-1234567890ab"
+      responses:
+        "200":
+          application/json: {"id": "b1e2c3d4-5678-1234-9abc-1234567890ab", "merchant_account_id": "default", "created_at": "2024-06-01T12:00:00.000Z", "updated_at": "2024-06-01T12:00:00.000Z", "posted_at": "2024-06-01T12:00:00.000Z", "ingested_at": "2024-06-01T12:00:00.000Z", "currency": "EUR", "amount": 1100, "commission": 100, "payment_service_report_id": "a1b2c3d4-5678-1234-9abc-1234567890ab", "payment_service_report_file_ids": ["f1e2d3c4-5678-1234-9abc-1234567890ab"], "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591", "type": "refund-settlement", "refund_id": "b1e2c3d4-5678-1234-9abc-1234567890ab"}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  list_transaction_refund_settlements:
+    speakeasy-default-list-transaction-refund-settlements:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+      responses:
+        "200":
+          application/json: {"items": [{"id": "b1e2c3d4-5678-1234-9abc-1234567890ab", "merchant_account_id": "default", "created_at": "2024-06-01T12:00:00.000Z", "updated_at": "2024-06-01T12:00:00.000Z", "posted_at": "2024-06-01T12:00:00.000Z", "ingested_at": "2024-06-01T12:00:00.000Z", "currency": "EUR", "amount": 1100, "commission": 100, "payment_service_report_id": "a1b2c3d4-5678-1234-9abc-1234567890ab", "payment_service_report_file_ids": ["f1e2d3c4-5678-1234-9abc-1234567890ab"], "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591", "type": "refund-settlement", "refund_id": "b1e2c3d4-5678-1234-9abc-1234567890ab"}]}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->capture()`: \n  *  `request->transactionCaptureCreate->reauthorizeIfAuthorizationExpired` **Changed** (Breaking ⚠️)\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->transactions->refundSettlements->get()`: **Added**
+  * `sdk->transactions->refundSettlements->list()`: **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md

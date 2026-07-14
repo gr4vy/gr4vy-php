@@ -25,6 +25,8 @@ class Transactions
 
     public TransactionsSettlements $settlements;
 
+    public TransactionsRefundSettlements $refundSettlements;
+
     public Captures $captures;
 
     /**
@@ -37,6 +39,7 @@ class Transactions
         $this->actions = new Actions($this->sdkConfiguration);
         $this->events = new Events($this->sdkConfiguration);
         $this->settlements = new TransactionsSettlements($this->sdkConfiguration);
+        $this->refundSettlements = new TransactionsRefundSettlements($this->sdkConfiguration);
         $this->captures = new Captures($this->sdkConfiguration);
     }
     /**
