@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: a6d3d4ce27cd949ffc1a729d54087ba8
+  docChecksum: 0b8ef521247cedc94016b9dd9220d51e
   docVersion: 1.0.0
-  speakeasyVersion: 1.789.1
-  generationVersion: 2.916.4
-  releaseVersion: 1.5.113
-  configChecksum: e4c784abd47d51a4b207691c19dc9d2a
+  speakeasyVersion: 1.790.0
+  generationVersion: 2.917.0
+  releaseVersion: 1.5.114
+  configChecksum: 9a790c5580f6b58468a07cb5987df340
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: eb98b5b1-bdfa-4d9a-9089-cbacea5e2a70
-  pristine_commit_hash: 0fe3cd880ed748f7586bb16071be58e1eba584b9
-  pristine_tree_hash: 8fcbbe851d82dc15b3294431902975d89deffcdc
+  generation_id: 8d35a2b6-8933-4f1c-b182-5dacc7050b1c
+  pristine_commit_hash: a75f446aa8a95eddfbe226bef912c5acb32b8404
+  pristine_tree_hash: 9cd634112510cf1543e59716d9816ba99af4fa9d
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:e2117333ca78a5cffa238852b324777ccf90cfc5
-    pristine_git_object: 38f6c8e2ba9481a45165bd0b4e5aa9e3374381d7
+    last_write_checksum: sha1:5d144eedc8f1f0b2fc187b1c231f02921f7a0360
+    pristine_git_object: c44355225f10e2a610661ae3311be5d854756cb3
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -2372,8 +2372,8 @@ trackedFiles:
     pristine_git_object: 546b771fe67e0e9e9f94d0f2efef514063ca31ba
   docs/sdks/transactions/README.md:
     id: 85592abe3c6b
-    last_write_checksum: sha1:b918213b5986dc5dcff93ad82d39f1213b5b57a7
-    pristine_git_object: f0134a2087c34a9003889538910eac1d61302b02
+    last_write_checksum: sha1:e4eaeceaf1190d0533ff05d712b283c0d1695708
+    pristine_git_object: 05a77511ab837028fcdfc18920224c0121a48efb
   docs/sdks/transactionsrefunds/README.md:
     id: c6a0400f5020
     last_write_checksum: sha1:e09ffde4e5a59c44a3e100ffa5737974ed107160
@@ -4404,8 +4404,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:92a99b8a2ea397f66fce79398bfd61f06728fddb
-    pristine_git_object: f502a9593ff896238d6f8fe20febecb982baaa3e
+    last_write_checksum: sha1:b979449c7bc8856ed42df28fb3956049ee814401
+    pristine_git_object: b291fc7cc786fb5610cf2bcfb8f29f7cfbc17938
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4572,8 +4572,8 @@ trackedFiles:
     pristine_git_object: 95b2775f5aa69c70f4cb2efae9c336aa9c000edc
   src/TransactionCaptureCreate.php:
     id: b0e5720e1aa2
-    last_write_checksum: sha1:ebe58c2234a5ec54551266b8e7f057e5e5ebf83a
-    pristine_git_object: be2c01ac536e76e0293495ce27bb7515e020df0b
+    last_write_checksum: sha1:02bc1cd2ba8dd63b4ad03310e50d471d99292712
+    pristine_git_object: 157b1e2a3874684edd1e43d9346f52b191eaa5c7
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
     last_write_checksum: sha1:7854464c41fc3f263bce9f8dae03ebc7605495d9
@@ -6612,7 +6612,7 @@ examples:
           application_name: "core-api"
         header: {}
       requestBody:
-        application/json: {"final": true}
+        application/json: {"final": true, "reauthorize_if_authorization_expired": true}
       responses:
         "200":
           application/json: {"type": "transaction-capture", "status": "authorization_voided", "code": "service_error", "raw_response_code": "E104", "raw_response_description": "Internal error", "transaction": {"type": "transaction", "id": "7099948d-7286-47e4-aad8-b68f7eb44591", "reconciliation_id": "default", "merchant_account_id": "default", "currency": "EUR", "amount": 1299, "status": "<value>", "authorized_amount": 1299, "captured_amount": 1299, "refunded_amount": 1299, "settled_amount": 1100, "settled": true, "intent": "<value>", "pending_review": false, "gift_card_redemptions": [], "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "disputed": true, "payment_source": "<value>", "merchant_initiated": true, "is_subsequent_payment": false, "intent_outcome": "<value>", "multi_tender": true, "account_funding_transaction": true}}
@@ -8984,7 +8984,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->merchant-accounts->list()`:  `response.items[]->loonMerchantAccountId` **Added**\n* `sdk->merchant-accounts->create()`: \n  *  `request->loonMerchantAccountId` **Added**\n  *  `response.loonMerchantAccountId` **Added**\n* `sdk->merchant-accounts->get()`:  `response.loonMerchantAccountId` **Added**\n* `sdk->merchant-accounts->update()`: \n  *  `request.merchantAccountUpdate->loonMerchantAccountId` **Added**\n  *  `response.loonMerchantAccountId` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->capture()`: \n  *  `request->transactionCaptureCreate->reauthorizeIfAuthorizationExpired` **Changed** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
