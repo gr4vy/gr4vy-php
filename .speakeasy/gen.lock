@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: dca582c356138aceb28ccd41b14f675d
+  docChecksum: da1ae9b6d994bdb33ecd4619d6f16164
   docVersion: 1.0.0
   speakeasyVersion: 1.790.1
   generationVersion: 2.918.1
-  releaseVersion: 1.5.115
-  configChecksum: d535356adb6470d295994ed24a8fe7cf
+  releaseVersion: 1.5.116
+  configChecksum: bfe5aa1f32d91b4df00391eb738be4c4
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 2a2e516c-424a-452b-8c0e-46d7ac1a816b
-  pristine_commit_hash: 1fadbf89a05f81ce0aac1b400189711c1b427d05
-  pristine_tree_hash: 05ada1755289168028828c42f670e5cf86ecd52e
+  generation_id: 1884a0a5-f0ba-44e0-b719-87c84606a4e3
+  pristine_commit_hash: c2c1c9916228b92d8186233795058023a0696167
+  pristine_tree_hash: f3a7691392fe26dc36d744a160e543b1429404d8
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -170,10 +170,6 @@ trackedFiles:
     id: 85b072e5daef
     last_write_checksum: sha1:b2d37e1798be940bf133479807e6b95807f7f3e1
     pristine_git_object: a59e7bee9db899deda310b91992ad713b6fa7e0e
-  docs/ApiTypesDigitalWalletAddress.md:
-    id: 0f3a1930a08c
-    last_write_checksum: sha1:1e895aa9ff9afbcf902833b2e44c3a38dcf4e4d2
-    pristine_git_object: 1f1ae3bcc1623f4a1ed2617fd02cd3f6a73cee24
   docs/ApplePayPaymentMethodCreate.md:
     id: de55b194a645
     last_write_checksum: sha1:fcf86c859308d87c02af1ec26cfbee3a030bc1dd
@@ -664,8 +660,8 @@ trackedFiles:
     pristine_git_object: 5a65d37e6473bab929672240ff6976354f6a18b8
   docs/DigitalWallet.md:
     id: d5c25dfd82fd
-    last_write_checksum: sha1:e00ebe4f3ae878566c869b4c8641729ec001d109
-    pristine_git_object: fea06ad657bef8e1a54185120869c79d43921430
+    last_write_checksum: sha1:efbca22044ac861ec7655646187f47e16cbfade1
+    pristine_git_object: b534ded20c04ed380ed663036e086726f443551e
   docs/DigitalWalletAddress.md:
     id: 2618f9b0eed3
     last_write_checksum: sha1:6614afb5017b495bc19328380b9fc623ac3303d4
@@ -2566,10 +2562,6 @@ trackedFiles:
     id: 8cc21f941bda
     last_write_checksum: sha1:1a7737219a80923dce985282cdf6ce9c3734d812
     pristine_git_object: 6b1d67a26167b908a97664c5ae9932b76c852e61
-  src/ApiTypesDigitalWalletAddress.php:
-    id: a691fe301667
-    last_write_checksum: sha1:7d25c1e8a08559578f90310c9febf5b47aefda25
-    pristine_git_object: ae29ea49a2f905b95b65034a0ee3c5efd902f371
   src/ApplePayPaymentMethodCreate.php:
     id: c1b28374ae43
     last_write_checksum: sha1:024499222c8ea082b9121afc95a17b66c11dff02
@@ -3088,8 +3080,8 @@ trackedFiles:
     pristine_git_object: 8371990a82cda3d7abf03070e7be9e8c252641bf
   src/DigitalWallet.php:
     id: 8b3c9a68eb69
-    last_write_checksum: sha1:f900e0512f7ed9c4c85f732fa7cdcc77e698b507
-    pristine_git_object: 42ce920d12b6b8c41fc3d521950180637914aff1
+    last_write_checksum: sha1:6769e421122e02fc064dc294a64b5d50a6fdc2d3
+    pristine_git_object: 38c8f6a78eda7e4c27a53818902f687dbc0cbe05
   src/DigitalWalletAddress.php:
     id: 5f20dc3a00e7
     last_write_checksum: sha1:65afe50b3f5cd644798605e54d01956e17b1293c
@@ -4456,8 +4448,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:0f044b0eaac02f3ec614fab678d83afee1313c8f
-    pristine_git_object: 3cab4ae992dc28d21ccd81cd2a74966c40ec8c84
+    last_write_checksum: sha1:b79b19046aff4c52d4ec1d3dc54dd02bee9b9d19
+    pristine_git_object: 1bae1011bec4c0931bf8555d10424c7bfeb3983d
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -9107,8 +9099,10 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Php SDK Changes:
-  * `sdk->transactions->refundSettlements->get()`: **Added**
-  * `sdk->transactions->refundSettlements->list()`: **Added**
+  * `sdk->digital-wallets->create()`:  `response.address->line2` **Changed**
+  * `sdk->digital-wallets->list()`:  `response.items[]->address->line2` **Changed**
+  * `sdk->digital-wallets->get()`:  `response.address->line2` **Changed**
+  * `sdk->digital-wallets->update()`:  `response.address->line2` **Changed**
 generatedFiles:
   - .gitattributes
   - USAGE.md
