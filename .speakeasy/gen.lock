@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: da1ae9b6d994bdb33ecd4619d6f16164
+  docChecksum: fbd97391d147a2e5f2809343933f1fd9
   docVersion: 1.0.0
   speakeasyVersion: 1.790.1
   generationVersion: 2.918.1
-  releaseVersion: 1.5.116
-  configChecksum: bfe5aa1f32d91b4df00391eb738be4c4
+  releaseVersion: 1.5.117
+  configChecksum: 9a6a80ca378690297761dce73fe13dc0
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 1884a0a5-f0ba-44e0-b719-87c84606a4e3
-  pristine_commit_hash: c2c1c9916228b92d8186233795058023a0696167
-  pristine_tree_hash: f3a7691392fe26dc36d744a160e543b1429404d8
+  generation_id: 1f0303b2-e67e-4e37-80de-db5a2de06e03
+  pristine_commit_hash: 668a350b38558da9f5048826aff068fb21f2df85
+  pristine_tree_hash: daddc6e1a53f75cb71f9c37242ee94f6557a4500
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:e2117333ca78a5cffa238852b324777ccf90cfc5
-    pristine_git_object: 38f6c8e2ba9481a45165bd0b4e5aa9e3374381d7
+    last_write_checksum: sha1:5d144eedc8f1f0b2fc187b1c231f02921f7a0360
+    pristine_git_object: c44355225f10e2a610661ae3311be5d854756cb3
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -2208,8 +2208,12 @@ trackedFiles:
     pristine_git_object: 70ad68d3c1c6f7e84bc015f6efadf377d4fdf966
   docs/ValidationError.md:
     id: 17600abf5d8a
-    last_write_checksum: sha1:1900bea8106fd8872004f74a5c332aa5646382d5
-    pristine_git_object: 9efd18659645234da59ffb4987856bfb345d9ae4
+    last_write_checksum: sha1:c740cb8f6e189b30701a28cf6398b629320ad5dc
+    pristine_git_object: 87eb773737e069d2f49d9d3434987f5b45251b3d
+  docs/ValidationErrorContext.md:
+    id: 0e571f42704f
+    last_write_checksum: sha1:1be31d67cd0c414d0be6ad2f94d53e5b858e14cb
+    pristine_git_object: 1ae680d7e7224ec15680b53b92aac22152931608
   docs/VerifyCredentials.md:
     id: 402741268e8b
     last_write_checksum: sha1:57b8c77de69994a7f8fc62e3e62297e45c1c988c
@@ -4448,8 +4452,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:b79b19046aff4c52d4ec1d3dc54dd02bee9b9d19
-    pristine_git_object: 1bae1011bec4c0931bf8555d10424c7bfeb3983d
+    last_write_checksum: sha1:7aafa4b672cc624f076c7b081d7ae1c3d50189c5
+    pristine_git_object: fcc8b4b7da87a408d54dc2fc3bc2fb9b5f91125c
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4940,8 +4944,12 @@ trackedFiles:
     pristine_git_object: e4458afb00a71d164b2461c67997acb46fe618cb
   src/ValidationError.php:
     id: 7cb14023ab5a
-    last_write_checksum: sha1:11a4f31682511970bb2d1c9000ae90c7b34cc8c6
-    pristine_git_object: 27e4edfb0ce305d8662b2eb8ab9f29147b68979e
+    last_write_checksum: sha1:162773b231e0dcf852779626c0c8cb8397c1a649
+    pristine_git_object: 80a69a6d4236436b6749eb3d628df8d496bd33fc
+  src/ValidationErrorContext.php:
+    id: b285f4c07b39
+    last_write_checksum: sha1:fd0be1b37f7e1485d8afc20a2f8cb9c3682caeb5
+    pristine_git_object: 726ae0105017d3b60002db3241fae2e1478514c0
   src/VerifyCredentials.php:
     id: 80e978d81e9d
     last_write_checksum: sha1:8fed3e0f6b3816d12e4a4dce2e217ae921161235
@@ -9099,10 +9107,121 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Php SDK Changes:
-  * `sdk->digital-wallets->create()`:  `response.address->line2` **Changed**
-  * `sdk->digital-wallets->list()`:  `response.items[]->address->line2` **Changed**
-  * `sdk->digital-wallets->get()`:  `response.address->line2` **Changed**
-  * `sdk->digital-wallets->update()`:  `response.address->line2` **Changed**
+  * `sdk->account-updater->jobs->create()`:  `error.detail[]` **Changed**
+  * `sdk->api-key-pairs->list()`:  `error.detail[]` **Changed**
+  * `sdk->api-key-pairs->create()`:  `error.detail[]` **Changed**
+  * `sdk->api-key-pairs->get()`:  `error.detail[]` **Changed**
+  * `sdk->api-key-pairs->update()`:  `error.detail[]` **Changed**
+  * `sdk->api-key-pairs->delete()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->list()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->create()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->get()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->update()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->delete()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->paymentMethods->list()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->giftCards->list()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->shippingDetails->create()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->shippingDetails->list()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->shippingDetails->get()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->shippingDetails->update()`:  `error.detail[]` **Changed**
+  * `sdk->buyers->shippingDetails->delete()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->list()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->create()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->get()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->update()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->delete()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->paymentServiceTokens->list()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->paymentServiceTokens->create()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->paymentServiceTokens->delete()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->networkTokens->list()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->networkTokens->create()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->networkTokens->suspend()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->networkTokens->resume()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->networkTokens->delete()`:  `error.detail[]` **Changed**
+  * `sdk->payment-methods->networkTokens->cryptogram->create()`:  `error.detail[]` **Changed**
+  * `sdk->gift-cards->get()`:  `error.detail[]` **Changed**
+  * `sdk->gift-cards->delete()`:  `error.detail[]` **Changed**
+  * `sdk->gift-cards->create()`:  `error.detail[]` **Changed**
+  * `sdk->gift-cards->list()`:  `error.detail[]` **Changed**
+  * `sdk->gift-cards->balances->list()`:  `error.detail[]` **Changed**
+  * `sdk->card-scheme-definitions->list()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->create()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->list()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->get()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->delete()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->update()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->sessions->googlePay()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->sessions->applePay()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->sessions->pazeMobileSessionCreate()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->sessions->paze()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->sessions->pazeMobileSessionReview()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->sessions->pazeMobileSessionComplete()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->sessions->clickToPay()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->domains->create()`:  `error.detail[]` **Changed**
+  * `sdk->digital-wallets->domains->delete()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->list()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->create()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->get()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->update()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->capture()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->void()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->cancel()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->sync()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->refunds->list()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->refunds->create()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->refunds->get()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->refunds->all->create()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->actions->list()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->events->list()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->settlements->get()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->settlements->list()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->refundSettlements->get()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->refundSettlements->list()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->captures->list()`:  `error.detail[]` **Changed**
+  * `sdk->transactions->captures->get()`:  `error.detail[]` **Changed**
+  * `sdk->refunds->get()`:  `error.detail[]` **Changed**
+  * `sdk->payment-options->list()`:  `error.detail[]` **Changed**
+  * `sdk->payment-service-definitions->list()`:  `error.detail[]` **Changed**
+  * `sdk->payment-service-definitions->get()`:  `error.detail[]` **Changed**
+  * `sdk->payment-service-definitions->session()`:  `error.detail[]` **Changed**
+  * `sdk->payment-services->list()`:  `error.detail[]` **Changed**
+  * `sdk->payment-services->create()`:  `error.detail[]` **Changed**
+  * `sdk->payment-services->get()`:  `error.detail[]` **Changed**
+  * `sdk->payment-services->update()`:  `error.detail[]` **Changed**
+  * `sdk->payment-services->delete()`:  `error.detail[]` **Changed**
+  * `sdk->payment-services->verify()`:  `error.detail[]` **Changed**
+  * `sdk->payment-services->session()`:  `error.detail[]` **Changed**
+  * `sdk->audit-logs->list()`:  `error.detail[]` **Changed**
+  * `sdk->reports->list()`:  `error.detail[]` **Changed**
+  * `sdk->reports->create()`:  `error.detail[]` **Changed**
+  * `sdk->reports->get()`:  `error.detail[]` **Changed**
+  * `sdk->reports->put()`:  `error.detail[]` **Changed**
+  * `sdk->reports->executions->list()`:  `error.detail[]` **Changed**
+  * `sdk->reports->executions->url()`:  `error.detail[]` **Changed**
+  * `sdk->reports->executions->get()`:  `error.detail[]` **Changed**
+  * `sdk->report-executions->list()`:  `error.detail[]` **Changed**
+  * `sdk->checkout-sessions->create()`:  `error.detail[]` **Changed**
+  * `sdk->checkout-sessions->update()`:  `error.detail[]` **Changed**
+  * `sdk->checkout-sessions->delete()`:  `error.detail[]` **Changed**
+  * `sdk->merchant-accounts->list()`:  `error.detail[]` **Changed**
+  * `sdk->merchant-accounts->create()`:  `error.detail[]` **Changed**
+  * `sdk->merchant-accounts->get()`:  `error.detail[]` **Changed**
+  * `sdk->merchant-accounts->update()`:  `error.detail[]` **Changed**
+  * `sdk->merchant-accounts->threeDsConfiguration->create()`:  `error.detail[]` **Changed**
+  * `sdk->merchant-accounts->threeDsConfiguration->list()`:  `error.detail[]` **Changed**
+  * `sdk->merchant-accounts->threeDsConfiguration->update()`:  `error.detail[]` **Changed**
+  * `sdk->merchant-accounts->threeDsConfiguration->delete()`:  `error.detail[]` **Changed**
+  * `sdk->three-ds-scenarios->create()`:  `error.detail[]` **Changed**
+  * `sdk->three-ds-scenarios->list()`:  `error.detail[]` **Changed**
+  * `sdk->three-ds-scenarios->update()`:  `error.detail[]` **Changed**
+  * `sdk->three-ds-scenarios->delete()`:  `error.detail[]` **Changed**
+  * `sdk->payouts->list()`:  `error.detail[]` **Changed**
+  * `sdk->payouts->create()`:  `error.detail[]` **Changed**
+  * `sdk->payouts->get()`:  `error.detail[]` **Changed**
+  * `sdk->payment-links->create()`:  `error.detail[]` **Changed**
+  * `sdk->payment-links->list()`:  `error.detail[]` **Changed**
+  * `sdk->payment-links->expire()`:  `error.detail[]` **Changed**
+  * `sdk->payment-links->get()`:  `error.detail[]` **Changed**
 generatedFiles:
   - .gitattributes
   - USAGE.md
