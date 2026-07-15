@@ -35,15 +35,37 @@ class ValidationError
     public string $type;
 
     /**
+     *
+     * @var mixed $input
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('input')]
+    #[\Speakeasy\Serializer\Annotation\Type('mixed')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public mixed $input = null;
+
+    /**
+     *
+     * @var ?\Gr4vy\ValidationErrorContext $ctx
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('ctx')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\ValidationErrorContext|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?ValidationErrorContext $ctx = null;
+
+    /**
      * @param  array<string|int>  $loc
      * @param  string  $msg
      * @param  string  $type
+     * @param  mixed  $input
+     * @param  ?\Gr4vy\ValidationErrorContext  $ctx
      * @phpstan-pure
      */
-    public function __construct(array $loc, string $msg, string $type)
+    public function __construct(array $loc, string $msg, string $type, mixed $input = null, ?ValidationErrorContext $ctx = null)
     {
         $this->loc = $loc;
         $this->msg = $msg;
         $this->type = $type;
+        $this->input = $input;
+        $this->ctx = $ctx;
     }
 }
