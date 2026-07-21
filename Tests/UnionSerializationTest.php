@@ -57,7 +57,9 @@ final class UnionSerializationTest extends TestCase
 
         $this->assertArrayHasKey('spec', $decoded, 'spec must be present on the wire');
         $this->assertIsArray($decoded['spec'], 'spec must serialise to an object, not null');
-        $this->assertSame('transactions', $decoded['spec']['model'], 'discriminator must be emitted');
+        $this->assertArrayHasKey('model', $decoded['spec'], 'discriminator must be emitted');
+        $this->assertSame('transactions', $decoded['spec']['model']);
+        $this->assertArrayHasKey('params', $decoded['spec'], 'params must be emitted');
         $this->assertSame(['id', 'status'], $decoded['spec']['params']['fields']);
     }
 
@@ -78,6 +80,7 @@ final class UnionSerializationTest extends TestCase
         // The throwable message is the serialised error; it must be valid JSON
         // with `details` present as an empty array.
         $decoded = json_decode($throwable->getMessage(), true, 512, JSON_THROW_ON_ERROR);
+        $this->assertArrayHasKey('details', $decoded, 'details must be present on the wire');
         $this->assertSame([], $decoded['details']);
     }
 
@@ -101,7 +104,9 @@ final class UnionSerializationTest extends TestCase
 
         $this->assertInstanceOf(Error400Throwable::class, $throwable);
         $decoded = json_decode($throwable->getMessage(), true, 512, JSON_THROW_ON_ERROR);
+        $this->assertArrayHasKey('details', $decoded, 'details must be present on the wire');
         $this->assertCount(1, $decoded['details']);
+        $this->assertArrayHasKey('pointer', $decoded['details'][0]);
         $this->assertSame('/amount', $decoded['details'][0]['pointer']);
     }
 }

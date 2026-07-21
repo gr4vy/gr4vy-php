@@ -48,11 +48,12 @@ final class Reach
                 return;
             }
 
-            // status unknown (0): the call failed before we got a usable HTTP
-            // status back — e.g. a request-body serialization crash or an error
-            // the SDK could not render. That is a real defect, so fail.
+            // status unknown (0): the SDK could not determine an HTTP status for
+            // this failure — e.g. a request-body serialization crash (never sent)
+            // or an error the SDK could not render after a response came back.
+            // Either way it's a real defect, so fail.
             Assert::fail(
-                "[reach] {$description}: the call failed before reaching the server: "
+                "[reach] {$description}: the SDK could not determine an HTTP status: "
                 .get_class($e).' — '.$e->getMessage()
             );
         }
