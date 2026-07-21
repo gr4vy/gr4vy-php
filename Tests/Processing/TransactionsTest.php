@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Transactions resource: create/get/list/update plus the read sub-resources
- * (actions, events, settlements) and the cancel action. Capture / void / refund
+ * (actions, events, settlements, refund-settlements) and the cancel action. Capture / void / refund
  * / sync are covered as a story in {@see \Gr4vy\Tests\Flows\TransactionLifecycleTest}.
  */
 final class TransactionsTest extends MerchantTestCase
@@ -71,6 +71,15 @@ final class TransactionsTest extends MerchantTestCase
         Reach::reaches(
             fn () => $sdk->transactions->settlements->get($txn->id, self::MISSING_ID),
             'transactions.settlements.get',
+        );
+
+        $refundSettlements = $sdk->transactions->refundSettlements->list($txn->id)->refundSettlements;
+        $this->assertNotNull($refundSettlements);
+
+        // A specific refund settlement needs a settled transaction we cannot force here.
+        Reach::reaches(
+            fn () => $sdk->transactions->refundSettlements->get($txn->id, self::MISSING_ID),
+            'transactions.refundSettlements.get',
         );
     }
 
