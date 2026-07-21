@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 86263aa4a42124b638214a3f45f3e8fc
+  docChecksum: fdff9cb877b2ec9856fbe947a02bfb59
   docVersion: 1.0.0
   speakeasyVersion: 1.790.3
   generationVersion: 2.918.4
-  releaseVersion: 1.6.0
-  configChecksum: b212abd8857cd2f8ec3f03d73b6e6cd6
+  releaseVersion: 1.6.1
+  configChecksum: c86b12c1455add21d9a9dda7d8fd4361
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 5c72c24b-10e4-4466-b4c4-65051e4c22a0
-  pristine_commit_hash: 4b63c1efe9cba3f7c30fc45455405a3d2d10fd0d
-  pristine_tree_hash: a0b2b36f57d6d0955a7462abe32275ee62bddb94
+  generation_id: a3b5a861-f792-4773-b28c-8666054c774b
+  pristine_commit_hash: eea1edb5636f1944cbbaa3f1f5aa027557bba00d
+  pristine_tree_hash: 6259051a99d48d63a943097bc2cb0b69ec129e80
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -2052,8 +2052,8 @@ trackedFiles:
     pristine_git_object: 083d8a31649d024de649f3819c144ca05d14915d
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:29657842c12094ec98e645d0d718b3e10025e707
-    pristine_git_object: f4124028c4af73de03eea9c9ada1a092e4408b21
+    last_write_checksum: sha1:37e806c85d82e0481371a31793a5bc35bdd7e646
+    pristine_git_object: a503c9f7071f9cd948a1e00032c26e6956eb7ee0
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:3575250c5732b734aeb1ddc7d2048a98b7569c47
@@ -2262,6 +2262,10 @@ trackedFiles:
     id: 299460faca1b
     last_write_checksum: sha1:ff0e0422cff343ec7d237bca7919b274edb7de91
     pristine_git_object: 9e8b3027588b272d1230bf600e68dc00de55bbf0
+  docs/WorldpayVapOptions.md:
+    id: 125d2f3a7dc9
+    last_write_checksum: sha1:45b8d846f51df32825b59bac2b9142ef0dd34314
+    pristine_git_object: d1cc60e24fcd4c3c2a628118cc57198032519f3c
   docs/WpayEverdaypayOptions.md:
     id: c9e386ca049a
     last_write_checksum: sha1:80395c395c7cd2dae24ecaf897903ce5b8b432f8
@@ -4484,8 +4488,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:70fb9eecbd7a29a848df36bb899b5c1e6c740dee
-    pristine_git_object: 15f1734764b554c62ae10a7e9831f3526afb9482
+    last_write_checksum: sha1:ea7e1782098e8542801809025d00b086982da00f
+    pristine_git_object: 2b8dff6baf86f4c155f9fd5885f1ad3560c6c41e
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4652,8 +4656,8 @@ trackedFiles:
     pristine_git_object: 157b1e2a3874684edd1e43d9346f52b191eaa5c7
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:7854464c41fc3f263bce9f8dae03ebc7605495d9
-    pristine_git_object: 273b9003225a96df1d6b9269529e7ffd745350c7
+    last_write_checksum: sha1:bc9dc3d27ecc0fa8a2c4f53db6b5aca87acfa38d
+    pristine_git_object: d9df800357dd43d1474d286fb7cfcea96a79b874
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:baafab6c743b037318d7a1a7cc1a86f493f43a0e
@@ -5014,6 +5018,10 @@ trackedFiles:
     id: a007ba0059b5
     last_write_checksum: sha1:00d79ab5f1f48cf46a6b7f755f2938275a578413
     pristine_git_object: 1da4dd0fc25d80f31ac4f30ab005ec2ed925b056
+  src/WorldpayVapOptions.php:
+    id: a5d7136175f7
+    last_write_checksum: sha1:d37a95244904b108987b25fe98079763ce4e39d2
+    pristine_git_object: eb7f85ea86b6816615b8cab6e634add55942e6d2
   src/WpayEverdaypayOptions.php:
     id: "305232380481"
     last_write_checksum: sha1:3e43487657209d0f6c9e9ab00fe6bddddc132107
@@ -9141,6 +9149,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->worldpayvapCard` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->worldpayvapCard` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->worldpayvapCard` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
