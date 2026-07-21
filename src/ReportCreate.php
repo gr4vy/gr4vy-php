@@ -37,11 +37,12 @@ class ReportCreate
     /**
      * The report specification.
      *
-     * @var \Gr4vy\Spec $spec
+     * @var \Gr4vy\TransactionsReportSpec|\Gr4vy\TransactionRetriesReportSpec|\Gr4vy\DetailedSettlementReportSpec|\Gr4vy\AccountsReceivablesReportSpec|\Gr4vy\AIInsightsReportSpec $spec
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('spec')]
-    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Spec')]
-    public Spec $spec;
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\TransactionsReportSpec|\Gr4vy\TransactionRetriesReportSpec|\Gr4vy\DetailedSettlementReportSpec|\Gr4vy\AccountsReceivablesReportSpec|\Gr4vy\AIInsightsReportSpec')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'model', map: ['accounts_receivables' => '\Gr4vy\AccountsReceivablesReportSpec', 'ai_insights' => '\Gr4vy\AIInsightsReportSpec', 'detailed_settlement' => '\Gr4vy\DetailedSettlementReportSpec', 'transaction_retries' => '\Gr4vy\TransactionRetriesReportSpec', 'transactions' => '\Gr4vy\TransactionsReportSpec'])]
+    public TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec|AccountsReceivablesReportSpec|AIInsightsReportSpec $spec;
 
     /**
      * A description of the report.
@@ -65,12 +66,12 @@ class ReportCreate
      * @param  string  $name
      * @param  string  $schedule
      * @param  bool  $scheduleEnabled
-     * @param  \Gr4vy\Spec  $spec
+     * @param  \Gr4vy\TransactionsReportSpec|\Gr4vy\TransactionRetriesReportSpec|\Gr4vy\DetailedSettlementReportSpec|\Gr4vy\AccountsReceivablesReportSpec|\Gr4vy\AIInsightsReportSpec  $spec
      * @param  ?string  $scheduleTimezone
      * @param  ?string  $description
      * @phpstan-pure
      */
-    public function __construct(string $name, string $schedule, bool $scheduleEnabled, Spec $spec, ?string $description = null, ?string $scheduleTimezone = 'Etc/UTC')
+    public function __construct(string $name, string $schedule, bool $scheduleEnabled, TransactionsReportSpec|TransactionRetriesReportSpec|DetailedSettlementReportSpec|AccountsReceivablesReportSpec|AIInsightsReportSpec $spec, ?string $description = null, ?string $scheduleTimezone = 'Etc/UTC')
     {
         $this->name = $name;
         $this->schedule = $schedule;
