@@ -8,10 +8,10 @@ use Gr4vy\ListAllReportExecutionsRequest;
 use Gr4vy\ListReportsRequest;
 use Gr4vy\ReportCreate;
 use Gr4vy\ReportUpdate;
-use Gr4vy\Spec;
 use Gr4vy\Tests\Utils\Fixtures;
 use Gr4vy\Tests\Utils\MerchantTestCase;
 use Gr4vy\Tests\Utils\Reach;
+use Gr4vy\TransactionsReportSpec;
 use PHPUnit\Framework\Attributes\Test;
 
 /**
@@ -19,12 +19,12 @@ use PHPUnit\Framework\Attributes\Test;
  * without depending on a successful create (they accept missing-id 4xx), so they
  * are covered regardless of the create path.
  *
- * `POST /reports` is the one endpoint that needs a *serialisable* request body,
- * and the generated `UnionHandler` currently cannot serialise the `ReportCreate.spec`
- * discriminated union ({@see Reach::isSdkSerializationBug()}). The
- * `fix-report-spec-union.yaml` overlay flattens `spec` to a plain object so the next
- * SDK regen makes create work; until that regen lands, the create test skips with a
- * clear reason rather than failing (this is the PHP analogue of the C# spec fix).
+ * `POST /reports` is the one endpoint that needs a *serialisable* request body:
+ * `ReportCreate.spec` is a discriminated union. It used to trip a serialize
+ * crash in the generated `UnionHandler` (Speakeasy ticket #11334); with that
+ * fixed upstream and the `fix-report-spec-union.yaml` overlay dropped, we build
+ * the native union variant directly here and expect the request to reach a 2xx.
+ * The pure-serialisation regression lives in {@see \UnionSerializationTest}.
  */
 final class ReportsTest extends MerchantTestCase
 {
@@ -73,16 +73,15 @@ final class ReportsTest extends MerchantTestCase
     #[Test]
     public function create_is_reached(): void
     {
-        // The fix-report-spec-union overlay flattens ReportCreate.spec to a plain
-        // {model, params} object, so the request body now serializes and POST
-        // /reports reaches a 2xx (it previously tripped the UnionHandler bug).
+        // ReportCreate.spec is a discriminated union; we build the native
+        // `transactions` variant. The request body serializes (it previously
+        // tripped the UnionHandler bug) and POST /reports reaches a 2xx.
         $sdk = $this->sdk();
         $report = $sdk->reports->create(new ReportCreate(
             name: Fixtures::uniqueId('report', $this->merchantAccountId()),
             schedule: 'daily',
             scheduleEnabled: false,
-            spec: new Spec(
-                model: 'transactions',
+            spec: new TransactionsReportSpec(
                 params: [
                     'fields' => ['id', 'status'],
                     'filters' => ['status' => ['capture_succeeded']],

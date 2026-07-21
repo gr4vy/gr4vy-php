@@ -3,9 +3,50 @@
 The report specification.
 
 
-## Fields
+## Supported Types
 
-| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `model`                                                                                                        | *string*                                                                                                       | :heavy_check_mark:                                                                                             | The report model. One of `transactions`, `transaction_retries`, `detailed_settlement`, `accounts_receivables`. |
-| `params`                                                                                                       | array<string, *mixed*>                                                                                         | :heavy_check_mark:                                                                                             | The parameters for the report, specific to the model.                                                          |
+### `Gr4vy\AccountsReceivablesReportSpec`
+
+```php
+/**
+* @var \Gr4vy\AccountsReceivablesReportSpec
+*/
+Gr4vy\AccountsReceivablesReportSpec $value = /* values here */
+```
+
+### `Gr4vy\AIInsightsReportSpec`
+
+```php
+/**
+* @var \Gr4vy\AIInsightsReportSpec
+*/
+Gr4vy\AIInsightsReportSpec $value = /* values here */
+```
+
+### `Gr4vy\DetailedSettlementReportSpec`
+
+```php
+/**
+* @var \Gr4vy\DetailedSettlementReportSpec
+*/
+Gr4vy\DetailedSettlementReportSpec $value = /* values here */
+```
+
+### `Gr4vy\TransactionRetriesReportSpec`
+
+```php
+/**
+* @var \Gr4vy\TransactionRetriesReportSpec
+*/
+Gr4vy\TransactionRetriesReportSpec $value = /* values here */
+```
+
+### `Gr4vy\TransactionsReportSpec`
+
+```php
+/**
+* @var \Gr4vy\TransactionsReportSpec
+*/
+Gr4vy\TransactionsReportSpec $value = /* values here */
+```
+

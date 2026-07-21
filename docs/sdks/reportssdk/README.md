@@ -98,8 +98,7 @@ $reportCreate = new Gr4vy\ReportCreate(
     schedule: '<value>',
     scheduleEnabled: true,
     scheduleTimezone: 'UTC',
-    spec: new Gr4vy\Spec(
-        model: 'detailed_settlement',
+    spec: new Gr4vy\DetailedSettlementReportSpec(
         params: [
             'filters' => [
                 'ingested_at' => [
