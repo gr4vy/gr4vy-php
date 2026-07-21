@@ -16,14 +16,9 @@ use PHPUnit\Framework\Assert;
  * hit the wire) fails the test: that means we sent something that crashed the
  * API, which is a real defect to surface, not an "expected" outcome.
  *
- * KNOWN SDK BUG (gr4vy-php): the generated `src/Utils/UnionHandler.php` cannot
- * *serialize* union/typed-array fields. When the server returns a 4xx whose
- * `details` array is empty, `Error4xx::toException()` (which serialises the error
- * to build its message) throws a `TypeError` instead of a clean `Error*Throwable`.
- * The request still reached the server, so we treat that crash as "reached" when
- * the error being rendered is a 4xx (and still fail on 5xx). Separately, a clean
- * `Error*Throwable` carries the HTTP status on `->container->status` (its
- * exception code is 0, because the SDK casts the string error `code` to int).
+ * A clean `Error*Throwable` carries the HTTP status on `->container->status`
+ * (its exception code is 0, because the SDK casts the string error `code` to
+ * int).
  */
 final class Reach
 {
@@ -53,44 +48,14 @@ final class Reach
                 return;
             }
 
-            // status unknown (0) — likely the known UnionHandler crash.
-            if (self::isUnionHandlerCrash($e)) {
-                if (preg_match('#Errors[\\\\/]Error(\d)\d\d#', $e->getTraceAsString(), $m)) {
-                    if ($m[1] === '5') {
-                        Assert::fail("[reach] {$description}: server error (5xx) the SDK could not render: {$e->getMessage()}");
-                    }
-                    self::accept($description, 'reached; SDK could not render the 4xx error (known UnionHandler bug)');
-
-                    return;
-                }
-                // No error-class frame → a request-body serialization crash: the
-                // request never reached the server. Fall through to fail.
-            }
-
+            // status unknown (0): the call failed before we got a usable HTTP
+            // status back — e.g. a request-body serialization crash or an error
+            // the SDK could not render. That is a real defect, so fail.
             Assert::fail(
                 "[reach] {$description}: the call failed before reaching the server: "
                 .get_class($e).' — '.$e->getMessage()
             );
         }
-    }
-
-    /**
-     * True when an exception is the known UnionHandler (de)serialization crash —
-     * used by suites (e.g. ReportsTest) to skip-with-reason rather than fail on an
-     * operation the SDK currently cannot perform at all (a union request body).
-     */
-    public static function isSdkSerializationBug(\Throwable $e): bool
-    {
-        return self::isUnionHandlerCrash($e);
-    }
-
-    private static function isUnionHandlerCrash(\Throwable $e): bool
-    {
-        // The crash is thrown *inside* UnionHandler, so the file is on getFile();
-        // getTraceAsString() only lists the callers.
-        return $e instanceof \TypeError
-            && (str_contains($e->getFile(), 'UnionHandler.php')
-                || str_contains($e->getTraceAsString(), 'UnionHandler.php'));
     }
 
     /** Best-effort extraction of the HTTP status from any Gr4vy SDK error. */
