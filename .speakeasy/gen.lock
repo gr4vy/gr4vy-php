@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: fdff9cb877b2ec9856fbe947a02bfb59
+  docChecksum: c4cf2e5033c42a0b475fe0a28a13e26d
   docVersion: 1.0.0
   speakeasyVersion: 1.790.3
   generationVersion: 2.918.4
-  releaseVersion: 1.6.1
-  configChecksum: c86b12c1455add21d9a9dda7d8fd4361
+  releaseVersion: 1.6.2
+  configChecksum: c9c51be487c1e0ef78182757e9a275da
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: a3b5a861-f792-4773-b28c-8666054c774b
-  pristine_commit_hash: eea1edb5636f1944cbbaa3f1f5aa027557bba00d
-  pristine_tree_hash: 6259051a99d48d63a943097bc2cb0b69ec129e80
+  generation_id: 0f6f0092-9fa0-43c9-bf90-75d462ddfc8f
+  pristine_commit_hash: b7b363c46a4254f981106e373b8c5675690963e4
+  pristine_tree_hash: dc48c58fa4ad02401755ce364c6d09d567347589
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -2056,8 +2056,8 @@ trackedFiles:
     pristine_git_object: a503c9f7071f9cd948a1e00032c26e6956eb7ee0
   docs/TransactionCreate.md:
     id: 66c310d46bd7
-    last_write_checksum: sha1:3575250c5732b734aeb1ddc7d2048a98b7569c47
-    pristine_git_object: 05f01650387ba8f5b83bdecf60eec999dfcea06d
+    last_write_checksum: sha1:6e484b1bdb18512ce81b8ff4ecd6255cf3afa89b
+    pristine_git_object: 74ae7ddd4c8c012215a762d790a6a4afff356149
   docs/TransactionCreatePaymentMethod.md:
     id: 69db3a9bdc4d
     last_write_checksum: sha1:332890f09eec8825ec087ee29a9b96568c650d07
@@ -4488,8 +4488,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:ea7e1782098e8542801809025d00b086982da00f
-    pristine_git_object: 2b8dff6baf86f4c155f9fd5885f1ad3560c6c41e
+    last_write_checksum: sha1:ece324af753dcc55491b5e840eb237c586ca95bb
+    pristine_git_object: 7135a07506604af1d441828b0c9554b243276533
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4660,8 +4660,8 @@ trackedFiles:
     pristine_git_object: d9df800357dd43d1474d286fb7cfcea96a79b874
   src/TransactionCreate.php:
     id: 18627f38c6cb
-    last_write_checksum: sha1:baafab6c743b037318d7a1a7cc1a86f493f43a0e
-    pristine_git_object: 881a9cfb26f8c4021e8ef766a017feac1cc1d9c9
+    last_write_checksum: sha1:ff80521a486555236663de211516570613368d40
+    pristine_git_object: 49567a23473fde85c071f952cbee37882aa7b7ca
   src/TransactionEvent.php:
     id: e8a982614bb6
     last_write_checksum: sha1:272e067dc24d091e242c1cf4116139e61b169c09
@@ -9149,7 +9149,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->worldpayvapCard` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->worldpayvapCard` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->worldpayvapCard` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->description` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
