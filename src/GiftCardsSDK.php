@@ -19,6 +19,8 @@ class GiftCardsSDK
     private SDKConfiguration $sdkConfiguration;
     public Balances $balances;
 
+    public Activations $activations;
+
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
@@ -26,6 +28,7 @@ class GiftCardsSDK
     {
         $this->sdkConfiguration = $sdkConfig;
         $this->balances = new Balances($this->sdkConfiguration);
+        $this->activations = new Activations($this->sdkConfiguration);
     }
     /**
      * @param  string  $baseUrl
