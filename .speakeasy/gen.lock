@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: c4cf2e5033c42a0b475fe0a28a13e26d
+  docChecksum: 5398c28d865e0754b48dd8831153d93a
   docVersion: 1.0.0
   speakeasyVersion: 1.790.3
   generationVersion: 2.918.4
-  releaseVersion: 1.6.2
-  configChecksum: c9c51be487c1e0ef78182757e9a275da
+  releaseVersion: 1.6.3
+  configChecksum: acebc2589d2704688e2f5f6d7213cf09
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 0f6f0092-9fa0-43c9-bf90-75d462ddfc8f
-  pristine_commit_hash: b7b363c46a4254f981106e373b8c5675690963e4
-  pristine_tree_hash: dc48c58fa4ad02401755ce364c6d09d567347589
+  generation_id: 35b1b0fd-572d-4560-8ad2-b0293bbad74c
+  pristine_commit_hash: 4f6cbb683dbfff058f9a9a8ebe4298647f7fb444
+  pristine_tree_hash: 666e499703539426d90112506ea329ffd78d2232
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -44,8 +44,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:e2117333ca78a5cffa238852b324777ccf90cfc5
-    pristine_git_object: 38f6c8e2ba9481a45165bd0b4e5aa9e3374381d7
+    last_write_checksum: sha1:c5b72759687de2c55a408574a66908400eacc077
+    pristine_git_object: d5366c2ba2cbc6614e8fccd19dedd8654c27c65c
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -236,8 +236,8 @@ trackedFiles:
     pristine_git_object: a5ac58cd9c4277223e95dc0e2eb64b3aa8458fe9
   docs/Buyer.md:
     id: e31e0bf2adcb
-    last_write_checksum: sha1:03fc6aee18024b14c0d2e07efcb519683522e738
-    pristine_git_object: 5da25f8747f68583429b5feba977023fd79cb815
+    last_write_checksum: sha1:330061f44739091e779aa20efa47daa50f08fb8e
+    pristine_git_object: cdfbd4c1b32dc500e460dba4689bf71f14b4f6d4
   docs/BuyerCreate.md:
     id: 3eb41c816327
     last_write_checksum: sha1:c4d6fd6b2548be0cd6e807db7aee385aa3856989
@@ -2660,8 +2660,8 @@ trackedFiles:
     pristine_git_object: 1f190fab0c128736c80b848e64e498af91ba504b
   src/Buyer.php:
     id: bb197cb88c70
-    last_write_checksum: sha1:ddc164160ed3b46b47fdfd5c97d41fdb85235e55
-    pristine_git_object: fa7804007ff244a408b46bd765ecfd60bacc6e8b
+    last_write_checksum: sha1:f7c0e1a244333aabc3f38df25696c3b5620ae89b
+    pristine_git_object: 046ef09b08de96f754a09226846f1fb22ebcac55
   src/BuyerCreate.php:
     id: aa2c91231d02
     last_write_checksum: sha1:e25281bf984003f4d6a82b7ed890ea44ca5a0829
@@ -4488,8 +4488,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:ece324af753dcc55491b5e840eb237c586ca95bb
-    pristine_git_object: 7135a07506604af1d441828b0c9554b243276533
+    last_write_checksum: sha1:76f6cbb3741d5ee1bf3354c06e02d44f955312a5
+    pristine_git_object: da5957d670363888b2cc6d0309ccc379d67641b2
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -5091,7 +5091,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"items": [{"type": "buyer", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}, {"type": "buyer", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
+          application/json: {"items": [{"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}, {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -5127,7 +5127,7 @@ examples:
         application/json: {}
       responses:
         "201":
-          application/json: {"type": "buyer", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -5162,7 +5162,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"type": "buyer", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -5200,7 +5200,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"type": "buyer", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -9149,7 +9149,19 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->description` **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->buyers->list()`:  `response.items[]->id` **Changed** (Breaking ⚠️)
+  * `sdk->buyers->create()`:  `response.id` **Changed** (Breaking ⚠️)
+  * `sdk->buyers->get()`:  `response.id` **Changed** (Breaking ⚠️)
+  * `sdk->buyers->update()`:  `response.id` **Changed** (Breaking ⚠️)
+  * `sdk->payment-methods->list()`:  `response.items[]->buyer->id` **Changed** (Breaking ⚠️)
+  * `sdk->payment-methods->create()`:  `response.buyer->id` **Changed** (Breaking ⚠️)
+  * `sdk->payment-methods->get()`:  `response.buyer->id` **Changed** (Breaking ⚠️)
+  * `sdk->payment-methods->update()`:  `response.buyer->id` **Changed** (Breaking ⚠️)
+  * `sdk->gift-cards->get()`:  `response.buyer->id` **Changed** (Breaking ⚠️)
+  * `sdk->gift-cards->create()`:  `response.buyer->id` **Changed** (Breaking ⚠️)
+  * `sdk->gift-cards->list()`:  `response.items[]->buyer->id` **Changed** (Breaking ⚠️)
 generatedFiles:
   - .gitattributes
   - USAGE.md

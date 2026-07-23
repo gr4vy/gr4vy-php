@@ -12,6 +12,14 @@ namespace Gr4vy;
 class Buyer
 {
     /**
+     * The ID for the buyer.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
      * The ID of the merchant account this buyer belongs to.
      *
      * @var string $merchantAccountId
@@ -34,15 +42,6 @@ class Buyer
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public \DateTime $updatedAt;
-
-    /**
-     * The ID for the buyer.
-     *
-     * @var ?string $id
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $id = null;
 
     /**
      * The display name for the buyer.
@@ -91,23 +90,23 @@ class Buyer
     public ?string $type = null;
 
     /**
+     * @param  string  $id
      * @param  string  $merchantAccountId
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type
-     * @param  ?string  $id
      * @param  ?string  $displayName
      * @param  ?string  $externalIdentifier
      * @param  ?\Gr4vy\BillingDetails  $billingDetails
      * @param  ?string  $accountNumber
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId, \DateTime $createdAt, \DateTime $updatedAt, ?string $id = null, ?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?string $accountNumber = null, ?string $type = 'buyer')
+    public function __construct(string $id, string $merchantAccountId, \DateTime $createdAt, \DateTime $updatedAt, ?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?string $accountNumber = null, ?string $type = 'buyer')
     {
+        $this->id = $id;
         $this->merchantAccountId = $merchantAccountId;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
-        $this->id = $id;
         $this->displayName = $displayName;
         $this->externalIdentifier = $externalIdentifier;
         $this->billingDetails = $billingDetails;
