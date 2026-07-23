@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 5398c28d865e0754b48dd8831153d93a
+  docChecksum: b727117d474355e4e4d535b20791b4c2
   docVersion: 1.0.0
   speakeasyVersion: 1.790.3
   generationVersion: 2.918.4
-  releaseVersion: 1.6.3
-  configChecksum: acebc2589d2704688e2f5f6d7213cf09
+  releaseVersion: 1.6.4
+  configChecksum: 9cc77785f8f95c87b65fb6e78ec9be6b
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 35b1b0fd-572d-4560-8ad2-b0293bbad74c
-  pristine_commit_hash: 4f6cbb683dbfff058f9a9a8ebe4298647f7fb444
-  pristine_tree_hash: 666e499703539426d90112506ea329ffd78d2232
+  generation_id: 09306487-f0e3-42ed-bc5c-d1d0c7c50189
+  pristine_commit_hash: b1c728756311b00fd30754ea403c9748f3a6a3a9
+  pristine_tree_hash: 284511de351984d965d1c32acc997d378afe6d0f
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -86,6 +86,14 @@ trackedFiles:
     id: 2c965b6742ce
     last_write_checksum: sha1:53565de27fe82077c9c1b04e1b4af1eb4cc2eb87
     pristine_git_object: 98bcc945d19c6b6c46f2b4072f197e1b41370bcf
+  docs/ActivateGiftCardRequest.md:
+    id: 4ba9c1380e42
+    last_write_checksum: sha1:a31b5c33fd6ed55f27c958037985e2af5e474c80
+    pristine_git_object: a247bcd8f835b958550cb29c0d4ba8ea41cdea90
+  docs/ActivateGiftCardResponse.md:
+    id: 7d117472d53a
+    last_write_checksum: sha1:7103365268bf5dbba3281e564629a3a8b5cbf292
+    pristine_git_object: 32afb68448f75aa9a11f6a852f496e39e9973d5e
   docs/AddBuyerRequest.md:
     id: b2137f3d6153
     last_write_checksum: sha1:55bf933293fc7c1acb36686b02396c36730f6ab6
@@ -236,8 +244,8 @@ trackedFiles:
     pristine_git_object: a5ac58cd9c4277223e95dc0e2eb64b3aa8458fe9
   docs/Buyer.md:
     id: e31e0bf2adcb
-    last_write_checksum: sha1:330061f44739091e779aa20efa47daa50f08fb8e
-    pristine_git_object: cdfbd4c1b32dc500e460dba4689bf71f14b4f6d4
+    last_write_checksum: sha1:5190fde16dcf390dec6aa7441d5ccda239d9b61c
+    pristine_git_object: 0d98202ad2fc171e66a2a6e30289b5ca7a5cb24b
   docs/BuyerCreate.md:
     id: 3eb41c816327
     last_write_checksum: sha1:c4d6fd6b2548be0cd6e807db7aee385aa3856989
@@ -1026,6 +1034,10 @@ trackedFiles:
     id: 70e36a37f3a7
     last_write_checksum: sha1:2377861d22497b7edc82c8e67b29f78354984f31
     pristine_git_object: 65caf2e72f8030ae65ad693052de0cd9314b4d0e
+  docs/GiftCardActivationCreate.md:
+    id: 66aae5779649
+    last_write_checksum: sha1:44c979387a134d0f3dcad68f56888382d66a4507
+    pristine_git_object: becae500470d7021e010e75586bae00ebb72ee3d
   docs/GiftCardBalanceRequest.md:
     id: 85035bb12cdc
     last_write_checksum: sha1:be1164a4647fb6088d5d5c332801f2328c96f657
@@ -2036,8 +2048,8 @@ trackedFiles:
     pristine_git_object: b9469937b3fb1a2d860e9dfb5eff71e260b407eb
   docs/TransactionBuyer.md:
     id: bf9c080ebca0
-    last_write_checksum: sha1:4f7ac3048c0d6cac5bbdfe3798201dde7990ca67
-    pristine_git_object: f77d3864e3dfe8c13bbec0c909298e85f23b5cb3
+    last_write_checksum: sha1:5041d83267dfafb524d57a21cdf5c3e593e83ff2
+    pristine_git_object: 66ad2ce2728a76a865de61714523e5802fb6b008
   docs/TransactionCancel.md:
     id: fff52a951363
     last_write_checksum: sha1:c91189e0dd41765912b8011eec5746278d93ce57
@@ -2286,6 +2298,10 @@ trackedFiles:
     id: e229cf99e666
     last_write_checksum: sha1:611f28ef7eba256c30e94146eefeeaa1b2323b60
     pristine_git_object: c48fe1fc4f3d9cf71e07de36ede3918c94b326a7
+  docs/sdks/activations/README.md:
+    id: 5e6a3a8cf62a
+    last_write_checksum: sha1:479651912310a475088e5b6e461fddbf6f2ad140
+    pristine_git_object: 8e39106767eaad0fb055926937817920249e684d
   docs/sdks/all/README.md:
     id: 936653be5c4b
     last_write_checksum: sha1:8b5073126eed004cb78e2a1501ed21d6f62aa0d8
@@ -2498,6 +2514,18 @@ trackedFiles:
     id: 590076d9904e
     last_write_checksum: sha1:c8fd518348008a405cc582e1815985aa36627df1
     pristine_git_object: 5a16c5252af22ae3a4fc1fe50d22b19c36bf2b6e
+  src/ActivateGiftCardRequest.php:
+    id: 8190402dd7d9
+    last_write_checksum: sha1:c0eae6d69010ec1130e217ff019c1c9869b2365c
+    pristine_git_object: bc8f3a00699e2343a422497f0267455bfccc9325
+  src/ActivateGiftCardResponse.php:
+    id: f326f4eec2e3
+    last_write_checksum: sha1:c1b4590eaf8e3e84061816193069b97dbc33e6b3
+    pristine_git_object: b9a66012ba7c49b861a96d108ac5fdb92a89e2e6
+  src/Activations.php:
+    id: fd28160df28a
+    last_write_checksum: sha1:eafe23c25d2b58972f5e1b502d606353c778c5b3
+    pristine_git_object: 4e29a2cc1ce874f63b1bec92d2a132b00c4efe09
   src/AddBuyerRequest.php:
     id: 61dd0ebcdff5
     last_write_checksum: sha1:f597aa2b8429d849f3d55ca917b7417f4ba8c794
@@ -2660,8 +2688,8 @@ trackedFiles:
     pristine_git_object: 1f190fab0c128736c80b848e64e498af91ba504b
   src/Buyer.php:
     id: bb197cb88c70
-    last_write_checksum: sha1:f7c0e1a244333aabc3f38df25696c3b5620ae89b
-    pristine_git_object: 046ef09b08de96f754a09226846f1fb22ebcac55
+    last_write_checksum: sha1:6785f7a419fde641ba1ea3a45e63a0783265e489
+    pristine_git_object: d28d4967e011edf7b0598fa767c87b8c7540b665
   src/BuyerCreate.php:
     id: aa2c91231d02
     last_write_checksum: sha1:e25281bf984003f4d6a82b7ed890ea44ca5a0829
@@ -3538,6 +3566,10 @@ trackedFiles:
     id: 9f459ab581e0
     last_write_checksum: sha1:21d3027bd237705c7644aeeda3bf6897d894de5a
     pristine_git_object: 41516f4c608156ee98091ff93fd0d36f3b072568
+  src/GiftCardActivationCreate.php:
+    id: a0b2807af27a
+    last_write_checksum: sha1:07839eb281f9823a3875310c6e65c126c74c47cc
+    pristine_git_object: 98ecc288267c62d18492611e5bfd4a30a85bd9bd
   src/GiftCardBalanceRequest.php:
     id: 48b836e48b00
     last_write_checksum: sha1:d8de8c6d8b36821e109867955f90d5a69101da35
@@ -3584,8 +3616,8 @@ trackedFiles:
     pristine_git_object: 7fe88ef7fc6dba634308095dd6e47c6e1fa3d57a
   src/GiftCardsSDK.php:
     id: e555b1d72a6a
-    last_write_checksum: sha1:455c181aa634ff674bbf58277ed7baf533181643
-    pristine_git_object: 1dc867272567e0318f366b44e0947255e5d12e65
+    last_write_checksum: sha1:3eaef10981b0fcc63e901dd47568f02a78cd4645
+    pristine_git_object: d7db402f54aac995cf867f562f6c9c6d6ef931e9
   src/GivingBlockOptions.php:
     id: d088f4fe3556
     last_write_checksum: sha1:4da945d4de8647394a244ea0671abd17581b1691
@@ -4488,8 +4520,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:76f6cbb3741d5ee1bf3354c06e02d44f955312a5
-    pristine_git_object: da5957d670363888b2cc6d0309ccc379d67641b2
+    last_write_checksum: sha1:2c30d4bf20e74a876f96e56f8cfd5162e447205e
+    pristine_git_object: 279f16015ca09ae0cd9aec3ca4dd9353dee96283
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4640,8 +4672,8 @@ trackedFiles:
     pristine_git_object: 9a23aed180323bb96208e9190498faa3fad81578
   src/TransactionBuyer.php:
     id: 48b476b823fd
-    last_write_checksum: sha1:99cbac3f7cda9daac2b3371331df117152e6ae33
-    pristine_git_object: 9595b847b9bf421b271649bcb97195dd2190e4a0
+    last_write_checksum: sha1:4e42843e2ecfcff3b303a3e54c57819c9b6f8dba
+    pristine_git_object: 9924aa67c6659de38e2afd11e6af3da40f88b6e4
   src/TransactionCancel.php:
     id: 7c55fd705063
     last_write_checksum: sha1:9765212b06a7625d51c7e3109a19c70098020137
@@ -5091,7 +5123,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"items": [{"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}, {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
+          application/json: {"items": [{"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}, {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -5127,7 +5159,7 @@ examples:
         application/json: {}
       responses:
         "201":
-          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -5162,7 +5194,7 @@ examples:
         header: {}
       responses:
         "200":
-          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -5200,7 +5232,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "reconciliation_id": "7jZXl4gBUNl0CnaLEnfXbt", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -9147,21 +9179,67 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  activate_gift_card:
+    speakeasy-default-activate-gift-card:
+      requestBody:
+        application/json: {"number": "4123455541234561234"}
+      responses:
+        "201":
+          application/json: {"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "<id>", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "usage_count": 100, "cit_usage_count": 50}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Php SDK Changes:
-  * `sdk->buyers->list()`:  `response.items[]->id` **Changed** (Breaking ⚠️)
-  * `sdk->buyers->create()`:  `response.id` **Changed** (Breaking ⚠️)
-  * `sdk->buyers->get()`:  `response.id` **Changed** (Breaking ⚠️)
-  * `sdk->buyers->update()`:  `response.id` **Changed** (Breaking ⚠️)
-  * `sdk->payment-methods->list()`:  `response.items[]->buyer->id` **Changed** (Breaking ⚠️)
-  * `sdk->payment-methods->create()`:  `response.buyer->id` **Changed** (Breaking ⚠️)
-  * `sdk->payment-methods->get()`:  `response.buyer->id` **Changed** (Breaking ⚠️)
-  * `sdk->payment-methods->update()`:  `response.buyer->id` **Changed** (Breaking ⚠️)
-  * `sdk->gift-cards->get()`:  `response.buyer->id` **Changed** (Breaking ⚠️)
-  * `sdk->gift-cards->create()`:  `response.buyer->id` **Changed** (Breaking ⚠️)
-  * `sdk->gift-cards->list()`:  `response.items[]->buyer->id` **Changed** (Breaking ⚠️)
+  * `sdk->gift-cards->activations->create()`: **Added**
+  * `sdk->buyers->list()`:  `response.items[]->reconciliationId` **Added**
+  * `sdk->buyers->create()`:  `response.reconciliationId` **Added**
+  * `sdk->buyers->get()`:  `response.reconciliationId` **Added**
+  * `sdk->buyers->update()`:  `response.reconciliationId` **Added**
+  * `sdk->payment-methods->list()`:  `response.items[]->buyer->reconciliationId` **Added**
+  * `sdk->payment-methods->create()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->payment-methods->get()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->payment-methods->update()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->gift-cards->get()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->gift-cards->create()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->gift-cards->list()`:  `response.items[]->buyer->reconciliationId` **Added**
+  * `sdk->transactions->list()`:  `response.items[]->buyer->reconciliationId` **Added**
+  * `sdk->transactions->create()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->transactions->get()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->transactions->update()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->transactions->capture()`:  `response.union(Transaction)->buyer->reconciliationId` **Added**
+  * `sdk->transactions->void()`:  `response.union(Transaction)->buyer->reconciliationId` **Added**
+  * `sdk->transactions->cancel()`:  `response.transaction->buyer->reconciliationId` **Added**
+  * `sdk->transactions->sync()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->payouts->list()`:  `response.items[]->buyer->reconciliationId` **Added**
+  * `sdk->payouts->create()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->payouts->get()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->payment-links->create()`:  `response.buyer->reconciliationId` **Added**
+  * `sdk->payment-links->list()`:  `response.items[]->buyer->reconciliationId` **Added**
+  * `sdk->payment-links->get()`:  `response.buyer->reconciliationId` **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md

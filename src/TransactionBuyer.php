@@ -21,6 +21,15 @@ class TransactionBuyer
     public ?string $id = null;
 
     /**
+     * The base62 encoded buyer ID. This represents a shorter version of this buyer's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's buyer against our system.
+     *
+     * @var ?string $reconciliationId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reconciliation_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $reconciliationId = null;
+
+    /**
      * The display name for the buyer.
      *
      * @var ?string $displayName
@@ -69,15 +78,17 @@ class TransactionBuyer
     /**
      * @param  ?string  $type
      * @param  ?string  $id
+     * @param  ?string  $reconciliationId
      * @param  ?string  $displayName
      * @param  ?string  $externalIdentifier
      * @param  ?\Gr4vy\BillingDetails  $billingDetails
      * @param  ?string  $accountNumber
      * @phpstan-pure
      */
-    public function __construct(?string $id = null, ?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?string $accountNumber = null, ?string $type = 'buyer')
+    public function __construct(?string $id = null, ?string $reconciliationId = null, ?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?string $accountNumber = null, ?string $type = 'buyer')
     {
         $this->id = $id;
+        $this->reconciliationId = $reconciliationId;
         $this->displayName = $displayName;
         $this->externalIdentifier = $externalIdentifier;
         $this->billingDetails = $billingDetails;

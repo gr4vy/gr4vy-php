@@ -360,6 +360,10 @@ if ($response->accountUpdaterJob !== null) {
 * [create](docs/sdks/giftcardssdk/README.md#create) - Create gift card
 * [list](docs/sdks/giftcardssdk/README.md#list) - List gift cards
 
+#### [GiftCards.Activations](docs/sdks/activations/README.md)
+
+* [create](docs/sdks/activations/README.md#create) - Activate a gift card
+
 #### [GiftCards.Balances](docs/sdks/balances/README.md)
 
 * [list](docs/sdks/balances/README.md#list) - List gift card balances

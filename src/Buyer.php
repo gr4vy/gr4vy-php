@@ -20,6 +20,14 @@ class Buyer
     public string $id;
 
     /**
+     * The base62 encoded buyer ID. This represents a shorter version of this buyer's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's buyer against our system.
+     *
+     * @var string $reconciliationId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reconciliation_id')]
+    public string $reconciliationId;
+
+    /**
      * The ID of the merchant account this buyer belongs to.
      *
      * @var string $merchantAccountId
@@ -91,6 +99,7 @@ class Buyer
 
     /**
      * @param  string  $id
+     * @param  string  $reconciliationId
      * @param  string  $merchantAccountId
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
@@ -101,9 +110,10 @@ class Buyer
      * @param  ?string  $accountNumber
      * @phpstan-pure
      */
-    public function __construct(string $id, string $merchantAccountId, \DateTime $createdAt, \DateTime $updatedAt, ?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?string $accountNumber = null, ?string $type = 'buyer')
+    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, \DateTime $createdAt, \DateTime $updatedAt, ?string $displayName = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?string $accountNumber = null, ?string $type = 'buyer')
     {
         $this->id = $id;
+        $this->reconciliationId = $reconciliationId;
         $this->merchantAccountId = $merchantAccountId;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
