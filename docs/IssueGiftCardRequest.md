@@ -1,0 +1,10 @@
+# IssueGiftCardRequest
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `idempotencyKey`                                                                 | *?string*                                                                        | :heavy_minus_sign:                                                               | A unique key forwarded to the gift card service to make the issuance idempotent. |                                                                                  |
+| `merchantAccountId`                                                              | *?string*                                                                        | :heavy_minus_sign:                                                               | The ID of the merchant account to use for this request.                          | default                                                                          |
+| `giftCardIssuanceCreate`                                                         | [GiftCardIssuanceCreate](./GiftCardIssuanceCreate.md)                            | :heavy_check_mark:                                                               | N/A                                                                              |                                                                                  |
