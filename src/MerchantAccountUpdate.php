@@ -15,6 +15,7 @@ class MerchantAccountUpdate
      * The public key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
      *
      * @var ?string $accountUpdaterRequestEncryptionKey
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('account_updater_request_encryption_key')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
@@ -24,6 +25,7 @@ class MerchantAccountUpdate
      * The ID of the key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
      *
      * @var ?string $accountUpdaterRequestEncryptionKeyId
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('account_updater_request_encryption_key_id')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
@@ -33,6 +35,7 @@ class MerchantAccountUpdate
      * The key used to decrypt the response from the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
      *
      * @var ?string $accountUpdaterResponseDecryptionKey
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('account_updater_response_decryption_key')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
@@ -42,6 +45,7 @@ class MerchantAccountUpdate
      * The ID of the key used to decrypt the request from the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
      *
      * @var ?string $accountUpdaterResponseDecryptionKeyId
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('account_updater_response_decryption_key_id')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
@@ -69,6 +73,7 @@ class MerchantAccountUpdate
      * Client key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
      *
      * @var ?string $loonClientKey
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('loon_client_key')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
@@ -78,6 +83,7 @@ class MerchantAccountUpdate
      * Secret key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
      *
      * @var ?string $loonSecretKey
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('loon_secret_key')]
     #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
