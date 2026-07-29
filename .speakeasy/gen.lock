@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: a373535b2f4c0d51cb7934880e6a3fbe
+  docChecksum: 922de02a902974ec5a5c354537f3de3c
   docVersion: 1.0.0
   speakeasyVersion: 1.791.0
   generationVersion: 2.924.0
-  releaseVersion: 1.7.0
-  configChecksum: d9e1ebec302a803b918306fd083419eb
+  releaseVersion: 1.7.1
+  configChecksum: e2b21c442836d1414eb8dc71a593ce75
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 95252d3c-6b3b-4898-a609-ce2ec927e5cc
-  pristine_commit_hash: 9d7ff9dc87b3f113bf02a52b1f770c0bdcc12384
-  pristine_tree_hash: b99f6c7161a0f8e5a27c9b529bca880b8ff10f13
+  generation_id: b7eda23b-0ccc-43c9-bf53-1f0f35979f25
+  pristine_commit_hash: 9874fa3c45f1a2f0aa1ef73621424c6b7a6a5478
+  pristine_tree_hash: f6f718bde04bccf8c70f037de26f3ae521183f6a
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:5d144eedc8f1f0b2fc187b1c231f02921f7a0360
-    pristine_git_object: c44355225f10e2a610661ae3311be5d854756cb3
+    last_write_checksum: sha1:e2117333ca78a5cffa238852b324777ccf90cfc5
+    pristine_git_object: 38f6c8e2ba9481a45165bd0b4e5aa9e3374381d7
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -1037,8 +1037,8 @@ trackedFiles:
     pristine_git_object: 65caf2e72f8030ae65ad693052de0cd9314b4d0e
   docs/GiftCardActivationCreate.md:
     id: 66aae5779649
-    last_write_checksum: sha1:44c979387a134d0f3dcad68f56888382d66a4507
-    pristine_git_object: becae500470d7021e010e75586bae00ebb72ee3d
+    last_write_checksum: sha1:8c384c37696d88abe4d2f78a98b4233b97903f8d
+    pristine_git_object: 0d744c7f9e659fe3573975ad818f1ba452807be1
   docs/GiftCardBalanceRequest.md:
     id: 85035bb12cdc
     last_write_checksum: sha1:be1164a4647fb6088d5d5c332801f2328c96f657
@@ -2317,8 +2317,8 @@ trackedFiles:
     pristine_git_object: c48fe1fc4f3d9cf71e07de36ede3918c94b326a7
   docs/sdks/activations/README.md:
     id: 5e6a3a8cf62a
-    last_write_checksum: sha1:479651912310a475088e5b6e461fddbf6f2ad140
-    pristine_git_object: 8e39106767eaad0fb055926937817920249e684d
+    last_write_checksum: sha1:add376e5a74251d3d096101e930e0eb5a5115ee8
+    pristine_git_object: 11db9b7698c7c655fd2868bb528a2b0aaec9c446
   docs/sdks/all/README.md:
     id: 936653be5c4b
     last_write_checksum: sha1:8b5073126eed004cb78e2a1501ed21d6f62aa0d8
@@ -2545,8 +2545,8 @@ trackedFiles:
     pristine_git_object: b9a66012ba7c49b861a96d108ac5fdb92a89e2e6
   src/Activations.php:
     id: fd28160df28a
-    last_write_checksum: sha1:eafe23c25d2b58972f5e1b502d606353c778c5b3
-    pristine_git_object: 4e29a2cc1ce874f63b1bec92d2a132b00c4efe09
+    last_write_checksum: sha1:ee627597fe8181f1d78a8b38e328d82381ec75bb
+    pristine_git_object: 231033c67b3b2e5ee15f83ff1ea818455b515497
   src/AddBuyerRequest.php:
     id: 61dd0ebcdff5
     last_write_checksum: sha1:f597aa2b8429d849f3d55ca917b7417f4ba8c794
@@ -3589,8 +3589,8 @@ trackedFiles:
     pristine_git_object: 41516f4c608156ee98091ff93fd0d36f3b072568
   src/GiftCardActivationCreate.php:
     id: a0b2807af27a
-    last_write_checksum: sha1:07839eb281f9823a3875310c6e65c126c74c47cc
-    pristine_git_object: 98ecc288267c62d18492611e5bfd4a30a85bd9bd
+    last_write_checksum: sha1:9736169b2d1925096f011ceb810683d869e47ff6
+    pristine_git_object: cd4ab8ce4ddb98eca07175eac1b3972a26c91ffb
   src/GiftCardBalanceRequest.php:
     id: 48b836e48b00
     last_write_checksum: sha1:d8de8c6d8b36821e109867955f90d5a69101da35
@@ -4561,8 +4561,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:82feace6f0ec3f3b86103235962042828b6b8488
-    pristine_git_object: 1ef1a24aa7a65680c3dab82cefeea5641ca20f7f
+    last_write_checksum: sha1:765dcfe88b3a9633b29252ff13a3a0244454d357
+    pristine_git_object: ce0ca28e719e9f5d6acfb7897e2f208e27658598
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -9223,7 +9223,7 @@ examples:
   activate_gift_card:
     speakeasy-default-activate-gift-card:
       requestBody:
-        application/json: {"number": "4123455541234561234"}
+        application/json: {"number": "4123455541234561234", "store": false}
       responses:
         "201":
           application/json: {"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "<id>", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "usage_count": 100, "cit_usage_count": 50}
@@ -9284,6 +9284,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->gift-cards->activations->create()`:  `request.giftCardActivationCreate` **Changed**
 generatedFiles:
   - .gitattributes
   - USAGE.md
