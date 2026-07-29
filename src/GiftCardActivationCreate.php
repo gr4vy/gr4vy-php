@@ -57,19 +57,52 @@ class GiftCardActivationCreate
     public ?string $externalIdentifier = null;
 
     /**
+     * The ID of the buyer to associate this gift card to. Only allowed when `store` is `true`. If this field is provided then the `buyer_external_identifier` field needs to be unset.
+     *
+     * @var ?string $buyerId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('buyer_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $buyerId = null;
+
+    /**
+     * The `external_identifier` of the buyer to associate this gift card to. Only allowed when `store` is `true`. If this field is provided then the `buyer_id` field needs to be unset.
+     *
+     * @var ?string $buyerExternalIdentifier
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('buyer_external_identifier')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $buyerExternalIdentifier = null;
+
+    /**
+     * Whether to store the activated gift card in the vault. When `true`, a `pin` is required.
+     *
+     * @var ?bool $store
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('store')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $store = null;
+
+    /**
      * @param  string  $number
+     * @param  ?bool  $store
      * @param  ?string  $pin
      * @param  ?int  $amount
      * @param  ?string  $currency
      * @param  ?string  $externalIdentifier
+     * @param  ?string  $buyerId
+     * @param  ?string  $buyerExternalIdentifier
      * @phpstan-pure
      */
-    public function __construct(string $number, ?string $pin = null, ?int $amount = null, ?string $currency = null, ?string $externalIdentifier = null)
+    public function __construct(string $number, ?string $pin = null, ?int $amount = null, ?string $currency = null, ?string $externalIdentifier = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?bool $store = false)
     {
         $this->number = $number;
         $this->pin = $pin;
         $this->amount = $amount;
         $this->currency = $currency;
         $this->externalIdentifier = $externalIdentifier;
+        $this->buyerId = $buyerId;
+        $this->buyerExternalIdentifier = $buyerExternalIdentifier;
+        $this->store = $store;
     }
 }
