@@ -328,6 +328,15 @@ class Transaction
     public ?GiftCardService $giftCardService = null;
 
     /**
+     * The identifier of the transaction from which this transaction was reauthorized.
+     *
+     * @var ?string $reauthorizedFromTransactionId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reauthorized_from_transaction_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $reauthorizedFromTransactionId = null;
+
+    /**
      * Contains information about an airline travel, if applicable.
      *
      * @var ?\Gr4vy\Airline $airline
@@ -670,6 +679,7 @@ class Transaction
      * @param  ?\Gr4vy\ShippingDetails  $shippingDetails
      * @param  ?string  $checkoutSessionId
      * @param  ?\Gr4vy\GiftCardService  $giftCardService
+     * @param  ?string  $reauthorizedFromTransactionId
      * @param  ?\Gr4vy\Airline  $airline
      * @param  ?string  $authResponseCode
      * @param  ?string  $avsResponseCode
@@ -703,7 +713,7 @@ class Transaction
      * @param  ?string  $isoResponseCode
      * @phpstan-pure
      */
-    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, string $paymentSource, bool $merchantInitiated, bool $isSubsequentPayment, string $intentOutcome, bool $multiTender, bool $accountFundingTransaction, ?array $additionalIdentifiers = null, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?Airline $airline = null, ?string $authResponseCode = null, ?string $avsResponseCode = null, ?string $cvvResponseCode = null, ?string $antiFraudDecision = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $schemeTransactionId = null, ?string $transactionLinkId = null, ?TransactionThreeDSecureSummary $threeDSecure = null, ?string $paymentServiceTransactionId = null, ?array $metadata = null, ?\DateTime $authorizedAt = null, ?\DateTime $capturedAt = null, ?\DateTime $voidedAt = null, ?\DateTime $canceledAt = null, ?\DateTime $approvalExpiresAt = null, ?\DateTime $buyerApprovalTimedoutAt = null, ?Recipient $recipient = null, ?string $merchantAdviceCode = null, ?int $installmentCount = null, ?string $sessionToken = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $purchaseOrderNumber = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $isoResponseCode = null, ?bool $pendingReview = false, ?string $type = 'transaction')
+    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, string $paymentSource, bool $merchantInitiated, bool $isSubsequentPayment, string $intentOutcome, bool $multiTender, bool $accountFundingTransaction, ?array $additionalIdentifiers = null, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?string $reauthorizedFromTransactionId = null, ?Airline $airline = null, ?string $authResponseCode = null, ?string $avsResponseCode = null, ?string $cvvResponseCode = null, ?string $antiFraudDecision = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $schemeTransactionId = null, ?string $transactionLinkId = null, ?TransactionThreeDSecureSummary $threeDSecure = null, ?string $paymentServiceTransactionId = null, ?array $metadata = null, ?\DateTime $authorizedAt = null, ?\DateTime $capturedAt = null, ?\DateTime $voidedAt = null, ?\DateTime $canceledAt = null, ?\DateTime $approvalExpiresAt = null, ?\DateTime $buyerApprovalTimedoutAt = null, ?Recipient $recipient = null, ?string $merchantAdviceCode = null, ?int $installmentCount = null, ?string $sessionToken = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $purchaseOrderNumber = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $isoResponseCode = null, ?bool $pendingReview = false, ?string $type = 'transaction')
     {
         $this->id = $id;
         $this->reconciliationId = $reconciliationId;
@@ -742,6 +752,7 @@ class Transaction
         $this->shippingDetails = $shippingDetails;
         $this->checkoutSessionId = $checkoutSessionId;
         $this->giftCardService = $giftCardService;
+        $this->reauthorizedFromTransactionId = $reauthorizedFromTransactionId;
         $this->airline = $airline;
         $this->authResponseCode = $authResponseCode;
         $this->avsResponseCode = $avsResponseCode;
