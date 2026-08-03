@@ -271,6 +271,15 @@ class TransactionSummary
     public ?GiftCardService $giftCardService = null;
 
     /**
+     * The identifier of the transaction from which this transaction was reauthorized.
+     *
+     * @var ?string $reauthorizedFromTransactionId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reauthorized_from_transaction_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $reauthorizedFromTransactionId = null;
+
+    /**
      * Whether a manual anti fraud review is pending with an anti fraud service.
      *
      * @var ?bool $pendingReview
@@ -321,9 +330,10 @@ class TransactionSummary
      * @param  ?\Gr4vy\ShippingDetails  $shippingDetails
      * @param  ?string  $checkoutSessionId
      * @param  ?\Gr4vy\GiftCardService  $giftCardService
+     * @param  ?string  $reauthorizedFromTransactionId
      * @phpstan-pure
      */
-    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?bool $pendingReview = false, ?string $type = 'transaction')
+    public function __construct(string $id, string $reconciliationId, string $merchantAccountId, string $currency, int $amount, string $status, int $authorizedAmount, int $capturedAmount, int $refundedAmount, int $settledAmount, bool $settled, string $intent, array $giftCardRedemptions, \DateTime $createdAt, \DateTime $updatedAt, bool $disputed, ?string $settledCurrency = null, ?string $country = null, ?string $externalIdentifier = null, ?TransactionPaymentMethod $paymentMethod = null, ?string $method = null, ?string $instrumentType = null, ?string $errorCode = null, ?TransactionPaymentService $paymentService = null, ?TransactionBuyer $buyer = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?ShippingDetails $shippingDetails = null, ?string $checkoutSessionId = null, ?GiftCardService $giftCardService = null, ?string $reauthorizedFromTransactionId = null, ?bool $pendingReview = false, ?string $type = 'transaction')
     {
         $this->id = $id;
         $this->reconciliationId = $reconciliationId;
@@ -355,6 +365,7 @@ class TransactionSummary
         $this->shippingDetails = $shippingDetails;
         $this->checkoutSessionId = $checkoutSessionId;
         $this->giftCardService = $giftCardService;
+        $this->reauthorizedFromTransactionId = $reauthorizedFromTransactionId;
         $this->pendingReview = $pendingReview;
         $this->type = $type;
     }
