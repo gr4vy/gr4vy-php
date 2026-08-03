@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 922de02a902974ec5a5c354537f3de3c
+  docChecksum: 0a30ae5cfc32e308fa0052658d33e3dd
   docVersion: 1.0.0
-  speakeasyVersion: 1.791.0
-  generationVersion: 2.924.0
-  releaseVersion: 1.7.1
-  configChecksum: e2b21c442836d1414eb8dc71a593ce75
+  speakeasyVersion: 1.791.1
+  generationVersion: 2.926.2
+  releaseVersion: 1.7.2
+  configChecksum: 2ef8a8dfde703fb0355d201ed4df1fe4
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: b7eda23b-0ccc-43c9-bf53-1f0f35979f25
-  pristine_commit_hash: 9874fa3c45f1a2f0aa1ef73621424c6b7a6a5478
-  pristine_tree_hash: f6f718bde04bccf8c70f037de26f3ae521183f6a
+  generation_id: 7da707cf-0061-4cf1-890a-38f5c84f45de
+  pristine_commit_hash: feceafdbf3cfa4fa0fb836258746a6e33bf4e707
+  pristine_tree_hash: c27a21a5e7015c23bbe48f79dda15aa23a724f29
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -31,7 +31,7 @@ features:
     nullables: 1.0.1
     pagination: 0.1.5
     responseFormat: 0.1.0
-    retries: 0.1.2
+    retries: 0.1.3
     serverIDs: 2.81.1
     unions: 0.1.8
 trackedFiles:
@@ -703,6 +703,10 @@ trackedFiles:
     id: 3115e9e6d800
     last_write_checksum: sha1:2c80fd26ce724356203525068df0a1f3ccd95ea1
     pristine_git_object: edfd62b3d308603f97f8f471262610b39ef12601
+  docs/DlocalCardOptions.md:
+    id: 57a86f7e683e
+    last_write_checksum: sha1:4aeb706f2e30b8d5ab25f62c4ba4f7f446b0cb86
+    pristine_git_object: 67d082b796ef8f462b8251e4a953ab6f072c17a2
   docs/DlocalOptions.md:
     id: 57a2067093a6
     last_write_checksum: sha1:f5ae912d2677c4efe1eb37d0ca0ae37bd4b48e4d
@@ -2081,8 +2085,8 @@ trackedFiles:
     pristine_git_object: 083d8a31649d024de649f3819c144ca05d14915d
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:37e806c85d82e0481371a31793a5bc35bdd7e646
-    pristine_git_object: a503c9f7071f9cd948a1e00032c26e6956eb7ee0
+    last_write_checksum: sha1:06d78c3cbc93da1c11165bc289e8ceac77ae903e
+    pristine_git_object: d03c53b023ee3990ee315b81314151fbcff6cf0b
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:6e484b1bdb18512ce81b8ff4ecd6255cf3afa89b
@@ -3195,6 +3199,10 @@ trackedFiles:
     id: 88fa16c4408d
     last_write_checksum: sha1:f116eb202d593cca1efe926c4b4e65115fa59707
     pristine_git_object: de94145489ff02e7967588f6c2f421486468a4bd
+  src/DlocalCardOptions.php:
+    id: 15c29a0a902f
+    last_write_checksum: sha1:163ac04da7e76276f96c83dfec21c49caa644c9f
+    pristine_git_object: 1a5457ba8a8982587eb1637ff1eedd7eb3e4ad16
   src/DlocalOptions.php:
     id: f2434574670c
     last_write_checksum: sha1:79b33015483038dcb53c94af81854a6691c2b751
@@ -4561,8 +4569,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:765dcfe88b3a9633b29252ff13a3a0244454d357
-    pristine_git_object: ce0ca28e719e9f5d6acfb7897e2f208e27658598
+    last_write_checksum: sha1:a4364c06c5f0e6d518d1a72f80955fd17c922613
+    pristine_git_object: 7b394366a628782569ca4f9d38a95ae4f569f467
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4729,8 +4737,8 @@ trackedFiles:
     pristine_git_object: 157b1e2a3874684edd1e43d9346f52b191eaa5c7
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:bc9dc3d27ecc0fa8a2c4f53db6b5aca87acfa38d
-    pristine_git_object: d9df800357dd43d1474d286fb7cfcea96a79b874
+    last_write_checksum: sha1:2a80b4f7444c0ba418a27511a44d0c33a1b323e9
+    pristine_git_object: a9c59d130079178f6175480370e5a059a1b42c14
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:ff80521a486555236663de211516570613368d40
@@ -5021,8 +5029,8 @@ trackedFiles:
     pristine_git_object: 8b7f8f20e1f36908b98acb3d4cd77f3cda9d8a24
   src/Utils/Retry/RetryUtils.php:
     id: 28597380e832
-    last_write_checksum: sha1:095d7203b00162ac2720c3c1fbb68e5e56f351fa
-    pristine_git_object: 2e1d5a6c95b61591c3cc582af834ee8725d349ed
+    last_write_checksum: sha1:6bdb6fb16eb813f4d255756d77d4c7ad73f19ed5
+    pristine_git_object: eb5d529808a38aa9e9b0861779d990292cb95e79
   src/Utils/Retry/TemporaryError.php:
     id: d58c3851b91f
     last_write_checksum: sha1:fa676b64516f0800820c0ee8e500b4e8778fa440
@@ -9284,9 +9292,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes:
-  * `sdk->gift-cards->activations->create()`:  `request.giftCardActivationCreate` **Changed**
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->dlocalCard` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->dlocalCard` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->dlocalCard` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
