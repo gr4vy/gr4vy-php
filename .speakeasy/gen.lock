@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: b32703b4f012b24a8767282ecf5816c4
+  docChecksum: f8321d193d800f431d1eae4a3a9e3fbd
   docVersion: 1.0.0
   speakeasyVersion: 1.791.1
   generationVersion: 2.926.2
-  releaseVersion: 1.7.3
-  configChecksum: 04f5961d3be6656fec290893df3b4717
+  releaseVersion: 1.7.4
+  configChecksum: 30bfe89af7c14f4014c12b9627fe0171
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 08468b0c-6470-4af0-ae60-a71ca55ca116
-  pristine_commit_hash: 830528ea78d4da4f5791167daa62acac6fde01c1
-  pristine_tree_hash: 47facf5e12a33b631b87b88269f6e2ebe986bc6b
+  generation_id: a42c2dc3-1039-4910-bbb8-f4a6f5e22243
+  pristine_commit_hash: d363d0561635047cce56a98f2ab47b6225df95d2
+  pristine_tree_hash: 0c28dbe37ccc8e9fb1e3fe8682025fd38a43f624
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:5d144eedc8f1f0b2fc187b1c231f02921f7a0360
-    pristine_git_object: c44355225f10e2a610661ae3311be5d854756cb3
+    last_write_checksum: sha1:c5b72759687de2c55a408574a66908400eacc077
+    pristine_git_object: d5366c2ba2cbc6614e8fccd19dedd8654c27c65c
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -57,8 +57,8 @@ trackedFiles:
     pristine_git_object: 3975ea6aba583069c625fae514c929bbeaae9825
   docs/APIKeyPair.md:
     id: cb8e27172149
-    last_write_checksum: sha1:4a4fbf01d8f9b332f80235c04587c817d3bc6339
-    pristine_git_object: af1c5df6414ac735d4a7de7b50e11081f0fedf87
+    last_write_checksum: sha1:00fd6e9c5d9a657a082285fed76308131794076d
+    pristine_git_object: 9d7cc2ce93b9577bb0a71b2b8e92ae61e31371ad
   docs/APIKeyPairCreate.md:
     id: c798dcda8dba
     last_write_checksum: sha1:6cd597d9d9fba9c8f27c311e01212e3a20c518df
@@ -2501,8 +2501,8 @@ trackedFiles:
     pristine_git_object: f9feaa3726692113f6e3e7d2e9fdcb05906294c1
   src/APIKeyPair.php:
     id: f4d271ec9e72
-    last_write_checksum: sha1:46e4c62355b68f40c27d833a234f3c41bc631a15
-    pristine_git_object: aeb66501ed973d9f44a1aa69174141f128b7117d
+    last_write_checksum: sha1:7bfac742c500fb5ca02626fa7fd91400875d6acb
+    pristine_git_object: 657cbaad8c8b4d09ba17b57918440729a8135b3f
   src/APIKeyPairCreate.php:
     id: daa2c84fff0d
     last_write_checksum: sha1:c38ef29d2811b5f47bab2c44ed10b7335f10322a
@@ -4569,8 +4569,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:5b6caeae68460972f8b1ee607574e966360a47e9
-    pristine_git_object: 5ef862e2accb389e37bdca7b60b75720aabfb867
+    last_write_checksum: sha1:57f96d9eae2b789ea3a930927b04d67695549a27
+    pristine_git_object: 591cbd275bf6a91bd61bcf9c10dc77ca93e59b6a
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -9294,14 +9294,10 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Php SDK Changes:
-  * `sdk->transactions->list()`:  `response.items[]->reauthorizedFromTransactionId` **Added**
-  * `sdk->transactions->create()`:  `response.reauthorizedFromTransactionId` **Added**
-  * `sdk->transactions->get()`:  `response.reauthorizedFromTransactionId` **Added**
-  * `sdk->transactions->update()`:  `response.reauthorizedFromTransactionId` **Added**
-  * `sdk->transactions->capture()`:  `response.union(Transaction)->reauthorizedFromTransactionId` **Added**
-  * `sdk->transactions->void()`:  `response.union(Transaction)->reauthorizedFromTransactionId` **Added**
-  * `sdk->transactions->cancel()`:  `response.transaction->reauthorizedFromTransactionId` **Added**
-  * `sdk->transactions->sync()`:  `response.reauthorizedFromTransactionId` **Added**
+  * `sdk->api-key-pairs->list()`:  `response.items[]->lastUsedAt` **Added**
+  * `sdk->api-key-pairs->create()`:  `response.lastUsedAt` **Added**
+  * `sdk->api-key-pairs->get()`:  `response.lastUsedAt` **Added**
+  * `sdk->api-key-pairs->update()`:  `response.lastUsedAt` **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md

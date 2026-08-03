@@ -96,6 +96,15 @@ class APIKeyPair
     public ?string $privateKey = null;
 
     /**
+     * The date and time when this API key pair was last used to authenticate, or `null` if it has never been used.
+     *
+     * @var ?\DateTime $lastUsedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_used_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?\DateTime $lastUsedAt = null;
+
+    /**
      * The user or API key pair that created this API key pair.
      *
      * @var ?\Gr4vy\ApiRoutersApiKeyPairsSchemasCreator $creator
@@ -126,10 +135,11 @@ class APIKeyPair
      * @param  ?array<\Gr4vy\MerchantAccountSummary>  $merchantAccounts
      * @param  ?array<\Gr4vy\Role>  $roles
      * @param  ?string  $privateKey
+     * @param  ?\DateTime  $lastUsedAt
      * @param  ?\Gr4vy\ApiRoutersApiKeyPairsSchemasCreator  $creator
      * @phpstan-pure
      */
-    public function __construct(string $id, string $thumbprint, string $displayName, string $algorithm, bool $active, \DateTime $createdAt, \DateTime $updatedAt, ?array $merchantAccounts = null, ?array $roles = null, ?string $privateKey = null, ?ApiRoutersApiKeyPairsSchemasCreator $creator = null, ?string $type = 'api-key-pair')
+    public function __construct(string $id, string $thumbprint, string $displayName, string $algorithm, bool $active, \DateTime $createdAt, \DateTime $updatedAt, ?array $merchantAccounts = null, ?array $roles = null, ?string $privateKey = null, ?\DateTime $lastUsedAt = null, ?ApiRoutersApiKeyPairsSchemasCreator $creator = null, ?string $type = 'api-key-pair')
     {
         $this->id = $id;
         $this->thumbprint = $thumbprint;
@@ -141,6 +151,7 @@ class APIKeyPair
         $this->merchantAccounts = $merchantAccounts;
         $this->roles = $roles;
         $this->privateKey = $privateKey;
+        $this->lastUsedAt = $lastUsedAt;
         $this->creator = $creator;
         $this->type = $type;
     }
