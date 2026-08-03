@@ -483,6 +483,7 @@ if ($response->accountUpdaterJob !== null) {
 * [void](docs/sdks/transactions/README.md#void) - Void transaction
 * [cancel](docs/sdks/transactions/README.md#cancel) - Cancel transaction
 * [sync](docs/sdks/transactions/README.md#sync) - Sync transaction
+* [incrementAuthorization](docs/sdks/transactions/README.md#incrementauthorization) - Increment transaction authorization
 
 #### [Transactions.Actions](docs/sdks/actions/README.md)
 
