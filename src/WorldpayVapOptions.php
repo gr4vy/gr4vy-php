@@ -21,11 +21,22 @@ class WorldpayVapOptions
     public ?string $reportGroup = null;
 
     /**
+     * Overrides the `orderId` passed to the Worldpay VAP API, which defaults to the Gr4vy transaction ID.
+     *
+     * @var ?string $orderId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('orderId')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $orderId = null;
+
+    /**
      * @param  ?string  $reportGroup
+     * @param  ?string  $orderId
      * @phpstan-pure
      */
-    public function __construct(?string $reportGroup = null)
+    public function __construct(?string $reportGroup = null, ?string $orderId = null)
     {
         $this->reportGroup = $reportGroup;
+        $this->orderId = $orderId;
     }
 }
