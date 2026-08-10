@@ -8,6 +8,7 @@ use Gr4vy\Tests\Utils\CheckoutFields;
 use Gr4vy\Tests\Utils\Fixtures;
 use Gr4vy\Tests\Utils\MerchantTestCase;
 use Gr4vy\Tests\Utils\Reach;
+use Gr4vy\TransactionAuthorizationIncrementCreate;
 use Gr4vy\TransactionUpdate;
 use PHPUnit\Framework\Attributes\Test;
 
@@ -80,6 +81,23 @@ final class TransactionsTest extends MerchantTestCase
         Reach::reaches(
             fn () => $sdk->transactions->refundSettlements->get($txn->id, self::MISSING_ID),
             'transactions.refundSettlements.get',
+        );
+    }
+
+    #[Test]
+    public function increment_authorization_is_reached(): void
+    {
+        $sdk = $this->sdk();
+        // Incremental authorization is a PSP capability the mock connector does
+        // not offer, so we authorize for real and accept a clean rejection.
+        $txn = CheckoutFields::authorize($sdk);
+
+        Reach::reaches(
+            fn () => $sdk->transactions->incrementAuthorization(
+                new TransactionAuthorizationIncrementCreate(amount: 500),
+                $txn->id,
+            ),
+            'transactions.incrementAuthorization',
         );
     }
 
