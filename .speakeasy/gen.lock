@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 189e3ff9ab12c31fd0f2de1e15a3ce45
+  docChecksum: a9fdd702bc3f5354183894702936c61a
   docVersion: 1.0.0
-  speakeasyVersion: 1.791.4
-  generationVersion: 2.926.8
-  releaseVersion: 1.7.7
-  configChecksum: 37bc44107aef1ff44301c3fb9ec7d677
+  speakeasyVersion: 1.792.0
+  generationVersion: 2.927.0
+  releaseVersion: 1.7.8
+  configChecksum: c000a7470f156462cd9f9cfb3edf1246
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: d0ae7ebe-0a52-4d2f-b4ba-77ded1dbadc7
-  pristine_commit_hash: bd719998e013279bca7e2795050258110ac256dc
-  pristine_tree_hash: 4ed880b46057c48594a03a0c09067ba85e39a52e
+  generation_id: cee8270a-c651-4a21-8bcc-a0948e806faf
+  pristine_commit_hash: e9c6f89169b28a39e8282a9d62cf80c655a25bf4
+  pristine_tree_hash: f66772d1dbe5a48ed6bf429364282f1018d6dda7
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -61,12 +61,12 @@ trackedFiles:
     pristine_git_object: 9d7cc2ce93b9577bb0a71b2b8e92ae61e31371ad
   docs/APIKeyPairCreate.md:
     id: c798dcda8dba
-    last_write_checksum: sha1:6cd597d9d9fba9c8f27c311e01212e3a20c518df
-    pristine_git_object: fde95ced7ee430c59e1d0b560fc49bc9f5bbbc3b
+    last_write_checksum: sha1:6d88d4648ac4fb2a9ed0beb03dd915df4926f383
+    pristine_git_object: 6d8eb9797132e8044d08832b1ce8ab82667fb8ce
   docs/APIKeyPairUpdate.md:
     id: e5251ea395bb
-    last_write_checksum: sha1:7f54e0c5ab1b589358ad9b5b8cf7f338b9d8c745
-    pristine_git_object: ea596a6ca74f5495adfaddf37bb6b541973cb1e4
+    last_write_checksum: sha1:60314ea92ddccc475683e3f75406204b44f928cb
+    pristine_git_object: 4a09048cfc55bfc97d2a70a4db396a0871203c2b
   docs/AccountUpdaterInquirySummary.md:
     id: 58cff5faa9e6
     last_write_checksum: sha1:0d6ca1aacf9690bfbfe59fac9f1c2caeb9f46be6
@@ -2521,8 +2521,8 @@ trackedFiles:
     pristine_git_object: 657cbaad8c8b4d09ba17b57918440729a8135b3f
   src/APIKeyPairCreate.php:
     id: daa2c84fff0d
-    last_write_checksum: sha1:c38ef29d2811b5f47bab2c44ed10b7335f10322a
-    pristine_git_object: 4e211123402dd9f9787fdb188cc0c43b5a728ec9
+    last_write_checksum: sha1:bc0a4b822bc868c8c08c219a5cdeab413f8a7430
+    pristine_git_object: fca75d4fc5f718d5dd076ebfde0e0af6cd41f643
   src/APIKeyPairUpdate.php:
     id: 8876b5b82f88
     last_write_checksum: sha1:22739bafa9e14d438a1e60386cbbb9f55b471493
@@ -4593,8 +4593,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:f59e30cae386949ea78901fa229df76def504370
-    pristine_git_object: da9edbb4d6c9ce32b93f386b62a2763f3878e1b7
+    last_write_checksum: sha1:d40ea39eda46365d54e52967a90618bc372ad858
+    pristine_git_object: 4b8bc1ff0c93e09a428a1f3e4d01999939f1a7ad
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -9358,7 +9358,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->worldpayvapCard->orderId` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->worldpayvapCard->orderId` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->worldpayvapCard->orderId` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
