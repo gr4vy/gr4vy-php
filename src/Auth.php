@@ -49,12 +49,16 @@ class JWTScope
     const ANTI_FRAUD_SERVICE_DEFINITIONS_WRITE = 'anti-fraud-service-definitions.write';
     const ANTI_FRAUD_SERVICES_READ = 'anti-fraud-services.read';
     const ANTI_FRAUD_SERVICES_WRITE = 'anti-fraud-services.write';
+    const API_KEY_PAIRS_READ = 'api-key-pairs.read';
+    const API_KEY_PAIRS_WRITE = 'api-key-pairs.write';
     const API_LOGS_READ = 'api-logs.read';
     const API_LOGS_WRITE = 'api-logs.write';
     const APPLE_PAY_CERTIFICATES_READ = 'apple-pay-certificates.read';
     const APPLE_PAY_CERTIFICATES_WRITE = 'apple-pay-certificates.write';
     const AUDIT_LOGS_READ = 'audit-logs.read';
     const AUDIT_LOGS_WRITE = 'audit-logs.write';
+    const BIN_CHECKER_READ = 'bin-checker.read';
+    const BIN_CHECKER_WRITE = 'bin-checker.write';
     const BUYERS_READ = 'buyers.read';
     const BUYERS_WRITE = 'buyers.write';
     const BUYERS_BILLING_DETAILS_READ = 'buyers.billing-details.read';
@@ -95,6 +99,8 @@ class JWTScope
     const REPORTS_WRITE = 'reports.write';
     const ROLES_READ = 'roles.read';
     const ROLES_WRITE = 'roles.write';
+    const THREE_DS_SCENARIOS_READ = 'three-ds-scenarios.read';
+    const THREE_DS_SCENARIOS_WRITE = 'three-ds-scenarios.write';
     const TRANSACTIONS_READ = 'transactions.read';
     const TRANSACTIONS_WRITE = 'transactions.write';
     const USERS_ME_READ = 'users.me.read';
