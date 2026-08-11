@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: a9fdd702bc3f5354183894702936c61a
+  docChecksum: 075b6ddffbed2fd521792a630cc7d277
   docVersion: 1.0.0
-  speakeasyVersion: 1.792.0
-  generationVersion: 2.927.0
-  releaseVersion: 1.7.8
-  configChecksum: c000a7470f156462cd9f9cfb3edf1246
+  speakeasyVersion: 1.793.0
+  generationVersion: 2.928.0
+  releaseVersion: 1.7.9
+  configChecksum: c3d748f863c2b8ef8722767119d841cc
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: cee8270a-c651-4a21-8bcc-a0948e806faf
-  pristine_commit_hash: e9c6f89169b28a39e8282a9d62cf80c655a25bf4
-  pristine_tree_hash: f66772d1dbe5a48ed6bf429364282f1018d6dda7
+  generation_id: 2b3ce7a7-44eb-4885-93a7-9fb1d3d87669
+  pristine_commit_hash: d85790663424ea95bd73afd9f721b05a4d3c18e9
+  pristine_tree_hash: 0cf386fddd23148ee6f8a4249f742c8c5e55a192
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:e2117333ca78a5cffa238852b324777ccf90cfc5
-    pristine_git_object: 38f6c8e2ba9481a45165bd0b4e5aa9e3374381d7
+    last_write_checksum: sha1:c5b72759687de2c55a408574a66908400eacc077
+    pristine_git_object: d5366c2ba2cbc6614e8fccd19dedd8654c27c65c
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -4593,8 +4593,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:d40ea39eda46365d54e52967a90618bc372ad858
-    pristine_git_object: 4b8bc1ff0c93e09a428a1f3e4d01999939f1a7ad
+    last_write_checksum: sha1:b49bb5976e888d1e1801687173130e158615b264
+    pristine_git_object: 916cab3237bc087d0392a80ce924626eb2811fb7
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
