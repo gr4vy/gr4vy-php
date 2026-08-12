@@ -26,6 +26,14 @@ class Role
     public string $name;
 
     /**
+     * The unique, human-readable identifier for the role.
+     *
+     * @var string $slug
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
+    public string $slug;
+
+    /**
      *
      * @var string $description
      */
@@ -41,6 +49,32 @@ class Role
     public PermissionSet $permissions;
 
     /**
+     * The types of resource this role can be assigned to.
+     *
+     * @var array<string> $assignableTo
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('assignable_to')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>')]
+    public array $assignableTo;
+
+    /**
+     * The slugs of the roles this role is an add-on of. Empty when this role is not an add-on.
+     *
+     * @var array<string> $appliesTo
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('applies_to')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>')]
+    public array $appliesTo;
+
+    /**
+     * Whether this role can be assigned on its own, without being combined with another role.
+     *
+     * @var bool $isStandaloneAssignable
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_standalone_assignable')]
+    public bool $isStandaloneAssignable;
+
+    /**
      *
      * @var ?string $type
      */
@@ -51,17 +85,25 @@ class Role
     /**
      * @param  string  $id
      * @param  string  $name
+     * @param  string  $slug
      * @param  string  $description
      * @param  \Gr4vy\PermissionSet  $permissions
+     * @param  array<string>  $assignableTo
+     * @param  array<string>  $appliesTo
+     * @param  bool  $isStandaloneAssignable
      * @param  ?string  $type
      * @phpstan-pure
      */
-    public function __construct(string $id, string $name, string $description, PermissionSet $permissions, ?string $type = 'role')
+    public function __construct(string $id, string $name, string $slug, string $description, PermissionSet $permissions, array $assignableTo, array $appliesTo, bool $isStandaloneAssignable, ?string $type = 'role')
     {
         $this->id = $id;
         $this->name = $name;
+        $this->slug = $slug;
         $this->description = $description;
         $this->permissions = $permissions;
+        $this->assignableTo = $assignableTo;
+        $this->appliesTo = $appliesTo;
+        $this->isStandaloneAssignable = $isStandaloneAssignable;
         $this->type = $type;
     }
 }

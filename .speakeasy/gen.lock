@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 075b6ddffbed2fd521792a630cc7d277
+  docChecksum: d0f516397ddd5c6d32b0f15c39611e43
   docVersion: 1.0.0
-  speakeasyVersion: 1.793.0
+  speakeasyVersion: 1.793.1
   generationVersion: 2.928.0
-  releaseVersion: 1.7.9
-  configChecksum: c3d748f863c2b8ef8722767119d841cc
+  releaseVersion: 1.7.10
+  configChecksum: bbd6b27d50be70d4aecc35ebdb19b692
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 2b3ce7a7-44eb-4885-93a7-9fb1d3d87669
-  pristine_commit_hash: d85790663424ea95bd73afd9f721b05a4d3c18e9
-  pristine_tree_hash: 0cf386fddd23148ee6f8a4249f742c8c5e55a192
+  generation_id: a0547b6c-74a0-43dd-a7ce-56f0e66c6f32
+  pristine_commit_hash: a363fbcc1dd84e1b6fde45b67bea5fefa1ed1a40
+  pristine_tree_hash: 98d9235ac2c1dce79c31394b26cad63ff29321e4
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1925,8 +1925,8 @@ trackedFiles:
     pristine_git_object: b74507a65a5a9a4c605c20e19b1c7bbd41c687f5
   docs/Role.md:
     id: 5982a050af65
-    last_write_checksum: sha1:81c8c0bd6dee78d0f674323422f90e7ce373c868
-    pristine_git_object: ba5523f6382330cfd5603f16b69bc306593c21a7
+    last_write_checksum: sha1:51475a077206c385446bf0ee57668ff98938363b
+    pristine_git_object: 543e405d444ece004ac488903e74c0085ae3c415
   docs/SEPABankPaymentMethodCreate.md:
     id: b1ec1d10539d
     last_write_checksum: sha1:8a4a9a3e9a1451acf6352ac07b401f87a5aba2a3
@@ -4581,8 +4581,8 @@ trackedFiles:
     pristine_git_object: ca159041b503ac6f8b70984341cf34e61c32b546
   src/Role.php:
     id: 7a11b0e9f9ee
-    last_write_checksum: sha1:d4d5634d8b6f21f83849d0d4884dd205013e192d
-    pristine_git_object: 6ebe0e5d0f05d149e23b7bed6d825e981cde764a
+    last_write_checksum: sha1:d6d6e51d9c69a46e90561045e6138c8606340a24
+    pristine_git_object: 3a8e2f03dda814b244669ed8979c0a64d4da2df5
   src/SDK.php:
     id: 7b5eb956165f
     last_write_checksum: sha1:d5e6ec3e6a87e3542c6fa9d622a4e4fa0441c753
@@ -4593,8 +4593,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:b49bb5976e888d1e1801687173130e158615b264
-    pristine_git_object: 916cab3237bc087d0392a80ce924626eb2811fb7
+    last_write_checksum: sha1:5c5fdf37a08eafcdd1f69cbbe8357f634b5a5420
+    pristine_git_object: 7661b36d5b99e6c156eba54c41bd71a84d6db530
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -9358,6 +9358,12 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->api-key-pairs->list()`:  `response.items[]->roles[]` **Changed**
+  * `sdk->api-key-pairs->create()`:  `response.roles[]` **Changed**
+  * `sdk->api-key-pairs->get()`:  `response.roles[]` **Changed**
+  * `sdk->api-key-pairs->update()`:  `response.roles[]` **Changed**
 generatedFiles:
   - .gitattributes
   - USAGE.md
