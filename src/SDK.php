@@ -54,6 +54,8 @@ class SDK
 
     public CheckoutSessions $checkoutSessions;
 
+    public Roles $roles;
+
     public MerchantAccountsSDK $merchantAccounts;
 
     public ThreeDsScenarios $threeDsScenarios;
@@ -94,6 +96,7 @@ class SDK
         $this->reports = new ReportsSDK($this->sdkConfiguration);
         $this->reportExecutions = new ReportExecutionsSDK($this->sdkConfiguration);
         $this->checkoutSessions = new CheckoutSessions($this->sdkConfiguration);
+        $this->roles = new Roles($this->sdkConfiguration);
         $this->merchantAccounts = new MerchantAccountsSDK($this->sdkConfiguration);
         $this->threeDsScenarios = new ThreeDsScenarios($this->sdkConfiguration);
         $this->payouts = new Payouts($this->sdkConfiguration);

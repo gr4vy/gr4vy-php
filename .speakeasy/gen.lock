@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: d0f516397ddd5c6d32b0f15c39611e43
+  docChecksum: 5384fdc48cd68aa00dd0a14958cc661f
   docVersion: 1.0.0
   speakeasyVersion: 1.793.1
   generationVersion: 2.928.0
-  releaseVersion: 1.7.10
-  configChecksum: bbd6b27d50be70d4aecc35ebdb19b692
+  releaseVersion: 1.7.11
+  configChecksum: 248d3e7109f5297779532f4d319c0e1c
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: a0547b6c-74a0-43dd-a7ce-56f0e66c6f32
-  pristine_commit_hash: a363fbcc1dd84e1b6fde45b67bea5fefa1ed1a40
-  pristine_tree_hash: 98d9235ac2c1dce79c31394b26cad63ff29321e4
+  generation_id: 64b8904f-6d0a-4efa-8ffa-df04b52cbc25
+  pristine_commit_hash: 8fb36dc177d213ffa066786da4a8808c9725eb37
+  pristine_tree_hash: 2ee61500e446243fbb9c0908a0699d3b5c089715
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:c5b72759687de2c55a408574a66908400eacc077
-    pristine_git_object: d5366c2ba2cbc6614e8fccd19dedd8654c27c65c
+    last_write_checksum: sha1:e2117333ca78a5cffa238852b324777ccf90cfc5
+    pristine_git_object: 38f6c8e2ba9481a45165bd0b4e5aa9e3374381d7
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -355,6 +355,10 @@ trackedFiles:
     id: 2e0e3822fcaf
     last_write_checksum: sha1:58fcc9fda397bd7eee6d5b0970983bc0e47feb58
     pristine_git_object: 90b6dd5ac1e411e1cb2d60c6d835285d5693b047
+  docs/CollectionRole.md:
+    id: "059374475719"
+    last_write_checksum: sha1:f07e0ef5c22578b44a817ab0633c39500a25de92
+    pristine_git_object: 70350374c5960bc5f7b377b6405dab4ca87a327c
   docs/CompletePazeMobileSessionRequest.md:
     id: 0e4b3e043e96
     last_write_checksum: sha1:02906ff797deaa06302098ec036c827dbc4ead1f
@@ -1351,6 +1355,14 @@ trackedFiles:
     id: 4c27bc59f87e
     last_write_checksum: sha1:c1bc65f5b904b65386c12bfa9e2d26a9ff6fe89c
     pristine_git_object: 0d64e2dd29248868bc0b30744cff4498dfb51c0b
+  docs/ListRolesRequest.md:
+    id: c44320a4e393
+    last_write_checksum: sha1:1c36025cc662ce9f308b016474f89842d21db45a
+    pristine_git_object: 27baf2c71515b048756a45ce7c512f678096f6c4
+  docs/ListRolesResponse.md:
+    id: 638d66b3f543
+    last_write_checksum: sha1:1d6a3b5c950eac6dbfe67f469dfb3c43e7821e71
+    pristine_git_object: 5aed8b58b1cfceb98dc08ec2e5c462730ab99f0c
   docs/ListThreeDsConfigurationsRequest.md:
     id: 328e0d647ce4
     last_write_checksum: sha1:78b27f310c04268fe4932aab06f59fc1924916ce
@@ -1781,8 +1793,8 @@ trackedFiles:
     pristine_git_object: 0823579dc36f0cd0102e635fb81740a99bc75f94
   docs/PermissionSet.md:
     id: 3a29e9c67e0d
-    last_write_checksum: sha1:b079e54b62646a30e897cb302086b4024ee38cd6
-    pristine_git_object: 9f6c50fc275b23b228387128c37c2c904903b86a
+    last_write_checksum: sha1:54144391b1b0a384183d371f84656759916c9989
+    pristine_git_object: ea7e4b387f6a4d9832ecdd5aaa079ee898e61dbe
   docs/PlaidPaymentMethodCreate.md:
     id: b19670cec641
     last_write_checksum: sha1:0ee5b5f47d260a507e7ad8a041890ca074272e72
@@ -1925,8 +1937,8 @@ trackedFiles:
     pristine_git_object: b74507a65a5a9a4c605c20e19b1c7bbd41c687f5
   docs/Role.md:
     id: 5982a050af65
-    last_write_checksum: sha1:51475a077206c385446bf0ee57668ff98938363b
-    pristine_git_object: 543e405d444ece004ac488903e74c0085ae3c415
+    last_write_checksum: sha1:1446dbb7213bef1e02a7e350a99bb2696c365f13
+    pristine_git_object: 8374f26ba5ec5af669f582ca5f5f827120f60813
   docs/SEPABankPaymentMethodCreate.md:
     id: b1ec1d10539d
     last_write_checksum: sha1:8a4a9a3e9a1451acf6352ac07b401f87a5aba2a3
@@ -2463,6 +2475,10 @@ trackedFiles:
     id: 7cc9081622e6
     last_write_checksum: sha1:c237e318b42c9437d6bd4c38c816de745434c8e8
     pristine_git_object: 993f4c211db6b2ad9efb89c741dea92f9cb168ad
+  docs/sdks/roles/README.md:
+    id: 69204c99730f
+    last_write_checksum: sha1:5f64cb5b819285eeb5c2474ce8c45f4d868c472d
+    pristine_git_object: 8851c0a191c8be84a602a552524bdadeee5ba0e8
   docs/sdks/sessions/README.md:
     id: 57ad62844f79
     last_write_checksum: sha1:fb5b0708cb43120b81a6a11016c7999be01ab6de
@@ -2867,6 +2883,10 @@ trackedFiles:
     id: d29970ae5ed4
     last_write_checksum: sha1:951529051786bb6bdbcd730a9ecda2ec84b2bcb9
     pristine_git_object: e8bc30cfd120f8363b36d7ba3210fedd3950ae90
+  src/CollectionRole.php:
+    id: 037e9f7c77ad
+    last_write_checksum: sha1:1e23903ed3bcc9a00d43c04c384954d191387546
+    pristine_git_object: 1ba17aba966263e23d06fae2cf78582ad2d38ffd
   src/CompletePazeMobileSessionRequest.php:
     id: f374459b37fd
     last_write_checksum: sha1:d2230d90b74d2288278d71779de2a03d7b963ebb
@@ -3987,6 +4007,14 @@ trackedFiles:
     id: d9c6f2c1bca2
     last_write_checksum: sha1:4eaf5598a20074a65c9c6d1d4e46c7ae31b26d4f
     pristine_git_object: d87304169df59e779d61e097162045ccfae5c0dd
+  src/ListRolesRequest.php:
+    id: d73467ec4934
+    last_write_checksum: sha1:810c26ea7f9aad6c7facda5e507742853b470ed3
+    pristine_git_object: 8c28458eeb88ca91404005adf432311175ce1231
+  src/ListRolesResponse.php:
+    id: 9d1b290629f1
+    last_write_checksum: sha1:cdeb951d1da3674b21ef039ddf0ce0d4b3aa29ce
+    pristine_git_object: 3061b091c57becd1d704e0eed257803d40af53a6
   src/ListThreeDsConfigurationsRequest.php:
     id: f195ab92f99b
     last_write_checksum: sha1:e9be15154cbf6a784557c661e97952fb93c8dd36
@@ -4449,8 +4477,8 @@ trackedFiles:
     pristine_git_object: 3a83b5f668f74487863b8e149d60b94fdedb3c45
   src/PermissionSet.php:
     id: ee86be1191ed
-    last_write_checksum: sha1:df298d904ab4c8b22442ee5518d37774ed16df7f
-    pristine_git_object: 7c54ce34057623b7aa49ebd85c2e4db92d9c4de7
+    last_write_checksum: sha1:9a15ce00ed05a713370dfc39b81bef0e4ca34ac1
+    pristine_git_object: 97975734d5fb035b3c3a4cbcfc69f64d481f117a
   src/PlaidPaymentMethodCreate.php:
     id: 53a3c67972e4
     last_write_checksum: sha1:baaae975bdc16ea445e240e927954b84fe7ebce1
@@ -4581,20 +4609,24 @@ trackedFiles:
     pristine_git_object: ca159041b503ac6f8b70984341cf34e61c32b546
   src/Role.php:
     id: 7a11b0e9f9ee
-    last_write_checksum: sha1:d6d6e51d9c69a46e90561045e6138c8606340a24
-    pristine_git_object: 3a8e2f03dda814b244669ed8979c0a64d4da2df5
+    last_write_checksum: sha1:434ed3c5558bf19df757068d3ed7b74aaaaf86aa
+    pristine_git_object: 8b0e39c264feff44ff447408c2347bb7961e2e83
+  src/Roles.php:
+    id: a180566e3317
+    last_write_checksum: sha1:7c66b97f60045273cc4509dfb7e2ee91ac49716c
+    pristine_git_object: 795efa111b75ad2f6efd187c471a64293ffbb35c
   src/SDK.php:
     id: 7b5eb956165f
-    last_write_checksum: sha1:d5e6ec3e6a87e3542c6fa9d622a4e4fa0441c753
-    pristine_git_object: 36dab7e6cb46d6c79429144c89b7c54e29e2fb62
+    last_write_checksum: sha1:5175c25d8a272c77afe5ad0a851eba628d3933d3
+    pristine_git_object: b7b13409e45b38b9981e0dc865aafcbc38231c7d
   src/SDKBuilder.php:
     id: 3a8d6469b037
     last_write_checksum: sha1:9acf6a9cd8bde61f8d57ab189067321a860f5610
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:5c5fdf37a08eafcdd1f69cbbe8357f634b5a5420
-    pristine_git_object: 7661b36d5b99e6c156eba54c41bd71a84d6db530
+    last_write_checksum: sha1:171934471a84c5e7804255d6a29b82c2c3428d74
+    pristine_git_object: 32f47443afe8b2538d58fd8163846abae9b5d8cf
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -9356,14 +9388,43 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  list_roles:
+    speakeasy-default-list-roles:
+      parameters:
+        query:
+          limit: 20
+      responses:
+        "200":
+          application/json: {"items": [], "limit": 20}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Php SDK Changes:
-  * `sdk->api-key-pairs->list()`:  `response.items[]->roles[]` **Changed**
-  * `sdk->api-key-pairs->create()`:  `response.roles[]` **Changed**
-  * `sdk->api-key-pairs->get()`:  `response.roles[]` **Changed**
-  * `sdk->api-key-pairs->update()`:  `response.roles[]` **Changed**
+  * `sdk->roles->list()`: **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
