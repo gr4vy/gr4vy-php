@@ -9,10 +9,11 @@ declare(strict_types=1);
 namespace Gr4vy;
 
 
+/** PermissionSet - The permissions granted by a role. */
 class PermissionSet
 {
     /**
-     * $allow
+     * The scopes granted by this role.
      *
      * @var array<string> $allow
      */

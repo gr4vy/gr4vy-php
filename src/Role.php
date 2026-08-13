@@ -12,6 +12,7 @@ namespace Gr4vy;
 class Role
 {
     /**
+     * The unique ID for the role.
      *
      * @var string $id
      */
@@ -19,6 +20,7 @@ class Role
     public string $id;
 
     /**
+     * The human-readable name of the role.
      *
      * @var string $name
      */
@@ -34,6 +36,7 @@ class Role
     public string $slug;
 
     /**
+     * A description of the access this role grants.
      *
      * @var string $description
      */
@@ -41,6 +44,7 @@ class Role
     public string $description;
 
     /**
+     * The permissions granted by a role.
      *
      * @var \Gr4vy\PermissionSet $permissions
      */
@@ -75,6 +79,7 @@ class Role
     public bool $isStandaloneAssignable;
 
     /**
+     * Always `role`.
      *
      * @var ?string $type
      */

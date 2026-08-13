@@ -466,6 +466,10 @@ if ($response->accountUpdaterJob !== null) {
 * [url](docs/sdks/executions/README.md#url) - Create URL for executed report
 * [get](docs/sdks/executions/README.md#get) - Get executed report
 
+### [Roles](docs/sdks/roles/README.md)
+
+* [list](docs/sdks/roles/README.md#list) - List all roles
+
 ### [ThreeDsScenarios](docs/sdks/threedsscenarios/README.md)
 
 * [create](docs/sdks/threedsscenarios/README.md#create) - Create a 3DS scenario
