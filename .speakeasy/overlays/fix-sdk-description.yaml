@@ -1,0 +1,7 @@
+overlay: 1.0.0
+info:
+  title: Fix SDK description (upstream spec references TypeScript)
+  version: 0.0.1
+actions:
+  - target: "$.info.description"
+    update: "Gr4vy PHP SDK\n\nThe official Gr4vy SDK for PHP provides a convenient way to interact with the Gr4vy API from your server-side application. This SDK allows you to seamlessly integrate Gr4vy's powerful payment orchestration capabilities, including:\n"
