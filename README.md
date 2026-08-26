@@ -9,9 +9,9 @@ Developer-friendly & type-safe PHP SDK specifically catered to leverage the **Gr
 
 ## Summary
 
-Gr4vy Typescript SDK
+Gr4vy PHP SDK
 
-The official Gr4vy SDK for Typescript provides a convenient way to interact with the Gr4vy API from your server-side application. This SDK allows you to seamlessly integrate Gr4vy's powerful payment orchestration capabilities, including:
+The official Gr4vy SDK for PHP provides a convenient way to interact with the Gr4vy API from your server-side application. This SDK allows you to seamlessly integrate Gr4vy's powerful payment orchestration capabilities, including:
 
 * Creating Transactions: Initiate and process payments with various payment methods and services.
 * Managing Buyers: Store and manage buyer information securely.
