@@ -42,14 +42,6 @@ class ACHBankPaymentMethodCreate
     public string $routingNumber;
 
     /**
-     * Specify whether this is a `checking` or `savings` account
-     *
-     * @var string $accountType
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('account_type')]
-    public string $accountType;
-
-    /**
      * The ID of the buyer to attach the method to.
      *
      * @var ?string $buyerId
@@ -86,6 +78,15 @@ class ACHBankPaymentMethodCreate
     public ?bool $isTokenized = null;
 
     /**
+     * Specify whether this is a `checking` or `savings` account. Defaults to `checking`.
+     *
+     * @var ?string $accountType
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('account_type')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $accountType = null;
+
+    /**
      * Always `bank`.
      *
      * @var ?string $method
@@ -107,25 +108,25 @@ class ACHBankPaymentMethodCreate
      * @param  \Gr4vy\BankAccountHolder  $accountHolder
      * @param  string  $accountNumber
      * @param  string  $routingNumber
-     * @param  string  $accountType
      * @param  ?string  $method
      * @param  ?string  $scheme
      * @param  ?bool  $isTokenized
+     * @param  ?string  $accountType
      * @param  ?string  $buyerId
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(BankAccountHolder $accountHolder, string $accountNumber, string $routingNumber, string $accountType, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?string $externalIdentifier = null, ?bool $isTokenized = false, ?string $method = 'bank', ?string $scheme = 'ach')
+    public function __construct(BankAccountHolder $accountHolder, string $accountNumber, string $routingNumber, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?string $externalIdentifier = null, ?bool $isTokenized = false, ?string $accountType = 'checking', ?string $method = 'bank', ?string $scheme = 'ach')
     {
         $this->accountHolder = $accountHolder;
         $this->accountNumber = $accountNumber;
         $this->routingNumber = $routingNumber;
-        $this->accountType = $accountType;
         $this->buyerId = $buyerId;
         $this->buyerExternalIdentifier = $buyerExternalIdentifier;
         $this->externalIdentifier = $externalIdentifier;
         $this->isTokenized = $isTokenized;
+        $this->accountType = $accountType;
         $this->method = $method;
         $this->scheme = $scheme;
     }
