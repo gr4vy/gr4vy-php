@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 2e1b8b9d9cbb782b485a3a0691bfea5f
+  docChecksum: 5599a5f95ae100e733f0db7493f2e8de
   docVersion: 1.0.0
   speakeasyVersion: 1.796.0
   generationVersion: 2.932.15
-  releaseVersion: 1.7.13
-  configChecksum: e0ced29e193a0999651f7d624a7d0f7e
+  releaseVersion: 1.7.14
+  configChecksum: bc9a807a1e179b44d8ca08040d4cdc68
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: a694b23e-98cc-486a-8abc-68429d141514
-  pristine_commit_hash: fbc41f80a5003b4724b477ab9623d1c37c76b13a
-  pristine_tree_hash: ce242f5601dd91e426364741635d303aeb914f20
+  generation_id: 4471b26c-c599-4e5e-98e1-b1bbba4641b9
+  pristine_commit_hash: caa52e1d6397f2548fd71a287bf62ce4badd4609
+  pristine_tree_hash: 245991e02b00f85f2a4c744d4e7995f0dc24a16a
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -49,8 +49,8 @@ trackedFiles:
     pristine_git_object: cb330c8cebbc5020e6a5817cb0c7e350ad80b243
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
-    last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
-    pristine_git_object: ff5a9e264c55864f0576e9a812d3db659209a595
+    last_write_checksum: sha1:ae0c428a9f8253c76a0eec3e80f73b5dac10a58f
+    pristine_git_object: 453f2ee1e0211a87a77eeec9fb4e13e35f94de0a
   docs/AIInsightsReportSpec.md:
     id: 4452714a5522
     last_write_checksum: sha1:d1381113e17a9b21fb6eabfe0936a082b9d0f0c3
@@ -2525,8 +2525,8 @@ trackedFiles:
     pristine_git_object: 40eb9bfbea10383ae16ce195da9113bb2abfc586
   src/ACHBankPaymentMethodCreate.php:
     id: 0d0c5b290e9a
-    last_write_checksum: sha1:8e719597dd7d3168e5a436ad9d751731603d8133
-    pristine_git_object: bf8260339f98ae881870c04e448e907d6d5066a0
+    last_write_checksum: sha1:e8d57c6d3acbb95ce5f16cb091d7eff5a36e8263
+    pristine_git_object: 9bff3560c65cf9060059888bbeca18688412b492
   src/AIInsightsReportSpec.php:
     id: 01d07b641f61
     last_write_checksum: sha1:e1883456a9384f875ba255775d0269dd275d5ca9
@@ -4625,8 +4625,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:a7dcdca8af7175c7f8d8406e46552e7cdd8c837d
-    pristine_git_object: d9832944c6e6821abed98553b4b856f5240ae253
+    last_write_checksum: sha1:f432a0c5cff7314b4219112b8c55a38093430336
+    pristine_git_object: a46a52249af9e1542f294d8c0d982fbf2abc398a
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -9423,7 +9423,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->payment-services->list()`: \n  *  `request->includeFields` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->payment-methods->create()`: \n  *  `requestBody->union(ACHBankPaymentMethodCreate)->accountType` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
