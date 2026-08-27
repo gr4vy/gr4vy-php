@@ -52,19 +52,29 @@ class ListPaymentServicesRequest
     public ?int $limit = null;
 
     /**
+     * Include the non-secret credential and reporting fields for each payment service. Disable this to reduce response time if you don't need them.
+     *
+     * @var ?bool $includeFields
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=include_fields')]
+    public ?bool $includeFields = null;
+
+    /**
      * @param  ?int  $limit
+     * @param  ?bool  $includeFields
      * @param  ?string  $merchantAccountId
      * @param  ?string  $method
      * @param  ?string  $cursor
      * @param  ?bool  $deleted
      * @phpstan-pure
      */
-    public function __construct(?string $merchantAccountId = null, ?string $method = null, ?string $cursor = null, ?bool $deleted = null, ?int $limit = 20)
+    public function __construct(?string $merchantAccountId = null, ?string $method = null, ?string $cursor = null, ?bool $deleted = null, ?int $limit = 20, ?bool $includeFields = true)
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->method = $method;
         $this->cursor = $cursor;
         $this->deleted = $deleted;
         $this->limit = $limit;
+        $this->includeFields = $includeFields;
     }
 }

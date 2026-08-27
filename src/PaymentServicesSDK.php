@@ -983,6 +983,7 @@ class PaymentServicesSDK
                             cursor: $nextCursor,
                             limit: $request != null ? $request->limit : null,
                             deleted: $request != null ? $request->deleted : null,
+                            includeFields: $request != null ? $request->includeFields : null,
                             merchantAccountId: $request != null ? $request->merchantAccountId : null,
                         ),
                     );

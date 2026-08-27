@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 7ea3b8e1dd348e94a46e413690f67991
+  docChecksum: 2e1b8b9d9cbb782b485a3a0691bfea5f
   docVersion: 1.0.0
-  speakeasyVersion: 1.793.1
-  generationVersion: 2.928.0
-  releaseVersion: 1.7.12
-  configChecksum: cfe3b4205548e6c5a66f02a5e22c2a75
+  speakeasyVersion: 1.796.0
+  generationVersion: 2.932.15
+  releaseVersion: 1.7.13
+  configChecksum: e0ced29e193a0999651f7d624a7d0f7e
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 3589fdb5-6f1b-40ac-801d-d48245e00332
-  pristine_commit_hash: 35a176bbb5352620df56c5b5b6e890d89ed040ea
-  pristine_tree_hash: e4a3adc91b08bd68bbfce817993f5a4c6146dbd4
+  generation_id: a694b23e-98cc-486a-8abc-68429d141514
+  pristine_commit_hash: fbc41f80a5003b4724b477ab9623d1c37c76b13a
+  pristine_tree_hash: ce242f5601dd91e426364741635d303aeb914f20
 features:
   php:
     constsAndDefaults: 0.2.2
-    core: 3.9.25
+    core: 3.9.28
     deprecations: 2.81.1
     flattening: 2.81.2
     globalSecurity: 2.81.12
@@ -33,7 +33,7 @@ features:
     responseFormat: 0.1.0
     retries: 0.1.3
     serverIDs: 2.81.1
-    unions: 0.1.8
+    unions: 0.1.9
 trackedFiles:
   .gitattributes:
     id: 24139dae6567
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:e2117333ca78a5cffa238852b324777ccf90cfc5
-    pristine_git_object: 38f6c8e2ba9481a45165bd0b4e5aa9e3374381d7
+    last_write_checksum: sha1:49f7abd87f6603426d3b075d38a4b78c66af4fba
+    pristine_git_object: cb330c8cebbc5020e6a5817cb0c7e350ad80b243
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:21081a16214da3b9386f2fac85060baa704cb275
@@ -1325,8 +1325,8 @@ trackedFiles:
     pristine_git_object: d512ced7a468d8d77efe449933a20bf0046cec5c
   docs/ListPaymentServicesRequest.md:
     id: 0356b977d665
-    last_write_checksum: sha1:6ad9b37e4e8fa3f3cc1deda3644faa5b00678cdc
-    pristine_git_object: 4719db75d563c7d4d60e2033905e3f7258d73bf8
+    last_write_checksum: sha1:c37e8241376a5abf679d149ea06d6c411ad6dce1
+    pristine_git_object: a6f2fdc061660af38ef5c515c07a8f905e73d3b7
   docs/ListPaymentServicesResponse.md:
     id: 36c8ac889754
     last_write_checksum: sha1:50ab8cc2b66fc540d972ea0febe5b53f1b4c2c17
@@ -3977,8 +3977,8 @@ trackedFiles:
     pristine_git_object: cb39d7b3f3e36223af8d6233e49e7d9e217a566a
   src/ListPaymentServicesRequest.php:
     id: a62ffe6098c0
-    last_write_checksum: sha1:68df46c5fbd415d983cebcdf9a96ed6e2b91e77b
-    pristine_git_object: b0c50df6b4e8f470b9b8ad384ac6732986136eaf
+    last_write_checksum: sha1:a74f90c83b44f27f42b55a8d1dbac9e80054cdcf
+    pristine_git_object: 51d64f7f635848eb2e849f2226cc9abd14e87856
   src/ListPaymentServicesResponse.php:
     id: ef0eb3fabf8f
     last_write_checksum: sha1:f47621b1cc0cd633ce546f5f3a99355a5563bcc7
@@ -4317,8 +4317,8 @@ trackedFiles:
     pristine_git_object: ce4ae89840ec89f6149a0aed1d29c19af8a51784
   src/PaymentServicesSDK.php:
     id: b5aa0714c068
-    last_write_checksum: sha1:eb41877725cf41cbfc34e93bce3c1c6a2785c04c
-    pristine_git_object: 6e7046fadf068fe9b6b8a6c1d97ac2e6b8b97eea
+    last_write_checksum: sha1:4afea867b3139345f6e959254258d94fedbb45a0
+    pristine_git_object: 22dca53c168332c5d09bc4ed50e02866e7a57563
   src/PayoutConnectionOptions.php:
     id: 17a152a49de6
     last_write_checksum: sha1:834cc356031f598e624b4c270cd7c45e23798144
@@ -4625,8 +4625,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:fc6afd21d7b7bf57a9e1324337d243d6399af1f2
-    pristine_git_object: 3afcd05b6566dfea0d790f718e8da3b0ed56e48d
+    last_write_checksum: sha1:a7dcdca8af7175c7f8d8406e46552e7cdd8c837d
+    pristine_git_object: d9832944c6e6821abed98553b4b856f5240ae253
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -7319,6 +7319,7 @@ examples:
           deleted: true
           method: "card"
           application_name: "core-api"
+          include_fields: true
         header: {}
       responses:
         "200":
@@ -9422,6 +9423,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->payment-services->list()`: \n  *  `request->includeFields` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
