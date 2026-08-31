@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 5599a5f95ae100e733f0db7493f2e8de
+  docChecksum: c737e78b48220769c81b35ef3b4709cc
   docVersion: 1.0.0
-  speakeasyVersion: 1.796.0
-  generationVersion: 2.932.15
-  releaseVersion: 1.7.14
-  configChecksum: bc9a807a1e179b44d8ca08040d4cdc68
+  speakeasyVersion: 1.796.2
+  generationVersion: 2.933.0
+  releaseVersion: 1.7.15
+  configChecksum: 0eeb96bb30f192249b2298b4d7dc7ba0
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 4471b26c-c599-4e5e-98e1-b1bbba4641b9
-  pristine_commit_hash: caa52e1d6397f2548fd71a287bf62ce4badd4609
-  pristine_tree_hash: 245991e02b00f85f2a4c744d4e7995f0dc24a16a
+  generation_id: 1ddfc0a2-4d48-48e0-acb9-cf78c9e9a522
+  pristine_commit_hash: 1ad36c5f7cfeb9a468eec5c2f2334288b85d8cdf
+  pristine_tree_hash: 4f0fdc50bd6fb9fdd14a79b46e96f43d431c3f29
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:49f7abd87f6603426d3b075d38a4b78c66af4fba
-    pristine_git_object: cb330c8cebbc5020e6a5817cb0c7e350ad80b243
+    last_write_checksum: sha1:1e5a4eed5b48a58aa7fe4fc0529bbbcbdd702a74
+    pristine_git_object: 77b7af2b92e658ae514776f033612c64c390f360
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:ae0c428a9f8253c76a0eec3e80f73b5dac10a58f
@@ -4625,8 +4625,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:f432a0c5cff7314b4219112b8c55a38093430336
-    pristine_git_object: a46a52249af9e1542f294d8c0d982fbf2abc398a
+    last_write_checksum: sha1:0b0655da7614dc6e71d998c14840150445db5a38
+    pristine_git_object: c23eafb54ecb331fcfc12da4141054001e5556d6
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -9423,7 +9423,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->payment-methods->create()`: \n  *  `requestBody->union(ACHBankPaymentMethodCreate)->accountType` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
