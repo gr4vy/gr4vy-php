@@ -84,6 +84,15 @@ class GooglePayFPANPaymentMethodCreate
     public mixed $securityCode = null;
 
     /**
+     * Expiry of the Google Pay token the PAN was decrypted from, as milliseconds since the epoch.
+     *
+     * @var ?string $messageExpiration
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('message_expiration')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $messageExpiration = null;
+
+    /**
      * Aways `googlepay_pan_only`.
      *
      * @var string $method
@@ -101,9 +110,10 @@ class GooglePayFPANPaymentMethodCreate
      * @param  ?string  $cardType
      * @param  ?string  $redirectUrl
      * @param  mixed  $securityCode
+     * @param  ?string  $messageExpiration
      * @phpstan-pure
      */
-    public function __construct(string $expirationDate, string $number, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $externalIdentifier = null, ?string $cardType = null, ?string $redirectUrl = null, mixed $securityCode = null, string $method = 'googlepay_pan_only')
+    public function __construct(string $expirationDate, string $number, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $externalIdentifier = null, ?string $cardType = null, ?string $redirectUrl = null, mixed $securityCode = null, ?string $messageExpiration = null, string $method = 'googlepay_pan_only')
     {
         $this->expirationDate = $expirationDate;
         $this->number = $number;
@@ -113,6 +123,7 @@ class GooglePayFPANPaymentMethodCreate
         $this->cardType = $cardType;
         $this->redirectUrl = $redirectUrl;
         $this->securityCode = $securityCode;
+        $this->messageExpiration = $messageExpiration;
         $this->method = $method;
     }
 }
