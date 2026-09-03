@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: c737e78b48220769c81b35ef3b4709cc
+  docChecksum: 45e431c66db1780cce49490f5018df63
   docVersion: 1.0.0
-  speakeasyVersion: 1.796.2
-  generationVersion: 2.933.0
-  releaseVersion: 1.7.15
-  configChecksum: 0eeb96bb30f192249b2298b4d7dc7ba0
+  speakeasyVersion: 1.796.4
+  generationVersion: 2.935.1
+  releaseVersion: 1.7.16
+  configChecksum: ebd6a3ebaa1d838543d8faf1185f61ac
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 1ddfc0a2-4d48-48e0-acb9-cf78c9e9a522
-  pristine_commit_hash: 1ad36c5f7cfeb9a468eec5c2f2334288b85d8cdf
-  pristine_tree_hash: 4f0fdc50bd6fb9fdd14a79b46e96f43d431c3f29
+  generation_id: 6e7d9acd-bbae-4eef-948b-4764476223b0
+  pristine_commit_hash: d7dd91f179c76446d8650b6d01312b8c051770c6
+  pristine_tree_hash: 06b5c9262df20afb1f3c611099a5b4213915ff8f
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -31,7 +31,7 @@ features:
     nullables: 1.0.1
     pagination: 0.1.5
     responseFormat: 0.1.0
-    retries: 0.1.3
+    retries: 0.1.4
     serverIDs: 2.81.1
     unions: 0.1.9
 trackedFiles:
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:1e5a4eed5b48a58aa7fe4fc0529bbbcbdd702a74
-    pristine_git_object: 77b7af2b92e658ae514776f033612c64c390f360
+    last_write_checksum: sha1:49f7abd87f6603426d3b075d38a4b78c66af4fba
+    pristine_git_object: cb330c8cebbc5020e6a5817cb0c7e350ad80b243
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:ae0c428a9f8253c76a0eec3e80f73b5dac10a58f
@@ -1117,8 +1117,8 @@ trackedFiles:
     pristine_git_object: f5491a3fe7a109b35fe9be174a8e54d7616cb9be
   docs/GooglePayFPANPaymentMethodCreate.md:
     id: e879be1ed942
-    last_write_checksum: sha1:7fd534de66ca743c9e3b732e62d19fe60e5913bb
-    pristine_git_object: 66c38b01b8451c74c89594a4529d7f40c7d1c6eb
+    last_write_checksum: sha1:6acd82c4382aa0a5de24bae754a623367f58644a
+    pristine_git_object: 706813902923dc2a46578bb5b8dbc051a2c9c9e6
   docs/GooglePayPaymentMethodCreate.md:
     id: 5af7027066af
     last_write_checksum: sha1:cdb990a121ae00d1292efbcdab695c85b92ffd89
@@ -3705,8 +3705,8 @@ trackedFiles:
     pristine_git_object: 807dbf1e283a7afc9cffaa5796c3c8af4b1388ef
   src/GooglePayFPANPaymentMethodCreate.php:
     id: 665fa6b4f087
-    last_write_checksum: sha1:605d827a7fa62f7d80e598aa257a9fe02098821c
-    pristine_git_object: 73b089b5812cbe3300d1a487fefe4174159e413c
+    last_write_checksum: sha1:887992505ea488ad6e1344b4d6ec7b3888d388cb
+    pristine_git_object: b82446a3cc54ec09ca788c97918119c7e04c0841
   src/GooglePayPaymentMethodCreate.php:
     id: c893ff55291b
     last_write_checksum: sha1:41d1ced7404445c0a51fa119b137c109778d4af8
@@ -4625,8 +4625,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:0b0655da7614dc6e71d998c14840150445db5a38
-    pristine_git_object: c23eafb54ecb331fcfc12da4141054001e5556d6
+    last_write_checksum: sha1:546d761cd2e76f93a3168ebf43db2dd9f0a2a0d5
+    pristine_git_object: 2a25c7b85a911bdf12368e7aeb463c9d2958fb1d
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4993,8 +4993,8 @@ trackedFiles:
     pristine_git_object: 59ef2e8cad87f351a8d3dfa303130a9fde1a6372
   src/Utils/BigIntHandler.php:
     id: 190c4d16fa85
-    last_write_checksum: sha1:fe42c5fd3c1173ca6bcdddd5e963a01bd189d2fa
-    pristine_git_object: a69d2c60426f739106a3a5f27c4570712325b255
+    last_write_checksum: sha1:31511418fcffe3498ab0130140026e1106769800
+    pristine_git_object: 76dae1ce78007d485698ec7458f5a9fbccd76926
   src/Utils/DateHandler.php:
     id: 3223e13fd506
     last_write_checksum: sha1:f4e17f7728c839d61e1a5e0aa98df25fe4107614
@@ -9423,6 +9423,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->paymentMethod->union(GooglePayFPANPaymentMethodCreate)->messageExpiration` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
