@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 45e431c66db1780cce49490f5018df63
+  docChecksum: 0efcf92ca263c90dbb8559fa0740054a
   docVersion: 1.0.0
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 1.7.16
-  configChecksum: ebd6a3ebaa1d838543d8faf1185f61ac
+  releaseVersion: 1.7.17
+  configChecksum: 7b646731aac4bbd75fc8d657a9ef4690
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 6e7d9acd-bbae-4eef-948b-4764476223b0
-  pristine_commit_hash: d7dd91f179c76446d8650b6d01312b8c051770c6
-  pristine_tree_hash: 06b5c9262df20afb1f3c611099a5b4213915ff8f
+  generation_id: db432145-8485-4ea3-a680-326fbba9a906
+  pristine_commit_hash: 754c56fcc8118f4830162f5647ae6a5a0f212623
+  pristine_tree_hash: 8836650328c89708c19f775958daff479a642df7
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1569,8 +1569,8 @@ trackedFiles:
     pristine_git_object: 19a370b2683b26d3cd63377ca2784243e02060e7
   docs/PaymentMethodUpdate.md:
     id: 8257b04856d1
-    last_write_checksum: sha1:085efbbd2e6fb95f89518bce07ce313b28e58241
-    pristine_git_object: cc0caa7fe7a4b57756de0354fb24280ce6df74ee
+    last_write_checksum: sha1:9a9cdf6071938828f9f3476a98c3aeb1ce05298b
+    pristine_git_object: 7cfa14cd6b061616085b5b4c4d4b89b1e9c9c70a
   docs/PaymentMethods.md:
     id: 14633ae68096
     last_write_checksum: sha1:564270e2827e6301193064ff508076afbb1b3afe
@@ -2165,8 +2165,8 @@ trackedFiles:
     pristine_git_object: faaaa61e55e1f0d5b9a92d2a55ac8d5cd06e7178
   docs/TransactionThreeDSecureSummary.md:
     id: e75e32999fd0
-    last_write_checksum: sha1:8d5651900521267895524b9105e3bb24eb3ca37b
-    pristine_git_object: fc034dfa11ca3a24efca35b06b0e99bee255f4a9
+    last_write_checksum: sha1:afac1c4cdb40954a00c67b128a62f3a2248fc49a
+    pristine_git_object: bf2f6ec44f3dcfbd5002ca7808a75bd2f76f80c6
   docs/TransactionUpdate.md:
     id: 06170bf136ee
     last_write_checksum: sha1:7a6be74546e283a4404fa2bdbff5418d480bcb19
@@ -4229,8 +4229,8 @@ trackedFiles:
     pristine_git_object: bb1385f799b951c33187405273e3984e85578f89
   src/PaymentMethodUpdate.php:
     id: 3d37a083e7fb
-    last_write_checksum: sha1:79f18f2dc9076421231ef4d12fbc5c3936b4ebdf
-    pristine_git_object: 53e626ef40ebba57921a56f47e89f54d2ed682b7
+    last_write_checksum: sha1:89b39281b2de75217afe2b94de52cdf51c9e4ef8
+    pristine_git_object: ec902507f8d6fad89fa5a72f77a42f7fff3c2b4a
   src/PaymentMethods.php:
     id: 1927abc4f8e2
     last_write_checksum: sha1:e9747539641ac381f040d2feed4c2c5499f8368f
@@ -4625,8 +4625,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:546d761cd2e76f93a3168ebf43db2dd9f0a2a0d5
-    pristine_git_object: 2a25c7b85a911bdf12368e7aeb463c9d2958fb1d
+    last_write_checksum: sha1:9c55975000aceb72d22b47fce09dbdbec8cbb550
+    pristine_git_object: 585bc6fda929e450ca9118935b05d0356ef0feeb
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4849,8 +4849,8 @@ trackedFiles:
     pristine_git_object: 22793110f421a757e1e457a6020f760b6a868017
   src/TransactionThreeDSecureSummary.php:
     id: d22c4d560acb
-    last_write_checksum: sha1:ac0787dd0f2929983716b5bdcad0c99ed92ee562
-    pristine_git_object: 8962bdb454c996aaa4d7a68e129b98276c61ba91
+    last_write_checksum: sha1:f3b5f31c8adbb2b53998c6b3fd438c20377fb45c
+    pristine_git_object: d82bd159d5102f8a1d2b9d92fed20140bbbdbfbd
   src/TransactionUpdate.php:
     id: 8477a5c71451
     last_write_checksum: sha1:ddf0defbcdbf27ea66390edc6326f3f3f7fb2571
@@ -9423,7 +9423,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->paymentMethod->union(GooglePayFPANPaymentMethodCreate)->messageExpiration` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
