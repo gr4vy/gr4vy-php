@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 0efcf92ca263c90dbb8559fa0740054a
+  docChecksum: 57849eb680b91f81c1ce6e3e75b6b12f
   docVersion: 1.0.0
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 1.7.17
-  configChecksum: 7b646731aac4bbd75fc8d657a9ef4690
+  releaseVersion: 1.7.18
+  configChecksum: 8db1d93313163cd6647ceaa0c44ef304
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: db432145-8485-4ea3-a680-326fbba9a906
-  pristine_commit_hash: 754c56fcc8118f4830162f5647ae6a5a0f212623
-  pristine_tree_hash: 8836650328c89708c19f775958daff479a642df7
+  generation_id: e4fa5534-2e94-4ccb-a370-ef9f73937f4d
+  pristine_commit_hash: f792e85dd739544388df053124eb0f0b7aac6775
+  pristine_tree_hash: 794fcc889b59cb11d173e153043a26f20267ed2d
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -4625,8 +4625,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:9c55975000aceb72d22b47fce09dbdbec8cbb550
-    pristine_git_object: 585bc6fda929e450ca9118935b05d0356ef0feeb
+    last_write_checksum: sha1:707702e261c83f034653d6b7e5bba00ae6332b6b
+    pristine_git_object: 6d9ebde83c50ef07432d1ce5c2830c49095f0465
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
