@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 57849eb680b91f81c1ce6e3e75b6b12f
+  docChecksum: 3d30664b97003d552514165e9fcba47f
   docVersion: 1.0.0
-  speakeasyVersion: 1.796.4
-  generationVersion: 2.935.1
-  releaseVersion: 1.7.18
-  configChecksum: 8db1d93313163cd6647ceaa0c44ef304
+  speakeasyVersion: 1.797.0
+  generationVersion: 2.937.18
+  releaseVersion: 1.7.19
+  configChecksum: b51fef721081c15ef9e36afe2d72a097
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: e4fa5534-2e94-4ccb-a370-ef9f73937f4d
-  pristine_commit_hash: f792e85dd739544388df053124eb0f0b7aac6775
-  pristine_tree_hash: 794fcc889b59cb11d173e153043a26f20267ed2d
+  generation_id: 7b29989f-4ef2-4d1c-8d3d-8d4958a13d25
+  pristine_commit_hash: 2b8b32473dd5b99814f0d63559f49f053e87e4e3
+  pristine_tree_hash: 7e57068ca22594f7a85027247faa3658be89de42
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:49f7abd87f6603426d3b075d38a4b78c66af4fba
-    pristine_git_object: cb330c8cebbc5020e6a5817cb0c7e350ad80b243
+    last_write_checksum: sha1:1e5a4eed5b48a58aa7fe4fc0529bbbcbdd702a74
+    pristine_git_object: 77b7af2b92e658ae514776f033612c64c390f360
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:ae0c428a9f8253c76a0eec3e80f73b5dac10a58f
@@ -1667,6 +1667,10 @@ trackedFiles:
     id: ce6eb55f4b9c
     last_write_checksum: sha1:7c94f11cc0e18303465deb78c50eb0a751ab7564
     pristine_git_object: d019471ae06d99ea820c8ee316d693c23dcab45a
+  docs/PaypalDirectOrderOptions.md:
+    id: 3a7ae6cda1bd
+    last_write_checksum: sha1:0bcd1c7680232cdd78f1662b5435142a6abb4e08
+    pristine_git_object: 5ef8e5fbe89799f97c15b3fcfd2fd4a2e3b330f1
   docs/PaypalOptions.md:
     id: b4ebe2f51701
     last_write_checksum: sha1:30fc0ed027974e8abefae7f30724c1bef6473871
@@ -2113,8 +2117,8 @@ trackedFiles:
     pristine_git_object: 083d8a31649d024de649f3819c144ca05d14915d
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:06d78c3cbc93da1c11165bc289e8ceac77ae903e
-    pristine_git_object: d03c53b023ee3990ee315b81314151fbcff6cf0b
+    last_write_checksum: sha1:437b2e5bfa6a0170fcda61d5dc5196b586b0b5d1
+    pristine_git_object: b2d87f261ab0146f82da7983669feb3bc4b217cb
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:6e484b1bdb18512ce81b8ff4ecd6255cf3afa89b
@@ -4351,6 +4355,10 @@ trackedFiles:
     id: f9c31976b5a0
     last_write_checksum: sha1:afd493da39b39d4e34cc605bee82b628d91da6e0
     pristine_git_object: 2436471b7a54242bd3c4daeac895056c09794175
+  src/PaypalDirectOrderOptions.php:
+    id: 1cd07e87bca7
+    last_write_checksum: sha1:cf4a13cd0a55484a19ed733b75f428dc20736c65
+    pristine_git_object: e5b8447a1aab7475e8f4ee3e53c166977733d9c2
   src/PaypalOptions.php:
     id: 20ea2e5d2109
     last_write_checksum: sha1:557689e2155a27d430887f0efd2856a8df45ca87
@@ -4625,8 +4633,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:707702e261c83f034653d6b7e5bba00ae6332b6b
-    pristine_git_object: 6d9ebde83c50ef07432d1ce5c2830c49095f0465
+    last_write_checksum: sha1:e7221dbbad884d82c0cd42fa2cfd9d0e6c27972a
+    pristine_git_object: 3fbb390c92cc6a1f5c5befba8cbdc895ebcd7e9b
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4801,8 +4809,8 @@ trackedFiles:
     pristine_git_object: 157b1e2a3874684edd1e43d9346f52b191eaa5c7
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:2a80b4f7444c0ba418a27511a44d0c33a1b323e9
-    pristine_git_object: a9c59d130079178f6175480370e5a059a1b42c14
+    last_write_checksum: sha1:1cd5ceb3ac8f442f8bab07091f591683617cce32
+    pristine_git_object: 4fe8a39eb245d45c20283731c63cdece349a133a
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:ff80521a486555236663de211516570613368d40
@@ -5125,8 +5133,8 @@ trackedFiles:
     pristine_git_object: cd33b421ade2e40c6ee4cb9f0a6df7e4d4074c96
   src/Utils/Utils.php:
     id: c902f57e2422
-    last_write_checksum: sha1:8c787c868dd6c4da4adb113971780fdd7c3064c0
-    pristine_git_object: e4458afb00a71d164b2461c67997acb46fe618cb
+    last_write_checksum: sha1:58749c74c734bb0f21cb36670bb4808ea735a5d4
+    pristine_git_object: 66af08a87b7b419a63f1371acd3f8f821fac07c2
   src/ValidationError.php:
     id: 7cb14023ab5a
     last_write_checksum: sha1:162773b231e0dcf852779626c0c8cb8397c1a649
@@ -9423,6 +9431,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->paypalPaypaldirectorder` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->paypalPaypaldirectorder` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->paypalPaypaldirectorder` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
