@@ -99,6 +99,16 @@ class TransactionCapture
     public ?ShippingDetails $shippingDetails = null;
 
     /**
+     * The shipment tracking details associated with the capture.
+     *
+     * @var ?array<\Gr4vy\Tracking> $tracking
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tracking')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Tracking>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $tracking = null;
+
+    /**
      * Always `transaction-capture`.
      *
      * @var ?string $type
@@ -119,9 +129,10 @@ class TransactionCapture
      * @param  ?string  $externalIdentifier
      * @param  ?\Gr4vy\BillingDetails  $billingDetails
      * @param  ?\Gr4vy\ShippingDetails  $shippingDetails
+     * @param  ?array<\Gr4vy\Tracking>  $tracking
      * @phpstan-pure
      */
-    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $captureId = null, ?string $paymentServiceCaptureId = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?ShippingDetails $shippingDetails = null, ?string $type = 'transaction-capture')
+    public function __construct(string $status, Transaction $transaction, ?string $code = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $captureId = null, ?string $paymentServiceCaptureId = null, ?string $externalIdentifier = null, ?BillingDetails $billingDetails = null, ?ShippingDetails $shippingDetails = null, ?array $tracking = null, ?string $type = 'transaction-capture')
     {
         $this->status = $status;
         $this->transaction = $transaction;
@@ -133,6 +144,7 @@ class TransactionCapture
         $this->externalIdentifier = $externalIdentifier;
         $this->billingDetails = $billingDetails;
         $this->shippingDetails = $shippingDetails;
+        $this->tracking = $tracking;
         $this->type = $type;
     }
 }
