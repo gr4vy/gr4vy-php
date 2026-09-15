@@ -109,6 +109,25 @@ class CartItem
     public ?array $categories = null;
 
     /**
+     * A list of strings containing product subcategories for the item.
+     *
+     * @var ?array<string> $subcategories
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subcategories')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $subcategories = null;
+
+    /**
+     * The brand of the item.
+     *
+     * @var ?string $brand
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('brand')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $brand = null;
+
+    /**
      * The product type of the cart item.
      *
      * @var ?string $productType
@@ -192,6 +211,8 @@ class CartItem
      * @param  ?string  $productUrl
      * @param  ?string  $imageUrl
      * @param  ?array<string>  $categories
+     * @param  ?array<string>  $subcategories
+     * @param  ?string  $brand
      * @param  ?string  $productType
      * @param  ?string  $sellerCountry
      * @param  ?bool  $taxExempt
@@ -202,7 +223,7 @@ class CartItem
      * @param  ?int  $shippingAmount
      * @phpstan-pure
      */
-    public function __construct(string $name, int $quantity, int $unitAmount, ?int $discountAmount = null, ?int $taxAmount = null, ?string $externalIdentifier = null, ?string $sku = null, ?string $upc = null, ?string $productUrl = null, ?string $imageUrl = null, ?array $categories = null, ?string $productType = null, ?string $sellerCountry = null, ?bool $taxExempt = null, ?string $unitOfMeasure = null, ?string $commodityCode = null, ?string $description = null, ?int $dutyAmount = null, ?int $shippingAmount = null)
+    public function __construct(string $name, int $quantity, int $unitAmount, ?int $discountAmount = null, ?int $taxAmount = null, ?string $externalIdentifier = null, ?string $sku = null, ?string $upc = null, ?string $productUrl = null, ?string $imageUrl = null, ?array $categories = null, ?array $subcategories = null, ?string $brand = null, ?string $productType = null, ?string $sellerCountry = null, ?bool $taxExempt = null, ?string $unitOfMeasure = null, ?string $commodityCode = null, ?string $description = null, ?int $dutyAmount = null, ?int $shippingAmount = null)
     {
         $this->name = $name;
         $this->quantity = $quantity;
@@ -215,6 +236,8 @@ class CartItem
         $this->productUrl = $productUrl;
         $this->imageUrl = $imageUrl;
         $this->categories = $categories;
+        $this->subcategories = $subcategories;
+        $this->brand = $brand;
         $this->productType = $productType;
         $this->sellerCountry = $sellerCountry;
         $this->taxExempt = $taxExempt;
