@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 3d30664b97003d552514165e9fcba47f
+  docChecksum: 4b581bf44ac671989332259a25829995
   docVersion: 1.0.0
   speakeasyVersion: 1.797.0
   generationVersion: 2.937.18
-  releaseVersion: 1.7.19
-  configChecksum: b51fef721081c15ef9e36afe2d72a097
+  releaseVersion: 1.7.20
+  configChecksum: 8709fc8f8799e8d3ff4c334e9d18b259
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 7b29989f-4ef2-4d1c-8d3d-8d4958a13d25
-  pristine_commit_hash: 2b8b32473dd5b99814f0d63559f49f053e87e4e3
-  pristine_tree_hash: 7e57068ca22594f7a85027247faa3658be89de42
+  generation_id: 3d65ad26-5086-4a4b-ad20-71911d069c4a
+  pristine_commit_hash: a0d364828e0c21d740934704f145fdd1cf28e3eb
+  pristine_tree_hash: 759e39ac43005207032cead428f458879cc74df2
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:1e5a4eed5b48a58aa7fe4fc0529bbbcbdd702a74
-    pristine_git_object: 77b7af2b92e658ae514776f033612c64c390f360
+    last_write_checksum: sha1:49f7abd87f6603426d3b075d38a4b78c66af4fba
+    pristine_git_object: cb330c8cebbc5020e6a5817cb0c7e350ad80b243
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:ae0c428a9f8253c76a0eec3e80f73b5dac10a58f
@@ -301,8 +301,8 @@ trackedFiles:
     pristine_git_object: d0206f1ac15722a8c79401358c6d750bc5eee9b5
   docs/CartItem.md:
     id: efc3f40dfed7
-    last_write_checksum: sha1:54cd4ad19d5cf0e4519d4f500e1c3807fe85383d
-    pristine_git_object: 10b780a18b8f647abb1aa3cb56d594f28532c654
+    last_write_checksum: sha1:7042ef44ff11721e3e543ef0b49faa6ae6c77334
+    pristine_git_object: 015ebddf65c27775519fb5c47ad38b4d601efb27
   docs/ChaseOptions.md:
     id: 0ff0647f9633
     last_write_checksum: sha1:1ef519c0ef07d80b00dae2a3e295d1de30688bca
@@ -2829,8 +2829,8 @@ trackedFiles:
     pristine_git_object: 82721fbadde4dfb7d52b732fdf358e2bf3b18687
   src/CartItem.php:
     id: 331cc16d3d4a
-    last_write_checksum: sha1:db701aead2c00e0df6d5705a145c0c6e45c37b6f
-    pristine_git_object: 3ce61374e40167a097421af26242fb8058c1adfd
+    last_write_checksum: sha1:291452328c8dbcfb6042f8f0b78e0dc91ba29e15
+    pristine_git_object: 656cf130536ea0c17ed3466fdd15668ee29d19a5
   src/ChaseOptions.php:
     id: 1b6846faf65b
     last_write_checksum: sha1:f78e1f050ea891420b7c46d81459c853785a16ca
@@ -4633,8 +4633,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:e7221dbbad884d82c0cd42fa2cfd9d0e6c27972a
-    pristine_git_object: 3fbb390c92cc6a1f5c5befba8cbdc895ebcd7e9b
+    last_write_checksum: sha1:082b23f7b5351ea15dc1f5a1df027680c14431d2
+    pristine_git_object: 4d2f5b20577ad7ec7d8d1b9ffd3c38200df0fa7a
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -9431,7 +9431,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->paypalPaypaldirectorder` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->paypalPaypaldirectorder` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->paypalPaypaldirectorder` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->cartItems[]` **Changed**\n  *  `response.cartItems[]` **Changed**\n* `sdk->transactions->get()`:  `response.cartItems[]` **Changed**\n* `sdk->transactions->update()`:  `response.cartItems[]` **Changed**\n* `sdk->transactions->capture()`: \n  *  `request->transactionCaptureCreate->cartItems[]` **Changed**\n  *  `response.union(Transaction)->cartItems[]` **Changed**\n* `sdk->transactions->void()`:  `response.union(Transaction)->cartItems[]` **Changed**\n* `sdk->transactions->cancel()`:  `response.transaction->cartItems[]` **Changed**\n* `sdk->transactions->sync()`:  `response.cartItems[]` **Changed**\n* `sdk->transactions->incrementAuthorization()`:  `response.transaction->cartItems[]` **Changed**\n* `sdk->transactions->captures->list()`:  `response.items[]->cartItems[]` **Changed**\n* `sdk->transactions->captures->get()`:  `response.cartItems[]` **Changed**\n* `sdk->payment-options->list()`: \n  *  `request.paymentOptionRequest->cartItems[]` **Changed**\n* `sdk->checkout-sessions->create()`: \n  *  `request.checkoutSessionCreate->cartItems[]` **Changed**\n  *  `response.cartItems[]` **Changed**\n* `sdk->checkout-sessions->update()`: \n  *  `request.checkoutSessionCreate->cartItems[]` **Changed**\n  *  `response.cartItems[]` **Changed**\n* `sdk->checkout-sessions->get()`:  `response.cartItems[]` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->cartItems[]` **Changed**\n  *  `response.cartItems[]` **Changed**\n* `sdk->payment-links->list()`:  `response.items[]->cartItems[]` **Changed**\n* `sdk->payment-links->get()`:  `response.cartItems[]` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
