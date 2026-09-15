@@ -42,6 +42,16 @@ class TransactionCaptureCreate
     public ?array $cartItems = null;
 
     /**
+     * An array of shipment tracking details for this capture.
+     *
+     * @var ?array<\Gr4vy\Tracking> $tracking
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tracking')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Tracking>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $tracking = null;
+
+    /**
      * An external identifier that can be used to match the capture against your own records.
      *
      * @var ?string $externalIdentifier
@@ -74,14 +84,16 @@ class TransactionCaptureCreate
      * @param  ?int  $amount
      * @param  ?\Gr4vy\Airline  $airline
      * @param  ?array<\Gr4vy\CartItem>  $cartItems
+     * @param  ?array<\Gr4vy\Tracking>  $tracking
      * @param  ?string  $externalIdentifier
      * @phpstan-pure
      */
-    public function __construct(?int $amount = null, ?Airline $airline = null, ?array $cartItems = null, ?string $externalIdentifier = null, ?bool $final = true, ?bool $reauthorizeIfAuthorizationExpired = false)
+    public function __construct(?int $amount = null, ?Airline $airline = null, ?array $cartItems = null, ?array $tracking = null, ?string $externalIdentifier = null, ?bool $final = true, ?bool $reauthorizeIfAuthorizationExpired = false)
     {
         $this->amount = $amount;
         $this->airline = $airline;
         $this->cartItems = $cartItems;
+        $this->tracking = $tracking;
         $this->externalIdentifier = $externalIdentifier;
         $this->final = $final;
         $this->reauthorizeIfAuthorizationExpired = $reauthorizeIfAuthorizationExpired;
