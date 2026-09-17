@@ -165,6 +165,16 @@ class Capture
     public ?array $cartItems = null;
 
     /**
+     * The shipment tracking details associated with the capture.
+     *
+     * @var ?array<\Gr4vy\Tracking> $tracking
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tracking')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\Tracking>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $tracking = null;
+
+    /**
      * Always `capture`.
      *
      * @var ?string $type
@@ -193,9 +203,10 @@ class Capture
      * @param  ?string  $rawResponseDescription
      * @param  ?string  $transactionExternalIdentifier
      * @param  ?array<\Gr4vy\CartItem>  $cartItems
+     * @param  ?array<\Gr4vy\Tracking>  $tracking
      * @phpstan-pure
      */
-    public function __construct(string $id, string $merchantAccountId, string $transactionId, string $currency, int $amount, string $status, bool $final, \DateTime $createdAt, \DateTime $updatedAt, ?string $xid = null, ?\DateTime $capturedAt = null, ?string $externalIdentifier = null, ?string $errorCode = null, ?string $isoResponseCode = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $transactionExternalIdentifier = null, ?array $cartItems = null, ?string $type = 'capture')
+    public function __construct(string $id, string $merchantAccountId, string $transactionId, string $currency, int $amount, string $status, bool $final, \DateTime $createdAt, \DateTime $updatedAt, ?string $xid = null, ?\DateTime $capturedAt = null, ?string $externalIdentifier = null, ?string $errorCode = null, ?string $isoResponseCode = null, ?string $rawResponseCode = null, ?string $rawResponseDescription = null, ?string $transactionExternalIdentifier = null, ?array $cartItems = null, ?array $tracking = null, ?string $type = 'capture')
     {
         $this->id = $id;
         $this->merchantAccountId = $merchantAccountId;
@@ -215,6 +226,7 @@ class Capture
         $this->rawResponseDescription = $rawResponseDescription;
         $this->transactionExternalIdentifier = $transactionExternalIdentifier;
         $this->cartItems = $cartItems;
+        $this->tracking = $tracking;
         $this->type = $type;
     }
 }
