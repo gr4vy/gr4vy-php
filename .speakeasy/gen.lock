@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 72156d7131bbc82d5ee10a146abdbf56
+  docChecksum: 9f4e08220c2dabd9856ac5d3bb8615f0
   docVersion: 1.0.0
-  speakeasyVersion: 1.797.0
-  generationVersion: 2.937.18
-  releaseVersion: 1.7.24
-  configChecksum: 2c971b905c343405903b2474d14ab4ec
+  speakeasyVersion: 1.798.0
+  generationVersion: 2.938.0
+  releaseVersion: 1.7.25
+  configChecksum: d9393c69d3e9d109ff58dee1c8836437
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 9f9790dc-a2e4-49e6-9d7d-07bba58308e0
-  pristine_commit_hash: eeeac5e9b12e034193c6da8a6f27e1e97c158ad6
-  pristine_tree_hash: ae9ba1496e48136e92a1ce6dd9212b6c88b6d3e8
+  generation_id: 2879093d-2594-460d-ae03-1e34b2e5b5aa
+  pristine_commit_hash: 783887af68bf88478f2832ca1d78d359b7330bb7
+  pristine_tree_hash: e718f435a19fcaa5e1b73779895386d4449d1ca4
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:1e5a4eed5b48a58aa7fe4fc0529bbbcbdd702a74
-    pristine_git_object: 77b7af2b92e658ae514776f033612c64c390f360
+    last_write_checksum: sha1:49f7abd87f6603426d3b075d38a4b78c66af4fba
+    pristine_git_object: cb330c8cebbc5020e6a5817cb0c7e350ad80b243
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:ae0c428a9f8253c76a0eec3e80f73b5dac10a58f
@@ -1937,12 +1937,20 @@ trackedFiles:
     pristine_git_object: d62a7f318029668422abc116bcfd3a0bd2387bc6
   docs/RiskifiedAntiFraudOptions.md:
     id: e97a5466f6cd
-    last_write_checksum: sha1:a8af89b499f7dd5c4c8b4588ffa3f0a0c15cc0f0
-    pristine_git_object: e2f8a03f4ec8b586a04f6400a252febee6681eb5
+    last_write_checksum: sha1:a6148fb249a8dfbbce1cc9bde568c87e33a0304e
+    pristine_git_object: e17d772d7927c92cba960a6df0b4991244281458
   docs/RiskifiedAntiFraudOptionsLineItem.md:
     id: 2c3daea16602
-    last_write_checksum: sha1:22915e13c33fe036592cd39990e43c8bed201ded
-    pristine_git_object: b74507a65a5a9a4c605c20e19b1c7bbd41c687f5
+    last_write_checksum: sha1:1fb0458149a081f4cd5923b63db4477f7fc7eb2a
+    pristine_git_object: a50232f0df0fe6dd2b9ec5e1dbf15ada6f23f55a
+  docs/RiskifiedAntiFraudOptionsShippingAddress.md:
+    id: e42dc29936b2
+    last_write_checksum: sha1:46fbeb9082a2e1fb8a9844ca189ce4e6eb74d92e
+    pristine_git_object: 9b8912dbdd8fe5baa3808e45b8360d513d0f0bd1
+  docs/RiskifiedAntiFraudOptionsShippingLine.md:
+    id: 6285db6643ac
+    last_write_checksum: sha1:e40a8a749cc6545b81272f7662c43f92a6dfe43e
+    pristine_git_object: 3dba79bfc6fb96235352755f13f9d1d1a72b71e8
   docs/Role.md:
     id: 5982a050af65
     last_write_checksum: sha1:1446dbb7213bef1e02a7e350a99bb2696c365f13
@@ -4621,12 +4629,20 @@ trackedFiles:
     pristine_git_object: 9bcaee472b47b9b36182399b16bd4be3ca287575
   src/RiskifiedAntiFraudOptions.php:
     id: f92fdc1419ab
-    last_write_checksum: sha1:d0e9059131349d24b5e9f2fadf1c8dacbc2710ff
-    pristine_git_object: bd1da3db5e1a27a800b3b8874688b612ea1816e5
+    last_write_checksum: sha1:77fe1015f9cdceedc991ee8bae1b50aaacb6b9c8
+    pristine_git_object: fee1019ce19a77f4cf18c34f0a21bc4ac73fb13d
   src/RiskifiedAntiFraudOptionsLineItem.php:
     id: 0e378a3bd341
-    last_write_checksum: sha1:7549d002dc52ed5b518bfbd89948c2908be1afc1
-    pristine_git_object: ca159041b503ac6f8b70984341cf34e61c32b546
+    last_write_checksum: sha1:b247a2458afed4c4d71fd063d97a6709c4223dd5
+    pristine_git_object: b1a76d3db07b7837b4bf742a04fb67c22d9e18ea
+  src/RiskifiedAntiFraudOptionsShippingAddress.php:
+    id: 3cf4d0379268
+    last_write_checksum: sha1:fab4b02b260dc365396fc001ed67abe60af1da68
+    pristine_git_object: 2797aef9642d6760b2e4ba1738f5ba89ca394d4e
+  src/RiskifiedAntiFraudOptionsShippingLine.php:
+    id: 0dda9e18ba33
+    last_write_checksum: sha1:264bea2dc4a997986610633f5d7773088f354b51
+    pristine_git_object: 6a16555a6ee08bfd2e6d4b1c0619a8f592ab3d8a
   src/Role.php:
     id: 7a11b0e9f9ee
     last_write_checksum: sha1:434ed3c5558bf19df757068d3ed7b74aaaaf86aa
@@ -4645,8 +4661,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:53fcf66aa569affc3391c1f837c82456144b2d0b
-    pristine_git_object: ba7d0ee3c1457ca4fcb9d6ce327b89b5dff326af
+    last_write_checksum: sha1:e30db386d035328c5f04c050ce8c5c28f9e08ca2
+    pristine_git_object: ad52aaeda563f578a5f2a9b21ea9f560f913896b
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -9447,10 +9463,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Php SDK Changes:
-  * `sdk->transactions->captures->list()`:  `response.items[]->tracking` **Added**
-  * `sdk->transactions->captures->get()`:  `response.tracking` **Added**
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->riskifiedAntiFraud` **Changed**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->riskifiedAntiFraud` **Changed**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->riskifiedAntiFraud` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

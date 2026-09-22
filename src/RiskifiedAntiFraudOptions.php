@@ -12,7 +12,7 @@ namespace Gr4vy;
 class RiskifiedAntiFraudOptions
 {
     /**
-     * A list of line items details to override when passing to the Riskified API.
+     * A list of line items details to override when passing to the Riskified API. Entries are matched by position against the cart items sent to Riskified, which excludes `discount`, `shipping_fee`, `sales_tax` and `store_credit` items.
      *
      * @var ?array<\Gr4vy\RiskifiedAntiFraudOptionsLineItem> $lineItems
      */
@@ -22,11 +22,35 @@ class RiskifiedAntiFraudOptions
     public ?array $lineItems = null;
 
     /**
+     * A list of shipping lines details to override when passing to the Riskified API. Entries are matched by position against the `shipping_fee` cart items.
+     *
+     * @var ?array<\Gr4vy\RiskifiedAntiFraudOptionsShippingLine> $shippingLines
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('shipping_lines')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\RiskifiedAntiFraudOptionsShippingLine>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $shippingLines = null;
+
+    /**
+     * Additional destinations for orders shipped to more than one address. The address derived from the transaction is always sent first; these are appended after it and may not use the reserved `base-shipping-address` id.
+     *
+     * @var ?array<\Gr4vy\RiskifiedAntiFraudOptionsShippingAddress> $additionalShippingAddresses
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('additional_shipping_addresses')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Gr4vy\RiskifiedAntiFraudOptionsShippingAddress>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $additionalShippingAddresses = null;
+
+    /**
      * @param  ?array<\Gr4vy\RiskifiedAntiFraudOptionsLineItem>  $lineItems
+     * @param  ?array<\Gr4vy\RiskifiedAntiFraudOptionsShippingLine>  $shippingLines
+     * @param  ?array<\Gr4vy\RiskifiedAntiFraudOptionsShippingAddress>  $additionalShippingAddresses
      * @phpstan-pure
      */
-    public function __construct(?array $lineItems = null)
+    public function __construct(?array $lineItems = null, ?array $shippingLines = null, ?array $additionalShippingAddresses = null)
     {
         $this->lineItems = $lineItems;
+        $this->shippingLines = $shippingLines;
+        $this->additionalShippingAddresses = $additionalShippingAddresses;
     }
 }

@@ -21,11 +21,22 @@ class RiskifiedAntiFraudOptionsLineItem
     public ?string $deliveredTo = null;
 
     /**
+     * The shipping address this item is delivered to. Must be `base-shipping-address` for the address derived from the transaction, or the `id` of an `additional_shipping_addresses` entry. Must not be provided when `additional_shipping_addresses` is empty.
+     *
+     * @var ?string $shippingAddressId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('shipping_address_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $shippingAddressId = null;
+
+    /**
      * @param  ?string  $deliveredTo
+     * @param  ?string  $shippingAddressId
      * @phpstan-pure
      */
-    public function __construct(?string $deliveredTo = null)
+    public function __construct(?string $deliveredTo = null, ?string $shippingAddressId = null)
     {
         $this->deliveredTo = $deliveredTo;
+        $this->shippingAddressId = $shippingAddressId;
     }
 }
