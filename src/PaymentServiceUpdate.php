@@ -135,7 +135,17 @@ class PaymentServiceUpdate
     public ?bool $settlementReportingEnabled = null;
 
     /**
+     * Defines if this payment service has refund ingestion enabled.
+     *
+     * @var ?bool $refundIngestionEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refund_ingestion_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $refundIngestionEnabled = null;
+
+    /**
      * @param  ?bool  $settlementReportingEnabled
+     * @param  ?bool  $refundIngestionEnabled
      * @param  ?string  $displayName
      * @param  ?array<\Gr4vy\VoidableField>  $fields
      * @param  ?array<\Gr4vy\VoidableField>  $reportingFields
@@ -150,7 +160,7 @@ class PaymentServiceUpdate
      * @param  ?bool  $openLoop
      * @phpstan-pure
      */
-    public function __construct(?string $displayName = null, ?array $fields = null, ?array $reportingFields = null, ?int $position = null, ?array $acceptedCurrencies = null, ?array $acceptedCountries = null, ?bool $active = null, ?bool $threeDSecureEnabled = null, ?array $merchantProfile = null, ?bool $paymentMethodTokenizationEnabled = null, ?bool $networkTokensEnabled = null, ?bool $openLoop = null, ?bool $settlementReportingEnabled = false)
+    public function __construct(?string $displayName = null, ?array $fields = null, ?array $reportingFields = null, ?int $position = null, ?array $acceptedCurrencies = null, ?array $acceptedCountries = null, ?bool $active = null, ?bool $threeDSecureEnabled = null, ?array $merchantProfile = null, ?bool $paymentMethodTokenizationEnabled = null, ?bool $networkTokensEnabled = null, ?bool $openLoop = null, ?bool $settlementReportingEnabled = false, ?bool $refundIngestionEnabled = false)
     {
         $this->displayName = $displayName;
         $this->fields = $fields;
@@ -165,5 +175,6 @@ class PaymentServiceUpdate
         $this->networkTokensEnabled = $networkTokensEnabled;
         $this->openLoop = $openLoop;
         $this->settlementReportingEnabled = $settlementReportingEnabled;
+        $this->refundIngestionEnabled = $refundIngestionEnabled;
     }
 }
