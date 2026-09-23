@@ -101,6 +101,14 @@ class PaymentService
     public bool $settlementReportingEnabled;
 
     /**
+     * Defines if this payment service has refund ingestion enabled.
+     *
+     * @var bool $refundIngestionEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refund_ingestion_enabled')]
+    public bool $refundIngestionEnabled;
+
+    /**
      * The date and time when this payment service was first created in our system.
      *
      * @var \DateTime $createdAt
@@ -219,6 +227,7 @@ class PaymentService
      * @param  bool  $networkTokensEnabled
      * @param  bool  $openLoop
      * @param  bool  $settlementReportingEnabled
+     * @param  bool  $refundIngestionEnabled
      * @param  \DateTime  $createdAt
      * @param  \DateTime  $updatedAt
      * @param  ?string  $type
@@ -233,7 +242,7 @@ class PaymentService
      * @param  ?array<\Gr4vy\Field>  $reportingFields
      * @phpstan-pure
      */
-    public function __construct(string $merchantAccountId, string $paymentServiceDefinitionId, string $method, string $displayName, int $position, array $acceptedCurrencies, array $acceptedCountries, bool $paymentMethodTokenizationEnabled, bool $networkTokensEnabled, bool $openLoop, bool $settlementReportingEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?string $status = null, ?bool $threeDSecureEnabled = null, ?array $merchantProfile = null, ?string $webhookUrl = null, ?array $fields = null, ?array $reportingFields = null, ?string $id = 'The ID of the payment service', ?bool $active = true, ?bool $isDeleted = false, ?string $type = 'payment-service')
+    public function __construct(string $merchantAccountId, string $paymentServiceDefinitionId, string $method, string $displayName, int $position, array $acceptedCurrencies, array $acceptedCountries, bool $paymentMethodTokenizationEnabled, bool $networkTokensEnabled, bool $openLoop, bool $settlementReportingEnabled, bool $refundIngestionEnabled, \DateTime $createdAt, \DateTime $updatedAt, ?string $status = null, ?bool $threeDSecureEnabled = null, ?array $merchantProfile = null, ?string $webhookUrl = null, ?array $fields = null, ?array $reportingFields = null, ?string $id = 'The ID of the payment service', ?bool $active = true, ?bool $isDeleted = false, ?string $type = 'payment-service')
     {
         $this->merchantAccountId = $merchantAccountId;
         $this->paymentServiceDefinitionId = $paymentServiceDefinitionId;
@@ -246,6 +255,7 @@ class PaymentService
         $this->networkTokensEnabled = $networkTokensEnabled;
         $this->openLoop = $openLoop;
         $this->settlementReportingEnabled = $settlementReportingEnabled;
+        $this->refundIngestionEnabled = $refundIngestionEnabled;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
         $this->status = $status;

@@ -121,6 +121,7 @@ $paymentServiceCreate = new Gr4vy\PaymentServiceCreate(
     ],
     threeDSecureEnabled: true,
     settlementReportingEnabled: true,
+    refundIngestionEnabled: true,
 );
 
 $response = $sdk->paymentServices->create(
@@ -245,6 +246,7 @@ $sdk = Gr4vy\SDK::builder()
 
 $paymentServiceUpdate = new Gr4vy\PaymentServiceUpdate(
     settlementReportingEnabled: true,
+    refundIngestionEnabled: true,
 );
 
 $response = $sdk->paymentServices->update(

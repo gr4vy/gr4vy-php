@@ -139,6 +139,15 @@ class PaymentServiceCreate
     public ?bool $settlementReportingEnabled = null;
 
     /**
+     * Defines if this payment service has refund ingestion enabled.
+     *
+     * @var ?bool $refundIngestionEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refund_ingestion_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $refundIngestionEnabled = null;
+
+    /**
      * @param  string  $displayName
      * @param  string  $paymentServiceDefinitionId
      * @param  array<\Gr4vy\Field>  $fields
@@ -146,6 +155,7 @@ class PaymentServiceCreate
      * @param  array<string>  $acceptedCountries
      * @param  ?bool  $threeDSecureEnabled
      * @param  ?bool  $settlementReportingEnabled
+     * @param  ?bool  $refundIngestionEnabled
      * @param  ?array<\Gr4vy\Field>  $reportingFields
      * @param  ?int  $position
      * @param  ?bool  $active
@@ -155,7 +165,7 @@ class PaymentServiceCreate
      * @param  ?bool  $openLoop
      * @phpstan-pure
      */
-    public function __construct(string $displayName, string $paymentServiceDefinitionId, array $fields, array $acceptedCurrencies, array $acceptedCountries, ?array $reportingFields = null, ?int $position = null, ?bool $active = null, ?array $merchantProfile = null, ?bool $paymentMethodTokenizationEnabled = null, ?bool $networkTokensEnabled = null, ?bool $openLoop = null, ?bool $threeDSecureEnabled = false, ?bool $settlementReportingEnabled = false)
+    public function __construct(string $displayName, string $paymentServiceDefinitionId, array $fields, array $acceptedCurrencies, array $acceptedCountries, ?array $reportingFields = null, ?int $position = null, ?bool $active = null, ?array $merchantProfile = null, ?bool $paymentMethodTokenizationEnabled = null, ?bool $networkTokensEnabled = null, ?bool $openLoop = null, ?bool $threeDSecureEnabled = false, ?bool $settlementReportingEnabled = false, ?bool $refundIngestionEnabled = false)
     {
         $this->displayName = $displayName;
         $this->paymentServiceDefinitionId = $paymentServiceDefinitionId;
@@ -171,5 +181,6 @@ class PaymentServiceCreate
         $this->openLoop = $openLoop;
         $this->threeDSecureEnabled = $threeDSecureEnabled;
         $this->settlementReportingEnabled = $settlementReportingEnabled;
+        $this->refundIngestionEnabled = $refundIngestionEnabled;
     }
 }
