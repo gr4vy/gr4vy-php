@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 3f8ec73a0588fb3dacb91ef6ad808285
+  docChecksum: 342cd05a965e604bc70e807c92a6a28d
   docVersion: 1.0.0
-  speakeasyVersion: 1.798.0
-  generationVersion: 2.938.0
-  releaseVersion: 1.7.26
-  configChecksum: fd27ee58f8fe3f1541904123d0c7769b
+  speakeasyVersion: 1.799.0
+  generationVersion: 2.941.0
+  releaseVersion: 1.7.27
+  configChecksum: 3195b0a0351c78564b59338f52a8690b
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: a6bd5b5d-8dc1-45c2-b4c4-04b503633c4e
-  pristine_commit_hash: 40fd38dc90d9b48060026721ae0c3ba7baa1804f
-  pristine_tree_hash: 01e5c5686923901b26ac3a29dfb141a6ef297b1d
+  generation_id: ed5049a3-f6d5-460b-ac3a-912bface0a9b
+  pristine_commit_hash: 64541f3e2d3802834ac72658ff1fc2f431b50b61
+  pristine_tree_hash: 294c52ee8927475f4efbbdf14a83ac8417e20bc2
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1955,6 +1955,10 @@ trackedFiles:
     id: 5982a050af65
     last_write_checksum: sha1:1446dbb7213bef1e02a7e350a99bb2696c365f13
     pristine_git_object: 8374f26ba5ec5af669f582ca5f5f827120f60813
+  docs/RyftCardOptions.md:
+    id: b146edf35b99
+    last_write_checksum: sha1:bd2fb931e194e22f865e7cd9baf63473a52abac4
+    pristine_git_object: f90c337d96a559edd5595c941fcb98d3054ea654
   docs/SEPABankPaymentMethodCreate.md:
     id: b1ec1d10539d
     last_write_checksum: sha1:8a4a9a3e9a1451acf6352ac07b401f87a5aba2a3
@@ -2133,8 +2137,8 @@ trackedFiles:
     pristine_git_object: 700bc06d1cfe8d6291e3735678efa474b4490f05
   docs/TransactionConnectionOptions.md:
     id: 2090a0a8d02d
-    last_write_checksum: sha1:e89e71916407cd005bbd4ec0d81b1d1ac1469f64
-    pristine_git_object: 736bd1b2744a2f61eb126f930113ad3bc7b92937
+    last_write_checksum: sha1:200edffdfcd6eb6ff4351085d8bbc91c24a4ca3d
+    pristine_git_object: 8d070da8e2e776c0f0ea3139bd36a8c3bc0753c5
   docs/TransactionCreate.md:
     id: 66c310d46bd7
     last_write_checksum: sha1:6e484b1bdb18512ce81b8ff4ecd6255cf3afa89b
@@ -4651,6 +4655,10 @@ trackedFiles:
     id: a180566e3317
     last_write_checksum: sha1:7c66b97f60045273cc4509dfb7e2ee91ac49716c
     pristine_git_object: 795efa111b75ad2f6efd187c471a64293ffbb35c
+  src/RyftCardOptions.php:
+    id: 838cbefc5055
+    last_write_checksum: sha1:fa0b360e1f597aec5b88b21209f78bc5c7d584b7
+    pristine_git_object: 4dbe9c10866f65e73fab614a075fc763db5caaed
   src/SDK.php:
     id: 7b5eb956165f
     last_write_checksum: sha1:5175c25d8a272c77afe5ad0a851eba628d3933d3
@@ -4661,8 +4669,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:5670b792d0a58542a079a86341a1df73ccdb0a5c
-    pristine_git_object: 275bd31812b789f6df0c211082ab9439e07c4c35
+    last_write_checksum: sha1:8101c4ff12b908c256c0fa5f71dd0486b4a8340f
+    pristine_git_object: 28af002fc2b72b54accda8801db9fd5d185aecdc
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
@@ -4841,8 +4849,8 @@ trackedFiles:
     pristine_git_object: cf6fd1ee94e03364e9ede38b6addef0725500153
   src/TransactionConnectionOptions.php:
     id: 5be61f414c4c
-    last_write_checksum: sha1:e7cd1e5f590c258e41853dc9efd31b6c36f1ebdf
-    pristine_git_object: 6b5dc158a146adfcbb43a7210e2607c13b6e3991
+    last_write_checksum: sha1:7ee591d9d6ccd20e8039d3e7255a79f716d2e548
+    pristine_git_object: 6345afb61d046396a50bc6dd9f86926eceebc979
   src/TransactionCreate.php:
     id: 18627f38c6cb
     last_write_checksum: sha1:ff80521a486555236663de211516570613368d40
@@ -9463,7 +9471,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->payment-services->list()`:  `response.items[]->refundIngestionEnabled` **Added**\n* `sdk->payment-services->create()`: \n  *  `request.paymentServiceCreate->refundIngestionEnabled` **Added**\n  *  `response.refundIngestionEnabled` **Added**\n* `sdk->payment-services->get()`:  `response.refundIngestionEnabled` **Added**\n* `sdk->payment-services->update()`: \n  *  `request.paymentServiceUpdate->refundIngestionEnabled` **Added**\n  *  `response.refundIngestionEnabled` **Added**\n"
+releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->ryftCard` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->ryftCard` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->ryftCard` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
