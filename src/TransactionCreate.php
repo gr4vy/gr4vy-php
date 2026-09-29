@@ -354,6 +354,15 @@ class TransactionCreate
     public ?\DateTime $approvalExpiresAt = null;
 
     /**
+     * Whether the authorization amount is expected to be modified in the future or not.
+     *
+     * @var ?bool $isAmountEstimated
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_amount_estimated')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $isAmountEstimated = null;
+
+    /**
      *  Whether or not to also try and store the payment method with us so that it can be used again for future use. This is only supported for payment methods that support this feature. There are also a few restrictions on how the flag may be set:
      *
      *
@@ -475,9 +484,10 @@ class TransactionCreate
      * @param  ?int  $shippingAmount
      * @param  ?string  $integrationClient
      * @param  ?\DateTime  $approvalExpiresAt
+     * @param  ?bool  $isAmountEstimated
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|PazePaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|BaseBankPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyer $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?ThreeDSecure $threeDSecure = null, ?array $metadata = null, ?Airline $airline = null, ?string $description = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?string $previousTransactionLinkId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $purchaseOrderNumber = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $integrationClient = null, ?\DateTime $approvalExpiresAt = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
+    public function __construct(int $amount, string $currency, ?string $intent = null, ?string $paymentSource = null, ?string $country = null, CardWithUrlPaymentMethodCreate|RedirectPaymentMethodCreate|TokenPaymentMethodCreate|ApplePayPaymentMethodCreate|ClickToPayPaymentMethodCreate|ClickToPayFPANPaymentMethodCreate|GooglePayPaymentMethodCreate|GooglePayFPANPaymentMethodCreate|PazePaymentMethodCreate|NetworkTokenPaymentMethodCreate|PlaidPaymentMethodCreate|BaseBankPaymentMethodCreate|CheckoutSessionWithUrlPaymentMethodCreate|null $paymentMethod = null, ?GuestBuyer $buyer = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?array $giftCards = null, ?string $externalIdentifier = null, ThreeDSecureDataV1|ThreeDSecureDataV2|null $threeDSecureData = null, ?ThreeDSecure $threeDSecure = null, ?array $metadata = null, ?Airline $airline = null, ?string $description = null, ?array $cartItems = null, ?StatementDescriptor $statementDescriptor = null, ?string $previousSchemeTransactionId = null, ?string $previousTransactionLinkId = null, ?BrowserInfo $browserInfo = null, ?string $shippingDetailsId = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $antiFraudFingerprint = null, ?string $paymentServiceId = null, ?Recipient $recipient = null, ?int $installmentCount = null, ?int $taxAmount = null, ?string $merchantTaxId = null, ?string $purchaseOrderNumber = null, ?string $customerReferenceNumber = null, ?bool $amountIncludesTax = null, ?string $supplierOrderNumber = null, ?int $dutyAmount = null, ?int $shippingAmount = null, ?string $integrationClient = null, ?\DateTime $approvalExpiresAt = null, ?bool $isAmountEstimated = null, ?bool $store = false, ?bool $isSubsequentPayment = false, ?bool $merchantInitiated = false, ?bool $asyncCapture = false, ?bool $accountFundingTransaction = false, ?bool $allowPartialAuthorization = false)
     {
         $this->amount = $amount;
         $this->currency = $currency;
@@ -516,6 +526,7 @@ class TransactionCreate
         $this->shippingAmount = $shippingAmount;
         $this->integrationClient = $integrationClient;
         $this->approvalExpiresAt = $approvalExpiresAt;
+        $this->isAmountEstimated = $isAmountEstimated;
         $this->store = $store;
         $this->isSubsequentPayment = $isSubsequentPayment;
         $this->merchantInitiated = $merchantInitiated;
