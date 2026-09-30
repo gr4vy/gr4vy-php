@@ -81,8 +81,10 @@ class ListTransactionsRequest
     public ?string $buyerId = null;
 
     /**
+     * Deprecated. Filters the results to only the items for which the `buyer` has an `email_address` that matches this value. This filter can be slow and is not recommended for use in automated systems. Use `buyer_search`, `buyer_external_identifier` or `buyer_id` instead.
      *
      * @var ?string $buyerEmailAddress
+     * @deprecated  field: This filter can be slow. Use `buyer_search`, `buyer_external_identifier` or `buyer_id` instead..
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=buyer_email_address')]
     public ?string $buyerEmailAddress = null;
@@ -132,7 +134,7 @@ class ListTransactionsRequest
     public ?array $metadata = null;
 
     /**
-     * Filters for transactions that have an `amount` that is equal to the provided `amount_eq` value.
+     * Filters for transactions that have an `amount` that is equal to the provided `amount_eq` value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?int $amountEq
      */
@@ -140,7 +142,7 @@ class ListTransactionsRequest
     public ?int $amountEq = null;
 
     /**
-     * Filters for transactions that have an `amount` that is less than or equal to the `amount_lte` value.
+     * Filters for transactions that have an `amount` that is less than or equal to the `amount_lte` value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?int $amountLte
      */
@@ -148,7 +150,7 @@ class ListTransactionsRequest
     public ?int $amountLte = null;
 
     /**
-     * Filters for transactions that have an `amount` that is greater than or equal to the `amount_gte` value.
+     * Filters for transactions that have an `amount` that is greater than or equal to the `amount_gte` value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?int $amountGte
      */
@@ -156,7 +158,7 @@ class ListTransactionsRequest
     public ?int $amountGte = null;
 
     /**
-     * Filters for transactions that have matching `currency` values. The `currency` values provided must be formatted as 3-letter ISO currency code.
+     * Filters for transactions that have matching `currency` values. The `currency` values provided must be formatted as 3-letter ISO currency code. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?array<string> $currency
      */
@@ -164,7 +166,7 @@ class ListTransactionsRequest
     public ?array $currency = null;
 
     /**
-     * Filters for transactions that have matching `country` values.
+     * Filters for transactions that have matching `country` values. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?array<string> $country
      */
@@ -194,7 +196,7 @@ class ListTransactionsRequest
     public ?string $paymentMethodLabel = null;
 
     /**
-     * Filters for transactions where the `payment_method_scheme` matches one of the provided values.
+     * Filters for transactions where the `payment_method_scheme` matches one of the provided values. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?array<string> $paymentMethodScheme
      */
@@ -202,7 +204,7 @@ class ListTransactionsRequest
     public ?array $paymentMethodScheme = null;
 
     /**
-     * Filters for transactions that have a payment method with a country that matches with the provided value.
+     * Filters for transactions that have a payment method with a country that matches with the provided value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?string $paymentMethodCountry
      */
@@ -217,7 +219,7 @@ class ListTransactionsRequest
     public ?string $paymentMethodFingerprint = null;
 
     /**
-     * Filters for transactions that have matching `method` values.
+     * Filters for transactions that have matching `method` values. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?array<string> $method
      */
@@ -289,15 +291,16 @@ class ListTransactionsRequest
     public ?string $giftCardId = null;
 
     /**
-     * Filters for transactions that have at least one gift card redemption where the last 4 digits of its gift card number matches exactly with the provided value.
+     * Deprecated. Filters for transactions that have at least one gift card redemption where the last 4 digits of its gift card number matches exactly with the provided value. This filter can be slow and is not recommended for use in automated systems. Use `gift_card_id` instead.
      *
      * @var ?string $giftCardLast4
+     * @deprecated  field: This filter can be slow. Use `gift_card_id` instead..
      */
     #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=gift_card_last4')]
     public ?string $giftCardLast4 = null;
 
     /**
-     * Filters for transactions that have at least one associated settlement record.
+     * Filters for transactions that have at least one associated settlement record. When filtering on `false`, combine it with `created_at_gte` and `created_at_lte` for best performance.
      *
      * @var ?bool $hasSettlements
      */
@@ -313,7 +316,7 @@ class ListTransactionsRequest
     public ?string $paymentMethodBin = null;
 
     /**
-     * Filters the results to only the transactions that have a payment source that matches with any of the provided values.
+     * Filters the results to only the transactions that have a payment source that matches with any of the provided values. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?array<string> $paymentSource
      */
@@ -321,7 +324,7 @@ class ListTransactionsRequest
     public ?array $paymentSource = null;
 
     /**
-     * Filters for transactions where the `is_subsequent_payment` matches the provided value.
+     * Filters for transactions where the `is_subsequent_payment` matches the provided value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?bool $isSubsequentPayment
      */
@@ -329,7 +332,7 @@ class ListTransactionsRequest
     public ?bool $isSubsequentPayment = null;
 
     /**
-     * Filters for transactions where the `merchant_initiated` matches the provided value.
+     * Filters for transactions where the `merchant_initiated` matches the provided value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?bool $merchantInitiated
      */
@@ -337,7 +340,7 @@ class ListTransactionsRequest
     public ?bool $merchantInitiated = null;
 
     /**
-     * Filters for transactions that attempted 3DS authentication or not.
+     * Filters for transactions that attempted 3DS authentication or not. For best performance, combine it with `created_at_gte` and `created_at_lte`.
      *
      * @var ?bool $used3ds
      */
