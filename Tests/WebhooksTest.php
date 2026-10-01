@@ -88,4 +88,29 @@ final class WebhooksTest extends TestCase
             0
         );
     }
+
+    public function test_accepts_a_valid_signature_in_any_position(): void
+    {
+        $this->expectNotToPerformAssertions();
+        Webhooks::verifyWebhook(
+            secret: self::SECRET,
+            payload: self::PAYLOAD,
+            signatureHeader: 'other,'.self::VALID_SIGNATURE,
+            timestampHeader: self::TIMESTAMP_HEADER,
+            timestampTolerance: 0
+        );
+    }
+
+    public function test_rejects_a_nearly_matching_signature(): void
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('No matching signature found');
+        Webhooks::verifyWebhook(
+            secret: self::SECRET,
+            payload: self::PAYLOAD,
+            signatureHeader: '78aca0c78005107a654a957b8566fa6e0e5e06aea92d7da72a6da9e5a690d014',
+            timestampHeader: self::TIMESTAMP_HEADER,
+            timestampTolerance: 0
+        );
+    }
 }

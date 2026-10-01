@@ -45,7 +45,16 @@ class Webhooks
             key: $secret
         );
 
-        if (! in_array(needle: $expectedSignature, haystack: $signatures, strict: true)) {
+        // Compare in constant time, so the check doesn't leak how much of one matched.
+        $matched = false;
+        foreach ($signatures as $signature) {
+            if (hash_equals(known_string: $expectedSignature, user_string: $signature)) {
+                $matched = true;
+                break;
+            }
+        }
+
+        if (! $matched) {
             throw new \Exception(message: 'No matching signature found');
         }
 
