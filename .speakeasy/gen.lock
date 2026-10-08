@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: e3cda6b4e00eb57ef60c64c54f9d00d6
+  docChecksum: 7fb86ea2a0088f9db1dd29744e55b834
   docVersion: 1.0.0
-  speakeasyVersion: 1.800.1
-  generationVersion: 2.943.0
-  releaseVersion: 1.7.32
-  configChecksum: 10468606dab37cfd5b21ea3b945903fe
+  speakeasyVersion: 1.801.0
+  generationVersion: 2.946.0
+  releaseVersion: 1.7.33
+  configChecksum: b7a18286bf73361d9779685697f7a575
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 933cff47-bc89-4362-ab41-619b1fb9493d
-  pristine_commit_hash: 756ceb042d1f70b6ef26c02abe9a178355fad4e5
-  pristine_tree_hash: 2847517a434959cc4f5ceb39484bae67e4921010
+  generation_id: 4557c1e4-d1bb-4a83-a177-53ba65e1841b
+  pristine_commit_hash: b7358114b576f0b11f5910d6ef5b53f70dba244e
+  pristine_tree_hash: dd8548769e896a9470156948f623c63165523908
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1421,8 +1421,8 @@ trackedFiles:
     pristine_git_object: 435e20ecd12e579ee7d2f4cf4a8bf026078f42f6
   docs/ListTransactionsRequest.md:
     id: 1632f9925045
-    last_write_checksum: sha1:329928163d5158ca9384d6c706395c5d68de0511
-    pristine_git_object: cbd54a940164ab0b1a97869a671dd4f0848401b7
+    last_write_checksum: sha1:c03a8c2559279c92f5af9d9641427064a2f0506c
+    pristine_git_object: 55618d6461c0df5dd8d66ba64c2487b649596971
   docs/ListTransactionsResponse.md:
     id: 6e881c224fa6
     last_write_checksum: sha1:749d87500a0a818b9948731450da223541a28dd6
@@ -1437,12 +1437,12 @@ trackedFiles:
     pristine_git_object: 77f7052dd456ac2f5431e6c4ce0ea03bedb8d095
   docs/MerchantAccount.md:
     id: adf45086084e
-    last_write_checksum: sha1:0c358857e1eedb198b1df3871eb43b11c09be7c4
-    pristine_git_object: 4593645492f18a93d659b4bb698045966c9c08a5
+    last_write_checksum: sha1:7b27314312497604eeea4d63f8a7413ca992b0cd
+    pristine_git_object: 90610ef6a3ef9017fa2130c586849dc1a625d7cc
   docs/MerchantAccountCreate.md:
     id: ff87c07ae1ea
-    last_write_checksum: sha1:2fb016f856ab8693abb141b30efe8ccc3430f165
-    pristine_git_object: fc06fcccbd8b757c691b02abe4445c9d04683196
+    last_write_checksum: sha1:34e9fd703b7dce0ac3b4776bf8a8a290d78b7fe5
+    pristine_git_object: f5a9eb2bc7e5a652203c9edb50cd3b91a17f4b3e
   docs/MerchantAccountSummary.md:
     id: 0307c7bca748
     last_write_checksum: sha1:77abcbbee0dffc23e2d78bed168a41c493260390
@@ -1465,8 +1465,8 @@ trackedFiles:
     pristine_git_object: 461dfca2ad3292525a5f1b44991227d51e894633
   docs/MerchantAccountUpdate.md:
     id: fa847253338a
-    last_write_checksum: sha1:bb35417fad7480f189e5d87986e4b6cf64cfd92f
-    pristine_git_object: 4862b9a359ce0676afded6c1b5ac6e2a28fe27f8
+    last_write_checksum: sha1:ca3929e3e9ddb291fbed8e3110fdfacb8619d237
+    pristine_git_object: b2fa9a5e193fe46c4f71846c0bd65baaf7ed25ee
   docs/MerchantAccounts.md:
     id: 8d22a6c8da0c
     last_write_checksum: sha1:da4984ff5f99256e4b7b7d09625946e8b238e5b5
@@ -4669,8 +4669,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:743c4b4fa0e61abd46986f48d9ec826de7a516e5
-    pristine_git_object: 4c4ddce308de8a706587099f3858f9c73d501bc9
+    last_write_checksum: sha1:11a343acabb88c852cbe9fb31bfc5aeb41d0e0bd
+    pristine_git_object: aaa0e1ad24f61769b860b856c6490e7920e49329
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
