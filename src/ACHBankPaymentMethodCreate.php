@@ -26,7 +26,7 @@ class ACHBankPaymentMethodCreate
     public BankAccountHolder $accountHolder;
 
     /**
-     * The account number for this ACH bank account
+     * The account number for this ACH bank account, made up of at most 17 digits. Spaces and dashes are ignored. Any format is accepted when `is_tokenized` is `true`.
      *
      * @var string $accountNumber
      */
@@ -34,7 +34,7 @@ class ACHBankPaymentMethodCreate
     public string $accountNumber;
 
     /**
-     * The routing number for this ACH bank account
+     * The routing number for this ACH bank account, made up of 9 digits. Spaces and dashes are ignored.
      *
      * @var string $routingNumber
      */
