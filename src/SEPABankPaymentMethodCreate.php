@@ -26,7 +26,7 @@ class SEPABankPaymentMethodCreate
     public BankAccountHolder $accountHolder;
 
     /**
-     * The IBAN for this SEPA bank account
+     * The IBAN for this SEPA bank account. Spaces are ignored and it is not case sensitive.
      *
      * @var string $accountNumber
      */
@@ -61,7 +61,7 @@ class SEPABankPaymentMethodCreate
     public ?string $externalIdentifier = null;
 
     /**
-     * The BIC for this SEPA bank account
+     * The BIC for this SEPA bank account, of 8 or 11 characters. Spaces are ignored and it is not case sensitive.
      *
      * @var ?string $routingNumber
      */

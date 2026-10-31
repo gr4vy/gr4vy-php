@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 7fb86ea2a0088f9db1dd29744e55b834
+  docChecksum: fe63682e6d1cccdb4c7fa4cbfd65060d
   docVersion: 1.0.0
-  speakeasyVersion: 1.801.0
-  generationVersion: 2.946.0
-  releaseVersion: 1.7.33
-  configChecksum: b7a18286bf73361d9779685697f7a575
+  speakeasyVersion: 1.805.0
+  generationVersion: 2.954.8
+  releaseVersion: 1.7.34
+  configChecksum: 009cca36bfa1f61a46936cd0a601b2bd
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 4557c1e4-d1bb-4a83-a177-53ba65e1841b
-  pristine_commit_hash: b7358114b576f0b11f5910d6ef5b53f70dba244e
-  pristine_tree_hash: dd8548769e896a9470156948f623c63165523908
+  generation_id: 1dc44641-7d78-47a0-b092-67073facf4ac
+  pristine_commit_hash: f63f41fb3af0d7d9805a12011c02bc1b1bd8c67e
+  pristine_tree_hash: f937b4e5cfd38c4c01a2c5a0ffdd22fdd27b7819
 features:
   php:
     constsAndDefaults: 0.2.2
-    core: 3.9.28
+    core: 3.9.29
     deprecations: 2.81.1
     flattening: 2.81.2
     globalSecurity: 2.81.12
@@ -49,8 +49,8 @@ trackedFiles:
     pristine_git_object: cb330c8cebbc5020e6a5817cb0c7e350ad80b243
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
-    last_write_checksum: sha1:ae0c428a9f8253c76a0eec3e80f73b5dac10a58f
-    pristine_git_object: 453f2ee1e0211a87a77eeec9fb4e13e35f94de0a
+    last_write_checksum: sha1:1ac28f223ac7841df7907daaf82d124173fe471d
+    pristine_git_object: fef21c6c6a02a0b99cfeb44c88d20bbcf89a8384
   docs/AIInsightsReportSpec.md:
     id: 4452714a5522
     last_write_checksum: sha1:d1381113e17a9b21fb6eabfe0936a082b9d0f0c3
@@ -213,8 +213,8 @@ trackedFiles:
     pristine_git_object: 875d7727aff353da130638d859e88bbeceef2246
   docs/BACSBankPaymentMethodCreate.md:
     id: 078dadd79816
-    last_write_checksum: sha1:63063725a5f5553742da3ec84f947017ed56130d
-    pristine_git_object: 5ddcee8bdc66d6da214780afb053d2dc03fd7364
+    last_write_checksum: sha1:6f4cfbb9ea958941fa1a7012280f44f9e52022fc
+    pristine_git_object: f486a68ec6215aee5b6382ce54b078dfc6bb8b6c
   docs/BankAccountHolder.md:
     id: 37077e489eb4
     last_write_checksum: sha1:b8aba36c18fac38431be3f02e70974843bde4f3d
@@ -1961,8 +1961,8 @@ trackedFiles:
     pristine_git_object: f90c337d96a559edd5595c941fcb98d3054ea654
   docs/SEPABankPaymentMethodCreate.md:
     id: b1ec1d10539d
-    last_write_checksum: sha1:8a4a9a3e9a1451acf6352ac07b401f87a5aba2a3
-    pristine_git_object: ce682fb18f635861055ddb816d0a12ebb0b56934
+    last_write_checksum: sha1:e664f836e99624f27644fead30c5de441a2955dd
+    pristine_git_object: ab97a4bb99d829b130a1d3ed602d8775bd4dd03a
   docs/Security.md:
     id: 70e8af662682
     last_write_checksum: sha1:aa0182c751204d3c781813431eb4f885eb31a0aa
@@ -2549,8 +2549,8 @@ trackedFiles:
     pristine_git_object: 40eb9bfbea10383ae16ce195da9113bb2abfc586
   src/ACHBankPaymentMethodCreate.php:
     id: 0d0c5b290e9a
-    last_write_checksum: sha1:e8d57c6d3acbb95ce5f16cb091d7eff5a36e8263
-    pristine_git_object: 9bff3560c65cf9060059888bbeca18688412b492
+    last_write_checksum: sha1:a415917a8cec8a2cef2d423b3a3ed37397728c0a
+    pristine_git_object: 16420de05945b07a198d4e41035025362184b46d
   src/AIInsightsReportSpec.php:
     id: 01d07b641f61
     last_write_checksum: sha1:e1883456a9384f875ba255775d0269dd275d5ca9
@@ -2737,8 +2737,8 @@ trackedFiles:
     pristine_git_object: 7da3d54892b3008e08087dd03f5dfb9539b0a078
   src/BACSBankPaymentMethodCreate.php:
     id: c25562946f2e
-    last_write_checksum: sha1:d5d92a7d9894c5138f0ef7e4c01ef53dcd4a844a
-    pristine_git_object: 67c9d451867cd11ad7031ee3c02b9ec5938d149e
+    last_write_checksum: sha1:4f7941417d7f51534d65cae107cb26b918017a87
+    pristine_git_object: 2c0807f839b386b2b424b4d5d0f11ba42c406f67
   src/Balances.php:
     id: 86867b9edd7d
     last_write_checksum: sha1:b39a43517b20520e87fc093fb50454d4347fd53b
@@ -4669,12 +4669,12 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:11a343acabb88c852cbe9fb31bfc5aeb41d0e0bd
-    pristine_git_object: aaa0e1ad24f61769b860b856c6490e7920e49329
+    last_write_checksum: sha1:732ffd7d922cefd42a2e19cc2fb57464b612b862
+    pristine_git_object: e2965b4108c1199ff0d8f91688cd32549782b646
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
-    last_write_checksum: sha1:808d4cccb2dccc84de1776511f05aa12a51da676
-    pristine_git_object: 7201d0a2451e4b5243948c7006c942c9caedf641
+    last_write_checksum: sha1:0822d5d536788d0bf5b1be4fe4a17ee9316eb6a3
+    pristine_git_object: 2d3b38d32ac54335363822f23e92d58cf2ea3fab
   src/Security.php:
     id: 07a9a9c51866
     last_write_checksum: sha1:3269c1181e027ae914cfcb6964e32b238e280634
