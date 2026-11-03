@@ -5,15 +5,15 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.806.0
   generationVersion: 2.956.1
-  releaseVersion: 1.7.34
-  configChecksum: 009cca36bfa1f61a46936cd0a601b2bd
+  releaseVersion: 1.7.35
+  configChecksum: e0f17991f823bc38d2cff0359eeea7e8
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 61329ffa-0c97-49ae-a632-c0fc0e80c020
-  pristine_commit_hash: 3bae7287e58f60eff8423a3235181bd407dd556d
-  pristine_tree_hash: 668f0d041b61ce2b9581953c5da4eaf7ff3f631e
+  generation_id: a1e194a0-ec75-471b-9538-5ee2f37b2c3e
+  pristine_commit_hash: 6af92b3725dc7ed3ab1f5ed81f9e45ee4756b37b
+  pristine_tree_hash: edeb793875dcfdab128e007b632f2786e3fb7343
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -4669,8 +4669,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:df9910e2b4609d63f0af6d8eb26044b815aa59d9
-    pristine_git_object: eb538982185895520751976eae0274629e749d96
+    last_write_checksum: sha1:733c00699e9d6bbb6ff7dfeb95270676fd30ac2d
+    pristine_git_object: e28ab5c56a0efc92f6c94b7ba292185a99af7d3f
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:0822d5d536788d0bf5b1be4fe4a17ee9316eb6a3
@@ -9471,7 +9471,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->airline` **Added**\n  *  `response.airline` **Added**\n* `sdk->payment-links->list()`:  `response.items[]->airline` **Added**\n* `sdk->payment-links->get()`:  `response.airline` **Added**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
