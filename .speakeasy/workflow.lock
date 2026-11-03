@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:ee0d010336730d7f095555e82cf5c2853ec703ccd90a4986ab548f457a91d6a7
         sourceBlobDigest: sha256:8c49d1f01fc7931545f5de3357ba7ea303c67f8a73e860f61a985e2bc41b839e
         codeSamplesNamespace: openapi-php-code-samples
-        codeSamplesRevisionDigest: sha256:cb8d7304e3645a7f203e71f7fd4ba4409ac5b60bad7cf2220d2406febba7067f
+        codeSamplesRevisionDigest: sha256:f33e622862bca95b0b28648c407697c8bc6e8c7b24dcd00a7d467cfe0b54d1f4
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
