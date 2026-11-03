@@ -192,6 +192,16 @@ class PaymentLinkCreate
     public ?array $cartItems = null;
 
     /**
+     * The airline addendum data which describes the airline booking associated with this payment link.
+     *
+     * @var ?\Gr4vy\Airline $airline
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('airline')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Airline|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Airline $airline = null;
+
+    /**
      * Arbitrary metadata for the payment link.
      *
      * @var ?array<string, mixed> $metadata
@@ -250,12 +260,13 @@ class PaymentLinkCreate
      * @param  ?string  $merchantFaviconUrl
      * @param  ?string  $returnUrl
      * @param  ?array<\Gr4vy\CartItem>  $cartItems
+     * @param  ?\Gr4vy\Airline  $airline
      * @param  ?array<string, mixed>  $metadata
      * @param  ?string  $buyerId
      * @param  ?int  $installmentCount
      * @phpstan-pure
      */
-    public function __construct(int $amount, string $country, string $currency, ?string $intent = null, ?string $paymentSource = null, ?GuestBuyer $buyer = null, ?\DateTime $expiresAt = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $cartItems = null, ?array $metadata = null, ?string $buyerId = null, ?int $installmentCount = null, ?bool $store = false)
+    public function __construct(int $amount, string $country, string $currency, ?string $intent = null, ?string $paymentSource = null, ?GuestBuyer $buyer = null, ?\DateTime $expiresAt = null, ?TransactionConnectionOptions $connectionOptions = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $cartItems = null, ?Airline $airline = null, ?array $metadata = null, ?string $buyerId = null, ?int $installmentCount = null, ?bool $store = false)
     {
         $this->amount = $amount;
         $this->country = $country;
@@ -277,6 +288,7 @@ class PaymentLinkCreate
         $this->merchantFaviconUrl = $merchantFaviconUrl;
         $this->returnUrl = $returnUrl;
         $this->cartItems = $cartItems;
+        $this->airline = $airline;
         $this->metadata = $metadata;
         $this->buyerId = $buyerId;
         $this->installmentCount = $installmentCount;
