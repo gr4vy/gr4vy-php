@@ -99,6 +99,15 @@ class PaymentLink
     public ?array $cartItems;
 
     /**
+     * The airline addendum data which describes the airline booking associated with this payment link.
+     *
+     * @var ?\Gr4vy\Airline $airline
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('airline')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Gr4vy\Airline|null')]
+    public ?Airline $airline;
+
+    /**
      * The expiration date and time for the payment link.
      *
      * @var ?\DateTime $expiresAt
@@ -296,6 +305,7 @@ class PaymentLink
      * @param  string  $status
      * @param  ?string  $type
      * @param  ?array<\Gr4vy\CartItem>  $cartItems
+     * @param  ?\Gr4vy\Airline  $airline
      * @param  ?bool  $store
      * @param  ?\DateTime  $expiresAt
      * @param  ?string  $externalIdentifier
@@ -317,7 +327,7 @@ class PaymentLink
      * @param  ?int  $installmentCount
      * @phpstan-pure
      */
-    public function __construct(string $id, string $url, int $amount, string $country, string $currency, string $intent, string $paymentSource, \DateTime $createdAt, \DateTime $updatedAt, string $status, ?array $cartItems = null, ?\DateTime $expiresAt = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $metadata = null, ?TransactionBuyer $buyer = null, ?ShippingDetails $shippingDetails = null, ?array $connectionOptions = null, ?string $buyerId = null, ?int $installmentCount = null, ?bool $store = false, ?string $type = 'payment-link')
+    public function __construct(string $id, string $url, int $amount, string $country, string $currency, string $intent, string $paymentSource, \DateTime $createdAt, \DateTime $updatedAt, string $status, ?array $cartItems = null, ?Airline $airline = null, ?\DateTime $expiresAt = null, ?string $externalIdentifier = null, ?StatementDescriptor $statementDescriptor = null, ?string $locale = null, ?string $merchantName = null, ?string $merchantUrl = null, ?string $merchantBannerUrl = null, ?string $merchantColor = null, ?string $merchantMessage = null, ?string $merchantTermsAndConditionsUrl = null, ?string $merchantFaviconUrl = null, ?string $returnUrl = null, ?array $metadata = null, ?TransactionBuyer $buyer = null, ?ShippingDetails $shippingDetails = null, ?array $connectionOptions = null, ?string $buyerId = null, ?int $installmentCount = null, ?bool $store = false, ?string $type = 'payment-link')
     {
         $this->id = $id;
         $this->url = $url;
@@ -330,6 +340,7 @@ class PaymentLink
         $this->updatedAt = $updatedAt;
         $this->status = $status;
         $this->cartItems = $cartItems;
+        $this->airline = $airline;
         $this->expiresAt = $expiresAt;
         $this->externalIdentifier = $externalIdentifier;
         $this->statementDescriptor = $statementDescriptor;
