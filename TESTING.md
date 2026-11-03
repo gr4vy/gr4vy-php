@@ -101,8 +101,8 @@ When `GR4VY_TRACK_HTTP=1` is set, the test HTTP client logs the method + path of
 every request to `coverage/http/*.jsonl`. `scripts/endpoint-coverage.php` builds
 the operation catalogue from the generated `src/*.php` classes and reports how
 many operations were reached by a **real HTTP request** — newly generated (but
-untested) endpoints show up as "not reached". CI runs this once, un-sharded, and
-posts the result as a sticky PR comment. It is a **report, not a merge gate**.
+untested) endpoints show up as "not reached". CI runs this once, un-sharded, on
+`main`, and writes the result to the run summary. It is a **report, not a gate**.
 
 The script reads **every** `coverage/http/*.jsonl` it finds, so clear the
 directory first when running locally — otherwise stale logs from a previous run
@@ -117,10 +117,13 @@ php scripts/endpoint-coverage.php
 
 ## CI
 
-- `e2e` runs the three E2E shards on PHP 8.3; `offline` runs the offline suite on
-  PHP 8.2–8.4.
-- `ci-complete` is the single stable required check (it `needs` every shard) and
-  performs the one-time auto-approve of SDK-regen PRs. Point branch rulesets at
-  **`ci-complete`**, not the per-shard matrix jobs.
-- `coverage` posts the endpoint-reach comment and is **not** a merge dependency.
-- `merge` (auto-merge of bot regen PRs) depends only on `ci-complete`.
+- `e2e` runs the three E2E shards on PHP 8.3, on `main` only. The key comes from
+  the `e2e` Environment, which only `main` can use, so PRs never run the live
+  suite. `offline` runs the offline suite on PHP 8.2–8.4 everywhere.
+- `ci-complete` is the single stable required check. On a PR it means `offline`
+  passed; on `main` it also means every E2E shard passed. Point branch rulesets
+  at **`ci-complete`**, not the per-shard matrix jobs.
+- `coverage` writes the endpoint-reach report on `main` and is **not** a gate.
+- Speakeasy regen PRs are merged by the release bot (`sdk_merge.yaml`), and
+  `sdk_publish.yaml` releases once `main` is green. See
+  [gr4vy/sdk-release](https://github.com/gr4vy/sdk-release).
