@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * Summarises endpoint reach for the PR comment.
+ * Summarises endpoint reach for the daily coverage report.
  *
  * Reach is computed from *observed HTTP calls*, not code coverage: the test HTTP
  * client (Tests/Utils/TestEnvironment.php, gated on GR4VY_TRACK_HTTP) logs the
@@ -14,7 +14,7 @@ declare(strict_types=1);
  * operation reached only if a matching request was actually sent — so an operation
  * that fails local validation before issuing a request does not count.
  *
- * Writes coverage/endpoint-coverage.md (for the PR comment) and prints it.
+ * Writes coverage/endpoint-coverage.md (for the run summary and Slack) and prints it.
  * Exits 0 always — this is a report, not a gate.
  */
 
@@ -141,7 +141,7 @@ if ($httpTracked && $missed) {
     $lines[] = '✅ Every endpoint operation was reached by a real request.';
 }
 $lines[] = '';
-// Relative links in PR comments resolve against the PR URL (e.g. /pull/123) and
+// Relative links in the run summary resolve against the run URL and
 // 404, so build an absolute blob URL from the CI env when available.
 $repo = getenv('GITHUB_REPOSITORY') ?: '';
 $ref = getenv('GITHUB_SHA') ?: 'main';
