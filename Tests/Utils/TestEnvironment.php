@@ -99,16 +99,42 @@ final class TestEnvironment
         );
 
         $client = self::createClient($privateKey, $merchantAccountId);
-        $client->paymentServices->create(new PaymentServiceCreate(
-            displayName: 'Payment service',
-            paymentServiceDefinitionId: 'mock-card',
-            fields: [new Field(key: 'merchant_id', value: 'test')],
-            acceptedCurrencies: ['USD'],
-            acceptedCountries: ['US'],
-            active: true,
-        ));
+        try {
+            $client->paymentServices->create(new PaymentServiceCreate(
+                displayName: 'Payment service',
+                paymentServiceDefinitionId: 'mock-card',
+                fields: [new Field(key: 'merchant_id', value: 'test')],
+                acceptedCurrencies: ['USD'],
+                acceptedCountries: ['US'],
+                active: true,
+            ));
+        } catch (\Throwable $e) {
+            self::deleteMerchantAccount($privateKey, $merchantAccountId);
+            throw $e;
+        }
 
         return new TestMerchant($client, $merchantAccountId, $privateKey);
+    }
+
+    /**
+     * Deletes a merchant account a suite created. The endpoint is not in the
+     * public spec, so it is called directly. Failures are logged, never thrown:
+     * cleanup must not fail the run.
+     */
+    public static function deleteMerchantAccount(string $privateKey, string $merchantAccountId): void
+    {
+        try {
+            $response = (new Client(['timeout' => 30, 'connect_timeout' => 10, 'http_errors' => false]))->delete(
+                self::API_BASE_URL.'/merchant-accounts/'.rawurlencode($merchantAccountId),
+                ['headers' => ['Authorization' => 'Bearer '.Auth::getToken($privateKey)]]
+            );
+            $status = $response->getStatusCode();
+            if ($status !== 204 && $status !== 404) {
+                fwrite(STDERR, "Failed to delete merchant account {$merchantAccountId}: HTTP {$status}".PHP_EOL);
+            }
+        } catch (\Throwable $e) {
+            fwrite(STDERR, "Failed to delete merchant account {$merchantAccountId}: {$e->getMessage()}".PHP_EOL);
+        }
     }
 
     /** Injects a random unknown field into JSON responses (forward-compat assertion). */
