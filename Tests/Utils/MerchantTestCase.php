@@ -20,20 +20,35 @@ abstract class MerchantTestCase extends TestCase
 
     private static ?TestMerchant $merchant = null;
 
+    /** @var array<string, string> merchant account id => signing key, deleted after the class */
+    private static array $createdMerchantAccounts = [];
+
     public static function setUpBeforeClass(): void
     {
         self::$merchant = TestEnvironment::setupMerchant();
+        self::trackMerchantAccount(self::$merchant->merchantAccountId, self::$merchant->privateKey);
     }
 
     public static function tearDownAfterClass(): void
     {
+        foreach (self::$createdMerchantAccounts as $merchantAccountId => $privateKey) {
+            TestEnvironment::deleteMerchantAccount($privateKey, (string) $merchantAccountId);
+        }
+        self::$createdMerchantAccounts = [];
         self::$merchant = null;
+    }
+
+    /** Records a merchant account this class created so it is deleted after the class. */
+    protected static function trackMerchantAccount(string $merchantAccountId, string $privateKey): void
+    {
+        self::$createdMerchantAccounts[$merchantAccountId] = $privateKey;
     }
 
     protected function merchant(): TestMerchant
     {
         if (self::$merchant === null) {
             self::$merchant = TestEnvironment::setupMerchant();
+            self::trackMerchantAccount(self::$merchant->merchantAccountId, self::$merchant->privateKey);
         }
 
         return self::$merchant;
