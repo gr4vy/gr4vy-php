@@ -28,8 +28,8 @@ final class MerchantAccountsTest extends MerchantTestCase
         $sdk = TestEnvironment::createClient($this->merchant()->privateKey);
         $id = strtolower(bin2hex(random_bytes(8)));
 
-        $created = $sdk->merchantAccounts->create(new MerchantAccountCreate(id: $id, displayName: 'Original'))->merchantAccount;
         self::trackMerchantAccount($id, $this->merchant()->privateKey);
+        $created = $sdk->merchantAccounts->create(new MerchantAccountCreate(id: $id, displayName: 'Original'))->merchantAccount;
         $this->assertSame($id, $created->id);
 
         $fetched = $sdk->merchantAccounts->get($id)->merchantAccount;

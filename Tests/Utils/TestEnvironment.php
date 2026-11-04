@@ -94,12 +94,11 @@ final class TestEnvironment
         $admin = self::createClient($privateKey);
 
         $merchantAccountId = strtolower(bin2hex(random_bytes(8)));
-        $admin->merchantAccounts->create(
-            new MerchantAccountCreate(id: $merchantAccountId, displayName: $merchantAccountId)
-        );
-
         $client = self::createClient($privateKey, $merchantAccountId);
         try {
+            $admin->merchantAccounts->create(
+                new MerchantAccountCreate(id: $merchantAccountId, displayName: $merchantAccountId)
+            );
             $client->paymentServices->create(new PaymentServiceCreate(
                 displayName: 'Payment service',
                 paymentServiceDefinitionId: 'mock-card',
