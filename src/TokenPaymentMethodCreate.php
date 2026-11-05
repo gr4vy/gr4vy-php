@@ -30,6 +30,15 @@ class TokenPaymentMethodCreate
     public ?string $securityCode = null;
 
     /**
+     * The preferred card scheme to use when processing a co-badged card.
+     *
+     * @var ?string $preferredScheme
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('preferred_scheme')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $preferredScheme = null;
+
+    /**
      * The URL to redirect a user back to after they approve the transaction in the browser.
      *
      * @var ?string $redirectUrl
@@ -51,13 +60,15 @@ class TokenPaymentMethodCreate
      * @param  string  $id
      * @param  ?string  $method
      * @param  ?string  $securityCode
+     * @param  ?string  $preferredScheme
      * @param  ?string  $redirectUrl
      * @phpstan-pure
      */
-    public function __construct(string $id, ?string $securityCode = null, ?string $redirectUrl = null, ?string $method = 'id')
+    public function __construct(string $id, ?string $securityCode = null, ?string $preferredScheme = null, ?string $redirectUrl = null, ?string $method = 'id')
     {
         $this->id = $id;
         $this->securityCode = $securityCode;
+        $this->preferredScheme = $preferredScheme;
         $this->redirectUrl = $redirectUrl;
         $this->method = $method;
     }

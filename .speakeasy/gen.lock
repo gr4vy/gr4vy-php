@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: bff72ca020a38f933d025a1c1da7522b
+  docChecksum: 8727fe5f7bdd29e5dc6273222b658519
   docVersion: 1.0.0
   speakeasyVersion: 1.806.0
   generationVersion: 2.956.1
-  releaseVersion: 1.7.36
-  configChecksum: 392972887e1ce384bbd83aa3b3592d45
+  releaseVersion: 1.7.37
+  configChecksum: 375e7891b7c449d4322c8828477f3e47
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 111c9e57-9aa5-4aa6-933d-73d5693ad28e
-  pristine_commit_hash: b980fa90047625ea12fa6d47c42439285c6700ab
-  pristine_tree_hash: 0d71de65f91b598c94b20c4008fef84290c8f041
+  generation_id: ec826ac6-290e-4b7a-bc2b-16faa73b892d
+  pristine_commit_hash: ad320090e83fd5d2787048a6d09012be920a10c1
+  pristine_tree_hash: 5ecebb0a41a56d8dabae0cd30bbfe1e33d1bea44
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -45,8 +45,8 @@ trackedFiles:
     pristine_git_object: c15dc1e08dcc3003a2d25fb2480af1b757558bfa
   composer.json:
     id: 3957b91a0d84
-    last_write_checksum: sha1:1e5a4eed5b48a58aa7fe4fc0529bbbcbdd702a74
-    pristine_git_object: 77b7af2b92e658ae514776f033612c64c390f360
+    last_write_checksum: sha1:8e7f3ce4ed3912dc392988012e07f6f4191e3a61
+    pristine_git_object: ed631a50e27c79dce5cc3cd512b21b31a203b05f
   docs/ACHBankPaymentMethodCreate.md:
     id: 5b5ed698372f
     last_write_checksum: sha1:1ac28f223ac7841df7907daaf82d124173fe471d
@@ -285,8 +285,8 @@ trackedFiles:
     pristine_git_object: 7db924a2bd36a6ee07f2052c2e6b8fabb2eb121a
   docs/CardPaymentMethodCreate.md:
     id: 52afa220ec7b
-    last_write_checksum: sha1:7c631b6e220f77da3dbdb32023e26a0388fd4548
-    pristine_git_object: 6f3b7f5beee74845b8542cbbe86b64df8e814c24
+    last_write_checksum: sha1:ef5c326429cc86d6c573215e99981372e49ae435
+    pristine_git_object: 2213cf3e681c052bfb3254eb9797ef73d2a03ad9
   docs/CardSchemeDefinition.md:
     id: cd8c4d944c55
     last_write_checksum: sha1:9f9780e1bdb52c3a3d74a17c37be0de981c142ef
@@ -297,8 +297,8 @@ trackedFiles:
     pristine_git_object: 2e3f223bdbae9ffe7bbc2389f3b3c474f8da73e3
   docs/CardWithUrlPaymentMethodCreate.md:
     id: 3f55a8387f06
-    last_write_checksum: sha1:632b5f63d433a5bae971bb25c5b4786bcaee6ebc
-    pristine_git_object: d0206f1ac15722a8c79401358c6d750bc5eee9b5
+    last_write_checksum: sha1:a83d1d955bea88af8dee0b939fab1a9da0ab4d99
+    pristine_git_object: 751e4b049f5c69c4978a787a32e2cef3d1a24d30
   docs/CartItem.md:
     id: efc3f40dfed7
     last_write_checksum: sha1:7042ef44ff11721e3e543ef0b49faa6ae6c77334
@@ -333,8 +333,8 @@ trackedFiles:
     pristine_git_object: 19c447879a513e5424983df748f6ff5798fd3cd8
   docs/CheckoutSessionWithUrlPaymentMethodCreate.md:
     id: 98e36c7b97e7
-    last_write_checksum: sha1:7984b722fde115b10d3ef01bea40790d2145def8
-    pristine_git_object: cd098f600f19494a7849c0a6de678ed287279ec1
+    last_write_checksum: sha1:f1440d7761b9e1ed8c41ad00f3a1d4be15d682b2
+    pristine_git_object: 1b2e71c3b1f82629810f41dbce1242944b2ead1c
   docs/ClickToPayFPANPaymentMethodCreate.md:
     id: 9fbb0f3bd231
     last_write_checksum: sha1:2c38a17a9b2a0f9993e818dc88fcb115fe763f38
@@ -2093,8 +2093,8 @@ trackedFiles:
     pristine_git_object: c964d35db7b9cf70d4a35cd63d4c29f6696156bc
   docs/TokenPaymentMethodCreate.md:
     id: 7596be1ed293
-    last_write_checksum: sha1:3e8fda411f556c960a73a14314543f24b47aed96
-    pristine_git_object: 79a9ec82e564ecae6b47dee3d8197f07f71ffe63
+    last_write_checksum: sha1:032b42b42a461e0c1eb476144696dba242d09ad7
+    pristine_git_object: 234b1db982edee41f9a5f822fbb34356df08e658
   docs/Tracking.md:
     id: 2ef6dc427490
     last_write_checksum: sha1:d0ae88aca17d2bd65d4e002a84baeba7e6a83020
@@ -2829,8 +2829,8 @@ trackedFiles:
     pristine_git_object: a6afc4fd2407a6a23438beb55f7a97320d9d4165
   src/CardPaymentMethodCreate.php:
     id: 821d3d9cf846
-    last_write_checksum: sha1:9f085b31ff3fca0f7ac0b87d1c57868748fb9d32
-    pristine_git_object: c9901695cab4f9c664c9dea4ab67ef159327c704
+    last_write_checksum: sha1:5f6203f49f5c96009a0224def6e07862e6413165
+    pristine_git_object: aa82c29768de681ed5782e7be3b805ba8b7afa7c
   src/CardSchemeDefinition.php:
     id: 78bf379ff05c
     last_write_checksum: sha1:b2ed4ac881dfff492aea556c73941472b9a45936
@@ -2845,8 +2845,8 @@ trackedFiles:
     pristine_git_object: 8060a5338e7b5377ebf4ece388cff2b245de5f01
   src/CardWithUrlPaymentMethodCreate.php:
     id: 294a8cb67610
-    last_write_checksum: sha1:5dee2c9de105c598324d74ca011b159f19ab7514
-    pristine_git_object: 82721fbadde4dfb7d52b732fdf358e2bf3b18687
+    last_write_checksum: sha1:9e0f1e821f039115ee82a23fb5080b232c320347
+    pristine_git_object: fc3dc12f6ffe03ebb10fbc5542102cd2c7d2e557
   src/CartItem.php:
     id: 331cc16d3d4a
     last_write_checksum: sha1:291452328c8dbcfb6042f8f0b78e0dc91ba29e15
@@ -2881,8 +2881,8 @@ trackedFiles:
     pristine_git_object: 27ed595b5224085a35f42c8c15048dc110abe49a
   src/CheckoutSessionWithUrlPaymentMethodCreate.php:
     id: cface5661f9f
-    last_write_checksum: sha1:77d061fe5560287ec1bf688e12d1b5da924b9307
-    pristine_git_object: e8403e3c31d92eceff8ed880119776659167ae4c
+    last_write_checksum: sha1:0936529ef749a70072cbbdb9c0425cf701e5b46c
+    pristine_git_object: a104045d75ea236d37e9f3de940eed97b035399b
   src/CheckoutSessions.php:
     id: 2139a0c151fe
     last_write_checksum: sha1:2f42ea5826791330b8fdd285d12bf502d36b829f
@@ -4669,8 +4669,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:71676e83c06a33d349034744c41551d96d50574a
-    pristine_git_object: cdc7b604e1c8824cc38d0c66addefced41e5c653
+    last_write_checksum: sha1:b46ef3b947d56437c9382967aea83c7d89d9a865
+    pristine_git_object: 01e68f4a18cd9bfe0eccd90e372d332dc482ab98
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:0822d5d536788d0bf5b1be4fe4a17ee9316eb6a3
@@ -4805,8 +4805,8 @@ trackedFiles:
     pristine_git_object: 26a493d0303ef7c9c62712e0e1ae457855d82631
   src/TokenPaymentMethodCreate.php:
     id: 8a9b9f984e7f
-    last_write_checksum: sha1:e690630f75b59e2373abbb5829abe87a66dc54fe
-    pristine_git_object: 87472a3a99856749f4e8a6ae5d181f2dca025c32
+    last_write_checksum: sha1:1629d0d38dd77b5b61eae6f09c934d4b0f6b6a95
+    pristine_git_object: 8fb1d2600a806c258bef8aaedfcebd821e058939
   src/Tracking.php:
     id: 03aa936a61f6
     last_write_checksum: sha1:641b68e9f5e41f7c83d8608597eaebc6efdd9759
@@ -9471,6 +9471,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Php SDK Changes:\n* `sdk->payment-methods->create()`: \n  *  `requestBody->union(CardPaymentMethodCreate)->preferredScheme` **Added**\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->paymentMethod` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md
