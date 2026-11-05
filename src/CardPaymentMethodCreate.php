@@ -73,6 +73,15 @@ class CardPaymentMethodCreate
     public ?string $securityCode = null;
 
     /**
+     * The preferred card scheme to use when processing a co-badged card.
+     *
+     * @var ?string $preferredScheme
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('preferred_scheme')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $preferredScheme = null;
+
+    /**
      * Always `card`
      *
      * @var ?string $method
@@ -90,9 +99,10 @@ class CardPaymentMethodCreate
      * @param  ?string  $externalIdentifier
      * @param  ?string  $cardType
      * @param  ?string  $securityCode
+     * @param  ?string  $preferredScheme
      * @phpstan-pure
      */
-    public function __construct(string $expirationDate, string $number, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $externalIdentifier = null, ?string $cardType = null, ?string $securityCode = null, ?string $method = 'card')
+    public function __construct(string $expirationDate, string $number, ?string $buyerExternalIdentifier = null, ?string $buyerId = null, ?string $externalIdentifier = null, ?string $cardType = null, ?string $securityCode = null, ?string $preferredScheme = null, ?string $method = 'card')
     {
         $this->expirationDate = $expirationDate;
         $this->number = $number;
@@ -101,6 +111,7 @@ class CardPaymentMethodCreate
         $this->externalIdentifier = $externalIdentifier;
         $this->cardType = $cardType;
         $this->securityCode = $securityCode;
+        $this->preferredScheme = $preferredScheme;
         $this->method = $method;
     }
 }

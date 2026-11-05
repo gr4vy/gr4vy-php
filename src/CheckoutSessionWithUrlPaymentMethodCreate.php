@@ -57,6 +57,15 @@ class CheckoutSessionWithUrlPaymentMethodCreate
     public ?string $redirectUrl = null;
 
     /**
+     * The preferred card scheme to use when processing a co-badged card.
+     *
+     * @var ?string $preferredScheme
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('preferred_scheme')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $preferredScheme = null;
+
+    /**
      * Always `checkout-session`
      *
      * @var ?string $method
@@ -72,15 +81,17 @@ class CheckoutSessionWithUrlPaymentMethodCreate
      * @param  ?string  $buyerId
      * @param  ?string  $buyerExternalIdentifier
      * @param  ?string  $redirectUrl
+     * @param  ?string  $preferredScheme
      * @phpstan-pure
      */
-    public function __construct(string $id, ?string $externalIdentifier = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?string $redirectUrl = null, ?string $method = 'checkout-session')
+    public function __construct(string $id, ?string $externalIdentifier = null, ?string $buyerId = null, ?string $buyerExternalIdentifier = null, ?string $redirectUrl = null, ?string $preferredScheme = null, ?string $method = 'checkout-session')
     {
         $this->id = $id;
         $this->externalIdentifier = $externalIdentifier;
         $this->buyerId = $buyerId;
         $this->buyerExternalIdentifier = $buyerExternalIdentifier;
         $this->redirectUrl = $redirectUrl;
+        $this->preferredScheme = $preferredScheme;
         $this->method = $method;
     }
 }
