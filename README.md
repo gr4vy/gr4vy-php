@@ -691,7 +691,7 @@ foreach ($responses as $response) {
 
 Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
 
-By default an API error will raise a `errors\APIException` exception, which has the following properties:
+By default an API error will raise a `Errors\APIException` exception, which has the following properties:
 
 | Property       | Type                                    | Description           |
 |----------------|-----------------------------------------|-----------------------|
@@ -716,7 +716,7 @@ When custom error responses are specified for an operation, the SDK may also thr
 | Errors\Error500            | 500         | application/json |
 | Errors\Error502            | 502         | application/json |
 | Errors\Error504            | 504         | application/json |
-| errors\APIException        | 4XX, 5XX    | \*/\*            |
+| Errors\APIException        | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -786,7 +786,7 @@ try {
 } catch (Errors\Error504Throwable $e) {
     // handle $e->$container data
     throw $e;
-} catch (errors\APIException $e) {
+} catch (Errors\APIException $e) {
     // handle default exception
     throw $e;
 }

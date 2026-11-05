@@ -149,7 +149,7 @@ foreach ($responses as $response) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## create
 
@@ -222,7 +222,7 @@ if ($response->transaction !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## get
 
@@ -283,7 +283,7 @@ if ($response->transaction !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## update
 
@@ -347,7 +347,7 @@ if ($response->transaction !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## capture
 
@@ -412,7 +412,7 @@ if ($response->response200CaptureTransaction !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## void
 
@@ -475,7 +475,7 @@ if ($response->response200VoidTransaction !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## cancel
 
@@ -536,7 +536,7 @@ if ($response->transactionCancel !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## sync
 
@@ -597,7 +597,7 @@ if ($response->transaction !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## incrementAuthorization
 
@@ -664,4 +664,4 @@ if ($response->transactionAuthorizationIncrement !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
