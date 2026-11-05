@@ -73,7 +73,7 @@ if ($response->googlePaySession !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## applePay
 
@@ -137,7 +137,7 @@ if ($response->applePaySession !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## pazeMobileSessionCreate
 
@@ -206,7 +206,7 @@ if ($response->pazeMobileSessionCreate !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## paze
 
@@ -267,7 +267,7 @@ if ($response->responseCreatePazeDigitalWalletSession !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## pazeMobileSessionReview
 
@@ -332,7 +332,7 @@ if ($response->pazeSessionReview !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## pazeMobileSessionComplete
 
@@ -398,7 +398,7 @@ if ($response->pazeSessionComplete !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## clickToPay
 
@@ -459,4 +459,4 @@ if ($response->clickToPaySession !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

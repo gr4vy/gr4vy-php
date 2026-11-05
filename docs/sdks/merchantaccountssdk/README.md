@@ -74,7 +74,7 @@ foreach ($responses as $response) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## create
 
@@ -138,7 +138,7 @@ if ($response->merchantAccount !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## get
 
@@ -197,7 +197,7 @@ if ($response->merchantAccount !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |
 
 ## update
 
@@ -262,4 +262,4 @@ if ($response->merchantAccount !== null) {
 | Errors\Error500            | 500                        | application/json           |
 | Errors\Error502            | 502                        | application/json           |
 | Errors\Error504            | 504                        | application/json           |
-| errors\APIException        | 4XX, 5XX                   | \*/\*                      |
+| Errors\APIException        | 4XX, 5XX                   | \*/\*                      |

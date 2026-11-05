@@ -51,7 +51,7 @@ class Sessions
      * @param  \Gr4vy\PazeSessionCompleteRequest  $pazeSessionCompleteRequest
      * @param  ?string  $merchantAccountId
      * @return \Gr4vy\CompletePazeMobileSessionResponse
-     * @throws \Gr4vy\errors\APIException
+     * @throws \Gr4vy\Errors\APIException
      */
     public function pazeMobileSessionComplete(PazeSessionCompleteRequest $pazeSessionCompleteRequest, ?string $merchantAccountId = null, ?Options $options = null): CompletePazeMobileSessionResponse
     {
@@ -108,7 +108,7 @@ class Sessions
 
                 return $response;
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['400'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -119,7 +119,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error400', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['401'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -130,7 +130,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error401', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -141,7 +141,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error403', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -152,7 +152,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error404', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['405'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -163,7 +163,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error405', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['409'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -174,7 +174,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error409', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -185,7 +185,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['425'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -196,7 +196,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error425', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['429'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -207,7 +207,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error429', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['500'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -218,7 +218,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error500', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['502'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -229,7 +229,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error502', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['504'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -240,14 +240,14 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error504', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
-            throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
 
@@ -259,7 +259,7 @@ class Sessions
      * @param  \Gr4vy\ApplePaySessionRequest  $applePaySessionRequest
      * @param  ?string  $merchantAccountId
      * @return \Gr4vy\CreateApplePayDigitalWalletSessionResponse
-     * @throws \Gr4vy\errors\APIException
+     * @throws \Gr4vy\Errors\APIException
      */
     public function applePay(ApplePaySessionRequest $applePaySessionRequest, ?string $merchantAccountId = null, ?Options $options = null): CreateApplePayDigitalWalletSessionResponse
     {
@@ -316,7 +316,7 @@ class Sessions
 
                 return $response;
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['400'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -327,7 +327,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error400', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['401'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -338,7 +338,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error401', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -349,7 +349,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error403', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -360,7 +360,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error404', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['405'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -371,7 +371,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error405', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['409'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -382,7 +382,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error409', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -393,7 +393,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['425'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -404,7 +404,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error425', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['429'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -415,7 +415,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error429', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['500'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -426,7 +426,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error500', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['502'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -437,7 +437,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error502', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['504'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -448,14 +448,14 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error504', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
-            throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
 
@@ -466,7 +466,7 @@ class Sessions
      *
      * @param  \Gr4vy\ClickToPaySessionRequest  $request
      * @return \Gr4vy\CreateClickToPayDigitalWalletSessionResponse
-     * @throws \Gr4vy\errors\APIException
+     * @throws \Gr4vy\Errors\APIException
      */
     public function clickToPay(ClickToPaySessionRequest $request, ?Options $options = null): CreateClickToPayDigitalWalletSessionResponse
     {
@@ -515,7 +515,7 @@ class Sessions
 
                 return $response;
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['400'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -526,7 +526,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error400', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['401'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -537,7 +537,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error401', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -548,7 +548,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error403', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -559,7 +559,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error404', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['405'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -570,7 +570,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error405', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['409'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -581,7 +581,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error409', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -592,7 +592,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['425'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -603,7 +603,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error425', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['429'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -614,7 +614,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error429', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['500'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -625,7 +625,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error500', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['502'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -636,7 +636,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error502', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['504'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -647,14 +647,14 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error504', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
-            throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
 
@@ -666,7 +666,7 @@ class Sessions
      * @param  \Gr4vy\GooglePaySessionRequest  $googlePaySessionRequest
      * @param  ?string  $merchantAccountId
      * @return \Gr4vy\CreateGooglePayDigitalWalletSessionResponse
-     * @throws \Gr4vy\errors\APIException
+     * @throws \Gr4vy\Errors\APIException
      */
     public function googlePay(GooglePaySessionRequest $googlePaySessionRequest, ?string $merchantAccountId = null, ?Options $options = null): CreateGooglePayDigitalWalletSessionResponse
     {
@@ -723,7 +723,7 @@ class Sessions
 
                 return $response;
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['400'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -734,7 +734,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error400', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['401'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -745,7 +745,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error401', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -756,7 +756,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error403', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -767,7 +767,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error404', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['405'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -778,7 +778,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error405', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['409'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -789,7 +789,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error409', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -800,7 +800,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['425'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -811,7 +811,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error425', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['429'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -822,7 +822,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error429', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['500'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -833,7 +833,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error500', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['502'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -844,7 +844,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error502', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['504'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -855,14 +855,14 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error504', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
-            throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
 
@@ -874,7 +874,7 @@ class Sessions
      * @param  \Gr4vy\PazeSessionRequest  $pazeSessionRequest
      * @param  ?string  $merchantAccountId
      * @return \Gr4vy\CreatePazeDigitalWalletSessionResponse
-     * @throws \Gr4vy\errors\APIException
+     * @throws \Gr4vy\Errors\APIException
      */
     public function paze(PazeSessionRequest $pazeSessionRequest, ?string $merchantAccountId = null, ?Options $options = null): CreatePazeDigitalWalletSessionResponse
     {
@@ -931,7 +931,7 @@ class Sessions
 
                 return $response;
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['400'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -942,7 +942,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error400', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['401'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -953,7 +953,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error401', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -964,7 +964,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error403', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -975,7 +975,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error404', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['405'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -986,7 +986,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error405', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['409'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -997,7 +997,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error409', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1008,7 +1008,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['425'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1019,7 +1019,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error425', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['429'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1030,7 +1030,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error429', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['500'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1041,7 +1041,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error500', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['502'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1052,7 +1052,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error502', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['504'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1063,14 +1063,14 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error504', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
-            throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
 
@@ -1082,7 +1082,7 @@ class Sessions
      * @param  \Gr4vy\PazeMobileSessionCreateRequest  $pazeMobileSessionCreateRequest
      * @param  ?string  $merchantAccountId
      * @return \Gr4vy\CreatePazeMobileSessionResponse
-     * @throws \Gr4vy\errors\APIException
+     * @throws \Gr4vy\Errors\APIException
      */
     public function pazeMobileSessionCreate(PazeMobileSessionCreateRequest $pazeMobileSessionCreateRequest, ?string $merchantAccountId = null, ?Options $options = null): CreatePazeMobileSessionResponse
     {
@@ -1139,7 +1139,7 @@ class Sessions
 
                 return $response;
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['400'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1150,7 +1150,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error400', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['401'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1161,7 +1161,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error401', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1172,7 +1172,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error403', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1183,7 +1183,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error404', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['405'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1194,7 +1194,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error405', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['409'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1205,7 +1205,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error409', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1216,7 +1216,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['425'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1227,7 +1227,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error425', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['429'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1238,7 +1238,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error429', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['500'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1249,7 +1249,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error500', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['502'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1260,7 +1260,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error502', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['504'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1271,14 +1271,14 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error504', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
-            throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
 
@@ -1290,7 +1290,7 @@ class Sessions
      * @param  \Gr4vy\PazeSessionReviewRequest  $pazeSessionReviewRequest
      * @param  ?string  $merchantAccountId
      * @return \Gr4vy\ReviewPazeMobileSessionResponse
-     * @throws \Gr4vy\errors\APIException
+     * @throws \Gr4vy\Errors\APIException
      */
     public function pazeMobileSessionReview(PazeSessionReviewRequest $pazeSessionReviewRequest, ?string $merchantAccountId = null, ?Options $options = null): ReviewPazeMobileSessionResponse
     {
@@ -1347,7 +1347,7 @@ class Sessions
 
                 return $response;
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['400'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1358,7 +1358,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error400', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['401'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1369,7 +1369,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error401', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['403'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1380,7 +1380,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error403', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['404'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1391,7 +1391,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error404', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['405'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1402,7 +1402,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error405', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['409'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1413,7 +1413,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error409', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['422'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1424,7 +1424,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\HTTPValidationError', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['425'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1435,7 +1435,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error425', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['429'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1446,7 +1446,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error429', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['500'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1457,7 +1457,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error500', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['502'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1468,7 +1468,7 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error502', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['504'])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
@@ -1479,14 +1479,14 @@ class Sessions
                 $obj = $serializer->deserialize($responseData, '\Gr4vy\Errors\Error504', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
-                throw new \Gr4vy\errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+                throw new \Gr4vy\Errors\APIException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
             }
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['4XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } elseif (Utils\Utils::matchStatusCodes($statusCode, ['5XX'])) {
-            throw new \Gr4vy\errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('API error occurred', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         } else {
-            throw new \Gr4vy\errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
+            throw new \Gr4vy\Errors\APIException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
 
