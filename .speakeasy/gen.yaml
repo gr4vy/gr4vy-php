@@ -49,7 +49,7 @@ php:
     option: openapi
     paths:
       callbacks: ""
-      errors: errors
+      errors: Errors
       operations: ""
       shared: ""
       webhooks: ""
