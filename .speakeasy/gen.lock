@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 8727fe5f7bdd29e5dc6273222b658519
+  docChecksum: c8f257442fc86717d9c64ac1b6d63a5d
   docVersion: 1.0.0
   speakeasyVersion: 1.806.0
   generationVersion: 2.956.1
-  releaseVersion: 1.7.38
-  configChecksum: 74c03e9a366887b91d5abf7d3106ef5b
+  releaseVersion: 1.7.39
+  configChecksum: daf1017d921b18f75659feeddd196c71
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: 97b89bf7-c510-4b3b-9dfb-fed2a9bdab45
-  pristine_commit_hash: 3feb761f38f49c92907f69979f5f1717235a9fde
-  pristine_tree_hash: c7e3fa212be22540c99a248eacb6a87013f035c5
+  generation_id: 07b058e5-16b9-4362-9522-f193672e521c
+  pristine_commit_hash: f58081c4e1a46c5fc4fd7fdec5d893db7abd898d
+  pristine_tree_hash: 1dfb04611318cef48eaecf3c0c6deb1db8425355
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -1577,8 +1577,8 @@ trackedFiles:
     pristine_git_object: 95e263fa2e0d683a29b77ca74494710afece7395
   docs/PaymentOption.md:
     id: e3dc5cc799db
-    last_write_checksum: sha1:3723d73d14d15af30141014f52d704eb6335e328
-    pristine_git_object: 5ea1f1326fa0b2f6cb862b8ffd1e71d0b7213b5e
+    last_write_checksum: sha1:c698bf33314a6151f9a4c4456395b52a8735ea29
+    pristine_git_object: 06bdaf51a41b807cbc500dd7477127d1d5598940
   docs/PaymentOptionContext.md:
     id: 5239df3094eb
     last_write_checksum: sha1:689d55d7185946c43e29d26418eef21dd7f7e8cf
@@ -4277,8 +4277,8 @@ trackedFiles:
     pristine_git_object: 569fd2e01fe5012654a6cab6c28310f6b2d7eee8
   src/PaymentOption.php:
     id: 6deb5864e3a6
-    last_write_checksum: sha1:7eb8131aca743bb947023a42b12a440ac0e6e840
-    pristine_git_object: 4d06d3ef2024bce4b0bdcd5241dcd899e6ed1007
+    last_write_checksum: sha1:f78a299c10ba9b063686aa8a20bc8508a47c587b
+    pristine_git_object: b827a28687d8b6b51a5c12aca9315efd0f64a91d
   src/PaymentOptionContext.php:
     id: c28ad353bc78
     last_write_checksum: sha1:0ead1271ee7fe48120c9419d7013e4279fa8ada2
@@ -4673,8 +4673,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:3a33791f0ec4363c60bda85bd40872a68d0365ed
-    pristine_git_object: 8fe653416cf3950a098ca5ec238e0cd753d8a6be
+    last_write_checksum: sha1:9323c8dde4fafefd0bbcfd9c23ba3961c87233c3
+    pristine_git_object: f34c8685f42d92bb8679fe2d51c0dc8805355900
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:0822d5d536788d0bf5b1be4fe4a17ee9316eb6a3
@@ -7229,7 +7229,7 @@ examples:
         application/json: {"locale": "en"}
       responses:
         "200":
-          application/json: {"items": [{"type": "payment-option", "method": "<value>", "mode": "card", "can_store_payment_method": true, "can_delay_capture": true}]}
+          application/json: {"items": [{"type": "payment-option", "method": "<value>", "icon_url": "https://legal-fibre.com/", "mode": "card", "label": "<value>", "can_store_payment_method": true, "can_delay_capture": true}]}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -9471,6 +9471,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->payment-options->list()`:  `response.items[]` **Changed** (Breaking ⚠️)
 generatedFiles:
   - .gitattributes
   - USAGE.md
