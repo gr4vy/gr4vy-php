@@ -20,10 +20,24 @@ class PaymentOption
 
     /**
      *
+     * @var string $iconUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('icon_url')]
+    public string $iconUrl;
+
+    /**
+     *
      * @var string $mode
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('mode')]
     public string $mode;
+
+    /**
+     *
+     * @var string $label
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('label')]
+    public string $label;
 
     /**
      *
@@ -38,22 +52,6 @@ class PaymentOption
      */
     #[\Speakeasy\Serializer\Annotation\SerializedName('can_delay_capture')]
     public bool $canDelayCapture;
-
-    /**
-     *
-     * @var ?string $iconUrl
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('icon_url')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $iconUrl = null;
-
-    /**
-     *
-     * @var ?string $label
-     */
-    #[\Speakeasy\Serializer\Annotation\SerializedName('label')]
-    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
-    public ?string $label = null;
 
     /**
      *
@@ -74,23 +72,23 @@ class PaymentOption
 
     /**
      * @param  string  $method
+     * @param  string  $iconUrl
      * @param  string  $mode
+     * @param  string  $label
      * @param  bool  $canStorePaymentMethod
      * @param  bool  $canDelayCapture
      * @param  ?string  $type
-     * @param  ?string  $iconUrl
-     * @param  ?string  $label
      * @param  \Gr4vy\WalletPaymentOptionContext|\Gr4vy\GooglePayPaymentOptionContext|\Gr4vy\PaymentOptionContext|null  $context
      * @phpstan-pure
      */
-    public function __construct(string $method, string $mode, bool $canStorePaymentMethod, bool $canDelayCapture, ?string $iconUrl = null, ?string $label = null, WalletPaymentOptionContext|GooglePayPaymentOptionContext|PaymentOptionContext|null $context = null, ?string $type = 'payment-option')
+    public function __construct(string $method, string $iconUrl, string $mode, string $label, bool $canStorePaymentMethod, bool $canDelayCapture, WalletPaymentOptionContext|GooglePayPaymentOptionContext|PaymentOptionContext|null $context = null, ?string $type = 'payment-option')
     {
         $this->method = $method;
+        $this->iconUrl = $iconUrl;
         $this->mode = $mode;
+        $this->label = $label;
         $this->canStorePaymentMethod = $canStorePaymentMethod;
         $this->canDelayCapture = $canDelayCapture;
-        $this->iconUrl = $iconUrl;
-        $this->label = $label;
         $this->context = $context;
         $this->type = $type;
     }
