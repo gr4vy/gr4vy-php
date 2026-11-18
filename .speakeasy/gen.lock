@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: b9f08dc7054bc39d1ef0cfdb1779528b
+  docChecksum: da467c5d1f60a2698931b01d066f4db3
   docVersion: 1.0.0
-  speakeasyVersion: 1.808.1
-  generationVersion: 2.960.8
-  releaseVersion: 1.7.41
-  configChecksum: d451d3994d705e10ff489efe80c1cd5f
+  speakeasyVersion: 1.810.0
+  generationVersion: 2.961.1
+  releaseVersion: 1.7.42
+  configChecksum: f6c0b138576416c432d2f7bd02275791
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: d10bea0f-e646-4feb-b6d8-c124677cef94
-  pristine_commit_hash: da8caaba30c97b83f245c1d0c5277373969dbcce
-  pristine_tree_hash: 89fdd4e353e3c14efcf286c024a932ea8fe1e406
+  generation_id: d34d821a-b100-4af3-90fb-85e28bfc36e7
+  pristine_commit_hash: 8f9bef06aa0aa2f69e75a6d0dbf0ab8fc5956dfa
+  pristine_tree_hash: bf393027cf0f778435da8d21c896fb05b4c81a3c
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -193,8 +193,8 @@ trackedFiles:
     pristine_git_object: 129a67aa61533444e4c88daa56b6779644a42a80
   docs/ApplePaySessionRequest.md:
     id: c328818c4020
-    last_write_checksum: sha1:d2c3874e683bc0b25f68e1e076490037970e470b
-    pristine_git_object: c10dd94470d1e00b88ee856c14080f19eafadad4
+    last_write_checksum: sha1:2852f08610c502023c78d309f5d0101f48d86abd
+    pristine_git_object: 28db3da480a731affb81b24691a6867d94cfe095
   docs/AuditLogEntries.md:
     id: 154ca18cc708
     last_write_checksum: sha1:2455d58b8b4d65049a82e7ae2f0e49421092f4ea
@@ -4673,8 +4673,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:d4288f29e4fe7c7634f302c81dc0d1344c05c308
-    pristine_git_object: 04e010cfa97c31457dfe5a58469ae810a622190e
+    last_write_checksum: sha1:1bb9ab53e8713b739c29fbf5736919cc7346f49e
+    pristine_git_object: b9b7a12bfd51ce0150f673484a78ebeedf727249
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:0822d5d536788d0bf5b1be4fe4a17ee9316eb6a3
