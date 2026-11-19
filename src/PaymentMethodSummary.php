@@ -182,6 +182,15 @@ class PaymentMethodSummary
     public ?array $additionalSchemes = null;
 
     /**
+     * The preferred card scheme to use when processing a co-badged card.
+     *
+     * @var ?string $preferredScheme
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('preferred_scheme')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $preferredScheme = null;
+
+    /**
      * The timestamp when this payment method was last used in a transaction for client initiated transactions.
      *
      * @var ?\DateTime $citLastUsedAt
@@ -238,12 +247,13 @@ class PaymentMethodSummary
      * @param  ?string  $mode
      * @param  ?string  $scheme
      * @param  ?array<string>  $additionalSchemes
+     * @param  ?string  $preferredScheme
      * @param  ?\DateTime  $citLastUsedAt
      * @param  ?\DateTime  $lastUsedAt
      * @param  ?string  $transactionLinkId
      * @phpstan-pure
      */
-    public function __construct(string $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?array $additionalSchemes = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?string $transactionLinkId = null, ?string $type = 'payment-method')
+    public function __construct(string $method, string $id, string $merchantAccountId, int $citUsageCount, bool $hasReplacement, int $usageCount, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null, ?string $approvalUrl = null, ?string $country = null, ?string $currency = null, ?PaymentMethodDetailsCard $details = null, ?string $expirationDate = null, ?string $fingerprint = null, ?string $label = null, ?\DateTime $lastReplacedAt = null, ?string $mode = null, ?string $scheme = null, ?array $additionalSchemes = null, ?string $preferredScheme = null, ?\DateTime $citLastUsedAt = null, ?\DateTime $lastUsedAt = null, ?string $transactionLinkId = null, ?string $type = 'payment-method')
     {
         $this->method = $method;
         $this->id = $id;
@@ -264,6 +274,7 @@ class PaymentMethodSummary
         $this->mode = $mode;
         $this->scheme = $scheme;
         $this->additionalSchemes = $additionalSchemes;
+        $this->preferredScheme = $preferredScheme;
         $this->citLastUsedAt = $citLastUsedAt;
         $this->lastUsedAt = $lastUsedAt;
         $this->transactionLinkId = $transactionLinkId;

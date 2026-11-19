@@ -49,17 +49,28 @@ class PaymentMethodUpdate
     public ?string $transactionLinkId = null;
 
     /**
+     * The preferred card scheme to use when processing a co-badged card.
+     *
+     * @var ?string $preferredScheme
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('preferred_scheme')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $preferredScheme = null;
+
+    /**
      * @param  ?string  $expirationDate
      * @param  ?string  $schemeTransactionId
      * @param  ?string  $schemeTransactionIdScheme
      * @param  ?string  $transactionLinkId
+     * @param  ?string  $preferredScheme
      * @phpstan-pure
      */
-    public function __construct(?string $expirationDate = null, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null, ?string $transactionLinkId = null)
+    public function __construct(?string $expirationDate = null, ?string $schemeTransactionId = null, ?string $schemeTransactionIdScheme = null, ?string $transactionLinkId = null, ?string $preferredScheme = null)
     {
         $this->expirationDate = $expirationDate;
         $this->schemeTransactionId = $schemeTransactionId;
         $this->schemeTransactionIdScheme = $schemeTransactionIdScheme;
         $this->transactionLinkId = $transactionLinkId;
+        $this->preferredScheme = $preferredScheme;
     }
 }
