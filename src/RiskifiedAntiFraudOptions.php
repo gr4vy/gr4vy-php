@@ -42,15 +42,26 @@ class RiskifiedAntiFraudOptions
     public ?array $additionalShippingAddresses = null;
 
     /**
+     * Overrides the customer account type sent to Riskified. When not set, the customer is sent as `registered` if the transaction has a buyer, and as `guest` otherwise. When the account type is `guest`, the customer `id` and `created_at` are not sent to Riskified, even if the transaction has a buyer.
+     *
+     * @var ?string $accountType
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('account_type')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $accountType = null;
+
+    /**
      * @param  ?array<\Gr4vy\RiskifiedAntiFraudOptionsLineItem>  $lineItems
      * @param  ?array<\Gr4vy\RiskifiedAntiFraudOptionsShippingLine>  $shippingLines
      * @param  ?array<\Gr4vy\RiskifiedAntiFraudOptionsShippingAddress>  $additionalShippingAddresses
+     * @param  ?string  $accountType
      * @phpstan-pure
      */
-    public function __construct(?array $lineItems = null, ?array $shippingLines = null, ?array $additionalShippingAddresses = null)
+    public function __construct(?array $lineItems = null, ?array $shippingLines = null, ?array $additionalShippingAddresses = null, ?string $accountType = null)
     {
         $this->lineItems = $lineItems;
         $this->shippingLines = $shippingLines;
         $this->additionalShippingAddresses = $additionalShippingAddresses;
+        $this->accountType = $accountType;
     }
 }
