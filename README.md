@@ -400,6 +400,7 @@ if ($response->accountUpdaterJob !== null) {
 * [get](docs/sdks/paymentmethodssdk/README.md#get) - Get payment method
 * [update](docs/sdks/paymentmethodssdk/README.md#update) - Update payment method
 * [delete](docs/sdks/paymentmethodssdk/README.md#delete) - Delete payment method
+* [detokenize](docs/sdks/paymentmethodssdk/README.md#detokenize) - Detokenize a payment method
 
 #### [PaymentMethods.NetworkTokens](docs/sdks/paymentmethodsnetworktokens/README.md)
 
