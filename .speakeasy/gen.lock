@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 16ed6937-9038-4c34-a8b6-e4732948f250
 management:
-  docChecksum: 1805f83954636a752629a9e3b074b9cc
+  docChecksum: 2fac3fe18f147404a1b682dee97524b5
   docVersion: 1.0.0
   speakeasyVersion: 1.811.0
   generationVersion: 2.968.1
-  releaseVersion: 1.7.45
-  configChecksum: c338de5e64e3b4390da44578b2aafc33
+  releaseVersion: 1.7.46
+  configChecksum: c25d133c2ead845a300d464302e9a916
   repoURL: https://github.com/gr4vy/gr4vy-php.git
   installationURL: https://github.com/gr4vy/gr4vy-php.git
   published: true
 persistentEdits:
-  generation_id: fff2115b-fa5e-4219-90b8-38667ea685d1
-  pristine_commit_hash: ccae315d61e397aa1d70ba3c075c3cfd863ae451
-  pristine_tree_hash: e6bc956519649f7520836c34896c433658fe43f5
+  generation_id: 0c8cbc88-be0b-4585-bfa2-496753e679d8
+  pristine_commit_hash: 94321eeba20641fa829ed405665626e6ea7dce28
+  pristine_tree_hash: 65333ef2f62797bf8ffcd19a0c2af31ead7830e8
 features:
   php:
     constsAndDefaults: 0.2.2
@@ -683,6 +683,18 @@ trackedFiles:
     id: 571f928074a7
     last_write_checksum: sha1:08285ba8f16e9750b8a738292d2e5d511ea0847c
     pristine_git_object: df97f3d98e49b4c7c462772cc5f6601633b2ad43
+  docs/Detokenization.md:
+    id: bd61504aac57
+    last_write_checksum: sha1:0f3ca22a0317608279b11e536a7e6c40633a28ec
+    pristine_git_object: 2aa274b00676bcc6c52127eaa37d98c891c78aff
+  docs/DetokenizePaymentMethodRequest.md:
+    id: f89c33c86ec4
+    last_write_checksum: sha1:0ee797a4a137a8f68bfe5dc5b8485992599b5818
+    pristine_git_object: 5e6ed45f57bd3c848d99797cb6a888a326b9c11d
+  docs/DetokenizePaymentMethodResponse.md:
+    id: 7cb555fca121
+    last_write_checksum: sha1:64d5795cdd24458d210a20b4210a480d94db1f78
+    pristine_git_object: 07f65824a7b873d27429f09f124573edcede861b
   docs/DigitalWallet.md:
     id: d5c25dfd82fd
     last_write_checksum: sha1:efbca22044ac861ec7655646187f47e16cbfade1
@@ -2469,8 +2481,8 @@ trackedFiles:
     pristine_git_object: 22a43d0bae0f70d30e6081f2d83005d019c4fe1b
   docs/sdks/paymentmethodssdk/README.md:
     id: d1b6df07187c
-    last_write_checksum: sha1:becf94f69ec0925bdbffc2851e79c1adec68d1c3
-    pristine_git_object: 94092d7ec4d343dc47ff8c266dcb59823198fadf
+    last_write_checksum: sha1:1e854e18541640e7cafb828e904d1871167632d7
+    pristine_git_object: 1dd8060cd763d88dd397b36b88fb14b7f0aa3675
   docs/sdks/paymentoptionssdk/README.md:
     id: 11172237c4a0
     last_write_checksum: sha1:560f456b1c46a5294ef43c60631dc4e58def0051
@@ -3231,6 +3243,18 @@ trackedFiles:
     id: 6c6057d90e1d
     last_write_checksum: sha1:82c8fa28f2fe5d6a11bc7799d5038b4b90cb12d7
     pristine_git_object: f2180f3c4c1bb31a289e6ff314cb3ea734ae8c2e
+  src/Detokenization.php:
+    id: "802898930283"
+    last_write_checksum: sha1:98d8d7c6684fefff5cf8b9070b6d2662bdd27628
+    pristine_git_object: 90f9d03f86a0cdcd40c11d15d848751ee379fc26
+  src/DetokenizePaymentMethodRequest.php:
+    id: b9991085d343
+    last_write_checksum: sha1:2ecfed699b99e42c69c91de4e453b54fb9618347
+    pristine_git_object: cb7e18a9548476a28f7f1cd2567cb517a9f2c791
+  src/DetokenizePaymentMethodResponse.php:
+    id: aeda76bbe12c
+    last_write_checksum: sha1:fb3bb67a646a0a25924aa197e9c4f77d1475dfb0
+    pristine_git_object: bacd8bca1d1b5f63b371baecf5e7732d0dc1d162
   src/DigitalWallet.php:
     id: 8b3c9a68eb69
     last_write_checksum: sha1:6769e421122e02fc064dc294a64b5d50a6fdc2d3
@@ -4273,8 +4297,8 @@ trackedFiles:
     pristine_git_object: ca9be6f5365552cd910bf842c26f0475ac9dfefd
   src/PaymentMethodsSDK.php:
     id: f337cac363a0
-    last_write_checksum: sha1:a7211303d9642c9a7e267aea0b41d94cd8d3be93
-    pristine_git_object: 569fd2e01fe5012654a6cab6c28310f6b2d7eee8
+    last_write_checksum: sha1:67e1bae3e0062a390760667d65ac6f589036ef6a
+    pristine_git_object: 714cff54f286e8024d38bf667f18d2ebbff23e16
   src/PaymentOption.php:
     id: 6deb5864e3a6
     last_write_checksum: sha1:f78a299c10ba9b063686aa8a20bc8508a47c587b
@@ -4673,8 +4697,8 @@ trackedFiles:
     pristine_git_object: e176bdc6e712633942afda5189209d52723fd2c5
   src/SDKConfiguration.php:
     id: 9d60ab0bec0b
-    last_write_checksum: sha1:f9e5f10a46fdc963874081c54226c4f979f96a38
-    pristine_git_object: 6366d83380119f2ce09a4d1f882d2b8c8f9fbbe8
+    last_write_checksum: sha1:341dd4aac82581e39b8a1c7684a3c4a0c95ef3df
+    pristine_git_object: 25f0870f4b7dc619f553b71d1457e02335e8c7cc
   src/SEPABankPaymentMethodCreate.php:
     id: fe251daedf19
     last_write_checksum: sha1:0822d5d536788d0bf5b1be4fe4a17ee9316eb6a3
@@ -9469,9 +9493,43 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  detokenize_payment_method:
+    speakeasy-default-detokenize-payment-method:
+      parameters:
+        path:
+          payment_method_id: "ef9496d8-53a5-4aad-8ca2-00eb68334389"
+      responses:
+        "200":
+          application/json: {"type": "payment-method-detokenization", "encrypted_payload": "eyJhbGciOiJSU0EtT0FFUC0yNTYiLCJlbmMiOi..."}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Php SDK Changes:\n* `sdk->transactions->create()`: \n  *  `request.transactionCreate->connectionOptions->riskifiedAntiFraud->accountType` **Added**\n* `sdk->transactions->update()`: \n  *  `request.transactionUpdate->connectionOptions->riskifiedAntiFraud->accountType` **Added**\n* `sdk->payment-links->create()`: \n  *  `request.paymentLinkCreate->connectionOptions->riskifiedAntiFraud->accountType` **Added**\n"
+releaseNotes: |
+  ## Php SDK Changes:
+  * `sdk->payment-methods->detokenize()`: **Added**
 generatedFiles:
   - .gitattributes
   - USAGE.md
