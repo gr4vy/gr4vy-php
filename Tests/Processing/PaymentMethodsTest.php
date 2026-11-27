@@ -114,4 +114,18 @@ final class PaymentMethodsTest extends MerchantTestCase
             'paymentMethods.paymentServiceTokens.delete',
         );
     }
+
+    #[Test]
+    public function detokenization_is_reached(): void
+    {
+        $sdk = $this->sdk();
+        $pm = $sdk->paymentMethods->create(Fixtures::approvingCard())->paymentMethod;
+
+        // A 4xx is fine: the card is encrypted to the merchant account's public key,
+        // which the per-run merchant may not have, and the endpoint is rate limited.
+        Reach::reaches(
+            fn () => $sdk->paymentMethods->detokenize($pm->id),
+            'paymentMethods.detokenize',
+        );
+    }
 }
